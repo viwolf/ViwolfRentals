@@ -1,0 +1,6 @@
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\Viwolf.Rentals.Solutions\Viwolf.Rentals.Controllers\bin\Debug\Viwolf.Rentals.Controllers.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\Viwolf.Rentals.Solutions\Viwolf.Rentals.Controllers\bin\Debug\Viwolf.Rentals.Controllers.pdb
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\Viwolf.Rentals.Solutions\Viwolf.Rentals.Controllers\obj\Debug\Viwolf.Rentals.Controllers.csprojAssemblyReference.cache
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\Viwolf.Rentals.Solutions\Viwolf.Rentals.Controllers\obj\Debug\Viwolf.Rentals.Controllers.csproj.CoreCompileInputs.cache
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\Viwolf.Rentals.Solutions\Viwolf.Rentals.Controllers\obj\Debug\Viwolf.Rentals.Controllers.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\Viwolf.Rentals.Solutions\Viwolf.Rentals.Controllers\obj\Debug\Viwolf.Rentals.Controllers.pdb
