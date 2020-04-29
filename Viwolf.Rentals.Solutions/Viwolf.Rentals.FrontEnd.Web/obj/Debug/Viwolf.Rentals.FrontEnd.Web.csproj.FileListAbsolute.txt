@@ -11,7 +11,9 @@ C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\Viw
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\Viwolf.Rentals.Solutions\Viwolf.Rentals.FrontEnd.Web\bin\System.Web.WebPages.Deployment.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\Viwolf.Rentals.Solutions\Viwolf.Rentals.FrontEnd.Web\bin\System.Web.WebPages.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\Viwolf.Rentals.Solutions\Viwolf.Rentals.FrontEnd.Web\bin\System.Web.WebPages.Razor.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\Viwolf.Rentals.Solutions\Viwolf.Rentals.FrontEnd.Web\bin\Viwolf.Rentals.Controllers.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\Viwolf.Rentals.Solutions\Viwolf.Rentals.FrontEnd.Web\bin\WebGrease.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\Viwolf.Rentals.Solutions\Viwolf.Rentals.FrontEnd.Web\bin\Viwolf.Rentals.Controllers.pdb
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\Viwolf.Rentals.Solutions\Viwolf.Rentals.FrontEnd.Web\bin\System.Web.Helpers.xml
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\Viwolf.Rentals.Solutions\Viwolf.Rentals.FrontEnd.Web\bin\System.Web.Mvc.xml
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\Viwolf.Rentals.Solutions\Viwolf.Rentals.FrontEnd.Web\bin\System.Web.Optimization.xml

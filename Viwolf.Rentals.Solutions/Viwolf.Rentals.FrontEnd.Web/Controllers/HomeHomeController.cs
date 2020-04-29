@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Viwolf.Rentals.FrontEnd.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeHomeController : Controller
     {
         public ActionResult Index()
         {
