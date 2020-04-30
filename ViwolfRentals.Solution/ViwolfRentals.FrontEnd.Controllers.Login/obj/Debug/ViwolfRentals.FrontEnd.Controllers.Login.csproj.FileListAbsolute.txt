@@ -23,4 +23,3 @@ C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\Viw
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Controllers.Login\obj\Debug\ViwolfRentals.FrontEnd.Controllers.Login.csproj.CopyComplete
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Controllers.Login\obj\Debug\ViwolfRentals.FrontEnd.Controllers.Login.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Controllers.Login\obj\Debug\ViwolfRentals.FrontEnd.Controllers.Login.pdb
-C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Controllers.Login\obj\Debug\ViwolfRentals.FrontEnd.Controllers.Login.csprojAssemblyReference.cache
