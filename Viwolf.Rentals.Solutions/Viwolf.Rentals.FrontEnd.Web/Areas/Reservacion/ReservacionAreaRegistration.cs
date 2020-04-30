@@ -18,7 +18,7 @@ namespace Viwolf.Rentals.FrontEnd.Web.Areas.Reservacion
                   name: "Reservaciones_default",
                 url: "Reservaciones/{controller}/{action}/{id}",
                 namespaces: new[] { "Viwolf.Rentals.Controller.Reservaciones" },
-                defaults: new { Controller = "Reservacion", action = "Index", id = UrlParameter.Optional }
+                defaults: new { Controller = "Home", action = "Index", id = UrlParameter.Optional }
                 );
 
             route.DataTokens["UserNamespaceFallBack"] = false;
