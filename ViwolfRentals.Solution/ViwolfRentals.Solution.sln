@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViwolfRentals.FrontEnd.Web"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viwolf.Rentals.Controllers", "Viwolf.Rentals.Controllers\Viwolf.Rentals.Controllers.csproj", "{99C04D03-393D-49AF-B794-D3DF695FBE12}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{15D3B61A-A777-4A33-8EEF-829716FBBF5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Main", "Main", "{601216BB-7266-43DA-BE0B-9FECE23D243D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +28,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F731FC09-BD16-4FE2-BCB4-FCBDA1FB1193} = {601216BB-7266-43DA-BE0B-9FECE23D243D}
+		{99C04D03-393D-49AF-B794-D3DF695FBE12} = {601216BB-7266-43DA-BE0B-9FECE23D243D}
+		{601216BB-7266-43DA-BE0B-9FECE23D243D} = {15D3B61A-A777-4A33-8EEF-829716FBBF5E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C77D6963-4C13-4631-BDD7-0F1F5D508EB6}
