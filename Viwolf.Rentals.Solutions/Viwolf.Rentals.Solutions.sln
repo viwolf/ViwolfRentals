@@ -13,8 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reservaciones", "Reservacio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viwolf.Rentals.Controllers", "Viwolf.Rentals.Controllers\Viwolf.Rentals.Controllers.csproj", "{04718007-8D52-4FB6-96AC-407DC1BCDF82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viwolf.Rentals.FrontEnd.Web", "Viwolf.Rentals.FrontEnd.Web\Viwolf.Rentals.FrontEnd.Web.csproj", "{D79BABB4-AD8E-4069-B689-842372881747}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viwolf.Rentals.Controller.Reservaciones", "Viwolf.Rentals.Controller.Reservaciones\Viwolf.Rentals.Controller.Reservaciones.csproj", "{5B18ECAD-916E-4C2C-8840-A410DC2F8AF6}"
 EndProject
 Global
@@ -27,10 +25,6 @@ Global
 		{04718007-8D52-4FB6-96AC-407DC1BCDF82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04718007-8D52-4FB6-96AC-407DC1BCDF82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04718007-8D52-4FB6-96AC-407DC1BCDF82}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D79BABB4-AD8E-4069-B689-842372881747}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D79BABB4-AD8E-4069-B689-842372881747}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D79BABB4-AD8E-4069-B689-842372881747}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D79BABB4-AD8E-4069-B689-842372881747}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5B18ECAD-916E-4C2C-8840-A410DC2F8AF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5B18ECAD-916E-4C2C-8840-A410DC2F8AF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B18ECAD-916E-4C2C-8840-A410DC2F8AF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -43,7 +37,6 @@ Global
 		{17BB8E0F-7AE6-4D98-A548-45924A4A08B1} = {2490DD0B-157C-49EA-86FC-A9410430572D}
 		{02311E50-AD41-4C01-ADA2-F6BD1E75A701} = {2490DD0B-157C-49EA-86FC-A9410430572D}
 		{04718007-8D52-4FB6-96AC-407DC1BCDF82} = {17BB8E0F-7AE6-4D98-A548-45924A4A08B1}
-		{D79BABB4-AD8E-4069-B689-842372881747} = {17BB8E0F-7AE6-4D98-A548-45924A4A08B1}
 		{5B18ECAD-916E-4C2C-8840-A410DC2F8AF6} = {02311E50-AD41-4C01-ADA2-F6BD1E75A701}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
