@@ -46,7 +46,7 @@
                         Usuario
                     </span>
                     <div class="wrap-input100 validate-input m-b-36" data-validate="Username is required">
-                        <input class="input100" type="text" name="username">
+                        <input id="txtUsuario" class="input100" type="text" name="username">
                         <span class="focus-input100"></span>
                     </div>
 
@@ -57,7 +57,7 @@
                         <span class="btn-show-pass">
                             <i class="fa fa-eye"></i>
                         </span>
-                        <input class="input100" type="password" name="pass">
+                        <input id="txtPassword" class="input100" type="password" name="pass">
                         <span class="focus-input100"></span>
                     </div>
 
@@ -77,7 +77,7 @@
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">
+                        <button id="btnEntrar" class="login100-form-btn">
                             Entrar
                         </button>
                     </div>
@@ -106,4 +106,8 @@
     <script src="~/Areas/Login/Content/vendor/countdowntime/countdowntime.js"></script>
     <!--===============================================================================================-->
     <script src="~/Areas/Login/Content/js/main.js"></script>
-    
+
+    <script src="~/Content/Plugins/ajaxloader/ajaxloader.js"></script>
+    <script src="~/Areas/Login/Content/js/src/app.js"></script>
+    <script src="~/Areas/Login/Content/js/src/Login/Login.js"></script>
+

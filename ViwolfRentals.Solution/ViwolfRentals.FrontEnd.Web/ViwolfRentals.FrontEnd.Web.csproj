@@ -121,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Login\LoginAreaRegistration.cs" />
+    <Compile Include="Areas\Reservaciones\ReservacionesAreaRegistration.cs" />
     <Compile Include="Controllers\HomeHomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -143,6 +144,8 @@
     <Content Include="Areas\Login\Content\images\icons\icon-google.png" />
     <Content Include="Areas\Login\Content\images\icons\map-marker.png" />
     <Content Include="Areas\Login\Content\images\icons\symbol-01.png" />
+    <Content Include="Areas\Login\Content\js\src\app.js" />
+    <Content Include="Areas\Login\Content\js\src\Login\Login.js" />
     <Content Include="Areas\Login\Content\js\main.js" />
     <Content Include="Areas\Login\Content\vendor\animate\animate.css" />
     <Content Include="Areas\Login\Content\vendor\animsition\css\animsition.css" />
@@ -180,6 +183,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Plugins\ajaxloader\ajaxloader.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -293,6 +297,10 @@
     <Content Include="Areas\Login\Content\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Areas\Login\Content\vendor\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="Areas\Login\Views\Login.cshtml" />
+    <Content Include="Areas\Reservaciones\Views\web.config" />
+    <Content Include="Areas\Reservaciones\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Reservaciones\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Reservaciones\Views\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -331,9 +339,17 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FrontEnd.Controller.Reservaciones\FrontEnd.Controllers.Reservaciones.csproj">
+      <Project>{216e1d79-c1d4-4059-ab70-233ed2b589de}</Project>
+      <Name>FrontEnd.Controllers.Reservaciones</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Viwolf.Rentals.Controllers\Viwolf.Rentals.Controllers.csproj">
       <Project>{99c04d03-393d-49af-b794-d3df695fbe12}</Project>
       <Name>Viwolf.Rentals.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViwolfRentals.FrontEnd.Controllers.Login\ViwolfRentals.FrontEnd.Controllers.Login.csproj">
+      <Project>{05d69abc-cdf1-4578-86ca-953a98466506}</Project>
+      <Name>ViwolfRentals.FrontEnd.Controllers.Login</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

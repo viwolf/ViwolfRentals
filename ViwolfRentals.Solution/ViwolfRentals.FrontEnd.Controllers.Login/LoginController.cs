@@ -13,5 +13,14 @@ namespace ViwolfRentals.FrontEnd.Controllers.Login
         {
             return View();
         }
+
+        [HttpPost]
+        public JsonResult AutenticarUsuario(ViwolfRental.Common.Model.Usuarios usuario)
+        {
+            return Json("chamara", JsonRequestBehavior.AllowGet);
+            // View("~/Areas/Reservaciones/Views/Index.cshtml");
+        }
+
     }
 }
+
