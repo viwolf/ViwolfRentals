@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace Viwolf.Rentals.Controllers
+namespace ViwolfRentals.FrontEnd.Controllers.Login
 {
-    public class HomeController: Controller
+    public class LoginController: Controller
     {
         public ActionResult Index()
         {
-            return View("~/Areas/Login/Views/Login.cshtml");
+            return View();
         }
     }
 }

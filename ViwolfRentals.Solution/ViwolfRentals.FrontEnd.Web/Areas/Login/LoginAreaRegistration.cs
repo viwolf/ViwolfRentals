@@ -14,10 +14,11 @@ namespace ViwolfRentals.FrontEnd.Web.Areas.Login
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
-            context.MapRoute(
-                "Login_default",
-                "Login/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+            var route = context.MapRoute(
+                name: "Login_default",
+                url: "Login/{controller}/{action}/{id}",
+                namespaces: new[] { "ViwolfRentals.FrontEnd.Controllers.Login" },
+                defaults: new { action = "Index", id = UrlParameter.Optional }
             );
         }
     }
