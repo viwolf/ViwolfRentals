@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViwolfRentals.FrontEnd.Web", "ViwolfRentals.FrontEnd.Web\ViwolfRentals.FrontEnd.Web.csproj", "{F731FC09-BD16-4FE2-BCB4-FCBDA1FB1193}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viwolf.Rentals.Controllers", "Viwolf.Rentals.Controllers\Viwolf.Rentals.Controllers.csproj", "{99C04D03-393D-49AF-B794-D3DF695FBE12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F731FC09-BD16-4FE2-BCB4-FCBDA1FB1193}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F731FC09-BD16-4FE2-BCB4-FCBDA1FB1193}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F731FC09-BD16-4FE2-BCB4-FCBDA1FB1193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99C04D03-393D-49AF-B794-D3DF695FBE12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99C04D03-393D-49AF-B794-D3DF695FBE12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99C04D03-393D-49AF-B794-D3DF695FBE12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99C04D03-393D-49AF-B794-D3DF695FBE12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
