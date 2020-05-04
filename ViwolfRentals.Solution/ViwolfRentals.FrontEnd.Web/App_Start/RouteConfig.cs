@@ -17,7 +17,8 @@ namespace ViwolfRentals.FrontEnd.Web
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 namespaces: new[] { "Viwolf.Rentals.Controllers" },
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                //defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Login", action = "AutenticarUsuario", id = UrlParameter.Optional }
             ); ;
         }
     }
