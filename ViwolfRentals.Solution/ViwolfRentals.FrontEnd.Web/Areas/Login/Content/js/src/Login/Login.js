@@ -13,46 +13,31 @@
 
     var fnEntrar = function (e) {
         debugger;
-        //var serviceURL = '/Login/AutenticarUsuario';
+        reservaciones.fnMostrar();
+       //try {
+       //     var oUrl = 'Login/AutenticarUsuario'
 
-        //$.ajax({
-        //    type: "POST",
-        //    url: serviceURL,
-        //    data: param = "",
-        //    contentType: "application/json; charset=utf-8",
-        //    dataType: "json",
-        //    success: successFunc
-        //    //error: errorFunc
-        //});
+       //         var oData =
+       //         {
+       //             "Usuario": txtUsuario.val(),
+       //             "Password": txtPassword.val(),
+       //         };
 
-        //function successFunc(data, status) { alert(data); }
+       //     var oProcessMessage = 'Autenticando, espere por favor...';
 
-
-        
-        try {
-            var oUrl = 'Login/AutenticarUsuario'
-
-                var oData =
-                {
-                    "Usuario": txtUsuario.val(),
-                    "Password": txtPassword.val(),
-                };
-
-            var oProcessMessage = 'Autenticando, espere por favor...';
-
-            var success = function (result) {
-                debugger;
-                alert("Bienvenido");
+       //     var success = function (result) {
+       //         debugger;
+       //         alert("Bienvenido");
               
-            };
+       //     };
 
-            console.log(oData);
-            app.fnExecuteWithResult(e, oUrl, oData, oProcessMessage, success);
+       //     console.log(oData);
+       //     app.fnExecuteWithResult(e, oUrl, oData, oProcessMessage, success);
 
-        }
+       // }
 
-        catch (e) {
-          //  app.fnShowErrorMessage(e.message);
-        }
+       // catch (e) {
+       //   //  app.fnShowErrorMessage(e.message);
+       // }
     }
 }();

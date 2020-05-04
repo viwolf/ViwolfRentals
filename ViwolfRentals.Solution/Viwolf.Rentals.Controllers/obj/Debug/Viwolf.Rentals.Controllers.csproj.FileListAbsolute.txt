@@ -7,6 +7,8 @@ C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\Viw
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\System.Web.WebPages.Deployment.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\System.Web.WebPages.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\ViwolfRentals.FrontEnd.Controllers.Login.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\ViwolfRentals.FrontEnd.Controllers.Login.pdb
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\System.Web.Helpers.xml
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\System.Web.Mvc.xml
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\System.Web.Razor.xml
@@ -19,8 +21,10 @@ C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\Viw
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\es\System.Web.WebPages.resources.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\obj\Debug\Viwolf.Rentals.Controllers.csprojAssemblyReference.cache
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\obj\Debug\Viwolf.Rentals.Controllers.csproj.CoreCompileInputs.cache
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\obj\Debug\Viwolf.Rentals.Controllers.csproj.CopyComplete
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\obj\Debug\Viwolf.Rentals.Controllers.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\obj\Debug\Viwolf.Rentals.Controllers.pdb
-C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\obj\Debug\Viwolf.Rentals.Controllers.csprojAssemblyReference.cache
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\ViwolfRental.Common.Model.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\ViwolfRental.Common.Model.pdb

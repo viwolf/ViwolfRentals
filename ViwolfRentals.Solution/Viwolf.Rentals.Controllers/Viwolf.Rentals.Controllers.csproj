@@ -68,5 +68,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ViwolfRentals.FrontEnd.Controllers.Login\ViwolfRentals.FrontEnd.Controllers.Login.csproj">
+      <Project>{05d69abc-cdf1-4578-86ca-953a98466506}</Project>
+      <Name>ViwolfRentals.FrontEnd.Controllers.Login</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

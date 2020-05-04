@@ -17,10 +17,17 @@ namespace ViwolfRentals.FrontEnd.Controllers.Login
         [HttpPost]
         public JsonResult AutenticarUsuario(ViwolfRental.Common.Model.Usuarios usuario)
         {
+
+            return DoAutenticarUsuario(usuario);
+        }
+
+
+        private JsonResult DoAutenticarUsuario(ViwolfRental.Common.Model.Usuarios usuario)
+        {
+
             return Json("chamara", JsonRequestBehavior.AllowGet);
             // View("~/Areas/Reservaciones/Views/Index.cshtml");
         }
-
     }
 }
 
