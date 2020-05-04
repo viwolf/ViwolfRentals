@@ -11,7 +11,7 @@ namespace Viwolf.Rentals.Controllers
     {
         public ActionResult Index()
         {
-            return View("~/Areas/Login/Views/Login.cshtml");
+            return RedirectToAction("Index", "Login");  //View("~/Areas/Login/Views/Login.cshtml");
         }
     }
 }

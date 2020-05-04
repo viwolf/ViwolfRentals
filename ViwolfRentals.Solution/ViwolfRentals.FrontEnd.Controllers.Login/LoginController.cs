@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Web;
 
 namespace ViwolfRentals.FrontEnd.Controllers.Login
 {
     public class LoginController: Controller
     {
-        public ActionResult Index()
+        public ActionResult Login()
         {
             return View();
         }
@@ -25,7 +26,8 @@ namespace ViwolfRentals.FrontEnd.Controllers.Login
         private ActionResult DoAutenticarUsuario()
         {
 
-           return View("~/Areas/Reservaciones/Views/Index.cshtml");
+            return RedirectToAction("Index", "Reservacion");
+           //return View("~/Areas/Reservaciones/Views/Index.cshtml");
         }
     }
 }

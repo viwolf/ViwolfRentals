@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
@@ -69,6 +70,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FrontEnd.Controller.Reservaciones\FrontEnd.Controllers.Reservaciones.csproj">
+      <Project>{216e1d79-c1d4-4059-ab70-233ed2b589de}</Project>
+      <Name>FrontEnd.Controllers.Reservaciones</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViwolfRentals.FrontEnd.Controllers.Login\ViwolfRentals.FrontEnd.Controllers.Login.csproj">
       <Project>{05d69abc-cdf1-4578-86ca-953a98466506}</Project>
       <Name>ViwolfRentals.FrontEnd.Controllers.Login</Name>
