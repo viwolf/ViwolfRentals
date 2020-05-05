@@ -1180,28 +1180,28 @@
         */
     }
 
-    /////// <summary>
-    /////// Function: showHideDialog
-    /////// Descripcion: Metodo encargado de ocultar el preloader en el momento en que se finaliza un proceso.
-    /////// Fecha de creación: 24-04-2015
-    /////// Autor: jquesada
-    /////// 
-    /////// Modificaciones:
-    /////// -----------------------------------------------------------------------------
-    /////// Número: 
-    /////// Ticket: 
-    /////// Descripcion:
-    /////// Fecha de creación:
-    /////// Autor:
-    /////// -----------------------------------------------------------------------------
-    /////// </summary>
-    ////var showHideDialog = function (msg) {
-    ////    if (waitingDialog != null)
-    ////        waitingDialog.remove();
-    ////    /*
-    ////    $(".fakeloader").fadeOut();
-    ////    */
-    ////}
+    /// <summary>
+    /// Function: showHideDialog
+    /// Descripcion: Metodo encargado de ocultar el preloader en el momento en que se finaliza un proceso.
+    /// Fecha de creación: 24-04-2015
+    /// Autor: jquesada
+    /// 
+    /// Modificaciones:
+    /// -----------------------------------------------------------------------------
+    /// Número: 
+    /// Ticket: 
+    /// Descripcion:
+    /// Fecha de creación:
+    /// Autor:
+    /// -----------------------------------------------------------------------------
+    /// </summary>
+    var showHideDialog = function (msg) {
+        if (waitingDialog != null)
+            waitingDialog.remove();
+        /*
+        $(".fakeloader").fadeOut();
+        */
+    }
 
     /////// <summary>
     /////// Function: standarErrorHandler
@@ -1735,7 +1735,7 @@
         fnShowSuccessMessage: showSuccessMessage,
         //fnShowInfoMessage: showInfoMessage,
         fnShowWaitingDialog: showWaitingDialog,
-        //fnShowHideDialog: showHideDialog,
+        fnShowHideDialog: showHideDialog,
         //fnInitDatatables: fnInitDatatables,
         //fnExecuteAsyncPostBack: fnExecute,
         fnExecuteWithResult: fnExecuteWithResult,

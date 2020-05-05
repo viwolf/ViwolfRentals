@@ -285,9 +285,9 @@
     <Content Include="Areas\Reservacion\Content\src\scss\variables\_spacing.scss" />
     <Content Include="Areas\Reservacion\Content\src\scss\_global.scss" />
     <Content Include="Areas\Reservacion\Content\src\scss\_variables.scss" />
-    <Content Include="Areas\Reservacion\Views\Index.cshtml" />
+    <Content Include="Areas\Reservacion\Views\Reservacion\Index.cshtml" />
     <Content Include="Areas\Seguridad\Views\web.config" />
-    <Content Include="Areas\Seguridad\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Seguridad\Views\Login\Index1.cshtml" />
     <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
     <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
     <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
@@ -407,6 +407,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\Seguridad\Views\Login\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

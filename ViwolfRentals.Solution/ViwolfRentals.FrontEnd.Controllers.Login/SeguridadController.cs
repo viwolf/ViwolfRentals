@@ -13,10 +13,12 @@ namespace ViwolfRentals.FrontEnd.Controllers.Seguridad
         public ActionResult Index()
         {
             //return RedirectToAction("Index", "Reservacion", new { @area = "Reservacion" });
-            return View("~/Areas/Seguridad/Views/Login/Index.cshtml");
+            return View(); // "~/Areas/Seguridad/Views/Login/Index.cshtml");
         }
 
-       
+
+        //[Route("AutenticarUsuario")]
+        [HttpPost]
         public ActionResult AutenticarUsuario()
         {
 
