@@ -19,7 +19,7 @@ namespace ViwolfRentals.FrontEnd.Web.Areas.Seguridad
                url: "Seguridad/{controller}/{action}/{id}",
                namespaces: new[] { "ViwolfRentals.FrontEnd.Controllers.Seguridad" },
                //defaults: new { controller = "Seguridad",  action = "Index", id = UrlParameter.Optional }
-               defaults: new { controller = "Seguridad", id = UrlParameter.Optional }
+               defaults: new { controller = "Home", id = UrlParameter.Optional }
            );
         }
     }
