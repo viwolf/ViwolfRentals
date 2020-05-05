@@ -16,6 +16,9 @@ namespace ViwolfRentals.FrontEnd.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            System.Net.ServicePointManager.Expect100Continue = false;
+
+           
         }
     }
 }

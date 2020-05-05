@@ -13,13 +13,20 @@ namespace ViwolfRentals.FrontEnd.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
+            var route = routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 namespaces: new[] { "Viwolf.Rentals.Controllers" },
-                 defaults: new { controller = "Login", action = "Login", id = UrlParameter.Optional }
-                 //defaults: new { controller = "Reservaciones", action = "Index", id = UrlParameter.Optional }
-            ); ;
+                 defaults: new { controller = "Seguridad", action = "Index", id = UrlParameter.Optional }
+                 //defaults: new { controller = "Reservacion", action = "Index", id = UrlParameter.Optional }
+            );
+
+
+          //  route.DataTokens["UseNamespaceFallback"] = false;
+
+           
         }
+
+       
     }
 }

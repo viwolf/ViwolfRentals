@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{15D3B61A-A77
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Main", "Main", "{601216BB-7266-43DA-BE0B-9FECE23D243D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Login", "Login", "{8F20887A-95C3-4A3B-B8CF-8DBF7ED3761B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Seguridad", "Seguridad", "{8F20887A-95C3-4A3B-B8CF-8DBF7ED3761B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViwolfRentals.FrontEnd.Controllers.Login", "ViwolfRentals.FrontEnd.Controllers.Login\ViwolfRentals.FrontEnd.Controllers.Login.csproj", "{05D69ABC-CDF1-4578-86CA-953A98466506}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViwolfRentals.FrontEnd.Controllers.Seguridad", "ViwolfRentals.FrontEnd.Controllers.Login\ViwolfRentals.FrontEnd.Controllers.Seguridad.csproj", "{05D69ABC-CDF1-4578-86CA-953A98466506}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reservaciones", "Reservaciones", "{959AA4F7-7461-4C9F-AAF7-E9DBD1D19D90}"
 EndProject
