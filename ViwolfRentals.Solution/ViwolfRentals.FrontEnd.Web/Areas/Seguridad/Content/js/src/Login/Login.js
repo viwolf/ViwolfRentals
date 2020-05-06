@@ -1,8 +1,12 @@
+import index from "../../../../../../Scripts/popper-utils";
+
 var Login = function () {
     /*==================================================================
    [ Validate ]*/
     var input = $('.validate-input .input100');
     var btnLogin = $("#btnEntrar");
+    var txtUsuario = $("#txtUsuario");
+    var txtPassword = $("#txtPassword");
     var check = true;
 
     var fnInit = function () {
@@ -69,10 +73,45 @@ var Login = function () {
 
     }
 
+    var fnCargarParametros = function () {
+        var usuario = {
+            "Usuario": txtUsuario.val(),
+            "Password": txtPassword.val()
+        };
+
+        return JSON.stringify(usuario);
+
+    };
+
     var fnLogin = function (e) {
-        debugger;
-        if (check === false)
-            alert("Bienvenido");
+        
+        if (check === false) {
+            debugger;
+            $.ajax({
+                type: "POST",
+                traditional: true,
+                async: false,
+                cache: false,
+                url: 'Login/AutenticarUsuario',
+                context: document.body,
+                //data: {
+                //    "Usuario": txtUsuario.val(),
+                //    "Password": txtPassword.val()
+                //},
+                data: null,
+                success: function (result) {
+                    debugger;
+                  //  window.location.href = "@Url.Action('index','ViwolfResntal', new {area = 'Viwolf'})";
+                },
+                error: function (xhr) {
+                    debugger;  
+                    console.log(xhr.responseText);
+                    alert("Error has occurred..");
+                }
+            });  
+
+        }
+           
     }
 
     $(function () {

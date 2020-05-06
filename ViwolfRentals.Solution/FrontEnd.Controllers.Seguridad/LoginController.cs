@@ -13,5 +13,11 @@ namespace FrontEnd.Controllers.Seguridad
         {
             return View();
         }
+
+        [HttpPost]
+        public JsonResult AutenticarUsuario()
+        {
+            return Json(new { success = true, message = "Order updated successfully" }, JsonRequestBehavior.AllowGet);
+        }
     }
 }
