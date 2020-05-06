@@ -143,6 +143,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Seguridad\SeguridadAreaRegistration.cs" />
     <Compile Include="Areas\Viwolf\ViwolfAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -150,6 +151,37 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Seguridad\Content\css\main.css" />
+    <Content Include="Areas\Seguridad\Content\css\util.css" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\OFL.txt" />
+    <Content Include="Areas\Seguridad\Content\images\icons\favicon.ico" />
+    <Content Include="Areas\Seguridad\Content\images\img-01.png" />
+    <Content Include="Areas\Seguridad\Content\images\Logo.png" />
+    <Content Include="Areas\Seguridad\Content\js\main.js" />
+    <Content Include="Areas\Seguridad\Content\vendor\animate\animate.css" />
+    <Content Include="Areas\Seguridad\Content\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Areas\Seguridad\Content\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Areas\Seguridad\Content\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Areas\Seguridad\Content\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Areas\Seguridad\Content\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Areas\Seguridad\Content\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Areas\Seguridad\Content\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Areas\Seguridad\Content\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Areas\Seguridad\Content\vendor\bootstrap\js\popper.js" />
+    <Content Include="Areas\Seguridad\Content\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="Areas\Seguridad\Content\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="Areas\Seguridad\Content\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="Areas\Seguridad\Content\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Areas\Seguridad\Content\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="Areas\Seguridad\Content\vendor\select2\select2.css" />
+    <Content Include="Areas\Seguridad\Content\vendor\select2\select2.js" />
+    <Content Include="Areas\Seguridad\Content\vendor\select2\select2.min.css" />
+    <Content Include="Areas\Seguridad\Content\vendor\select2\select2.min.js" />
+    <Content Include="Areas\Seguridad\Content\vendor\tilt\tilt.jquery.min.js" />
     <Content Include="Areas\Viwolf\Content\dist\js\scripts.js" />
     <Content Include="Areas\Viwolf\Content\dist\401.html" />
     <Content Include="Areas\Viwolf\Content\dist\404.html" />
@@ -242,6 +274,83 @@
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\vendor\mdi-font\fonts\Material-Design-Iconic-Font.ttf" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Areas\Seguridad\Views\web.config" />
+    <Content Include="Areas\Seguridad\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-Black.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-BlackItalic.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-Bold.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-BoldItalic.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-ExtraBold.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-ExtraBoldItalic.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-ExtraLight.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-ExtraLightItalic.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-Italic.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-Light.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-LightItalic.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-Medium.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-MediumItalic.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-Regular.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-SemiBold.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-SemiBoldItalic.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-Thin.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\montserrat\Montserrat-ThinItalic.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="Areas\Seguridad\Content\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="Areas\Seguridad\Content\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Areas\Seguridad\Content\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Areas\Seguridad\Content\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Areas\Seguridad\Content\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Areas\Seguridad\Content\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Areas\Seguridad\Content\vendor\bootstrap\css\bootstrap.min.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -388,6 +497,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Seguridad\Views\Shared\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -400,6 +510,10 @@
     <ProjectReference Include="..\FrontEnd.Controller.Reservaciones\FrontEnd.Controllers.Viwolf.csproj">
       <Project>{216e1d79-c1d4-4059-ab70-233ed2b589de}</Project>
       <Name>FrontEnd.Controllers.Viwolf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FrontEnd.Controllers.Seguridad\FrontEnd.Controllers.Seguridad.csproj">
+      <Project>{5a9b27e9-2460-4cc6-8198-91155331071d}</Project>
+      <Name>FrontEnd.Controllers.Seguridad</Name>
     </ProjectReference>
     <ProjectReference Include="..\Viwolf.Rentals.Controllers\Viwolf.Rentals.Controllers.csproj">
       <Project>{99c04d03-393d-49af-b794-d3df695fbe12}</Project>
