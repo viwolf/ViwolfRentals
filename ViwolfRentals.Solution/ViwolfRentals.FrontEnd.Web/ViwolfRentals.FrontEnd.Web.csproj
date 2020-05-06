@@ -369,9 +369,9 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FrontEnd.Controller.Reservaciones\FrontEnd.Controllers.Reservaciones.csproj">
+    <ProjectReference Include="..\FrontEnd.Controller.Reservaciones\FrontEnd.Controllers.Viwolf.csproj">
       <Project>{216e1d79-c1d4-4059-ab70-233ed2b589de}</Project>
-      <Name>FrontEnd.Controllers.Reservaciones</Name>
+      <Name>FrontEnd.Controllers.Viwolf</Name>
     </ProjectReference>
     <ProjectReference Include="..\Viwolf.Rentals.Controllers\Viwolf.Rentals.Controllers.csproj">
       <Project>{99c04d03-393d-49af-b794-d3df695fbe12}</Project>

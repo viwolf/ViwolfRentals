@@ -17,7 +17,7 @@ namespace ViwolfRentals.FrontEnd.Web.Areas.Viwolf
             var route = context.MapRoute(
                 name: "Viwolf_default",
                 url: "Viwolf/{controller}/{action}/{id}",
-                namespaces: new[] { "FrontEnd.Controllers.Reservaciones" },
+                namespaces: new[] { "FrontEnd.Controllers.Viwolf" },
                 defaults: new { controller = "ViwolfRental", action = "Index", id = UrlParameter.Optional }
              );
         }

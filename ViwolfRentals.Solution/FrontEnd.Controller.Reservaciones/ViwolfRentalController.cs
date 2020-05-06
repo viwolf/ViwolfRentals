@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web;
 
-namespace FrontEnd.Controllers.Reservaciones
+namespace FrontEnd.Controllers.Viwolf
 {
     public class ViwolfRentalController : Controller
     {

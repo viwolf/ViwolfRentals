@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Main", "Main", "{601216BB-7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViwolfRentals", "ViwolfRentals", "{959AA4F7-7461-4C9F-AAF7-E9DBD1D19D90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd.Controllers.Reservaciones", "FrontEnd.Controller.Reservaciones\FrontEnd.Controllers.Reservaciones.csproj", "{216E1D79-C1D4-4059-AB70-233ED2B589DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd.Controllers.Viwolf", "FrontEnd.Controller.Reservaciones\FrontEnd.Controllers.Viwolf.csproj", "{216E1D79-C1D4-4059-AB70-233ED2B589DE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{B82E300D-CFA8-440F-B60F-098835027045}"
 EndProject
