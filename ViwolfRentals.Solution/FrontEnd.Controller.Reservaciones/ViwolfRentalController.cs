@@ -8,7 +8,7 @@ using System.Web;
 
 namespace FrontEnd.Controllers.Reservaciones
 {
-    public class ReservacionController : Controller
+    public class ViwolfRentalController : Controller
     {
         //[HttpPost]
         public ActionResult Index()
