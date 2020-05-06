@@ -162,6 +162,7 @@
     <Content Include="Areas\Seguridad\Content\images\img-01.png" />
     <Content Include="Areas\Seguridad\Content\images\Logo.png" />
     <Content Include="Areas\Seguridad\Content\js\main.js" />
+    <Content Include="Areas\Seguridad\Content\js\src\Login\Login.js" />
     <Content Include="Areas\Seguridad\Content\vendor\animate\animate.css" />
     <Content Include="Areas\Seguridad\Content\vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Areas\Seguridad\Content\vendor\bootstrap\css\bootstrap-grid.min.css" />
