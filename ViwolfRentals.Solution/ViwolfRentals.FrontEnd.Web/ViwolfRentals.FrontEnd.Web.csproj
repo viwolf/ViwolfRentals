@@ -168,7 +168,8 @@
     <Content Include="Areas\Viwolf\Content\dist\password.html" />
     <Content Include="Areas\Viwolf\Content\dist\register.html" />
     <Content Include="Areas\Viwolf\Content\dist\tables.html" />
-    <Content Include="Areas\Viwolf\Content\js\src\Reservaciones.js" />
+    <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Reservaciones.js" />
+    <Content Include="Areas\Viwolf\Content\js\src\ViwolfRental\ViwolfRental.js" />
     <Content Include="Areas\Viwolf\Content\scripts\build-assets.js" />
     <Content Include="Areas\Viwolf\Content\scripts\build-pug.js" />
     <Content Include="Areas\Viwolf\Content\scripts\build-scripts.js" />
@@ -214,6 +215,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Areas\Viwolf\Views\Shared\_LayoutReservacion.cshtml" />
     <Content Include="Areas\Viwolf\Views\ViwolfRental\Index.cshtml" />
+    <Content Include="Areas\Viwolf\Views\Reservaciones\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
