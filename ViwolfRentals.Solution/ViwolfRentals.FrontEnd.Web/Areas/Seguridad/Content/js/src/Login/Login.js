@@ -26,7 +26,7 @@ var Login = function () {
         });
 
         $('.validate-form').on('submit', function () {
-        var check = true;
+        //var check = true;
 
         for(var i=0; i<input.length; i++) {
             if(validate(input[i]) == false){
@@ -101,7 +101,7 @@ var Login = function () {
                 data: null,
                 success: function (result) {
                   debugger;
-                    window.location.href = "http://localhost/ViwolfRentals.FrontEnd.Web/Viwolf";
+                  window.location.href = "http://localhost/ViwolfRentals.FrontEnd.Web/Viwolf";
                 },
                 error: function (xhr) {
                     debugger;  
