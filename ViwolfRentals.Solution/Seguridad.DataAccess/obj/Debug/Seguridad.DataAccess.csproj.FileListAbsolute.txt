@@ -1,0 +1,13 @@
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\bin\Debug\Seguridad.DataAccess.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\bin\Debug\Seguridad.DataAccess.pdb
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\bin\Debug\Dapper.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\bin\Debug\Seguridad.DataAccess.Interface.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\bin\Debug\ViwolfRental.Common.Model.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\bin\Debug\Seguridad.DataAccess.Interface.pdb
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\bin\Debug\ViwolfRental.Common.Model.pdb
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\bin\Debug\Dapper.xml
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\obj\Debug\Seguridad.DataAccess.csprojAssemblyReference.cache
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\obj\Debug\Seguridad.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\obj\Debug\Seguridad.DataAccess.csproj.CopyComplete
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\obj\Debug\Seguridad.DataAccess.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\obj\Debug\Seguridad.DataAccess.pdb

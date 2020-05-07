@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Seguridad.DataAccess.Interface
 {
-    public class Class1
+    public interface ILoginRepository<T>
     {
+
+        System.Data.IDbConnection Conexion { get; set; }
+        System.Data.IDbTransaction Transaccion { get; set; }
+
+        IEnumerable<ViwolfRental.Common.Model.IUsuarios> ListarUsuarioLogin(ViwolfRental.Common.Model.IUsuarios usuarios);
     }
 }
