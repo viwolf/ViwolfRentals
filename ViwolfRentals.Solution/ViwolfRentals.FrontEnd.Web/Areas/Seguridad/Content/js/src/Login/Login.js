@@ -1,4 +1,4 @@
-import index from "../../../../../../Scripts/popper-utils";
+
 
 var Login = function () {
     /*==================================================================
@@ -100,8 +100,8 @@ var Login = function () {
                 //},
                 data: null,
                 success: function (result) {
-                    debugger;
-                  //  window.location.href = "@Url.Action('index','ViwolfResntal', new {area = 'Viwolf'})";
+                  debugger;
+                    window.location.href = "http://localhost/ViwolfRentals.FrontEnd.Web/Viwolf";
                 },
                 error: function (xhr) {
                     debugger;  
