@@ -18,11 +18,12 @@ namespace FrontEnd.Controllers.Seguridad
         }
 
         [HttpPost]
-        public JsonResult AutenticarUsuario()
+        public JsonResult AutenticarUsuario(Usuarios user)
         {
-            IUsuarios user = new Usuarios();
-            user.CodigoUsuario = "ss";
-            user.Password = "12345";
+            //IUsuarios user = new Usuarios();
+            //user.CodigoUsuario = "ss";
+            //user.Password = "12345";
+            
             ILoginBL BlLogin = new LoginBL();
             var result = BlLogin.ListarUsuarioLogin(user);
 

@@ -94,15 +94,17 @@ var Login = function () {
                 cache: false,
                 url: 'Login/AutenticarUsuario',
                 context: document.body,
-                //data: {
-                //    "Usuario": txtUsuario.val(),
-                //    "Password": txtPassword.val()
-                //},
+                data: {
+                    "CodigoUsuario": txtUsuario.val(),
+                    "Password": txtPassword.val()
+                },
                 data: null,
                 success: function (result) {
                     debugger;
-
-                  window.location.href = "http://localhost/ViwolfRentals.FrontEnd.Web/Viwolf";
+                    if (result.Data != null)
+                        window.location.href = "http://localhost/ViwolfRentals.FrontEnd.Web/Viwolf";
+                    else
+                        alert("Usuario o password incorrecto");
                 },
                 error: function (xhr) {
                     debugger;  
