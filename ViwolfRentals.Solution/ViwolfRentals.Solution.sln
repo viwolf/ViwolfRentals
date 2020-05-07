@@ -23,6 +23,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViwolfSeguridad", "ViwolfSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd.Controllers.Seguridad", "FrontEnd.Controllers.Seguridad\FrontEnd.Controllers.Seguridad.csproj", "{5A9B27E9-2460-4CC6-8198-91155331071D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Viwolf.DataAccess", "Viwolf.DataAccess", "{03E0035B-E840-477F-A8D6-30EF0F4B51FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Viwolf.BusinessLogic", "Viwolf.BusinessLogic", "{E69F8AAB-C132-4D1E-8DAC-167E3BB3C193}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViwolfRentals.DataAccess", "ViwolfRentals.DataAccess\ViwolfRentals.DataAccess.csproj", "{56C59AF2-3717-4D5A-B01A-756CC8748D78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seguridad.DataAccess", "Seguridad.DataAccess\Seguridad.DataAccess.csproj", "{FB79EB40-B0C4-47A8-808F-494554D5BFFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Viwolf.DataAccess.Interface", "Viwolf.DataAccess.Interface", "{527F07DC-13D4-4742-904A-6B82453BE627}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seguridad.DataAccess.Interface", "Seguridad.DataAccess.Interface\Seguridad.DataAccess.Interface.csproj", "{3567929D-D6E6-42BB-B446-26994AB3A4A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViwolfRentals.DataAccess.Interface", "ViwolfRentals.DataAccess.Interface\ViwolfRentals.DataAccess.Interface.csproj", "{84DCCDCB-046D-46C7-8B9B-CCD65CFD6BE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +63,22 @@ Global
 		{5A9B27E9-2460-4CC6-8198-91155331071D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A9B27E9-2460-4CC6-8198-91155331071D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A9B27E9-2460-4CC6-8198-91155331071D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56C59AF2-3717-4D5A-B01A-756CC8748D78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56C59AF2-3717-4D5A-B01A-756CC8748D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56C59AF2-3717-4D5A-B01A-756CC8748D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56C59AF2-3717-4D5A-B01A-756CC8748D78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB79EB40-B0C4-47A8-808F-494554D5BFFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB79EB40-B0C4-47A8-808F-494554D5BFFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB79EB40-B0C4-47A8-808F-494554D5BFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB79EB40-B0C4-47A8-808F-494554D5BFFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3567929D-D6E6-42BB-B446-26994AB3A4A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3567929D-D6E6-42BB-B446-26994AB3A4A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3567929D-D6E6-42BB-B446-26994AB3A4A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3567929D-D6E6-42BB-B446-26994AB3A4A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84DCCDCB-046D-46C7-8B9B-CCD65CFD6BE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84DCCDCB-046D-46C7-8B9B-CCD65CFD6BE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84DCCDCB-046D-46C7-8B9B-CCD65CFD6BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84DCCDCB-046D-46C7-8B9B-CCD65CFD6BE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +92,10 @@ Global
 		{71AAA374-7DE4-45C2-87F7-F64B79F66B0B} = {B82E300D-CFA8-440F-B60F-098835027045}
 		{208C4DEE-B216-4265-A504-A1E5B589CFC5} = {15D3B61A-A777-4A33-8EEF-829716FBBF5E}
 		{5A9B27E9-2460-4CC6-8198-91155331071D} = {208C4DEE-B216-4265-A504-A1E5B589CFC5}
+		{56C59AF2-3717-4D5A-B01A-756CC8748D78} = {03E0035B-E840-477F-A8D6-30EF0F4B51FB}
+		{FB79EB40-B0C4-47A8-808F-494554D5BFFA} = {03E0035B-E840-477F-A8D6-30EF0F4B51FB}
+		{3567929D-D6E6-42BB-B446-26994AB3A4A7} = {527F07DC-13D4-4742-904A-6B82453BE627}
+		{84DCCDCB-046D-46C7-8B9B-CCD65CFD6BE1} = {527F07DC-13D4-4742-904A-6B82453BE627}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C77D6963-4C13-4631-BDD7-0F1F5D508EB6}
