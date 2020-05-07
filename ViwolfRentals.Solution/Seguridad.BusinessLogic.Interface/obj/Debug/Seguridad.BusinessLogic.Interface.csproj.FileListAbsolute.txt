@@ -1,0 +1,9 @@
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.BusinessLogic.Interface\bin\Debug\Seguridad.BusinessLogic.Interface.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.BusinessLogic.Interface\bin\Debug\Seguridad.BusinessLogic.Interface.pdb
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.BusinessLogic.Interface\bin\Debug\ViwolfRental.Common.Model.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.BusinessLogic.Interface\bin\Debug\ViwolfRental.Common.Model.pdb
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.BusinessLogic.Interface\obj\Debug\Seguridad.BusinessLogic.Interface.csprojAssemblyReference.cache
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.BusinessLogic.Interface\obj\Debug\Seguridad.BusinessLogic.Interface.csproj.CoreCompileInputs.cache
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.BusinessLogic.Interface\obj\Debug\Seguridad.BusinessLogic.Interface.csproj.CopyComplete
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.BusinessLogic.Interface\obj\Debug\Seguridad.BusinessLogic.Interface.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.BusinessLogic.Interface\obj\Debug\Seguridad.BusinessLogic.Interface.pdb

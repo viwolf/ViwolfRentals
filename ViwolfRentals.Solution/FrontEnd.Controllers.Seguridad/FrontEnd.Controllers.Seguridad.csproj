@@ -70,6 +70,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Seguridad.BusinessLogic.Interface\Seguridad.BusinessLogic.Interface.csproj">
+      <Project>{6fef9a75-3d1c-489c-a807-302e2a547f09}</Project>
+      <Name>Seguridad.BusinessLogic.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Seguridad.BusinessLogic\Seguridad.BusinessLogic.csproj">
+      <Project>{d2760602-15c2-4ab0-9c8e-429ea52f336a}</Project>
+      <Name>Seguridad.BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViwolfRental.Common.Model\ViwolfRental.Common.Model.csproj">
       <Project>{71aaa374-7de4-45c2-87f7-f64b79f66b0b}</Project>
       <Name>ViwolfRental.Common.Model</Name>

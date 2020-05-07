@@ -8,7 +8,9 @@ namespace ViwolfRental.Common.Model
 {
     public interface IUsuarios
     {
-        string Usuario { get; set; }
+        string IdUsuario { get; set; }
+        string CodigoUsuario { get; set; }
         string Password { get; set; }
+        bool Activo { get; set; }
     }
 }

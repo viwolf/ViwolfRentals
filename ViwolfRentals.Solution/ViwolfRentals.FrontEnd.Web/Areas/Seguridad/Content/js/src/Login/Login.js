@@ -100,7 +100,8 @@ var Login = function () {
                 //},
                 data: null,
                 success: function (result) {
-                  debugger;
+                    debugger;
+
                   window.location.href = "http://localhost/ViwolfRentals.FrontEnd.Web/Viwolf";
                 },
                 error: function (xhr) {

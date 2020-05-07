@@ -21,7 +21,7 @@ namespace Seguridad.DataAccess
 
         IDbConnection IConnectionManager.GetConnection(string keyName)
         {
-            return new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings[string.Format("{0}", keyName)].ConnectionString);
+            return new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ViwolfRentalsDB"].ConnectionString);
         }
     }
 }

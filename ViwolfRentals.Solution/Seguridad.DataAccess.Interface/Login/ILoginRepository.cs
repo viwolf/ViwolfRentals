@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Seguridad.DataAccess.Interface
 {
-    public interface ILoginRepository<T>
+    public interface ILoginRepository
     {
 
         System.Data.IDbConnection Conexion { get; set; }

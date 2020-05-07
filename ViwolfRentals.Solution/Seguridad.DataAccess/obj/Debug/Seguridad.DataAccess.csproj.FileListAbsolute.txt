@@ -11,3 +11,5 @@ C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\Viw
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\obj\Debug\Seguridad.DataAccess.csproj.CopyComplete
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\obj\Debug\Seguridad.DataAccess.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\obj\Debug\Seguridad.DataAccess.pdb
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\bin\Debug\Seguridad.DataAccess.dll.config
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess\bin\Debug\Seguridad.DataAccess.Interface.dll.config

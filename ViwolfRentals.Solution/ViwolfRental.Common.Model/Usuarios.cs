@@ -8,7 +8,13 @@ namespace ViwolfRental.Common.Model
 {
     public class Usuarios : IUsuarios
     {
+        public string IdUsuario { get; set; }
+
+        public string CodigoUsuario { get; set; }
+
         public string Password { get; set; }
-        string IUsuarios.Usuario { get; set; }
+        
+        public bool Activo { get; set; }
+
     }
 }
