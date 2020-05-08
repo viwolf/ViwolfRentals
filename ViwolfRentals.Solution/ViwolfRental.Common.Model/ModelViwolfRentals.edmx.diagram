@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9bef6df944644d69ad69f07fc6e69b17" Name="Diagram1">
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_CategoriasVehiculos" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Departamentos" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Reservaciones" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Usuarios" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Vehiculos" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos" ManuallyRouted="false" />
+        <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Vehiculos" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

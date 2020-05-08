@@ -18,7 +18,7 @@ namespace FrontEnd.Controllers.Seguridad
         }
 
         [HttpPost]
-        public JsonResult AutenticarUsuario(Usuarios user)
+        public JsonResult AutenticarUsuario(t_Usuarios user)
         {
             //IUsuarios user = new Usuarios();
             //user.CodigoUsuario = "ss";

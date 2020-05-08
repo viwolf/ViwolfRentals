@@ -17,3 +17,6 @@ C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\Viw
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.BusinessLogic\obj\Debug\Seguridad.BusinessLogic.pdb
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.BusinessLogic\bin\Debug\Seguridad.DataAccess.dll.config
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.BusinessLogic\bin\Debug\Seguridad.DataAccess.Interface.dll.config
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.BusinessLogic\bin\Debug\EntityFramework.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.BusinessLogic\bin\Debug\ViwolfRental.Common.Model.dll.config
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.BusinessLogic\bin\Debug\EntityFramework.xml

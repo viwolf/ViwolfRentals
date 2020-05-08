@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ViwolfRentalsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="t_CategoriasVehiculos">
+          <Key>
+            <PropertyRef Name="IDCategoriaVehiculo" />
+          </Key>
+          <Property Name="IDCategoriaVehiculo" Type="int" Nullable="false" />
+          <Property Name="NombreCategoriaVehiculo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_Departamentos">
+          <Key>
+            <PropertyRef Name="IDDepartamento" />
+          </Key>
+          <Property Name="IDDepartamento" Type="int" Nullable="false" />
+          <Property Name="NombreDepartamento" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_Reservaciones">
+          <Key>
+            <PropertyRef Name="IdReservacion" />
+          </Key>
+          <Property Name="IdReservacion" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="150" />
+          <Property Name="NombreCliente" Type="nvarchar" MaxLength="150" />
+          <Property Name="LugarEntrega" Type="nvarchar" MaxLength="150" />
+          <Property Name="EntregaHotel" Type="bit" Nullable="false" />
+          <Property Name="FechaInicio" Type="date" />
+          <Property Name="HoraInicio" Type="time" Precision="7" />
+          <Property Name="FechaEntrega" Type="date" />
+          <Property Name="HoraEntrega" Type="time" Precision="7" />
+          <Property Name="SurfRacks" Type="bit" />
+          <Property Name="MontoSurfRacks" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Cajon" Type="bit" />
+          <Property Name="MontoDia" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MontoTotal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NumeroDeposito" Type="nvarchar" MaxLength="10" />
+          <Property Name="MontoDeposito" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Efectivo" Type="bit" />
+          <Property Name="CuentaPorCobrar" Type="bit" />
+          <Property Name="ProveedorID" Type="int" />
+          <Property Name="IDUsuario" Type="int" />
+          <Property Name="IDVehiculo" Type="int" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="t_Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="CodigoUsuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_Vehiculos">
+          <Key>
+            <PropertyRef Name="IDVehiculo" />
+          </Key>
+          <Property Name="IDVehiculo" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="150" />
+          <Property Name="Marca" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Modelo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Anno" Type="int" Nullable="false" />
+          <Property Name="FechaCompra" Type="datetime" Nullable="false" />
+          <Property Name="NumeroChasis" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="NumeroMotor" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="RtvVencimientoAnno" Type="int" Nullable="false" />
+          <Property Name="RtvVencimientoMes" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MarchamoProximo" Type="int" Nullable="false" />
+          <Property Name="RtvSticker" Type="bit" Nullable="false" />
+          <Property Name="RtvPapel" Type="bit" Nullable="false" />
+          <Property Name="MarchamoSticker" Type="bit" Nullable="false" />
+          <Property Name="MarchamoPapel" Type="bit" Nullable="false" />
+          <Property Name="StickerPlaca" Type="bit" Nullable="false" />
+          <Property Name="TituloPropiedad" Type="bit" Nullable="false" />
+          <Property Name="Multas" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IDCategoriaVehiculo" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_t_Reservaciones_t_Vehiculos">
+          <End Role="t_Vehiculos" Type="Self.t_Vehiculos" Multiplicity="0..1" />
+          <End Role="t_Reservaciones" Type="Self.t_Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Vehiculos">
+              <PropertyRef Name="IDVehiculo" />
+            </Principal>
+            <Dependent Role="t_Reservaciones">
+              <PropertyRef Name="IDVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Vehiculos_t_CategoriasVehiculos">
+          <End Role="t_CategoriasVehiculos" Type="Self.t_CategoriasVehiculos" Multiplicity="1" />
+          <End Role="t_Vehiculos" Type="Self.t_Vehiculos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_CategoriasVehiculos">
+              <PropertyRef Name="IDCategoriaVehiculo" />
+            </Principal>
+            <Dependent Role="t_Vehiculos">
+              <PropertyRef Name="IDCategoriaVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ViwolfRentalsDBModelStoreContainer">
+          <EntitySet Name="t_CategoriasVehiculos" EntityType="Self.t_CategoriasVehiculos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Departamentos" EntityType="Self.t_Departamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Reservaciones" EntityType="Self.t_Reservaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Usuarios" EntityType="Self.t_Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Vehiculos" EntityType="Self.t_Vehiculos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_t_Reservaciones_t_Vehiculos" Association="Self.FK_t_Reservaciones_t_Vehiculos">
+            <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
+            <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Vehiculos_t_CategoriasVehiculos" Association="Self.FK_t_Vehiculos_t_CategoriasVehiculos">
+            <End Role="t_CategoriasVehiculos" EntitySet="t_CategoriasVehiculos" />
+            <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ViwolfRentalsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="t_CategoriasVehiculos">
+          <Key>
+            <PropertyRef Name="IDCategoriaVehiculo" />
+          </Key>
+          <Property Name="IDCategoriaVehiculo" Type="Int32" Nullable="false" />
+          <Property Name="NombreCategoriaVehiculo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="t_Vehiculos" Relationship="Self.FK_t_Vehiculos_t_CategoriasVehiculos" FromRole="t_CategoriasVehiculos" ToRole="t_Vehiculos" />
+        </EntityType>
+        <EntityType Name="t_Departamentos">
+          <Key>
+            <PropertyRef Name="IDDepartamento" />
+          </Key>
+          <Property Name="IDDepartamento" Type="Int32" Nullable="false" />
+          <Property Name="NombreDepartamento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_Reservaciones">
+          <Key>
+            <PropertyRef Name="IdReservacion" />
+          </Key>
+          <Property Name="IdReservacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NombreCliente" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LugarEntrega" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EntregaHotel" Type="Boolean" Nullable="false" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="HoraInicio" Type="Time" Precision="7" />
+          <Property Name="FechaEntrega" Type="DateTime" Precision="0" />
+          <Property Name="HoraEntrega" Type="Time" Precision="7" />
+          <Property Name="SurfRacks" Type="Boolean" />
+          <Property Name="MontoSurfRacks" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Cajon" Type="Boolean" />
+          <Property Name="MontoDia" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MontoTotal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NumeroDeposito" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MontoDeposito" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Efectivo" Type="Boolean" />
+          <Property Name="CuentaPorCobrar" Type="Boolean" />
+          <Property Name="ProveedorID" Type="Int32" />
+          <Property Name="IDUsuario" Type="Int32" />
+          <Property Name="IDVehiculo" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" />
+          <NavigationProperty Name="t_Vehiculos" Relationship="Self.FK_t_Reservaciones_t_Vehiculos" FromRole="t_Reservaciones" ToRole="t_Vehiculos" />
+        </EntityType>
+        <EntityType Name="t_Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="CodigoUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_Vehiculos">
+          <Key>
+            <PropertyRef Name="IDVehiculo" />
+          </Key>
+          <Property Name="IDVehiculo" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Anno" Type="Int32" Nullable="false" />
+          <Property Name="FechaCompra" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NumeroChasis" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumeroMotor" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RtvVencimientoAnno" Type="Int32" Nullable="false" />
+          <Property Name="RtvVencimientoMes" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MarchamoProximo" Type="Int32" Nullable="false" />
+          <Property Name="RtvSticker" Type="Boolean" Nullable="false" />
+          <Property Name="RtvPapel" Type="Boolean" Nullable="false" />
+          <Property Name="MarchamoSticker" Type="Boolean" Nullable="false" />
+          <Property Name="MarchamoPapel" Type="Boolean" Nullable="false" />
+          <Property Name="StickerPlaca" Type="Boolean" Nullable="false" />
+          <Property Name="TituloPropiedad" Type="Boolean" Nullable="false" />
+          <Property Name="Multas" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IDCategoriaVehiculo" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="t_CategoriasVehiculos" Relationship="Self.FK_t_Vehiculos_t_CategoriasVehiculos" FromRole="t_Vehiculos" ToRole="t_CategoriasVehiculos" />
+          <NavigationProperty Name="t_Reservaciones" Relationship="Self.FK_t_Reservaciones_t_Vehiculos" FromRole="t_Vehiculos" ToRole="t_Reservaciones" />
+        </EntityType>
+        <Association Name="FK_t_Vehiculos_t_CategoriasVehiculos">
+          <End Role="t_CategoriasVehiculos" Type="Self.t_CategoriasVehiculos" Multiplicity="1" />
+          <End Role="t_Vehiculos" Type="Self.t_Vehiculos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_CategoriasVehiculos">
+              <PropertyRef Name="IDCategoriaVehiculo" />
+            </Principal>
+            <Dependent Role="t_Vehiculos">
+              <PropertyRef Name="IDCategoriaVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Reservaciones_t_Vehiculos">
+          <End Role="t_Vehiculos" Type="Self.t_Vehiculos" Multiplicity="0..1" />
+          <End Role="t_Reservaciones" Type="Self.t_Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Vehiculos">
+              <PropertyRef Name="IDVehiculo" />
+            </Principal>
+            <Dependent Role="t_Reservaciones">
+              <PropertyRef Name="IDVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ViwolfRentalsDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="t_CategoriasVehiculos" EntityType="Self.t_CategoriasVehiculos" />
+          <EntitySet Name="t_Departamentos" EntityType="Self.t_Departamentos" />
+          <EntitySet Name="t_Reservaciones" EntityType="Self.t_Reservaciones" />
+          <EntitySet Name="t_Usuarios" EntityType="Self.t_Usuarios" />
+          <EntitySet Name="t_Vehiculos" EntityType="Self.t_Vehiculos" />
+          <AssociationSet Name="FK_t_Vehiculos_t_CategoriasVehiculos" Association="Self.FK_t_Vehiculos_t_CategoriasVehiculos">
+            <End Role="t_CategoriasVehiculos" EntitySet="t_CategoriasVehiculos" />
+            <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Reservaciones_t_Vehiculos" Association="Self.FK_t_Reservaciones_t_Vehiculos">
+            <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
+            <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ViwolfRentalsDBModelStoreContainer" CdmEntityContainer="ViwolfRentalsDBEntities">
+          <EntitySetMapping Name="t_CategoriasVehiculos">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_CategoriasVehiculos">
+              <MappingFragment StoreEntitySet="t_CategoriasVehiculos">
+                <ScalarProperty Name="IDCategoriaVehiculo" ColumnName="IDCategoriaVehiculo" />
+                <ScalarProperty Name="NombreCategoriaVehiculo" ColumnName="NombreCategoriaVehiculo" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Departamentos">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Departamentos">
+              <MappingFragment StoreEntitySet="t_Departamentos">
+                <ScalarProperty Name="IDDepartamento" ColumnName="IDDepartamento" />
+                <ScalarProperty Name="NombreDepartamento" ColumnName="NombreDepartamento" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Reservaciones">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Reservaciones">
+              <MappingFragment StoreEntitySet="t_Reservaciones">
+                <ScalarProperty Name="IdReservacion" ColumnName="IdReservacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+                <ScalarProperty Name="LugarEntrega" ColumnName="LugarEntrega" />
+                <ScalarProperty Name="EntregaHotel" ColumnName="EntregaHotel" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+                <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
+                <ScalarProperty Name="HoraEntrega" ColumnName="HoraEntrega" />
+                <ScalarProperty Name="SurfRacks" ColumnName="SurfRacks" />
+                <ScalarProperty Name="MontoSurfRacks" ColumnName="MontoSurfRacks" />
+                <ScalarProperty Name="Cajon" ColumnName="Cajon" />
+                <ScalarProperty Name="MontoDia" ColumnName="MontoDia" />
+                <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+                <ScalarProperty Name="NumeroDeposito" ColumnName="NumeroDeposito" />
+                <ScalarProperty Name="MontoDeposito" ColumnName="MontoDeposito" />
+                <ScalarProperty Name="Efectivo" ColumnName="Efectivo" />
+                <ScalarProperty Name="CuentaPorCobrar" ColumnName="CuentaPorCobrar" />
+                <ScalarProperty Name="ProveedorID" ColumnName="ProveedorID" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+                <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Usuarios">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Usuarios">
+              <MappingFragment StoreEntitySet="t_Usuarios">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="CodigoUsuario" ColumnName="CodigoUsuario" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Vehiculos">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Vehiculos">
+              <MappingFragment StoreEntitySet="t_Vehiculos">
+                <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Anno" ColumnName="Anno" />
+                <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+                <ScalarProperty Name="NumeroChasis" ColumnName="NumeroChasis" />
+                <ScalarProperty Name="NumeroMotor" ColumnName="NumeroMotor" />
+                <ScalarProperty Name="RtvVencimientoAnno" ColumnName="RtvVencimientoAnno" />
+                <ScalarProperty Name="RtvVencimientoMes" ColumnName="RtvVencimientoMes" />
+                <ScalarProperty Name="MarchamoProximo" ColumnName="MarchamoProximo" />
+                <ScalarProperty Name="RtvSticker" ColumnName="RtvSticker" />
+                <ScalarProperty Name="RtvPapel" ColumnName="RtvPapel" />
+                <ScalarProperty Name="MarchamoSticker" ColumnName="MarchamoSticker" />
+                <ScalarProperty Name="MarchamoPapel" ColumnName="MarchamoPapel" />
+                <ScalarProperty Name="StickerPlaca" ColumnName="StickerPlaca" />
+                <ScalarProperty Name="TituloPropiedad" ColumnName="TituloPropiedad" />
+                <ScalarProperty Name="Multas" ColumnName="Multas" />
+                <ScalarProperty Name="IDCategoriaVehiculo" ColumnName="IDCategoriaVehiculo" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

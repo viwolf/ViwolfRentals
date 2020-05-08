@@ -8,5 +8,7 @@ namespace ViwolfRentals.DataAccess.Interface
 {
     public class IReservacionesRepository
     {
+        
+      
     }
 }

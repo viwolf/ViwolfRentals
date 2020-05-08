@@ -26,33 +26,62 @@ namespace Seguridad.DataAccess
 
         IConnectionManager ConnectionManagerInstance = new ConnectionManager();
 
-        IEnumerable<IUsuarios> ILoginRepository.ListarUsuarioLogin(IUsuarios entity)
+        public IEnumerable<t_Usuarios> ListarUsuarioLogin(t_Usuarios entity)
         {
-            using (IDbConnection connection =  ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+            using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
             {
                 return connection.Query("usp_Usuario_Listar",
                    new[]
                    {
-                        typeof(ViwolfRental.Common.Model.Usuarios)
+                        typeof(ViwolfRental.Common.Model.t_Usuarios)
                    },
                    (object[] objetos) =>
                    {
-                       Usuarios a = objetos[0] as Usuarios;
-                       Usuarios resultado = new Usuarios();
+                       t_Usuarios a = objetos[0] as t_Usuarios;
+                       t_Usuarios resultado = new t_Usuarios();
 
                        resultado = a;
                        return resultado;
 
 
                    },
-                   param: new
-                   {
-                       UserName = entity.CodigoUsuario,
-                       Password = entity.Password
-                   },
-                    splitOn: "",
-                    commandType: CommandType.StoredProcedure);
+                           param: new
+                           {
+                               UserName = entity.CodigoUsuario,
+                               Password = entity.Password
+                           },
+                            splitOn: "",
+                            commandType: CommandType.StoredProcedure);
             }
         }
+
+        //IEnumerable<IUsuariosold> ILoginRepository.ListarUsuarioLogin(IUsuariosold entity)
+        //{
+        //    using (IDbConnection connection =  ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+        //    {
+        //        return connection.Query("usp_Usuario_Listar",
+        //           new[]
+        //           {
+        //                typeof(ViwolfRental.Common.Model.Usuariosold)
+        //           },
+        //           (object[] objetos) =>
+        //           {
+        //               Usuariosold a = objetos[0] as Usuariosold;
+        //               Usuariosold resultado = new Usuariosold();
+
+        //               resultado = a;
+        //               return resultado;
+
+
+        //           },
+        //           param: new
+        //           {
+        //               UserName = entity.CodigoUsuario,
+        //               Password = entity.Password
+        //           },
+        //            splitOn: "",
+        //            commandType: CommandType.StoredProcedure);
+        //    }
+        //}
     }
 }

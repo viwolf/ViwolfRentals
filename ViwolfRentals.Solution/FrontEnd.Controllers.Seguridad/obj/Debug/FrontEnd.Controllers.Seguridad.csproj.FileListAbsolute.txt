@@ -38,3 +38,6 @@ C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\Viw
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\FrontEnd.Controllers.Seguridad\bin\Debug\Seguridad.DataAccess.dll.config
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\FrontEnd.Controllers.Seguridad\bin\Debug\Dapper.xml
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\FrontEnd.Controllers.Seguridad\bin\Debug\Seguridad.DataAccess.Interface.dll.config
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\FrontEnd.Controllers.Seguridad\bin\Debug\EntityFramework.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\FrontEnd.Controllers.Seguridad\bin\Debug\ViwolfRental.Common.Model.dll.config
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\FrontEnd.Controllers.Seguridad\bin\Debug\EntityFramework.xml
