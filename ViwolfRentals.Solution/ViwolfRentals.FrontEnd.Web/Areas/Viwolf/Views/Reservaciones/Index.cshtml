@@ -57,7 +57,12 @@
                                     </div>
                                     <div class="col-4">
                                         <div class="input-group-desc">
-                                            <input id="txtEntregaHotel" class="input--style-5" type="text" name="EntregaHotel">
+                                            @*<input id="txtEntregaHotel" class="input--style-5" type="text" name="EntregaHotel">*@
+                                            <select id="txtEntregaHotel" class="select--style-5" name="EntregaHotel">
+                                                <option value=""></option>
+                                                <option>Si</option>
+                                                <option>No</option>
+                                            </select>
                                             <label class="label--desc">Entrega en Hotel</label>
                                         </div>
                                     </div>
@@ -100,13 +105,13 @@
                                 <div class="row row-refine">
                                     <div class="col-6">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="txtFechaInicio">
+                                            <input id="txtFechaInicio" class="input--style-5" type="date" name="txtFechaInicio">
                                             <label class="label--desc">Fecha Inicio</label>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="txtHoraInicio">
+                                            <input class="input--style-5" type="time" name="txtHoraInicio">
                                             <label class="label--desc">Hora Inicio</label>
                                         </div>
                                     </div>
@@ -120,13 +125,13 @@
                                 <div class="row row-refine">
                                     <div class="col-6">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="txtFechaEntrega">
+                                            <input id="txtFechaFinal" class="input--style-5" type="date" name="txtFechaEntrega">
                                             <label class="label--desc">Fecha Entrega</label>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="txtHoraEntrega">
+                                            <input class="input--style-5" type="time" name="txtHoraEntrega">
                                             <label class="label--desc">Hora Entrega</label>
                                         </div>
                                     </div>
@@ -140,19 +145,29 @@
                                 <div class="row row-refine">
                                     <div class="col-4">
                                         <div class="input-group-desc">
-                                            <input id="txtSurfRacks" class="input--style-5" type="text" name="SurfRacks">
+                                            @*<input id="txtSurfRacks" class="input--style-5" type="text" name="SurfRacks">*@
+                                            <select id="txtSurfRacks" class="select--style-5" name="SurfRacks">
+                                                <option value=""></option>
+                                                <option>Si</option>
+                                                <option>No</option>
+                                            </select>
                                             <label class="label--desc">Surf Racks</label>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="input-group-desc">
-                                            <input id="txtMontoSurfRacks" class="input--style-5" type="text" name="MontoSurfRacks">
+                                            <input id="txtMontoSurfRacks" disabled class="input--style-5" type="text" name="MontoSurfRacks">
                                             <label class="label--desc">Monto SurfRacks</label>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="input-group-desc">
-                                            <input id="txtCajon" class="input--style-5" type="text" name="Cajon">
+                                            @*<input id="txtCajon" class="input--style-5" type="text" name="Cajon">*@
+                                            <select id="txtCajon" class="select--style-5" name="Cajon">
+                                                <option value=""></option>
+                                                <option>Si</option>
+                                                <option>No</option>
+                                            </select>
                                             <label class="label--desc">Cajon</label>
                                         </div>
                                     </div>
@@ -309,19 +324,29 @@
                                 <div class="row row-refine">
                                     <div class="col-3">
                                         <div class="input-group-desc">
-                                            <input id="txtEfectivo" class="input--style-5" type="text" name="Efectivo">
+                                            @*<input id="txtEfectivo" class="input--style-5" type="text" name="Efectivo">*@
+                                            <select id="txtEfectivo" class="select--style-5" name="Efectivo">
+                                                <option value=""></option>
+                                                <option>Si</option>
+                                                <option>No</option>
+                                            </select>
                                             <label class="label--desc">Efectivo</label>
                                         </div>
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group-desc">
-                                            <input id="txtCuentaCobrar" class="input--style-5" type="text" name="CuentaCobrar">
+                                            @*<input id="txtCuentaCobrar" class="input--style-5" type="text" name="CuentaCobrar">*@
+                                            <select id="txtCuentaCobrar" class="select--style-5" name="CuentaCobrar">
+                                                <option value=""></option>
+                                                <option>Si</option>
+                                                <option>No</option>
+                                            </select>
                                             <label class="label--desc">Cuenta por Cobrar</label>
                                         </div>
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group-desc">
-                                            <input id="txtProveedor" class="input--style-5" type="text" name="Proveedor">
+                                            <input id="txtProveedor" disabled class="input--style-5" type="text" name="Proveedor">
                                             <label class="label--desc">Proveedor</label>
                                         </div>
                                     </div>
@@ -391,6 +416,7 @@
     <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/datepicker/daterangepicker.js"></script>
 
     <!-- Main JS-->
+   
     <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/js/global.js"></script>
     <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Reservaciones.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
