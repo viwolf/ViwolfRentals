@@ -47,6 +47,8 @@
     <Property Name="IDVehiculo" Type="Int32" />
     <Property Name="Activo" Type="Boolean" />
     <NavigationProperty Name="t_Vehiculos" Relationship="Self.FK_t_Reservaciones_t_Vehiculos" FromRole="t_Reservaciones" ToRole="t_Vehiculos" />
+    <Property Name="IdProveedor" Type="Int32" />
+    <NavigationProperty Name="t_Proveedores" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Proveedores" FromRole="t_Reservaciones" ToRole="t_Proveedores" />
   </EntityType>
   <EntityType Name="t_Usuarios">
     <Key>
@@ -125,5 +127,31 @@
       <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
       <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
     </AssociationSet>
+    <EntitySet Name="t_Proveedores" EntityType="ViwolfRentalsDBModel.t_Proveedores" />
+    <AssociationSet Name="FK_t_Reservaciones_t_Proveedores" Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Proveedores">
+      <End Role="t_Proveedores" EntitySet="t_Proveedores" />
+      <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="t_Proveedores">
+    <Key>
+      <PropertyRef Name="IdProveedor" />
+    </Key>
+    <Property Name="IdProveedor" Type="Int32" Nullable="false" />
+    <Property Name="NombreProveedor" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Proveedores" FromRole="t_Proveedores" ToRole="t_Reservaciones" />
+  </EntityType>
+  <Association Name="FK_t_Reservaciones_t_Proveedores">
+    <End Type="ViwolfRentalsDBModel.t_Proveedores" Role="t_Proveedores" Multiplicity="0..1" />
+    <End Type="ViwolfRentalsDBModel.t_Reservaciones" Role="t_Reservaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Proveedores">
+        <PropertyRef Name="IdProveedor" />
+      </Principal>
+      <Dependent Role="t_Reservaciones">
+        <PropertyRef Name="IdProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

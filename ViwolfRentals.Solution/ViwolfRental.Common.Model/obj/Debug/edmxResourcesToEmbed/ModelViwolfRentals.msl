@@ -22,6 +22,7 @@
     <EntitySetMapping Name="t_Reservaciones">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Reservaciones">
         <MappingFragment StoreEntitySet="t_Reservaciones">
+          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
           <ScalarProperty Name="IdReservacion" ColumnName="IdReservacion" />
           <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
           <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
@@ -43,7 +44,6 @@
           <ScalarProperty Name="MontoDeposito" ColumnName="MontoDeposito" />
           <ScalarProperty Name="Efectivo" ColumnName="Efectivo" />
           <ScalarProperty Name="CuentaPorCobrar" ColumnName="CuentaPorCobrar" />
-          <ScalarProperty Name="ProveedorID" ColumnName="ProveedorID" />
           <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
           <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
@@ -86,6 +86,15 @@
           <ScalarProperty Name="Multas" ColumnName="Multas" />
           <ScalarProperty Name="IDCategoriaVehiculo" ColumnName="IDCategoriaVehiculo" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Proveedores">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Proveedores">
+        <MappingFragment StoreEntitySet="t_Proveedores">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="NombreProveedor" ColumnName="NombreProveedor" />
+          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ViwolfRentalsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ViwolfRentalsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="t_CategoriasVehiculos">
           <Key>
             <PropertyRef Name="IDCategoriaVehiculo" />
@@ -19,6 +19,14 @@
           </Key>
           <Property Name="IDDepartamento" Type="int" Nullable="false" />
           <Property Name="NombreDepartamento" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_Proveedores">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdProveedor" Type="int" Nullable="false" />
+          <Property Name="NombreProveedor" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="t_Reservaciones">
@@ -46,7 +54,7 @@
           <Property Name="MontoDeposito" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Efectivo" Type="bit" />
           <Property Name="CuentaPorCobrar" Type="bit" />
-          <Property Name="ProveedorID" Type="int" />
+          <Property Name="IdProveedor" Type="int" />
           <Property Name="IDUsuario" Type="int" />
           <Property Name="IDVehiculo" Type="int" />
           <Property Name="Activo" Type="bit" />
@@ -88,6 +96,18 @@
           <Property Name="IDCategoriaVehiculo" Type="int" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK_t_Reservaciones_t_Proveedores">
+          <End Role="t_Proveedores" Type="Self.t_Proveedores" Multiplicity="0..1" />
+          <End Role="t_Reservaciones" Type="Self.t_Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="t_Reservaciones">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_t_Reservaciones_t_Vehiculos">
           <End Role="t_Vehiculos" Type="Self.t_Vehiculos" Multiplicity="0..1" />
           <End Role="t_Reservaciones" Type="Self.t_Reservaciones" Multiplicity="*" />
@@ -115,9 +135,14 @@
         <EntityContainer Name="ViwolfRentalsDBModelStoreContainer">
           <EntitySet Name="t_CategoriasVehiculos" EntityType="Self.t_CategoriasVehiculos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Departamentos" EntityType="Self.t_Departamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Proveedores" EntityType="Self.t_Proveedores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Reservaciones" EntityType="Self.t_Reservaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Usuarios" EntityType="Self.t_Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Vehiculos" EntityType="Self.t_Vehiculos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_t_Reservaciones_t_Proveedores" Association="Self.FK_t_Reservaciones_t_Proveedores">
+            <End Role="t_Proveedores" EntitySet="t_Proveedores" />
+            <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
+          </AssociationSet>
           <AssociationSet Name="FK_t_Reservaciones_t_Vehiculos" Association="Self.FK_t_Reservaciones_t_Vehiculos">
             <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
             <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
@@ -127,8 +152,7 @@
             <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ViwolfRentalsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -179,6 +203,8 @@
           <Property Name="IDVehiculo" Type="Int32" />
           <Property Name="Activo" Type="Boolean" />
           <NavigationProperty Name="t_Vehiculos" Relationship="Self.FK_t_Reservaciones_t_Vehiculos" FromRole="t_Reservaciones" ToRole="t_Vehiculos" />
+          <Property Name="IdProveedor" Type="Int32" />
+          <NavigationProperty Name="t_Proveedores" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Proveedores" FromRole="t_Reservaciones" ToRole="t_Proveedores" />
         </EntityType>
         <EntityType Name="t_Usuarios">
           <Key>
@@ -257,7 +283,33 @@
             <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
             <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
           </AssociationSet>
+          <EntitySet Name="t_Proveedores" EntityType="ViwolfRentalsDBModel.t_Proveedores" />
+          <AssociationSet Name="FK_t_Reservaciones_t_Proveedores" Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Proveedores">
+            <End Role="t_Proveedores" EntitySet="t_Proveedores" />
+            <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="t_Proveedores">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdProveedor" Type="Int32" Nullable="false" />
+          <Property Name="NombreProveedor" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Proveedores" FromRole="t_Proveedores" ToRole="t_Reservaciones" />
+        </EntityType>
+        <Association Name="FK_t_Reservaciones_t_Proveedores">
+          <End Type="ViwolfRentalsDBModel.t_Proveedores" Role="t_Proveedores" Multiplicity="0..1" />
+          <End Type="ViwolfRentalsDBModel.t_Reservaciones" Role="t_Reservaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Proveedores">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="t_Reservaciones">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -285,6 +337,7 @@
           <EntitySetMapping Name="t_Reservaciones">
             <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Reservaciones">
               <MappingFragment StoreEntitySet="t_Reservaciones">
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
                 <ScalarProperty Name="IdReservacion" ColumnName="IdReservacion" />
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
@@ -306,7 +359,6 @@
                 <ScalarProperty Name="MontoDeposito" ColumnName="MontoDeposito" />
                 <ScalarProperty Name="Efectivo" ColumnName="Efectivo" />
                 <ScalarProperty Name="CuentaPorCobrar" ColumnName="CuentaPorCobrar" />
-                <ScalarProperty Name="ProveedorID" ColumnName="ProveedorID" />
                 <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
                 <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
@@ -349,6 +401,15 @@
                 <ScalarProperty Name="Multas" ColumnName="Multas" />
                 <ScalarProperty Name="IDCategoriaVehiculo" ColumnName="IDCategoriaVehiculo" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Proveedores">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Proveedores">
+              <MappingFragment StoreEntitySet="t_Proveedores">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="NombreProveedor" ColumnName="NombreProveedor" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

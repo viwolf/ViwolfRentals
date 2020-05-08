@@ -20,9 +20,6 @@ namespace FrontEnd.Controllers.Seguridad
         [HttpPost]
         public JsonResult AutenticarUsuario(t_Usuarios user)
         {
-            //IUsuarios user = new Usuarios();
-            //user.CodigoUsuario = "ss";
-            //user.Password = "12345";
             
             ILoginBL BlLogin = new LoginBL();
             var result = BlLogin.ListarUsuarioLogin(user);
@@ -45,6 +42,5 @@ namespace FrontEnd.Controllers.Seguridad
                 ErrorMessage = string.Empty
             }, JsonRequestBehavior.AllowGet);
         }
-        //return Json(new { BlLogin.ListarUsuarioLogin(user }, JsonRequestBehavior.AllowGet);
     }
 }

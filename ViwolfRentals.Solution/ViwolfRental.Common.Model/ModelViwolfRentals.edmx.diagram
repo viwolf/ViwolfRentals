@@ -12,6 +12,8 @@
         <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Vehiculos" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos" ManuallyRouted="false" />
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Vehiculos" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Proveedores" Width="1.5" PointX="7.75" PointY="6.5" />
+        <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Proveedores" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

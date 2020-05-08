@@ -72,6 +72,9 @@
     <Compile Include="t_Departamentos.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
+    <Compile Include="t_Proveedores.cs">
+      <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
+    </Compile>
     <Compile Include="t_Reservaciones.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>

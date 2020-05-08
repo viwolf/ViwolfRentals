@@ -12,7 +12,13 @@ namespace Viwolf.BusinessLogic
     {
         public t_Reservaciones GuardarReservacion(t_Reservaciones reservacion)
         {
+            throw new NotImplementedException();
+        }
+
+        public t_Reservaciones GuardarVoucher(t_Reservaciones reservacion)
+        {
             ViwolfRentals.DataAccess.Interface.IReservacionesRepository repository = new ViwolfRentals.DataAccess.ReservacionesRepository();
+
             return repository.Guardar(reservacion);
         }
     }

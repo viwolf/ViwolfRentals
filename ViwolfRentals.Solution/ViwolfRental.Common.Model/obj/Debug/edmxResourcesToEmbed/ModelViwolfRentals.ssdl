@@ -16,6 +16,14 @@
     <Property Name="NombreDepartamento" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="t_Proveedores">
+    <Key>
+      <PropertyRef Name="IdProveedor" />
+    </Key>
+    <Property Name="IdProveedor" Type="int" Nullable="false" />
+    <Property Name="NombreProveedor" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="t_Reservaciones">
     <Key>
       <PropertyRef Name="IdReservacion" />
@@ -41,7 +49,7 @@
     <Property Name="MontoDeposito" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Efectivo" Type="bit" />
     <Property Name="CuentaPorCobrar" Type="bit" />
-    <Property Name="ProveedorID" Type="int" />
+    <Property Name="IdProveedor" Type="int" />
     <Property Name="IDUsuario" Type="int" />
     <Property Name="IDVehiculo" Type="int" />
     <Property Name="Activo" Type="bit" />
@@ -83,6 +91,18 @@
     <Property Name="IDCategoriaVehiculo" Type="int" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
+  <Association Name="FK_t_Reservaciones_t_Proveedores">
+    <End Role="t_Proveedores" Type="Self.t_Proveedores" Multiplicity="0..1" />
+    <End Role="t_Reservaciones" Type="Self.t_Reservaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Proveedores">
+        <PropertyRef Name="IdProveedor" />
+      </Principal>
+      <Dependent Role="t_Reservaciones">
+        <PropertyRef Name="IdProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_t_Reservaciones_t_Vehiculos">
     <End Role="t_Vehiculos" Type="Self.t_Vehiculos" Multiplicity="0..1" />
     <End Role="t_Reservaciones" Type="Self.t_Reservaciones" Multiplicity="*" />
@@ -110,9 +130,14 @@
   <EntityContainer Name="ViwolfRentalsDBModelStoreContainer">
     <EntitySet Name="t_CategoriasVehiculos" EntityType="Self.t_CategoriasVehiculos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Departamentos" EntityType="Self.t_Departamentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Proveedores" EntityType="Self.t_Proveedores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Reservaciones" EntityType="Self.t_Reservaciones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Usuarios" EntityType="Self.t_Usuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Vehiculos" EntityType="Self.t_Vehiculos" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_t_Reservaciones_t_Proveedores" Association="Self.FK_t_Reservaciones_t_Proveedores">
+      <End Role="t_Proveedores" EntitySet="t_Proveedores" />
+      <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
+    </AssociationSet>
     <AssociationSet Name="FK_t_Reservaciones_t_Vehiculos" Association="Self.FK_t_Reservaciones_t_Vehiculos">
       <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
       <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
