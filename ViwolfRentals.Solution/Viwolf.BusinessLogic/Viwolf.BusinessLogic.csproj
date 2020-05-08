@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D2E2E2B3-8A24-49A5-9853-A14754A65A42}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Viwolf.BusinessLogic</RootNamespace>
+    <AssemblyName>Viwolf.BusinessLogic</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Reservaciones\ReservacionesBL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Viwolf.BusinessLogic.Interface\Viwolf.BusinessLogic.Interface.csproj">
+      <Project>{9AB5D31D-813A-4953-BBB3-2A2974E14BEC}</Project>
+      <Name>Viwolf.BusinessLogic.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViwolfRental.Common.Model\ViwolfRental.Common.Model.csproj">
+      <Project>{71AAA374-7DE4-45C2-87F7-F64B79F66B0B}</Project>
+      <Name>ViwolfRental.Common.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViwolfRentals.DataAccess.Interface\ViwolfRentals.DataAccess.Interface.csproj">
+      <Project>{84dccdcb-046d-46c7-8b9b-ccd65cfd6be1}</Project>
+      <Name>ViwolfRentals.DataAccess.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViwolfRentals.DataAccess\ViwolfRentals.DataAccess.csproj">
+      <Project>{56c59af2-3717-4d5a-b01a-756cc8748d78}</Project>
+      <Name>ViwolfRentals.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

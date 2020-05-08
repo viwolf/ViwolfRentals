@@ -1,12 +1,147 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ViwolfRental.Common.Model;
+using ViwolfRentals.DataAccess.Interface;
 
 namespace ViwolfRentals.DataAccess
 {
-    class ReservacionesRepository
+    public class ReservacionesRepository : IReservacionesRepository
     {
+
+        IConnectionManager ConnectionManagerInstance = new ConnectionManager();
+
+        public t_Reservaciones Guardar(t_Reservaciones model)
+        {
+
+            //Si no se maneja transaccionabilidad se hace la conexion normal
+            using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+            {
+                    //se abre la conexion ya que se va a trabajar con transaccionabilidad
+                    connection.Open();
+
+                    //se crea el objeto transaccion
+                    using (IDbTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            //Se manda a guardar el encabezado
+                            var resultado = DoGuardar(connection, transaction, model);
+
+                            transaction.Commit();
+
+                            return resultado;
+                        }
+                        catch (Exception x)
+                        {
+                            transaction.Rollback();
+                            throw;
+                        }
+                    }
+            }
+        }
+
+        private t_Reservaciones DoGuardar(IDbConnection connection, IDbTransaction transaction, t_Reservaciones entity)
+        {
+            StringBuilder tracerBuilder = new StringBuilder();
+
+            try
+            {
+                tracerBuilder.AppendLine($"Se procede a guardar la reservacion. {Environment.NewLine}");
+                var IdReservacion = (int)connection.ExecuteScalar(
+                                              sql: "usp_Reservaciones_Guardar",
+                                              param: new
+                                              {
+                                                 entity.UsuarioCreacion,
+                                                 entity.NombreCliente,
+                                                 entity.LugarEntrega,
+                                                 entity.EntregaHotel,
+                                                 entity.FechaInicio,
+                                                 entity.HoraInicio,
+                                                 entity.FechaEntrega,
+                                                 entity.HoraEntrega,
+                                                 entity.SurfRacks,
+                                                 entity.MontoSurfRacks,
+                                                 entity.Cajon,
+                                                 entity.MontoDia,
+                                                 entity.MontoTotal,
+                                                 entity.NumeroDeposito,
+                                                 entity.MontoDeposito,
+                                                 entity.Efectivo,
+                                                 entity.CuentaPorCobrar,
+                                                 entity.ProveedorID,
+                                                 entity.IDUsuario,
+                                                 entity.IDVehiculo
+                                                  //entity.IdVoucher,
+                                                  //entity.IdFormaPagoDetalle,
+                                                  //entity.FechaCreacion,
+                                                  //entity.UsuarioCreacion,
+                                                  //entity.FechaModificacion,
+                                                  //entity.UsuarioModificacion,
+
+                                                  //entity.IdTienda,
+                                                  //entity.IdTipoTarjeta,
+                                                  //entity.IdTipoVoucher,
+                                                  //entity.IdTerminal,
+                                                  //entity.IdComercio,
+                                                  //entity.IdVendedor,
+                                                  //entity.IdClientePdv,
+                                                  //entity.CodigoTienda,
+                                                  //entity.NumeroDocumento,
+                                                  //TipoDocumento = entity.IdTipoDocumento,
+                                                  //TarjetaHabiente = entity.TarjetaHabiente == null ? "Denegado" : entity.TarjetaHabiente,
+                                                  //NumeroTarjeta = entity.NumeroTarjeta == null ? "Denegado" : entity.NumeroTarjeta,
+                                                  //NumeroAutorizacion = entity.NumeroAutorizacion == null ? "Denegado" : entity.NumeroAutorizacion,
+                                                  //entity.NumeroAutorizacionAnulacion,
+                                                  //entity.IdEstadoVoucher,
+                                                  //entity.Monto,
+                                                  //NumeroVoucher = entity.NumeroVoucher == null ? "Denegado" : entity.NumeroVoucher,
+                                                  //entity.NumeroVoucherAnulacion,
+                                                  //entity.ConsecutivoTransaccion,
+                                                  //entity.FormaAutorizacion,
+                                                  //entity.NumAfiliado,
+                                                  //entity.Detalle,
+                                                  //entity.MontoTarjeta,
+                                                  //entity.Ref,
+                                                  //entity.Lote,
+                                                  //entity.IdOpcionesPagoTarjeta,
+                                                  //entity.Response,
+                                                  //entity.Request,
+                                                  //entity.Adquirente,
+                                                  //entity.BancoEmisor,
+                                                  //entity.RetencionIsr,
+                                                  //entity.RetencionIva,
+                                                  //entity.ComisionBancaria,
+                                                  //entity.IvasComision,
+                                                  //entity.NetoCobrarBanco,
+                                                  //entity.TipoTarjetaAutomatico,
+                                                  //Moneda = entity.Moneda == null ? null : entity.Moneda.Nombre,
+                                                  //entity.IdProcesadorTarjeta,
+                                                  //entity.IdFormaTransaccionTarjeta,
+                                                  //entity.IdPlazoTarjeta,
+                                                  //entity.MontoCambioCompra,
+                                                  //entity.MontoCambioVenta
+                                              },
+                                              transaction: transaction,
+                                              commandType: CommandType.StoredProcedure);
+
+
+                entity.IdReservacion = IdReservacion;
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                //tracerBuilder.AppendLine($"Falló guardar reservacion. Error: {ex.ToString()}\nEntity={entity.SerializeToJson()}");
+                throw;
+            }
+            
+
+
+
+        }
     }
 }

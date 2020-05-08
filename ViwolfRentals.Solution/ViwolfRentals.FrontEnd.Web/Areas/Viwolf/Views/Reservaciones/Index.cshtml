@@ -38,93 +38,76 @@
                 </div>
                 <div class="card-body">
                     <form method="POST">
-                        <div class="form-row">
-                            <div class="name">Nombre</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="company">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Hospedaje</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="company">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row m-b-55">
-                            <div class="name">Entrega en Hotel</div>
-                            <div class="value">
-                                <div class="row row-space">
-                                    <div class="col-2">
-                                        <div class="input-group-desc">
-                                            <input class="checkbox" type="checkbox" name="first_name">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Fecha Inicio</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="company">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Fecha Entrega</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="company">
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="form-row m-b-55">
-                            <div class="name">Surf Racks</div>
+                            <div class="name">Datos del cliente</div>
                             <div class="value">
-                                <div class="row row-space">
-                                    <div class="col-2">
+                                <div class="row row-refine">
+                                    <div class="col-4">
                                         <div class="input-group-desc">
-                                            <input class="checkbox" type="checkbox" name="first_name">
+                                            <input id="txtNombreCliente" class="input--style-5" type="text" name="NombreCliente">
+                                            <label class="label--desc">Nombre Cliente</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="input-group-desc">
+                                            <input id="txtHospedaje" class="input--style-5" type="text" name="Hospedaje">
+                                            <label class="label--desc">Hospedaje</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="input-group-desc">
+                                            <input id="txtEntregaHotel" class="input--style-5" type="text" name="EntregaHotel">
+                                            <label class="label--desc">Entrega en Hotel</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="name">Monto Surf Racks</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="company">
-                                </div>
-                            </div>
+                        @*<div class="form-row">
+            <div class="name">Nombre Cliente</div>
+            <div class="value">
+                <div class="input-group">
+                    <input id="txtNombreCliente" class="input--style-5" type="text" name="NombreCliente">
+                </div>
+            </div>
+        </div>*@
+                        @*<div class="form-row">
+            <div class="name">Hospedaje</div>
+            <div class="value">
+                <div class="input-group">
+                    <input id="txtHospedaje" class="input--style-5" type="text" name="Hospedaje">
+                </div>
+            </div>
+        </div>*@
+                        @*<div class="form-row m-b-55">
+            <div class="name">Entrega en Hotel</div>
+            <div class="value">
+                <div class="row row-space">
+                    <div class="col-2">
+                        <div class="input-group-desc">
+                            <input id="chkEntregaHotel" class="checkbox" type="checkbox" name="EntregaHotel">
                         </div>
-
+                    </div>
+                </div>
+            </div>
+        </div>*@
 
                         <div class="form-row m-b-55">
-                            <div class="name">Cajon</div>
+                            <div class="name">Tiempos Iniciales</div>
                             <div class="value">
-                                <div class="row row-space">
-                                    <div class="col-2">
+                                <div class="row row-refine">
+                                    <div class="col-6">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="checkbox" name="company">
+                                            <input class="input--style-5" type="text" name="txtFechaInicio">
+                                            <label class="label--desc">Fecha Inicio</label>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row m-b-55">
-                            <div class="name">Monto x Día</div>
-                            <div class="value">
-                                <div class="row row-space">
-                                    <div class="col-2">
+                                    <div class="col-6">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="company">
+                                            <input class="input--style-5" type="text" name="txtHoraInicio">
+                                            <label class="label--desc">Hora Inicio</label>
                                         </div>
                                     </div>
                                 </div>
@@ -132,12 +115,19 @@
                         </div>
 
                         <div class="form-row m-b-55">
-                            <div class="name">Monto Total</div>
+                            <div class="name">Tiempos Finales</div>
                             <div class="value">
-                                <div class="row row-space">
-                                    <div class="col-2">
+                                <div class="row row-refine">
+                                    <div class="col-6">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="company">
+                                            <input class="input--style-5" type="text" name="txtFechaEntrega">
+                                            <label class="label--desc">Fecha Entrega</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" name="txtHoraEntrega">
+                                            <label class="label--desc">Hora Entrega</label>
                                         </div>
                                     </div>
                                 </div>
@@ -145,51 +135,214 @@
                         </div>
 
                         <div class="form-row m-b-55">
-                            <div class="name">Depósito</div>
+                            <div class="name">Extras</div>
                             <div class="value">
-                                <div class="row row-space">
-                                    <div class="col-2">
+                                <div class="row row-refine">
+                                    <div class="col-4">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="company">
+                                            <input id="txtSurfRacks" class="input--style-5" type="text" name="SurfRacks">
+                                            <label class="label--desc">Surf Racks</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="input-group-desc">
+                                            <input id="txtMontoSurfRacks" class="input--style-5" type="text" name="MontoSurfRacks">
+                                            <label class="label--desc">Monto SurfRacks</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="input-group-desc">
+                                            <input id="txtCajon" class="input--style-5" type="text" name="Cajon">
+                                            <label class="label--desc">Cajon</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                        @*<div class="form-row m-b-55">
+            <div class="name">Cajon</div>
+            <div class="value">
+                <div class="row row-space">
+                    <div class="col-2">
+                        <div class="input-group-desc">
+                            <input id="chkCajon" class="input--style-5" type="checkbox" name="Cajon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
                         <div class="form-row m-b-55">
-                            <div class="name">Saldo Actual</div>
+                            <div class="name">Montos</div>
                             <div class="value">
-                                <div class="row row-space">
-                                    <div class="col-2">
+                                <div class="row row-refine">
+                                    <div class="col-6">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="company">
+                                            <input id="txtMontoDia" class="input--style-5" type="text" name="MontoDia">
+                                            <label class="label--desc">Monto Día</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="input-group-desc">
+                                            <input id="txtMontoTotal" class="input--style-5" type="text" name="MontoTotal">
+                                            <label class="label--desc">Monto Total</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+
+                        @*<div class="form-row m-b-55">
+            <div class="name">Monto x Día</div>
+            <div class="value">
+                <div class="row row-space">
+                    <div class="col-2">
+                        <div class="input-group-desc">
+                            <input id="txtMontoDia" class="input--style-5" type="text" name="MontoDia">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+                        @*<div class="form-row m-b-55">
+            <div class="name">Monto Total</div>
+            <div class="value">
+                <div class="row row-space">
+                    <div class="col-2">
+                        <div class="input-group-desc">
+                            <input id="txtMontoTotal" class="input--style-5" type="text" name="MontoDia">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
                         <div class="form-row m-b-55">
-                            <div class="name">Reservado Por</div>
+                            <div class="name">Depósitos</div>
                             <div class="value">
-                                <div class="row row-space">
-                                    <div class="col-2">
+                                <div class="row row-refine">
+                                    <div class="col-4">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="company">
+                                            <input id="txtNumeroDeposito" class="input--style-5" type="text" name="NumeroDeposito">
+                                            <label class="label--desc">Número Depósito</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="input-group-desc">
+                                            <input id="txtMontoDeposito" class="input--style-5" type="text" name="MontoDepósito">
+                                            <label class="label--desc">Monto Depósito</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="input-group-desc">
+                                            <input id="txtSaldoActual" class="input--style-5" type="text" name="SaldoActual">
+                                            <label class="label--desc">Saldo Actual</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+
+
+                        @*<div class="form-row m-b-55">
+            <div class="name">Depósito</div>
+            <div class="value">
+                <div class="row row-space">
+                    <div class="col-2">
+                        <div class="input-group-desc">
+                            <input id="txtDeposito" class="input--style-5" type="text" name="Deposito">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+                        @*<div class="form-row m-b-55">
+            <div class="name">Saldo Actual</div>
+            <div class="value">
+                <div class="row row-space">
+                    <div class="col-2">
+                        <div class="input-group-desc">
+                            <input id="txtSaldoActual" class="input--style-5" type="text" name="SaldoActual">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+
                         <div class="form-row m-b-55">
+                            <div class="name">Datos Ususaios</div>
+                            <div class="value">
+                                <div class="row row-refine">
+                                    <div class="col-12">
+                                        <div class="input-group-desc">
+                                            <input id="txtUsuario" class="input--style-5" type="text" name="Usuario">
+                                            <label class="label--desc">Reservado por</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        @*<div class="form-row m-b-55">
+            <div class="name">Reservado Por</div>
+            <div class="value">
+                <div class="row row-space">
+                    <div class="col-2">
+                        <div class="input-group-desc">
+                            <input id="txtUsuario" class="input--style-5" type="text" name="Usuario">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+                        <div class="form-row m-b-55">
+                            <div class="name">Datos Proveedor</div>
+                            <div class="value">
+                                <div class="row row-refine">
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <input id="txtEfectivo" class="input--style-5" type="text" name="Efectivo">
+                                            <label class="label--desc">Efectivo</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <input id="txtCuentaCobrar" class="input--style-5" type="text" name="CuentaCobrar">
+                                            <label class="label--desc">Cuenta por Cobrar</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <input id="txtProveedor" class="input--style-5" type="text" name="Proveedor">
+                                            <label class="label--desc">Proveedor</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <input id="txtPlaca" class="input--style-5" type="text" name="Placa">
+                                            <label class="label--desc">Número de Placa</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        @*<div class="form-row m-b-55">
                             <div class="name">Efectivo</div>
                             <div class="value">
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="checkbox" name="company">
+                                            <input id="chkEfectivo" class="input--style-5" type="checkbox" name="Efectivo">
                                         </div>
                                     </div>
                                 </div>
@@ -202,7 +355,7 @@
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="checkbox" name="company">
+                                            <input id="chkCxC" class="input--style-5" type="checkbox" name="CuentaCobrar">
                                         </div>
                                     </div>
                                 </div>
@@ -215,14 +368,14 @@
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="company">
+                                            <input id="txtPlaca" class="input--style-5" type="text" name="Placa">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                         <div>
-                            <button class="btn btn--radius-2 btn--red" type="submit">Guardar</button>
+                            <button id="btnGuardar" class="btn btn--radius-2 btn--red" type="submit">Guardar</button>
                         </div>
                     </form>
                 </div>
@@ -239,6 +392,7 @@
 
     <!-- Main JS-->
     <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/js/global.js"></script>
+    <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Reservaciones.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 

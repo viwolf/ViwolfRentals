@@ -1,0 +1,12 @@
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.BusinessLogic.Interface\bin\Debug\Viwolf.BusinessLogic.Interface.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.BusinessLogic.Interface\bin\Debug\Viwolf.BusinessLogic.Interface.pdb
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.BusinessLogic.Interface\bin\Debug\ViwolfRental.Common.Model.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.BusinessLogic.Interface\bin\Debug\EntityFramework.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.BusinessLogic.Interface\bin\Debug\ViwolfRental.Common.Model.pdb
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.BusinessLogic.Interface\bin\Debug\ViwolfRental.Common.Model.dll.config
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.BusinessLogic.Interface\bin\Debug\EntityFramework.xml
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.BusinessLogic.Interface\obj\Debug\Viwolf.BusinessLogic.Interface.csproj.CoreCompileInputs.cache
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.BusinessLogic.Interface\obj\Debug\Viwolf.BusinessLogic.Interface.csproj.CopyComplete
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.BusinessLogic.Interface\obj\Debug\Viwolf.BusinessLogic.Interface.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.BusinessLogic.Interface\obj\Debug\Viwolf.BusinessLogic.Interface.pdb
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.BusinessLogic.Interface\obj\Debug\Viwolf.BusinessLogic.Interface.csprojAssemblyReference.cache

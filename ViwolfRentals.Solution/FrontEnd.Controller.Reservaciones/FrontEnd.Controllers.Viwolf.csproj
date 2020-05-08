@@ -109,5 +109,19 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Viwolf.BusinessLogic.Interface\Viwolf.BusinessLogic.Interface.csproj">
+      <Project>{9ab5d31d-813a-4953-bbb3-2a2974e14bec}</Project>
+      <Name>Viwolf.BusinessLogic.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Viwolf.BusinessLogic\Viwolf.BusinessLogic.csproj">
+      <Project>{d2e2e2b3-8a24-49a5-9853-a14754a65a42}</Project>
+      <Name>Viwolf.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViwolfRental.Common.Model\ViwolfRental.Common.Model.csproj">
+      <Project>{71aaa374-7de4-45c2-87f7-f64b79f66b0b}</Project>
+      <Name>ViwolfRental.Common.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -41,8 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IConnectionManager.cs" />
     <Compile Include="Reservaciones\IReservacionesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ViwolfRental.Common.Model\ViwolfRental.Common.Model.csproj">
+      <Project>{71AAA374-7DE4-45C2-87F7-F64B79F66B0B}</Project>
+      <Name>ViwolfRental.Common.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

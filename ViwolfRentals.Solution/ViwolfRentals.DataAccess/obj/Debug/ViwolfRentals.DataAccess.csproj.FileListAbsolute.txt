@@ -12,3 +12,5 @@ C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\Viw
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.DataAccess\obj\Debug\ViwolfRentals.DataAccess.csproj.CopyComplete
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.DataAccess\obj\Debug\ViwolfRentals.DataAccess.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.DataAccess\obj\Debug\ViwolfRentals.DataAccess.pdb
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.DataAccess\bin\Debug\Dapper.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.DataAccess\bin\Debug\Dapper.xml
