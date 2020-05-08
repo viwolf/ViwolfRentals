@@ -10,6 +10,7 @@ var Login = function () {
     var check = true;
 
     var fnInit = function () {
+        debugger;
         btnLogin.click(fnLogin);
 
         $('.validate-form').on('submit', function () {
@@ -84,58 +85,36 @@ var Login = function () {
     };
 
     var fnLogin = function (e) {
-        
+        debugger
+        if ((txtUsuario.val() != '') && (txtPassword.val() != '')) {
+            check = false;
+        }
+
         if (check === false) {
-            
 
-            var oUrl = 'Login/AutenticarUsuario';
+            if ((txtUsuario.val() != '') && (txtPassword.val() != '')) {
+                var oUrl = 'Login/AutenticarUsuario';
 
-            var oData =
-            {
-                "CodigoUsuario": txtUsuario.val(),
-                "Password": txtPassword.val()
-            };
+                var oData =
+                {
+                    "CodigoUsuario": txtUsuario.val(),
+                    "Password": txtPassword.val()
+                };
 
-            var oProcessMessage = 'Verificando acceso, espere por favor...';
+                var oProcessMessage = 'Verificando acceso, espere por favor...';
 
-            var success = function (result) {
+                var success = function (result) {
 
-                debugger;
-                if (result.Data.length > 0)
-                    window.location.href = "http://localhost/ViwolfRentals.FrontEnd.Web/Viwolf";
-                else
-                    // msjApp.fnShowWarningMessage("Usuario o password incorrectos");
-                    alert("Usuario o password incorrectos")
-            };
+                    debugger;
+                    if (result.Data.length > 0)
+                        window.location.href = "http://localhost/ViwolfRentals.FrontEnd.Web/Viwolf";
+                    else
+                        // msjApp.fnShowWarningMessage("Usuario o password incorrectos");
+                        alert("Usuario o password incorrectos")
+                };
 
-            app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
-
-            //$.ajax({
-            //    type: "POST",
-            //    traditional: true,
-            //    async: false,
-            //    cache: false,
-            //    url: 'Login/AutenticarUsuario',
-            //    context: document.body,
-            //    data: {
-            //        "CodigoUsuario": txtUsuario.val(),
-            //        "Password": txtPassword.val()
-            //    },
-            //    data: null,
-            //    success: function (result) {
-            //        
-            //        if (result.Data != null)
-            //            window.location.href = "http://localhost/ViwolfRentals.FrontEnd.Web/Viwolf";
-            //        else
-            //            alert("Usuario o password incorrecto");
-            //    },
-            //    error: function (xhr) {
-            //          
-            //        console.log(xhr.responseText);
-            //        alert("Error has occurred..");
-            //    }
-            //});  
-
+                app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
+            }
         }
            
     }
