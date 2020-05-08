@@ -51,8 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IReservacionesold.cs" />
-    <Compile Include="IUsuariosold.cs" />
     <Compile Include="ModelViwolfRentals.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -83,7 +81,6 @@
     <Compile Include="t_Vehiculos.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
-    <Compile Include="Usuariosold.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
