@@ -23,23 +23,36 @@
     var timeIn = null;
     var timeOut = null;
 
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+    })
+
     var Init = function () {
 
-        debugger;
+      
         var startTime = document.getElementById("txtHoraInicio");
 
         startTime.addEventListener("input", function () {
-            debugger;
+          
             timeIn = startTime.value;
         }, false);
 
 
         var endTime = document.getElementById("txtHoraEntrega");
         endTime.addEventListener("input", function () {
-            debugger;
+          
             timeOut = endTime.value;
         }, false);
 
+        txtMontoDia.blur(function () {
+            txtMontoDia.val(formatter.format(txtMontoDia.val()))
+        })
+
+        txtPlaca.blur(function () {
+            fnValidarVehiculo();
+        })
 
         txtSurfRacks.change(cambiarEstadoSurfRacks);
         txtCuentaCobrar.change(cambiarEstadoProveedor);
@@ -175,14 +188,47 @@
         document.getElementById("txtProveedor").value = '';
     };
 
+    var fnValidarVehiculo = function () {
+
+        var oData = {
+            "IDVehiculo": txtPlaca.val()
+        }
+
+        try {
+            var oUrl = 'Vehiculos/ListarVehiculos';
+            var oProcessMessage = 'Enlazando vehiculo';
+
+            var success = function (result) {
+                debugger;
+                if (result.Data.length > 0) {
+                    if (result.Data[0].t_Departamentos.NombreDepartamento == "Bodega") {
+                        alert("Se enlazó el vehiculo a la reservacion con exito");
+                    }
+                    else {
+                        alert("El vehiculo " + txtPlaca.val() + " no está disponible para su reservación");
+                    }
+                }
+                else {
+                    alert("No se encontró el vehiculo en la busqueda");
+                };
+            };
+            app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
+        } catch (ex) {
+            //utils.fnShowErrorMessage(ex.message);
+            retorno = false;
+        }
+        //return retorno;
+
+    }
+
 
     var fnGuardarReservacion = function () {
-        debugger;
+      
 
         var proveedor = document.getElementById("txtProveedor");
         var IdProveedor = proveedor.options[proveedor.selectedIndex].value;
 
-        var retorno = false;
+      
         var oData = {
             "UsuarioCreacion": txtUsuario.val(),
             "NombreCliente": txtNombreCliente.val(),
