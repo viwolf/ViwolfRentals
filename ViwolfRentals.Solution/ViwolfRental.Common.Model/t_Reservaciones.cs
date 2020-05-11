@@ -35,13 +35,12 @@ namespace ViwolfRental.Common.Model
         public Nullable<decimal> MontoDeposito { get; set; }
         public Nullable<bool> Efectivo { get; set; }
         public Nullable<bool> CuentaPorCobrar { get; set; }
-        public Nullable<int> ProveedorID { get; set; }
+        public Nullable<int> IdProveedor { get; set; }
         public Nullable<int> IDUsuario { get; set; }
         public Nullable<int> IDVehiculo { get; set; }
         public Nullable<bool> Activo { get; set; }
-        public Nullable<int> IdProveedor { get; set; }
     
-        public virtual t_Vehiculos t_Vehiculos { get; set; }
         public virtual t_Proveedores t_Proveedores { get; set; }
+        public virtual t_Vehiculos t_Vehiculos { get; set; }
     }
 }

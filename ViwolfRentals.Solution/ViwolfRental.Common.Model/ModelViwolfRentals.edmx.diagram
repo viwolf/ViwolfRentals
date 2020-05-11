@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9bef6df944644d69ad69f07fc6e69b17" Name="Diagram1">
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_CategoriasVehiculos" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Departamentos" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Reservaciones" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Usuarios" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Vehiculos" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos" ManuallyRouted="false" />
-        <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Vehiculos" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Proveedores" Width="1.5" PointX="7.75" PointY="6.5" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_CategoriasVehiculos" Width="1.5" PointX="0.75" PointY="3.375" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Departamentos" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Proveedores" Width="1.5" PointX="3" PointY="9.375" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Reservaciones" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Usuarios" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Vehiculos" Width="1.5" PointX="3" PointY="1.375" />
+        <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos" />
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Proveedores" />
+        <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Vehiculos" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

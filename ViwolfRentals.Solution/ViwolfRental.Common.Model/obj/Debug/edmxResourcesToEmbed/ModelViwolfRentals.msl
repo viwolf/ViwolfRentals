@@ -4,88 +4,18 @@
     <EntitySetMapping Name="t_CategoriasVehiculos">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_CategoriasVehiculos">
         <MappingFragment StoreEntitySet="t_CategoriasVehiculos">
-          <ScalarProperty Name="IDCategoriaVehiculo" ColumnName="IDCategoriaVehiculo" />
-          <ScalarProperty Name="NombreCategoriaVehiculo" ColumnName="NombreCategoriaVehiculo" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="NombreCategoriaVehiculo" ColumnName="NombreCategoriaVehiculo" />
+          <ScalarProperty Name="IDCategoriaVehiculo" ColumnName="IDCategoriaVehiculo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="t_Departamentos">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Departamentos">
         <MappingFragment StoreEntitySet="t_Departamentos">
-          <ScalarProperty Name="IDDepartamento" ColumnName="IDDepartamento" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
           <ScalarProperty Name="NombreDepartamento" ColumnName="NombreDepartamento" />
-          <ScalarProperty Name="Activo" ColumnName="Activo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="t_Reservaciones">
-      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Reservaciones">
-        <MappingFragment StoreEntitySet="t_Reservaciones">
-          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
-          <ScalarProperty Name="IdReservacion" ColumnName="IdReservacion" />
-          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
-          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
-          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
-          <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
-          <ScalarProperty Name="LugarEntrega" ColumnName="LugarEntrega" />
-          <ScalarProperty Name="EntregaHotel" ColumnName="EntregaHotel" />
-          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
-          <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
-          <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
-          <ScalarProperty Name="HoraEntrega" ColumnName="HoraEntrega" />
-          <ScalarProperty Name="SurfRacks" ColumnName="SurfRacks" />
-          <ScalarProperty Name="MontoSurfRacks" ColumnName="MontoSurfRacks" />
-          <ScalarProperty Name="Cajon" ColumnName="Cajon" />
-          <ScalarProperty Name="MontoDia" ColumnName="MontoDia" />
-          <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
-          <ScalarProperty Name="NumeroDeposito" ColumnName="NumeroDeposito" />
-          <ScalarProperty Name="MontoDeposito" ColumnName="MontoDeposito" />
-          <ScalarProperty Name="Efectivo" ColumnName="Efectivo" />
-          <ScalarProperty Name="CuentaPorCobrar" ColumnName="CuentaPorCobrar" />
-          <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
-          <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
-          <ScalarProperty Name="Activo" ColumnName="Activo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="t_Usuarios">
-      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Usuarios">
-        <MappingFragment StoreEntitySet="t_Usuarios">
-          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-          <ScalarProperty Name="CodigoUsuario" ColumnName="CodigoUsuario" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Activo" ColumnName="Activo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="t_Vehiculos">
-      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Vehiculos">
-        <MappingFragment StoreEntitySet="t_Vehiculos">
-          <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
-          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
-          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
-          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
-          <ScalarProperty Name="Marca" ColumnName="Marca" />
-          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
-          <ScalarProperty Name="Anno" ColumnName="Anno" />
-          <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
-          <ScalarProperty Name="NumeroChasis" ColumnName="NumeroChasis" />
-          <ScalarProperty Name="NumeroMotor" ColumnName="NumeroMotor" />
-          <ScalarProperty Name="RtvVencimientoAnno" ColumnName="RtvVencimientoAnno" />
-          <ScalarProperty Name="RtvVencimientoMes" ColumnName="RtvVencimientoMes" />
-          <ScalarProperty Name="MarchamoProximo" ColumnName="MarchamoProximo" />
-          <ScalarProperty Name="RtvSticker" ColumnName="RtvSticker" />
-          <ScalarProperty Name="RtvPapel" ColumnName="RtvPapel" />
-          <ScalarProperty Name="MarchamoSticker" ColumnName="MarchamoSticker" />
-          <ScalarProperty Name="MarchamoPapel" ColumnName="MarchamoPapel" />
-          <ScalarProperty Name="StickerPlaca" ColumnName="StickerPlaca" />
-          <ScalarProperty Name="TituloPropiedad" ColumnName="TituloPropiedad" />
-          <ScalarProperty Name="Multas" ColumnName="Multas" />
-          <ScalarProperty Name="IDCategoriaVehiculo" ColumnName="IDCategoriaVehiculo" />
-          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="IDDepartamento" ColumnName="IDDepartamento" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -95,6 +25,76 @@
           <ScalarProperty Name="Activo" ColumnName="Activo" />
           <ScalarProperty Name="NombreProveedor" ColumnName="NombreProveedor" />
           <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Reservaciones">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Reservaciones">
+        <MappingFragment StoreEntitySet="t_Reservaciones">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
+          <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+          <ScalarProperty Name="CuentaPorCobrar" ColumnName="CuentaPorCobrar" />
+          <ScalarProperty Name="Efectivo" ColumnName="Efectivo" />
+          <ScalarProperty Name="MontoDeposito" ColumnName="MontoDeposito" />
+          <ScalarProperty Name="NumeroDeposito" ColumnName="NumeroDeposito" />
+          <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+          <ScalarProperty Name="MontoDia" ColumnName="MontoDia" />
+          <ScalarProperty Name="Cajon" ColumnName="Cajon" />
+          <ScalarProperty Name="MontoSurfRacks" ColumnName="MontoSurfRacks" />
+          <ScalarProperty Name="SurfRacks" ColumnName="SurfRacks" />
+          <ScalarProperty Name="HoraEntrega" ColumnName="HoraEntrega" />
+          <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
+          <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="EntregaHotel" ColumnName="EntregaHotel" />
+          <ScalarProperty Name="LugarEntrega" ColumnName="LugarEntrega" />
+          <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IdReservacion" ColumnName="IdReservacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Usuarios">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Usuarios">
+        <MappingFragment StoreEntitySet="t_Usuarios">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="CodigoUsuario" ColumnName="CodigoUsuario" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Vehiculos">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Vehiculos">
+        <MappingFragment StoreEntitySet="t_Vehiculos">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="IDCategoriaVehiculo" ColumnName="IDCategoriaVehiculo" />
+          <ScalarProperty Name="Multas" ColumnName="Multas" />
+          <ScalarProperty Name="TituloPropiedad" ColumnName="TituloPropiedad" />
+          <ScalarProperty Name="StickerPlaca" ColumnName="StickerPlaca" />
+          <ScalarProperty Name="MarchamoPapel" ColumnName="MarchamoPapel" />
+          <ScalarProperty Name="MarchamoSticker" ColumnName="MarchamoSticker" />
+          <ScalarProperty Name="RtvPapel" ColumnName="RtvPapel" />
+          <ScalarProperty Name="RtvSticker" ColumnName="RtvSticker" />
+          <ScalarProperty Name="MarchamoProximo" ColumnName="MarchamoProximo" />
+          <ScalarProperty Name="RtvVencimientoMes" ColumnName="RtvVencimientoMes" />
+          <ScalarProperty Name="RtvVencimientoAnno" ColumnName="RtvVencimientoAnno" />
+          <ScalarProperty Name="NumeroMotor" ColumnName="NumeroMotor" />
+          <ScalarProperty Name="NumeroChasis" ColumnName="NumeroChasis" />
+          <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+          <ScalarProperty Name="Anno" ColumnName="Anno" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

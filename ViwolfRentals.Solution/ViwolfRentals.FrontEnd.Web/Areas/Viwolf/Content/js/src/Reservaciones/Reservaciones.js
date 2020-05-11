@@ -20,9 +20,27 @@
     var txtFechaFinal = $("#txtFechaFinal");
     var txtHoraEntrega = $("#txtHoraEntrega")
     var btnGuardar = $("#btnGuardar");
+    var timeIn = null;
+    var timeOut = null;
 
     var Init = function () {
-       
+
+        debugger;
+        var startTime = document.getElementById("txtHoraInicio");
+
+        startTime.addEventListener("input", function () {
+            debugger;
+            timeIn = startTime.value;
+        }, false);
+
+
+        var endTime = document.getElementById("txtHoraEntrega");
+        endTime.addEventListener("input", function () {
+            debugger;
+            timeOut = endTime.value;
+        }, false);
+
+
         txtSurfRacks.change(cambiarEstadoSurfRacks);
         txtCuentaCobrar.change(cambiarEstadoProveedor);
         
@@ -161,29 +179,36 @@
     var fnGuardarReservacion = function () {
         debugger;
 
+        var proveedor = document.getElementById("txtProveedor");
+        var IdProveedor = proveedor.options[proveedor.selectedIndex].value;
+
+      
+
+
+
         var retorno = false;
         var oData = {
             "UsuarioCreacion": txtUsuario.val(),
             "NombreCliente": txtNombreCliente.val(),
             "LugarEntrega": txtHospedaje.val(),
-            "EntregaHotel": txtEntregaHotel.val(),
+            "EntregaHotel": txtEntregaHotel.val() == 'Si' ? true : false,
             "FechaInicio": txtFechaInicio.val(),
-            "HoraInicio ": txtHoraInicio.val(),
+            "HoraInicio": timeIn,
             "FechaEntrega": txtFechaFinal.val(),
-            "HoraEntrega": txtHoraEntrega.val,
-            "SurfRacks": txtSurfRacks.val(),
+            "HoraEntrega": timeOut,
+            "SurfRacks": txtSurfRacks.val() == 'Si' ? true : false,
             "MontoSurfRacks": txtMontoSurfRacks.val(),
-            "Cajon": txtCajon.val(),
+            "Cajon": txtCajon.val() == 'Si' ? true : false,
             "MontoDia": txtMontoDia.val(),
             "MontoTotal": txtMontoTotal.val(),
             "NumeroDeposito": txtNumeroDeposito.val(),
             "MontoDeposito": txtMontoDeposito.val(),
-           // "SaldoActual": txtSaldoActual.val(),
-            "Efectivo": txtEfectivo.val(),
-            "CuentaPorCobrar": txtCuentaCobrar.val(),
-            //"ProveedorID",
-            //"IDUsuario",
-            //"IDVehiculo"
+            // "SaldoActual": txtSaldoActual.val(),
+            "Efectivo": txtEfectivo.val() == 'Si' ? true : false,
+            "CuentaPorCobrar": txtCuentaCobrar.val() == 'Si' ? true : false,
+            "ProveedorID": IdProveedor == "" ? "0" : IdProveedor,
+            "IDUsuario": txtUsuario.val(),
+            "IDVehiculo": txtPlaca.val()
         }
 
         try {
