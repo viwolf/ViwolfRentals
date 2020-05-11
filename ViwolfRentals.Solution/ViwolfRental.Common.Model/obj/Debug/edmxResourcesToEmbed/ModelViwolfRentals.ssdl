@@ -89,6 +89,7 @@
     <Property Name="TituloPropiedad" Type="bit" Nullable="false" />
     <Property Name="Multas" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="IDCategoriaVehiculo" Type="int" Nullable="false" />
+    <Property Name="IDDepartamento" Type="int" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
   <Association Name="FK_t_Reservaciones_t_Proveedores">
@@ -127,6 +128,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_t_Vehiculos_t_Departamentos">
+    <End Role="t_Departamentos" Type="Self.t_Departamentos" Multiplicity="1" />
+    <End Role="t_Vehiculos" Type="Self.t_Vehiculos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Departamentos">
+        <PropertyRef Name="IDDepartamento" />
+      </Principal>
+      <Dependent Role="t_Vehiculos">
+        <PropertyRef Name="IDDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ViwolfRentalsDBModelStoreContainer">
     <EntitySet Name="t_CategoriasVehiculos" EntityType="Self.t_CategoriasVehiculos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Departamentos" EntityType="Self.t_Departamentos" Schema="dbo" store:Type="Tables" />
@@ -144,6 +157,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_t_Vehiculos_t_CategoriasVehiculos" Association="Self.FK_t_Vehiculos_t_CategoriasVehiculos">
       <End Role="t_CategoriasVehiculos" EntitySet="t_CategoriasVehiculos" />
+      <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Vehiculos_t_Departamentos" Association="Self.FK_t_Vehiculos_t_Departamentos">
+      <End Role="t_Departamentos" EntitySet="t_Departamentos" />
       <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
     </AssociationSet>
   </EntityContainer>

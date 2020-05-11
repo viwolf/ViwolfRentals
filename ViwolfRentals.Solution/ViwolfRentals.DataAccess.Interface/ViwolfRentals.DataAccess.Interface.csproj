@@ -45,6 +45,7 @@
     <Compile Include="Proveedores\IProveedoresRepository.cs" />
     <Compile Include="Reservaciones\IReservacionesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vehiculos\IVehiculosRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ViwolfRental.Common.Model\ViwolfRental.Common.Model.csproj">

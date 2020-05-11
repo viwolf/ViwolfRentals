@@ -11,6 +11,10 @@
       <End Role="t_CategoriasVehiculos" EntitySet="t_CategoriasVehiculos" />
       <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
     </AssociationSet>
+    <AssociationSet Name="FK_t_Vehiculos_t_Departamentos" Association="ViwolfRentalsDBModel.FK_t_Vehiculos_t_Departamentos">
+      <End Role="t_Departamentos" EntitySet="t_Departamentos" />
+      <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
+    </AssociationSet>
     <AssociationSet Name="FK_t_Reservaciones_t_Proveedores" Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Proveedores">
       <End Role="t_Proveedores" EntitySet="t_Proveedores" />
       <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
@@ -36,6 +40,7 @@
     <Property Name="IDDepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NombreDepartamento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="t_Vehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Vehiculos_t_Departamentos" FromRole="t_Departamentos" ToRole="t_Vehiculos" />
   </EntityType>
   <EntityType Name="t_Proveedores">
     <Key>
@@ -113,8 +118,10 @@
     <Property Name="TituloPropiedad" Type="Boolean" Nullable="false" />
     <Property Name="Multas" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
     <Property Name="IDCategoriaVehiculo" Type="Int32" Nullable="false" />
+    <Property Name="IDDepartamento" Type="Int32" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="t_CategoriasVehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos" FromRole="t_Vehiculos" ToRole="t_CategoriasVehiculos" />
+    <NavigationProperty Name="t_Departamentos" Relationship="ViwolfRentalsDBModel.FK_t_Vehiculos_t_Departamentos" FromRole="t_Vehiculos" ToRole="t_Departamentos" />
     <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Vehiculos" FromRole="t_Vehiculos" ToRole="t_Reservaciones" />
   </EntityType>
   <Association Name="FK_t_Vehiculos_t_CategoriasVehiculos">
@@ -126,6 +133,18 @@
       </Principal>
       <Dependent Role="t_Vehiculos">
         <PropertyRef Name="IDCategoriaVehiculo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Vehiculos_t_Departamentos">
+    <End Type="ViwolfRentalsDBModel.t_Departamentos" Role="t_Departamentos" Multiplicity="1" />
+    <End Type="ViwolfRentalsDBModel.t_Vehiculos" Role="t_Vehiculos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Departamentos">
+        <PropertyRef Name="IDDepartamento" />
+      </Principal>
+      <Dependent Role="t_Vehiculos">
+        <PropertyRef Name="IDDepartamento" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -73,6 +73,7 @@
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Vehiculos">
         <MappingFragment StoreEntitySet="t_Vehiculos">
           <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="IDDepartamento" ColumnName="IDDepartamento" />
           <ScalarProperty Name="IDCategoriaVehiculo" ColumnName="IDCategoriaVehiculo" />
           <ScalarProperty Name="Multas" ColumnName="Multas" />
           <ScalarProperty Name="TituloPropiedad" ColumnName="TituloPropiedad" />

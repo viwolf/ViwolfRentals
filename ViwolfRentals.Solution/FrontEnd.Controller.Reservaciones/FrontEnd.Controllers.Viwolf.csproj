@@ -103,6 +103,7 @@
   <ItemGroup>
     <Compile Include="ProveedoresController.cs" />
     <Compile Include="ReservacionesController.cs" />
+    <Compile Include="VehiculosController.cs" />
     <Compile Include="ViwolfRentalController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
