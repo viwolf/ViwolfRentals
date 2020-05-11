@@ -182,10 +182,6 @@
         var proveedor = document.getElementById("txtProveedor");
         var IdProveedor = proveedor.options[proveedor.selectedIndex].value;
 
-      
-
-
-
         var retorno = false;
         var oData = {
             "UsuarioCreacion": txtUsuario.val(),
@@ -203,7 +199,7 @@
             "MontoTotal": txtMontoTotal.val(),
             "NumeroDeposito": txtNumeroDeposito.val(),
             "MontoDeposito": txtMontoDeposito.val(),
-            // "SaldoActual": txtSaldoActual.val(),
+            "SaldoActual": txtSaldoActual.val(),
             "Efectivo": txtEfectivo.val() == 'Si' ? true : false,
             "CuentaPorCobrar": txtCuentaCobrar.val() == 'Si' ? true : false,
             "ProveedorID": IdProveedor == "" ? "0" : IdProveedor,
@@ -216,27 +212,12 @@
             var oProcessMessage = 'Guardando Reservacion';
 
             var success = function (result) {
-                debugger;
-                if (result >= '1') {
-
-
-
-
-
-                    //var mensaje = 'Transaccion Anulada. \n' +
-                    //                            ' Tarjeta: ' + obj.NumeroTarjeta + '\n \n' +
-                    //                            ' Cliente: ' + obj.TarjetaHabiente + '\n' + //result.Data[0].Enganche + '\n' +
-                    //                            ' Autorización: ' + obj.NumeroAutorizacionAnulacion + '\n' +
-                    //                            ' Referencia: ' + obj.Ref + '\n' +
-                    //                            ' Monto: ' + countryInfo.getMonto(obj.Monto) + '\n \n'
-
-                    //msjApp.fnShowSuccessMessage(mensaje);
-                    retorno = true
+                if (result.MessageType == "Success") {
+                    alert("Reservacion creada con exito");
+                    fnLimpiarDatos();
                 }
-                //else {
-                //    retorno = false;
-                //}
-                return retorno;
+                    
+                    
             };
             app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
         } catch (ex) {
@@ -246,6 +227,31 @@
         //return retorno;
     };
 
+    var fnLimpiarDatos = function () {
+        txtNombreCliente.val("");
+        txtHospedaje.val("");
+        txtEntregaHotel.val("");
+        txtSurfRacks.val("");
+        txtMontoSurfRacks.val("");
+        txtCajon.val("");
+        txtMontoDia.val("");
+        txtMontoTotal.val("");
+        txtNumeroDeposito.val("");
+        txtMontoDeposito.val("");
+        txtSaldoActual.val("");
+        txtUsuario.val("");
+        txtEfectivo.val("");
+        txtCuentaCobrar.val("");
+        txtProveedor.val("");
+        txtPlaca.val("");
+        txtFechaInicio.val("");
+        txtHoraInicio.val("");
+        txtFechaFinal.val("");
+        txtHoraEntrega.val("");
+        btnGuardar.val("");
+        timeIn = null;
+        timeOut = null;
+    }
 
     $(function () {
 

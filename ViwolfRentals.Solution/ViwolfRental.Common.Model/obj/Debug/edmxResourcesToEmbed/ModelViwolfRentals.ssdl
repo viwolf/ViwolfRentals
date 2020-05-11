@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="IDCategoriaVehiculo" />
     </Key>
-    <Property Name="IDCategoriaVehiculo" Type="int" Nullable="false" />
+    <Property Name="IDCategoriaVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NombreCategoriaVehiculo" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
@@ -12,7 +12,7 @@
     <Key>
       <PropertyRef Name="IDDepartamento" />
     </Key>
-    <Property Name="IDDepartamento" Type="int" Nullable="false" />
+    <Property Name="IDDepartamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NombreDepartamento" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
@@ -20,7 +20,7 @@
     <Key>
       <PropertyRef Name="IdProveedor" />
     </Key>
-    <Property Name="IdProveedor" Type="int" Nullable="false" />
+    <Property Name="IdProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NombreProveedor" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
@@ -28,7 +28,7 @@
     <Key>
       <PropertyRef Name="IdReservacion" />
     </Key>
-    <Property Name="IdReservacion" Type="int" Nullable="false" />
+    <Property Name="IdReservacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
     <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="FechaModificacion" Type="datetime" />
@@ -75,7 +75,7 @@
     <Property Name="Marca" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Modelo" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Anno" Type="int" Nullable="false" />
-    <Property Name="FechaCompra" Type="datetime" Nullable="false" />
+    <Property Name="FechaCompra" Type="datetime" />
     <Property Name="NumeroChasis" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="NumeroMotor" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="RtvVencimientoAnno" Type="int" Nullable="false" />

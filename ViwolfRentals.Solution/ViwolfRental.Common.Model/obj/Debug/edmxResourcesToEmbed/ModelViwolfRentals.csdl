@@ -24,7 +24,7 @@
     <Key>
       <PropertyRef Name="IDCategoriaVehiculo" />
     </Key>
-    <Property Name="IDCategoriaVehiculo" Type="Int32" Nullable="false" />
+    <Property Name="IDCategoriaVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NombreCategoriaVehiculo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="t_Vehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos" FromRole="t_CategoriasVehiculos" ToRole="t_Vehiculos" />
@@ -33,7 +33,7 @@
     <Key>
       <PropertyRef Name="IDDepartamento" />
     </Key>
-    <Property Name="IDDepartamento" Type="Int32" Nullable="false" />
+    <Property Name="IDDepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NombreDepartamento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
   </EntityType>
@@ -41,7 +41,7 @@
     <Key>
       <PropertyRef Name="IdProveedor" />
     </Key>
-    <Property Name="IdProveedor" Type="Int32" Nullable="false" />
+    <Property Name="IdProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NombreProveedor" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Proveedores" FromRole="t_Proveedores" ToRole="t_Reservaciones" />
@@ -50,7 +50,7 @@
     <Key>
       <PropertyRef Name="IdReservacion" />
     </Key>
-    <Property Name="IdReservacion" Type="Int32" Nullable="false" />
+    <Property Name="IdReservacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
@@ -99,7 +99,7 @@
     <Property Name="Marca" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Modelo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Anno" Type="Int32" Nullable="false" />
-    <Property Name="FechaCompra" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaCompra" Type="DateTime" Precision="3" />
     <Property Name="NumeroChasis" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="NumeroMotor" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="RtvVencimientoAnno" Type="Int32" Nullable="false" />

@@ -28,7 +28,7 @@ namespace ViwolfRental.Common.Model
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public int Anno { get; set; }
-        public System.DateTime FechaCompra { get; set; }
+        public Nullable<System.DateTime> FechaCompra { get; set; }
         public string NumeroChasis { get; set; }
         public string NumeroMotor { get; set; }
         public int RtvVencimientoAnno { get; set; }
@@ -42,9 +42,11 @@ namespace ViwolfRental.Common.Model
         public bool TituloPropiedad { get; set; }
         public decimal Multas { get; set; }
         public int IDCategoriaVehiculo { get; set; }
+        public int IDDepartamento { get; set; }
         public bool Activo { get; set; }
     
         public virtual t_CategoriasVehiculos t_CategoriasVehiculos { get; set; }
+        public virtual t_Departamentos t_Departamentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_Reservaciones> t_Reservaciones { get; set; }
     }

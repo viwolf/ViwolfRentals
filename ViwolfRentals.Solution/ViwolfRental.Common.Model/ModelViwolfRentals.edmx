@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="IDCategoriaVehiculo" />
           </Key>
-          <Property Name="IDCategoriaVehiculo" Type="int" Nullable="false" />
+          <Property Name="IDCategoriaVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombreCategoriaVehiculo" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
@@ -17,7 +17,7 @@
           <Key>
             <PropertyRef Name="IDDepartamento" />
           </Key>
-          <Property Name="IDDepartamento" Type="int" Nullable="false" />
+          <Property Name="IDDepartamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombreDepartamento" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
@@ -25,7 +25,7 @@
           <Key>
             <PropertyRef Name="IdProveedor" />
           </Key>
-          <Property Name="IdProveedor" Type="int" Nullable="false" />
+          <Property Name="IdProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombreProveedor" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
@@ -33,7 +33,7 @@
           <Key>
             <PropertyRef Name="IdReservacion" />
           </Key>
-          <Property Name="IdReservacion" Type="int" Nullable="false" />
+          <Property Name="IdReservacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
           <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="FechaModificacion" Type="datetime" />
@@ -80,7 +80,7 @@
           <Property Name="Marca" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Modelo" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Anno" Type="int" Nullable="false" />
-          <Property Name="FechaCompra" Type="datetime" Nullable="false" />
+          <Property Name="FechaCompra" Type="datetime" />
           <Property Name="NumeroChasis" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="NumeroMotor" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="RtvVencimientoAnno" Type="int" Nullable="false" />
@@ -94,6 +94,7 @@
           <Property Name="TituloPropiedad" Type="bit" Nullable="false" />
           <Property Name="Multas" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="IDCategoriaVehiculo" Type="int" Nullable="false" />
+          <Property Name="IDDepartamento" Type="int" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_t_Reservaciones_t_Proveedores">
@@ -132,6 +133,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_t_Vehiculos_t_Departamentos">
+          <End Role="t_Departamentos" Type="Self.t_Departamentos" Multiplicity="1" />
+          <End Role="t_Vehiculos" Type="Self.t_Vehiculos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Departamentos">
+              <PropertyRef Name="IDDepartamento" />
+            </Principal>
+            <Dependent Role="t_Vehiculos">
+              <PropertyRef Name="IDDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ViwolfRentalsDBModelStoreContainer">
           <EntitySet Name="t_CategoriasVehiculos" EntityType="Self.t_CategoriasVehiculos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Departamentos" EntityType="Self.t_Departamentos" Schema="dbo" store:Type="Tables" />
@@ -151,6 +164,10 @@
             <End Role="t_CategoriasVehiculos" EntitySet="t_CategoriasVehiculos" />
             <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
           </AssociationSet>
+          <AssociationSet Name="FK_t_Vehiculos_t_Departamentos" Association="Self.FK_t_Vehiculos_t_Departamentos">
+            <End Role="t_Departamentos" EntitySet="t_Departamentos" />
+            <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -167,6 +184,10 @@
             <End Role="t_CategoriasVehiculos" EntitySet="t_CategoriasVehiculos" />
             <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
           </AssociationSet>
+          <AssociationSet Name="FK_t_Vehiculos_t_Departamentos" Association="ViwolfRentalsDBModel.FK_t_Vehiculos_t_Departamentos">
+            <End Role="t_Departamentos" EntitySet="t_Departamentos" />
+            <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
+          </AssociationSet>
           <AssociationSet Name="FK_t_Reservaciones_t_Proveedores" Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Proveedores">
             <End Role="t_Proveedores" EntitySet="t_Proveedores" />
             <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
@@ -180,7 +201,7 @@
           <Key>
             <PropertyRef Name="IDCategoriaVehiculo" />
           </Key>
-          <Property Name="IDCategoriaVehiculo" Type="Int32" Nullable="false" />
+          <Property Name="IDCategoriaVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NombreCategoriaVehiculo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="t_Vehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos" FromRole="t_CategoriasVehiculos" ToRole="t_Vehiculos" />
@@ -189,15 +210,16 @@
           <Key>
             <PropertyRef Name="IDDepartamento" />
           </Key>
-          <Property Name="IDDepartamento" Type="Int32" Nullable="false" />
+          <Property Name="IDDepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NombreDepartamento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="t_Vehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Vehiculos_t_Departamentos" FromRole="t_Departamentos" ToRole="t_Vehiculos" />
         </EntityType>
         <EntityType Name="t_Proveedores">
           <Key>
             <PropertyRef Name="IdProveedor" />
           </Key>
-          <Property Name="IdProveedor" Type="Int32" Nullable="false" />
+          <Property Name="IdProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NombreProveedor" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Proveedores" FromRole="t_Proveedores" ToRole="t_Reservaciones" />
@@ -206,7 +228,7 @@
           <Key>
             <PropertyRef Name="IdReservacion" />
           </Key>
-          <Property Name="IdReservacion" Type="Int32" Nullable="false" />
+          <Property Name="IdReservacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
@@ -255,7 +277,7 @@
           <Property Name="Marca" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Modelo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Anno" Type="Int32" Nullable="false" />
-          <Property Name="FechaCompra" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaCompra" Type="DateTime" Precision="3" />
           <Property Name="NumeroChasis" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="NumeroMotor" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="RtvVencimientoAnno" Type="Int32" Nullable="false" />
@@ -269,8 +291,10 @@
           <Property Name="TituloPropiedad" Type="Boolean" Nullable="false" />
           <Property Name="Multas" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="IDCategoriaVehiculo" Type="Int32" Nullable="false" />
+          <Property Name="IDDepartamento" Type="Int32" Nullable="false" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="t_CategoriasVehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos" FromRole="t_Vehiculos" ToRole="t_CategoriasVehiculos" />
+          <NavigationProperty Name="t_Departamentos" Relationship="ViwolfRentalsDBModel.FK_t_Vehiculos_t_Departamentos" FromRole="t_Vehiculos" ToRole="t_Departamentos" />
           <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Vehiculos" FromRole="t_Vehiculos" ToRole="t_Reservaciones" />
         </EntityType>
         <Association Name="FK_t_Vehiculos_t_CategoriasVehiculos">
@@ -282,6 +306,18 @@
             </Principal>
             <Dependent Role="t_Vehiculos">
               <PropertyRef Name="IDCategoriaVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Vehiculos_t_Departamentos">
+          <End Type="ViwolfRentalsDBModel.t_Departamentos" Role="t_Departamentos" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_Vehiculos" Role="t_Vehiculos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Departamentos">
+              <PropertyRef Name="IDDepartamento" />
+            </Principal>
+            <Dependent Role="t_Vehiculos">
+              <PropertyRef Name="IDDepartamento" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -309,7 +345,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -387,6 +423,7 @@
             <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Vehiculos">
               <MappingFragment StoreEntitySet="t_Vehiculos">
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IDDepartamento" ColumnName="IDDepartamento" />
                 <ScalarProperty Name="IDCategoriaVehiculo" ColumnName="IDCategoriaVehiculo" />
                 <ScalarProperty Name="Multas" ColumnName="Multas" />
                 <ScalarProperty Name="TituloPropiedad" ColumnName="TituloPropiedad" />

@@ -14,8 +14,17 @@ namespace ViwolfRental.Common.Model
     
     public partial class t_Departamentos
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public t_Departamentos()
+        {
+            this.t_Vehiculos = new HashSet<t_Vehiculos>();
+        }
+    
         public int IDDepartamento { get; set; }
         public string NombreDepartamento { get; set; }
         public bool Activo { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<t_Vehiculos> t_Vehiculos { get; set; }
     }
 }

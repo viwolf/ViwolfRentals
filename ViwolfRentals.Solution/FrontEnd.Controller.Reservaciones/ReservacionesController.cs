@@ -27,7 +27,7 @@ namespace FrontEnd.Controllers.Viwolf
             return Json(new
             {
                 Data = result,
-                MessageType = "Success",
+                MessageType = result != null ? "Success" : "Error",
                 InfoMessage = result != null ?
                         "Proceso efectuado satisfactoriamente." :
                         "No existen usuarios que coincidan con los criterios de búsqueda.",
