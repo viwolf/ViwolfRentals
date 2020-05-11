@@ -13,6 +13,9 @@ namespace FrontEnd.Controllers.Viwolf
         //[HttpPost]
         public ActionResult Index()
         {
+            
+
+            ViewBag.Usuario = TempData["Usuario"];
             return View();
         }
 

@@ -28,399 +28,402 @@
         <link href="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/css/main.css" rel="stylesheet" media="all">
     </head>
 
-<body>
+    <body>
 
-    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
-        <div class="wrapper wrapper--w790">
-            <div class="card card-5">
-                <div class="card-heading">
-                    <h2 class="title">Creacion de Reservaciones</h2>
-                </div>
-                <div class="card-body">
-                    <form method="POST">
+        <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+            <div class="wrapper wrapper--w790">
+                <div class="card card-5">
+                    <div class="card-heading">
+                        <h2 class="title">Creacion de Reservaciones</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="frmReservacion">
 
-                        <div class="form-row m-b-55">
-                            <div class="name">Datos del cliente</div>
-                            <div class="value">
-                                <div class="row row-refine">
-                                    <div class="col-4">
-                                        <div class="input-group-desc">
-                                            <input id="txtNombreCliente" class="input--style-5" type="text" name="NombreCliente">
-                                            <label class="label--desc">Nombre Cliente</label>
+                            <div class="form-row m-b-55">
+                                <div class="name">Datos del cliente</div>
+                                <div class="value">
+                                    <div class="row row-refine">
+                                        <div class="col-4">
+                                            <div class="input-group-desc">
+                                                <input id="txtNombreCliente" class="input--style-5" type="text" name="NombreCliente">
+                                                <label class="label--desc">Nombre Cliente</label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="input-group-desc">
-                                            <input id="txtHospedaje" class="input--style-5" type="text" name="Hospedaje">
-                                            <label class="label--desc">Hospedaje</label>
+                                        <div class="col-4">
+                                            <div class="input-group-desc">
+                                                <input id="txtHospedaje" class="input--style-5" type="text" name="Hospedaje">
+                                                <label class="label--desc">Hospedaje</label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="input-group-desc">
-                                            @*<input id="txtEntregaHotel" class="input--style-5" type="text" name="EntregaHotel">*@
-                                            <select id="txtEntregaHotel" class="select--style-5" name="EntregaHotel">
-                                                <option value=""></option>
-                                                <option>Si</option>
-                                                <option>No</option>
-                                            </select>
-                                            <label class="label--desc">Entrega en Hotel</label>
+                                        <div class="col-4">
+                                            <div class="input-group-desc">
+                                                @*<input id="txtEntregaHotel" class="input--style-5" type="text" name="EntregaHotel">*@
+                                                <select id="txtEntregaHotel" class="select--style-5" name="EntregaHotel">
+                                                    <option value=""></option>
+                                                    <option>Si</option>
+                                                    <option>No</option>
+                                                </select>
+                                                <label class="label--desc">Entrega en Hotel</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        @*<div class="form-row">
-            <div class="name">Nombre Cliente</div>
-            <div class="value">
-                <div class="input-group">
-                    <input id="txtNombreCliente" class="input--style-5" type="text" name="NombreCliente">
-                </div>
-            </div>
-        </div>*@
-                        @*<div class="form-row">
-            <div class="name">Hospedaje</div>
-            <div class="value">
-                <div class="input-group">
-                    <input id="txtHospedaje" class="input--style-5" type="text" name="Hospedaje">
-                </div>
-            </div>
-        </div>*@
-                        @*<div class="form-row m-b-55">
-            <div class="name">Entrega en Hotel</div>
-            <div class="value">
-                <div class="row row-space">
-                    <div class="col-2">
-                        <div class="input-group-desc">
-                            <input id="chkEntregaHotel" class="checkbox" type="checkbox" name="EntregaHotel">
+                            @*<div class="form-row">
+                                <div class="name">Nombre Cliente</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input id="txtNombreCliente" class="input--style-5" type="text" name="NombreCliente">
+                                    </div>
+                                </div>
+                            </div>*@
+                            @*<div class="form-row">
+                                <div class="name">Hospedaje</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input id="txtHospedaje" class="input--style-5" type="text" name="Hospedaje">
+                                    </div>
+                                </div>
+                            </div>*@
+                            @*<div class="form-row m-b-55">
+                                <div class="name">Entrega en Hotel</div>
+                                <div class="value">
+                                    <div class="row row-space">
+                                        <div class="col-2">
+                                            <div class="input-group-desc">
+                                                <input id="chkEntregaHotel" class="checkbox" type="checkbox" name="EntregaHotel">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                            <div class="form-row m-b-55">
+                                <div class="name">Tiempos Iniciales</div>
+                                <div class="value">
+                                    <div class="row row-refine">
+                                        <div class="col-6">
+                                            <div class="input-group-desc">
+                                                <input id="txtFechaInicio" class="input--style-5" type="date" name="txtFechaInicio">
+                                                <label class="label--desc">Fecha Inicio</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-group-desc">
+                                                <input id="txtHoraInicio" class="input--style-5" type="time" name="txtHoraInicio">
+                                                <label class="label--desc">Hora Inicio</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row m-b-55">
+                                <div class="name">Tiempos Finales</div>
+                                <div class="value">
+                                    <div class="row row-refine">
+                                        <div class="col-6">
+                                            <div class="input-group-desc">
+                                                <input id="txtFechaFinal" class="input--style-5" type="date" name="txtFechaFinal">
+                                                <label class="label--desc">Fecha Entrega</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-group-desc">
+                                                <input id="txtHoraEntrega" class="input--style-5" type="time" name="txtHoraEntrega">
+                                                <label class="label--desc">Hora Entrega</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row m-b-55">
+                                <div class="name">Extras</div>
+                                <div class="value">
+                                    <div class="row row-refine">
+                                        <div class="col-4">
+                                            <div class="input-group-desc">
+                                                @*<input id="txtSurfRacks" class="input--style-5" type="text" name="SurfRacks">*@
+                                                <select id="txtSurfRacks" class="select--style-5" name="SurfRacks">
+                                                    <option value=""></option>
+                                                    <option>Si</option>
+                                                    <option>No</option>
+                                                </select>
+                                                <label class="label--desc">Surf Racks</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="input-group-desc">
+                                                <input id="txtMontoSurfRacks" disabled class="input--style-5" type="text" name="MontoSurfRacks">
+                                                <label class="label--desc">Monto SurfRacks</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="input-group-desc">
+                                                @*<input id="txtCajon" class="input--style-5" type="text" name="Cajon">*@
+                                                <select id="txtCajon" class="select--style-5" name="Cajon">
+                                                    <option value=""></option>
+                                                    <option>Si</option>
+                                                    <option>No</option>
+                                                </select>
+                                                <label class="label--desc">Cajon</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*<div class="form-row m-b-55">
+                                <div class="name">Cajon</div>
+                                <div class="value">
+                                    <div class="row row-space">
+                                        <div class="col-2">
+                                            <div class="input-group-desc">
+                                                <input id="chkCajon" class="input--style-5" type="checkbox" name="Cajon">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                            <div class="form-row m-b-55">
+                                <div class="name">Montos</div>
+                                <div class="value">
+                                    <div class="row row-refine">
+                                        <div class="col-6">
+                                            <div class="input-group-desc">
+                                                <input id="txtMontoDia" class="input--style-5" type="text" name="MontoDia">
+                                                <label class="label--desc">Monto Día</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-group-desc">
+                                                <input id="txtMontoTotal" class="input--style-5" type="text" name="MontoTotal">
+                                                <label class="label--desc">Monto Total</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            @*<div class="form-row m-b-55">
+                                <div class="name">Monto x Día</div>
+                                <div class="value">
+                                    <div class="row row-space">
+                                        <div class="col-2">
+                                            <div class="input-group-desc">
+                                                <input id="txtMontoDia" class="input--style-5" type="text" name="MontoDia">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                            @*<div class="form-row m-b-55">
+                                <div class="name">Monto Total</div>
+                                <div class="value">
+                                    <div class="row row-space">
+                                        <div class="col-2">
+                                            <div class="input-group-desc">
+                                                <input id="txtMontoTotal" class="input--style-5" type="text" name="MontoDia">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                            <div class="form-row m-b-55">
+                                <div class="name">Depósitos</div>
+                                <div class="value">
+                                    <div class="row row-refine">
+                                        <div class="col-4">
+                                            <div class="input-group-desc">
+                                                <input id="txtNumeroDeposito" class="input--style-5" type="text" name="NumeroDeposito">
+                                                <label class="label--desc">Número Depósito</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="input-group-desc">
+                                                <input id="txtMontoDeposito" class="input--style-5" type="text" name="MontoDepósito">
+                                                <label class="label--desc">Monto Depósito</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="input-group-desc">
+                                                <input id="txtSaldoActual" class="input--style-5" type="text" name="SaldoActual">
+                                                <label class="label--desc">Saldo Actual</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            @*<div class="form-row m-b-55">
+                                <div class="name">Depósito</div>
+                                <div class="value">
+                                    <div class="row row-space">
+                                        <div class="col-2">
+                                            <div class="input-group-desc">
+                                                <input id="txtDeposito" class="input--style-5" type="text" name="Deposito">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                            @*<div class="form-row m-b-55">
+                                <div class="name">Saldo Actual</div>
+                                <div class="value">
+                                    <div class="row row-space">
+                                        <div class="col-2">
+                                            <div class="input-group-desc">
+                                                <input id="txtSaldoActual" class="input--style-5" type="text" name="SaldoActual">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+
+
+                            <div class="form-row m-b-55">
+                                <div class="name">Datos Ususaios</div>
+                                <div class="value">
+                                    <div class="row row-refine">
+                                        <div class="col-12">
+                                            <div class="input-group-desc">
+                                                <input id="txtUsuario" class="input--style-5" type="text" name="Usuario">
+                                                <label class="label--desc">Reservado por</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            @*<div class="form-row m-b-55">
+                                <div class="name">Reservado Por</div>
+                                <div class="value">
+                                    <div class="row row-space">
+                                        <div class="col-2">
+                                            <div class="input-group-desc">
+                                                <input id="txtUsuario" class="input--style-5" type="text" name="Usuario">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                            <div class="form-row m-b-55">
+                                <div class="name">Datos Proveedor</div>
+                                <div class="value">
+                                    <div class="row row-refine">
+                                        <div class="col-3">
+                                            <div class="input-group-desc">
+                                                @*<input id="txtEfectivo" class="input--style-5" type="text" name="Efectivo">*@
+                                                <select id="txtEfectivo" class="select--style-5" name="Efectivo">
+                                                    <option value=""></option>
+                                                    <option>Si</option>
+                                                    <option>No</option>
+                                                </select>
+                                                <label class="label--desc">Efectivo</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="input-group-desc">
+                                                @*<input id="txtCuentaCobrar" class="input--style-5" type="text" name="CuentaCobrar">*@
+                                                <select id="txtCuentaCobrar" class="select--style-5" name="CuentaCobrar">
+                                                    <option value=""></option>
+                                                    <option>Si</option>
+                                                    <option>No</option>
+                                                </select>
+                                                <label class="label--desc">Cuenta por Cobrar</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="input-group-desc">
+                                                <select id="txtProveedor" disabled class="select--style-5">
+                                                    <option value="">Seleccione uno...</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="input-group-desc">
+                                                <input id="txtPlaca" class="input--style-5" type="text" name="Placa">
+                                                <label class="label--desc">Número de Placa</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            @*<div class="form-row m-b-55">
+                                <div class="name">Efectivo</div>
+                                <div class="value">
+                                    <div class="row row-space">
+                                        <div class="col-2">
+                                            <div class="input-group-desc">
+                                                <input id="chkEfectivo" class="input--style-5" type="checkbox" name="Efectivo">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row m-b-55">
+                                <div class="name">CxC</div>
+                                <div class="value">
+                                    <div class="row row-space">
+                                        <div class="col-2">
+                                            <div class="input-group-desc">
+                                                <input id="chkCxC" class="input--style-5" type="checkbox" name="CuentaCobrar">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row m-b-55">
+                                <div class="name">Placa</div>
+                                <div class="value">
+                                    <div class="row row-space">
+                                        <div class="col-2">
+                                            <div class="input-group-desc">
+                                                <input id="txtPlaca" class="input--style-5" type="text" name="Placa">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+                            <div>
+                                <button id="btnGuardar" class="btn btn--radius-2 btn--red" type="submit">Guardar</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>*@
-
-                        <div class="form-row m-b-55">
-                            <div class="name">Tiempos Iniciales</div>
-                            <div class="value">
-                                <div class="row row-refine">
-                                    <div class="col-6">
-                                        <div class="input-group-desc">
-                                            <input id="txtFechaInicio" class="input--style-5" type="date" name="txtFechaInicio">
-                                            <label class="label--desc">Fecha Inicio</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="input-group-desc">
-                                            <input class="input--style-5" type="time" name="txtHoraInicio">
-                                            <label class="label--desc">Hora Inicio</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row m-b-55">
-                            <div class="name">Tiempos Finales</div>
-                            <div class="value">
-                                <div class="row row-refine">
-                                    <div class="col-6">
-                                        <div class="input-group-desc">
-                                            <input id="txtFechaFinal" class="input--style-5" type="date" name="txtFechaEntrega">
-                                            <label class="label--desc">Fecha Entrega</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="input-group-desc">
-                                            <input class="input--style-5" type="time" name="txtHoraEntrega">
-                                            <label class="label--desc">Hora Entrega</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row m-b-55">
-                            <div class="name">Extras</div>
-                            <div class="value">
-                                <div class="row row-refine">
-                                    <div class="col-4">
-                                        <div class="input-group-desc">
-                                            @*<input id="txtSurfRacks" class="input--style-5" type="text" name="SurfRacks">*@
-                                            <select id="txtSurfRacks" class="select--style-5" name="SurfRacks">
-                                                <option value=""></option>
-                                                <option>Si</option>
-                                                <option>No</option>
-                                            </select>
-                                            <label class="label--desc">Surf Racks</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="input-group-desc">
-                                            <input id="txtMontoSurfRacks" disabled class="input--style-5" type="text" name="MontoSurfRacks">
-                                            <label class="label--desc">Monto SurfRacks</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="input-group-desc">
-                                            @*<input id="txtCajon" class="input--style-5" type="text" name="Cajon">*@
-                                            <select id="txtCajon" class="select--style-5" name="Cajon">
-                                                <option value=""></option>
-                                                <option>Si</option>
-                                                <option>No</option>
-                                            </select>
-                                            <label class="label--desc">Cajon</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        @*<div class="form-row m-b-55">
-            <div class="name">Cajon</div>
-            <div class="value">
-                <div class="row row-space">
-                    <div class="col-2">
-                        <div class="input-group-desc">
-                            <input id="chkCajon" class="input--style-5" type="checkbox" name="Cajon">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-
-                        <div class="form-row m-b-55">
-                            <div class="name">Montos</div>
-                            <div class="value">
-                                <div class="row row-refine">
-                                    <div class="col-6">
-                                        <div class="input-group-desc">
-                                            <input id="txtMontoDia" class="input--style-5" type="text" name="MontoDia">
-                                            <label class="label--desc">Monto Día</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="input-group-desc">
-                                            <input id="txtMontoTotal" class="input--style-5" type="text" name="MontoTotal">
-                                            <label class="label--desc">Monto Total</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        @*<div class="form-row m-b-55">
-            <div class="name">Monto x Día</div>
-            <div class="value">
-                <div class="row row-space">
-                    <div class="col-2">
-                        <div class="input-group-desc">
-                            <input id="txtMontoDia" class="input--style-5" type="text" name="MontoDia">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-
-                        @*<div class="form-row m-b-55">
-            <div class="name">Monto Total</div>
-            <div class="value">
-                <div class="row row-space">
-                    <div class="col-2">
-                        <div class="input-group-desc">
-                            <input id="txtMontoTotal" class="input--style-5" type="text" name="MontoDia">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-
-                        <div class="form-row m-b-55">
-                            <div class="name">Depósitos</div>
-                            <div class="value">
-                                <div class="row row-refine">
-                                    <div class="col-4">
-                                        <div class="input-group-desc">
-                                            <input id="txtNumeroDeposito" class="input--style-5" type="text" name="NumeroDeposito">
-                                            <label class="label--desc">Número Depósito</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="input-group-desc">
-                                            <input id="txtMontoDeposito" class="input--style-5" type="text" name="MontoDepósito">
-                                            <label class="label--desc">Monto Depósito</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="input-group-desc">
-                                            <input id="txtSaldoActual" class="input--style-5" type="text" name="SaldoActual">
-                                            <label class="label--desc">Saldo Actual</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        @*<div class="form-row m-b-55">
-            <div class="name">Depósito</div>
-            <div class="value">
-                <div class="row row-space">
-                    <div class="col-2">
-                        <div class="input-group-desc">
-                            <input id="txtDeposito" class="input--style-5" type="text" name="Deposito">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-
-                        @*<div class="form-row m-b-55">
-            <div class="name">Saldo Actual</div>
-            <div class="value">
-                <div class="row row-space">
-                    <div class="col-2">
-                        <div class="input-group-desc">
-                            <input id="txtSaldoActual" class="input--style-5" type="text" name="SaldoActual">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-
-
-                        <div class="form-row m-b-55">
-                            <div class="name">Datos Ususaios</div>
-                            <div class="value">
-                                <div class="row row-refine">
-                                    <div class="col-12">
-                                        <div class="input-group-desc">
-                                            <input id="txtUsuario" class="input--style-5" type="text" name="Usuario">
-                                            <label class="label--desc">Reservado por</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        @*<div class="form-row m-b-55">
-            <div class="name">Reservado Por</div>
-            <div class="value">
-                <div class="row row-space">
-                    <div class="col-2">
-                        <div class="input-group-desc">
-                            <input id="txtUsuario" class="input--style-5" type="text" name="Usuario">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-
-                        <div class="form-row m-b-55">
-                            <div class="name">Datos Proveedor</div>
-                            <div class="value">
-                                <div class="row row-refine">
-                                    <div class="col-3">
-                                        <div class="input-group-desc">
-                                            @*<input id="txtEfectivo" class="input--style-5" type="text" name="Efectivo">*@
-                                            <select id="txtEfectivo" class="select--style-5" name="Efectivo">
-                                                <option value=""></option>
-                                                <option>Si</option>
-                                                <option>No</option>
-                                            </select>
-                                            <label class="label--desc">Efectivo</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="input-group-desc">
-                                            @*<input id="txtCuentaCobrar" class="input--style-5" type="text" name="CuentaCobrar">*@
-                                            <select id="txtCuentaCobrar" class="select--style-5" name="CuentaCobrar">
-                                                <option value=""></option>
-                                                <option>Si</option>
-                                                <option>No</option>
-                                            </select>
-                                            <label class="label--desc">Cuenta por Cobrar</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="input-group-desc">
-                                            <select id="txtProveedor" disabled class="select--style-5">
-                                                <option value="">Seleccione uno...</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="input-group-desc">
-                                            <input id="txtPlaca" class="input--style-5" type="text" name="Placa">
-                                            <label class="label--desc">Número de Placa</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        @*<div class="form-row m-b-55">
-                            <div class="name">Efectivo</div>
-                            <div class="value">
-                                <div class="row row-space">
-                                    <div class="col-2">
-                                        <div class="input-group-desc">
-                                            <input id="chkEfectivo" class="input--style-5" type="checkbox" name="Efectivo">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row m-b-55">
-                            <div class="name">CxC</div>
-                            <div class="value">
-                                <div class="row row-space">
-                                    <div class="col-2">
-                                        <div class="input-group-desc">
-                                            <input id="chkCxC" class="input--style-5" type="checkbox" name="CuentaCobrar">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row m-b-55">
-                            <div class="name">Placa</div>
-                            <div class="value">
-                                <div class="row row-space">
-                                    <div class="col-2">
-                                        <div class="input-group-desc">
-                                            <input id="txtPlaca" class="input--style-5" type="text" name="Placa">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>*@
-                        <div>
-                            <button id="btnGuardar" class="btn btn--radius-2 btn--red" type="submit">Guardar</button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Jquery JS-->
-    <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/jquery/jquery.min.js"></script>
-    <!-- Vendor JS-->
-    <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/select2/select2.min.js"></script>
-    <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/datepicker/moment.min.js"></script>
-    <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/datepicker/daterangepicker.js"></script>
+        <!-- Jquery JS-->
+        <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/jquery/jquery.min.js"></script>
+        <!-- Vendor JS-->
+        <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/select2/select2.min.js"></script>
+        <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/datepicker/moment.min.js"></script>
+        <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/datepicker/daterangepicker.js"></script>
 
-    <!-- Main JS-->
-   
-    <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/js/global.js"></script>
-    <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Reservaciones.js"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+        <!-- Main JS-->
+
+        <script src="~/Content/Plugins/ajaxloader/ajaxloader.js"></script>
+        <script src="~/Areas/Seguridad/Content/js/src/app.js"></script>
+
+        <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/js/global.js"></script>
+        <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Reservaciones.js"></script>
+    </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 
 <!-- end document-->

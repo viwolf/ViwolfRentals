@@ -7,7 +7,8 @@
     var txtCajon = $("#txtCajon");
     var txtMontoDia = $("#txtMontoDia");
     var txtMontoTotal = $("#txtMontoTotal");
-    var txtDeposito = $("#txtDeposito");
+    var txtNumeroDeposito = $("#txtNumeroDeposito");
+    var txtMontoDeposito = $("#txtMontoDeposito");
     var txtSaldoActual = $("#txtSaldoActual");
     var txtUsuario = $("#txtUsuario");
     var txtEfectivo = $("#txtEfectivo");
@@ -15,13 +16,16 @@
     var txtProveedor = $("#txtProveedor");
     var txtPlaca = $("#txtPlaca");
     var txtFechaInicio = $("#txtFechaInicio");
-    var txtFechaFinal = ("#txtFechaFinal");
+    var txtHoraInicio = $("#txtHoraInicio")
+    var txtFechaFinal = $("#txtFechaFinal");
+    var txtHoraEntrega = $("#txtHoraEntrega")
     var btnGuardar = $("#btnGuardar");
 
     var Init = function () {
+       
         txtSurfRacks.change(cambiarEstadoSurfRacks);
         txtCuentaCobrar.change(cambiarEstadoProveedor);
-        debugger;
+        
         cargarSelect2(txtProveedor,
             {
                 PlaceHolder: "Seleccione Proveedor",
@@ -40,7 +44,7 @@
     }
 
     var cargarSelect2 = function (elemento, configuracion) {
-        debugger;
+        
         $.ajax({
             type: "POST",
             url: "Proveedores/ListarProveedores",
@@ -48,10 +52,10 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (msg) {
-                debugger;
+                
                 //var datos = $.parseJSON(msg.Data);
                 $(msg.Data).each(function () {
-                    debugger;
+                    
                     var option = $(document.createElement('option'));
 
                     option.text(this.NombreProveedor);
@@ -80,7 +84,7 @@
         //    placeholder: configuracion.PlaceHolder,
         //    multiple: configuracion.Multiple,
         //    query: function (query) {
-        //        debugger;
+        //        
         //        self = this;
         //        var key = query.term;
         //        var cachedData = self.cacheDataSource[key];
@@ -90,7 +94,7 @@
         //            });
         //            return;
         //        } else {
-        //            debugger;
+        //            
         //            $.ajax({
         //                url: configuracion.Url,
         //                data: configuracion.Data,
@@ -134,7 +138,7 @@
   
 
     function cambiarEstadoSurfRacks() {
-        debugger;
+        
         if (txtSurfRacks.val() == 'Si')
             document.getElementById("txtMontoSurfRacks").disabled = false;
         else
@@ -144,7 +148,7 @@
     };
 
     function cambiarEstadoProveedor() {
-        debugger;
+        
         if (txtCuentaCobrar.val() == 'Si')
             document.getElementById("txtProveedor").disabled = false;
         else
@@ -153,33 +157,70 @@
         document.getElementById("txtProveedor").value = '';
     };
 
-    
 
     var fnGuardarReservacion = function () {
+        debugger;
 
+        var retorno = false;
         var oData = {
             "UsuarioCreacion": txtUsuario.val(),
             "NombreCliente": txtNombreCliente.val(),
-            "LugarEntrega": txtHospedaje,
+            "LugarEntrega": txtHospedaje.val(),
             "EntregaHotel": txtEntregaHotel.val(),
-            //"FechaInicio":,
-            //"HoraInicio ",
-            //"FechaEntrega",
-            //"HoraEntrega ",
+            "FechaInicio": txtFechaInicio.val(),
+            "HoraInicio ": txtHoraInicio.val(),
+            "FechaEntrega": txtFechaFinal.val(),
+            "HoraEntrega": txtHoraEntrega.val,
             "SurfRacks": txtSurfRacks.val(),
             "MontoSurfRacks": txtMontoSurfRacks.val(),
             "Cajon": txtCajon.val(),
             "MontoDia": txtMontoDia.val(),
             "MontoTotal": txtMontoTotal.val(),
-            //"NumeroDeposito": ,
-            //"MontoDeposito",
+            "NumeroDeposito": txtNumeroDeposito.val(),
+            "MontoDeposito": txtMontoDeposito.val(),
+           // "SaldoActual": txtSaldoActual.val(),
             "Efectivo": txtEfectivo.val(),
-            "CuentaPorCobrar": txtCxC.val(),
+            "CuentaPorCobrar": txtCuentaCobrar.val(),
             //"ProveedorID",
             //"IDUsuario",
             //"IDVehiculo"
         }
-    }
+
+        try {
+            var oUrl = 'Reservaciones/GuardarReservacion';
+            var oProcessMessage = 'Guardando Reservacion';
+
+            var success = function (result) {
+                debugger;
+                if (result >= '1') {
+
+
+
+
+
+                    //var mensaje = 'Transaccion Anulada. \n' +
+                    //                            ' Tarjeta: ' + obj.NumeroTarjeta + '\n \n' +
+                    //                            ' Cliente: ' + obj.TarjetaHabiente + '\n' + //result.Data[0].Enganche + '\n' +
+                    //                            ' Autorización: ' + obj.NumeroAutorizacionAnulacion + '\n' +
+                    //                            ' Referencia: ' + obj.Ref + '\n' +
+                    //                            ' Monto: ' + countryInfo.getMonto(obj.Monto) + '\n \n'
+
+                    //msjApp.fnShowSuccessMessage(mensaje);
+                    retorno = true
+                }
+                //else {
+                //    retorno = false;
+                //}
+                return retorno;
+            };
+            app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
+        } catch (ex) {
+            //utils.fnShowErrorMessage(ex.message);
+            retorno = false;
+        }
+        //return retorno;
+    };
+
 
     $(function () {
 

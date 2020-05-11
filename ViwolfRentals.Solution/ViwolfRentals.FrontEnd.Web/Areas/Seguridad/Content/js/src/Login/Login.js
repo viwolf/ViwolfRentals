@@ -10,7 +10,7 @@ var Login = function () {
     var check = true;
 
     var fnInit = function () {
-        debugger;
+        
         btnLogin.click(fnLogin);
 
         $('.validate-form').on('submit', function () {
@@ -105,7 +105,9 @@ var Login = function () {
 
                 var success = function (result) {
 
-                    debugger;
+                    
+                    //result.Data[0].IdUsuario
+
                     if (result.Data.length > 0)
                         window.location.href = "http://localhost/ViwolfRentals.FrontEnd.Web/Viwolf";
                     else

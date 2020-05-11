@@ -24,6 +24,8 @@ namespace FrontEnd.Controllers.Seguridad
             ILoginBL BlLogin = new LoginBL();
             var result = BlLogin.ListarUsuarioLogin(user);
 
+            TempData.Add("Usuario", result.First().CodigoUsuario);
+
             var jsonObjet = (from ta in result
                              select new
                              {
@@ -32,6 +34,7 @@ namespace FrontEnd.Controllers.Seguridad
                                  ta.Password,
                                  ta.Activo
                              }).AsEnumerable();
+
             return Json(new
             {
                 Data = jsonObjet,
