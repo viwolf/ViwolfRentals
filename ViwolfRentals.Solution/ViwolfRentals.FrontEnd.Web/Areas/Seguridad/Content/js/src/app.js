@@ -1345,7 +1345,7 @@ var app = function () {
 
             if (postThenCall && postThenCall != null)
                 debugger;
-                postThenCall();
+               // postThenCall();
         }).fail(function (ex) {
 
             app.fnShowHideDialog();

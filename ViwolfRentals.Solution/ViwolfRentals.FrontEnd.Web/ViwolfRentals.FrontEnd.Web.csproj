@@ -229,6 +229,7 @@
     <Content Include="Areas\Viwolf\Content\images\engine1\wowslider.js" />
     <Content Include="Areas\Viwolf\Content\images\engine1\wowslider.mod.js" />
     <Content Include="Areas\Viwolf\Content\images\engine1\ws-ctrl-slim.svg" />
+    <Content Include="Areas\Viwolf\Content\js\src\msjApp.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\css\main.css" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\css\main.min.css" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\js\global.js" />
@@ -282,6 +283,12 @@
     <Content Include="Content\Plugins\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Plugins\bootstrap\js\bootstrap.js" />
     <Content Include="Content\Plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Plugins\ReModal\messageModal.css" />
+    <Content Include="Content\Plugins\ReModal\messageModal.js" />
+    <Content Include="Content\Plugins\ReModal\remodal-default-theme.css" />
+    <Content Include="Content\Plugins\ReModal\remodal.css" />
+    <Content Include="Content\Plugins\ReModal\reModal.js" />
+    <Content Include="Content\Plugins\ReModal\remodal.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

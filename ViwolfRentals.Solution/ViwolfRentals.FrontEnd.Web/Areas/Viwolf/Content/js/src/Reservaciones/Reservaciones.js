@@ -92,6 +92,8 @@
                 }
             });
 
+        txtHoraInicio.change(function () { debugger; })
+
         btnGuardar.click(fnGuardarReservacion);
     }
 
@@ -133,10 +135,7 @@
             startTime: '5:00',
             //defaultTime: '11',
             scrollbar: true,
-            onSelect: function (select) {
-                
-                timeIn = select;
-            }
+           
         });
 
         txtHoraEntrega.timepicker({
@@ -147,10 +146,7 @@
             startTime: '5:00',
             //defaultTime: '11',
             scrollbar: true,
-            onSelect: function (select) {
-                
-                timeOut = select;
-            }
+           
         });
     }
 
@@ -285,10 +281,12 @@
                 
                 if (result.Data.length > 0) {
                     if (result.Data[0].t_Departamentos.NombreDepartamento == "Bodega") {
-                        alert("Se enlazó el vehiculo a la reservacion con exito");
+                        debugger;
+                        msjApp.fnShowSuccessMessage('Se enlazó el vehiculo a la reservacion con exito');
                     }
                     else {
-                        alert("El vehiculo " + txtPlaca.val() + " no está disponible para su reservación");
+                        msjApp.fnShowErrorMessage("El vehiculo " + txtPlaca.val() + " no está disponible para su reservación")
+                        //alert();
                     }
                 }
                 else {
