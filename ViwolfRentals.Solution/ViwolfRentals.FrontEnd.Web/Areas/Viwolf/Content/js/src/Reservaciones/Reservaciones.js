@@ -20,8 +20,10 @@
     var txtFechaFinal = $("#txtFechaFinal");
     var txtHoraEntrega = $("#txtHoraEntrega")
     var btnGuardar = $("#btnGuardar");
+    var cantidadDias = 0;
     var timeIn = null;
     var timeOut = null;
+
 
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -29,43 +31,48 @@
         minimumFractionDigits: 2
     })
 
+
+    var calcularTarifaTotal = function () {
+        
+        var montoDia = txtMontoDia.val() == '' ? 0 : parseFloat(txtMontoDia.val().replace("$", "")); // parseFloat(txtMontoDia.val());
+        var montoTotal = ((montoDia * cantidadDias) + parseFloat(txtMontoSurfRacks.val().replace("$", "")));
+        txtMontoDia.val(formatter.format(montoDia));
+        txtMontoTotal.val(formatter.format(montoTotal));
+    };
+
     var Init = function () {
-        debugger;
-        //var dateToday = new Date();
-        //var array = ["05/05/2017", "06/05/2017"]
-        //$(function () {
-        //    $("#txtFechaInicio").datepicker({
-        //        dateFormat: 'dd/mm/yy',
-        //        beforeShowDay: function (date) {
-        //            var string = jQuery.datepicker.formatDate('dd/mm/yy', date);
-        //            var day = date.getDay();
-        //            return [(day != 1 & day != 2) & array.indexOf(string) == -1];
-        //        }, minDate: dateToday
-        //    });
-        //});
+
+        //var startTime = document.getElementById("txtHoraInicio");
+
+        //startTime.addEventListener("input", function () {
+        //    
+        //    timeIn = startTime.value;
+        //}, false);
+
+
+        //var endTime = document.getElementById("txtHoraEntrega");
+        //endTime.addEventListener("input", function () {
+        //    
+        //    timeOut = endTime.value;
+        //}, false);
+
+
 
         fnCargaFechas();
+
+        txtMontoSurfRacks.blur(function () {
+            txtMontoSurfRacks.val(formatter.format(txtMontoSurfRacks.val()));
+            calcularTarifaTotal();
+        });
       
-        var startTime = document.getElementById("txtHoraInicio");
-
-        startTime.addEventListener("input", function () {
-          
-            timeIn = startTime.value;
-        }, false);
-
-
-        var endTime = document.getElementById("txtHoraEntrega");
-        endTime.addEventListener("input", function () {
-          
-            timeOut = endTime.value;
-        }, false);
-
         txtMontoDia.blur(function () {
-            txtMontoDia.val(formatter.format(txtMontoDia.val()))
+            
+            calcularTarifaTotal();
         })
 
         txtPlaca.blur(function () {
-            fnValidarVehiculo();
+            if (txtPlaca.val() != "")
+                fnValidarVehiculo();
         })
 
         txtSurfRacks.change(cambiarEstadoSurfRacks);
@@ -95,27 +102,56 @@
 
         txtFechaInicio.datepicker({
             autoclose: true,
-            format: "dd/mm/yyyy",
+            format: "mm/dd/yyyy",
             onSelect: function (selected) {
                 txtFechaFinal.datepicker("option", "minDate", selected);
+                cantidadDias = ((moment(txtFechaFinal.val()).diff(selected, 'days')) + 1);
+                calcularTarifaTotal();
             }, minDate: '-500D'
             , maxDate: '+500D'
         });
 
         txtFechaFinal.datepicker({
             autoclose: true,
-            format: "dd/mm/yyyy",
+            format: "mm/dd/yyyy",
             onSelect: function (selected) {
                 txtFechaInicio.datepicker("option", "maxDate", selected);
+                cantidadDias = ((moment(selected).diff(txtFechaInicio.val(), 'days')) + 1);
+                calcularTarifaTotal();
             },
             maxDate: '+500D'
         });
 
-        //$fechaInicialListadodevouchers.datepicker('setDate', new Date());
-        //$fechaFinalListadodevouchers.datepicker('setDate', new Date());
-        //$fechaInicialListadodevouchers.datepicker('option', 'maxDate', new Date());
-        //$fechaFinalListadodevouchers.datepicker('option', 'minDate', new Date());
+        txtFechaInicio.datepicker('setDate', new Date());
+        txtFechaFinal.datepicker('setDate', new Date());
 
+        txtHoraInicio.timepicker({
+            timeFormat: 'h:mm p',
+            interval: 60,
+            minTime: '5',
+            maxTime: '11:00pm',
+            startTime: '5:00',
+            //defaultTime: '11',
+            scrollbar: true,
+            onSelect: function (select) {
+                
+                timeIn = select;
+            }
+        });
+
+        txtHoraEntrega.timepicker({
+            timeFormat: 'h:mm p',
+            interval: 60,
+            minTime: '5',
+            maxTime: '11:00pm',
+            startTime: '5:00',
+            //defaultTime: '11',
+            scrollbar: true,
+            onSelect: function (select) {
+                
+                timeOut = select;
+            }
+        });
     }
 
 
@@ -221,7 +257,8 @@
         else
             document.getElementById("txtMontoSurfRacks").disabled = true;
 
-        document.getElementById("txtMontoSurfRacks").value  = '';
+        document.getElementById("txtMontoSurfRacks").value = formatter.format(parseFloat(0));
+        calcularTarifaTotal();
     };
 
     function cambiarEstadoProveedor() {
@@ -245,7 +282,7 @@
             var oProcessMessage = 'Enlazando vehiculo';
 
             var success = function (result) {
-                debugger;
+                
                 if (result.Data.length > 0) {
                     if (result.Data[0].t_Departamentos.NombreDepartamento == "Bodega") {
                         alert("Se enlazó el vehiculo a la reservacion con exito");
@@ -269,10 +306,25 @@
 
 
     var fnGuardarReservacion = function () {
-      
+        debugger;
 
         var proveedor = document.getElementById("txtProveedor");
         var IdProveedor = proveedor.options[proveedor.selectedIndex].value;
+
+         var startTime = document.getElementById("txtHoraInicio");
+
+        startTime.addEventListener("input", function () {
+            
+            timeIn = startTime.value;
+        }, false);
+
+
+        var endTime = document.getElementById("txtHoraEntrega");
+        endTime.addEventListener("input", function () {
+            
+            timeOut = endTime.value;
+        }, false);
+       
 
       
         var oData = {
@@ -281,9 +333,9 @@
             "LugarEntrega": txtHospedaje.val(),
             "EntregaHotel": txtEntregaHotel.val() == 'Si' ? true : false,
             "FechaInicio": txtFechaInicio.val(),
-            "HoraInicio": timeIn,
+            "HoraInicio": txtHoraInicio.val(),
             "FechaEntrega": txtFechaFinal.val(),
-            "HoraEntrega": timeOut,
+            "HoraEntrega": txtHoraEntrega.val(),
             "SurfRacks": txtSurfRacks.val() == 'Si' ? true : false,
             "MontoSurfRacks": txtMontoSurfRacks.val(),
             "Cajon": txtCajon.val() == 'Si' ? true : false,
