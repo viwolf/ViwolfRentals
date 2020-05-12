@@ -71,36 +71,28 @@
                             </div>
 
                             <div class="form-row m-b-55">
-                                <div class="name">Tiempos Iniciales</div>
+                                <div class="name">Tiempos</div>
                                 <div class="value">
                                     <div class="row row-refine">
-                                        <div class="col-6">
+                                        <div class="col-3">
                                             <div class="input-group-desc">
-                                                <input id="txtFechaInicio" class="input--style-5" type="date" name="txtFechaInicio">
+                                                <input id="txtFechaInicio" class="input--style-5" type="text" name="txtFechaInicio">
                                                 <label class="label--desc">Fecha Inicio</label>
                                             </div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-3">
                                             <div class="input-group-desc">
                                                 <input id="txtHoraInicio" class="input--style-5" type="time" name="txtHoraInicio">
                                                 <label class="label--desc">Hora Inicio</label>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row m-b-55">
-                                <div class="name">Tiempos Finales</div>
-                                <div class="value">
-                                    <div class="row row-refine">
-                                        <div class="col-6">
+                                        <div class="col-3">
                                             <div class="input-group-desc">
-                                                <input id="txtFechaFinal" class="input--style-5" type="date" name="txtFechaFinal">
+                                                <input id="txtFechaFinal" class="input--style-5" type="text" name="txtFechaFinal">
                                                 <label class="label--desc">Fecha Entrega</label>
                                             </div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-3">
                                             <div class="input-group-desc">
                                                 <input id="txtHoraEntrega" class="input--style-5" type="time" name="txtHoraEntrega">
                                                 <label class="label--desc">Hora Entrega</label>
@@ -269,10 +261,14 @@
             </div>
         </div>
 
-      
-
         <!-- Jquery JS-->
-        <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/jquery/jquery.min.js"></script>
+        @*<script src="~/Areas/Seguridad/Content/vendor/jquery/jquery-1.11.3.js"></script>
+        <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/jquery/jquery.min.js"></script>*@
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
         <!-- Vendor JS-->
         <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/select2/select2.min.js"></script>
         <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/datepicker/moment.min.js"></script>

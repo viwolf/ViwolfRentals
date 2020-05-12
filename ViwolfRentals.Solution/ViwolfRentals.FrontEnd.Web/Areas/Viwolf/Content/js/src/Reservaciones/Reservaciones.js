@@ -30,7 +30,21 @@
     })
 
     var Init = function () {
+        debugger;
+        //var dateToday = new Date();
+        //var array = ["05/05/2017", "06/05/2017"]
+        //$(function () {
+        //    $("#txtFechaInicio").datepicker({
+        //        dateFormat: 'dd/mm/yy',
+        //        beforeShowDay: function (date) {
+        //            var string = jQuery.datepicker.formatDate('dd/mm/yy', date);
+        //            var day = date.getDay();
+        //            return [(day != 1 & day != 2) & array.indexOf(string) == -1];
+        //        }, minDate: dateToday
+        //    });
+        //});
 
+        fnCargaFechas();
       
         var startTime = document.getElementById("txtHoraInicio");
 
@@ -73,6 +87,38 @@
 
         btnGuardar.click(fnGuardarReservacion);
     }
+
+    function fnCargaFechas() {
+
+        txtFechaInicio.datepicker("destroy");
+        txtFechaFinal.datepicker("destroy");
+
+        txtFechaInicio.datepicker({
+            autoclose: true,
+            format: "dd/mm/yyyy",
+            onSelect: function (selected) {
+                txtFechaFinal.datepicker("option", "minDate", selected);
+            }, minDate: '-500D'
+            , maxDate: '+500D'
+        });
+
+        txtFechaFinal.datepicker({
+            autoclose: true,
+            format: "dd/mm/yyyy",
+            onSelect: function (selected) {
+                txtFechaInicio.datepicker("option", "maxDate", selected);
+            },
+            maxDate: '+500D'
+        });
+
+        //$fechaInicialListadodevouchers.datepicker('setDate', new Date());
+        //$fechaFinalListadodevouchers.datepicker('setDate', new Date());
+        //$fechaInicialListadodevouchers.datepicker('option', 'maxDate', new Date());
+        //$fechaFinalListadodevouchers.datepicker('option', 'minDate', new Date());
+
+    }
+
+
 
     var cargarSelect2 = function (elemento, configuracion) {
         
