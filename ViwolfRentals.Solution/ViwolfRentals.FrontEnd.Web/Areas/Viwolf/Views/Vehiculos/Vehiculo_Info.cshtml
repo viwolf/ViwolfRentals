@@ -1,0 +1,154 @@
+﻿<!-- Form Modal -->
+<div id="popupInformacionVehiculo" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="lbl_title_create_carts"></h4>
+            </div>
+            <div class="modal-body modal-bodyEdit modal-scroll">
+                <section id="content" class="animated fadeInUp">
+                    <div class="row">
+                        <article class="col col-12 col-md-12 col-sm-12 sortable-grid ui-sortable">
+                            <div class="jarviswidget jarviswidget-color-blueDark jarviswidget-sortable" id="areaeditarynueva" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false" role="widget">
+                                <div role="content">
+                                    <div class="widget-body">
+                                        <form id="formInformacionMoto" name="formInformacionMoto" class="smart-form">
+                                            <fieldset>
+                                                <div class="row">
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Placa</label>
+                                                        <label class="input">
+                                                            <input type="text" id="idVehiculoInformacion" name="idVehiculoInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Marca</label>
+                                                        <label class="input">
+                                                            <input type="text" id="marcaInformacion" name="marcaInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Modelo</label>
+                                                        <label class="input">
+                                                            <input type="text" id="modeloInformacion" name="modeloInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Año</label>
+                                                        <label class="input">
+                                                            <input type="text" id="annoInformacion" name="annoInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                <div class="row">
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Fecha Compra</label>
+                                                        <label class="input">
+                                                            <input type="text" id="fechaCompraInformacion" name="fechaCompraInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Chasis</label>
+                                                        <label class="input">
+                                                            <input type="text" id="chasisInformacion" name="chasisInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Motor</label>
+                                                        <label class="input">
+                                                            <input type="text" id="motorInformacion" name="motorInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Año de Vencimiento RTV </label>
+                                                        <label class="input">
+                                                            <input type="text" id="rtvVencimientoAnnoInformacion" name="rtvVencimientoAnnoInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Mes de Vencimiento RTV</label>
+                                                        <label class="input">
+                                                            <input type="text" id="rtvVencimientoMesInformacion" name="rtvVencimientoMesInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Marchamo Próximo</label>
+                                                        <label class="input">
+                                                            <input type="text" id="marchamoProximoInformacion" name="marchamoProximoInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Rtv Sticker</label>
+                                                        <label class="input">
+                                                            <input type="text" id="rtvStickerInformacion" name="rtvStickerInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Rtv Papel</label>
+                                                        <label class="input">
+                                                            <input type="text" id="rtvPapelInformacion" name="rtvPapelInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                </div>
+      
+                                                <div class="row">
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Marchamo Sticker</label>
+                                                        <label class="input">
+                                                            <input type="text" id="marchamoStickerInformacion" name="marchamoStickerInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Marchamo Papel</label>
+                                                        <label class="input">
+                                                            <input type="text" id="marchamoPapelInformacion" name="marchamoPapelInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Sticker Placa</label>
+                                                        <label class="input">
+                                                            <input type="text" id="stickerPlacaInformacion" name="stickerPlacaInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Título Propiedad</label>
+                                                        <label class="input">
+                                                            <input type="text" id="tituloPropiedadInformacion" name="tituloPropiedadInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Multas</label>
+                                                        <label class="input">
+                                                            <input type="text" id="multasInformacion" name="multasInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col col-3 col-md-3">
+                                                        <label for="asignarcliente" class="label">Categoria Vehiculo</label>
+                                                        <label class="input">
+                                                            <input type="text" id="categoriaVehiculoInformacion" name="categoriaVehiculoInformacion" disabled>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Areas/Viwolf/Content/js/src/Vehiculos/InformacionVehiculo.js"></script>
+<script src="~/Content/js/src/utils.js"></script>

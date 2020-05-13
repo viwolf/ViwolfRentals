@@ -18,6 +18,20 @@ var utils = function () {
     var keyCodeEnter = 13;
     var configuracionTablas = null;
 
+    const cformatterColon = new Intl.NumberFormat('es-US', {
+        style: 'currency',
+        currency: 'CRC',
+        minimumFractionDigits: 2
+    })
+
+    const cformatterDolar = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+    })
+
+
+
     var fnImports = function (path) {
 
         document.write('<scr' + 'ipt type="text/javascript" src="' + path + '" ></scr' + 'ipt>');
@@ -63,18 +77,18 @@ var utils = function () {
 
 
     $(function () {
-        switchTheme();
-        navToggleRight();
-        navToggleLeft();
-        navToggleSub();
-        profileToggle();
-        widgetToggle();
-        widgetClose();
-        widgetFlip();
-        tooltips();
-        initMessage();
-        setValidationMessages();
-        setValidatorAddMethod();
+        //switchTheme();
+        //navToggleRight();
+        //navToggleLeft();
+        //navToggleSub();
+        //profileToggle();
+        //widgetToggle();
+        //widgetClose();
+        //widgetFlip();
+        //tooltips();
+        //initMessage();
+        //setValidationMessages();
+        //setValidatorAddMethod();
     });
 
 
@@ -1663,81 +1677,83 @@ var utils = function () {
 
 
     return {
-        FormaFechaServer: fnFormaFechaServer,
-        aplicarZonaActivaOne: fnAplicarZonaActivaOne,
-        aplicarZonaActiva: fnAplicarZonaActiva,
-        fnIsEmptytable: fnIsEmptytable,
-        fnInitDatatables: fnInitDatatables,
-        fnShowErrorMessage: showErrorMessage,
-        fnFormatNumber: formatNumber,
-        fnObtenerSimboloMonetario: obtenerSimboloMonetario,
-        fnShowSuccessMessage: showSuccessMessage,
-        fnShowInfoMessage: showInfoMessage,
-        fnShowWaitingDialog: showWaitingDialog,
-        fnShowHideDialog: showHideDialog,
-        fnExecuteAsyncPostBack: fnExecute,
-        fnExecuteWithResult: fnExecuteWithResult,
-        fnHideLockedScreen: hideLockedScreen,
-        fnDoLogOff: logOffNavigate,
-        fnJsonArray: fnJsonArray,
-        GetParameterByName: GetParameterByName,
-        fnInitMessagesSelect2: setMessagesSelect2,
-        fnsetDatePicker: setDatePicker,
-        fnGetDate: getDate,
-        fnFechaJson: formatoFechaJson,
-        fnObtenerFecha: fechaActual,
-        fnOldBrowser: oldBrowser,
-        MostrarModal: mostrarModal,
-        fnCargarConfiguracion: cargarConfiguracion,
-        fnValidarEstadoControles: validarEstadoControles,
-        fnIdleSeconds: function () {
-            return idleSeconds;
-        },
-        fnSiteUrl: function () {
-            return site;
-        },
-        CargarColumnas: cargarColumnas,
-        ValidarCargarColumnas: validarCargarColumnas,
-        fnObtenerRow: fnObtenerRow,
-        crearElemento: fnCrearElemento,
-        loadLables: fnLoadLables,
-        capitalize: fnCapitalize,
-        fnApplyLeftAligment: fnApplyLeftAligment,
-        toDate: fnToDate,
-        fnFormatoPorcentaje: _formatoPorcentaje,
-        fnExecuteWithResultSync: fnExecuteWithResultSync,
-        fnObtenerCheckBoxBySku: fnObtenerCheckBoxBySku,
-        fnObtenerRowsBySku: fnObtenerRowsBySku,
-        fnGetAllIndex: fnGetAllIndex,
-        fnGetIndex: fnGetIndex,
-        EsCombo: EsCombo,
-        checkObject: fnCheckObject,
-        fnShowLockedScreen: showLockedScreen,
-        fnHideLockedScreen: hideLockedScreen,
-        fnInit: init,
-        isValidEmail: isValidEmail,
-        fnExecuteParallelWithResult: fnExecuteParallelWithResult,
-        onlyDecimal: FnOnlyDecimal,
-        onlyNumeral: FnOnlyNumeral,
-        showFilterTable: fnShowFilterTable,
-        hiddenFilterTable: fnHiddenFilterTable,
-        EstilosModalTarjeta: estilosModalTarjeta,
-        Format: fnFormat,
-        fnObtenerDescuento: ObtenerDescuento,
-        fnObtenerRetencion: ObtenerRetencion,
-        fnObtenerImpuesto: ObtenerImpuesto,
-        fnObtenerSubTotal: ObtenerSubTotal,
-        fnObtenerTotal: ObtenerTotal,
-        Imports: fnImports,
-        CreateGuid: fnCreateGuid,
-        ConfiguracionTablas: function (value) {
-            if (value && value != null)
-                configuracionTablas = value;
-            return configuracionTablas;
-        },
-        SoloLetras: fnSoloLetras,
-        fnValidaFecha: ValidaFecha,
-        fnValidaFechaInicialFinal: ValidaFechaInicialFinal
+        //FormaFechaServer: fnFormaFechaServer,
+        //aplicarZonaActivaOne: fnAplicarZonaActivaOne,
+        //aplicarZonaActiva: fnAplicarZonaActiva,
+        //fnIsEmptytable: fnIsEmptytable,
+        //fnInitDatatables: fnInitDatatables,
+        //fnShowErrorMessage: showErrorMessage,
+        //fnFormatNumber: formatNumber,
+        //fnObtenerSimboloMonetario: obtenerSimboloMonetario,
+        //fnShowSuccessMessage: showSuccessMessage,
+        //fnShowInfoMessage: showInfoMessage,
+        //fnShowWaitingDialog: showWaitingDialog,
+        //fnShowHideDialog: showHideDialog,
+        //fnExecuteAsyncPostBack: fnExecute,
+        //fnExecuteWithResult: fnExecuteWithResult,
+        //fnHideLockedScreen: hideLockedScreen,
+        //fnDoLogOff: logOffNavigate,
+        //fnJsonArray: fnJsonArray,
+        //GetParameterByName: GetParameterByName,
+        //fnInitMessagesSelect2: setMessagesSelect2,
+        //fnsetDatePicker: setDatePicker,
+        //fnGetDate: getDate,
+        //fnFechaJson: formatoFechaJson,
+        //fnObtenerFecha: fechaActual,
+        //fnOldBrowser: oldBrowser,
+        //MostrarModal: mostrarModal,
+        //fnCargarConfiguracion: cargarConfiguracion,
+        //fnValidarEstadoControles: validarEstadoControles,
+        //fnIdleSeconds: function () {
+        //    return idleSeconds;
+        //},
+        //fnSiteUrl: function () {
+        //    return site;
+        //},
+        //CargarColumnas: cargarColumnas,
+        //ValidarCargarColumnas: validarCargarColumnas,
+        //fnObtenerRow: fnObtenerRow,
+        //crearElemento: fnCrearElemento,
+        //loadLables: fnLoadLables,
+        //capitalize: fnCapitalize,
+        //fnApplyLeftAligment: fnApplyLeftAligment,
+        //toDate: fnToDate,
+        //fnFormatoPorcentaje: _formatoPorcentaje,
+        //fnExecuteWithResultSync: fnExecuteWithResultSync,
+        //fnObtenerCheckBoxBySku: fnObtenerCheckBoxBySku,
+        //fnObtenerRowsBySku: fnObtenerRowsBySku,
+        //fnGetAllIndex: fnGetAllIndex,
+        //fnGetIndex: fnGetIndex,
+        //EsCombo: EsCombo,
+        //checkObject: fnCheckObject,
+        //fnShowLockedScreen: showLockedScreen,
+        //fnHideLockedScreen: hideLockedScreen,
+        //fnInit: init,
+        //isValidEmail: isValidEmail,
+        //fnExecuteParallelWithResult: fnExecuteParallelWithResult,
+        //onlyDecimal: FnOnlyDecimal,
+        //onlyNumeral: FnOnlyNumeral,
+        //showFilterTable: fnShowFilterTable,
+        //hiddenFilterTable: fnHiddenFilterTable,
+        //EstilosModalTarjeta: estilosModalTarjeta,
+        //Format: fnFormat,
+        //fnObtenerDescuento: ObtenerDescuento,
+        //fnObtenerRetencion: ObtenerRetencion,
+        //fnObtenerImpuesto: ObtenerImpuesto,
+        //fnObtenerSubTotal: ObtenerSubTotal,
+        //fnObtenerTotal: ObtenerTotal,
+        //Imports: fnImports,
+        //CreateGuid: fnCreateGuid,
+        //ConfiguracionTablas: function (value) {
+        //    if (value && value != null)
+        //        configuracionTablas = value;
+        //    return configuracionTablas;
+        //},
+        //SoloLetras: fnSoloLetras,
+        //fnValidaFecha: ValidaFecha,
+        //fnValidaFechaInicialFinal: ValidaFechaInicialFinal,
+        formatterDolar: cformatterDolar,
+        formatterColon: cformatterColon,
     };
 
 }();

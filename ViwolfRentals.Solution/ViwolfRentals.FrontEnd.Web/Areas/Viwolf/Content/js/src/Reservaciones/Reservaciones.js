@@ -22,7 +22,9 @@ var reservaciones = function () {
     var txtFechaFinal = $("#txtFechaFinal");
     var txtHoraEntrega = $("#txtHoraEntrega")
     var btnGuardar = $("#btnGuardar");
-    var frmReservacion = $("#frmReservacion");
+    var btnInfo = $("#btnInfo");
+    var objVehiculo = null;
+
 
     var cantidadDias = 0;
   
@@ -30,19 +32,19 @@ var reservaciones = function () {
     var dateFin = new Date();
 
 
-    const formatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        minimumFractionDigits: 2
-    })
+    //const formatter = new Intl.NumberFormat('en-US', {
+    //    style: 'currency',
+    //    currency: 'USD',
+    //    minimumFractionDigits: 2
+    //})
 
 
     var calcularTarifaTotal = function () {
         
         var montoDia = txtMontoDia.val() == '' ? 0 : parseFloat(txtMontoDia.val().replace("$", "")); // parseFloat(txtMontoDia.val());
         var montoTotal = ((montoDia * (cantidadDias + 1)) + parseFloat(txtMontoSurfRacks.val().replace("$", "")));
-        txtMontoDia.val(formatter.format(montoDia));
-        txtMontoTotal.val(formatter.format(montoTotal));
+        txtMontoDia.val(utils.formatterDolar.format(montoDia));
+        txtMontoTotal.val(utils.formatterDolar.format(montoTotal));
     };
 
     var Init = function () {
@@ -52,14 +54,14 @@ var reservaciones = function () {
         txtMontoSurfRacks.bind('keypress', valideKey);
 
         txtMontoSurfRacks.blur(function () {
-            txtMontoSurfRacks.val(formatter.format(parseFloat(txtMontoSurfRacks.val().replace("$", ""))));
+            txtMontoSurfRacks.val(utils.formatterDolar.format(parseFloat(txtMontoSurfRacks.val().replace("$", ""))));
             calcularTarifaTotal();
         });
 
         txtMontoDia.bind('keypress', valideKey);
 
         txtMontoDia.blur(function () {
-            debugger;
+            
             if (txtMontoDia.val() < 50) {
                 alert("El monto no puede ser menor de $50");
                 txtMontoDia.text("");
@@ -70,22 +72,25 @@ var reservaciones = function () {
         })
 
         txtPlaca.blur(function () {
+            objVehiculo = null;
             if (txtPlaca.val() != "")
                 fnValidarVehiculo();
+            else
+                document.getElementById("btnInfo").disabled = true;
         })
 
         txtNumeroDeposito.bind('keypress', valideKey);
         txtNumeroDeposito.blur(function (){
-            txtMontoDeposito.val(formatter.format(0));
-            txtSaldoActual.val(formatter.format(0));
+            txtMontoDeposito.val(utils.formatterDolar.format(0));
+            txtSaldoActual.val(utils.formatterDolar.format(0));
         });
 
         txtMontoDeposito.bind('keypress', valideKey);
         txtMontoDeposito.blur(function () {
             if ((txtNumeroDeposito.val() != "") || (txtNumeroDeposito.val() != "0")) {
-                txtMontoDeposito.val(formatter.format(parseFloat(txtMontoDeposito.val().replace("$", ""))));
+                txtMontoDeposito.val(utils.formatterDolar.format(parseFloat(txtMontoDeposito.val().replace("$", ""))));
                 var saldo = txtMontoTotal.val() == "" ? 0  : parseFloat(txtMontoTotal.val().replace("$", "")) - parseFloat(txtMontoDeposito.val().replace("$", ""))
-                txtSaldoActual.val(formatter.format(saldo));
+                txtSaldoActual.val(utils.formatterDolar.format(saldo));
             }
 
             
@@ -108,9 +113,13 @@ var reservaciones = function () {
                 }
             });
 
-        txtHoraInicio.change(function () { debugger; })
+        txtHoraInicio.change(function () {  })
 
         btnGuardar.click(fnGuardarReservacion);
+
+        btnInfo.click(function () {
+            informacionVehiculo.AbrirModal(objVehiculo);
+        });
     }
 
     //Solo permite introducir numeros.
@@ -148,7 +157,7 @@ var reservaciones = function () {
             autoclose: true,
             format: "mm/dd/yyyy",
             onSelect: function (selected) {
-                debugger;
+                
                 dateFin = new Date(selected);
                 txtFechaInicio.datepicker("option", "maxDate", selected);
                 cantidadDias = ((moment(selected).diff(txtFechaInicio.val(), 'days')));
@@ -169,7 +178,7 @@ var reservaciones = function () {
             //defaultTime: '11',
             scrollbar: true,
             change: function (e) {
-                debugger;
+                
                 timeIn = e.getTime(); // txtHoraInicio.val();
             }
            
@@ -184,7 +193,7 @@ var reservaciones = function () {
             //defaultTime: '11',
             scrollbar: true,
             change: function (e) {
-                debugger;
+                
                 timeOut = e.getTime(); // txtHoraInicio.val();
             }
         });
@@ -201,8 +210,7 @@ var reservaciones = function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (msg) {
-                
-                //var datos = $.parseJSON(msg.Data);
+
                 $(msg.Data).each(function () {
                     
                     var option = $(document.createElement('option'));
@@ -213,74 +221,13 @@ var reservaciones = function () {
                     $("#txtProveedor").append(option);
                 });
 
-                //$(datos).each(function () {
-                //    var option = $(document.createElement('option'));
-
-                //    option.text(this.IdProveedor);
-                //    option.val(this.NombreProveedor);
-
-                //    $("#txtProveedor").append(option);
-                //});
             },
             error: function (msg) {
                 $("#dvAlerta > span").text("Error al llenar el combo");
             }
         });
 
-        //debugger
-        //elemento.select2({
-        //    cacheDataSource: [],
-        //    placeholder: configuracion.PlaceHolder,
-        //    multiple: configuracion.Multiple,
-        //    query: function (query) {
-        //        
-        //        self = this;
-        //        var key = query.term;
-        //        var cachedData = self.cacheDataSource[key];
-        //        if (cachedData) {
-        //            query.callback({
-        //                results: cachedData
-        //            });
-        //            return;
-        //        } else {
-        //            
-        //            $.ajax({
-        //                url: configuracion.Url,
-        //                data: configuracion.Data,
-        //                dataType: 'json',
-        //                type: 'POST',
-        //                success: function (serverData) {
-        //                    if (configuracion.SuccessFunction) {
-        //                        configuracion.SuccessFunction(serverData);
-        //                    }
-        //                    var data = {
-        //                        results: []
-        //                    };
-        //                    $.each(serverData.Data, function () {
-        //                        data.results.push({
-        //                            id: this[configuracion.Id], text: this[configuracion.Text]
-        //                        });
-        //                    });
-        //                    self.cacheDataSource[key] = data.results;
-        //                    results = data.results;
-        //                    query.callback(data);
-        //                }
-        //            })
-        //        }
-        //    },
-
-        //    initSelection: configuracion.InitSelection,
-        //    dropdownCssClass: "bigdrop", // apply css that makes the dropdown taller
-        //    escapeMarkup: function (m) {
-        //        return m;
-        //    } // we do not want to escape markup since we are displaying html in results
-        //});
-
-
-
-
-
-
+      
     };
 
 
@@ -293,8 +240,8 @@ var reservaciones = function () {
         else
             document.getElementById("txtMontoSurfRacks").disabled = true;
 
-        document.getElementById("txtMontoSurfRacks").value = formatter.format(parseFloat(0));
-        txtMontoSurfRacks.val(formatter.format(0));
+        document.getElementById("txtMontoSurfRacks").value = utils.formatterDolar.format(parseFloat(0));
+        txtMontoSurfRacks.val(utils.formatterDolar.format(0));
         calcularTarifaTotal();
     };
 
@@ -319,10 +266,11 @@ var reservaciones = function () {
             var oProcessMessage = 'Enlazando vehiculo';
 
             var success = function (result) {
-                
+                debugger;
                 if (result.Data.length > 0) {
                     if (result.Data[0].t_Departamentos.NombreDepartamento == "Bodega") {
-                        debugger;
+                        objVehiculo = result.Data[0];
+                        document.getElementById("btnInfo").disabled = false;
                         msjApp.fnShowSuccessMessage('Se enlazó el vehiculo a la reservacion con exito');
                     }
                     else {
@@ -345,7 +293,7 @@ var reservaciones = function () {
 
 
     var fnGuardarReservacion = function () {
-        debugger;
+        
 
         var proveedor = document.getElementById("txtProveedor");
         var IdProveedor = proveedor.options[proveedor.selectedIndex].value;
@@ -419,6 +367,7 @@ var reservaciones = function () {
         btnGuardar.val("");
         timeIn = null;
         timeOut = null;
+        objVehiculo = null;
     }
 
     $(function () {
