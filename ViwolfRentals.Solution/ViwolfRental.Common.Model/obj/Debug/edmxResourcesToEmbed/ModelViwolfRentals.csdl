@@ -64,9 +64,9 @@
     <Property Name="LugarEntrega" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="EntregaHotel" Type="Boolean" Nullable="false" />
     <Property Name="FechaInicio" Type="DateTime" Precision="0" />
-    <Property Name="HoraInicio" Type="Time" Precision="7" />
+    <Property Name="HoraInicio" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
     <Property Name="FechaEntrega" Type="DateTime" Precision="0" />
-    <Property Name="HoraEntrega" Type="Time" Precision="7" />
+    <Property Name="HoraEntrega" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
     <Property Name="SurfRacks" Type="Boolean" />
     <Property Name="MontoSurfRacks" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Cajon" Type="Boolean" />

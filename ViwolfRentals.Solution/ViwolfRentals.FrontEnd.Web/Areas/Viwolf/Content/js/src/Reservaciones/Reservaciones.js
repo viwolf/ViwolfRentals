@@ -1,4 +1,6 @@
-﻿var reservaciones = function () {
+﻿
+
+var reservaciones = function () {
     var txtNombreCliente = $("#txtNombreCliente");
     var txtHospedaje = $("#txtHospedaje");
     var txtEntregaHotel = $("#txtEntregaHotel");
@@ -21,8 +23,9 @@
     var txtHoraEntrega = $("#txtHoraEntrega")
     var btnGuardar = $("#btnGuardar");
     var cantidadDias = 0;
-    var timeIn = null;
-    var timeOut = null;
+  
+    var dateIni = new Date();
+    var dateFin = new Date();
 
 
     const formatter = new Intl.NumberFormat('en-US', {
@@ -42,21 +45,7 @@
 
     var Init = function () {
 
-        //var startTime = document.getElementById("txtHoraInicio");
-
-        //startTime.addEventListener("input", function () {
-        //    
-        //    timeIn = startTime.value;
-        //}, false);
-
-
-        //var endTime = document.getElementById("txtHoraEntrega");
-        //endTime.addEventListener("input", function () {
-        //    
-        //    timeOut = endTime.value;
-        //}, false);
-
-
+     
 
         fnCargaFechas();
 
@@ -66,7 +55,6 @@
         });
       
         txtMontoDia.blur(function () {
-            
             calcularTarifaTotal();
         })
 
@@ -74,6 +62,21 @@
             if (txtPlaca.val() != "")
                 fnValidarVehiculo();
         })
+
+        txtNumeroDeposito.blur(function (){
+            txtMontoDeposito.val(formatter.format(0));
+            txtSaldoActual.val(formatter.format(0));
+        });
+
+        txtMontoDeposito.blur(function () {
+            if ((txtNumeroDeposito.val() != "") || (txtNumeroDeposito.val() != "0")) {
+                txtMontoDeposito.val(formatter.format(parseFloat(txtMontoDeposito.val().replace("$", ""))));
+                var saldo = txtMontoTotal.val() == "" ? 0  : parseFloat(txtMontoTotal.val().replace("$", "")) - parseFloat(txtMontoDeposito.val().replace("$", ""))
+                txtSaldoActual.val(formatter.format(saldo));
+            }
+
+            
+        });
 
         txtSurfRacks.change(cambiarEstadoSurfRacks);
         txtCuentaCobrar.change(cambiarEstadoProveedor);
@@ -106,6 +109,7 @@
             autoclose: true,
             format: "mm/dd/yyyy",
             onSelect: function (selected) {
+                dateIni = new Date(selected);
                 txtFechaFinal.datepicker("option", "minDate", selected);
                 cantidadDias = ((moment(txtFechaFinal.val()).diff(selected, 'days')) + 1);
                 calcularTarifaTotal();
@@ -117,6 +121,8 @@
             autoclose: true,
             format: "mm/dd/yyyy",
             onSelect: function (selected) {
+                debugger;
+                dateFin = new Date(selected);
                 txtFechaInicio.datepicker("option", "maxDate", selected);
                 cantidadDias = ((moment(selected).diff(txtFechaInicio.val(), 'days')) + 1);
                 calcularTarifaTotal();
@@ -135,6 +141,10 @@
             startTime: '5:00',
             //defaultTime: '11',
             scrollbar: true,
+            change: function (e) {
+                debugger;
+                timeIn = e.getTime(); // txtHoraInicio.val();
+            }
            
         });
 
@@ -146,7 +156,10 @@
             startTime: '5:00',
             //defaultTime: '11',
             scrollbar: true,
-           
+            change: function (e) {
+                debugger;
+                timeOut = e.getTime(); // txtHoraInicio.val();
+            }
         });
     }
 
@@ -254,6 +267,7 @@
             document.getElementById("txtMontoSurfRacks").disabled = true;
 
         document.getElementById("txtMontoSurfRacks").value = formatter.format(parseFloat(0));
+        txtMontoSurfRacks.val(formatter.format(0));
         calcularTarifaTotal();
     };
 
@@ -309,39 +323,24 @@
         var proveedor = document.getElementById("txtProveedor");
         var IdProveedor = proveedor.options[proveedor.selectedIndex].value;
 
-         var startTime = document.getElementById("txtHoraInicio");
-
-        startTime.addEventListener("input", function () {
-            
-            timeIn = startTime.value;
-        }, false);
-
-
-        var endTime = document.getElementById("txtHoraEntrega");
-        endTime.addEventListener("input", function () {
-            
-            timeOut = endTime.value;
-        }, false);
-       
-
       
         var oData = {
             "UsuarioCreacion": txtUsuario.val(),
             "NombreCliente": txtNombreCliente.val(),
             "LugarEntrega": txtHospedaje.val(),
             "EntregaHotel": txtEntregaHotel.val() == 'Si' ? true : false,
-            "FechaInicio": txtFechaInicio.val(),
+            "FechaInicio": dateIni,
             "HoraInicio": txtHoraInicio.val(),
-            "FechaEntrega": txtFechaFinal.val(),
+            "FechaEntrega": dateFin,
             "HoraEntrega": txtHoraEntrega.val(),
             "SurfRacks": txtSurfRacks.val() == 'Si' ? true : false,
-            "MontoSurfRacks": txtMontoSurfRacks.val(),
+            "MontoSurfRacks": parseFloat(txtMontoSurfRacks.val().replace("$", "")),
             "Cajon": txtCajon.val() == 'Si' ? true : false,
-            "MontoDia": txtMontoDia.val(),
-            "MontoTotal": txtMontoTotal.val(),
+            "MontoDia": parseFloat(txtMontoDia.val().replace("$", "")),
+            "MontoTotal": parseFloat(txtMontoTotal.val().replace("$", "")),
             "NumeroDeposito": txtNumeroDeposito.val(),
-            "MontoDeposito": txtMontoDeposito.val(),
-            "SaldoActual": txtSaldoActual.val(),
+            "MontoDeposito": parseFloat(txtMontoDeposito.val().replace("$", "")),
+            "SaldoActual": parseFloat(txtSaldoActual.val().replace("$", "")),
             "Efectivo": txtEfectivo.val() == 'Si' ? true : false,
             "CuentaPorCobrar": txtCuentaCobrar.val() == 'Si' ? true : false,
             "ProveedorID": IdProveedor == "" ? "0" : IdProveedor,

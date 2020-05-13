@@ -23,9 +23,9 @@ namespace ViwolfRental.Common.Model
         public string LugarEntrega { get; set; }
         public bool EntregaHotel { get; set; }
         public Nullable<System.DateTime> FechaInicio { get; set; }
-        public Nullable<System.TimeSpan> HoraInicio { get; set; }
+        public string HoraInicio { get; set; }
         public Nullable<System.DateTime> FechaEntrega { get; set; }
-        public Nullable<System.TimeSpan> HoraEntrega { get; set; }
+        public string HoraEntrega { get; set; }
         public Nullable<bool> SurfRacks { get; set; }
         public Nullable<decimal> MontoSurfRacks { get; set; }
         public Nullable<bool> Cajon { get; set; }
