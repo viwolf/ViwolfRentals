@@ -595,11 +595,9 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Seguridad\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Reservacion\Index.cshtml" />
     <Content Include="Areas\Viwolf\Content\src\pug\layouts\authentication.pug" />
     <Content Include="Areas\Viwolf\Content\src\pug\layouts\dashboard.pug" />
     <Content Include="Areas\Viwolf\Content\src\pug\layouts\error.pug" />
@@ -644,6 +642,8 @@
     <Folder Include="Areas\Seguridad\Views\Shared\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Reservacion\" />
+    <Folder Include="Views\Seguridad\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -40,7 +40,7 @@ var reservaciones = function () {
     var calcularTarifaTotal = function () {
         
         var montoDia = txtMontoDia.val() == '' ? 0 : parseFloat(txtMontoDia.val().replace("$", "")); // parseFloat(txtMontoDia.val());
-        var montoTotal = ((montoDia * cantidadDias) + parseFloat(txtMontoSurfRacks.val().replace("$", "")));
+        var montoTotal = ((montoDia * (cantidadDias + 1)) + parseFloat(txtMontoSurfRacks.val().replace("$", "")));
         txtMontoDia.val(formatter.format(montoDia));
         txtMontoTotal.val(formatter.format(montoTotal));
     };
@@ -59,7 +59,8 @@ var reservaciones = function () {
         txtMontoDia.bind('keypress', valideKey);
 
         txtMontoDia.blur(function () {
-            if (txtMontoDia < 50) {
+            debugger;
+            if (txtMontoDia.val() < 50) {
                 alert("El monto no puede ser menor de $50");
                 txtMontoDia.text("");
             }
@@ -137,7 +138,7 @@ var reservaciones = function () {
             onSelect: function (selected) {
                 dateIni = new Date(selected);
                 txtFechaFinal.datepicker("option", "minDate", selected);
-                cantidadDias = ((moment(txtFechaFinal.val()).diff(selected, 'days')) + 1);
+                cantidadDias = ((moment(txtFechaFinal.val()).diff(selected, 'days')));
                 calcularTarifaTotal();
             }, minDate: '-500D'
             , maxDate: '+500D'
@@ -150,7 +151,7 @@ var reservaciones = function () {
                 debugger;
                 dateFin = new Date(selected);
                 txtFechaInicio.datepicker("option", "maxDate", selected);
-                cantidadDias = ((moment(selected).diff(txtFechaInicio.val(), 'days')) + 1);
+                cantidadDias = ((moment(selected).diff(txtFechaInicio.val(), 'days')));
                 calcularTarifaTotal();
             },
             maxDate: '+500D'
