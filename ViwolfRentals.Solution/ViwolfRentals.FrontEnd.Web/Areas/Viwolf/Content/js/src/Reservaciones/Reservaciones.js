@@ -22,6 +22,8 @@ var reservaciones = function () {
     var txtFechaFinal = $("#txtFechaFinal");
     var txtHoraEntrega = $("#txtHoraEntrega")
     var btnGuardar = $("#btnGuardar");
+    var frmReservacion = $("#frmReservacion");
+
     var cantidadDias = 0;
   
     var dateIni = new Date();
@@ -45,17 +47,25 @@ var reservaciones = function () {
 
     var Init = function () {
 
-     
-
         fnCargaFechas();
 
+        txtMontoSurfRacks.bind('keypress', valideKey);
+
         txtMontoSurfRacks.blur(function () {
-            txtMontoSurfRacks.val(formatter.format(txtMontoSurfRacks.val()));
+            txtMontoSurfRacks.val(formatter.format(parseFloat(txtMontoSurfRacks.val().replace("$", ""))));
             calcularTarifaTotal();
         });
-      
+
+        txtMontoDia.bind('keypress', valideKey);
+
         txtMontoDia.blur(function () {
-            calcularTarifaTotal();
+            if (txtMontoDia < 50) {
+                alert("El monto no puede ser menor de $50");
+                txtMontoDia.text("");
+            }
+            else {
+                calcularTarifaTotal();
+            }
         })
 
         txtPlaca.blur(function () {
@@ -63,11 +73,13 @@ var reservaciones = function () {
                 fnValidarVehiculo();
         })
 
+        txtNumeroDeposito.bind('keypress', valideKey);
         txtNumeroDeposito.blur(function (){
             txtMontoDeposito.val(formatter.format(0));
             txtSaldoActual.val(formatter.format(0));
         });
 
+        txtMontoDeposito.bind('keypress', valideKey);
         txtMontoDeposito.blur(function () {
             if ((txtNumeroDeposito.val() != "") || (txtNumeroDeposito.val() != "0")) {
                 txtMontoDeposito.val(formatter.format(parseFloat(txtMontoDeposito.val().replace("$", ""))));
@@ -98,6 +110,20 @@ var reservaciones = function () {
         txtHoraInicio.change(function () { debugger; })
 
         btnGuardar.click(fnGuardarReservacion);
+    }
+
+    //Solo permite introducir numeros.
+    function valideKey(evt) {
+        var code = evt.which ? evt.which : evt.keyCode;
+        if (code == 8) {
+            //backspace
+            return true;
+        } else if (code >= 48 && code <= 57) {
+            //is a number
+            return true;
+        } else {
+            return false;
+        }
     }
 
     function fnCargaFechas() {
