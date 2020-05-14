@@ -25,6 +25,7 @@ namespace FrontEnd.Controllers.Seguridad
             var result = BlLogin.ListarUsuarioLogin(user);
 
             TempData.Add("Usuario", result.First().CodigoUsuario);
+            TempData.Add("IdUsiario", result.First().IdUsuario);
 
             var jsonObjet = (from ta in result
                              select new

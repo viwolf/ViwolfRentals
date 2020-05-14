@@ -12,8 +12,10 @@ namespace FrontEnd.Controllers.Viwolf
 {
     public class ReservacionesController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string usuario, string idUsuario)
         {
+            ViewBag.Usuario = usuario;
+            ViewBag.IdUsuario = idUsuario;
             return View();
         }
 

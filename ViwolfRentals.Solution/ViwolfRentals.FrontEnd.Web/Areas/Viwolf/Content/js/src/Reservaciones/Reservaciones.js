@@ -44,6 +44,8 @@ var reservaciones = function () {
 
     var Init = function () {
 
+        txtUsuario.val(usuarioLogueado);
+        
         fnCargaFechas();
 
         txtMontoSurfRacks.bind('keypress', valideKey);
@@ -419,7 +421,7 @@ var reservaciones = function () {
                 "Efectivo": txtEfectivo.val() == 'Si' ? true : false,
                 "CuentaPorCobrar": txtCuentaCobrar.val() == 'Si' ? true : false,
                 "ProveedorID": IdProveedor == "" ? "0" : IdProveedor,
-                "IDUsuario": txtUsuario.val(),
+                "IDUsuario": idUsuarioLogueado,
                 "IDVehiculo": txtPlaca.val()
             }
 
