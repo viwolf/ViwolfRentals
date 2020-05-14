@@ -24,7 +24,7 @@ var reservaciones = function () {
     var btnGuardar = $("#btnGuardar");
     var btnInfo = $("#btnInfo");
     var objVehiculo = null;
-
+    var IdProveedor = 0; 
 
     var cantidadDias = 0;
   
@@ -286,56 +286,162 @@ var reservaciones = function () {
 
     }
 
+    var ValidateFields = function () {
+        var check = true;
+
+        debugger;
+
+        if (txtNombreCliente.val() == "") {
+            alert("El campo nombre del cliente, no puede estar vacío.");
+            check = false;
+        }
+        else
+            if (txtHospedaje.val() == "") {
+                alert("El campo hospedaje, no puede estar vacío.");
+                check = false;
+            }
+            else
+                if (txtEntregaHotel.val() == "") {
+                    alert("Debe escoger el lugar de entrega.");
+                    check = false;
+                }
+                else
+                    if (txtCajon.val() == "") {
+                        alert("Debe escojer si desea el vehiculo con cajón.");
+                        check = false;
+                    }
+                    else
+                        if (txtFechaInicio.val() == "") {
+                            alert("El campo fecha de inicio, no puede estar vacío.");
+                            check = false;
+                        }
+                        else
+                            if (txtHoraInicio.val() == "") {
+                                alert("El campo hora de inicio, no puede estar vacío.");
+                                check = false;
+                            }
+                            else
+                                if (txtFechaFinal.val() == "") {
+                                    alert("El campo fecha de entrega, no puede estar vacío.");
+                                    check = false;
+                                }
+                                else
+                                    if (txtHoraEntrega.val() == "") {
+                                        alert("El campo hora de entrega, no puede estar vacío.");
+                                        check = false;
+                                    }
+                                    else
+                                        if ((txtMontoDia.val() == "") || (parseFloat(txtMontoDia.val().replace("$", "")) <= "0")) {
+                                            alert("El campo monto día, no puede estar vacío, ni puede ser 0.");
+                                            check = false;
+                                        }
+                                        else
+                                            if (txtSurfRacks.val() == "") {
+                                                alert("Debe escoger si desea surf racks.");
+                                                check = false;
+                                            }
+                                            else
+                                                if ((txtSurfRacks.val() == "Si") && (parseFloat(txtMontoSurfRacks.val().replace("$", "")) <= "0")) {
+                                                    alert("El campo monto surf racks, no puede estar vacío, ni puede ser 0.");
+                                                    check = false;
+                                                }
+                                                else
+                                                    if (txtMontoSurfRacks.val() == "") {
+                                                        alert("El campo monto surf racks, no puede estar vacío.");
+                                                        check = false;
+                                                    }
+                                                    else
+                                                        if (txtMontoTotal.val() == "") {
+                                                            alert("El campo monto total, no puede estar vacío.");
+                                                            check = false;
+                                                        }
+                                                        else
+                                                            if (txtUsuario.val() == "") {
+                                                                alert("El campo reservado por, no puede estar vacío.");
+                                                                check = false;
+                                                            }
+                                                            else
+                                                                if (txtSaldoActual.val() == "") {
+                                                                    alert("El campo saldo actual, no puede estar vacío.");
+                                                                    check = false;
+                                                                }
+                                                                else
+                                                                    if (txtEfectivo.val() == "") {
+                                                                        alert("Debe escoger si se desea pagar en efectivo.");
+                                                                        check = false;
+                                                                    }
+                                                                    else
+                                                                        if (txtCuentaCobrar.val() == "") {
+                                                                            alert("Debe seleccionar si aplica una cuenta por cobrar.");
+                                                                            check = false;
+                                                                        }
+                                                                        else
+                                                                            if ((txtCuentaCobrar.val() == "Si") && (IdProveedor == "")) {
+                                                                                alert("Debe seleccionar un proveedor para la cuenta por cobrar.");
+                                                                                check = false;
+                                                                            }
+                                                                            else
+                                                                                if (txtPlaca.val() == "") {
+                                                                                    alert("El campo placa, no puede estar vacío.");
+                                                                                    check = false;
+                                                                                }
+                                                                                else
+                                                                                    check = true;
+        return check;
+    };
+
 
     var fnGuardarReservacion = function () {
         
 
         var proveedor = document.getElementById("txtProveedor");
-        var IdProveedor = proveedor.options[proveedor.selectedIndex].value;
+        IdProveedor = proveedor.options[proveedor.selectedIndex].value;
+        debugger;
+        if (ValidateFields() == true) {
 
-      
-        var oData = {
-            "UsuarioCreacion": txtUsuario.val(),
-            "NombreCliente": txtNombreCliente.val(),
-            "LugarEntrega": txtHospedaje.val(),
-            "EntregaHotel": txtEntregaHotel.val() == 'Si' ? true : false,
-            "FechaInicio": dateIni,
-            "HoraInicio": txtHoraInicio.val(),
-            "FechaEntrega": dateFin,
-            "HoraEntrega": txtHoraEntrega.val(),
-            "SurfRacks": txtSurfRacks.val() == 'Si' ? true : false,
-            "MontoSurfRacks": parseFloat(txtMontoSurfRacks.val().replace("$", "")),
-            "Cajon": txtCajon.val() == 'Si' ? true : false,
-            "MontoDia": parseFloat(txtMontoDia.val().replace("$", "")),
-            "MontoTotal": parseFloat(txtMontoTotal.val().replace("$", "")),
-            "NumeroDeposito": txtNumeroDeposito.val(),
-            "MontoDeposito": parseFloat(txtMontoDeposito.val().replace("$", "")),
-            "SaldoActual": parseFloat(txtSaldoActual.val().replace("$", "")),
-            "Efectivo": txtEfectivo.val() == 'Si' ? true : false,
-            "CuentaPorCobrar": txtCuentaCobrar.val() == 'Si' ? true : false,
-            "ProveedorID": IdProveedor == "" ? "0" : IdProveedor,
-            "IDUsuario": txtUsuario.val(),
-            "IDVehiculo": txtPlaca.val()
-        }
+            var oData = {
+                "UsuarioCreacion": txtUsuario.val(),
+                "NombreCliente": txtNombreCliente.val(),
+                "LugarEntrega": txtHospedaje.val(),
+                "EntregaHotel": txtEntregaHotel.val() == 'Si' ? true : false,
+                "FechaInicio": dateIni,
+                "HoraInicio": txtHoraInicio.val(),
+                "FechaEntrega": dateFin,
+                "HoraEntrega": txtHoraEntrega.val(),
+                "SurfRacks": txtSurfRacks.val() == 'Si' ? true : false,
+                "MontoSurfRacks": parseFloat(txtMontoSurfRacks.val().replace("$", "")),
+                "Cajon": txtCajon.val() == 'Si' ? true : false,
+                "MontoDia": parseFloat(txtMontoDia.val().replace("$", "")),
+                "MontoTotal": parseFloat(txtMontoTotal.val().replace("$", "")),
+                "NumeroDeposito": txtNumeroDeposito.val(),
+                "MontoDeposito": parseFloat(txtMontoDeposito.val().replace("$", "")),
+                "SaldoActual": parseFloat(txtSaldoActual.val().replace("$", "")),
+                "Efectivo": txtEfectivo.val() == 'Si' ? true : false,
+                "CuentaPorCobrar": txtCuentaCobrar.val() == 'Si' ? true : false,
+                "ProveedorID": IdProveedor == "" ? "0" : IdProveedor,
+                "IDUsuario": txtUsuario.val(),
+                "IDVehiculo": txtPlaca.val()
+            }
 
-        try {
-            var oUrl = 'Reservaciones/GuardarReservacion';
-            var oProcessMessage = 'Guardando Reservacion';
+            try {
+                var oUrl = 'Reservaciones/GuardarReservacion';
+                var oProcessMessage = 'Guardando Reservacion';
 
-            var success = function (result) {
-                if (result.MessageType == "Success") {
-                    alert("Reservacion creada con exito");
-                    fnLimpiarDatos();
-                }
-                    
-                    
-            };
-            app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
-        } catch (ex) {
-            //utils.fnShowErrorMessage(ex.message);
-            retorno = false;
-        }
+                var success = function (result) {
+                    if (result.MessageType == "Success") {
+                        alert("Reservacion creada con exito");
+                        fnLimpiarDatos();
+                    }
+
+
+                };
+                app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
+            } catch (ex) {
+                //utils.fnShowErrorMessage(ex.message);
+                retorno = false;
+            }
         //return retorno;
+        }
     };
 
     var fnLimpiarDatos = function () {

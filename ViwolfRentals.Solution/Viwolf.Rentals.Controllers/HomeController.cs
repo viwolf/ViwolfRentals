@@ -11,8 +11,9 @@ namespace Viwolf.Rentals.Controllers
     {
         public ActionResult Index()
         {
-            //return RedirectToAction("Index", "ViwolfRental", new { area = "Viwolf" });  //View("~/Areas/Login/Views/Login.cshtml");
+
             return RedirectToAction("Index", "Login", new { area = "Seguridad" });  //View("~/Areas/Login/Views/Login.cshtml");
+           
         }
     }
 }

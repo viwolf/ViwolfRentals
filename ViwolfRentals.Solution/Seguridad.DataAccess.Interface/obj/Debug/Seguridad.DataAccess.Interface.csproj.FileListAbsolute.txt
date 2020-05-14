@@ -11,3 +11,4 @@ C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\Viw
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess.Interface\obj\Debug\Seguridad.DataAccess.Interface.csproj.CopyComplete
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess.Interface\obj\Debug\Seguridad.DataAccess.Interface.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess.Interface\obj\Debug\Seguridad.DataAccess.Interface.pdb
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Seguridad.DataAccess.Interface\bin\Debug\es\EntityFramework.resources.dll

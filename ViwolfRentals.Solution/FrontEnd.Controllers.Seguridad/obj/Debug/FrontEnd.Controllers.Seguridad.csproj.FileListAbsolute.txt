@@ -41,3 +41,4 @@ C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\Viw
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\FrontEnd.Controllers.Seguridad\obj\Debug\FrontEnd.Controllers.Seguridad.csproj.CopyComplete
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\FrontEnd.Controllers.Seguridad\obj\Debug\FrontEnd.Controllers.Seguridad.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\FrontEnd.Controllers.Seguridad\obj\Debug\FrontEnd.Controllers.Seguridad.pdb
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\FrontEnd.Controllers.Seguridad\bin\Debug\es\EntityFramework.resources.dll
