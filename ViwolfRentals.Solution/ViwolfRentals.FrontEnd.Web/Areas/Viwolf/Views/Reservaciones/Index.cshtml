@@ -48,19 +48,19 @@
                             <div class="name">Datos del cliente</div>
                             <div class="value">
                                 <div class="row row-refine">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="input-group-desc">
                                             <input id="txtNombreCliente" class="input--style-5" type="text" name="NombreCliente">
                                             <label class="label--desc">Nombre Cliente</label>
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="input-group-desc">
                                             <input id="txtHospedaje" class="input--style-5" type="text" name="Hospedaje">
                                             <label class="label--desc">Hospedaje</label>
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="input-group-desc">
                                             <select id="txtEntregaHotel" class="select--style-5" name="EntregaHotel">
                                                 <option value=""></option>
@@ -70,32 +70,7 @@
                                             <label class="label--desc">Entrega en Hotel</label>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row m-b-55">
-                            <div class="name">Extras</div>
-                            <div class="value">
-                                <div class="row row-refine">
-                                    <div class="col-4">
-                                        <div class="input-group-desc">
-
-                                            <select id="txtSurfRacks" class="select--style-5" name="SurfRacks">
-                                                <option value=""></option>
-                                                <option>Si</option>
-                                                <option>No</option>
-                                            </select>
-                                            <label class="label--desc">Surf Racks</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="input-group-desc">
-                                            <input id="txtMontoSurfRacks" disabled class="input--style-5" type="text" name="MontoSurfRacks">
-                                            <label class="label--desc">Monto SurfRacks</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="input-group-desc">
 
                                             <select id="txtCajon" class="select--style-5" name="Cajon">
@@ -109,6 +84,16 @@
                                 </div>
                             </div>
                         </div>
+
+                        @*<div class="form-row m-b-55">
+            <div class="name">Extras</div>
+            <div class="value">
+                <div class="row row-refine">
+
+
+                </div>
+            </div>
+        </div>*@
 
                         <div class="form-row m-b-55">
                             <div class="name">Tiempos</div>
@@ -146,13 +131,30 @@
                             <div class="name">Montos</div>
                             <div class="value">
                                 <div class="row row-refine">
-                                    <div class="col-6">
+                                    <div class="col-3">
                                         <div class="input-group-desc">
                                             <input id="txtMontoDia" class="input--style-5" type="text" name="MontoDia">
                                             <label class="label--desc">Monto Día</label>
                                         </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+
+                                            <select id="txtSurfRacks" class="select--style-5" name="SurfRacks">
+                                                <option value=""></option>
+                                                <option>Si</option>
+                                                <option>No</option>
+                                            </select>
+                                            <label class="label--desc">Surf Racks</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <input id="txtMontoSurfRacks" disabled class="input--style-5" type="text" name="MontoSurfRacks">
+                                            <label class="label--desc">Monto SurfRacks</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
                                         <div class="input-group-desc">
                                             <input id="txtMontoTotal" disabled class="input--style-5" type="text" name="MontoTotal">
                                             <label class="label--desc">Monto Total</label>
@@ -168,19 +170,25 @@
                             <div class="name">Depósitos</div>
                             <div class="value">
                                 <div class="row row-refine">
-                                    <div class="col-4">
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <input id="txtUsuario" class="input--style-5" type="text" name="Usuario">
+                                            <label class="label--desc">Reservado por</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
                                         <div class="input-group-desc">
                                             <input id="txtNumeroDeposito" class="input--style-5" type="text" name="NumeroDeposito">
                                             <label class="label--desc">Número Depósito</label>
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="input-group-desc">
                                             <input id="txtMontoDeposito" class="input--style-5" type="text" name="MontoDepósito">
                                             <label class="label--desc">Monto Depósito</label>
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <div class="input-group-desc">
                                             <input id="txtSaldoActual" disabled class="input--style-5" type="text" name="SaldoActual">
                                             <label class="label--desc">Saldo Actual</label>
@@ -199,13 +207,8 @@
                             <div class="name">Datos</div>
                             <div class="value">
                                 <div class="row row-refine">
-                                    <div class="col-6">
-                                        <div class="input-group-desc">
-                                            <input id="txtUsuario" class="input--style-5" type="text" name="Usuario">
-                                            <label class="label--desc">Reservado por</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
+
+                                    <div class="col-3">
                                         <div class="input-group-desc">
 
                                             <select id="txtEfectivo" class="select--style-5" name="Efectivo">
@@ -216,16 +219,6 @@
                                             <label class="label--desc">Efectivo</label>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="form-row m-b-55">
-                            <div class="name">Proveedor</div>
-                            <div class="value">
-                                <div class="row row-refine">
                                     <div class="col-3">
                                         <div class="input-group-desc">
 
@@ -240,7 +233,7 @@
                                     <div class="col-3">
                                         <div class="input-group-desc">
                                             <select id="txtProveedor" disabled class="select--style-5">
-                                                <option value="">Seleccione uno...</option>
+                                                <option value="">Seleccione proveedor</option>
                                             </select>
                                         </div>
                                     </div>
@@ -250,21 +243,27 @@
                                             <label class="label--desc">Número de Placa</label>
                                         </div>
                                     </div>
-                                    <div class="col-3">
-                                        <div class="input-group-desc">
-                                            <button id="btnInfo" disabled class="btn btn--radius-2 btn-info" type="submit">Mostrar</button>
-                                            <label class="label--desc"></label>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
 
+                        
+                            <div class="col-md-12">
+                                <div class=" actions pull-right">
+                                    <button type="button" id="btnGuardar" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Crear reservacion">
+                                        <i class="fa fa-check-circle display-block fa-2x"></i> Crear Reservacion
+                                    </button>
+                                    <button type="button" disabled id="btnInfo" class="btn btn--radius-2 btn-info" data-role="tooltip" title="Informacion del vehiculo">
+                                        <i class="fa fa-info-circle display-block fa-2x"></i> Mostrar Vehiculo
+                                    </button>
+                                </div>
+                            </div>
+                        
 
-
-                        <div>
-                            <button id="btnGuardar" class="btn btn--radius-2 btn--red" type="submit">Guardar</button>
-                        </div>
+                        @*<div>
+                            <button id="btnGuardar" class="btn btn-accion btn--radius-2 btn-primary btn-sm" type="submit">Crear Reservacion</button>
+                            <button id="btnInfo" disabled class="btn btn--radius-2 btn-info" type="submit">Mostrar Vehiculo</button>
+                        </div>*@
                     </div>
                 </div>
             </div>
@@ -293,7 +292,7 @@
     <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/js/global.js"></script>
     <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Reservaciones.js"></script>
 
-    Time Picker
+    @*Time Picker*@
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
     <!--messageModal-->

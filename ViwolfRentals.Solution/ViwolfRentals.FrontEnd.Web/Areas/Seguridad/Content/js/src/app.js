@@ -1734,7 +1734,7 @@ var app = function () {
     return {
     //    fnEnableAjaxContent: enableAjaxContent,
     //    fnShowErrorMessage: showErrorMessage,
-    //    fnShowSuccessMessage: showSuccessMessage,
+       // fnShowSuccessMessage: showSuccessMessage,
     //    fnShowInfoMessage: showInfoMessage,
         fnShowWaitingDialog: showWaitingDialog,
         fnShowHideDialog: showHideDialog,

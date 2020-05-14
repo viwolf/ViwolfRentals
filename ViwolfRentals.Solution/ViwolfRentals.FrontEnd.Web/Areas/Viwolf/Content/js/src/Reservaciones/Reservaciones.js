@@ -32,17 +32,12 @@ var reservaciones = function () {
     var dateFin = new Date();
 
 
-    //const formatter = new Intl.NumberFormat('en-US', {
-    //    style: 'currency',
-    //    currency: 'USD',
-    //    minimumFractionDigits: 2
-    //})
-
-
+   
     var calcularTarifaTotal = function () {
         
         var montoDia = txtMontoDia.val() == '' ? 0 : parseFloat(txtMontoDia.val().replace("$", "")); // parseFloat(txtMontoDia.val());
-        var montoTotal = ((montoDia * (cantidadDias + 1)) + parseFloat(txtMontoSurfRacks.val().replace("$", "")));
+        var montoSurfRacks = txtMontoSurfRacks.val() == '' ? 0 : parseFloat(txtMontoSurfRacks.val().replace("$", ""));
+        var montoTotal = ((montoDia * (cantidadDias + 1)) + montoSurfRacks);
         txtMontoDia.val(utils.formatterDolar.format(montoDia));
         txtMontoTotal.val(utils.formatterDolar.format(montoTotal));
     };
@@ -64,7 +59,7 @@ var reservaciones = function () {
             
             if (txtMontoDia.val() < 50) {
                 alert("El monto no puede ser menor de $50");
-                txtMontoDia.text("");
+                txtMontoDia.val("");
             }
             else {
                 calcularTarifaTotal();
