@@ -50,6 +50,89 @@ var reservaciones = function () {
         txtMontoTotal.val(utils.formatterDolar.format(montoTotal));
     };
 
+    
+
+    var InitSelect = function () {
+       
+
+        cargarSelect2(txtProveedor,
+            {
+                PlaceHolder: "",
+                Url: "Proveedores/ListarProveedores",
+                DataType: 'json',
+                Type: "POST",
+                Id: "IdProveedor",
+                Text: "NombreProveedor",
+                InitSelection: function (callback, configuracion) {
+                    $.ajax(configuracion.Url, {
+                        url: configuracion.Url,
+                        data: configuracion.data, // null,
+                        dataType: 'json',
+                        type: 'POST'
+                    }).done(function (data) {
+                        //bodegas = data.Data;
+                        //callback(data.Data);
+                    });
+                },
+                //SuccessFunction: function (data) {
+                //    bodegas = data.Data;
+                //}
+            });
+
+
+        //cargarSelect2(txtProveedor,
+        //    {
+        //        PlaceHolder: "Seleccione Proveedor",
+        //        minimumResultsForSearch: Infinity,
+        //        Url: "Proveedores/ListarProveedores",
+        //        DataType: 'json',
+        //        Type: "POST",
+        //        Id: "IdProveedor",
+        //        Text: "NombreProveedor",
+        //        SuccessFunction: function (data) {
+        //            estado = data.Data;
+        //        }
+        //    });
+
+        cargarSelect2(txtComisionistas,
+            {
+                PlaceHolder: "",
+                Url: "Comisionistas/ListarComisionistas",
+                DataType: 'json',
+                Type: "POST",
+                Id: "IdClienteComisionista",
+                Text: "NombreClienteComisionista",
+                InitSelection: function (callback, configuracion) {
+                    $.ajax(configuracion.Url, {
+                        url: configuracion.Url,
+                        data: configuracion.data, // null,
+                        dataType: 'json',
+                        type: 'POST'
+                    }).done(function (data) {
+                        //bodegas = data.Data;
+                        //callback(data.Data);
+                    });
+                },
+                //SuccessFunction: function (data) {
+                //    bodegas = data.Data;
+                //}
+            });
+
+        //cargarSelect2(txtComisionistas,
+        //    {
+        //        PlaceHolder: "Seleccione Comisionista",
+        //        minimumResultsForSearch: Infinity,
+        //        Url: "Comisionistas/ListarComisionistas",
+        //        DataType: 'json',
+        //        Type: "POST",
+        //        Id: "IdClienteComisionista",
+        //        Text: "NombreClienteComisionista",
+        //        SuccessFunction: function (data) {
+        //            estado = data.Data;
+        //        }
+        //    });
+    };
+
     var Init = function () {
 
         //txtUsuario.val(usuarioLogueado);
@@ -106,22 +189,8 @@ var reservaciones = function () {
 
         txtSurfRacks.change(cambiarEstadoSurfRacks);
         txtModoPago.change(cambiarEstadoProveedor);
-        
-        cargarSelect2(txtProveedor,
-            {
-                PlaceHolder: "Seleccione Proveedor",
-                minimumResultsForSearch: Infinity,
-                Url: "Proveedores/ListarProveedores",
-                DataType: 'json',
-                Type: "POST",
-                Id: "IdProveedor",
-                Text: "NombreProveedor",
-                SuccessFunction: function (data) {
-                    estado = data.Data;
-                }
-            });
 
-        txtHoraInicio.change(function () {  })
+        txtHoraInicio.change(function () { })
 
         btnGuardar.click(fnGuardarReservacion);
 
@@ -218,25 +287,29 @@ var reservaciones = function () {
     }
 
 
-
+  
     var cargarSelect2 = function (elemento, configuracion) {
-        
+       
         $.ajax({
             type: "POST",
-            url: "Proveedores/ListarProveedores",
+            url: configuracion.Url,
             data: "{}",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (msg) {
 
-                $(msg.Data).each(function () {
-                    
+                $(msg.Data).each(function (serverData) {
+                    if (configuracion.SuccessFunction) {
+                        configuracion.SuccessFunction(serverData);
+                    }
                     var option = $(document.createElement('option'));
 
-                    option.text(this.NombreProveedor);
-                    option.val(this.IdProveedor);
+                    option.text(this[configuracion.Text]);  //(this.NombreProveedor);
+                    option.val(this[configuracion.Id]); //(this.IdProveedor);
 
-                    $("#txtProveedor").append(option);
+
+                    //$("#txtProveedor").append(option);
+                    elemento.append(option);
                 });
 
             },
@@ -250,7 +323,7 @@ var reservaciones = function () {
 
 
     var cambiarEstadoAplicaComision = function () {
-        debugger;
+       
         if (txtAplicaComision.val() == 'Si') {
             document.getElementById("txtModoPago").disabled = false;
             txtModoPago.val(0);
@@ -281,11 +354,13 @@ var reservaciones = function () {
         if (txtModoPago.val() == 1) {
             document.getElementById("txtComisionistas").disabled = false;
             document.getElementById("txtProveedor").disabled = true;
+            txtProveedor.val("");
         }
         else
             if (txtModoPago.val() == 2) {
                 document.getElementById("txtComisionistas").disabled = true;
                 document.getElementById("txtProveedor").disabled = false;
+                txtComisionistas.val("");
             };
     };
 
@@ -300,7 +375,7 @@ var reservaciones = function () {
             var oProcessMessage = 'Enlazando vehiculo';
 
             var success = function (result) {
-                debugger;
+               
                 if (result.Data.length > 0) {
                     if (result.Data[0].t_Departamentos.NombreDepartamento == "Disponible") {
                         objVehiculo = result.Data[0];
@@ -443,7 +518,7 @@ var reservaciones = function () {
                 "UsuarioCreacion": txtUsuario.val(),
                 "NombreCliente": txtNombreCliente.val(),
                 "LugarEntrega": txtHospedaje.val(),
-                "EntregaHotel": txtAplicaComision.val() == 'Si' ? true : false,
+                "AplicaComision": txtAplicaComision.val() == 'Si' ? true : false,
                 "FechaInicio": dateIni,
                 "HoraInicio": txtHoraInicio.val(),
                 "FechaEntrega": dateFin,
@@ -456,8 +531,8 @@ var reservaciones = function () {
                 "NumeroDeposito": txtNumeroDeposito.val(),
                 "MontoDeposito": parseFloat(txtMontoDeposito.val().replace("$", "")),
                 "SaldoActual": parseFloat(txtSaldoActual.val().replace("$", "")),
-                "Efectivo": txtModoPago.val() == 'Si' ? true : false,
-                "CuentaPorCobrar": txtComisionistas.val() == 'Si' ? true : false,
+                "ModoPago": txtModoPago.val(),
+                "IdClienteComisionista": txtComisionistas.val() == 'Si' ? true : false,
                 "ProveedorID": IdProveedor == "" ? "0" : IdProveedor,
                 "IDUsuario": idUsuarioLogueado,
                 "IDVehiculo": txtPlaca.val()
@@ -514,6 +589,7 @@ var reservaciones = function () {
     $(function () {
 
         Init();
+        InitSelect();
 
 
     });
