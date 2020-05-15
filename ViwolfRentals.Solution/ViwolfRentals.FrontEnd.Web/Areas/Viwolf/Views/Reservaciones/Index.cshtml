@@ -66,12 +66,12 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group-desc">
-                                            <select id="txtEntregaHotel" class="select--style-5" name="EntregaHotel">
+                                            <select id="txtAplicaComision" class="select--style-5" name="AplicaComision">
                                                 <option value=""></option>
                                                 <option>Si</option>
                                                 <option>No</option>
                                             </select>
-                                            <label class="label--desc">Entrega en Hotel</label>
+                                            <label class="label--desc">Aplica Comisión</label>
                                         </div>
                                     </div>
                                     <div class="col-3">
@@ -176,8 +176,15 @@
                                 <div class="row row-refine">
                                     <div class="col-3">
                                         <div class="input-group-desc">
-                                            <input id="txtUsuario" disabled class="input--style-5" type="text" name="Usuario">
-                                            <label class="label--desc">Reservado por</label>
+                                              <select id="txtSurfRacks" class="select--style-5" name="SurfRacks">
+                                                <option value=""></option>
+                                                <option>Si</option>
+                                                <option>No</option>
+                                            </select>
+                                            <label class="label--desc">Pago Adelantado</label>
+                                        
+                                            @*<input id="txtUsuario" disabled class="input--style-5" type="text" name="Usuario">
+                                            <label class="label--desc">Reservado por</label>*@
                                         </div>
                                     </div>
                                     <div class="col-3">
@@ -215,23 +222,23 @@
                                     <div class="col-3">
                                         <div class="input-group-desc">
 
-                                            <select id="txtEfectivo" class="select--style-5" name="Efectivo">
-                                                <option value=""></option>
-                                                <option>Si</option>
-                                                <option>No</option>
+                                            <select id="txtModoPago" disabled class="select--style-5" name="ModoPago">
+                                                <option value="0">Seleccione pago</option>
+                                                <option value="1">Efectivo</option>
+                                                <option value="2">Cuenta por Cobrar</option>
                                             </select>
-                                            <label class="label--desc">Efectivo</label>
+                                            <label class="label--desc">Modo de Pago</label>
                                         </div>
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group-desc">
 
-                                            <select id="txtCuentaCobrar" class="select--style-5" name="CuentaCobrar">
+                                            <select id="txtComisionistas" disabled class="select--style-5" name="Comisionistas">
                                                 <option value=""></option>
                                                 <option>Si</option>
                                                 <option>No</option>
                                             </select>
-                                            <label class="label--desc">Cuenta por Cobrar</label>
+                                            <label class="label--desc">Comisionistas</label>
                                         </div>
                                     </div>
                                     <div class="col-3">
