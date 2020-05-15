@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comisionistas\IComisionistasBL.cs" />
     <Compile Include="Proveedores\IProveedoresBL.cs" />
     <Compile Include="Reservaciones\IReservacionesBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

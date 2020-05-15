@@ -101,6 +101,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComisionistasController.cs" />
     <Compile Include="ProveedoresController.cs" />
     <Compile Include="ReservacionesController.cs" />
     <Compile Include="VehiculosController.cs" />

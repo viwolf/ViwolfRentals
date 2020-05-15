@@ -22,6 +22,7 @@ namespace ViwolfRental.Common.Model
     
         public int IDCategoriaVehiculo { get; set; }
         public string NombreCategoriaVehiculo { get; set; }
+        public int Comision { get; set; }
         public bool Activo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

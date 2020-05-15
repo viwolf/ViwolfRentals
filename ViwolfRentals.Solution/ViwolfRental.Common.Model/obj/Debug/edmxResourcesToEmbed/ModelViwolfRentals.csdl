@@ -2,6 +2,7 @@
 <Schema Namespace="ViwolfRentalsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="ViwolfRentalsDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="t_CategoriasVehiculos" EntityType="ViwolfRentalsDBModel.t_CategoriasVehiculos" />
+    <EntitySet Name="t_ClientesComisionistas" EntityType="ViwolfRentalsDBModel.t_ClientesComisionistas" />
     <EntitySet Name="t_Departamentos" EntityType="ViwolfRentalsDBModel.t_Departamentos" />
     <EntitySet Name="t_Proveedores" EntityType="ViwolfRentalsDBModel.t_Proveedores" />
     <EntitySet Name="t_Reservaciones" EntityType="ViwolfRentalsDBModel.t_Reservaciones" />
@@ -11,12 +12,20 @@
       <End Role="t_CategoriasVehiculos" EntitySet="t_CategoriasVehiculos" />
       <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
     </AssociationSet>
+    <AssociationSet Name="FK_t_Reservaciones_t_ClientesComisionistas" Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_ClientesComisionistas">
+      <End Role="t_ClientesComisionistas" EntitySet="t_ClientesComisionistas" />
+      <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
+    </AssociationSet>
     <AssociationSet Name="FK_t_Vehiculos_t_Departamentos" Association="ViwolfRentalsDBModel.FK_t_Vehiculos_t_Departamentos">
       <End Role="t_Departamentos" EntitySet="t_Departamentos" />
       <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
     </AssociationSet>
     <AssociationSet Name="FK_t_Reservaciones_t_Proveedores" Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Proveedores">
       <End Role="t_Proveedores" EntitySet="t_Proveedores" />
+      <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Reservaciones_t_Usuarios" Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Usuarios">
+      <End Role="t_Usuarios" EntitySet="t_Usuarios" />
       <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
     </AssociationSet>
     <AssociationSet Name="FK_t_Reservaciones_t_Vehiculos" Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Vehiculos">
@@ -30,8 +39,18 @@
     </Key>
     <Property Name="IDCategoriaVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NombreCategoriaVehiculo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Comision" Type="Int32" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="t_Vehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos" FromRole="t_CategoriasVehiculos" ToRole="t_Vehiculos" />
+  </EntityType>
+  <EntityType Name="t_ClientesComisionistas">
+    <Key>
+      <PropertyRef Name="IdClienteComisionista" />
+    </Key>
+    <Property Name="IdClienteComisionista" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreClienteComisionista" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_ClientesComisionistas" FromRole="t_ClientesComisionistas" ToRole="t_Reservaciones" />
   </EntityType>
   <EntityType Name="t_Departamentos">
     <Key>
@@ -62,11 +81,11 @@
     <Property Name="UsuarioModificacion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="NombreCliente" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="LugarEntrega" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="EntregaHotel" Type="Boolean" Nullable="false" />
+    <Property Name="AplicaComision" Type="Boolean" />
     <Property Name="FechaInicio" Type="DateTime" Precision="0" />
-    <Property Name="HoraInicio" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="HoraInicio" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="FechaEntrega" Type="DateTime" Precision="0" />
-    <Property Name="HoraEntrega" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="HoraEntrega" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="SurfRacks" Type="Boolean" />
     <Property Name="MontoSurfRacks" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Cajon" Type="Boolean" />
@@ -74,13 +93,15 @@
     <Property Name="MontoTotal" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="NumeroDeposito" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="MontoDeposito" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="Efectivo" Type="Boolean" />
-    <Property Name="CuentaPorCobrar" Type="Boolean" />
+    <Property Name="ModoPago" Type="Int32" />
+    <Property Name="IdClienteComisionista" Type="Int32" />
     <Property Name="IdProveedor" Type="Int32" />
     <Property Name="IDUsuario" Type="Int32" />
     <Property Name="IDVehiculo" Type="Int32" />
     <Property Name="Activo" Type="Boolean" />
+    <NavigationProperty Name="t_ClientesComisionistas" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_ClientesComisionistas" FromRole="t_Reservaciones" ToRole="t_ClientesComisionistas" />
     <NavigationProperty Name="t_Proveedores" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Proveedores" FromRole="t_Reservaciones" ToRole="t_Proveedores" />
+    <NavigationProperty Name="t_Usuarios" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Usuarios" FromRole="t_Reservaciones" ToRole="t_Usuarios" />
     <NavigationProperty Name="t_Vehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Vehiculos" FromRole="t_Reservaciones" ToRole="t_Vehiculos" />
   </EntityType>
   <EntityType Name="t_Usuarios">
@@ -91,6 +112,7 @@
     <Property Name="CodigoUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Usuarios" FromRole="t_Usuarios" ToRole="t_Reservaciones" />
   </EntityType>
   <EntityType Name="t_Vehiculos">
     <Key>
@@ -136,6 +158,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_t_Reservaciones_t_ClientesComisionistas">
+    <End Type="ViwolfRentalsDBModel.t_ClientesComisionistas" Role="t_ClientesComisionistas" Multiplicity="0..1" />
+    <End Type="ViwolfRentalsDBModel.t_Reservaciones" Role="t_Reservaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_ClientesComisionistas">
+        <PropertyRef Name="IdClienteComisionista" />
+      </Principal>
+      <Dependent Role="t_Reservaciones">
+        <PropertyRef Name="IdClienteComisionista" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_t_Vehiculos_t_Departamentos">
     <End Type="ViwolfRentalsDBModel.t_Departamentos" Role="t_Departamentos" Multiplicity="1" />
     <End Type="ViwolfRentalsDBModel.t_Vehiculos" Role="t_Vehiculos" Multiplicity="*" />
@@ -157,6 +191,18 @@
       </Principal>
       <Dependent Role="t_Reservaciones">
         <PropertyRef Name="IdProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Reservaciones_t_Usuarios">
+    <End Type="ViwolfRentalsDBModel.t_Usuarios" Role="t_Usuarios" Multiplicity="0..1" />
+    <End Type="ViwolfRentalsDBModel.t_Reservaciones" Role="t_Reservaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="t_Reservaciones">
+        <PropertyRef Name="IDUsuario" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

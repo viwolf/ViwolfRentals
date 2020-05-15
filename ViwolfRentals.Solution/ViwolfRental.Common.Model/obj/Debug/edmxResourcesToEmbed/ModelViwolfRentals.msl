@@ -5,8 +5,18 @@
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_CategoriasVehiculos">
         <MappingFragment StoreEntitySet="t_CategoriasVehiculos">
           <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Comision" ColumnName="Comision" />
           <ScalarProperty Name="NombreCategoriaVehiculo" ColumnName="NombreCategoriaVehiculo" />
           <ScalarProperty Name="IDCategoriaVehiculo" ColumnName="IDCategoriaVehiculo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_ClientesComisionistas">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_ClientesComisionistas">
+        <MappingFragment StoreEntitySet="t_ClientesComisionistas">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="NombreClienteComisionista" ColumnName="NombreClienteComisionista" />
+          <ScalarProperty Name="IdClienteComisionista" ColumnName="IdClienteComisionista" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -35,8 +45,8 @@
           <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
           <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
           <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
-          <ScalarProperty Name="CuentaPorCobrar" ColumnName="CuentaPorCobrar" />
-          <ScalarProperty Name="Efectivo" ColumnName="Efectivo" />
+          <ScalarProperty Name="IdClienteComisionista" ColumnName="IdClienteComisionista" />
+          <ScalarProperty Name="ModoPago" ColumnName="ModoPago" />
           <ScalarProperty Name="MontoDeposito" ColumnName="MontoDeposito" />
           <ScalarProperty Name="NumeroDeposito" ColumnName="NumeroDeposito" />
           <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
@@ -48,7 +58,7 @@
           <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
           <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
           <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
-          <ScalarProperty Name="EntregaHotel" ColumnName="EntregaHotel" />
+          <ScalarProperty Name="AplicaComision" ColumnName="AplicaComision" />
           <ScalarProperty Name="LugarEntrega" ColumnName="LugarEntrega" />
           <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
           <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />

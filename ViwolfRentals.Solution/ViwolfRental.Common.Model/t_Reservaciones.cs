@@ -21,7 +21,7 @@ namespace ViwolfRental.Common.Model
         public string UsuarioModificacion { get; set; }
         public string NombreCliente { get; set; }
         public string LugarEntrega { get; set; }
-        public bool EntregaHotel { get; set; }
+        public Nullable<bool> AplicaComision { get; set; }
         public Nullable<System.DateTime> FechaInicio { get; set; }
         public string HoraInicio { get; set; }
         public Nullable<System.DateTime> FechaEntrega { get; set; }
@@ -33,14 +33,16 @@ namespace ViwolfRental.Common.Model
         public Nullable<decimal> MontoTotal { get; set; }
         public string NumeroDeposito { get; set; }
         public Nullable<decimal> MontoDeposito { get; set; }
-        public Nullable<bool> Efectivo { get; set; }
-        public Nullable<bool> CuentaPorCobrar { get; set; }
+        public Nullable<int> ModoPago { get; set; }
+        public Nullable<int> IdClienteComisionista { get; set; }
         public Nullable<int> IdProveedor { get; set; }
         public Nullable<int> IDUsuario { get; set; }
         public Nullable<int> IDVehiculo { get; set; }
         public Nullable<bool> Activo { get; set; }
     
+        public virtual t_ClientesComisionistas t_ClientesComisionistas { get; set; }
         public virtual t_Proveedores t_Proveedores { get; set; }
+        public virtual t_Usuarios t_Usuarios { get; set; }
         public virtual t_Vehiculos t_Vehiculos { get; set; }
     }
 }
