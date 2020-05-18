@@ -5,31 +5,19 @@
     var objSeleccionado = null;
     var fnCallbak = null;
 
-
-        
-
-
     var fnInit = function () {
        btnEnlazar.unbind().click(fnEnlazarVehiculo);
-      // btnBuscarVehiculo.unbind().click(fnBuscarVehiculo);
+     
     };
 
-  
-   
-
-   
     var fnBuscarVehiculo = function () {
-
         var oData = null;
-
         try {
             var oUrl = 'Vehiculos/ListarVehiculos';
             var oProcessMessage = 'Buscando Vehiculos';
-
             var success = function (result) {
-              
                 if (result.Data.length > 0) {
-                    debugger;
+                    
 
                     $table.dataTable({
                         destroy: true,
@@ -48,8 +36,7 @@
                         var iPos = $table.fnGetPosition(this);
                         objSeleccionado = $table.fnGetData(iPos);
 
-                        //var iId = aData[1];
-                        ////$('#edit' + iId).click();
+                      
                     });
                 }
                 else {
@@ -58,17 +45,17 @@
             };
             app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
         } catch (ex) {
-            //utils.fnShowErrorMessage(ex.message);
+          
             retorno = false;
         }
-        //return retorno;
+       
 
     }
 
   
 
     var fnEnlazarVehiculo = function (e) {
-        debugger;
+        
         modalVehiculo.modal('hide');
         fnCallbak(objSeleccionado);
     }
@@ -80,11 +67,7 @@
         fnInit();
         modalVehiculo.modal('show');
         fnBuscarVehiculo();
-        
-        //debugger;
-        //$table.DataTable({
-        //    select: true
-        //})
+      
           
     };
 

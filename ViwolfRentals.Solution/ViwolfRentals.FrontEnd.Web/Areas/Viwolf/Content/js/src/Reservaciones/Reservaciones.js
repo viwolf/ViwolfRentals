@@ -23,7 +23,6 @@ var reservaciones = function () {
     var txtHoraEntrega = $("#txtHoraEntrega")
     var btnGuardar = $("#btnGuardar");
     var btnCargarVehiculo = $("#btnCargarVehiculo");
-    var objVehiculo = null;
     var IdProveedor = 0; 
     var IdComisionista = 0; 
     var cantidadDias = 0;
@@ -37,7 +36,7 @@ var reservaciones = function () {
    
     var calcularTarifaTotal = function () {
       
-        var montoDia = txtMontoDia.val() == '' ? 0 : parseFloat(txtMontoDia.val().replace("$", "")); // parseFloat(txtMontoDia.val());
+        var montoDia = txtMontoDia.val() == '' ? 0 : parseFloat(txtMontoDia.val().replace("$", "")); 
         var montoSurfRacks = txtMontoSurfRacks.val() == '' ? 0 : parseFloat(txtMontoSurfRacks.val().replace("$", ""));
         var montoTotal = 0;
 
@@ -67,33 +66,18 @@ var reservaciones = function () {
                 InitSelection: function (callback, configuracion) {
                     $.ajax(configuracion.Url, {
                         url: configuracion.Url,
-                        data: configuracion.data, // null,
+                        data: configuracion.data,
                         dataType: 'json',
                         type: 'POST'
-                    }).done(function (data) {
-                        //bodegas = data.Data;
-                        //callback(data.Data);
+                    }).done(function () {
+                        
                     });
                 },
-                //SuccessFunction: function (data) {
-                //    bodegas = data.Data;
-                //}
+               
             });
 
 
-        //cargarSelect2(txtProveedor,
-        //    {
-        //        PlaceHolder: "Seleccione Proveedor",
-        //        minimumResultsForSearch: Infinity,
-        //        Url: "Proveedores/ListarProveedores",
-        //        DataType: 'json',
-        //        Type: "POST",
-        //        Id: "IdProveedor",
-        //        Text: "NombreProveedor",
-        //        SuccessFunction: function (data) {
-        //            estado = data.Data;
-        //        }
-        //    });
+      
 
         cargarSelect2(txtComisionistas,
             {
@@ -106,37 +90,22 @@ var reservaciones = function () {
                 InitSelection: function (callback, configuracion) {
                     $.ajax(configuracion.Url, {
                         url: configuracion.Url,
-                        data: configuracion.data, // null,
+                        data: configuracion.data, 
                         dataType: 'json',
                         type: 'POST'
                     }).done(function (data) {
-                        //bodegas = data.Data;
-                        //callback(data.Data);
+                       
                     });
                 },
-                //SuccessFunction: function (data) {
-                //    bodegas = data.Data;
-                //}
+               
             });
 
-        //cargarSelect2(txtComisionistas,
-        //    {
-        //        PlaceHolder: "Seleccione Comisionista",
-        //        minimumResultsForSearch: Infinity,
-        //        Url: "Comisionistas/ListarComisionistas",
-        //        DataType: 'json',
-        //        Type: "POST",
-        //        Id: "IdClienteComisionista",
-        //        Text: "NombreClienteComisionista",
-        //        SuccessFunction: function (data) {
-        //            estado = data.Data;
-        //        }
-        //    });
+       
     };
 
     var Init = function () {
 
-        //txtUsuario.val(usuarioLogueado);
+      
 
         txtAplicaComision.change(cambiarEstadoAplicaComision);
 
@@ -163,14 +132,7 @@ var reservaciones = function () {
             }
         })
 
-        //txtPlaca.blur(function () {
-        //    objVehiculo = null;
-        //    if (txtPlaca.val() != "")
-        //        fnValidarVehiculo();
-        //    //else
-        //        //document.getElementById("btnInfo").disabled = true;
-        //})
-
+    
         txtNumeroDeposito.bind('keypress', valideKey);
         txtNumeroDeposito.blur(function (){
             txtMontoDeposito.val(utils.formatterDolar.format(0));
@@ -201,7 +163,7 @@ var reservaciones = function () {
     }
 
     var fnCallBack = function (data) {
-        debugger;
+        
         txtPlaca.val("");
         txtPlaca.val(data.IDVehiculo);
     };
@@ -311,11 +273,11 @@ var reservaciones = function () {
                     }
                     var option = $(document.createElement('option'));
 
-                    option.text(this[configuracion.Text]);  //(this.NombreProveedor);
-                    option.val(this[configuracion.Id]); //(this.IdProveedor);
+                    option.text(this[configuracion.Text]); 
+                    option.val(this[configuracion.Id]); 
 
 
-                    //$("#txtProveedor").append(option);
+                    
                     elemento.append(option);
                 });
 
@@ -386,12 +348,12 @@ var reservaciones = function () {
                 if (result.Data.length > 0) {
                     if (result.Data[0].t_Departamentos.NombreDepartamento == "Disponible") {
                         objVehiculo = result.Data[0];
-                        //document.getElementById("btnInfo").disabled = false;
+                      
                         alert('Se enlazó el vehiculo a la reservacion con exito')
-                        //msjApp.fnShowSuccessMessage('Se enlazó el vehiculo a la reservacion con exito');
+                       
                     }
                     else {
-                       // msjApp.fnShowErrorMessage("El vehiculo " + txtPlaca.val() + " no está disponible para su reservación")
+                      
                         alert('El vehiculo ' + txtPlaca.val() + ' no está disponible para su reservación');
                     }
                 }
@@ -401,10 +363,9 @@ var reservaciones = function () {
             };
             app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
         } catch (ex) {
-            //utils.fnShowErrorMessage(ex.message);
+            
             retorno = false;
         }
-        //return retorno;
 
     }
 
@@ -562,10 +523,10 @@ var reservaciones = function () {
                 };
                 app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
             } catch (ex) {
-                //utils.fnShowErrorMessage(ex.message);
+              
                 retorno = false;
             }
-        //return retorno;
+     
         }
     };
 
