@@ -1805,7 +1805,7 @@ if (!(window.console && console.log)) {
 }
 
 var cargarSelect2 = function (elemento, configuracion) {
-    debugger;
+    
     let opts = {
         cacheDataSource: [],
         placeholder: configuracion.PlaceHolder,

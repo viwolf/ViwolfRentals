@@ -26,7 +26,7 @@ var informacionVehiculo = function () {
     };
 
     var fnCargarVehiculo = function (result) {
-        debugger;
+        
         idVehiculo.val(result.IDVehiculo == null ? "" : result.IDVehiculo);
         marca.val(result.Marca == null ? "" : result.Marca);
         modelo.val(result.Modelo == null ? "" : result.Modelo);
@@ -50,7 +50,7 @@ var informacionVehiculo = function () {
     };
 
     var fnAbrirModal = function (objVehiculo) {
-        debugger;
+        
         fnInit(objVehiculo);
     };
 

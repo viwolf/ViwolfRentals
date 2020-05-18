@@ -85,7 +85,7 @@ var Login = function () {
     };
 
     var fnLogin = function (e) {
-        debugger
+        
         if ((txtUsuario.val() != '') && (txtPassword.val() != '')) {
             check = false;
         }
@@ -114,7 +114,7 @@ var Login = function () {
                         // msjApp.fnShowWarningMessage("Usuario o password incorrectos");
                         alert("Usuario o password incorrectos")
                 };
-
+                debugger;
                 app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
             }
         }

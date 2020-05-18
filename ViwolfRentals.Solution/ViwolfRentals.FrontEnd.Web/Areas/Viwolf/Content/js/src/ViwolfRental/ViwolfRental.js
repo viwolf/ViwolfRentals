@@ -7,7 +7,7 @@
 
     var init = function () {
         btnCrearReservacion.click(function () {
-            debugger;
+            
             Reservaciones.Mostrar();
         });
     }

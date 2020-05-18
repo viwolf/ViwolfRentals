@@ -22,9 +22,10 @@ var reservaciones = function () {
     var txtFechaFinal = $("#txtFechaFinal");
     var txtHoraEntrega = $("#txtHoraEntrega")
     var btnGuardar = $("#btnGuardar");
-    var btnInfo = $("#btnInfo");
+    var btnCargarVehiculo = $("#btnCargarVehiculo");
     var objVehiculo = null;
     var IdProveedor = 0; 
+    var IdComisionista = 0; 
     var cantidadDias = 0;
     var timeIn = 0;
     var timeOut = 0;
@@ -166,8 +167,8 @@ var reservaciones = function () {
             objVehiculo = null;
             if (txtPlaca.val() != "")
                 fnValidarVehiculo();
-            else
-                document.getElementById("btnInfo").disabled = true;
+            //else
+                //document.getElementById("btnInfo").disabled = true;
         })
 
         txtNumeroDeposito.bind('keypress', valideKey);
@@ -194,8 +195,8 @@ var reservaciones = function () {
 
         btnGuardar.click(fnGuardarReservacion);
 
-        btnInfo.click(function () {
-            informacionVehiculo.AbrirModal(objVehiculo);
+        btnCargarVehiculo.click(function () {
+            BuscarVehiculo.AbrirModal();
         });
     }
 
@@ -379,7 +380,7 @@ var reservaciones = function () {
                 if (result.Data.length > 0) {
                     if (result.Data[0].t_Departamentos.NombreDepartamento == "Disponible") {
                         objVehiculo = result.Data[0];
-                        document.getElementById("btnInfo").disabled = false;
+                        //document.getElementById("btnInfo").disabled = false;
                         alert('Se enlazó el vehiculo a la reservacion con exito')
                         //msjApp.fnShowSuccessMessage('Se enlazó el vehiculo a la reservacion con exito');
                     }
@@ -511,11 +512,14 @@ var reservaciones = function () {
 
         var proveedor = document.getElementById("txtProveedor");
         IdProveedor = proveedor.options[proveedor.selectedIndex].value;
+
+        var comisionista = document.getElementById("txtComisionistas");
+        IdComisionista = comisionista.options[comisionista.selectedIndex].value;
      
         if (ValidateFields() == true) {
 
             var oData = {
-                "UsuarioCreacion": txtUsuario.val(),
+                "UsuarioCreacion": usuarioLogueado,
                 "NombreCliente": txtNombreCliente.val(),
                 "LugarEntrega": txtHospedaje.val(),
                 "AplicaComision": txtAplicaComision.val() == 'Si' ? true : false,
@@ -532,8 +536,8 @@ var reservaciones = function () {
                 "MontoDeposito": parseFloat(txtMontoDeposito.val().replace("$", "")),
                 "SaldoActual": parseFloat(txtSaldoActual.val().replace("$", "")),
                 "ModoPago": txtModoPago.val(),
-                "IdClienteComisionista": txtComisionistas.val() == 'Si' ? true : false,
-                "ProveedorID": IdProveedor == "" ? "0" : IdProveedor,
+                "IdClienteComisionista": IdComisionista == "" ? null : IdComisionista,
+                "ProveedorID": IdProveedor == "" ? null : IdProveedor,
                 "IDUsuario": idUsuarioLogueado,
                 "IDVehiculo": txtPlaca.val()
             }
