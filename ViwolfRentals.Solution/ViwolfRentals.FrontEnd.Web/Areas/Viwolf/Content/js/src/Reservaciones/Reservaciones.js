@@ -163,13 +163,13 @@ var reservaciones = function () {
             }
         })
 
-        txtPlaca.blur(function () {
-            objVehiculo = null;
-            if (txtPlaca.val() != "")
-                fnValidarVehiculo();
-            //else
-                //document.getElementById("btnInfo").disabled = true;
-        })
+        //txtPlaca.blur(function () {
+        //    objVehiculo = null;
+        //    if (txtPlaca.val() != "")
+        //        fnValidarVehiculo();
+        //    //else
+        //        //document.getElementById("btnInfo").disabled = true;
+        //})
 
         txtNumeroDeposito.bind('keypress', valideKey);
         txtNumeroDeposito.blur(function (){
@@ -196,9 +196,15 @@ var reservaciones = function () {
         btnGuardar.click(fnGuardarReservacion);
 
         btnCargarVehiculo.click(function () {
-            BuscarVehiculo.AbrirModal();
+            BuscarVehiculo.AbrirModal(fnCallBack);
         });
     }
+
+    var fnCallBack = function (data) {
+        debugger;
+        txtPlaca.val("");
+        txtPlaca.val(data.IDVehiculo);
+    };
 
     //Solo permite introducir numeros.
     function valideKey(evt) {

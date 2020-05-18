@@ -20,7 +20,7 @@
                                     <h2></h2>
                                 </header>
 
-                                <div id="formResultadoVehiculo" name="formResultado" class="">
+                                <form id="formResultadoVehiculo" name="formResultado" class="">
                                     <fieldset>
                                         <div class="collapseArea" role="content">
                                             <div class="row ">
@@ -44,13 +44,20 @@
                                             </div>
                                         </div>
                                     </fieldset>
-                                </div>
+                                </form>
                             </div>
                         </article>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <button id="btnSeleccionar">Seleccionar</button>
+                            <div class=" actions pull-right">
+                                @*<button type="button" id="btnBuscarVehiculo" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Buscar Vehiculo">
+                                        <i class="fa fa-check-circle display-block fa-2x"></i> Buscar Vehiculos
+                                    </button>*@
+                                <button type="button" id="btnSeleccionar" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Enlazar Vehiculo">
+                                    <i class="fa fa-check-circle display-block fa-2x"></i> Enlazar Vehiculo
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -58,7 +65,14 @@
         </div>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
 <script src="~/Areas/Viwolf/Content/js/src/Vehiculos/BuscarVehiculo.js"></script>

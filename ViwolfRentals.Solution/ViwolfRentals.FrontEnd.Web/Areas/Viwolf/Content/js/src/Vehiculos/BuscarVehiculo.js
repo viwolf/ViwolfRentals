@@ -2,18 +2,19 @@
     var modalVehiculo = $('#popupBusquedaVehiculo');
     var $table = $('#tableListBusVeh');
     var btnEnlazar = $("#btnSeleccionar");
-
+    var objSeleccionado = null;
+    var fnCallbak = null;
 
 
         
 
 
     var fnInit = function () {
-        debugger;
-        btnEnlazar.unbind().click(fnEnlazarVehiculo);
-        fnBuscarVehiculo();   
+       btnEnlazar.unbind().click(fnEnlazarVehiculo);
+      // btnBuscarVehiculo.unbind().click(fnBuscarVehiculo);
     };
 
+  
    
 
    
@@ -29,20 +30,27 @@
               
                 if (result.Data.length > 0) {
                     debugger;
-                    $table.DataTable({
+
+                    $table.dataTable({
                         destroy: true,
+                        processing: true,
                         responsive: true,
                         data: result.Data,
-
+                        select: true,
                         columns: [
                             { data: 't_CategoriasVehiculos.NombreCategoriaVehiculo' },
                             { data: 'IDVehiculo' },
                             { data: 'Marca' },
                             { data: 'Modelo' },
                         ],
-                        select: true
                     });
-                   
+                    $table.on("click", "tr", function () {
+                        var iPos = $table.fnGetPosition(this);
+                        objSeleccionado = $table.fnGetData(iPos);
+
+                        //var iId = aData[1];
+                        ////$('#edit' + iId).click();
+                    });
                 }
                 else {
                     alert("No se encontró el vehiculo en la busqueda");
@@ -61,18 +69,23 @@
 
     var fnEnlazarVehiculo = function (e) {
         debugger;
-        $table
-            .on('select', function (e, dt, type, indexes) {
-                debugger;
-                var bla = dt.row({ selected: true }).data().IDVehiculo;
-            })
+        modalVehiculo.modal('hide');
+        fnCallbak(objSeleccionado);
     }
 
        
 
-    var fnAbrirModal = function () {
+    var fnAbrirModal = function (callback) {
+        fnCallbak = callback;
         fnInit();
         modalVehiculo.modal('show');
+        fnBuscarVehiculo();
+        
+        //debugger;
+        //$table.DataTable({
+        //    select: true
+        //})
+          
     };
 
     return {
