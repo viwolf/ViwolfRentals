@@ -247,6 +247,7 @@
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\vendor\mdi-font\fonts\Material-Design-Iconic-Font.svg" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\vendor\select2\select2.min.css" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\vendor\select2\select2.min.js" />
+    <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Mantenimiento.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Reservaciones.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Vehiculos\BuscarVehiculo.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Vehiculos\InformacionVehiculo.js" />
@@ -494,6 +495,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Areas\Viwolf\Views\Vehiculos\Vehiculo_Info.cshtml" />
     <Content Include="Areas\Viwolf\Views\Vehiculos\VehiculoBuscar.cshtml" />
+    <Content Include="Areas\Viwolf\Views\Reservaciones\Mantenimiento.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

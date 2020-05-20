@@ -50,7 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedores\ProveedoresRepository.cs" />
     <Compile Include="Reservaciones\ReservacionesRepository.cs" />
-    <Compile Include="VehiculosRepository.cs" />
+    <Compile Include="Vehiculos\VehiculosRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ViwolfRental.Common.Model\ViwolfRental.Common.Model.csproj">

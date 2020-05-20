@@ -9,5 +9,6 @@ namespace Viwolf.BusinessLogic.Interface
     public interface IReservacionesBL
     {
         ViwolfRental.Common.Model.t_Reservaciones GuardarReservacion(ViwolfRental.Common.Model.t_Reservaciones reservacion);
+        IEnumerable<ViwolfRental.Common.Model.t_Reservaciones> ListarReservaciones(ViwolfRental.Common.Model.t_Reservaciones entidad);
     }
 }

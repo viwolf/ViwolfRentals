@@ -19,14 +19,44 @@ var informacionVehiculo = function () {
     var tituloPropiedad = $('#tituloPropiedadInformacion');
     var multas = $('#multasInformacion');
     var categoriaVehiculo = $('#categoriaVehiculoInformacion');
+  
    
-    var fnInit = function (objVehiculo) {
+    var fnInit = function (idvehiculo) {
         modalVehiculo.modal('show');
-        fnCargarVehiculo(objVehiculo);
+        fnBuscarVehiculo(idVehiculo)
+        //fnCargarVehiculo(objVehiculo);
     };
 
+    var fnBuscarVehiculo = function (id) {
+        var oData = {
+            "IDVehiculo": id
+        }
+
+        try {
+            var oUrl = 'Vehiculos/ListarVehiculos';
+            var oProcessMessage = 'Enlazando vehiculo';
+
+            var success = function (result) {
+
+                if (result.Data.length > 0) {
+                    if (result.Data[0].t_Departamentos.NombreDepartamento == "Disponible") {
+                        var objVehiculo = result.Data[0];
+                        debugger;
+                        fnCargarVehiculo(objVehiculo);
+                    }
+                }
+            };
+            app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
+        } catch (ex) {
+
+            retorno = false;
+        }
+    };
+
+
+
     var fnCargarVehiculo = function (result) {
-        
+        debugger;
         idVehiculo.val(result.IDVehiculo == null ? "" : result.IDVehiculo);
         marca.val(result.Marca == null ? "" : result.Marca);
         modelo.val(result.Modelo == null ? "" : result.Modelo);
@@ -49,9 +79,9 @@ var informacionVehiculo = function () {
         
     };
 
-    var fnAbrirModal = function (objVehiculo) {
-        
-        fnInit(objVehiculo);
+    var fnAbrirModal = function (idVehiculo) {
+
+        fnInit(idVehiculo);
     };
 
     return {

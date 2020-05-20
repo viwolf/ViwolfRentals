@@ -10,6 +10,7 @@ namespace ViwolfRentals.DataAccess.Interface
     public interface IReservacionesRepository
     {
         t_Reservaciones Guardar(t_Reservaciones model);
+        IEnumerable<ViwolfRental.Common.Model.t_Reservaciones> ListarReservaciones(ViwolfRental.Common.Model.t_Reservaciones reservaciones);
 
     }
 }

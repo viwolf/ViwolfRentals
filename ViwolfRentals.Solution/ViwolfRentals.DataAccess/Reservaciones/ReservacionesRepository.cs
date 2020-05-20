@@ -45,6 +45,30 @@ namespace ViwolfRentals.DataAccess
             }
         }
 
+        public IEnumerable<t_Reservaciones> ListarReservaciones(t_Reservaciones reservaciones)
+        {
+            using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+            {
+                return connection.Query("usp_Reservaciones_Listar",
+                   new[]
+                   {
+                        typeof(ViwolfRental.Common.Model.t_Reservaciones)
+                   },
+                   (object[] objetos) =>
+                   {
+                       t_Reservaciones a = objetos[0] as t_Reservaciones;
+                       t_Reservaciones resultado = new t_Reservaciones();
+
+                       resultado = a;
+                       return resultado;
+
+
+                   },
+                            splitOn: "",
+                            commandType: CommandType.StoredProcedure);
+            }
+        }
+
         private t_Reservaciones DoGuardar(IDbConnection connection, IDbTransaction transaction, t_Reservaciones entity)
         {
             StringBuilder tracerBuilder = new StringBuilder();
@@ -56,6 +80,7 @@ namespace ViwolfRentals.DataAccess
                                               sql: "usp_Reservaciones_Guardar",
                                               param: new
                                               {
+                                                  entity.IdReservacion,
                                                  entity.UsuarioCreacion,
                                                  entity.NombreCliente,
                                                  entity.LugarEntrega,

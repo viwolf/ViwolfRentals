@@ -352,41 +352,6 @@
             };
     };
 
-    var fnValidarVehiculo = function () {
-
-        var oData = {
-            "IDVehiculo": txtPlaca.val()
-        }
-
-        try {
-            var oUrl = 'Vehiculos/ListarVehiculos';
-            var oProcessMessage = 'Enlazando vehiculo';
-
-            var success = function (result) {
-               
-                if (result.Data.length > 0) {
-                    if (result.Data[0].t_Departamentos.NombreDepartamento == "Disponible") {
-                        objVehiculo = result.Data[0];
-                      
-                        alert('Se enlazó el vehiculo a la reservacion con exito')
-                       
-                    }
-                    else {
-                      
-                        alert('El vehiculo ' + txtPlaca.val() + ' no está disponible para su reservación');
-                    }
-                }
-                else {
-                    alert("No se encontró el vehiculo en la busqueda");
-                };
-            };
-            app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
-        } catch (ex) {
-            
-            retorno = false;
-        }
-
-    }
 
     var ValidateFields = function () {
         var check = true;
