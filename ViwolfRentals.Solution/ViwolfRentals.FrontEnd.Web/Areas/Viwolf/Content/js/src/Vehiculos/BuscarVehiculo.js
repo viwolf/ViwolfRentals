@@ -40,7 +40,7 @@
                     });
                 }
                 else {
-                    alert("No se encontró el vehiculo en la busqueda");
+                    alert("No hay vehiculos disponibles para su renta.");
                 };
             };
             app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);

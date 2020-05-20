@@ -438,8 +438,8 @@
                                                                         check = false;
                                                                     }
                                                                     else
-                                                                        if (txtComisionistas.val() == "") {
-                                                                            alert("Debe seleccionar si aplica una cuenta por cobrar.");
+                                                                        if ((txtModoPago.val() == 1) && (txtComisionistas.val() == "")) {
+                                                                            alert("Debe seleccionar un comisionista.");
                                                                             check = false;
                                                                         }
                                                                         else
