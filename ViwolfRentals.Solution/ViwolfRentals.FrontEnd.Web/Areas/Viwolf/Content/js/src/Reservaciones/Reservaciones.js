@@ -1,6 +1,4 @@
-﻿
-
-var reservaciones = function () {
+﻿var reservaciones = function () {
     var txtNombreCliente = $("#txtNombreCliente");
     var txtHospedaje = $("#txtHospedaje");
     var txtAplicaComision = $("#txtAplicaComision");
@@ -9,6 +7,7 @@ var reservaciones = function () {
     var txtCajon = $("#txtCajon");
     var txtMontoDia = $("#txtMontoDia");
     var txtMontoTotal = $("#txtMontoTotal");
+    var txtAplicaPagoAdelantado = $("#txtAplicaPagoAdelantado");
     var txtNumeroDeposito = $("#txtNumeroDeposito");
     var txtMontoDeposito = $("#txtMontoDeposito");
     var txtSaldoActual = $("#txtSaldoActual");
@@ -28,12 +27,11 @@ var reservaciones = function () {
     var cantidadDias = 0;
     var timeIn = 0;
     var timeOut = 0;
-  
+   
     var dateIni = new Date();
     var dateFin = new Date();
 
-
-   
+       
     var calcularTarifaTotal = function () {
       
         var montoDia = txtMontoDia.val() == '' ? 0 : parseFloat(txtMontoDia.val().replace("$", "")); 
@@ -152,6 +150,7 @@ var reservaciones = function () {
 
         txtSurfRacks.change(cambiarEstadoSurfRacks);
         txtModoPago.change(cambiarEstadoProveedor);
+        txtAplicaPagoAdelantado.change(cambiarEstadoPagoAdelantado)
 
         txtHoraInicio.change(function () { })
 
@@ -317,6 +316,27 @@ var reservaciones = function () {
         txtMontoSurfRacks.val(utils.formatterDolar.format(0));
         calcularTarifaTotal();
     };
+
+    function cambiarEstadoPagoAdelantado() {
+      
+        if (txtAplicaPagoAdelantado.val() == 1) {
+            document.getElementById("txtNumeroDeposito").disabled = false;
+            document.getElementById("txtMontoDeposito").disabled = false;
+            txtNumeroDeposito.val("");
+            txtMontoDeposito.val("");
+        }
+        else
+            if (txtAplicaPagoAdelantado.val() == 0) {
+                debugger;
+                document.getElementById("txtNumeroDeposito").disabled = true;
+                document.getElementById("txtMontoDeposito").disabled = true;
+                txtMontoDeposito.val(utils.formatterDolar.format(parseFloat(0)));
+                txtMontoDeposito.val(utils.formatterDolar.format(parseFloat(txtMontoDeposito.val().replace("$", ""))));
+                var saldo = txtMontoTotal.val() == "" ? 0 : parseFloat(txtMontoTotal.val().replace("$", "")) - parseFloat(txtMontoDeposito.val().replace("$", ""))
+                txtSaldoActual.val(utils.formatterDolar.format(saldo));
+                txtNumeroDeposito.val("");
+            };
+    }
 
     function cambiarEstadoProveedor() {
 
