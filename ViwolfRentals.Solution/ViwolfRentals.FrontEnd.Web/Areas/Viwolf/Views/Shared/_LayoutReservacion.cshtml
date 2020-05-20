@@ -49,35 +49,34 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Viwolf Rentals
                             </a>*@
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                    <a class="nav-link collapsed" id="layoutWiwolfRentals" href="#" data-toggle="collapse" data-target="#collapseViwolfRentals" aria-expanded="false" aria-controls="collapseViwolfRentals" data-parent="#sidenavAccordion">
                         <div class="sb-nav-link-icon"><i class="fa fa-motorcycle"></i></div>
                         Viwolf Rentals
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                        <div class="collapse" id="collapseViwolfRentals" aria-labelledby="headingTwo" data-parent="#layoutWiwolfRentals">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionReservaciones">
                                 <a class="nav-link" href="#">Dashboard</a>
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseReservaciones" aria-expanded="false" aria-controls="pagesCollapseReservaciones">
                                     Reservaciones
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                 </a>
-                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                <div class="collapse" id="pagesCollapseReservaciones" aria-labelledby="headingOne" data-parent="#sidenavAccordionReservaciones">
                                     <nav class="sb-sidenav-menu-nested nav">
-
-                                        <a class="nav-link" href="@Url.Action("Index","Reservaciones", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Crear Reservacion</a>
+                                        <a class="nav-link" href="#">Mantenimiento</a>
+                                        <a class="nav-link" href="@Url.Action("Index","Reservaciones", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Creación</a>
                                     </nav>
                                 </div>
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseContratos" aria-expanded="false" aria-controls="pagesCollapseContratos">
                                     Contratos
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                 </a>
-                                @*<div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-            <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="#">Opcion 1</a>
-                <a class="nav-link" href="#">Opcion 2</a>
-                <a class="nav-link" href="#">Opcion 3</a>
-            </nav>
-        </div>*@
+                                <div class="collapse" id="pagesCollapseContratos" aria-labelledby="headingOne" data-parent="#layoutWiwolfRentals">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="#">Mantenimiento</a>
+                                    <a class="nav-link" href="#">Creación</a>
+                                </nav>
+                            </div>
                                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
                                     Talleres
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>

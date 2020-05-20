@@ -327,7 +327,6 @@
         }
         else
             if (txtAplicaPagoAdelantado.val() == 0) {
-                debugger;
                 document.getElementById("txtNumeroDeposito").disabled = true;
                 document.getElementById("txtMontoDeposito").disabled = true;
                 txtMontoDeposito.val(utils.formatterDolar.format(parseFloat(0)));
