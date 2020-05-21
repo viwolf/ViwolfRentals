@@ -100,18 +100,21 @@
     <Property Name="Marca" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Modelo" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Anno" Type="int" Nullable="false" />
+    <Property Name="GPS" Type="bit" />
     <Property Name="FechaCompra" Type="datetime" />
     <Property Name="NumeroChasis" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="NumeroMotor" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="RtvVencimientoAnno" Type="int" Nullable="false" />
     <Property Name="RtvVencimientoMes" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="MarchamoProximo" Type="int" Nullable="false" />
-    <Property Name="Color" Type="nvarchar" MaxLength="50" />
-    <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
-    <Property Name="Transmision" Type="nvarchar" MaxLength="50" />
-    <Property Name="NumeroCilindros" Type="int" />
-    <Property Name="PesoKg" Type="int" />
-    <Property Name="Suspension" Type="bit" />
+    <Property Name="Color" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Transmision" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NumeroCilindros" Type="int" Nullable="false" />
+    <Property Name="PesoKg" Type="int" Nullable="false" />
+    <Property Name="Carroceria" Type="nvarchar" MaxLength="50" />
+    <Property Name="Traccion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Capacidad" Type="int" />
     <Property Name="RtvSticker" Type="bit" Nullable="false" />
     <Property Name="RtvPapel" Type="bit" Nullable="false" />
     <Property Name="MarchamoSticker" Type="bit" Nullable="false" />

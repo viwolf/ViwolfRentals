@@ -31,6 +31,7 @@
             var oUrl = 'Vehiculos/ListarVehiculos';
             var oProcessMessage = 'Buscando Vehiculos';
             var success = function (result) {
+                debugger;
                 if (result.Data.length > 0) {
                     $table.dataTable({
                         destroy: true,
@@ -42,6 +43,7 @@
                             { data: 'IDVehiculo' },
                             { data: 'Marca' },
                             { data: 'Modelo' },
+                            { data: 'GPS' },
                             { data: 't_CategoriasVehiculos.NombreCategoriaVehiculo' },
                             { data: 't_Departamentos.NombreDepartamento' },
                             { data: 'Ver' }

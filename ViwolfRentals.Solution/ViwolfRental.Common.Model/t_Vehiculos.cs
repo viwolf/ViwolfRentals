@@ -28,6 +28,7 @@ namespace ViwolfRental.Common.Model
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public int Anno { get; set; }
+        public Nullable<bool> GPS { get; set; }
         public Nullable<System.DateTime> FechaCompra { get; set; }
         public string NumeroChasis { get; set; }
         public string NumeroMotor { get; set; }
@@ -37,9 +38,11 @@ namespace ViwolfRental.Common.Model
         public string Color { get; set; }
         public string Direccion { get; set; }
         public string Transmision { get; set; }
-        public Nullable<int> NumeroCilindros { get; set; }
-        public Nullable<int> PesoKg { get; set; }
-        public Nullable<bool> Suspension { get; set; }
+        public int NumeroCilindros { get; set; }
+        public int PesoKg { get; set; }
+        public string Carroceria { get; set; }
+        public string Traccion { get; set; }
+        public Nullable<int> Capacidad { get; set; }
         public bool RtvSticker { get; set; }
         public bool RtvPapel { get; set; }
         public bool MarchamoSticker { get; set; }

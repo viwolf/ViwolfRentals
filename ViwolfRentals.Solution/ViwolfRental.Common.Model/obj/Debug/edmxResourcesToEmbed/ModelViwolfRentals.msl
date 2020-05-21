@@ -110,7 +110,9 @@
           <ScalarProperty Name="MarchamoSticker" ColumnName="MarchamoSticker" />
           <ScalarProperty Name="RtvPapel" ColumnName="RtvPapel" />
           <ScalarProperty Name="RtvSticker" ColumnName="RtvSticker" />
-          <ScalarProperty Name="Suspension" ColumnName="Suspension" />
+          <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+          <ScalarProperty Name="Traccion" ColumnName="Traccion" />
+          <ScalarProperty Name="Carroceria" ColumnName="Carroceria" />
           <ScalarProperty Name="PesoKg" ColumnName="PesoKg" />
           <ScalarProperty Name="NumeroCilindros" ColumnName="NumeroCilindros" />
           <ScalarProperty Name="Transmision" ColumnName="Transmision" />
@@ -122,6 +124,7 @@
           <ScalarProperty Name="NumeroMotor" ColumnName="NumeroMotor" />
           <ScalarProperty Name="NumeroChasis" ColumnName="NumeroChasis" />
           <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+          <ScalarProperty Name="GPS" ColumnName="GPS" />
           <ScalarProperty Name="Anno" ColumnName="Anno" />
           <ScalarProperty Name="Modelo" ColumnName="Modelo" />
           <ScalarProperty Name="Marca" ColumnName="Marca" />

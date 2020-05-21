@@ -156,18 +156,21 @@
     <Property Name="Marca" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Modelo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Anno" Type="Int32" Nullable="false" />
+    <Property Name="GPS" Type="Boolean" />
     <Property Name="FechaCompra" Type="DateTime" Precision="3" />
     <Property Name="NumeroChasis" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="NumeroMotor" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="RtvVencimientoAnno" Type="Int32" Nullable="false" />
     <Property Name="RtvVencimientoMes" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="MarchamoProximo" Type="Int32" Nullable="false" />
-    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Transmision" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="NumeroCilindros" Type="Int32" />
-    <Property Name="PesoKg" Type="Int32" />
-    <Property Name="Suspension" Type="Boolean" />
+    <Property Name="Color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Transmision" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NumeroCilindros" Type="Int32" Nullable="false" />
+    <Property Name="PesoKg" Type="Int32" Nullable="false" />
+    <Property Name="Carroceria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Traccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Capacidad" Type="Int32" />
     <Property Name="RtvSticker" Type="Boolean" Nullable="false" />
     <Property Name="RtvPapel" Type="Boolean" Nullable="false" />
     <Property Name="MarchamoSticker" Type="Boolean" Nullable="false" />
