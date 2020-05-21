@@ -12,6 +12,12 @@ namespace FrontEnd.Controllers.Viwolf
 {
     public class VehiculosController : Controller
     {
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         [HttpPost]
         public JsonResult ListarVehiculos(t_Vehiculos vehiculos)
         {
@@ -39,7 +45,8 @@ namespace FrontEnd.Controllers.Viwolf
                                  ta.TituloPropiedad,
                                  ta.Multas,
                                  ta.t_CategoriasVehiculos,
-                                 ta.t_Departamentos
+                                 ta.t_Departamentos,
+                                 Ver = "<button id= '" + ta.IDVehiculo + "' name='btnV_" + ta.IDVehiculo + "'><i class='fa fa-eye'></i></button>"
                              }).AsEnumerable();
             return Json(new
             {

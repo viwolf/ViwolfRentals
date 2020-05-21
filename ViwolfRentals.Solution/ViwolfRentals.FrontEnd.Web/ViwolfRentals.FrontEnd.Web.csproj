@@ -251,6 +251,7 @@
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Reservaciones.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Vehiculos\BuscarVehiculo.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Vehiculos\InformacionVehiculo.js" />
+    <Content Include="Areas\Viwolf\Content\js\src\Vehiculos\Vehiculos.js" />
     <Content Include="Areas\Viwolf\Content\js\src\ViwolfRental\ViwolfRental.js" />
     <Content Include="Areas\Viwolf\Content\scripts\build-assets.js" />
     <Content Include="Areas\Viwolf\Content\scripts\build-pug.js" />
@@ -286,6 +287,9 @@
     <Content Include="Content\Plugins\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Plugins\bootstrap\js\bootstrap.js" />
     <Content Include="Content\Plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Plugins\datatables\dataTables.bootstrap.min.js" />
+    <Content Include="Content\Plugins\datatables\dataTables.select.min.js" />
+    <Content Include="Content\Plugins\datatables\jquery.dataTables.min.js" />
     <Content Include="Content\Plugins\ReModal\messageModal.css" />
     <Content Include="Content\Plugins\ReModal\messageModal.js" />
     <Content Include="Content\Plugins\ReModal\remodal-default-theme.css" />
@@ -496,6 +500,8 @@
     <Content Include="Areas\Viwolf\Views\Vehiculos\Vehiculo_Info.cshtml" />
     <Content Include="Areas\Viwolf\Views\Vehiculos\VehiculoBuscar.cshtml" />
     <Content Include="Areas\Viwolf\Views\Reservaciones\Mantenimiento.cshtml" />
+    <Content Include="Areas\Viwolf\Views\Vehiculos\Index.cshtml" />
+    <Content Include="Content\Plugins\datatables\jquery-3.5.1.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
