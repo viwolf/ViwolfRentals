@@ -11,7 +11,9 @@
     };
 
     var fnBuscarVehiculo = function () {
-        var oData = null;
+        var oData = {
+            "IDDepartamento" : 1
+        };
         try {
             var oUrl = 'Vehiculos/ListarVehiculos';
             var oProcessMessage = 'Buscando Vehiculos';

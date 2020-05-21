@@ -29,7 +29,25 @@ namespace ViwolfRentals.DataAccess
                    splitOn: "IDCategoriaVehiculo , IDDepartamento",
                    param: new
                    {
-                       vehiculos.IDVehiculo
+                       vehiculos.IDVehiculo,
+                       vehiculos.Marca,
+                       vehiculos.Modelo,
+                       vehiculos.Anno,
+                       vehiculos.FechaCompra,
+                       vehiculos.NumeroChasis,
+                       vehiculos.NumeroMotor,
+                       vehiculos.RtvVencimientoAnno,
+                       vehiculos.RtvVencimientoMes,
+                       vehiculos.MarchamoProximo,
+                       vehiculos.RtvSticker,
+                       vehiculos.RtvPapel,
+                       vehiculos.MarchamoPapel,
+                       vehiculos.StickerPlaca,
+                       vehiculos.TituloPropiedad,
+                       vehiculos.Multas,
+                       vehiculos.IDCategoriaVehiculo,
+                       vehiculos.IDDepartamento
+
                    },
                   commandType: CommandType.StoredProcedure);
             }
