@@ -43,6 +43,7 @@
                             { data: 'IDVehiculo' },
                             { data: 'Marca' },
                             { data: 'Modelo' },
+                            { data: 'Anno' },
                             { data: 'GPS' },
                             { data: 't_CategoriasVehiculos.NombreCategoriaVehiculo' },
                             { data: 't_Departamentos.NombreDepartamento' },
