@@ -1,6 +1,28 @@
 ﻿var vehiculos = function () {
     var $table = $('#tableListVehiculos');
+    var objSeleccionado = null;
 
+    function fnOnClickBtn_InfoVehiculo() {
+       
+        var t = setTimeout(function () {
+            debugger;
+            listadoVehiculosInventario.AbrirModal(objSeleccionado.IDVehiculo);
+
+
+        }, 100);
+    };
+
+
+    function OnPageEvent(table) {
+        debugger;
+        let $btnInfo = $(table.fnGetNodes()).find("button[name^='btnV_']");
+
+
+
+        $btnInfo.click(function () {
+            fnOnClickBtn_InfoVehiculo();
+        });
+    }
 
 
     var fnBuscarVehiculo = function () {
@@ -28,9 +50,8 @@
                     $table.on("click", "tr", function () {
                         var iPos = $table.fnGetPosition(this);
                         objSeleccionado = $table.fnGetData(iPos);
-
-
                     });
+                    OnPageEvent($table);
                 }
                 else {
                     alert("No hay vehiculos disponibles para su renta.");
