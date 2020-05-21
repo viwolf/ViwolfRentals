@@ -69,10 +69,28 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="t_Roles">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Roles">
+        <MappingFragment StoreEntitySet="t_Roles">
+          <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Sistemas">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Sistemas">
+        <MappingFragment StoreEntitySet="t_Sistemas">
+          <ScalarProperty Name="NombreSistema" ColumnName="NombreSistema" />
+          <ScalarProperty Name="IdSistema" ColumnName="IdSistema" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="t_Usuarios">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Usuarios">
         <MappingFragment StoreEntitySet="t_Usuarios">
           <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="IdSistema" ColumnName="IdSistema" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="CodigoUsuario" ColumnName="CodigoUsuario" />
           <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
@@ -92,6 +110,12 @@
           <ScalarProperty Name="MarchamoSticker" ColumnName="MarchamoSticker" />
           <ScalarProperty Name="RtvPapel" ColumnName="RtvPapel" />
           <ScalarProperty Name="RtvSticker" ColumnName="RtvSticker" />
+          <ScalarProperty Name="Suspension" ColumnName="Suspension" />
+          <ScalarProperty Name="PesoKg" ColumnName="PesoKg" />
+          <ScalarProperty Name="NumeroCilindros" ColumnName="NumeroCilindros" />
+          <ScalarProperty Name="Transmision" ColumnName="Transmision" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
           <ScalarProperty Name="MarchamoProximo" ColumnName="MarchamoProximo" />
           <ScalarProperty Name="RtvVencimientoMes" ColumnName="RtvVencimientoMes" />
           <ScalarProperty Name="RtvVencimientoAnno" ColumnName="RtvVencimientoAnno" />

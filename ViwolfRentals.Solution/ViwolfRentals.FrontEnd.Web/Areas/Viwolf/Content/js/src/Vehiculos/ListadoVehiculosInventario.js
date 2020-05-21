@@ -30,6 +30,23 @@
                             { data: 'TituloPropiedad' },
                         ],
                     });
+
+                    tableFichaTecnica.dataTable({
+                        destroy: true,
+                        processing: true,
+                        responsive: true,
+                        data: result.Data,
+                        select: true,
+                        columns: [
+                            { data: 'IDVehiculo' },
+                            { data: 'Color' },
+                            { data: 'Direccion' },
+                            { data: 'Transmision' },
+                            { data: 'NumeroCilindros' },
+                            { data: 'PesoKg' },
+                            { data: 'Suspension' },
+                        ],
+                    });
                    
                 }
                 else {

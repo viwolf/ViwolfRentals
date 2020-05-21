@@ -6,6 +6,8 @@
     <EntitySet Name="t_Departamentos" EntityType="ViwolfRentalsDBModel.t_Departamentos" />
     <EntitySet Name="t_Proveedores" EntityType="ViwolfRentalsDBModel.t_Proveedores" />
     <EntitySet Name="t_Reservaciones" EntityType="ViwolfRentalsDBModel.t_Reservaciones" />
+    <EntitySet Name="t_Roles" EntityType="ViwolfRentalsDBModel.t_Roles" />
+    <EntitySet Name="t_Sistemas" EntityType="ViwolfRentalsDBModel.t_Sistemas" />
     <EntitySet Name="t_Usuarios" EntityType="ViwolfRentalsDBModel.t_Usuarios" />
     <EntitySet Name="t_Vehiculos" EntityType="ViwolfRentalsDBModel.t_Vehiculos" />
     <AssociationSet Name="FK_t_Vehiculos_t_CategoriasVehiculos" Association="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos">
@@ -31,6 +33,14 @@
     <AssociationSet Name="FK_t_Reservaciones_t_Vehiculos" Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Vehiculos">
       <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
       <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Usuarios_t_Roles" Association="ViwolfRentalsDBModel.FK_t_Usuarios_t_Roles">
+      <End Role="t_Roles" EntitySet="t_Roles" />
+      <End Role="t_Usuarios" EntitySet="t_Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Usuarios_t_Sistemas" Association="ViwolfRentalsDBModel.FK_t_Usuarios_t_Sistemas">
+      <End Role="t_Sistemas" EntitySet="t_Sistemas" />
+      <End Role="t_Usuarios" EntitySet="t_Usuarios" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="t_CategoriasVehiculos">
@@ -104,6 +114,22 @@
     <NavigationProperty Name="t_Usuarios" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Usuarios" FromRole="t_Reservaciones" ToRole="t_Usuarios" />
     <NavigationProperty Name="t_Vehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Vehiculos" FromRole="t_Reservaciones" ToRole="t_Vehiculos" />
   </EntityType>
+  <EntityType Name="t_Roles">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="NombreRol" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="t_Usuarios" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Roles" FromRole="t_Roles" ToRole="t_Usuarios" />
+  </EntityType>
+  <EntityType Name="t_Sistemas">
+    <Key>
+      <PropertyRef Name="IdSistema" />
+    </Key>
+    <Property Name="IdSistema" Type="Int32" Nullable="false" />
+    <Property Name="NombreSistema" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="t_Usuarios" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Sistemas" FromRole="t_Sistemas" ToRole="t_Usuarios" />
+  </EntityType>
   <EntityType Name="t_Usuarios">
     <Key>
       <PropertyRef Name="IdUsuario" />
@@ -111,8 +137,12 @@
     <Property Name="IdUsuario" Type="Int32" Nullable="false" />
     <Property Name="CodigoUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdSistema" Type="Int32" />
+    <Property Name="IdRol" Type="Int32" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Usuarios" FromRole="t_Usuarios" ToRole="t_Reservaciones" />
+    <NavigationProperty Name="t_Roles" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Roles" FromRole="t_Usuarios" ToRole="t_Roles" />
+    <NavigationProperty Name="t_Sistemas" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Sistemas" FromRole="t_Usuarios" ToRole="t_Sistemas" />
   </EntityType>
   <EntityType Name="t_Vehiculos">
     <Key>
@@ -132,6 +162,12 @@
     <Property Name="RtvVencimientoAnno" Type="Int32" Nullable="false" />
     <Property Name="RtvVencimientoMes" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="MarchamoProximo" Type="Int32" Nullable="false" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Transmision" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NumeroCilindros" Type="Int32" />
+    <Property Name="PesoKg" Type="Int32" />
+    <Property Name="Suspension" Type="Boolean" />
     <Property Name="RtvSticker" Type="Boolean" Nullable="false" />
     <Property Name="RtvPapel" Type="Boolean" Nullable="false" />
     <Property Name="MarchamoSticker" Type="Boolean" Nullable="false" />
@@ -215,6 +251,30 @@
       </Principal>
       <Dependent Role="t_Reservaciones">
         <PropertyRef Name="IDVehiculo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Usuarios_t_Roles">
+    <End Type="ViwolfRentalsDBModel.t_Roles" Role="t_Roles" Multiplicity="0..1" />
+    <End Type="ViwolfRentalsDBModel.t_Usuarios" Role="t_Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Roles">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="t_Usuarios">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Usuarios_t_Sistemas">
+    <End Type="ViwolfRentalsDBModel.t_Sistemas" Role="t_Sistemas" Multiplicity="0..1" />
+    <End Type="ViwolfRentalsDBModel.t_Usuarios" Role="t_Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Sistemas">
+        <PropertyRef Name="IdSistema" />
+      </Principal>
+      <Dependent Role="t_Usuarios">
+        <PropertyRef Name="IdSistema" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -34,6 +34,12 @@ namespace ViwolfRental.Common.Model
         public int RtvVencimientoAnno { get; set; }
         public string RtvVencimientoMes { get; set; }
         public int MarchamoProximo { get; set; }
+        public string Color { get; set; }
+        public string Direccion { get; set; }
+        public string Transmision { get; set; }
+        public Nullable<int> NumeroCilindros { get; set; }
+        public Nullable<int> PesoKg { get; set; }
+        public Nullable<bool> Suspension { get; set; }
         public bool RtvSticker { get; set; }
         public bool RtvPapel { get; set; }
         public bool MarchamoSticker { get; set; }

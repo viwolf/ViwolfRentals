@@ -81,6 +81,12 @@
     <Compile Include="t_Reservaciones.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
+    <Compile Include="t_Roles.cs">
+      <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Sistemas.cs">
+      <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
+    </Compile>
     <Compile Include="t_Usuarios.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
