@@ -10,10 +10,16 @@ namespace Viwolf.BusinessLogic
 {
     public class VehiculosBL : IVehiculosBL
     {
+        ViwolfRentals.DataAccess.Interface.IVehiculosRepository repository = new ViwolfRentals.DataAccess.VehiculosRepository();
+
+        public IEnumerable<t_Kilometrajes> ListarKilometrajes(t_Kilometrajes entidad)
+        {
+            return repository.ListarKilometraje(entidad);
+        }
+
         public IEnumerable<t_Vehiculos> ListarVehiculos(t_Vehiculos vehiculo)
         {
-            ViwolfRentals.DataAccess.Interface.IVehiculosRepository repository = new ViwolfRentals.DataAccess.VehiculosRepository();
-
+        
             return repository.ListarVehiculos(vehiculo);
         }
     }

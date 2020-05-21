@@ -29,6 +29,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="t_Kilometrajes">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Kilometrajes">
+        <MappingFragment StoreEntitySet="t_Kilometrajes">
+          <ScalarProperty Name="IDReservacion" ColumnName="IDReservacion" />
+          <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
+          <ScalarProperty Name="KilometrajeReccorrido" ColumnName="KilometrajeReccorrido" />
+          <ScalarProperty Name="KilometrajeFinal" ColumnName="KilometrajeFinal" />
+          <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+          <ScalarProperty Name="KilometrajeInicial" ColumnName="KilometrajeInicial" />
+          <ScalarProperty Name="FechaInicial" ColumnName="FechaInicial" />
+          <ScalarProperty Name="IDKilometraje" ColumnName="IDKilometraje" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="t_Proveedores">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Proveedores">
         <MappingFragment StoreEntitySet="t_Proveedores">
@@ -103,6 +117,7 @@
           <ScalarProperty Name="Activo" ColumnName="Activo" />
           <ScalarProperty Name="IDDepartamento" ColumnName="IDDepartamento" />
           <ScalarProperty Name="IDCategoriaVehiculo" ColumnName="IDCategoriaVehiculo" />
+          <ScalarProperty Name="Kilometraje" ColumnName="Kilometraje" />
           <ScalarProperty Name="Multas" ColumnName="Multas" />
           <ScalarProperty Name="TituloPropiedad" ColumnName="TituloPropiedad" />
           <ScalarProperty Name="StickerPlaca" ColumnName="StickerPlaca" />

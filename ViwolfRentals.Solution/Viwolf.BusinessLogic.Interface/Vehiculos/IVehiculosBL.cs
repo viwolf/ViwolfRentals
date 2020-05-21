@@ -9,5 +9,7 @@ namespace Viwolf.BusinessLogic.Interface
     public interface IVehiculosBL
     {
         IEnumerable<ViwolfRental.Common.Model.t_Vehiculos> ListarVehiculos(ViwolfRental.Common.Model.t_Vehiculos entidad);
+
+        IEnumerable<ViwolfRental.Common.Model.t_Kilometrajes> ListarKilometrajes(ViwolfRental.Common.Model.t_Kilometrajes entidad);
     }
 }

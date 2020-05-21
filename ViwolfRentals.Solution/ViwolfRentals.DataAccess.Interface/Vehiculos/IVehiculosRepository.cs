@@ -9,5 +9,7 @@ namespace ViwolfRentals.DataAccess.Interface
     public interface IVehiculosRepository
     {
         IEnumerable<ViwolfRental.Common.Model.t_Vehiculos> ListarVehiculos(ViwolfRental.Common.Model.t_Vehiculos vehiculos);
+
+        IEnumerable<ViwolfRental.Common.Model.t_Kilometrajes> ListarKilometraje(ViwolfRental.Common.Model.t_Kilometrajes kilometrajes);
     }
 }

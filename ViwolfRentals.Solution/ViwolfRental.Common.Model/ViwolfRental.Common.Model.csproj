@@ -75,6 +75,9 @@
     <Compile Include="t_Departamentos.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
+    <Compile Include="t_Kilometrajes.cs">
+      <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
+    </Compile>
     <Compile Include="t_Proveedores.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>

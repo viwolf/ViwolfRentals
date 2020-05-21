@@ -25,6 +25,19 @@
     <Property Name="NombreDepartamento" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="t_Kilometrajes">
+    <Key>
+      <PropertyRef Name="IDKilometraje" />
+    </Key>
+    <Property Name="IDKilometraje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaInicial" Type="date" />
+    <Property Name="KilometrajeInicial" Type="int" />
+    <Property Name="FechaFinal" Type="date" />
+    <Property Name="KilometrajeFinal" Type="int" />
+    <Property Name="KilometrajeReccorrido" Type="int" />
+    <Property Name="IDVehiculo" Type="int" Nullable="false" />
+    <Property Name="IDReservacion" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="t_Proveedores">
     <Key>
       <PropertyRef Name="IdProveedor" />
@@ -122,10 +135,23 @@
     <Property Name="StickerPlaca" Type="bit" Nullable="false" />
     <Property Name="TituloPropiedad" Type="bit" Nullable="false" />
     <Property Name="Multas" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Kilometraje" Type="int" Nullable="false" />
     <Property Name="IDCategoriaVehiculo" Type="int" Nullable="false" />
     <Property Name="IDDepartamento" Type="int" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
+  <Association Name="FK_t_Kilometrajes_t_Vehiculos">
+    <End Role="t_Vehiculos" Type="Self.t_Vehiculos" Multiplicity="1" />
+    <End Role="t_Kilometrajes" Type="Self.t_Kilometrajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Vehiculos">
+        <PropertyRef Name="IDVehiculo" />
+      </Principal>
+      <Dependent Role="t_Kilometrajes">
+        <PropertyRef Name="IDVehiculo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_t_Reservaciones_t_ClientesComisionistas">
     <End Role="t_ClientesComisionistas" Type="Self.t_ClientesComisionistas" Multiplicity="0..1" />
     <End Role="t_Reservaciones" Type="Self.t_Reservaciones" Multiplicity="*" />
@@ -226,12 +252,17 @@
     <EntitySet Name="t_CategoriasVehiculos" EntityType="Self.t_CategoriasVehiculos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_ClientesComisionistas" EntityType="Self.t_ClientesComisionistas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Departamentos" EntityType="Self.t_Departamentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Kilometrajes" EntityType="Self.t_Kilometrajes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Proveedores" EntityType="Self.t_Proveedores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Reservaciones" EntityType="Self.t_Reservaciones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Roles" EntityType="Self.t_Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Sistemas" EntityType="Self.t_Sistemas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Usuarios" EntityType="Self.t_Usuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Vehiculos" EntityType="Self.t_Vehiculos" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_t_Kilometrajes_t_Vehiculos" Association="Self.FK_t_Kilometrajes_t_Vehiculos">
+      <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
+      <End Role="t_Kilometrajes" EntitySet="t_Kilometrajes" />
+    </AssociationSet>
     <AssociationSet Name="FK_t_Reservaciones_t_ClientesComisionistas" Association="Self.FK_t_Reservaciones_t_ClientesComisionistas">
       <End Role="t_ClientesComisionistas" EntitySet="t_ClientesComisionistas" />
       <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />

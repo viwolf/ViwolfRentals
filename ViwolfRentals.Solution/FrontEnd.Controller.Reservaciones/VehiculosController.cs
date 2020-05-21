@@ -12,6 +12,7 @@ namespace FrontEnd.Controllers.Viwolf
 {
     public class VehiculosController : Controller
     {
+        IVehiculosBL BlVehiculo = new VehiculosBL();
 
         public ActionResult Index()
         {
@@ -56,6 +57,36 @@ namespace FrontEnd.Controllers.Viwolf
                                  ta.t_Departamentos,
                                  GPS = ta.GPS == true ? "Sí" : "No",
                                  Ver = "<button id= '" + ta.IDVehiculo + "' name='btnV_" + ta.IDVehiculo + "'><i class='fa fa-eye'></i></button>"
+                             }).AsEnumerable();
+            return Json(new
+            {
+                Data = jsonObjet,
+                MessageType = "Success",
+                InfoMessage = jsonObjet.Count() > 0 ?
+                        "Proceso efectuado satisfactoriamente." :
+                        "No existen usuarios que coincidan con los criterios de búsqueda.",
+                ErrorMessage = string.Empty
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+
+        public JsonResult ListarKilometrajes(t_Kilometrajes kilometraje)
+        {
+
+            
+            var result = BlVehiculo.ListarKilometrajes(kilometraje);
+
+            var jsonObjet = (from ta in result
+                             select new
+                             {
+                                 ta.IDReservacion,
+                                 ta.IDVehiculo,
+                                 FechaInicial = string.Format("{0:d/M/yyyy}", ta.FechaInicial),
+                                 ta.KilometrajeInicial,
+                                 FechaFinal = string.Format("{0:d/M/yyyy}", ta.FechaFinal),
+                                 ta.KilometrajeFinal,
+                                 ta.KilometrajeReccorrido
                              }).AsEnumerable();
             return Json(new
             {

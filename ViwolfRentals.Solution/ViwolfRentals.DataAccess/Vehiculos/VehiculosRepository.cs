@@ -10,6 +10,35 @@ namespace ViwolfRentals.DataAccess
     {
         IConnectionManager ConnectionManagerInstance = new ConnectionManager();
 
+        public IEnumerable<t_Kilometrajes> ListarKilometraje(t_Kilometrajes kilometrajes)
+        {
+            using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+            {
+                return connection.Query("usp_Kilometraje_Listar",
+                   new[]
+                   {
+                        typeof(ViwolfRental.Common.Model.t_Kilometrajes)
+                   },
+                   (object[] objetos) =>
+                   {
+                       t_Kilometrajes a = objetos[0] as t_Kilometrajes;
+                       t_Kilometrajes resultado = new t_Kilometrajes();
+
+                       resultado = a;
+                       return resultado;
+
+
+                   },
+                           param: new
+                           {
+                               kilometrajes.IDVehiculo
+
+                           },
+                            splitOn: "",
+                            commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public IEnumerable<t_Vehiculos> ListarVehiculos(t_Vehiculos vehiculos)
         {
             using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))

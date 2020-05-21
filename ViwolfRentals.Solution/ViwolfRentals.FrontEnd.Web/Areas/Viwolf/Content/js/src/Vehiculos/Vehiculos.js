@@ -52,6 +52,7 @@
                     });
                     $table.on("click", "tr", function () {
                         var iPos = $table.fnGetPosition(this);
+                        
                         objSeleccionado = $table.fnGetData(iPos);
                     });
                     OnPageEvent($table);

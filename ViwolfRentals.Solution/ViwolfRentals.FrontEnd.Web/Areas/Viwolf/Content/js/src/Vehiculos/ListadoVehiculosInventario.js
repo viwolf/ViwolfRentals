@@ -4,7 +4,45 @@
     var tableDerechos = $('#tableListVehiculosDerechos');
     var tableKilometraje = $('#tableListVehiculosKilometraje');
 
+    var fnBuscarKilometrajes = function (idVehiculo) {
+        var oData = {
+            "IDVehiculo": idVehiculo
+        };
+        try {
+            var oUrl = 'Vehiculos/ListarKilometrajes';
+            var oProcessMessage = 'Buscando Vehiculos';
+            var success = function (result) {
+                if (result.Data.length > 0) {
+                    tableKilometraje.dataTable({
+                        destroy: true,
+                        processing: true,
+                        responsive: true,
+                        data: result.Data,
+                        select: true,
+                        "scrollX": true,
+                        columns: [
+                            { data: 'IDReservacion' },
+                            { data: 'FechaInicial' },
+                            { data: 'KilometrajeInicial' },
+                            { data: 'FechaFinal' },
+                            { data: 'KilometrajeFinal' },
+                            { data: 'KilometrajeReccorrido' }
+                        ],
+                    });
 
+                }
+                else {
+                    alert("No hay kilometrajes incluidos para este vehiculo.");
+                };
+            };
+            app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
+        } catch (ex) {
+
+            retorno = false;
+        }
+
+
+    }
 
     var fnBuscarVehiculo = function (idVehiculo) {
         var oData = {
@@ -72,7 +110,8 @@
     var fnAbrirModal = function (idVehiculo) {
         $("#tabs").tabs();
         modalVehiculo.modal('show');
-        fnBuscarVehiculo(idVehiculo)
+        fnBuscarVehiculo(idVehiculo);
+        fnBuscarKilometrajes(idVehiculo);
     };
 
     return {

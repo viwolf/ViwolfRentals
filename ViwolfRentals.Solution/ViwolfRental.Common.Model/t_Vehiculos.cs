@@ -17,6 +17,7 @@ namespace ViwolfRental.Common.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public t_Vehiculos()
         {
+            this.t_Kilometrajes = new HashSet<t_Kilometrajes>();
             this.t_Reservaciones = new HashSet<t_Reservaciones>();
         }
     
@@ -50,12 +51,15 @@ namespace ViwolfRental.Common.Model
         public bool StickerPlaca { get; set; }
         public bool TituloPropiedad { get; set; }
         public decimal Multas { get; set; }
+        public int Kilometraje { get; set; }
         public int IDCategoriaVehiculo { get; set; }
         public int IDDepartamento { get; set; }
         public bool Activo { get; set; }
     
         public virtual t_CategoriasVehiculos t_CategoriasVehiculos { get; set; }
         public virtual t_Departamentos t_Departamentos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<t_Kilometrajes> t_Kilometrajes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_Reservaciones> t_Reservaciones { get; set; }
     }
