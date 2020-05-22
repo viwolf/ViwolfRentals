@@ -68,6 +68,111 @@
 
     }
 
+    var ValidateFields = function () {
+        var check = true;
+
+
+
+        if (txtPlacaVehiculo.val() == "") {
+            alert("El campo placa del vehiculo, no puede estar vacío.");
+            check = false;
+        }
+        else
+            if (txtMarcaVehiculo.val() == "") {
+                alert("El campo marca del vehiculo, no puede estar vacío.");
+                check = false;
+            }
+            else
+                if (txtModeloVehiculo.val() == "") {
+                    alert("El campo modelo del vehiculo, no puede estar vacío.");
+                    check = false;
+                }
+                else
+                    if (txtAnnoVehiculo.val() == "") {
+                        alert("El campo año del vehiculo, no puede estar vacío.");
+                        check = false;
+                    }
+                    else
+                        if (txtNumeroChasis.val() == "") {
+                            alert("El campo número de chasis, no puede estar vacío.");
+                            check = false;
+                        }
+                        else
+                            if (txtNumeroMotor.val() == "") {
+                                alert("El campo número de motor, no puede estar vacío.");
+                                check = false;
+                            }
+                            else
+                                if (txtColor.val() == "") {
+                                    alert("El campo color, no puede estar vacío.");
+                                    check = false;
+                                }
+                                else
+                                    if (txtTransmision.val() == "") {
+                                        alert("El campo transmision, no puede estar vacío.");
+                                        check = false;
+                                    }
+                                    else
+                                        if (txtCilindraje.val() == "") {
+                                            alert("El campo número de cilindros, no puede estar vacío, ni puede ser 0.");
+                                            check = false;
+                                        }
+                                        else
+                                            if (txtPeso.val() == "") {
+                                                alert("El campo peso, no puede estar vacío.");
+                                                check = false;
+                                            }
+                                            else
+                                                if (txtCarroceria.val() == "")  {
+                                                    alert("El campo carrocería, no puede estar vacío.");
+                                                    check = false;
+                                                }
+                                                else
+                                                    if (txtTraccion.val() == "") {
+                                                        alert("El campo tracción, no puede estar vacío.");
+                                                        check = false;
+                                                    }
+                                                    else
+                                                        if (txtCapacidad.val() == "") {
+                                                            alert("El campo capacidad, no puede estar vacío.");
+                                                            check = false;
+                                                        }
+                                                        else
+                                                            if (IdCategoriaVehiculo = 0) {
+                                                                alert("Debe seleccionar una categoría para el vehiculo.");
+                                                                check = false;
+                                                            }
+                                                            else
+                                                                if (txtRtvVencimientoAnno.val() == "") {
+                                                                    alert("El campo rtv vencimiento año, no puede estar vacío.");
+                                                                    check = false;
+                                                                }
+                                                                else
+                                                                    if (txtRtvVencimientoMes.val() == "") {
+                                                                        alert("El campo rtv vencimiento mes, no puede estar vacío.");
+                                                                        check = false;
+                                                                    }
+                                                                    else
+                                                                        if (txtMarchamoProximo.val() == "") {
+                                                                            alert("El campo marchamo próximo, no puede estar vacío.");
+                                                                            check = false;
+                                                                        }
+                                                                        else
+                                                                            if (txtMultas.val() == "")  {
+                                                                                alert("El campo multas, no puede estar vacío.");
+                                                                                check = false;
+                                                                            }
+                                                                            else
+                                                                                if (txtKilometraje.val() == "") {
+                                                                                    alert("El campo kilometraje, no puede estar vacío.");
+                                                                                    check = false;
+                                                                                }
+                                                                                else
+                                                                                    check = true;
+        return check;
+    };
+
+
     var fnCargarFecha = function () {
         txtFechaCompra.datepicker("destroy");
         
@@ -118,9 +223,20 @@
 
     var fnInit = function () {
         fnCargarFecha();
+        txtAnnoVehiculo.bind('keypress', valideKey);
+        txtRtvVencimientoAnno.bind('keypress', valideKey);
+        txtMarchamoProximo.bind('keypress', valideKey);
+        txtPeso.bind('keypress', valideKey);
+        txtKilometraje.bind('keypress', valideKey);
+        txtMultas.bind('keypress', valideKey);
+        txtCapacidad.bind('keypress', valideKey);
+        txtCilindraje.bind('keypress', valideKey);
+        txtMultas.blur(function () {
+            
+            txtMultas.val(utils.formatterDolar.format(txtMultas.val()));
+            txtMultas.val(txtMultas.val().replace("$", "¢"));
+        });
         btnGuardarVehiculo.click(fnGuardarReservacion);
-
-
     };
 
     var fnGuardarReservacion = function () {
@@ -129,9 +245,9 @@
         var categoria = document.getElementById("txtCategoria");
         IdCategoriaVehiculo = categoria.options[categoria.selectedIndex].value;
 
-        debugger;
+      
 
-        //if (ValidateFields() == true) {
+        if (ValidateFields() == true) {
 
             var oData = {
                 "UsuarioCreacion": usuarioLogueado,
@@ -159,7 +275,7 @@
                 "MarchamoPapel": txtMarchamoPapel.val() == 'Si' ? true : false,
                 "StickerPlaca": txtPlacaSticker.val() == 'Si' ? true : false,
                 "TituloPropiedad": txtTituloPropiedad.val() == 'Si' ? true : false,
-                "Multas": txtMultas.val(),
+                "Multas": parseFloat(txtMultas.val().replace("¢", "")),
                 "Kilometraje": txtKilometraje.val(),
                 "IDCategoriaVehiculo": txtCategoria.val(),
                 "IDDepartamento": 1,
@@ -172,7 +288,7 @@
                 var success = function (result) {
                     if (result.MessageType == "Success") {
                         alert("Vehiculo creado con exito");
-                       // fnLimpiarDatos();
+                        fnLimpiarDatos();
                     }
                 };
                 app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
@@ -181,8 +297,40 @@
                 retorno = false;
             }
 
-        //}
+        }
     };
+
+    var fnLimpiarDatos = function () {
+        txtPlacaVehiculo.val("");
+         txtMarcaVehiculo.val(""); 
+         txtModeloVehiculo.val(""); 
+         txtAnnoVehiculo.val(""); 
+         txtGps.val(""); 
+         txtFechaCompra.val(""); 
+         txtNumeroChasis.val(""); 
+         txtNumeroMotor.val(""); 
+         txtColor.val(""); 
+         txtTransmision.val(""); 
+         txtCilindraje.val(""); 
+         txtPeso.val(""); 
+         txtCarroceria.val(""); 
+         txtTraccion.val(""); 
+         txtCapacidad.val(""); 
+         txtCategoria.val(""); 
+         txtRtvVencimientoAnno.val(""); 
+         txtRtvVencimientoMes.val(""); 
+         txtRtvSticker.val(""); 
+         txtRtvPapel.val(""); 
+         txtMarchamoProximo.val(""); 
+         txtMarchamoSticker.val(""); 
+         txtMarchamoPapel.val(""); 
+         txtPlacaSticker.val(""); 
+         txtTituloPropiedad.val(""); 
+         txtMultas.val(""); 
+         txtKilometraje.val(""); 
+         IdCategoriaVehiculo = 0;
+         dateCompra = "";
+    }
 
     $(function () {
         fnInit(); 
