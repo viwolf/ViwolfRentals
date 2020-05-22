@@ -47,12 +47,9 @@
         txtMontoDia.val(utils.formatterDolar.format(montoDia));
         txtMontoTotal.val(utils.formatterDolar.format(montoTotal));
     };
-
     
-
     var InitSelect = function () {
        
-
         cargarSelect2(txtProveedor,
             {
                 PlaceHolder: "",
@@ -102,9 +99,6 @@
     };
 
     var Init = function () {
-
-      
-
         txtAplicaComision.change(cambiarEstadoAplicaComision);
 
         

@@ -112,10 +112,7 @@ namespace FrontEnd.Controllers.Viwolf
         [HttpPost]
         public JsonResult GuardarVehiculo(ViwolfRental.Common.Model.t_Vehiculos vehiculo)
         {
-
-
             var result = BlVehiculo.GuardarVehiculo(vehiculo);
-
             return Json(new
             {
                 Data = result,
