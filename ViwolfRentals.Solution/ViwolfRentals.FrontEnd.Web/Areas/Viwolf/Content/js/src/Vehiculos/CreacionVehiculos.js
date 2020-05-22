@@ -35,8 +35,8 @@
                 Url: "Categorias/ListarCategorias",
                 DataType: 'json',
                 Type: "POST",
-                Id: "IDCategoria",
-                Text: "NombreCategoria",
+                Id: "IDCategoriaVehiculo",
+                Text: "NombreCategoriaVehiculo",
                 InitSelection: function (callback, configuracion) {
                     $.ajax(configuracion.Url, {
                         url: configuracion.Url,

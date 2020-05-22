@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriasVehiculos\CategoriasVehiculosBL.cs" />
     <Compile Include="Comisionistas\ComisionistasBL.cs" />
     <Compile Include="Proveedores\ProveedoresBL.cs" />
     <Compile Include="Reservaciones\ReservacionesBL.cs" />
