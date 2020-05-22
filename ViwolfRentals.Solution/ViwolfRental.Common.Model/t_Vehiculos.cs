@@ -34,7 +34,6 @@ namespace ViwolfRental.Common.Model
         public string NumeroChasis { get; set; }
         public string NumeroMotor { get; set; }
         public string Color { get; set; }
-        public string Direccion { get; set; }
         public string Transmision { get; set; }
         public int NumeroCilindros { get; set; }
         public int PesoKg { get; set; }

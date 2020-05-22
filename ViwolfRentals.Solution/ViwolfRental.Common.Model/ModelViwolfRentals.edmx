@@ -123,7 +123,6 @@
           <Property Name="NumeroChasis" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="NumeroMotor" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="Color" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Direccion" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Transmision" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="NumeroCilindros" Type="int" Nullable="false" />
           <Property Name="PesoKg" Type="int" Nullable="false" />
@@ -485,7 +484,6 @@
           <Property Name="NumeroChasis" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="NumeroMotor" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Transmision" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NumeroCilindros" Type="Int32" Nullable="false" />
           <Property Name="PesoKg" Type="Int32" Nullable="false" />
@@ -758,7 +756,6 @@
                 <ScalarProperty Name="PesoKg" ColumnName="PesoKg" />
                 <ScalarProperty Name="NumeroCilindros" ColumnName="NumeroCilindros" />
                 <ScalarProperty Name="Transmision" ColumnName="Transmision" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
                 <ScalarProperty Name="Color" ColumnName="Color" />
                 <ScalarProperty Name="NumeroMotor" ColumnName="NumeroMotor" />
                 <ScalarProperty Name="NumeroChasis" ColumnName="NumeroChasis" />

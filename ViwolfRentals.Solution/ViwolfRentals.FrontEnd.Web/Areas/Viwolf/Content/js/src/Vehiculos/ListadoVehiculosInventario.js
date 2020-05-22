@@ -83,7 +83,6 @@
                             { data: 'NumeroChasis' },
                             { data: 'NumeroMotor' },
                             { data: 'Color' },
-                            { data: 'Direccion' },
                             { data: 'Transmision' },
                             { data: 'NumeroCilindros' },
                             { data: 'PesoKg' },

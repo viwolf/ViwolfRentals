@@ -134,7 +134,6 @@
           <ScalarProperty Name="PesoKg" ColumnName="PesoKg" />
           <ScalarProperty Name="NumeroCilindros" ColumnName="NumeroCilindros" />
           <ScalarProperty Name="Transmision" ColumnName="Transmision" />
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
           <ScalarProperty Name="Color" ColumnName="Color" />
           <ScalarProperty Name="NumeroMotor" ColumnName="NumeroMotor" />
           <ScalarProperty Name="NumeroChasis" ColumnName="NumeroChasis" />

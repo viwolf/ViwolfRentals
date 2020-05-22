@@ -50,7 +50,6 @@ namespace FrontEnd.Controllers.Viwolf
                                  ta.RtvVencimientoMes,
                                  ta.MarchamoProximo,
                                  ta.Color,
-                                 ta.Direccion,
                                  ta.Transmision,
                                  ta.NumeroCilindros,
                                  ta.PesoKg,
@@ -118,6 +117,30 @@ namespace FrontEnd.Controllers.Viwolf
                 Data = result,
                 MessageType = result != null ? "Success" : "Error",
                 InfoMessage = result != null ?
+                        "Proceso efectuado satisfactoriamente." :
+                        "No existen usuarios que coincidan con los criterios de búsqueda.",
+                ErrorMessage = string.Empty
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ListarCategoriasVehiculos(t_CategoriasVehiculos categoriaVehiculo)
+        {
+
+            ICategoriasVehiculosBL BlCategorias = new CategoriasVehiculosBL();
+            var result = BlCategorias.ListarCategoriasVehiculos(categoriaVehiculo);
+
+            var jsonObjet = (from ta in result
+                             select new
+                             {
+                                 ta.IDCategoriaVehiculo,
+                                 ta.NombreCategoriaVehiculo
+                             }).AsEnumerable();
+            return Json(new
+            {
+                Data = jsonObjet,
+                MessageType = "Success",
+                InfoMessage = jsonObjet.Count() > 0 ?
                         "Proceso efectuado satisfactoriamente." :
                         "No existen usuarios que coincidan con los criterios de búsqueda.",
                 ErrorMessage = string.Empty

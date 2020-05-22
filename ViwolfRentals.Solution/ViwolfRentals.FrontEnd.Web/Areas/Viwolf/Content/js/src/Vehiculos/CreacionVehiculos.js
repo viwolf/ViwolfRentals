@@ -25,14 +25,17 @@
     var txtPlacaSticker = $("#txtPlacaSticker");
     var txtTituloPropiedad = $("#txtTituloPropiedad");
     var txtMultas = $("#txtMultas");
-    var btnGuardarVehiculo = ("#btnGuardarVehiculo");
+    var txtKilometraje = $("#txtKilometraje");
+    var btnGuardarVehiculo = $("#btnGuardarVehiculo");
+    var IdCategoriaVehiculo = 0;
+    var dateCompra = "";
 
     var InitSelect = function () {
 
         cargarSelect2(txtCategoria,
             {
                 PlaceHolder: "",
-                Url: "Categorias/ListarCategorias",
+                Url: "ListarCategoriasVehiculos",
                 DataType: 'json',
                 Type: "POST",
                 Id: "IDCategoriaVehiculo",
@@ -49,6 +52,7 @@
                 },
 
             });
+    };
 
     function valideKey(evt) {
         var code = evt.which ? evt.which : evt.keyCode;
@@ -70,6 +74,9 @@
         txtFechaCompra.datepicker({
             autoclose: true,
             format: "mm/dd/yyyy",
+            onSelect: function (selected) {
+                dateCompra = new Date(selected);
+            },
             minDate: '-500D',
             maxDate: '+500D'
         });
@@ -119,22 +126,21 @@
     var fnGuardarReservacion = function () {
 
 
-        var proveedor = document.getElementById("txtProveedor");
-        IdProveedor = proveedor.options[proveedor.selectedIndex].value;
+        var categoria = document.getElementById("txtCategoria");
+        IdCategoriaVehiculo = categoria.options[categoria.selectedIndex].value;
 
-        var comisionista = document.getElementById("txtComisionistas");
-        IdComisionista = comisionista.options[comisionista.selectedIndex].value;
+        debugger;
 
         //if (ValidateFields() == true) {
 
             var oData = {
                 "UsuarioCreacion": usuarioLogueado,
-                "IdVehiculo": txtPlaca.val(),
+                "IdVehiculo": txtPlacaVehiculo.val(),
                 "Marca": txtMarcaVehiculo.val(),
                 "Modelo": txtModeloVehiculo.val(),
-                "Anno": txtAnnoVehiculo.val,
-                "GPS": txtGps.val(),
-                "FechaCompra": txtFechaCompra.val(),
+                "Anno": txtAnnoVehiculo.val(),
+                "GPS": txtGps.val() == 'Si' ? true : false,
+                "FechaCompra": txtFechaCompra.val() == "" ? null : dateCompra,
                 "NumeroChasis": txtNumeroChasis.val(),
                 "NumeroMotor": txtNumeroMotor.val(),
                 "Color": txtColor.val(),
@@ -154,18 +160,19 @@
                 "StickerPlaca": txtPlacaSticker.val() == 'Si' ? true : false,
                 "TituloPropiedad": txtTituloPropiedad.val() == 'Si' ? true : false,
                 "Multas": txtMultas.val(),
+                "Kilometraje": txtKilometraje.val(),
                 "IDCategoriaVehiculo": txtCategoria.val(),
                 "IDDepartamento": 1,
                 "Activo": true
             }
             try {
-                var oUrl = 'Vehiculos/GuardarVehiculo';
+                var oUrl = 'GuardarVehiculo';
                 var oProcessMessage = 'Guardando Vehiculo';
 
                 var success = function (result) {
                     if (result.MessageType == "Success") {
-                        alert("Reservacion creada con exito");
-                        fnLimpiarDatos();
+                        alert("Vehiculo creado con exito");
+                       // fnLimpiarDatos();
                     }
                 };
                 app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
@@ -179,6 +186,7 @@
 
     $(function () {
         fnInit(); 
+        InitSelect();
     });
 
 }();

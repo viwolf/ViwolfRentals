@@ -118,7 +118,6 @@
     <Property Name="NumeroChasis" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="NumeroMotor" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="Color" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Direccion" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Transmision" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="NumeroCilindros" Type="int" Nullable="false" />
     <Property Name="PesoKg" Type="int" Nullable="false" />

@@ -36,8 +36,8 @@ namespace ViwolfRentals.DataAccess
                            param: new
                            {
                                entity.IDCategoriaVehiculo,
-                               entity.NombreCategoriaVehiculo,
-                               entity.Activo
+                               entity.NombreCategoriaVehiculo
+                               //entity.Activo
 
                            },
                             splitOn: "",
