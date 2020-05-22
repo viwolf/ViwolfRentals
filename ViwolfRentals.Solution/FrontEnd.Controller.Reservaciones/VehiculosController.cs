@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -14,8 +15,17 @@ namespace FrontEnd.Controllers.Viwolf
     {
         IVehiculosBL BlVehiculo = new VehiculosBL();
 
-        public ActionResult Index()
+        public ActionResult Index(string usuario, string idUsuario)
         {
+            ViewBag.Usuario = usuario;
+            ViewBag.IdUsuario = idUsuario;
+            return View();
+        }
+
+        public ActionResult CreacionVehiculos(string usuario, string idUsuario)
+        {
+            ViewBag.Usuario = usuario;
+            ViewBag.IdUsuario = idUsuario;
             return View();
         }
 
@@ -93,6 +103,24 @@ namespace FrontEnd.Controllers.Viwolf
                 Data = jsonObjet,
                 MessageType = "Success",
                 InfoMessage = jsonObjet.Count() > 0 ?
+                        "Proceso efectuado satisfactoriamente." :
+                        "No existen usuarios que coincidan con los criterios de búsqueda.",
+                ErrorMessage = string.Empty
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarVehiculo(ViwolfRental.Common.Model.t_Vehiculos vehiculo)
+        {
+
+
+            var result = BlVehiculo.GuardarVehiculo(vehiculo);
+
+            return Json(new
+            {
+                Data = result,
+                MessageType = result != null ? "Success" : "Error",
+                InfoMessage = result != null ?
                         "Proceso efectuado satisfactoriamente." :
                         "No existen usuarios que coincidan con los criterios de búsqueda.",
                 ErrorMessage = string.Empty

@@ -21,7 +21,7 @@ namespace ViwolfRental.Common.Model
             this.t_Reservaciones = new HashSet<t_Reservaciones>();
         }
     
-        public int IDVehiculo { get; set; }
+        public string IDVehiculo { get; set; }
         public System.DateTime FechaCreacion { get; set; }
         public string UsuarioCreacion { get; set; }
         public Nullable<System.DateTime> FechaModificacion { get; set; }
@@ -29,13 +29,10 @@ namespace ViwolfRental.Common.Model
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public int Anno { get; set; }
-        public Nullable<bool> GPS { get; set; }
+        public bool GPS { get; set; }
         public Nullable<System.DateTime> FechaCompra { get; set; }
         public string NumeroChasis { get; set; }
         public string NumeroMotor { get; set; }
-        public int RtvVencimientoAnno { get; set; }
-        public string RtvVencimientoMes { get; set; }
-        public int MarchamoProximo { get; set; }
         public string Color { get; set; }
         public string Direccion { get; set; }
         public string Transmision { get; set; }
@@ -43,7 +40,10 @@ namespace ViwolfRental.Common.Model
         public int PesoKg { get; set; }
         public string Carroceria { get; set; }
         public string Traccion { get; set; }
-        public Nullable<int> Capacidad { get; set; }
+        public int Capacidad { get; set; }
+        public int RtvVencimientoAnno { get; set; }
+        public string RtvVencimientoMes { get; set; }
+        public int MarchamoProximo { get; set; }
         public bool RtvSticker { get; set; }
         public bool RtvPapel { get; set; }
         public bool MarchamoSticker { get; set; }

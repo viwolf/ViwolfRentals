@@ -20,7 +20,7 @@ namespace ViwolfRental.Common.Model
         public Nullable<System.DateTime> FechaFinal { get; set; }
         public Nullable<int> KilometrajeFinal { get; set; }
         public Nullable<int> KilometrajeReccorrido { get; set; }
-        public int IDVehiculo { get; set; }
+        public string IDVehiculo { get; set; }
         public int IDReservacion { get; set; }
     
         public virtual t_Vehiculos t_Vehiculos { get; set; }

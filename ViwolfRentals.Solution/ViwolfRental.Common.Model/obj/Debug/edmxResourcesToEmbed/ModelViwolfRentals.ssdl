@@ -35,7 +35,7 @@
     <Property Name="FechaFinal" Type="date" />
     <Property Name="KilometrajeFinal" Type="int" />
     <Property Name="KilometrajeReccorrido" Type="int" />
-    <Property Name="IDVehiculo" Type="int" Nullable="false" />
+    <Property Name="IDVehiculo" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="IDReservacion" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="t_Proveedores">
@@ -73,7 +73,7 @@
     <Property Name="IdClienteComisionista" Type="int" />
     <Property Name="IdProveedor" Type="int" />
     <Property Name="IDUsuario" Type="int" />
-    <Property Name="IDVehiculo" Type="int" />
+    <Property Name="IDVehiculo" Type="nvarchar" MaxLength="10" />
     <Property Name="Activo" Type="bit" />
   </EntityType>
   <EntityType Name="t_Roles">
@@ -105,7 +105,7 @@
     <Key>
       <PropertyRef Name="IDVehiculo" />
     </Key>
-    <Property Name="IDVehiculo" Type="int" Nullable="false" />
+    <Property Name="IDVehiculo" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
     <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="FechaModificacion" Type="datetime" />
@@ -113,21 +113,21 @@
     <Property Name="Marca" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Modelo" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Anno" Type="int" Nullable="false" />
-    <Property Name="GPS" Type="bit" />
+    <Property Name="GPS" Type="bit" Nullable="false" />
     <Property Name="FechaCompra" Type="datetime" />
     <Property Name="NumeroChasis" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="NumeroMotor" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="RtvVencimientoAnno" Type="int" Nullable="false" />
-    <Property Name="RtvVencimientoMes" Type="nvarchar" MaxLength="10" Nullable="false" />
-    <Property Name="MarchamoProximo" Type="int" Nullable="false" />
     <Property Name="Color" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Direccion" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Transmision" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="NumeroCilindros" Type="int" Nullable="false" />
     <Property Name="PesoKg" Type="int" Nullable="false" />
-    <Property Name="Carroceria" Type="nvarchar" MaxLength="50" />
-    <Property Name="Traccion" Type="nvarchar" MaxLength="50" />
-    <Property Name="Capacidad" Type="int" />
+    <Property Name="Carroceria" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Traccion" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Capacidad" Type="int" Nullable="false" />
+    <Property Name="RtvVencimientoAnno" Type="int" Nullable="false" />
+    <Property Name="RtvVencimientoMes" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="MarchamoProximo" Type="int" Nullable="false" />
     <Property Name="RtvSticker" Type="bit" Nullable="false" />
     <Property Name="RtvPapel" Type="bit" Nullable="false" />
     <Property Name="MarchamoSticker" Type="bit" Nullable="false" />

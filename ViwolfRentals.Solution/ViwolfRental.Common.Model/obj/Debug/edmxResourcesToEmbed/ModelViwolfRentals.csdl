@@ -86,7 +86,7 @@
     <Property Name="FechaFinal" Type="DateTime" Precision="0" />
     <Property Name="KilometrajeFinal" Type="Int32" />
     <Property Name="KilometrajeReccorrido" Type="Int32" />
-    <Property Name="IDVehiculo" Type="Int32" Nullable="false" />
+    <Property Name="IDVehiculo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="IDReservacion" Type="Int32" Nullable="false" />
     <NavigationProperty Name="t_Vehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Kilometrajes_t_Vehiculos" FromRole="t_Kilometrajes" ToRole="t_Vehiculos" />
   </EntityType>
@@ -126,7 +126,7 @@
     <Property Name="IdClienteComisionista" Type="Int32" />
     <Property Name="IdProveedor" Type="Int32" />
     <Property Name="IDUsuario" Type="Int32" />
-    <Property Name="IDVehiculo" Type="Int32" />
+    <Property Name="IDVehiculo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="Activo" Type="Boolean" />
     <NavigationProperty Name="t_ClientesComisionistas" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_ClientesComisionistas" FromRole="t_Reservaciones" ToRole="t_ClientesComisionistas" />
     <NavigationProperty Name="t_Proveedores" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Proveedores" FromRole="t_Reservaciones" ToRole="t_Proveedores" />
@@ -167,7 +167,7 @@
     <Key>
       <PropertyRef Name="IDVehiculo" />
     </Key>
-    <Property Name="IDVehiculo" Type="Int32" Nullable="false" />
+    <Property Name="IDVehiculo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
@@ -175,21 +175,21 @@
     <Property Name="Marca" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Modelo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Anno" Type="Int32" Nullable="false" />
-    <Property Name="GPS" Type="Boolean" />
+    <Property Name="GPS" Type="Boolean" Nullable="false" />
     <Property Name="FechaCompra" Type="DateTime" Precision="3" />
     <Property Name="NumeroChasis" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="NumeroMotor" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="RtvVencimientoAnno" Type="Int32" Nullable="false" />
-    <Property Name="RtvVencimientoMes" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="MarchamoProximo" Type="Int32" Nullable="false" />
     <Property Name="Color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Direccion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Transmision" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="NumeroCilindros" Type="Int32" Nullable="false" />
     <Property Name="PesoKg" Type="Int32" Nullable="false" />
-    <Property Name="Carroceria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Traccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Capacidad" Type="Int32" />
+    <Property Name="Carroceria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Traccion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Capacidad" Type="Int32" Nullable="false" />
+    <Property Name="RtvVencimientoAnno" Type="Int32" Nullable="false" />
+    <Property Name="RtvVencimientoMes" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MarchamoProximo" Type="Int32" Nullable="false" />
     <Property Name="RtvSticker" Type="Boolean" Nullable="false" />
     <Property Name="RtvPapel" Type="Boolean" Nullable="false" />
     <Property Name="MarchamoSticker" Type="Boolean" Nullable="false" />

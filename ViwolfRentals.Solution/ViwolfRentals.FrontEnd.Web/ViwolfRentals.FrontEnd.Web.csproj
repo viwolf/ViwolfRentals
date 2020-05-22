@@ -250,6 +250,7 @@
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Mantenimiento.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Reservaciones.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Vehiculos\BuscarVehiculo.js" />
+    <Content Include="Areas\Viwolf\Content\js\src\Vehiculos\CreacionVehiculos.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Vehiculos\InformacionVehiculo.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Vehiculos\ListadoVehiculosInventario.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Vehiculos\Vehiculos.js" />
@@ -504,6 +505,7 @@
     <Content Include="Areas\Viwolf\Views\Vehiculos\Index.cshtml" />
     <Content Include="Content\Plugins\datatables\jquery-3.5.1.js" />
     <Content Include="Areas\Viwolf\Views\Vehiculos\_ListadoVehiculosInventario.cshtml" />
+    <Content Include="Areas\Viwolf\Views\Vehiculos\CreacionVehiculos.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

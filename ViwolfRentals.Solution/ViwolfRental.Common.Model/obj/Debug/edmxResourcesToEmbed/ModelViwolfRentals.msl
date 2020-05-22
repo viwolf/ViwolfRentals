@@ -125,6 +125,9 @@
           <ScalarProperty Name="MarchamoSticker" ColumnName="MarchamoSticker" />
           <ScalarProperty Name="RtvPapel" ColumnName="RtvPapel" />
           <ScalarProperty Name="RtvSticker" ColumnName="RtvSticker" />
+          <ScalarProperty Name="MarchamoProximo" ColumnName="MarchamoProximo" />
+          <ScalarProperty Name="RtvVencimientoMes" ColumnName="RtvVencimientoMes" />
+          <ScalarProperty Name="RtvVencimientoAnno" ColumnName="RtvVencimientoAnno" />
           <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
           <ScalarProperty Name="Traccion" ColumnName="Traccion" />
           <ScalarProperty Name="Carroceria" ColumnName="Carroceria" />
@@ -133,9 +136,6 @@
           <ScalarProperty Name="Transmision" ColumnName="Transmision" />
           <ScalarProperty Name="Direccion" ColumnName="Direccion" />
           <ScalarProperty Name="Color" ColumnName="Color" />
-          <ScalarProperty Name="MarchamoProximo" ColumnName="MarchamoProximo" />
-          <ScalarProperty Name="RtvVencimientoMes" ColumnName="RtvVencimientoMes" />
-          <ScalarProperty Name="RtvVencimientoAnno" ColumnName="RtvVencimientoAnno" />
           <ScalarProperty Name="NumeroMotor" ColumnName="NumeroMotor" />
           <ScalarProperty Name="NumeroChasis" ColumnName="NumeroChasis" />
           <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />

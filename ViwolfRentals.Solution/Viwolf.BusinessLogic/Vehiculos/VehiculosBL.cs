@@ -12,6 +12,11 @@ namespace Viwolf.BusinessLogic
     {
         ViwolfRentals.DataAccess.Interface.IVehiculosRepository repository = new ViwolfRentals.DataAccess.VehiculosRepository();
 
+        public t_Vehiculos GuardarVehiculo(t_Vehiculos vehiculo)
+        {
+            return repository.Guardar(vehiculo);
+        }
+
         public IEnumerable<t_Kilometrajes> ListarKilometrajes(t_Kilometrajes entidad)
         {
             return repository.ListarKilometraje(entidad);
