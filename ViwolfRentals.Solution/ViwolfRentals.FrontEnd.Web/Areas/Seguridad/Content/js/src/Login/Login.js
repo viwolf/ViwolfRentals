@@ -8,8 +8,13 @@ var Login = function () {
     var txtUsuario = $("#txtUsuario");
     var txtPassword = $("#txtPassword");
     var check = true;
+    
+
+   
 
     var fnInit = function () {
+
+      
         
         btnLogin.click(fnLogin);
 
@@ -74,15 +79,7 @@ var Login = function () {
 
     }
 
-    var fnCargarParametros = function () {
-        var usuario = {
-            "Usuario": txtUsuario.val(),
-            "Password": txtPassword.val()
-        };
-
-        return JSON.stringify(usuario);
-
-    };
+   
 
     var fnLogin = function (e) {
        
@@ -109,7 +106,10 @@ var Login = function () {
                         window.location.href = window.location.pathname.replace("Seguridad","Viwolf");
                     }
                     else
-                        alert(result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage);
+                        //alert(result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage);
+                        $.dialog.alert('Login', result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage, function () {
+                        })
+
                 };
                 app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
             }
