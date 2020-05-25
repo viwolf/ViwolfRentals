@@ -98,6 +98,14 @@
        
     };
 
+    var fnConfirmarGuardar = function () {
+        Dialog.confirm('Reservaciones', "Desea guardar la reservacion?", function (respuesta) {
+            debugger;
+            if (respuesta == true)
+                fnGuardarReservacion();
+        })
+    };
+
     var Init = function () {
         txtAplicaComision.change(cambiarEstadoAplicaComision);
 
@@ -116,7 +124,13 @@
         txtMontoDia.blur(function () {
             
             if (txtMontoDia.val() < 50) {
-                alert("El monto no puede ser menor de $50");
+                let input = {
+                    type: 'text',
+                    label: 'Password del administrador'
+                }
+                Dialog.prompt('Reservaciones', "El monto no puede ser menor de $50. Debe de autorizarse el monto.", input, function (respuesta) {
+
+                })
                 txtMontoDia.val("");
             }
             else {
@@ -148,7 +162,7 @@
 
         txtHoraInicio.change(function () { })
 
-        btnGuardar.click(fnGuardarReservacion);
+        btnGuardar.click(fnConfirmarGuardar);
 
         btnCargarVehiculo.click(function () {
             BuscarVehiculo.AbrirModal(fnCallBack);
@@ -358,97 +372,115 @@
      
 
         if (txtNombreCliente.val() == "") {
-            alert("El campo nombre del cliente, no puede estar vacío.");
+            Dialog.alert('Reservaciones', "El campo nombre del cliente, no puede estar vacío.", function () {
+            })
             check = false;
         }
         else
             if (txtHospedaje.val() == "") {
-                alert("El campo hospedaje, no puede estar vacío.");
+                Dialog.alert('Reservaciones', "El campo hospedaje, no puede estar vacío.", function () {
+                })
                 check = false;
             }
             else
                 if (txtAplicaComision.val() == "") {
-                    alert("Debe escoger el lugar de entrega.");
+                    Dialog.alert('Reservaciones', "Debe escoger el lugar de entrega.", function () {
+                    })
                     check = false;
                 }
                 else
                     if (txtCajon.val() == "") {
-                        alert("Debe escojer si desea el vehiculo con cajón.");
+                        Dialog.alert('Reservaciones', "Debe escojer si desea el vehiculo con cajón.", function () {
+                        })
                         check = false;
                     }
                     else
                         if (txtFechaInicio.val() == "") {
-                            alert("El campo fecha de inicio, no puede estar vacío.");
+                            Dialog.alert('Reservaciones', "El campo fecha de inicio, no puede estar vacío.", function () {
+                            })
                             check = false;
                         }
                         else
                             if (txtHoraInicio.val() == "") {
-                                alert("El campo hora de inicio, no puede estar vacío.");
+                                Dialog.alert('Reservaciones', "El campo hora de inicio, no puede estar vacío.", function () {
+                                })
                                 check = false;
                             }
                             else
                                 if (txtFechaFinal.val() == "") {
-                                    alert("El campo fecha de entrega, no puede estar vacío.");
+                                    Dialog.alert('Reservaciones', "El campo fecha de entrega, no puede estar vacío.", function () {
+                                    })
                                     check = false;
                                 }
                                 else
                                     if (txtHoraEntrega.val() == "") {
-                                        alert("El campo hora de entrega, no puede estar vacío.");
+                                        Dialog.alert('Reservaciones', "El campo hora de entrega, no puede estar vacío.", function () {
+                                        })
                                         check = false;
                                     }
                                     else
                                         if ((txtMontoDia.val() == "") || (parseFloat(txtMontoDia.val().replace("$", "")) <= "0")) {
-                                            alert("El campo monto día, no puede estar vacío, ni puede ser 0.");
+                                            Dialog.alert('Reservaciones', "El campo monto día, no puede estar vacío, ni puede ser 0.", function () {
+                                            })
                                             check = false;
                                         }
                                         else
                                             if (txtSurfRacks.val() == "") {
-                                                alert("Debe escoger si desea surf racks.");
+                                                Dialog.alert('Reservaciones', "Debe escoger si desea surf racks.", function () {
+                                                })
                                                 check = false;
                                             }
                                             else
                                                 if ((txtSurfRacks.val() == "Si") && (parseFloat(txtMontoSurfRacks.val().replace("$", "")) <= "0")) {
-                                                    alert("El campo monto surf racks, no puede estar vacío, ni puede ser 0.");
+                                                    Dialog.alert('Reservaciones', "El campo monto surf racks, no puede estar vacío, ni puede ser 0.", function () {
+                                                    })
                                                     check = false;
                                                 }
                                                 else
                                                     if (txtMontoSurfRacks.val() == "") {
-                                                        alert("El campo monto surf racks, no puede estar vacío.");
+                                                        Dialog.alert('Reservaciones', "El campo monto surf racks, no puede estar vacío.", function () {
+                                                        })
                                                         check = false;
                                                     }
                                                     else
                                                         if (txtMontoTotal.val() == "") {
-                                                            alert("El campo monto total, no puede estar vacío.");
+                                                            Dialog.alert('Reservaciones', "El campo monto total, no puede estar vacío.", function () {
+                                                            })
                                                             check = false;
                                                         }
-                                                        else
-                                                            if (txtUsuario.val() == "") {
-                                                                alert("El campo reservado por, no puede estar vacío.");
-                                                                check = false;
-                                                            }
                                                             else
-                                                                if (txtSaldoActual.val() == "") {
-                                                                    alert("El campo saldo actual, no puede estar vacío.");
+                                                            if (txtSaldoActual.val() == "") {
+                                                                Dialog.alert('Reservaciones', "El campo saldo actual, no puede estar vacío.", function () {
+                                                                })
+                                                                    
                                                                     check = false;
                                                                 }
                                                                 else
-                                                                    if (txtModoPago.val() == "") {
-                                                                        alert("Debe escoger si se desea pagar en efectivo.");
+                                                                if (txtModoPago.val() == "") {
+                                                                    Dialog.alert('Reservaciones', "Debe escoger si se desea pagar en efectivo.", function () {
+                                                                    })
+                                                                        
                                                                         check = false;
                                                                     }
                                                                     else
-                                                                        if (((txtModoPago.val() == 1) && (txtAplicaComision.val() == 1) && (txtComisionistas.val() == ""))) {
-                                                                            alert("Debe seleccionar un comisionista.");
+                                                                    if (((txtModoPago.val() == 1) && (txtAplicaComision.val() == 1) && (txtComisionistas.val() == ""))) {
+                                                                        Dialog.alert('Reservaciones', "Debe seleccionar un comisionista.", function () {
+                                                                        })
+                                                                            
                                                                             check = false;
                                                                         }
                                                                         else
-                                                                            if ((txtComisionistas.val() == "Si") && (IdProveedor == "")) {
-                                                                                alert("Debe seleccionar un proveedor para la cuenta por cobrar.");
+                                                                        if ((txtComisionistas.val() == "Si") && (IdProveedor == "")) {
+                                                                            Dialog.alert('Reservaciones', "Debe seleccionar un proveedor para la cuenta por cobrar.", function () {
+                                                                            })
+                                                                                
                                                                                 check = false;
                                                                             }
                                                                             else
-                                                                                if (txtPlaca.val() == "") {
-                                                                                    alert("El campo placa, no puede estar vacío.");
+                                                                            if (txtPlaca.val() == "") {
+                                                                                Dialog.alert('Reservaciones', "El campo placa, no puede estar vacío.", function () {
+                                                                                })
+                                                                                    
                                                                                     check = false;
                                                                                 }
                                                                                 else
