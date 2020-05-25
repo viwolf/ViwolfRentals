@@ -291,7 +291,7 @@
 
     var cambiarEstadoAplicaComision = function () {
        
-        if (txtAplicaComision.val() == 'Si') {
+        if (txtAplicaComision.val() == 1) {
             document.getElementById("txtModoPago").disabled = false;
             txtModoPago.val(0);
         }
