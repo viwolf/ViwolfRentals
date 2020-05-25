@@ -103,8 +103,11 @@ var Login = function () {
 
                 var oProcessMessage = 'Verificando acceso, espere por favor...';
                 var success = function (result) {           
-                    if (result.Data.length > 0)
-                        window.location.href = "http://localhost/ViwolfRentals.FrontEnd.Web/Viwolf";
+                    if (result.Data.length > 0) {
+                        debugger;
+                        //window.location.href = "http://localhost/ViwolfRentals.FrontEnd.Web/Viwolf";
+                        window.location.href = window.location.pathname.replace("Seguridad","Viwolf");
+                    }
                     else
                         alert(result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage);
                 };

@@ -28,8 +28,11 @@ namespace FrontEnd.Controllers.Seguridad
 
                 if (result.Count() > 0)
                 {
-                    TempData.Add("Usuario", result.First().CodigoUsuario);
-                    TempData.Add("IdUsiario", result.First().IdUsuario);
+                    if (TempData.Count <= 0)
+                    {
+                        TempData.Add("Usuario", result.First().CodigoUsuario);
+                        TempData.Add("IdUsiario", result.First().IdUsuario);
+                    }
                 }
 
                 var jsonObjet = (from ta in result
