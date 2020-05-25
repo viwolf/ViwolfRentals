@@ -46,7 +46,8 @@
                     OnPageEvent(tableListReservaciones);
                 }
                 else {
-                    alert(result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage);
+                    Dialog.alert('Reservaciones', result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage, function () {
+                    })
                 };
             };
             app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
@@ -106,7 +107,8 @@
                         fnBuscarReservaciones();
                     }
                     else {
-                        alert(result.ErrorMessage);
+                        Dialog.alert('Reservaciones', result.ErrorMessage, function () {
+                        })
                     }
                 };
                 app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
@@ -117,7 +119,9 @@
 
         }
         else {
-            alert("Debe seleccionar un registro.")
+            Dialog.alert('Mantenimiento Reservaciones', "Debe seleccionar un registro.", function () {
+            })
+            
         }
     };
 

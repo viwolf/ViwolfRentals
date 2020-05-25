@@ -58,7 +58,8 @@
                     OnPageEvent($table);
                 }
                 else {
-                    alert(result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage);
+                    Dialog.alert('Listado Vehiculos', result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage, function () {
+                    })
                 };
             };
             app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);

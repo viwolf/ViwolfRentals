@@ -232,7 +232,7 @@
     <Content Include="Areas\Viwolf\Content\js\src\msjApp.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\css\main.css" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\css\main.min.css" />
-    <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\js\Dialog.js" />
+    <Content Include="Content\js\src\Dialog.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\js\global.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\js\jquery-ui.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\vendor\datepicker\daterangepicker.css" />

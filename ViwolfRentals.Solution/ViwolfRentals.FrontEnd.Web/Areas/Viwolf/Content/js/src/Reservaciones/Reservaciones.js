@@ -530,11 +530,13 @@
 
                 var success = function (result) {
                     if (result.MessageType == "Success") {
-                        alert(result.InfoMessage);
+                        Dialog.alert('Reservaciones', result.InfoMessage, function () {
+                        })
                         fnLimpiarDatos();
                     }
                     else {
-                        alert(result.ErrorMessage);
+                        Dialog.alert('Reservaciones', result.ErrorMessage, function () {
+                        })
                     }
                 };
                 app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
