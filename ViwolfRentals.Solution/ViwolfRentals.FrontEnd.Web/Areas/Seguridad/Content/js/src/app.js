@@ -1196,7 +1196,7 @@ var app = function () {
     /// -----------------------------------------------------------------------------
     /// </summary>
     var showHideDialog = function (msg) {
-        debugger;
+       
         if (waitingDialog!=null)
             waitingDialog.remove();
         /*
@@ -1340,16 +1340,11 @@ var app = function () {
         });
 
         $.when.apply($, whenCalls).then(function () {
-            debugger;
             app.fnShowHideDialog();
-
             if (postThenCall && postThenCall != null)
-                debugger;
-               // postThenCall();
+                postThenCall();
         }).fail(function (ex) {
-
             app.fnShowHideDialog();
-
             if (errorCall !== undefined) {
                 errorCall(ex);
             }

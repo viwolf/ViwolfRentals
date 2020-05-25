@@ -10,30 +10,45 @@ using ViwolfRental.Common.Model;
 
 namespace FrontEnd.Controllers.Viwolf
 {
+
      public class ProveedoresController : Controller
     {
+        IProveedoresBL BlProveedor = new ProveedoresBL();
+
         [HttpPost]
         public JsonResult ListarProveedores (t_Proveedores proveedores)
         {
-
-            IProveedoresBL BlProveedor = new ProveedoresBL();
-            var result = BlProveedor.ListarProveedores(proveedores);
-
-            var jsonObjet = (from ta in result
-                             select new
-                             {
-                                 ta.IdProveedor,
-                                 ta.NombreProveedor
-                             }).AsEnumerable();
-            return Json(new
+            try
             {
-                Data = jsonObjet,
-                MessageType = "Success",
-                InfoMessage = jsonObjet.Count() > 0 ?
-                        "Proceso efectuado satisfactoriamente." :
-                        "No existen usuarios que coincidan con los criterios de búsqueda.",
-                ErrorMessage = string.Empty
-            }, JsonRequestBehavior.AllowGet);
+                var result = BlProveedor.ListarProveedores(proveedores);
+                var jsonObjet = (from ta in result
+                                 select new
+                                 {
+                                     ta.IdProveedor,
+                                     ta.NombreProveedor
+                                 }).AsEnumerable();
+                return Json(new
+                {
+                    Data = jsonObjet,
+                    MessageType = "Success",
+                    InfoMessage = jsonObjet.Count() > 0 ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen Proveedores que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception ex)
+            {
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = ex.Message
+                }, JsonRequestBehavior.AllowGet);
+            }
+            
+            
         }
     }
 }

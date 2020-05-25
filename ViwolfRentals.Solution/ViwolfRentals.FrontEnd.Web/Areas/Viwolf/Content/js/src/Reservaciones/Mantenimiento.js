@@ -46,7 +46,7 @@
                     OnPageEvent(tableListReservaciones);
                 }
                 else {
-                    alert("No se encontró el vehiculo en la busqueda");
+                    alert(result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage);
                 };
             };
             app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
@@ -105,8 +105,9 @@
                         alert("Reservacion eliminada con exito");
                         fnBuscarReservaciones();
                     }
-
-
+                    else {
+                        alert(result.ErrorMessage);
+                    }
                 };
                 app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
             } catch (ex) {

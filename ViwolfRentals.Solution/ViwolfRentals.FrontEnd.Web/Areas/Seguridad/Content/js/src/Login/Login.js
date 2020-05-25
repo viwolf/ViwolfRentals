@@ -85,7 +85,7 @@ var Login = function () {
     };
 
     var fnLogin = function (e) {
-        
+       
         if ((txtUsuario.val() != '') && (txtPassword.val() != '')) {
             check = false;
         }
@@ -102,19 +102,12 @@ var Login = function () {
                 };
 
                 var oProcessMessage = 'Verificando acceso, espere por favor...';
-
-                var success = function (result) {
-
-                    
-                    //result.Data[0].IdUsuario
-
+                var success = function (result) {           
                     if (result.Data.length > 0)
                         window.location.href = "http://localhost/ViwolfRentals.FrontEnd.Web/Viwolf";
                     else
-                        // msjApp.fnShowWarningMessage("Usuario o password incorrectos");
-                        alert("Usuario o password incorrectos")
+                        alert(result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage);
                 };
-                debugger;
                 app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
             }
         }

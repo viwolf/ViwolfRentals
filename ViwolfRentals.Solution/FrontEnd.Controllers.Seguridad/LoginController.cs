@@ -12,6 +12,8 @@ namespace FrontEnd.Controllers.Seguridad
 {
     public class LoginController : Controller
     {
+        ILoginBL BlLogin = new LoginBL();
+
         public ActionResult Index()
         {
             return View();
@@ -20,31 +22,45 @@ namespace FrontEnd.Controllers.Seguridad
         [HttpPost]
         public JsonResult AutenticarUsuario(t_Usuarios user)
         {
-            
-            ILoginBL BlLogin = new LoginBL();
-            var result = BlLogin.ListarUsuarioLogin(user);
-
-            TempData.Add("Usuario", result.First().CodigoUsuario);
-            TempData.Add("IdUsiario", result.First().IdUsuario);
-
-            var jsonObjet = (from ta in result
-                             select new
-                             {
-                                 ta.IdUsuario,
-                                 ta.CodigoUsuario,
-                                 ta.Password,
-                                 ta.Activo
-                             }).AsEnumerable();
-
-            return Json(new
+            try
             {
-                Data = jsonObjet,
-                MessageType = "Success",
-                InfoMessage = jsonObjet.Count() > 0 ?
-                        "Proceso efectuado satisfactoriamente." :
-                        "No existen usuarios que coincidan con los criterios de búsqueda.",
-                ErrorMessage = string.Empty
-            }, JsonRequestBehavior.AllowGet);
+                var result = BlLogin.ListarUsuarioLogin(user);
+
+                if (result.Count() > 0)
+                {
+                    TempData.Add("Usuario", result.First().CodigoUsuario);
+                    TempData.Add("IdUsiario", result.First().IdUsuario);
+                }
+
+                var jsonObjet = (from ta in result
+                                 select new
+                                 {
+                                     ta.IdUsuario,
+                                     ta.CodigoUsuario,
+                                     ta.Password,
+                                     ta.Activo
+                                 }).AsEnumerable();
+
+                return Json(new
+                {
+                    Data = jsonObjet,
+                    MessageType = "Success",
+                    InfoMessage = jsonObjet.Count() > 0 ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen usuarios que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception e)
+            {
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = e.Message
+                }, JsonRequestBehavior.AllowGet); ;
+            }
         }
     }
 }

@@ -432,7 +432,7 @@
                                                                         check = false;
                                                                     }
                                                                     else
-                                                                        if ((txtModoPago.val() == 1) && (txtComisionistas.val() == "")) {
+                                                                        if (((txtModoPago.val() == 1) && (txtAplicaComision.val() == 1) && (txtComisionistas.val() == ""))) {
                                                                             alert("Debe seleccionar un comisionista.");
                                                                             check = false;
                                                                         }
@@ -493,18 +493,17 @@
 
                 var success = function (result) {
                     if (result.MessageType == "Success") {
-                        alert("Reservacion creada con exito");
+                        alert(result.InfoMessage);
                         fnLimpiarDatos();
                     }
-
-
+                    else {
+                        alert(result.ErrorMessage);
+                    }
                 };
                 app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
-            } catch (ex) {
-              
+            } catch (ex) { 
                 retorno = false;
             }
-     
         }
     };
 

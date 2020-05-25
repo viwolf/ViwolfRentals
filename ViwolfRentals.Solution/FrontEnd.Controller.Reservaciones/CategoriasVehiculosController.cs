@@ -12,28 +12,42 @@ namespace FrontEnd.Controllers.Viwolf
 {
     class CategoriasVehiculosController : Controller
     {
+        ICategoriasVehiculosBL BlCategorias = new CategoriasVehiculosBL();
+
         [HttpPost]
         public JsonResult ListarCategoriasVehiculos(t_CategoriasVehiculos categoriaVehiculo)
         {
-
-            ICategoriasVehiculosBL BlCategorias = new CategoriasVehiculosBL();
-            var result = BlCategorias.ListarCategoriasVehiculos(categoriaVehiculo);
-
-            var jsonObjet = (from ta in result
-                             select new
-                             {
-                                 ta.IDCategoriaVehiculo,
-                                 ta.NombreCategoriaVehiculo
-                             }).AsEnumerable();
-            return Json(new
+            try
             {
-                Data = jsonObjet,
-                MessageType = "Success",
-                InfoMessage = jsonObjet.Count() > 0 ?
-                        "Proceso efectuado satisfactoriamente." :
-                        "No existen usuarios que coincidan con los criterios de búsqueda.",
-                ErrorMessage = string.Empty
-            }, JsonRequestBehavior.AllowGet);
+                var result = BlCategorias.ListarCategoriasVehiculos(categoriaVehiculo);
+                var jsonObjet = (from ta in result
+                                 select new
+                                 {
+                                     ta.IDCategoriaVehiculo,
+                                     ta.NombreCategoriaVehiculo
+                                 }).AsEnumerable();
+                return Json(new
+                {
+                    Data = jsonObjet,
+                    MessageType = "Success",
+                    InfoMessage = jsonObjet.Count() > 0 ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen categorias de vehiculos que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception ex)
+            {
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = ex.Message
+                }, JsonRequestBehavior.AllowGet);
+            }
+           
+            
         }
     }
 }

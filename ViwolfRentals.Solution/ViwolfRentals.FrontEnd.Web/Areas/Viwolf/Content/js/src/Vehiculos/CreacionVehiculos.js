@@ -287,8 +287,11 @@
 
                 var success = function (result) {
                     if (result.MessageType == "Success") {
-                        alert("Vehiculo creado con exito");
+                        alert(result.InfoMessage);
                         fnLimpiarDatos();
+                    }
+                    else {
+                        alert(result.ErrorMessage );
                     }
                 };
                 app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);

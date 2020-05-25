@@ -94,7 +94,7 @@
                    
                 }
                 else {
-                    alert("No hay vehiculos disponibles para su renta.");
+                    alert(result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage);
                 };
             };
             app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);

@@ -24,7 +24,7 @@ var informacionVehiculo = function () {
     var fnInit = function (idvehiculo) {
         modalVehiculo.modal('show');
         fnBuscarVehiculo(idVehiculo)
-        //fnCargarVehiculo(objVehiculo);
+       
     };
 
     var fnBuscarVehiculo = function (id) {
