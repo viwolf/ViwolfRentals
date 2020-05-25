@@ -33,7 +33,7 @@
 
        
     var calcularTarifaTotal = function () {
-      
+        
         var montoDia = txtMontoDia.val() == '' ? 0 : parseFloat(txtMontoDia.val().replace("$", "")); 
         var montoSurfRacks = txtMontoSurfRacks.val() == '' ? 0 : parseFloat(txtMontoSurfRacks.val().replace("$", ""));
         var montoTotal = 0;
@@ -203,24 +203,29 @@
 
         txtFechaInicio.datepicker({
             autoclose: true,
-            format: "mm/dd/yyyy",
+            dateFormat: "dd/mm/yy",
             onSelect: function (selected) {
+                
+                var fechaFinal = moment(txtFechaFinal.val(), 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
+                var fechaSeleccionada = moment(selected, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                 dateIni = new Date(selected);
                 txtFechaFinal.datepicker("option", "minDate", selected);
-                cantidadDias = ((moment(txtFechaFinal.val()).diff(selected, 'days')));
+                cantidadDias = ((moment(fechaFinal).diff(fechaSeleccionada, 'days')));
                 calcularTarifaTotal();
-            }, minDate: '-500D'
+            }, minDate: '-0D'
             , maxDate: '+500D'
         });
 
         txtFechaFinal.datepicker({
             autoclose: true,
-            format: "mm/dd/yyyy",
+            dateFormat: "dd/mm/yy",
             onSelect: function (selected) {
                 
+                var fechaInicial = moment(txtFechaInicio.val(), 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
+                var fechaSeleccionada = moment(selected, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                 dateFin = new Date(selected);
                 txtFechaInicio.datepicker("option", "maxDate", selected);
-                cantidadDias = ((moment(selected).diff(txtFechaInicio.val(), 'days')));
+                cantidadDias = ((moment(fechaSeleccionada).diff(fechaInicial, 'days')));
                 calcularTarifaTotal();
             },
             maxDate: '+500D'

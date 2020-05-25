@@ -178,11 +178,11 @@
         
         txtFechaCompra.datepicker({
             autoclose: true,
-            format: "mm/dd/yyyy",
+            dateFormat: "dd/mm/yy",
             onSelect: function (selected) {
                 dateCompra = new Date(selected);
             },
-            minDate: '-500D',
+            //minDate: '-500D',
             maxDate: '+500D'
         });
 
