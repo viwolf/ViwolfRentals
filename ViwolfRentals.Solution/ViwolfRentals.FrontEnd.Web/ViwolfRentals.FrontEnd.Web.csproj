@@ -145,6 +145,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Seguridad\SeguridadAreaRegistration.cs" />
     <Compile Include="Areas\Viwolf\ViwolfAreaRegistration.cs" />
+    <Compile Include="Filters\VerificaSesion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -690,6 +691,10 @@
     <ProjectReference Include="..\Viwolf.Rentals.Controllers\Viwolf.Rentals.Controllers.csproj">
       <Project>{99c04d03-393d-49af-b794-d3df695fbe12}</Project>
       <Name>Viwolf.Rentals.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViwolfRental.Common.Model\ViwolfRental.Common.Model.csproj">
+      <Project>{71AAA374-7DE4-45C2-87F7-F64B79F66B0B}</Project>
+      <Name>ViwolfRental.Common.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

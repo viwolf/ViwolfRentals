@@ -30,6 +30,8 @@ namespace FrontEnd.Controllers.Seguridad
                 {
                     if (TempData.Count <= 0)
                     {
+                        Session["User"] = result.FirstOrDefault();
+
                         TempData.Add("Usuario", result.First().CodigoUsuario);
                         TempData.Add("IdUsiario", result.First().IdUsuario);
                     }
