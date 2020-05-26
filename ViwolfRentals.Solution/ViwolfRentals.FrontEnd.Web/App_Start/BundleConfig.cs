@@ -22,6 +22,13 @@ namespace ViwolfRentals.FrontEnd.Web
                     .Include("~/Areas/Seguridad/Content/Plugin/ModalMessage/popper.min.js")
                     .Include("~/Areas/Seguridad/Content/Plugin/ModalMessage/bootstrap.min.js")
                     .Include("~/Content/Plugins/bootstrap-dialog/js/bootstrap-dialog.js"));
+
+            bundles.Add(new StyleBundle("~/bundles/Estilo/Seguridad")
+              .Include("~/Areas/Seguridad/Content/images/icons/favicon.ico")
+              .Include("~/Areas/Seguridad/Content/vendor/bootstrap/css/bootstrap.min.css")
+              .Include("~/Areas/Seguridad/Content/fonts/font-awesome-4.7.0/css/font-awesome.min.css")
+              .Include("~/Areas/Seguridad/Content/css/main.css")
+              );
         }
     }
 }
