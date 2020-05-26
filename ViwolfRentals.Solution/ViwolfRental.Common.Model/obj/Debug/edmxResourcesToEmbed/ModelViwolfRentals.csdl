@@ -137,27 +137,42 @@
     <Key>
       <PropertyRef Name="IdRol" />
     </Key>
-    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NombreRol" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="t_Usuarios" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Roles" FromRole="t_Roles" ToRole="t_Usuarios" />
   </EntityType>
   <EntityType Name="t_Sistemas">
     <Key>
       <PropertyRef Name="IdSistema" />
     </Key>
-    <Property Name="IdSistema" Type="Int32" Nullable="false" />
+    <Property Name="IdSistema" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NombreSistema" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="t_Usuarios" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Sistemas" FromRole="t_Sistemas" ToRole="t_Usuarios" />
   </EntityType>
   <EntityType Name="t_Usuarios">
     <Key>
       <PropertyRef Name="IdUsuario" />
     </Key>
-    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NombreUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimerApellidoUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SegundoApellidoUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CodigoUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IdSistema" Type="Int32" />
-    <Property Name="IdRol" Type="Int32" />
+    <Property Name="IdSistema" Type="Int32" Nullable="false" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Usuarios" FromRole="t_Usuarios" ToRole="t_Reservaciones" />
     <NavigationProperty Name="t_Roles" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Roles" FromRole="t_Usuarios" ToRole="t_Roles" />
@@ -290,7 +305,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_t_Usuarios_t_Roles">
-    <End Type="ViwolfRentalsDBModel.t_Roles" Role="t_Roles" Multiplicity="0..1" />
+    <End Type="ViwolfRentalsDBModel.t_Roles" Role="t_Roles" Multiplicity="1" />
     <End Type="ViwolfRentalsDBModel.t_Usuarios" Role="t_Usuarios" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="t_Roles">
@@ -302,7 +317,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_t_Usuarios_t_Sistemas">
-    <End Type="ViwolfRentalsDBModel.t_Sistemas" Role="t_Sistemas" Multiplicity="0..1" />
+    <End Type="ViwolfRentalsDBModel.t_Sistemas" Role="t_Sistemas" Multiplicity="1" />
     <End Type="ViwolfRentalsDBModel.t_Usuarios" Role="t_Usuarios" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="t_Sistemas">

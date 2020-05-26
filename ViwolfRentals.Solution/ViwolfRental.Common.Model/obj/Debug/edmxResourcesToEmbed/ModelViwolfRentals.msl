@@ -86,6 +86,10 @@
     <EntitySetMapping Name="t_Roles">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Roles">
         <MappingFragment StoreEntitySet="t_Roles">
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
           <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
           <ScalarProperty Name="IdRol" ColumnName="IdRol" />
         </MappingFragment>
@@ -94,6 +98,10 @@
     <EntitySetMapping Name="t_Sistemas">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Sistemas">
         <MappingFragment StoreEntitySet="t_Sistemas">
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
           <ScalarProperty Name="NombreSistema" ColumnName="NombreSistema" />
           <ScalarProperty Name="IdSistema" ColumnName="IdSistema" />
         </MappingFragment>
@@ -107,6 +115,13 @@
           <ScalarProperty Name="IdSistema" ColumnName="IdSistema" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="CodigoUsuario" ColumnName="CodigoUsuario" />
+          <ScalarProperty Name="SegundoApellidoUsuario" ColumnName="SegundoApellidoUsuario" />
+          <ScalarProperty Name="PrimerApellidoUsuario" ColumnName="PrimerApellidoUsuario" />
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
           <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -21,10 +21,17 @@ namespace ViwolfRental.Common.Model
         }
     
         public int IdUsuario { get; set; }
+        public System.DateTime FechaCreacion { get; set; }
+        public string UsuarioCreacion { get; set; }
+        public Nullable<System.DateTime> FechaModificacion { get; set; }
+        public string UsuarioModificacion { get; set; }
+        public string NombreUsuario { get; set; }
+        public string PrimerApellidoUsuario { get; set; }
+        public string SegundoApellidoUsuario { get; set; }
         public string CodigoUsuario { get; set; }
         public string Password { get; set; }
-        public Nullable<int> IdSistema { get; set; }
-        public Nullable<int> IdRol { get; set; }
+        public int IdSistema { get; set; }
+        public int IdRol { get; set; }
         public bool Activo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
