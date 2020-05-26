@@ -23,7 +23,9 @@ namespace ViwolfRentals.FrontEnd.Web
                     .Include("~/Areas/Seguridad/Content/Plugin/ModalMessage/bootstrap.min.js")
                     .Include("~/Content/Plugins/bootstrap-dialog/js/bootstrap-dialog.js"));
             bundles.Add(
-               new ScriptBundle("~/bundles/Viwolf")
+               new ScriptBundle("~/bundles/ViwolfRentals")
+               .Include("~/Areas/Viwolf/Content/dist/js/all.min.js")
+                .Include("~/Areas/Seguridad/Content/Vendor/jquery/jquery-3.2.1.min.js")
                    .Include("~/Areas/Viwolf/Content/dist/js/bootstrap.bundle.min.js")
                    .Include("~/Areas/Viwolf/Content/dist/js/scripts.js")
                    .Include("~/Areas/Viwolf/Content/dist/js/jquery.dataTables.min.js"));
@@ -33,6 +35,10 @@ namespace ViwolfRentals.FrontEnd.Web
               .Include("~/Areas/Seguridad/Content/vendor/bootstrap/css/bootstrap.min.css")
               .Include("~/Areas/Seguridad/Content/fonts/font-awesome-4.7.0/css/font-awesome.min.css")
               .Include("~/Areas/Seguridad/Content/css/main.css")
+              );
+
+            bundles.Add(new StyleBundle("~/bundles/Estilo/ViwolfRentals")
+              .Include("~/Areas/Viwolf/Content/dist/css/styles.css")
               );
         }
     }
