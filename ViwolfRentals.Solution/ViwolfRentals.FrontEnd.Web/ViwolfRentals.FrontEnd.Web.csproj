@@ -197,6 +197,8 @@
     <Content Include="Areas\Viwolf\Content\dist\js\all.min.js" />
     <Content Include="Areas\Viwolf\Content\dist\js\bootstrap.bundle.min.js" />
     <Content Include="Areas\Viwolf\Content\dist\js\jquery.dataTables.min.js" />
+    <Content Include="Areas\Viwolf\Content\dist\js\jquery.timepicker.min.js" />
+    <Content Include="Areas\Viwolf\Content\dist\js\jquery\jquery-1.12.4.js" />
     <Content Include="Areas\Viwolf\Content\dist\js\scripts.js" />
     <Content Include="Areas\Viwolf\Content\dist\401.html" />
     <Content Include="Areas\Viwolf\Content\dist\404.html" />

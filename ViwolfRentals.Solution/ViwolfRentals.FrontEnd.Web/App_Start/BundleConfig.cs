@@ -24,11 +24,28 @@ namespace ViwolfRentals.FrontEnd.Web
                     .Include("~/Content/Plugins/bootstrap-dialog/js/bootstrap-dialog.js"));
             bundles.Add(
                new ScriptBundle("~/bundles/ViwolfRentals")
-               .Include("~/Areas/Viwolf/Content/dist/js/all.min.js")
-                .Include("~/Areas/Seguridad/Content/Vendor/jquery/jquery-3.2.1.min.js")
-                   .Include("~/Areas/Viwolf/Content/dist/js/bootstrap.bundle.min.js")
-                   .Include("~/Areas/Viwolf/Content/dist/js/scripts.js")
-                   .Include("~/Areas/Viwolf/Content/dist/js/jquery.dataTables.min.js"));
+                    .Include("~/Areas/Viwolf/Content/dist/js/all.min.js")
+                    .Include("~/Areas/Seguridad/Content/Vendor/jquery/jquery-3.2.1.min.js")
+                    .Include("~/Areas/Viwolf/Content/dist/js/bootstrap.bundle.min.js")
+                    .Include("~/Areas/Viwolf/Content/dist/js/scripts.js")
+                    .Include("~/Areas/Viwolf/Content/dist/js/jquery.dataTables.min.js")
+                    .Include("~/Areas/Viwolf/Content/dist/js/jquery/jquery-1.12.4.js")
+                    .Include("~/Areas/Viwolf/Content/js/src/Reservaciones/Content/js/jquery-ui.js")
+                    .Include("~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/select2/select2.min.js")
+                    .Include("~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/datepicker/moment.min.js")
+                    .Include("~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/datepicker/daterangepicker.js")
+                    .Include("~/Content/Plugins/ajaxloader/ajaxloader.js")
+                    .Include("~/Content/js/src/Dialog.js")
+                    .Include("~/Areas/Seguridad/Content/Plugin/ModalMessage/popper.min.js")
+                    .Include("~/Areas/Seguridad/Content/Plugin/ModalMessage/bootstrap.min.js")
+                    .Include("~/Areas/Viwolf/Content/dist/js/jquery.timepicker.min.js")
+
+
+
+
+
+
+                    );
 
             bundles.Add(new StyleBundle("~/bundles/Estilo/Seguridad")
               .Include("~/Areas/Seguridad/Content/images/icons/favicon.ico")
