@@ -22,6 +22,11 @@ namespace ViwolfRentals.FrontEnd.Web
                     .Include("~/Areas/Seguridad/Content/Plugin/ModalMessage/popper.min.js")
                     .Include("~/Areas/Seguridad/Content/Plugin/ModalMessage/bootstrap.min.js")
                     .Include("~/Content/Plugins/bootstrap-dialog/js/bootstrap-dialog.js"));
+            bundles.Add(
+               new ScriptBundle("~/bundles/Viwolf")
+                   .Include("~/Areas/Viwolf/Content/dist/js/bootstrap.bundle.min.js")
+                   .Include("~/Areas/Viwolf/Content/dist/js/scripts.js")
+                   .Include("~/Areas/Viwolf/Content/dist/js/jquery.dataTables.min.js"));
 
             bundles.Add(new StyleBundle("~/bundles/Estilo/Seguridad")
               .Include("~/Areas/Seguridad/Content/images/icons/favicon.ico")

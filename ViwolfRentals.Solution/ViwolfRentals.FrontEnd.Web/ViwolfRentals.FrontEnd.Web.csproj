@@ -194,6 +194,8 @@
     <Content Include="Areas\Seguridad\Content\vendor\select2\select2.min.css" />
     <Content Include="Areas\Seguridad\Content\vendor\select2\select2.min.js" />
     <Content Include="Areas\Seguridad\Content\vendor\tilt\tilt.jquery.min.js" />
+    <Content Include="Areas\Viwolf\Content\dist\js\bootstrap.bundle.min.js" />
+    <Content Include="Areas\Viwolf\Content\dist\js\jquery.dataTables.min.js" />
     <Content Include="Areas\Viwolf\Content\dist\js\scripts.js" />
     <Content Include="Areas\Viwolf\Content\dist\401.html" />
     <Content Include="Areas\Viwolf\Content\dist\404.html" />
