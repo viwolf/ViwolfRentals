@@ -128,7 +128,7 @@
                     type: 'text',
                     label: 'Password del administrador'
                 }
-                Dialog.prompt('Reservaciones', "El monto no puede ser menor de $50. Debe de autorizarse el monto.", input, function (respuesta) {
+                Dialog.prompt('Reservaciones', "El monto no puede ser menor de $50." + "\nDebe de autorizarse el monto.", input, function (respuesta) {
 
                 })
                 txtMontoDia.val("");
