@@ -39,12 +39,6 @@ namespace ViwolfRentals.FrontEnd.Web
                     .Include("~/Areas/Seguridad/Content/Plugin/ModalMessage/popper.min.js")
                     .Include("~/Areas/Seguridad/Content/Plugin/ModalMessage/bootstrap.min.js")
                     .Include("~/Areas/Viwolf/Content/dist/js/jquery.timepicker.min.js")
-
-
-
-
-
-
                     );
 
             bundles.Add(new StyleBundle("~/bundles/Estilo/Seguridad")
@@ -57,6 +51,9 @@ namespace ViwolfRentals.FrontEnd.Web
             bundles.Add(new StyleBundle("~/bundles/Estilo/ViwolfRentals")
               .Include("~/Areas/Viwolf/Content/dist/css/styles.css")
               );
+
+
+           
         }
     }
 }
