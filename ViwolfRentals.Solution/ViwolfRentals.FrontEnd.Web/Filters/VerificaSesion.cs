@@ -28,7 +28,7 @@ namespace ViwolfRentals.FrontEnd.Web.Filters
                     }
                 }
             }
-            catch(Exception)
+            catch(Exception ex)
             {
                 filterContext.Result = new RedirectResult("~/Seguridad");
             }

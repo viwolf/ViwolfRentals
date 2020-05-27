@@ -16,6 +16,7 @@ namespace FrontEnd.Controllers.Seguridad
 
         public ActionResult Index()
         {
+            Session["User"] = null;
             return View();
         }
 

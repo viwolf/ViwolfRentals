@@ -13,12 +13,10 @@ namespace FrontEnd.Controllers.Viwolf
     {
        
         public ActionResult Index()
-        {
+        {   
             ViewBag.Usuario = TempData["Usuario"];
             ViewBag.IdUsuario = TempData["IdUsiario"];
             return View();
         }
-
-        
     }
 }
