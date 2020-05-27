@@ -28,7 +28,7 @@ namespace ViwolfRentals.FrontEnd.Web
                     .Include("~/Areas/Seguridad/Content/Vendor/jquery/jquery-3.2.1.min.js")
                     .Include("~/Areas/Viwolf/Content/dist/js/bootstrap.bundle.min.js")
                     .Include("~/Areas/Viwolf/Content/dist/js/scripts.js")
-                    .Include("~/Areas/Viwolf/Content/dist/js/jquery.dataTables.min.js")
+                    //.Include("~/Areas/Viwolf/Content/dist/js/jquery.dataTables.min.js")
                     //.Include("~/Areas/Viwolf/Content/dist/js/jquery/dataTables.bootstrap4.min.js")
                     .Include("~/Areas/Viwolf/Content/images/engine1/wowslider.js")
                     );
@@ -47,8 +47,14 @@ namespace ViwolfRentals.FrontEnd.Web
                 .Include("~/Areas/Viwolf/Content/dist/js/jquery.timepicker.min.js")
                 );
 
+            bundles.Add(
+           new ScriptBundle("~/bundles/DataTables")
+               .Include("~/Content/Plugins/datatables/jquery.dataTables.min.js")
+               .Include("~/Content/Plugins/datatables/dataTables.bootstrap.min.js")
+               .Include("~/Content/Plugins/datatables/dataTables.select.min.js")
+         );
 
-           bundles.Add(new StyleBundle("~/bundles/Estilo/Seguridad")
+            bundles.Add(new StyleBundle("~/bundles/Estilo/Seguridad")
               .Include("~/Areas/Seguridad/Content/images/icons/favicon.ico")
               .Include("~/Areas/Seguridad/Content/vendor/bootstrap/css/bootstrap.min.css")
               .Include("~/Areas/Seguridad/Content/fonts/font-awesome-4.7.0/css/font-awesome.min.css")
@@ -68,6 +74,7 @@ namespace ViwolfRentals.FrontEnd.Web
              .Include("~/Areas/Viwolf/Content/js/src/Reservaciones/Content/css/main.css")
              );
 
+        
         }
     }
 }

@@ -18,7 +18,9 @@
             var oUrl = 'Vehiculos/ListarVehiculos';
             var oProcessMessage = 'Buscando Vehiculos';
             var success = function (result) {
+               
                 if (result.Data.length > 0) {
+                    
                     
 
                     $table.dataTable({
@@ -28,8 +30,8 @@
                         data: result.Data,
                         select: true,
                         columns: [
-                            { data: 't_CategoriasVehiculos.NombreCategoriaVehiculo' },
                             { data: 'IDVehiculo' },
+                            { data: 't_CategoriasVehiculos.NombreCategoriaVehiculo' },
                             { data: 'Marca' },
                             { data: 'Modelo' },
                         ],
@@ -37,13 +39,12 @@
                     $table.on("click", "tr", function () {
                         var iPos = $table.fnGetPosition(this);
                         objSeleccionado = $table.fnGetData(iPos);
-
-                      
                     });
                 }
                 else {
                     Dialog.alert('Vehiculos', result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage, function () {
-                    })
+                        modalVehiculo.modal('hide');
+                    })                
                 };
             };
             app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
@@ -58,7 +59,6 @@
   
 
     var fnEnlazarVehiculo = function (e) {
-        
         modalVehiculo.modal('hide');
         fnCallbak(objSeleccionado);
     }
