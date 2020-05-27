@@ -15,18 +15,7 @@
         <title>@ViewBag.Title - Creacion Reservaciones</title>
 
         <!-- Icons font CSS-->
-        <link href="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-        <link href="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-        <!-- Font special for pages-->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-
-        <!-- Vendor CSS-->
-        <link href="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-        <link href="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
-
-        <!-- Main CSS-->
-        <link href="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/css/main.css" rel="stylesheet" media="all">
-
+        @Styles.Render("~/bundles/Estilo/ViwolfRentalsReservaciones")
         <!-- TimePicker CSS-->
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
         <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
@@ -283,38 +272,15 @@
             </div>
         </div>
 
-        <!-- Jquery JS-->
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/js/jquery-ui.js"></script>
-
-        <!-- Vendor JS-->
-        <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/select2/select2.min.js"></script>
-        <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/datepicker/moment.min.js"></script>
-        <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/datepicker/daterangepicker.js"></script>
-
-
-        <!-- Main JS-->
-
-        <script src="~/Content/Plugins/ajaxloader/ajaxloader.js"></script>
+        @Scripts.Render("~/bundles/ViwolfRentalsReservaciones")
+        
+        
         <script src="~/Areas/Seguridad/Content/js/src/app.js"></script>
-
-        <!-- Mensajes-->
-        <script src="~/Content/js/src/Dialog.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
         <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Reservaciones.js"></script>
-
-        @*Time Picker*@
-        <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-
-
         <script src="~/Content/js/src/utils.js"></script>
 
         <!--Informacion del Vehiculo-->
         @Html.Partial("~/Areas/Viwolf/Views/Vehiculos/VehiculoBuscar.cshtml")
-
         <script src="~/Areas/Viwolf/Content/js/src/Vehiculos/BuscarVehiculo.js"></script>
 
     </body>

@@ -172,8 +172,8 @@
     <Content Include="Areas\Seguridad\Content\Plugin\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Areas\Seguridad\Content\Plugin\bootstrap\js\bootstrap.js" />
     <Content Include="Areas\Seguridad\Content\Plugin\bootstrap\js\bootstrap.min.js" />
-    <Content Include="Areas\Seguridad\Content\Plugin\ModalMessage\bootstrap.min.js" />
-    <Content Include="Areas\Seguridad\Content\Plugin\ModalMessage\popper.min.js" />
+    <Content Include="Content\Plugins\ModalMessage\bootstrap.min.js" />
+    <Content Include="Content\Plugins\ModalMessage\popper.min.js" />
     <Content Include="Areas\Seguridad\Content\vendor\animate\animate.css" />
     <Content Include="Areas\Seguridad\Content\vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Areas\Seguridad\Content\vendor\bootstrap\css\bootstrap-grid.min.css" />
