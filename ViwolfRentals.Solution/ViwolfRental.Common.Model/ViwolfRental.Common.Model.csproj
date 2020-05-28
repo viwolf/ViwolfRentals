@@ -78,6 +78,12 @@
     <Compile Include="t_Kilometrajes.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
+    <Compile Include="t_Modulos.cs">
+      <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_Pantallas.cs">
+      <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
+    </Compile>
     <Compile Include="t_Proveedores.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
@@ -85,6 +91,9 @@
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
     <Compile Include="t_Roles.cs">
+      <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_RolesSistemaModuloPantalla.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
     <Compile Include="t_Sistemas.cs">

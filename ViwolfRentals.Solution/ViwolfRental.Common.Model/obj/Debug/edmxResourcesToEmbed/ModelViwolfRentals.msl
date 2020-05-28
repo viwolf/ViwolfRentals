@@ -43,6 +43,33 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="t_Modulos">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Modulos">
+        <MappingFragment StoreEntitySet="t_Modulos">
+          <ScalarProperty Name="IDSistema" ColumnName="IDSistema" />
+          <ScalarProperty Name="NombreModulo" ColumnName="NombreModulo" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IDModulo" ColumnName="IDModulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_Pantallas">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Pantallas">
+        <MappingFragment StoreEntitySet="t_Pantallas">
+          <ScalarProperty Name="NombrePantalla" ColumnName="NombrePantalla" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IDModulo" ColumnName="IDModulo" />
+          <ScalarProperty Name="IDSistema" ColumnName="IDSistema" />
+          <ScalarProperty Name="IDPantalla" ColumnName="IDPantalla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="t_Proveedores">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Proveedores">
         <MappingFragment StoreEntitySet="t_Proveedores">
@@ -92,6 +119,17 @@
           <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
           <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
           <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_RolesSistemaModuloPantalla">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_RolesSistemaModuloPantalla">
+        <MappingFragment StoreEntitySet="t_RolesSistemaModuloPantalla">
+          <ScalarProperty Name="IDPantalla" ColumnName="IDPantalla" />
+          <ScalarProperty Name="IDModulo" ColumnName="IDModulo" />
+          <ScalarProperty Name="IDSistema" ColumnName="IDSistema" />
+          <ScalarProperty Name="IDRol" ColumnName="IDRol" />
+          <ScalarProperty Name="IDRolPantalla" ColumnName="IDRolPantalla" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

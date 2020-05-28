@@ -17,6 +17,7 @@ namespace ViwolfRental.Common.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public t_Sistemas()
         {
+            this.t_Pantallas = new HashSet<t_Pantallas>();
             this.t_Usuarios = new HashSet<t_Usuarios>();
         }
     
@@ -27,6 +28,8 @@ namespace ViwolfRental.Common.Model
         public Nullable<System.DateTime> FechaModificacion { get; set; }
         public string UsuarioModificacion { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<t_Pantallas> t_Pantallas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_Usuarios> t_Usuarios { get; set; }
     }

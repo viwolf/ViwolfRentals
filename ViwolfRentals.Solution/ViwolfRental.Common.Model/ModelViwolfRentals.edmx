@@ -43,6 +43,33 @@
           <Property Name="IDVehiculo" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="IDReservacion" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="t_Modulos">
+          <Key>
+            <PropertyRef Name="IDModulo" />
+          </Key>
+          <Property Name="IDModulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="NombreModulo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDSistema" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_Pantallas">
+          <Key>
+            <PropertyRef Name="IDPantalla" />
+            <PropertyRef Name="IDSistema" />
+            <PropertyRef Name="IDModulo" />
+          </Key>
+          <Property Name="IDPantalla" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSistema" Type="int" Nullable="false" />
+          <Property Name="IDModulo" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="NombrePantalla" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="t_Proveedores">
           <Key>
             <PropertyRef Name="IdProveedor" />
@@ -91,6 +118,16 @@
           <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FechaModificacion" Type="datetime" />
           <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="t_RolesSistemaModuloPantalla">
+          <Key>
+            <PropertyRef Name="IDRolPantalla" />
+          </Key>
+          <Property Name="IDRolPantalla" Type="int" Nullable="false" />
+          <Property Name="IDRol" Type="int" Nullable="false" />
+          <Property Name="IDSistema" Type="int" Nullable="false" />
+          <Property Name="IDModulo" Type="int" Nullable="false" />
+          <Property Name="IDPantalla" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="t_Sistemas">
           <Key>
@@ -171,6 +208,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_t_Pantallas_t_Modulos">
+          <End Role="t_Modulos" Type="Self.t_Modulos" Multiplicity="1" />
+          <End Role="t_Pantallas" Type="Self.t_Pantallas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Modulos">
+              <PropertyRef Name="IDModulo" />
+            </Principal>
+            <Dependent Role="t_Pantallas">
+              <PropertyRef Name="IDModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Pantallas_t_Sistemas">
+          <End Role="t_Sistemas" Type="Self.t_Sistemas" Multiplicity="1" />
+          <End Role="t_Pantallas" Type="Self.t_Pantallas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Sistemas">
+              <PropertyRef Name="IdSistema" />
+            </Principal>
+            <Dependent Role="t_Pantallas">
+              <PropertyRef Name="IDSistema" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_t_Reservaciones_t_ClientesComisionistas">
           <End Role="t_ClientesComisionistas" Type="Self.t_ClientesComisionistas" Multiplicity="0..1" />
           <End Role="t_Reservaciones" Type="Self.t_Reservaciones" Multiplicity="*" />
@@ -216,6 +277,34 @@
             </Principal>
             <Dependent Role="t_Reservaciones">
               <PropertyRef Name="IDVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_RolesSistemaModuloPantalla_t_Pantallas">
+          <End Role="t_Pantallas" Type="Self.t_Pantallas" Multiplicity="1" />
+          <End Role="t_RolesSistemaModuloPantalla" Type="Self.t_RolesSistemaModuloPantalla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Pantallas">
+              <PropertyRef Name="IDPantalla" />
+              <PropertyRef Name="IDSistema" />
+              <PropertyRef Name="IDModulo" />
+            </Principal>
+            <Dependent Role="t_RolesSistemaModuloPantalla">
+              <PropertyRef Name="IDPantalla" />
+              <PropertyRef Name="IDSistema" />
+              <PropertyRef Name="IDModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_RolesSistemaModuloPantalla_t_Roles">
+          <End Role="t_Roles" Type="Self.t_Roles" Multiplicity="1" />
+          <End Role="t_RolesSistemaModuloPantalla" Type="Self.t_RolesSistemaModuloPantalla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Roles">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="t_RolesSistemaModuloPantalla">
+              <PropertyRef Name="IDRol" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -272,15 +361,26 @@
           <EntitySet Name="t_ClientesComisionistas" EntityType="Self.t_ClientesComisionistas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Departamentos" EntityType="Self.t_Departamentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Kilometrajes" EntityType="Self.t_Kilometrajes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Modulos" EntityType="Self.t_Modulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Pantallas" EntityType="Self.t_Pantallas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Proveedores" EntityType="Self.t_Proveedores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Reservaciones" EntityType="Self.t_Reservaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Roles" EntityType="Self.t_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_RolesSistemaModuloPantalla" EntityType="Self.t_RolesSistemaModuloPantalla" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Sistemas" EntityType="Self.t_Sistemas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Usuarios" EntityType="Self.t_Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Vehiculos" EntityType="Self.t_Vehiculos" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_t_Kilometrajes_t_Vehiculos" Association="Self.FK_t_Kilometrajes_t_Vehiculos">
             <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
             <End Role="t_Kilometrajes" EntitySet="t_Kilometrajes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Pantallas_t_Modulos" Association="Self.FK_t_Pantallas_t_Modulos">
+            <End Role="t_Modulos" EntitySet="t_Modulos" />
+            <End Role="t_Pantallas" EntitySet="t_Pantallas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Pantallas_t_Sistemas" Association="Self.FK_t_Pantallas_t_Sistemas">
+            <End Role="t_Sistemas" EntitySet="t_Sistemas" />
+            <End Role="t_Pantallas" EntitySet="t_Pantallas" />
           </AssociationSet>
           <AssociationSet Name="FK_t_Reservaciones_t_ClientesComisionistas" Association="Self.FK_t_Reservaciones_t_ClientesComisionistas">
             <End Role="t_ClientesComisionistas" EntitySet="t_ClientesComisionistas" />
@@ -297,6 +397,14 @@
           <AssociationSet Name="FK_t_Reservaciones_t_Vehiculos" Association="Self.FK_t_Reservaciones_t_Vehiculos">
             <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
             <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_RolesSistemaModuloPantalla_t_Pantallas" Association="Self.FK_t_RolesSistemaModuloPantalla_t_Pantallas">
+            <End Role="t_Pantallas" EntitySet="t_Pantallas" />
+            <End Role="t_RolesSistemaModuloPantalla" EntitySet="t_RolesSistemaModuloPantalla" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_RolesSistemaModuloPantalla_t_Roles" Association="Self.FK_t_RolesSistemaModuloPantalla_t_Roles">
+            <End Role="t_Roles" EntitySet="t_Roles" />
+            <End Role="t_RolesSistemaModuloPantalla" EntitySet="t_RolesSistemaModuloPantalla" />
           </AssociationSet>
           <AssociationSet Name="FK_t_Usuarios_t_Roles" Association="Self.FK_t_Usuarios_t_Roles">
             <End Role="t_Roles" EntitySet="t_Roles" />
@@ -324,9 +432,12 @@
           <EntitySet Name="t_ClientesComisionistas" EntityType="ViwolfRentalsDBModel.t_ClientesComisionistas" />
           <EntitySet Name="t_Departamentos" EntityType="ViwolfRentalsDBModel.t_Departamentos" />
           <EntitySet Name="t_Kilometrajes" EntityType="ViwolfRentalsDBModel.t_Kilometrajes" />
+          <EntitySet Name="t_Modulos" EntityType="ViwolfRentalsDBModel.t_Modulos" />
+          <EntitySet Name="t_Pantallas" EntityType="ViwolfRentalsDBModel.t_Pantallas" />
           <EntitySet Name="t_Proveedores" EntityType="ViwolfRentalsDBModel.t_Proveedores" />
           <EntitySet Name="t_Reservaciones" EntityType="ViwolfRentalsDBModel.t_Reservaciones" />
           <EntitySet Name="t_Roles" EntityType="ViwolfRentalsDBModel.t_Roles" />
+          <EntitySet Name="t_RolesSistemaModuloPantalla" EntityType="ViwolfRentalsDBModel.t_RolesSistemaModuloPantalla" />
           <EntitySet Name="t_Sistemas" EntityType="ViwolfRentalsDBModel.t_Sistemas" />
           <EntitySet Name="t_Usuarios" EntityType="ViwolfRentalsDBModel.t_Usuarios" />
           <EntitySet Name="t_Vehiculos" EntityType="ViwolfRentalsDBModel.t_Vehiculos" />
@@ -346,6 +457,18 @@
             <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
             <End Role="t_Kilometrajes" EntitySet="t_Kilometrajes" />
           </AssociationSet>
+          <AssociationSet Name="FK_t_Pantallas_t_Modulos" Association="ViwolfRentalsDBModel.FK_t_Pantallas_t_Modulos">
+            <End Role="t_Modulos" EntitySet="t_Modulos" />
+            <End Role="t_Pantallas" EntitySet="t_Pantallas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Pantallas_t_Sistemas" Association="ViwolfRentalsDBModel.FK_t_Pantallas_t_Sistemas">
+            <End Role="t_Sistemas" EntitySet="t_Sistemas" />
+            <End Role="t_Pantallas" EntitySet="t_Pantallas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_RolesSistemaModuloPantalla_t_Pantallas" Association="ViwolfRentalsDBModel.FK_t_RolesSistemaModuloPantalla_t_Pantallas">
+            <End Role="t_Pantallas" EntitySet="t_Pantallas" />
+            <End Role="t_RolesSistemaModuloPantalla" EntitySet="t_RolesSistemaModuloPantalla" />
+          </AssociationSet>
           <AssociationSet Name="FK_t_Reservaciones_t_Proveedores" Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Proveedores">
             <End Role="t_Proveedores" EntitySet="t_Proveedores" />
             <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
@@ -357,6 +480,10 @@
           <AssociationSet Name="FK_t_Reservaciones_t_Vehiculos" Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Vehiculos">
             <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
             <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_RolesSistemaModuloPantalla_t_Roles" Association="ViwolfRentalsDBModel.FK_t_RolesSistemaModuloPantalla_t_Roles">
+            <End Role="t_Roles" EntitySet="t_Roles" />
+            <End Role="t_RolesSistemaModuloPantalla" EntitySet="t_RolesSistemaModuloPantalla" />
           </AssociationSet>
           <AssociationSet Name="FK_t_Usuarios_t_Roles" Association="ViwolfRentalsDBModel.FK_t_Usuarios_t_Roles">
             <End Role="t_Roles" EntitySet="t_Roles" />
@@ -408,6 +535,37 @@
           <Property Name="IDVehiculo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="IDReservacion" Type="Int32" Nullable="false" />
           <NavigationProperty Name="t_Vehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Kilometrajes_t_Vehiculos" FromRole="t_Kilometrajes" ToRole="t_Vehiculos" />
+        </EntityType>
+        <EntityType Name="t_Modulos">
+          <Key>
+            <PropertyRef Name="IDModulo" />
+          </Key>
+          <Property Name="IDModulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NombreModulo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDSistema" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="t_Pantallas" Relationship="ViwolfRentalsDBModel.FK_t_Pantallas_t_Modulos" FromRole="t_Modulos" ToRole="t_Pantallas" />
+        </EntityType>
+        <EntityType Name="t_Pantallas">
+          <Key>
+            <PropertyRef Name="IDPantalla" />
+            <PropertyRef Name="IDSistema" />
+            <PropertyRef Name="IDModulo" />
+          </Key>
+          <Property Name="IDPantalla" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSistema" Type="Int32" Nullable="false" />
+          <Property Name="IDModulo" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NombrePantalla" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="t_Modulos" Relationship="ViwolfRentalsDBModel.FK_t_Pantallas_t_Modulos" FromRole="t_Pantallas" ToRole="t_Modulos" />
+          <NavigationProperty Name="t_Sistemas" Relationship="ViwolfRentalsDBModel.FK_t_Pantallas_t_Sistemas" FromRole="t_Pantallas" ToRole="t_Sistemas" />
+          <NavigationProperty Name="t_RolesSistemaModuloPantalla" Relationship="ViwolfRentalsDBModel.FK_t_RolesSistemaModuloPantalla_t_Pantallas" FromRole="t_Pantallas" ToRole="t_RolesSistemaModuloPantalla" />
         </EntityType>
         <EntityType Name="t_Proveedores">
           <Key>
@@ -462,7 +620,20 @@
           <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
           <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="t_RolesSistemaModuloPantalla" Relationship="ViwolfRentalsDBModel.FK_t_RolesSistemaModuloPantalla_t_Roles" FromRole="t_Roles" ToRole="t_RolesSistemaModuloPantalla" />
           <NavigationProperty Name="t_Usuarios" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Roles" FromRole="t_Roles" ToRole="t_Usuarios" />
+        </EntityType>
+        <EntityType Name="t_RolesSistemaModuloPantalla">
+          <Key>
+            <PropertyRef Name="IDRolPantalla" />
+          </Key>
+          <Property Name="IDRolPantalla" Type="Int32" Nullable="false" />
+          <Property Name="IDRol" Type="Int32" Nullable="false" />
+          <Property Name="IDSistema" Type="Int32" Nullable="false" />
+          <Property Name="IDModulo" Type="Int32" Nullable="false" />
+          <Property Name="IDPantalla" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="t_Pantallas" Relationship="ViwolfRentalsDBModel.FK_t_RolesSistemaModuloPantalla_t_Pantallas" FromRole="t_RolesSistemaModuloPantalla" ToRole="t_Pantallas" />
+          <NavigationProperty Name="t_Roles" Relationship="ViwolfRentalsDBModel.FK_t_RolesSistemaModuloPantalla_t_Roles" FromRole="t_RolesSistemaModuloPantalla" ToRole="t_Roles" />
         </EntityType>
         <EntityType Name="t_Sistemas">
           <Key>
@@ -474,6 +645,7 @@
           <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
           <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="t_Pantallas" Relationship="ViwolfRentalsDBModel.FK_t_Pantallas_t_Sistemas" FromRole="t_Sistemas" ToRole="t_Pantallas" />
           <NavigationProperty Name="t_Usuarios" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Sistemas" FromRole="t_Sistemas" ToRole="t_Usuarios" />
         </EntityType>
         <EntityType Name="t_Usuarios">
@@ -587,6 +759,46 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_t_Pantallas_t_Modulos">
+          <End Type="ViwolfRentalsDBModel.t_Modulos" Role="t_Modulos" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_Pantallas" Role="t_Pantallas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Modulos">
+              <PropertyRef Name="IDModulo" />
+            </Principal>
+            <Dependent Role="t_Pantallas">
+              <PropertyRef Name="IDModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Pantallas_t_Sistemas">
+          <End Type="ViwolfRentalsDBModel.t_Sistemas" Role="t_Sistemas" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_Pantallas" Role="t_Pantallas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Sistemas">
+              <PropertyRef Name="IdSistema" />
+            </Principal>
+            <Dependent Role="t_Pantallas">
+              <PropertyRef Name="IDSistema" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_RolesSistemaModuloPantalla_t_Pantallas">
+          <End Type="ViwolfRentalsDBModel.t_Pantallas" Role="t_Pantallas" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_RolesSistemaModuloPantalla" Role="t_RolesSistemaModuloPantalla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Pantallas">
+              <PropertyRef Name="IDPantalla" />
+              <PropertyRef Name="IDSistema" />
+              <PropertyRef Name="IDModulo" />
+            </Principal>
+            <Dependent Role="t_RolesSistemaModuloPantalla">
+              <PropertyRef Name="IDPantalla" />
+              <PropertyRef Name="IDSistema" />
+              <PropertyRef Name="IDModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_t_Reservaciones_t_Proveedores">
           <End Type="ViwolfRentalsDBModel.t_Proveedores" Role="t_Proveedores" Multiplicity="0..1" />
           <End Type="ViwolfRentalsDBModel.t_Reservaciones" Role="t_Reservaciones" Multiplicity="*" />
@@ -620,6 +832,18 @@
             </Principal>
             <Dependent Role="t_Reservaciones">
               <PropertyRef Name="IDVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_RolesSistemaModuloPantalla_t_Roles">
+          <End Type="ViwolfRentalsDBModel.t_Roles" Role="t_Roles" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_RolesSistemaModuloPantalla" Role="t_RolesSistemaModuloPantalla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Roles">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="t_RolesSistemaModuloPantalla">
+              <PropertyRef Name="IDRol" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -695,6 +919,33 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="t_Modulos">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Modulos">
+              <MappingFragment StoreEntitySet="t_Modulos">
+                <ScalarProperty Name="IDSistema" ColumnName="IDSistema" />
+                <ScalarProperty Name="NombreModulo" ColumnName="NombreModulo" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IDModulo" ColumnName="IDModulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Pantallas">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Pantallas">
+              <MappingFragment StoreEntitySet="t_Pantallas">
+                <ScalarProperty Name="NombrePantalla" ColumnName="NombrePantalla" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IDModulo" ColumnName="IDModulo" />
+                <ScalarProperty Name="IDSistema" ColumnName="IDSistema" />
+                <ScalarProperty Name="IDPantalla" ColumnName="IDPantalla" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="t_Proveedores">
             <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Proveedores">
               <MappingFragment StoreEntitySet="t_Proveedores">
@@ -744,6 +995,17 @@
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
                 <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_RolesSistemaModuloPantalla">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_RolesSistemaModuloPantalla">
+              <MappingFragment StoreEntitySet="t_RolesSistemaModuloPantalla">
+                <ScalarProperty Name="IDPantalla" ColumnName="IDPantalla" />
+                <ScalarProperty Name="IDModulo" ColumnName="IDModulo" />
+                <ScalarProperty Name="IDSistema" ColumnName="IDSistema" />
+                <ScalarProperty Name="IDRol" ColumnName="IDRol" />
+                <ScalarProperty Name="IDRolPantalla" ColumnName="IDRolPantalla" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Viwolf.BusinessLogic;
 using Viwolf.BusinessLogic.Interface;
+using ViwolfRental.Common.Filters;
 using ViwolfRental.Common.Model;
 
 namespace FrontEnd.Controllers.Viwolf
@@ -14,12 +15,14 @@ namespace FrontEnd.Controllers.Viwolf
     {
         IReservacionesBL BlReservacion = new ReservacionesBL();
 
+        [AuthorizeUser(IdOperacion:1)]
         public ActionResult Index(string usuario, string idUsuario)
         {
             ViewBag.Usuario = usuario;
             ViewBag.IdUsuario = idUsuario;
             return View();
         }
+        [AuthorizeUser(IdOperacion: 2)]
         public ActionResult Mantenimiento(string usuario, string idUsuario)
         {
             ViewBag.Usuario = usuario;
@@ -97,5 +100,7 @@ namespace FrontEnd.Controllers.Viwolf
             }
            
         }
+
+
     }
 }

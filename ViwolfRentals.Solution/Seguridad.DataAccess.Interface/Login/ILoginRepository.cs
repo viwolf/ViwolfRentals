@@ -12,7 +12,12 @@ namespace Seguridad.DataAccess.Interface
         System.Data.IDbConnection Conexion { get; set; }
         System.Data.IDbTransaction Transaccion { get; set; }
 
-        //IEnumerable<ViwolfRental.Common.Model.IUsuariosold> ListarUsuarioLogin(ViwolfRental.Common.Model.IUsuariosold usuarios);
         IEnumerable<ViwolfRental.Common.Model.t_Usuarios> ListarUsuarioLogin(ViwolfRental.Common.Model.t_Usuarios usuarios);
+
+        IEnumerable<ViwolfRental.Common.Model.t_RolesSistemaModuloPantalla> ListarPantallaRoles(ViwolfRental.Common.Model.t_RolesSistemaModuloPantalla rolesSistemaModuloPantalla);
+
+
+
+
     }
 }

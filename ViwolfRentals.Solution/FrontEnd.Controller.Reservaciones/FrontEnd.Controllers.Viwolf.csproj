@@ -123,6 +123,10 @@
       <Project>{d2e2e2b3-8a24-49a5-9853-a14754a65a42}</Project>
       <Name>Viwolf.BusinessLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ViwolfRental.Common.Filters\ViwolfRental.Common.Filters.csproj">
+      <Project>{5F2051C7-2555-4A18-9E5C-938052812094}</Project>
+      <Name>ViwolfRental.Common.Filters</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViwolfRental.Common.Model\ViwolfRental.Common.Model.csproj">
       <Project>{71aaa374-7de4-45c2-87f7-f64b79f66b0b}</Project>
       <Name>ViwolfRental.Common.Model</Name>
