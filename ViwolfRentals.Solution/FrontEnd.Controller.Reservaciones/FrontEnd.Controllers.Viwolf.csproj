@@ -115,6 +115,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Seguridad.BusinessLogic.Interface\Seguridad.BusinessLogic.Interface.csproj">
+      <Project>{6FEF9A75-3D1C-489C-A807-302E2A547F09}</Project>
+      <Name>Seguridad.BusinessLogic.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Seguridad.BusinessLogic\Seguridad.BusinessLogic.csproj">
+      <Project>{D2760602-15C2-4AB0-9C8E-429EA52F336A}</Project>
+      <Name>Seguridad.BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Viwolf.BusinessLogic.Interface\Viwolf.BusinessLogic.Interface.csproj">
       <Project>{9ab5d31d-813a-4953-bbb3-2a2974e14bec}</Project>
       <Name>Viwolf.BusinessLogic.Interface</Name>

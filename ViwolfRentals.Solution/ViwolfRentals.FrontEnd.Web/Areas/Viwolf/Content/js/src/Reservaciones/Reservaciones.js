@@ -100,7 +100,7 @@
 
     var fnConfirmarGuardar = function () {
         Dialog.confirm('Reservaciones', "Desea guardar la reservacion?", function (respuesta) {
-            debugger;
+            
             if (respuesta == true)
                 fnGuardarReservacion();
         })
@@ -124,14 +124,16 @@
         txtMontoDia.blur(function () {
             
             if (txtMontoDia.val() < 50) {
-                debugger;
+                
                 if (sessionStorage.getItem('Rol') != configViwolf.Roles.Administrador) {
                     Dialog.confirm('Reservaciones', "Desea autorizar el monto menor a $50?", function (respuesta) {
                         if (respuesta == true)
                             autorizacionLogin.AbrirModal(fnCallBackAutorizar);
+
+                        else
+                            txtMontoDia.val("");
                     })
                 }
-                txtMontoDia.val("");
             }
             else {
                 calcularTarifaTotal();
@@ -169,9 +171,20 @@
         });
     }
 
-    var fnCallBackAutorizar = function (data) {
+    var fnCallBackAutorizar = function (result) {
         debugger;
-        alert(data);
+        if (result.Data.length > 0) {
+            if (result.Data[0].IdRol != configViwolf.Roles.Administrador) {
+                Dialog.alert("Reservaciones", "Usuario no es administrador.");
+                txtMontoDia.val("");
+            }
+            else {
+                calcularTarifaTotal();
+            }
+        }
+        else {
+            Dialog.alert("Reservaciones", "Usuario no existe.");
+        }
     };
 
     var fnCallBack = function (data) {

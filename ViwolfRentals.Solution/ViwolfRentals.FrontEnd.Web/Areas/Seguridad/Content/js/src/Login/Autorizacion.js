@@ -5,6 +5,7 @@
     var uname1 = $("#uname1");
     var pwd1 = $("#pwd1");
     var fnCallbak = null;
+    var objeto = null;
     
 
     var fnInit = function () {
@@ -12,7 +13,6 @@
     };
 
     var fnLogin = function () {
-        debugger;
         var oData =
         {
             "CodigoUsuario": uname1.val(),
@@ -20,18 +20,14 @@
         };
 
         $.ajax({
-            url: '@Url.Action("AutenticarUsuario", "Login", new {area = "Seguridad"})',
+            url: 'Reservaciones/AutorizarOperacion',
             type: 'POST',
             dataType: 'json',
             cache: false,
             data: oData,
-            success: function (color) {
+            success: function (result) {
                 debugger;
-                return color;
-            },
-            error: function (e) {
-                debugger;
-                alert(e);
+                fnCallbak(result);
             }
         });
     }
@@ -42,8 +38,9 @@
             event.stopPropagation()
         }
         if (form[0].checkValidity() === true) {
-           
+            debugger;
             fnLogin();
+          
         }
 
         form.addClass('was-validated');

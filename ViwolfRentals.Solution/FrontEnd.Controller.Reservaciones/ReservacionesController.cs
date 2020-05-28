@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Seguridad.BusinessLogic;
+using Seguridad.BusinessLogic.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +16,7 @@ namespace FrontEnd.Controllers.Viwolf
     public class ReservacionesController : Controller
     {
         IReservacionesBL BlReservacion = new ReservacionesBL();
+        ILoginBL BlLogin = new LoginBL();
 
         [AuthorizeUser(IdOperacion:1)]
         public ActionResult Index(string usuario, string idUsuario)
@@ -99,6 +102,42 @@ namespace FrontEnd.Controllers.Viwolf
                 }, JsonRequestBehavior.AllowGet);
             }
            
+        }
+
+        [HttpPost]
+        public JsonResult AutorizarOperacion(ViwolfRental.Common.Model.t_Usuarios usuario)
+        {
+            try
+            {
+                var result = BlLogin.ListarUsuarioLogin(usuario);
+
+                var jsonObjet = (from ta in result
+                                 select new
+                                 {
+                                     ta.IdUsuario,
+                                     ta.t_Roles.IdRol
+                                 }).AsEnumerable();
+                return Json(new
+                {
+                    Data = jsonObjet,
+                    MessageType = "Success",
+                    InfoMessage = jsonObjet.Count() > 0 ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen reservaciones que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = ex.Message
+                }, JsonRequestBehavior.AllowGet);
+            }
+
         }
 
 
