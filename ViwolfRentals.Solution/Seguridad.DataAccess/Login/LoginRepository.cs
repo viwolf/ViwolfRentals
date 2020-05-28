@@ -30,28 +30,25 @@ namespace Seguridad.DataAccess
         {
             using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
             {
-                return connection.Query("usp_Usuario_Listar",
-                   new[]
-                   {
-                        typeof(ViwolfRental.Common.Model.t_Usuarios)
-                   },
-                   (object[] objetos) =>
-                   {
-                       t_Usuarios a = objetos[0] as t_Usuarios;
-                       t_Usuarios resultado = new t_Usuarios();
 
-                       resultado = a;
-                       return resultado;
+                return connection.Query<
+                  t_Usuarios,
+                  t_Roles,
+                  t_Usuarios>
+                  ("usp_Usuario_Listar",
+                  (a, b) =>
+                  {
+                      a.t_Roles= (t_Roles)b;
+                      return a;
+                  },
+                  splitOn: "IDRol",
+                  param: new
+                  {
+                      UserName = entity.CodigoUsuario,
+                      Password = entity.Password
 
-
-                   },
-                           param: new
-                           {
-                               UserName = entity.CodigoUsuario,
-                               Password = entity.Password
-                           },
-                            splitOn: "",
-                            commandType: CommandType.StoredProcedure);
+                  },
+                 commandType: CommandType.StoredProcedure);
             }
         }
 

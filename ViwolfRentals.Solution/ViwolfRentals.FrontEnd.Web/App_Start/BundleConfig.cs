@@ -11,7 +11,10 @@ namespace ViwolfRentals.FrontEnd.Web
             bundles.IgnoreList.Clear();
             bundles.UseCdn = true;
             bundles.Add(
-                new ScriptBundle("~/bundles/Seguridad")
+                new ScriptBundle("~/bundles/Content")
+                    .Include("~/Content/js/src/ConfigViwolf.js"));
+            bundles.Add(
+            new ScriptBundle("~/bundles/Seguridad")
                     .Include("~/Areas/Seguridad/Content/Vendor/jquery/jquery-3.2.1.min.js")
                     .Include("~/Areas/Seguridad/Content/Vendor/bootstrap/js/popper.js")
                     .Include("~/Areas/Seguridad/Content/Vendor/bootstrap/js/bootstrap.min.js")
@@ -21,8 +24,9 @@ namespace ViwolfRentals.FrontEnd.Web
                     .Include("~/Content/Plugins/bootstrap/js/bootstrap.min.js")
                     .Include("~/Content/Plugins/ModalMessage/popper.min.js")
                     .Include("~/Content/Plugins/ModalMessage/bootstrap.min.js")
-                    .Include("~/Content/Plugins/bootstrap-dialog/js/bootstrap-dialog.js"));
-            bundles.Add(
+                    .Include("~/Content/Plugins/bootstrap-dialog/js/bootstrap-dialog.js")
+            );
+             bundles.Add(
                new ScriptBundle("~/bundles/ViwolfRentals")
                     .Include("~/Areas/Viwolf/Content/dist/js/all.min.js")
                     .Include("~/Areas/Seguridad/Content/Vendor/jquery/jquery-3.2.1.min.js")

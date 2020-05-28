@@ -33,7 +33,7 @@ namespace ViwolfRental.Common.Filters
                 usuario = (t_Usuarios)HttpContext.Current.Session["User"];
                 ILoginBL blLogin = new LoginBL();
                 t_RolesSistemaModuloPantalla rolesSistemaModuloPantalla = new t_RolesSistemaModuloPantalla();
-                rolesSistemaModuloPantalla.IDRol = usuario.IdRol;
+                rolesSistemaModuloPantalla.IDRol = usuario.t_Roles.IdRol;
                 rolesSistemaModuloPantalla.IDPantalla = idOperacion;
                 var result = blLogin.ListarPantallaRoles(rolesSistemaModuloPantalla);
 

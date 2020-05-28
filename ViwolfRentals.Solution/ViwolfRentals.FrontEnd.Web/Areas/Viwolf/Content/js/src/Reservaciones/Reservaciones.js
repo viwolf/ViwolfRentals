@@ -124,7 +124,13 @@
         txtMontoDia.blur(function () {
             
             if (txtMontoDia.val() < 50) {
-                autorizacionLogin.AbrirModal();
+                debugger;
+                if (sessionStorage.getItem('Rol') != configViwolf.Roles.Administrador) {
+                    Dialog.confirm('Reservaciones', "Desea autorizar el monto menor a $50?", function (respuesta) {
+                        if (respuesta == true)
+                            autorizacionLogin.AbrirModal(fnCallBackAutorizar);
+                    })
+                }
                 txtMontoDia.val("");
             }
             else {
@@ -162,6 +168,11 @@
             BuscarVehiculo.AbrirModal(fnCallBack);
         });
     }
+
+    var fnCallBackAutorizar = function (data) {
+        debugger;
+        alert(data);
+    };
 
     var fnCallBack = function (data) {
         
