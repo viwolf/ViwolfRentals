@@ -124,13 +124,6 @@
         txtMontoDia.blur(function () {
             
             if (txtMontoDia.val() < 50) {
-                let input = {
-                    type: 'text',
-                    label: 'Password del administrador'
-                }
-                Dialog.prompt('Reservaciones', "El monto no puede ser menor de $50." + "\nDebe de autorizarse el monto.", input, function (respuesta) {
-
-                })
                 txtMontoDia.val("");
             }
             else {
