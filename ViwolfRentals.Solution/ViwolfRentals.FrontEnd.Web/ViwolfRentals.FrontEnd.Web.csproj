@@ -159,6 +159,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Seguridad\Content\css\Autorizacion.css" />
     <Content Include="Areas\Seguridad\Content\css\main.css" />
     <Content Include="Areas\Seguridad\Content\css\util.css" />
     <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\css\font-awesome.css" />
@@ -170,6 +171,7 @@
     <Content Include="Areas\Seguridad\Content\images\img-01.png" />
     <Content Include="Areas\Seguridad\Content\images\Logo.png" />
     <Content Include="Areas\Seguridad\Content\js\src\app.js" />
+    <Content Include="Areas\Seguridad\Content\js\src\Login\Autorizacion.js" />
     <Content Include="Areas\Seguridad\Content\js\src\Login\Login.js" />
     <Content Include="Areas\Seguridad\Content\js\src\msjApp.js" />
     <Content Include="Areas\Seguridad\Content\Plugin\bootstrap-dialog\css\bootstrap-dialog.css" />
@@ -531,6 +533,7 @@
     <Content Include="Areas\Viwolf\Views\Vehiculos\_ListadoVehiculosInventario.cshtml" />
     <Content Include="Areas\Viwolf\Views\Vehiculos\CreacionVehiculos.cshtml" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\css\fonts.googleapis.css" />
+    <Content Include="Areas\Seguridad\Views\Login\Autorizacion.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

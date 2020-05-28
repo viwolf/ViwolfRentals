@@ -1,0 +1,12 @@
+﻿.modal-get-offer .modal-content {
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background:  #647497;
+    color: #FFF;
+}
+
+    .modal-get-offer .modal-content .modal-header {
+        text-align: center;
+        border: none;
+    }
