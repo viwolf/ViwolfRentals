@@ -4,7 +4,13 @@
     Layout = "~/Areas/Viwolf/Views/Shared/_LayoutReservacion.cshtml";
 }
 
-<h2>Error</h2>
-<h3>Sin Autorización</h3
+    <link href="~/Content/js/src/Error/styleError.css" rel="stylesheet" />
 
-
+    <div class="wrapper">
+        <div class="box">
+            <h1>Error</h1>
+            <p>Usted no esta autorizado para ingresar a esta página</p>
+            <p>&#58;&#40;</p>
+            <p><a href="@Url.Action("Index","Login", new { area = "Seguridad" })">Debe ingresar con un usuario permitido!</a></p>
+        </div>
+    </div>
