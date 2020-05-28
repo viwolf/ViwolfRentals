@@ -12,7 +12,9 @@ namespace ViwolfRentals.FrontEnd.Web
             bundles.UseCdn = true;
             bundles.Add(
                 new ScriptBundle("~/bundles/Content")
-                    .Include("~/Content/js/src/ConfigViwolf.js"));
+                    .Include("~/Content/js/src/ConfigViwolf.js")
+                    .Include("~/Content/Plugins/ajaxloader/ajaxloader.js"));
+
             bundles.Add(
             new ScriptBundle("~/bundles/Seguridad")
                     .Include("~/Areas/Seguridad/Content/Vendor/jquery/jquery-3.2.1.min.js")

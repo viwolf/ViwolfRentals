@@ -1,7 +1,9 @@
 ﻿var autorizacionLogin = function () {
-    var modalLogin = $('#GetOfferModal'); //$('#GetOfferModal'); 
+    var modalLogin = $('#GetOfferModal'); //$('#GetOfferModal');    
     var form = $("#formGetOffer");
     var btnAutorizar = $("#formGetOffer");
+    var uname1 = $("#uname1");
+    var pwd1 = $("#pwd1");
     var fnCallbak = null;
     
 
@@ -10,26 +12,28 @@
     };
 
     var fnLogin = function () {
-        var oUrl = 'Login/AutenticarUsuario';
-
+        debugger;
         var oData =
         {
-            "CodigoUsuario": txtUsuario.val(),
-            "Password": txtPassword.val()
+            "CodigoUsuario": uname1.val(),
+            "Password": pwd1.val()
         };
 
-        var oProcessMessage = 'Verificando acceso, espere por favor...';
-        var success = function (result) {
-            if (result.Data.length > 0) {
-                fnCallbak(result.Data);
+        $.ajax({
+            url: '@Url.Action("AutenticarUsuario", "Login", new {area = "Seguridad"})',
+            type: 'POST',
+            dataType: 'json',
+            cache: false,
+            data: oData,
+            success: function (color) {
+                debugger;
+                return color;
+            },
+            error: function (e) {
+                debugger;
+                alert(e);
             }
-            else
-                //alert(result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage);
-                $.dialog.alert('Login', result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage, function () {
-                })
-
-        };
-        app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
+        });
     }
     
     var fnAutorizar = function () {
