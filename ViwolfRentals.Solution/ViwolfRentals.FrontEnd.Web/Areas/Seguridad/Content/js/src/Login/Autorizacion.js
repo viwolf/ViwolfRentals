@@ -1,15 +1,29 @@
 ﻿var autorizacionLogin = function () {
     var modalLogin = $('#GetOfferModal'); //$('#GetOfferModal');    
     var form = $("#formGetOffer");
-    var btnAutorizar = $("#formGetOffer");
+    var btnAutorizar = $("#btnGetOffer");
     var uname1 = $("#uname1");
     var pwd1 = $("#pwd1");
     var fnCallbak = null;
-    var objeto = null;
+    var btnClose = $("#btnClose");
+  
+    var check = false;
+
+
+    var fnValidar = function () {
+        if (form[0].checkValidity() === false) {
+            event.preventDefault()
+            event.stopPropagation()
+        }
+        form.addClass('was-validated');
+        check = form[0].checkValidity();
+
+    };
     
 
     var fnInit = function () {
         btnAutorizar.unbind().click(fnAutorizar);
+        btnClose.unbind().click(fnClose);
     };
 
     var fnLogin = function () {
@@ -26,34 +40,29 @@
             cache: false,
             data: oData,
             success: function (result) {
-                debugger;
-                fnCallbak(result);
+                uname1.val('');
+                pwd1.val('');
+                modalLogin.modal('hide');
+                fnCallbak(result);   
             }
         });
     }
+
+    var fnClose = function () {
+        fnCallbak(null); 
+    }
     
     var fnAutorizar = function () {
-        if (form[0].checkValidity() === false) {
-            event.preventDefault()
-            event.stopPropagation()
-        }
-        if (form[0].checkValidity() === true) {
-            debugger;
+        fnValidar();
+        if (check == true) {
             fnLogin();
-          
         }
-
-        form.addClass('was-validated');
-
-       
-       
-    }
+    };
 
     var fnAbrirModal = function (callback) {
         fnCallbak = callback;
         fnInit();
         modalLogin.modal('show');
-        //fnBuscarVehiculo();
     };
 
     return {

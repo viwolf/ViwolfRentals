@@ -1,20 +1,13 @@
 ﻿<link href="~/Areas/Seguridad/Content/css/Autorizacion.css" rel="stylesheet" />
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-12 text-center py-2">
-            <a href="#GetOfferModal" role="button" class="btn btn-primary btn-lg" data-toggle="modal">Login</a>
-        </div>
-    </div>
-</div>
 
 <div id="GetOfferModal" class="modal fade modal-get-offer" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Autorizar Operación</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <button id="btnClose" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
                 <form class="form" role="form" autocomplete="off" id="formGetOffer" novalidate="" method="POST">
@@ -28,7 +21,7 @@
                     </div>
 
                     <div class="form-group py-4">
-                        <button type="submit" class="btn btn-success" id="btnGetOffer">Autorizar</button>
+                        <button type="button" class="btn btn-success" id="btnGetOffer">Autorizar</button>
                     </div>
                 </form>
             </div>

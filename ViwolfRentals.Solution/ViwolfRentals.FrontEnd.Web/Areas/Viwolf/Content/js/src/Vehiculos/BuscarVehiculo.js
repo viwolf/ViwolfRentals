@@ -7,7 +7,6 @@
 
     var fnInit = function () {
        btnEnlazar.unbind().click(fnEnlazarVehiculo);
-     
     };
 
     var fnBuscarVehiculo = function () {
