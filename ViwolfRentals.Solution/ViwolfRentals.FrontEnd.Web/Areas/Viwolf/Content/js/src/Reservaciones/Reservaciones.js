@@ -34,7 +34,7 @@
 
        
     var calcularTarifaTotal = function () {
-        debugger;
+        
 
         if (checkValidaAdm == false)
             txtMontoDia.val("");
@@ -129,7 +129,7 @@
         txtMontoDia.blur(function () {
             if (txtMontoDia.val() != "") {
                 if (txtMontoDia.val() < 50) {
-                    debugger;
+                    
                     if (sessionStorage.getItem('IdRol') != configViwolf.Roles.Administrador) {
                         checkValidaAdm = false;
                         Dialog.confirm('Reservaciones', "Desea autorizar el monto menor a $50?", function (respuesta) {
@@ -187,7 +187,7 @@
     }
 
     var fnCallBackAutorizar = function (result) {
-        debugger;
+        
         checkValidaAdm = false;
         if (result != null) {
             if (result.Data.length > 0) {
@@ -268,7 +268,7 @@
                 
                 var fechaFinal = moment(txtFechaFinal.val(), 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                 var fechaSeleccionada = moment(selected, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
-                dateIni = new Date(selected);
+                dateIni = new Date(fechaSeleccionada);
                 txtFechaFinal.datepicker("option", "minDate", selected);
                 cantidadDias = ((moment(fechaFinal).diff(fechaSeleccionada, 'days')));
                 calcularTarifaTotal();
@@ -283,7 +283,7 @@
                 
                 var fechaInicial = moment(txtFechaInicio.val(), 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                 var fechaSeleccionada = moment(selected, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
-                dateFin = new Date(selected);
+                dateFin = new Date(fechaSeleccionada);
                 txtFechaInicio.datepicker("option", "maxDate", selected);
                 cantidadDias = ((moment(fechaSeleccionada).diff(fechaInicial, 'days')));
                 calcularTarifaTotal();
@@ -545,7 +545,7 @@
         IdComisionista = comisionista.options[comisionista.selectedIndex].value;
      
         if (ValidateFields() == true) {
-
+            
             var oData = {
                 "UsuarioCreacion": usuarioLogueado,
                 "NombreCliente": txtNombreCliente.val(),
