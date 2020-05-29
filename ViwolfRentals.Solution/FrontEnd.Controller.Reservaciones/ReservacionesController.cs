@@ -18,14 +18,14 @@ namespace FrontEnd.Controllers.Viwolf
         IReservacionesBL BlReservacion = new ReservacionesBL();
         ILoginBL BlLogin = new LoginBL();
 
-        [AuthorizeUser(IdOperacion:1)]
+        [AuthorizeUser(IdPantalla:1)]
         public ActionResult Index(string usuario, string idUsuario)
         {
             ViewBag.Usuario = usuario;
             ViewBag.IdUsuario = idUsuario;
             return View();
         }
-        [AuthorizeUser(IdOperacion: 2)]
+        [AuthorizeUser(IdPantalla: 2)]
         public ActionResult Mantenimiento(string usuario, string idUsuario)
         {
             ViewBag.Usuario = usuario;
@@ -140,6 +140,13 @@ namespace FrontEnd.Controllers.Viwolf
 
         }
 
+        [AuthorizeUser(IdPantalla: 5)]
+        public ActionResult Calendario(string usuario, string idUsuario)
+        {
+            ViewBag.Usuario = usuario;
+            ViewBag.IdUsuario = idUsuario;
+            return View();
+        }
 
     }
 }

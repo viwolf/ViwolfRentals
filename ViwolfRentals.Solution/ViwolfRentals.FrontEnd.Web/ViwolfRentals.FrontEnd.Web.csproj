@@ -535,6 +535,7 @@
     <Content Include="Areas\Viwolf\Views\Vehiculos\CreacionVehiculos.cshtml" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\css\fonts.googleapis.css" />
     <Content Include="Areas\Seguridad\Views\Login\Autorizacion.cshtml" />
+    <Content Include="Areas\Viwolf\Views\Reservaciones\Calendario.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
