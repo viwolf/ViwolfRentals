@@ -212,7 +212,7 @@ class Dialog {
                 {
                     type: 'success',
                     focus: true,
-                    label: 'Guardar'
+                    label: 'Aceptar'
                 }
             ]
         })

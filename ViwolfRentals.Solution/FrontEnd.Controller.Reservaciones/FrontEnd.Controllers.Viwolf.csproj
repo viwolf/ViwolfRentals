@@ -115,6 +115,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Seguridad.BusinessLogic.Interface\Seguridad.BusinessLogic.Interface.csproj">
+      <Project>{6FEF9A75-3D1C-489C-A807-302E2A547F09}</Project>
+      <Name>Seguridad.BusinessLogic.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Seguridad.BusinessLogic\Seguridad.BusinessLogic.csproj">
+      <Project>{D2760602-15C2-4AB0-9C8E-429EA52F336A}</Project>
+      <Name>Seguridad.BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Viwolf.BusinessLogic.Interface\Viwolf.BusinessLogic.Interface.csproj">
       <Project>{9ab5d31d-813a-4953-bbb3-2a2974e14bec}</Project>
       <Name>Viwolf.BusinessLogic.Interface</Name>
@@ -122,6 +130,10 @@
     <ProjectReference Include="..\Viwolf.BusinessLogic\Viwolf.BusinessLogic.csproj">
       <Project>{d2e2e2b3-8a24-49a5-9853-a14754a65a42}</Project>
       <Name>Viwolf.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViwolfRental.Common.Filters\ViwolfRental.Common.Filters.csproj">
+      <Project>{5F2051C7-2555-4A18-9E5C-938052812094}</Project>
+      <Name>ViwolfRental.Common.Filters</Name>
     </ProjectReference>
     <ProjectReference Include="..\ViwolfRental.Common.Model\ViwolfRental.Common.Model.csproj">
       <Project>{71aaa374-7de4-45c2-87f7-f64b79f66b0b}</Project>

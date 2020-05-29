@@ -43,8 +43,8 @@ namespace FrontEnd.Controllers.Seguridad
                                  {
                                      ta.IdUsuario,
                                      ta.CodigoUsuario,
-                                     ta.Password,
-                                     ta.Activo
+                                     ta.t_Roles.IdRol,
+                                     ta.t_Roles.NombreRol
                                  }).AsEnumerable();
 
                 return Json(new

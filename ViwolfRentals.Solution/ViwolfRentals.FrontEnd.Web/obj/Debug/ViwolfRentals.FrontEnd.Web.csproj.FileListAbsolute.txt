@@ -108,3 +108,9 @@ C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\Viw
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\obj\Debug\ViwolfRentals.FrontEnd.Web.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\obj\Debug\ViwolfRentals.FrontEnd.Web.pdb
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\es\EntityFramework.resources.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\EntityFramework.SqlServer.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\EntityFramework.SqlServer.xml
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\es\EntityFramework.SqlServer.resources.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\ViwolfRental.Common.Filters.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\ViwolfRental.Common.Filters.pdb
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\ViwolfRental.Common.Filters.dll.config

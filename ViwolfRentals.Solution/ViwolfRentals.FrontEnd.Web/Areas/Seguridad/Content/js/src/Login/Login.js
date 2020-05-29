@@ -102,7 +102,7 @@ var Login = function () {
                 var success = function (result) {           
                     if (result.Data.length > 0) {
                         debugger;
-                        //window.location.href = "http://localhost/ViwolfRentals.FrontEnd.Web/Viwolf";
+                        sessionStorage.setItem('IdRol', result.Data[0].IdRol);
                         window.location.href = window.location.pathname.replace("Seguridad","Viwolf");
                     }
                     else

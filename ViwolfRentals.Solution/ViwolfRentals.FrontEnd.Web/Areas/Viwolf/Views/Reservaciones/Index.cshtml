@@ -284,6 +284,9 @@
             </div>
         </div>
 
+
+
+        @Scripts.Render("~/bundles/Content")
         <!-- Jquery JS-->
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/js/jquery-ui.js"></script>
@@ -315,9 +318,11 @@
 
         <!--Informacion del Vehiculo-->
         @Html.Partial("~/Areas/Viwolf/Views/Vehiculos/VehiculoBuscar.cshtml")
-        @*@Html.Partial("~/Areas/Seguridad/Views/Login/Autorizar.cshtml")*@
-    
         <script src="~/Areas/Viwolf/Content/js/src/Vehiculos/BuscarVehiculo.js"></script>
-        @*<script src="~/Areas/Seguridad/Content/js/src/Login/autorizar.js"></script>*@
+
+        <!--Autorizacion-->
+        @Html.Partial("~/Areas/Seguridad/Views/Login/Autorizacion.cshtml")
+        <script src="~/Areas/Seguridad/Content/js/src/Login/Autorizacion.js"></script>
+
 
     </body>

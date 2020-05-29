@@ -10,16 +10,16 @@ namespace Seguridad.BusinessLogic
 {
     public class LoginBL : ILoginBL
     {
-        //public IEnumerable<IUsuariosold> ListarUsuarioLogin(IUsuariosold entidad)
-        //{
-        //    DataAccess.Interface.ILoginRepository repository = new DataAccess.LoginRepository();
+        DataAccess.Interface.ILoginRepository repository = new DataAccess.LoginRepository();
 
-        //    return repository.ListarUsuarioLogin(entidad);
-        //}
+        public IEnumerable<t_RolesSistemaModuloPantalla> ListarPantallaRoles(t_RolesSistemaModuloPantalla entidad)
+        {
+            return repository.ListarPantallaRoles(entidad);
+        }
 
         public IEnumerable<t_Usuarios> ListarUsuarioLogin(t_Usuarios entidad)
         {
-            DataAccess.Interface.ILoginRepository repository = new DataAccess.LoginRepository();
+           
 
             return repository.ListarUsuarioLogin(entidad);
         }

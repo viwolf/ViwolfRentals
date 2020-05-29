@@ -27,13 +27,18 @@
     var cantidadDias = 0;
     var timeIn = 0;
     var timeOut = 0;
+    var checkValidaAdm = false;
    
     var dateIni = new Date();
     var dateFin = new Date();
 
        
     var calcularTarifaTotal = function () {
-        
+        debugger;
+
+        if (checkValidaAdm == false)
+            txtMontoDia.val("");
+
         var montoDia = txtMontoDia.val() == '' ? 0 : parseFloat(txtMontoDia.val().replace("$", "")); 
         var montoSurfRacks = txtMontoSurfRacks.val() == '' ? 0 : parseFloat(txtMontoSurfRacks.val().replace("$", ""));
         var montoTotal = 0;
@@ -100,7 +105,7 @@
 
     var fnConfirmarGuardar = function () {
         Dialog.confirm('Reservaciones', "Desea guardar la reservacion?", function (respuesta) {
-            debugger;
+            
             if (respuesta == true)
                 fnGuardarReservacion();
         })
@@ -122,13 +127,32 @@
         txtMontoDia.bind('keypress', valideKey);
 
         txtMontoDia.blur(function () {
+            if (txtMontoDia.val() != "") {
+                if (txtMontoDia.val() < 50) {
+                    debugger;
+                    if (sessionStorage.getItem('IdRol') != configViwolf.Roles.Administrador) {
+                        checkValidaAdm = false;
+                        Dialog.confirm('Reservaciones', "Desea autorizar el monto menor a $50?", function (respuesta) {
+                            if (respuesta == true) {
+                                autorizacionLogin.AbrirModal(fnCallBackAutorizar);
+                            }
+                            else {
+                                txtMontoDia.val("");
+                                txtMontoTotal.val("");
+                            }
+                        })
+                    }
+                    else {
+                        checkValidaAdm = true;
+                        calcularTarifaTotal();
+                    }
+                }
+                else {
+                    checkValidaAdm = true;
+                    calcularTarifaTotal();
+                }
+            }
             
-            if (txtMontoDia.val() < 50) {
-                txtMontoDia.val("");
-            }
-            else {
-                calcularTarifaTotal();
-            }
         })
 
     
@@ -161,6 +185,35 @@
             BuscarVehiculo.AbrirModal(fnCallBack);
         });
     }
+
+    var fnCallBackAutorizar = function (result) {
+        debugger;
+        checkValidaAdm = false;
+        if (result != null) {
+            if (result.Data.length > 0) {
+                if (result.Data[0].IdRol != configViwolf.Roles.Administrador) {
+                    Dialog.alert("Reservaciones", "El usuario no es un administrador.");
+                    txtMontoDia.val("");
+                    txtMontoTotal.val("");
+                }
+                else {
+                    checkValidaAdm = true;
+                    calcularTarifaTotal();
+                }
+            }
+            else {
+                Dialog.alert("Reservaciones", "El Usuario no existe.");
+                calcularTarifaTotal();
+                txtMontoDia.val("");
+                txtMontoTotal.val("");
+            }
+        }
+        else {
+            txtMontoDia.val("");
+            txtMontoTotal.val("");
+        }
+
+    };
 
     var fnCallBack = function (data) {
         

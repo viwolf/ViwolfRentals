@@ -47,6 +47,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -145,6 +151,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Seguridad\SeguridadAreaRegistration.cs" />
     <Compile Include="Areas\Viwolf\ViwolfAreaRegistration.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Filters\VerificaSesion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -152,6 +159,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Seguridad\Content\css\Autorizacion.css" />
     <Content Include="Areas\Seguridad\Content\css\main.css" />
     <Content Include="Areas\Seguridad\Content\css\util.css" />
     <Content Include="Areas\Seguridad\Content\fonts\font-awesome-4.7.0\css\font-awesome.css" />
@@ -163,6 +171,7 @@
     <Content Include="Areas\Seguridad\Content\images\img-01.png" />
     <Content Include="Areas\Seguridad\Content\images\Logo.png" />
     <Content Include="Areas\Seguridad\Content\js\src\app.js" />
+    <Content Include="Areas\Seguridad\Content\js\src\Login\Autorizacion.js" />
     <Content Include="Areas\Seguridad\Content\js\src\Login\Login.js" />
     <Content Include="Areas\Seguridad\Content\js\src\msjApp.js" />
     <Content Include="Areas\Seguridad\Content\Plugin\bootstrap-dialog\css\bootstrap-dialog.css" />
@@ -172,6 +181,8 @@
     <Content Include="Areas\Seguridad\Content\Plugin\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Areas\Seguridad\Content\Plugin\bootstrap\js\bootstrap.js" />
     <Content Include="Areas\Seguridad\Content\Plugin\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\js\src\ConfigViwolf.js" />
+    <Content Include="Content\js\src\Error\styleError.css" />
     <Content Include="Content\Plugins\datatables\css\jquery.dataTables.min.css" />
     <Content Include="Content\Plugins\datatables\css\responsive.dataTables.min.css" />
     <Content Include="Content\Plugins\ModalMessage\bootstrap.min.js" />
@@ -523,6 +534,7 @@
     <Content Include="Areas\Viwolf\Views\Vehiculos\_ListadoVehiculosInventario.cshtml" />
     <Content Include="Areas\Viwolf\Views\Vehiculos\CreacionVehiculos.cshtml" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\css\fonts.googleapis.css" />
+    <Content Include="Areas\Seguridad\Views\Login\Autorizacion.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -669,12 +681,12 @@
     <Content Include="Areas\Viwolf\Content\src\scss\variables\_spacing.scss" />
     <Content Include="Areas\Viwolf\Content\src\scss\_global.scss" />
     <Content Include="Areas\Viwolf\Content\src\scss\_variables.scss" />
+    <Content Include="Views\Error\UnauthorizedOperation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Seguridad\Views\Shared\" />
     <Folder Include="Content\Plugins\datatables\js\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Reservacion\" />
     <Folder Include="Views\Seguridad\" />
