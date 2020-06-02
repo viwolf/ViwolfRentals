@@ -6,123 +6,94 @@
 
 
 <!DOCTYPE html>
-<html>
+
 <head>
-    <meta charset='utf-8' />
-    <link href="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/css/core/main.css" rel="stylesheet" />
-    <link href="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/css/daygrid/main.css" rel="stylesheet" />
-    <link href="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/css/timegrid/main.css" rel="stylesheet" />
-    <script>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
 
-        debugger;
-        document.addEventListener('DOMContentLoaded', function () {
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                plugins: ['interaction', 'dayGrid', 'timeGrid'],
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                },
-                defaultDate: '2020-05-12',
-                navLinks: true, // can click day/week names to navigate views
+    <!-- Title Page-->
+    <title>@ViewBag.Title - Calendario de Reservaciones</title>
 
-                weekNumbers: true,
-                weekNumbersWithinDays: true,
-                weekNumberCalculation: 'ISO',
-
-                editable: true,
-                eventLimit: true, // allow "more" link when too many events
-                events: [
-                    {
-                        title: 'All Day Event',
-                        start: '2020-05-01'
-                    },
-                    {
-                        title: 'Long Event',
-                        start: '2020-05-07',
-                        end: '2020-05-10'
-                    },
-                    {
-                        groupId: 999,
-                        title: 'Repeating Event',
-                        start: '2020-05-09T16:00:00'
-                    },
-                    {
-                        groupId: 999,
-                        title: 'Repeating Event',
-                        start: '2020-05-16T16:00:00'
-                    },
-                    {
-                        title: 'Conference',
-                        start: '2020-05-11',
-                        end: '2020-05-13'
-                    },
-                    {
-                        title: 'Meeting',
-                        start: '2020-05-12T10:30:00',
-                        end: '2020-05-12T12:30:00'
-                    },
-                    {
-                        title: 'Lunch',
-                        start: '2020-05-12T12:00:00'
-                    },
-                    {
-                        title: 'Meeting',
-                        start: '2020-05-12T14:30:00'
-                    },
-                    {
-                        title: 'Happy Hour',
-                        start: '2020-05-12T17:30:00'
-                    },
-                    {
-                        title: 'Dinner',
-                        start: '2020-05-12T20:00:00'
-                    },
-                    {
-                        title: 'Birthday Party',
-                        start: '2020-05-13T07:00:00'
-                    },
-                    {
-                        title: 'Click for Google',
-                        url: 'http://google.com/',
-                        start: '2020-05-28'
-                    }
-                ]
-            });
-            calendar.render();
+    @Styles.Render("~/bundles/Estilo/ViwolfRentalsReservaciones")
 
 
-        });
 
+    <script type="text/javascript">
+
+        var usuarioLogueado = '@ViewBag.Usuario';
+        var idUsuarioLogueado = '@ViewBag.IdUsuario'
     </script>
-    @*<style>
 
-
-            body {
-                margin: 40px 10px 45px 35px;
-                padding: 0;
-                font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-                font-size: 14px;
-            }
-
-            #calendar {
-                max-width: 900px;
-                margin: 0 auto;
-            }
-        </style>*@
 </head>
 <body>
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Calendario de Reservaciones</h2>
+                </div>
+                <div class="card-body">
+                    <form id="formCreacionVehiculo" name="formCreacionVehiculo" class="smart-form">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col col-12 col-md-12">
+                                    <div class="form-row m-b-55">
+                                        <div class="col-4">
+                                            <div class="input-group-desc">
+                                                <select id="txtAnno" class="select--style-5" name="AplicaGps">
+                                                </select>
+                                                <label class="label--desc">Año</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="input-group-desc">
+                                                <select id="txtMes" class="select--style-5" name="AplicaGps">
+                                                    <option value="1">Enero</option>
+                                                    <option value="2">Febrero</option>
+                                                    <option value="3">Marzo</option>
+                                                    <option value="4">Abril</option>
+                                                    <option value="5">Mayo</option>
+                                                    <option value="6">Junio</option>
+                                                    <option value="7">Julio</option>
+                                                    <option value="8">Agosto</option>
+                                                    <option value="9">Septiembre</option>
+                                                    <option value="10">Octubre</option>
+                                                    <option value="11">Noviembre</option>
+                                                    <option value="12">Diciembre</option>
+                                                </select>
+                                                <label class="label--desc">Mes</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <button type="button" id="btnMostrarCalendario" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Crear reservacion">
+                                                <i class="fa fa-check-circle display-block fa-2x"></i> Mostrar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
 
-    <div id='calendar'></div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-12 col-md-12">
+                                    <div id="tblData" class="col-md-12" style="overflow-x: auto">
+                                    </div>
+                                </div>
 
-</body>
-</html>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-@Scripts.Render("~/bundles/Content")
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    @Scripts.Render("~/bundles/ViwolfRentals")
 
-<script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/js/core/main.js"></script>
-<script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/js/interaction/main.js"></script>
-<script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/js/daygrid/main.js"></script>
-<script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/js/timegrid/main.js"></script>
-<script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Calendario.js"></script>
+    <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Calendario.js"></script>
+
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
