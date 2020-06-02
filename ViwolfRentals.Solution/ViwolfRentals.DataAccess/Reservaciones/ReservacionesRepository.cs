@@ -47,24 +47,24 @@ namespace ViwolfRentals.DataAccess
             }
         }
 
-        public IEnumerable<t_Reservaciones> ListarCalendarioReservaciones(t_Reservaciones reservaciones)
+        public IEnumerable<t_Vehiculos> ListarCalendarioReservaciones(t_Vehiculos vehiculo)
         {
             using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
             {
                 return connection.Query<
-                   t_Reservaciones,
-                    t_Vehiculos,
-                    t_Reservaciones>
+                   t_Vehiculos,
+                    t_Reservaciones,
+                    t_Vehiculos>
                    ("usp_CalendarioReservaciones_Listar",
                    (a, b) =>
                    {
-                       a.t_Vehiculos = (t_Vehiculos)b;
+                       a.t_Reservaciones = (t_Reservaciones)b;
                        return a;
                    },
-                   splitOn: "IDReservacion",
+                   splitOn: "IDVehiculo, IDReservacion",
                    param: new
                    {
-                      reservaciones.FechaInicio
+                       FechaInicio = vehiculo.FechaCompra
                    },
                   commandType: CommandType.StoredProcedure) ;
             }

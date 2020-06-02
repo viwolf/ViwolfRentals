@@ -10,6 +10,6 @@ namespace Viwolf.BusinessLogic.Interface
     {
         ViwolfRental.Common.Model.t_Reservaciones GuardarReservacion(ViwolfRental.Common.Model.t_Reservaciones reservacion);
         IEnumerable<ViwolfRental.Common.Model.t_Reservaciones> ListarReservaciones(ViwolfRental.Common.Model.t_Reservaciones entidad);
-        IEnumerable<ViwolfRental.Common.Model.t_Reservaciones> ListarCalendarioReservaciones(ViwolfRental.Common.Model.t_Reservaciones reservaciones);
+        IEnumerable<ViwolfRental.Common.Model.t_Vehiculos> ListarCalendarioReservaciones(ViwolfRental.Common.Model.t_Vehiculos vehiculo);
     }
 }

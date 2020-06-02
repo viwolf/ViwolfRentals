@@ -149,18 +149,18 @@ namespace FrontEnd.Controllers.Viwolf
         }
 
         [HttpPost]
-        public JsonResult ListarCalendarioReservaciones(ViwolfRental.Common.Model.t_Reservaciones reservacion)
+        public JsonResult ListarCalendarioReservaciones(ViwolfRental.Common.Model.t_Vehiculos vehiculo)
         {
             try
             {
-                var result = BlReservacion.ListarCalendarioReservaciones(reservacion);
+                var result = BlReservacion.ListarCalendarioReservaciones(vehiculo);
 
                 var jsonObjet = (from ta in result
                                  select new
                                  {
-                                     ta.FechaInicio,
-                                     ta.FechaEntrega,
-                                     ta.t_Vehiculos.IDVehiculo
+                                     ta.IDVehiculo,
+                                     ta.t_Reservaciones, // == null ? null : ta.t_Reservaciones.FechaInicio,
+                                     //ta.t_Reservaciones.FechaEntrega,
                                  }).AsEnumerable();
                 return Json(new
                 {
