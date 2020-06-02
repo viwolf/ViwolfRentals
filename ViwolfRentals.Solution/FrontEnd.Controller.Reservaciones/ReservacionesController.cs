@@ -148,5 +148,41 @@ namespace FrontEnd.Controllers.Viwolf
             return View();
         }
 
+        [HttpPost]
+        public JsonResult ListarCalendarioReservaciones(ViwolfRental.Common.Model.t_Reservaciones reservacion)
+        {
+            try
+            {
+                var result = BlReservacion.ListarCalendarioReservaciones(reservacion);
+
+                var jsonObjet = (from ta in result
+                                 select new
+                                 {
+                                     ta.FechaInicio,
+                                     ta.FechaEntrega,
+                                     ta.t_Vehiculos.IDVehiculo
+                                 }).AsEnumerable();
+                return Json(new
+                {
+                    Data = jsonObjet,
+                    MessageType = "Success",
+                    InfoMessage = jsonObjet.Count() > 0 ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen reservaciones que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = ex.Message
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+        }
     }
 }

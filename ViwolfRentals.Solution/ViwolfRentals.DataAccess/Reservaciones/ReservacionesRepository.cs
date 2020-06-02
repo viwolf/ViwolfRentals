@@ -3,10 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using ViwolfRental.Common.Model;
 using ViwolfRentals.DataAccess.Interface;
+
 
 namespace ViwolfRentals.DataAccess
 {
@@ -42,6 +44,29 @@ namespace ViwolfRentals.DataAccess
                             throw;
                         }
                     }
+            }
+        }
+
+        public IEnumerable<t_Reservaciones> ListarCalendarioReservaciones(t_Reservaciones reservaciones)
+        {
+            using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+            {
+                return connection.Query<
+                   t_Reservaciones,
+                    t_Vehiculos,
+                    t_Reservaciones>
+                   ("usp_CalendarioReservaciones_Listar",
+                   (a, b) =>
+                   {
+                       a.t_Vehiculos = (t_Vehiculos)b;
+                       return a;
+                   },
+                   splitOn: "IDReservacion",
+                   param: new
+                   {
+                      reservaciones.FechaInicio
+                   },
+                  commandType: CommandType.StoredProcedure) ;
             }
         }
 

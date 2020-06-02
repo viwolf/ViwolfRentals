@@ -17,6 +17,11 @@ namespace Viwolf.BusinessLogic
             return repository.Guardar(reservacion);
         }
 
+        public IEnumerable<t_Reservaciones> ListarCalendarioReservaciones(t_Reservaciones reservaciones)
+        {
+            return repository.ListarCalendarioReservaciones(reservaciones);
+        }
+
         public IEnumerable<t_Reservaciones> ListarReservaciones(t_Reservaciones entidad)
         {
             return repository.ListarReservaciones(entidad);
