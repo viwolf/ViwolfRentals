@@ -3,11 +3,15 @@
     var txtMes = $("#txtMes");
     var btnMostrarCalendario = $("#btnMostrarCalendario");
     var numeroDias = 0;
-    var NumeroPlaca = '';
+ 
     var DiasIniciales = "";
+    var MesesIniciales = "";
     var DiasFinales = "";
+    var MesesFinales = "";
     var listDiasIniciales = "";
+    var listMesesIniciales = "";
     var listDiasFinales = "";
+    var listMesesFinales = "";
 
     var generarClendario = function () {
 
@@ -27,9 +31,14 @@
                     }
                     for (var x = 0; x < result.Data.length; x++) {
                         DiasIniciales = "";
+                        MesesIniciales = "";
                         DiasFinales = "";
+                        MesesFinales = "";
                         listDiasIniciales = "";
+                        listMesesIniciales = "";
                         listDiasFinales = "";
+                        listMesesFinales = "";
+
                         myTable += "<tr><td style='width: 100px;text-align: center;border:1px solid black;border-collapse:collapse;'>" + result.Data[x].IDVehiculo + "</td > ";
                         if (result.Data[x].Reservas.length > 0) {
                             for (var re = 0; re < result.Data[x].Reservas.length; re++) {
@@ -37,91 +46,71 @@
                                 var fechaFin = moment(result.Data[x].Reservas[re].FechaFinal, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                                 var fechaIAux = new Date(fechaIni);
                                 var fechaFAux = new Date(fechaFin);
-                                //var diaIRentado = fechaIAux.getDate();
-                                debugger;
-                                var mesIRentado = fechaIAux.getMonth();
+                               
                                 var annoRentado = fechaIAux.getFullYear();
                                 if (annoRentado == txtAnno.val()) {
                                     DiasIniciales = DiasIniciales + "," + fechaIAux.getDate();
                                     DiasFinales = DiasFinales + "," + fechaFAux.getDate();
+                                    MesesIniciales = (fechaIAux.getMonth() + 1);
+                                    MesesFinales = (fechaFAux.getMonth() + 1);
                                 }// Cierre el IF del año
                             }// Cierre el FOR de reservas
                         } // Cierre el IF de reservas
                         debugger;
                         listDiasIniciales = DiasIniciales.split(',');
                         listDiasFinales = DiasFinales.split(',');
-                        //for (var ini = 1; ini < listDiasIniciales.length; ini++) {
+                        //listMesesIniciales = MesesIniciales.split(",");
+                        //listMesesFinales = MesesFinales.split(",");
+                        
                         var ini = 1;
                         for (let i = 1; i <= numeroDias; i++) {
-                            if (((listDiasIniciales[ini] <= i) && (listDiasFinales[ini] >= i))) {
-                                myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#5FB404 ';></td>";
-                                ini++;
-                                if (ini == listDiasIniciales.length)
-                                    ini = listDiasIniciales.length - 1;
+                            //Comparamos meses iguales
+                            if ((MesesIniciales == txtMes.val()) && (MesesFinales == txtMes.val())) {
+                                if (((listDiasIniciales[ini] <= i) && (listDiasFinales[ini] >= i))) {
+                                    myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#5FB404 ';></td>";
+                                    ini++;
+                                    if (ini == listDiasIniciales.length)
+                                        ini = listDiasIniciales.length - 1;
+                                }
+                                else {
+                                    myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FFFFFF ';></td>";
+                                }
                             }
-                            //if ((mesIRentado != txtMes.val) && (listDiasFinales[ini] >= i)) {
-                            //    myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#5FB404 ';></td>";
-                            //    ini++;
-                            //    if (ini == listDiasIniciales.length)
-                            //        ini = listDiasIniciales.length - 1;
-                            //}
-                            else {
-                                myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FFFFFF ';></td>";
-                            }
-
-
+                            else
+                                //Comparamos que el mes Inicial sea igual, pero el mes final no
+                                if ((MesesIniciales == txtMes.val()) && (MesesFinales != txtMes.val())) {
+                                    if (listDiasIniciales[ini] <= i) {
+                                        myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#5FB404 ';></td>";
+                                        ini++;
+                                        if (ini == listDiasIniciales.length)
+                                            ini = listDiasIniciales.length - 1;
+                                    }
+                                    else {
+                                        myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FFFFFF ';></td>";
+                                    }
+                                }
+                                else
+                                    //Comparamos que el mes Inicial sea diferente, pero el mes final sea iguañ
+                                    if ((MesesIniciales != txtMes.val()) && (MesesFinales == txtMes.val())) {
+                                        if (listDiasFinales[ini] >= i) {
+                                            myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#5FB404 ';></td>";
+                                            ini++;
+                                            if (ini == listDiasIniciales.length)
+                                                ini = listDiasIniciales.length - 1;
+                                        }
+                                        else {
+                                            myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FFFFFF ';></td>";
+                                        }
+                                    }
+                                    else {
+                                        myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FFFFFF ';></td>";
+                                    }
                         }// Cierre el FOR dias
                         //}// Cierre el FOR de dias iniciales
 
 
                         myTable += "</tr>";
-
-
-                       
-
-
-
-
-
-
-
-
-                        //   
-                        //   
-                        //    //}
-                        //    //else {
-                        //    //    myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0000 ';></td>";
-                        //    //}
-                        //}
-
                     }// Cierre el FOR de vehiculos
-
-
-                    //else {
-                    //    for (let i = 1; i <= numeroDias; i++) {
-                    //        myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FFFFFF ';></td>";
-                    //    }
-                    //}
-                    //var fechaIni = moment(result.Data[x].Reservas.FechaInicio, 'D/M/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
-                    //var fechaFin = moment(result.Data[x].FechaFinal, 'D/M/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
-                    //var fechaIAux = new Date(fechaIni);
-                    //var fechaFAux = new Date(fechaFin);
-                    //var diaIRentado = fechaIAux.getDate();
-                    //var diaFRentado = fechaFAux.getDate();
-                    //var annoRentado = fechaIAux.getFullYear();
-
-                    //if (((diaIRentado >= i) && (diaFRentado <= i) && (annoRentado == txtAnno.val()))) {
-                    //    myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#5FB404 ';></td>";
-                    //}
-                    //else {
-                    //    myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FFFFFF ';></td>";
-                    //}
-                    ////}
-                    ////else {
-                    ////    myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0000 ';></td>";
-                    ////}
-                   
-
 
                     myTable += "</table>";
                     document.getElementById('tblData').innerHTML = myTable;
