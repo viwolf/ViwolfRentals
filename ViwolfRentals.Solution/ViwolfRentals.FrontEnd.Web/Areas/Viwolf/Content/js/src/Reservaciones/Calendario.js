@@ -25,9 +25,9 @@
             var success = function (result) {
                 if (result.Data.length > 0) {
                     //Lista los encabezados de la tabla
-                    let myTable = "<table id='tblCalendario'><tr><td style='width: 100px; border:1px solid black;border-collapse:collapse;'>Placa</td>";
+                    let myTable = "<table id='tblCalendario'><tr><td style='width:100px;color:#0B0B61;text-align:center;font-weight:bold;font-size: larger;border:1px solid black;border-collapse:collapse;'>Placa</td>";
                     for (var i = 1; i <= numeroDias; i++) {
-                        myTable += "<td style='width: 100px; color: red; text-align: center; border:1px solid black;border-collapse:collapse;'>" + i + "</td>";
+                        myTable += "<td style='width: 100px;color:#0B0B61;font-weight:bold;font-size:larger;text-align: center; border:1px solid black;border-collapse:collapse;'>" + i + "</td>";
                     }
                     for (var x = 0; x < result.Data.length; x++) {
                         DiasIniciales = "";
@@ -39,7 +39,7 @@
                         listDiasFinales = "";
                         listMesesFinales = "";
 
-                        myTable += "<tr><td style='width: 100px;text-align: center;border:1px solid black;border-collapse:collapse;'>" + result.Data[x].IDVehiculo + "</td > ";
+                        myTable += "<tr><td style='width:300px;color:#08088A;font-weight:italic;font-size: medium;text-align:center;border:1px solid black;'>" + result.Data[x].IDVehiculo + "</td > ";
                         if (result.Data[x].Reservas.length > 0) {
                             for (var re = 0; re < result.Data[x].Reservas.length; re++) {
                                 var fechaIni = moment(result.Data[x].Reservas[re].FechaInicio, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
@@ -67,7 +67,7 @@
                             //Comparamos meses iguales
                             if ((MesesIniciales == txtMes.val()) && (MesesFinales == txtMes.val())) {
                                 if (((listDiasIniciales[ini] <= i) && (listDiasFinales[ini] >= i))) {
-                                    myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#5FB404 ';></td>";
+                                    myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0040 ';></td>";
                                     ini++;
                                     if (ini == listDiasIniciales.length)
                                         ini = listDiasIniciales.length - 1;
@@ -80,7 +80,7 @@
                                 //Comparamos que el mes Inicial sea igual, pero el mes final no
                                 if ((MesesIniciales == txtMes.val()) && (MesesFinales != txtMes.val())) {
                                     if (listDiasIniciales[ini] <= i) {
-                                        myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#5FB404 ';></td>";
+                                        myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0040 ';></td>";
                                         ini++;
                                         if (ini == listDiasIniciales.length)
                                             ini = listDiasIniciales.length - 1;
@@ -93,7 +93,7 @@
                                     //Comparamos que el mes Inicial sea diferente, pero el mes final sea iguañ
                                     if ((MesesIniciales != txtMes.val()) && (MesesFinales == txtMes.val())) {
                                         if (listDiasFinales[ini] >= i) {
-                                            myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#5FB404 ';></td>";
+                                            myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0040 ';></td>";
                                             ini++;
                                             if (ini == listDiasIniciales.length)
                                                 ini = listDiasIniciales.length - 1;
