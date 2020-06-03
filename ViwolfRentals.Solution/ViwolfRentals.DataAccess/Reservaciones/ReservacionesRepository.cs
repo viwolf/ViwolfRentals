@@ -90,6 +90,10 @@ namespace ViwolfRentals.DataAccess
 
                    },
                             splitOn: "",
+                            param: new
+                            {
+                                reservaciones.FechaInicio
+                            },
                             commandType: CommandType.StoredProcedure);
             }
         }

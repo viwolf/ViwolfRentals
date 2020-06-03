@@ -17,6 +17,7 @@ namespace FrontEnd.Controllers.Viwolf
     {
         IReservacionesBL BlReservacion = new ReservacionesBL();
         ILoginBL BlLogin = new LoginBL();
+        IVehiculosBL BlVehiculo = new VehiculosBL();
 
         [AuthorizeUser(IdPantalla:1)]
         public ActionResult Index(string usuario, string idUsuario)
@@ -153,15 +154,39 @@ namespace FrontEnd.Controllers.Viwolf
         {
             try
             {
-                var result = BlReservacion.ListarCalendarioReservaciones(vehiculo);
+                //DateTime fehaDefault = default(DateTime);
 
-                var jsonObjet = (from ta in result
+                var resultVehiculos = BlVehiculo.ListarVehiculos(vehiculo);
+                t_Reservaciones reservacion = new t_Reservaciones();
+                reservacion.FechaInicio = vehiculo.FechaCompra;
+                var resultReservaciones = BlReservacion.ListarReservaciones(reservacion);
+
+                var jsonObjet = (from taVehiculo in resultVehiculos
                                  select new
                                  {
-                                     ta.IDVehiculo,
-                                     ta.t_Reservaciones, // == null ? null : ta.t_Reservaciones.FechaInicio,
-                                     //ta.t_Reservaciones.FechaEntrega,
+                                     taVehiculo.IDVehiculo,
+                                     Reservas = (
+                                        from ve in resultVehiculos
+                                        join re in resultReservaciones on ve.IDVehiculo equals re.IDVehiculo
+                                        where ve.IDVehiculo == taVehiculo.IDVehiculo
+                                        select new
+                                        {
+                                            ve.IDVehiculo,
+                                            FechaInicio = string.Format("{0:d/M/yyyy}", re.FechaInicio),
+                                            FechaFinal = string.Format("{0:d/M/yyyy}", re.FechaEntrega)
+                                        }
+                                     )
+                                     
                                  }).AsEnumerable();
+
+
+                //var jsonObjet = (from ta in result
+                //                 select new
+                //                 {
+                //                     ta.IDVehiculo,
+                //                     FechaInicio = ta.t_Reservaciones != null ? string.Format("{0:d/M/yyyy}", ta.t_Reservaciones.FechaInicio) : string.Format("{0:d/M/yyyy}", fehaDefault),
+                //                     FechaFinal = ta.t_Reservaciones != null ? string.Format("{0:d/M/yyyy}", ta.t_Reservaciones.FechaEntrega) : string.Format("{0:d/M/yyyy}", fehaDefault),
+                //                 }).AsEnumerable();
                 return Json(new
                 {
                     Data = jsonObjet,
