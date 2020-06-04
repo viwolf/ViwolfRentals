@@ -172,8 +172,24 @@ namespace FrontEnd.Controllers.Viwolf
                                         select new
                                         {
                                             ve.IDVehiculo,
+                                            re.IdReservacion,
+                                            re.NombreCliente,
+                                            re.LugarEntrega,
+                                            re.AplicaComision,
+                                            re.Cajon,
                                             FechaInicio = string.Format("{0:d/M/yyyy}", re.FechaInicio),
-                                            FechaFinal = string.Format("{0:d/M/yyyy}", re.FechaEntrega)
+                                            re.HoraInicio,
+                                            FechaFinal = string.Format("{0:d/M/yyyy}", re.FechaEntrega),
+                                            re.HoraEntrega,
+                                            re.MontoDia,
+                                            re.SurfRacks,
+                                            re.MontoSurfRacks,
+                                            re.MontoTotal,
+                                            re.NumeroDeposito,
+                                            re.MontoDeposito,
+                                            re.ModoPago,
+                                            re.t_ClientesComisionistas,
+                                            re.t_Proveedores
                                         }
                                      )
                                      

@@ -9,9 +9,17 @@
     var DiasFinales = "";
     var MesesFinales = "";
     var listDiasIniciales = "";
-    var listMesesIniciales = "";
+    var reservacionesIDs = "";
     var listDiasFinales = "";
-    var listMesesFinales = "";
+    var listreservacionesIDs = "";
+
+    function tdclick(e) {
+        
+        if (!e) var e = window.event;                // Get the window event
+        e.cancelBubble = true;                       // IE Stop propagation
+        if (e.stopPropagation) e.stopPropagation();  // Other Broswers
+        console.log('td clicked');
+    };  
 
     var generarClendario = function () {
 
@@ -23,6 +31,7 @@
             var oUrl = 'ListarCalendarioReservaciones';
             var oProcessMessage = 'Buscando Reservaciones';
             var success = function (result) {
+                
                 if (result.Data.length > 0) {
                     //Lista los encabezados de la tabla
                     let myTable = "<table id='tblCalendario'><tr><td style='width:100px;color:#0B0B61;text-align:center;font-weight:bold;font-size: larger;border:1px solid black;border-collapse:collapse;'>Placa</td>";
@@ -34,10 +43,11 @@
                         MesesIniciales = "";
                         DiasFinales = "";
                         MesesFinales = "";
+                        reservacionesIDs = "";
                         listDiasIniciales = "";
-                        listMesesIniciales = "";
+                        listreservacionesIDs = "";
                         listDiasFinales = "";
-                        listMesesFinales = "";
+                      
 
                         myTable += "<tr><td style='width:300px;color:#08088A;font-weight:italic;font-size: medium;text-align:center;border:1px solid black;'>" + result.Data[x].IDVehiculo + "</td > ";
                         if (result.Data[x].Reservas.length > 0) {
@@ -46,7 +56,7 @@
                                 var fechaFin = moment(result.Data[x].Reservas[re].FechaFinal, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                                 var fechaIAux = new Date(fechaIni);
                                 var fechaFAux = new Date(fechaFin);
-
+                                reservacionesIDs = reservacionesIDs + "," + result.Data[x].Reservas[re].IdReservacion;
                                 var annoRentado = fechaIAux.getFullYear();
                                 if (annoRentado == txtAnno.val()) {
                                     DiasIniciales = DiasIniciales + "," + fechaIAux.getDate();
@@ -56,18 +66,18 @@
                                 }// Cierre el IF del año
                             }// Cierre el FOR de reservas
                         } // Cierre el IF de reservas
-                        debugger;
+                        
                         listDiasIniciales = DiasIniciales.split(',');
                         listDiasFinales = DiasFinales.split(',');
-                        //listMesesIniciales = MesesIniciales.split(",");
-                        //listMesesFinales = MesesFinales.split(",");
+                        listreservacionesIDs = reservacionesIDs.split(',');
+
 
                         var ini = 1;
                         for (let i = 1; i <= numeroDias; i++) {
                             //Comparamos meses iguales
                             if ((MesesIniciales == txtMes.val()) && (MesesFinales == txtMes.val())) {
                                 if (((listDiasIniciales[ini] <= i) && (listDiasFinales[ini] >= i))) {
-                                    myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0040 ';></td>";
+                                    myTable += "<td id='td_" + listreservacionesIDs[ini] + "' style = 'width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0040 ';></td > ";
                                     ini++;
                                     if (ini == listDiasIniciales.length)
                                         ini = listDiasIniciales.length - 1;
@@ -80,7 +90,7 @@
                                 //Comparamos que el mes Inicial sea igual, pero el mes final no
                                 if ((MesesIniciales == txtMes.val()) && (MesesFinales != txtMes.val())) {
                                     if (listDiasIniciales[ini] <= i) {
-                                        myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0040 ';></td>";
+                                        myTable += "<td id='td_" + listreservacionesIDs[ini] + "' style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0040 ';></td>";
                                         ini++;
                                         if (ini == listDiasIniciales.length)
                                             ini = listDiasIniciales.length - 1;
@@ -93,7 +103,7 @@
                                     //Comparamos que el mes Inicial sea diferente, pero el mes final sea iguañ
                                     if ((MesesIniciales != txtMes.val()) && (MesesFinales == txtMes.val())) {
                                         if (listDiasFinales[ini] >= i) {
-                                            myTable += "<td style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0040 ';></td>";
+                                            myTable += "<td id='td_" + listreservacionesIDs[ini] + "' style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0040 ';></td>";
                                             ini++;
                                             if (ini == listDiasIniciales.length)
                                                 ini = listDiasIniciales.length - 1;
@@ -119,6 +129,13 @@
                     Dialog.alert('Reservaciones', result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage, function () {
                     })
                 };
+              
+                $('#tblCalendario tr td').click(function () {
+                        var cid = $(this).attr('id');
+                        /*HACER LLAMADO A LA PANTALLA QUE MUESTRE INFORMACION DE RESERVACIO*/
+                    });
+
+
             };// Cierre SUCCESS
             app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
         } catch (ex) {
@@ -137,6 +154,7 @@
     var diasEnUnMes = function (mes, año) {
         return new Date(año, mes, 0).getDate();
     }
+
     var fncargarComboAnno = function () {
         var d = new Date();
         var n = d.getFullYear();
