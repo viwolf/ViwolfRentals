@@ -159,7 +159,7 @@ namespace FrontEnd.Controllers.Viwolf
                 var resultVehiculos = BlVehiculo.ListarVehiculos(vehiculo);
                 t_Reservaciones reservacion = new t_Reservaciones();
                 reservacion.FechaInicio = vehiculo.FechaCompra;
-                var resultReservaciones = BlReservacion.ListarReservaciones(reservacion);
+                var resultReservaciones = BlReservacion.ListarCalendarioReservaciones(reservacion);
 
                 var jsonObjet = (from taVehiculo in resultVehiculos
                                  select new

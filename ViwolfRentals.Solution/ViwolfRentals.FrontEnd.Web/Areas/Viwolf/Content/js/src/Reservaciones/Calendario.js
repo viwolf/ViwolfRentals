@@ -14,14 +14,7 @@
     var listDiasFinales = "";
     var listreservacionesIDs = "";
 
-    function tdclick(e) {
-        
-        if (!e) var e = window.event;                // Get the window event
-        e.cancelBubble = true;                       // IE Stop propagation
-        if (e.stopPropagation) e.stopPropagation();  // Other Broswers
-        console.log('td clicked');
-    };  
-
+    
     var generarClendario = function () {
 
         var fecha = new Date(txtAnno.val() + '-' + txtMes.val() + '-' + 1);
@@ -135,9 +128,13 @@
                 };
               
                 $('#tblCalendario tr td').click(function () {
-                        var cid = $(this).attr('id');
-                        /*HACER LLAMADO A LA PANTALLA QUE MUESTRE INFORMACION DE RESERVACIO*/
-                    });
+                    var idReserva = $(this).attr('id');
+                    debugger;
+                    if (idReserva != undefined) {
+                        var listR = idReserva.split("_");
+                        informacionReservacion.AbrirModal(listR[1]);
+                    };  
+                });
 
 
             };// Cierre SUCCESS
@@ -163,7 +160,7 @@
         var d = new Date();
         var n = d.getFullYear();
         var select = document.getElementById("txtAnno");
-        for (var i = n; i >= 2000; i--) {
+        for (var i = n; i >= 2020; i--) {
             var opc = document.createElement("option");
             opc.text = i;
             opc.value = i;
