@@ -177,6 +177,9 @@ namespace ViwolfRentals.DataAccess
                                                   entity.StickerPlaca,
                                                   entity.TituloPropiedad,
                                                   entity.Multas,
+                                                  entity.Kilometraje,
+                                                  entity.CodigoColor,
+                                                  entity.ColorClasificacion,
                                                   entity.IDCategoriaVehiculo,
                                                   entity.IDDepartamento,
                                                   entity.Activo

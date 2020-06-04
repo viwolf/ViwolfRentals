@@ -27,6 +27,7 @@
     var txtMultas = $("#txtMultas");
     var txtKilometraje = $("#txtKilometraje");
     var btnGuardarVehiculo = $("#btnGuardarVehiculo");
+    var txtCodigoColor = $("#txtCodigoColor");
     var IdCategoriaVehiculo = 0;
     var dateCompra = "";
 
@@ -273,8 +274,9 @@
         var categoria = document.getElementById("txtCategoria");
         IdCategoriaVehiculo = categoria.options[categoria.selectedIndex].value;
 
+        var nombreColor = $("#txtCodigoColor option:selected").text();
       
-
+        debugger;
         if (ValidateFields() == true) {
 
             var oData = {
@@ -306,6 +308,8 @@
                 "Multas": parseFloat(txtMultas.val().replace("¢", "")),
                 "Kilometraje": txtKilometraje.val(),
                 "IDCategoriaVehiculo": txtCategoria.val(),
+                "CodigoColor": txtCodigoColor.val(),
+                "ColorClasificacion": nombreColor,
                 "IDDepartamento": 1,
                 "Activo": true
             }
@@ -360,7 +364,8 @@
          txtPlacaSticker.val(""); 
          txtTituloPropiedad.val(""); 
          txtMultas.val(""); 
-         txtKilometraje.val(""); 
+        txtKilometraje.val("");
+
          IdCategoriaVehiculo = 0;
          dateCompra = "";
     }

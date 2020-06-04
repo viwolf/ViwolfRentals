@@ -165,6 +165,7 @@ namespace FrontEnd.Controllers.Viwolf
                                  select new
                                  {
                                      taVehiculo.IDVehiculo,
+                                     taVehiculo.CodigoColor,
                                      Reservas = (
                                         from ve in resultVehiculos
                                         join re in resultReservaciones on ve.IDVehiculo equals re.IDVehiculo

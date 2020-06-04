@@ -2,6 +2,7 @@
     var txtAnno = $("#txtAnno");
     var txtMes = $("#txtMes");
     var btnMostrarCalendario = $("#btnMostrarCalendario");
+
     var numeroDias = 0;
  
     var DiasIniciales = "";
@@ -31,12 +32,14 @@
             var oUrl = 'ListarCalendarioReservaciones';
             var oProcessMessage = 'Buscando Reservaciones';
             var success = function (result) {
-                
+                debugger;
                 if (result.Data.length > 0) {
                     //Lista los encabezados de la tabla
-                    let myTable = "<table id='tblCalendario'><tr><td style='width:100px;color:#0B0B61;text-align:center;font-weight:bold;font-size: larger;border:1px solid black;border-collapse:collapse;'>Placa</td>";
+                    
+                    let myTable = "<table id='tblCalendario'><tr><td style='width:100px;color:#0B0B61;background-color:#f7af39;text-align:center;font-weight:bold;font-size: larger;border:1px solid black;border-collapse:collapse;'>Placa</td>";
+                    myTable += "<td style='width: 5px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FFFFFF ';></td>";
                     for (var i = 1; i <= numeroDias; i++) {
-                        myTable += "<td style='width: 100px;color:#0B0B61;font-weight:bold;font-size:larger;text-align: center; border:1px solid black;border-collapse:collapse;'>" + i + "</td>";
+                        myTable += "<td style='width: 100px;color:#0B0B61;background-color:#f7af39;font-weight:bold;font-size:larger;text-align: center; border:1px solid black;border-collapse:collapse;'>" + i + "</td>";
                     }
                     for (var x = 0; x < result.Data.length; x++) {
                         DiasIniciales = "";
@@ -49,7 +52,8 @@
                         listDiasFinales = "";
                       
 
-                        myTable += "<tr><td style='width:300px;color:#08088A;font-weight:italic;font-size: medium;text-align:center;border:1px solid black;'>" + result.Data[x].IDVehiculo + "</td > ";
+                        myTable += "<tr><td style='background-color: " + result.Data[x].CodigoColor + ";font-weight:bold; width:300px;color:#21313B;font-size: medium;text-align:center;border:1px solid black;'>" + result.Data[x].IDVehiculo + "</td > ";
+                        myTable += "<td style='width: 5px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FFFFFF ';></td>";
                         if (result.Data[x].Reservas.length > 0) {
                             for (var re = 0; re < result.Data[x].Reservas.length; re++) {
                                 var fechaIni = moment(result.Data[x].Reservas[re].FechaInicio, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
@@ -77,7 +81,7 @@
                             //Comparamos meses iguales
                             if ((MesesIniciales == txtMes.val()) && (MesesFinales == txtMes.val())) {
                                 if (((listDiasIniciales[ini] <= i) && (listDiasFinales[ini] >= i))) {
-                                    myTable += "<td id='td_" + listreservacionesIDs[ini] + "' style = 'width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0040 ';></td > ";
+                                    myTable += "<td id='td_" + listreservacionesIDs[ini] + "' style = 'width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0000 ';></td > ";
                                     ini++;
                                     if (ini == listDiasIniciales.length)
                                         ini = listDiasIniciales.length - 1;
@@ -90,7 +94,7 @@
                                 //Comparamos que el mes Inicial sea igual, pero el mes final no
                                 if ((MesesIniciales == txtMes.val()) && (MesesFinales != txtMes.val())) {
                                     if (listDiasIniciales[ini] <= i) {
-                                        myTable += "<td id='td_" + listreservacionesIDs[ini] + "' style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0040 ';></td>";
+                                        myTable += "<td id='td_" + listreservacionesIDs[ini] + "' style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0000 ';></td>";
                                         ini++;
                                         if (ini == listDiasIniciales.length)
                                             ini = listDiasIniciales.length - 1;
@@ -103,7 +107,7 @@
                                     //Comparamos que el mes Inicial sea diferente, pero el mes final sea iguañ
                                     if ((MesesIniciales != txtMes.val()) && (MesesFinales == txtMes.val())) {
                                         if (listDiasFinales[ini] >= i) {
-                                            myTable += "<td id='td_" + listreservacionesIDs[ini] + "' style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0040 ';></td>";
+                                            myTable += "<td id='td_" + listreservacionesIDs[ini] + "' style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0000 ';></td>";
                                             ini++;
                                             if (ini == listDiasIniciales.length)
                                                 ini = listDiasIniciales.length - 1;

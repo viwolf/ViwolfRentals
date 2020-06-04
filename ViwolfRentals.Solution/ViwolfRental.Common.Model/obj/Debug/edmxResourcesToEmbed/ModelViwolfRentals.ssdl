@@ -187,6 +187,8 @@
     <Property Name="TituloPropiedad" Type="bit" Nullable="false" />
     <Property Name="Multas" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="Kilometraje" Type="int" Nullable="false" />
+    <Property Name="CodigoColor" Type="nvarchar" MaxLength="50" />
+    <Property Name="ColorClasificacion" Type="nvarchar" MaxLength="50" />
     <Property Name="IDCategoriaVehiculo" Type="int" Nullable="false" />
     <Property Name="IDDepartamento" Type="int" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />

@@ -170,6 +170,8 @@
           <ScalarProperty Name="Activo" ColumnName="Activo" />
           <ScalarProperty Name="IDDepartamento" ColumnName="IDDepartamento" />
           <ScalarProperty Name="IDCategoriaVehiculo" ColumnName="IDCategoriaVehiculo" />
+          <ScalarProperty Name="ColorClasificacion" ColumnName="ColorClasificacion" />
+          <ScalarProperty Name="CodigoColor" ColumnName="CodigoColor" />
           <ScalarProperty Name="Kilometraje" ColumnName="Kilometraje" />
           <ScalarProperty Name="Multas" ColumnName="Multas" />
           <ScalarProperty Name="TituloPropiedad" ColumnName="TituloPropiedad" />
