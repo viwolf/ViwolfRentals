@@ -155,6 +155,7 @@ namespace ViwolfRentals.DataAccess
                                                  entity.MontoTotal,
                                                  entity.NumeroDeposito,
                                                  entity.MontoDeposito,
+                                                 entity.SaldoActual,
                                                  entity.ModoPago,
                                                  entity.IdClienteComisionista,
                                                  entity.IdProveedor,

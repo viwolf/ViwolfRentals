@@ -96,6 +96,7 @@
     <Property Name="MontoTotal" Type="decimal" Precision="18" Scale="2" />
     <Property Name="NumeroDeposito" Type="nvarchar" MaxLength="10" />
     <Property Name="MontoDeposito" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SaldoActual" Type="decimal" Precision="18" Scale="2" />
     <Property Name="ModoPago" Type="int" />
     <Property Name="IdClienteComisionista" Type="int" />
     <Property Name="IdProveedor" Type="int" />

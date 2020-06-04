@@ -40,22 +40,22 @@
                     txtIdReservacion.val(result.Data[0].IdReservacion);
                     txtNombreCliente.val(result.Data[0].NombreCliente);
                     txtHospedaje.val(result.Data[0].LugarEntrega);
-                    txtAplicaComision.val(result.Data[0].AplicaComision == 'false' ? 'No' : 'Si');
+                    txtAplicaComision.val(result.Data[0].AplicaComision == false ? 'No' : 'Si');
                     txtFechaInicio.val(result.Data[0].FechaInicio);
                     txtHoraInicio.val(result.Data[0].HoraInicio);
                     txtFechaFinal.val(result.Data[0].FechaEntrega);
                     txtHoraEntrega.val(result.Data[0].HoraEntrega);
                     txtMontoDia.val(utils.formatterDolar.format(result.Data[0].MontoDia));
-                    txtSurfRacks.val(result.Data[0].SurfRacks == 'false' ? 'No' : 'Si');
+                    txtSurfRacks.val(result.Data[0].SurfRacks == false ? 'No' : 'Si');
                     txtMontoSurfRacks.val(utils.formatterDolar.format(result.Data[0].MontoSurfRacks));
                     txtMontoTotal.val(utils.formatterDolar.format(result.Data[0].MontoTotal));
-                    txtCajon.val(result.Data[0].Cajon == 'false' ? 'No' : 'Si');
-                    txtNumeroDeposito.val(result.Data[0].NumeroDeposito);
+                    txtCajon.val(result.Data[0].Cajon == false ? 'No' : 'Si');
+                    txtNumeroDeposito.val(result.Data[0].NumeroDeposito == null ? 'N/A' : result.Data[0].NumeroDeposito);
                     txtMontoDeposito.val(utils.formatterDolar.format(result.Data[0].MontoDeposito));
-                    //txtSaldoActual.val(result.Data[0].IdReservacion);
-                    //txtModoPago.val(result.Data[0].IdReservacion);
-                    txtComisionistas.val(result.Data[0].t_ClientesComisionistas == null ? "" : result.Data[0].t_ClientesComisionistas.NombreClienteComisionista);
-                    txtProveedor.val(result.Data[0].t_Proveedores == null ? "" : result.Data[0].t_Proveedores.NombreProveedor);
+                    txtSaldoActual.val(utils.formatterDolar.format(result.Data[0].SaldoActual));
+                    txtModoPago.val(result.Data[0].ModoPago == configViwolf.ModosPagos.Efectivo ? "Efectivo" : "Cuenta por Cobrar");
+                    txtComisionistas.val(result.Data[0].t_ClientesComisionistas == null ? "N/A" : result.Data[0].t_ClientesComisionistas.NombreClienteComisionista);
+                    txtProveedor.val(result.Data[0].t_Proveedores == null ? "N/A" : result.Data[0].t_Proveedores.NombreProveedor);
                     txtPlaca.val(result.Data[0].IDVehiculo);
 
                 }

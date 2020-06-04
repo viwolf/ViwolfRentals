@@ -88,6 +88,7 @@
           <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
           <ScalarProperty Name="IdClienteComisionista" ColumnName="IdClienteComisionista" />
           <ScalarProperty Name="ModoPago" ColumnName="ModoPago" />
+          <ScalarProperty Name="SaldoActual" ColumnName="SaldoActual" />
           <ScalarProperty Name="MontoDeposito" ColumnName="MontoDeposito" />
           <ScalarProperty Name="NumeroDeposito" ColumnName="NumeroDeposito" />
           <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />

@@ -88,6 +88,8 @@ namespace FrontEnd.Controllers.Viwolf
                                      ta.Cajon,
                                      ta.NumeroDeposito,
                                      ta.MontoDeposito,
+                                     ta.SaldoActual,
+                                     ta.ModoPago,
                                      ta.t_ClientesComisionistas,
                                      ta.t_Proveedores,
                                      ta.IDVehiculo,

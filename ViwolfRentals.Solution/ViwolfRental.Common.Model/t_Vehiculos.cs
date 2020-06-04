@@ -18,7 +18,7 @@ namespace ViwolfRental.Common.Model
         public t_Vehiculos()
         {
             this.t_Kilometrajes = new HashSet<t_Kilometrajes>();
-           // this.t_Reservaciones = new HashSet<t_Reservaciones>();
+          //  this.t_Reservaciones = new HashSet<t_Reservaciones>();
         }
     
         public string IDVehiculo { get; set; }
@@ -63,7 +63,6 @@ namespace ViwolfRental.Common.Model
         public virtual ICollection<t_Kilometrajes> t_Kilometrajes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual t_Reservaciones t_Reservaciones { get; set; }
-
         public IDictionary<String, Object> ExtendedProporeties { set; get; }
     }
 }

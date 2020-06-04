@@ -10,8 +10,14 @@
         Inactivo: 0
     }
 
+    const _ModosPagos = {
+        Efectivo: 1,
+        CxC: 2
+    }
+
     return {
         Roles: _Roles,
-        EstadosVehiculos: _EstadosVehiculos
+        EstadosVehiculos: _EstadosVehiculos,
+        ModosPagos: _ModosPagos
     }
 }();

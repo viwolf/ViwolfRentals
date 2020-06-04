@@ -33,6 +33,7 @@ namespace ViwolfRental.Common.Model
         public Nullable<decimal> MontoTotal { get; set; }
         public string NumeroDeposito { get; set; }
         public Nullable<decimal> MontoDeposito { get; set; }
+        public Nullable<decimal> SaldoActual { get; set; }
         public Nullable<int> ModoPago { get; set; }
         public Nullable<int> IdClienteComisionista { get; set; }
         public Nullable<int> IdProveedor { get; set; }

@@ -101,6 +101,7 @@
           <Property Name="MontoTotal" Type="decimal" Precision="18" Scale="2" />
           <Property Name="NumeroDeposito" Type="nvarchar" MaxLength="10" />
           <Property Name="MontoDeposito" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SaldoActual" Type="decimal" Precision="18" Scale="2" />
           <Property Name="ModoPago" Type="int" />
           <Property Name="IdClienteComisionista" Type="int" />
           <Property Name="IdProveedor" Type="int" />
@@ -601,6 +602,7 @@
           <Property Name="MontoTotal" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="NumeroDeposito" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="MontoDeposito" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SaldoActual" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="ModoPago" Type="Int32" />
           <Property Name="IdClienteComisionista" Type="Int32" />
           <Property Name="IdProveedor" Type="Int32" />
@@ -968,6 +970,7 @@
                 <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
                 <ScalarProperty Name="IdClienteComisionista" ColumnName="IdClienteComisionista" />
                 <ScalarProperty Name="ModoPago" ColumnName="ModoPago" />
+                <ScalarProperty Name="SaldoActual" ColumnName="SaldoActual" />
                 <ScalarProperty Name="MontoDeposito" ColumnName="MontoDeposito" />
                 <ScalarProperty Name="NumeroDeposito" ColumnName="NumeroDeposito" />
                 <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />

@@ -538,7 +538,7 @@
 
     var fnGuardarReservacion = function () {
         
-
+        debugger;
         var proveedor = document.getElementById("txtProveedor");
         IdProveedor = proveedor.options[proveedor.selectedIndex].value;
 
@@ -566,7 +566,7 @@
                 "SaldoActual": parseFloat(txtSaldoActual.val().replace("$", "")),
                 "ModoPago": txtModoPago.val(),
                 "IdClienteComisionista": IdComisionista == "" ? null : IdComisionista,
-                "ProveedorID": IdProveedor == "" ? null : IdProveedor,
+                "IdProveedor": IdProveedor == "" ? null : IdProveedor,
                 "IDUsuario": idUsuarioLogueado,
                 "IDVehiculo": txtPlaca.val()
             }
@@ -618,6 +618,8 @@
         timeIn = null;
         timeOut = null;
         objVehiculo = null;
+        IdProveedor = 0;
+        IdComisionista = 0;
     }
 
     $(function () {
