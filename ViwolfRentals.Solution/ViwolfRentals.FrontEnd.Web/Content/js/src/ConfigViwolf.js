@@ -5,7 +5,13 @@
         Usuario: 2
     }
 
+    const _EstadosVehiculos = {
+        Activo: 1,
+        Inactivo: 0
+    }
+
     return {
-        Roles: _Roles
+        Roles: _Roles,
+        EstadosVehiculos: _EstadosVehiculos
     }
 }();

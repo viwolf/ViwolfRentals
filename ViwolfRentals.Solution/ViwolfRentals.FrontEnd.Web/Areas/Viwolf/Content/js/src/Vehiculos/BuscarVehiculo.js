@@ -1,9 +1,13 @@
-﻿var BuscarVehiculo = function () {
+﻿
+
+var BuscarVehiculo = function () {
     var modalVehiculo = $('#popupBusquedaVehiculo');
     var $table = $('#tableListBusVeh');
     var btnEnlazar = $("#btnSeleccionar");
     var objSeleccionado = null;
     var fnCallbak = null;
+    var fechaInicio = "";
+    var FechaEntrega = "";
 
     var fnInit = function () {
        btnEnlazar.unbind().click(fnEnlazarVehiculo);
@@ -11,10 +15,16 @@
 
     var fnBuscarVehiculo = function () {
         var oData = {
-            "IDDepartamento" : 1
+            "Activo": configViwolf.EstadosVehiculos.Activo,
+            "ExtendedProporeties": [
+                { "Key": "FechaInicio", "Value": fechaInicio },
+                { "Key": "FechaEntrega", "Value": FechaEntrega }
+            ]
         };
         try {
-            var oUrl = 'Vehiculos/ListarVehiculos';
+            var oUrl = 'Vehiculos/ListarVehiculosReservaciones';
+
+
             var oProcessMessage = 'Buscando Vehiculos';
             var success = function (result) {
                
@@ -64,8 +74,10 @@
 
        
 
-    var fnAbrirModal = function (callback) {
+    var fnAbrirModal = function (callback, _fechaInicio, _fechaEntrega) {
         fnCallbak = callback;
+        fechaInicio = _fechaInicio;
+        FechaEntrega = _fechaEntrega;
         fnInit();
         modalVehiculo.modal('show');
         fnBuscarVehiculo();

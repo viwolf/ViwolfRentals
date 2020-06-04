@@ -113,6 +113,32 @@ namespace ViwolfRentals.DataAccess
             }
         }
 
+        public IEnumerable<t_Vehiculos> ListarVehiculosReservaciones(t_Vehiculos vehiculos)
+        {
+            using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+            {
+                return connection.Query<
+                   t_Vehiculos,
+                   t_CategoriasVehiculos,
+                   t_Departamentos,
+                   t_Vehiculos>
+                   ("usp_VehiculosReservaciones_Listar",
+                   (a, b, c) =>
+                   {
+                       a.t_CategoriasVehiculos = (t_CategoriasVehiculos)b;
+                       a.t_Departamentos = (t_Departamentos)c;
+                       return a;
+                   },
+                   splitOn: "IDCategoriaVehiculo , IDDepartamento",
+                   param: new
+                   {
+                       FechaInicio = vehiculos.ExtendedProporeties["FechaInicio"],
+                       FechaEntrega = vehiculos.ExtendedProporeties["FechaEntrega"],
+                   },
+                  commandType: CommandType.StoredProcedure) ;
+            }
+        }
+
         private t_Vehiculos DoGuardar(IDbConnection connection, IDbTransaction transaction, t_Vehiculos entity)
         {
             StringBuilder tracerBuilder = new StringBuilder();

@@ -182,7 +182,8 @@
         btnGuardar.click(fnConfirmarGuardar);
 
         btnCargarVehiculo.click(function () {
-            BuscarVehiculo.AbrirModal(fnCallBack);
+            debugger;
+            BuscarVehiculo.AbrirModal(fnCallBack, dateIni, dateFin);
         });
     }
 

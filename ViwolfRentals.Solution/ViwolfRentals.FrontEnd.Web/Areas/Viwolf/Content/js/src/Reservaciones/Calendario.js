@@ -46,7 +46,7 @@
                                 var fechaFin = moment(result.Data[x].Reservas[re].FechaFinal, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                                 var fechaIAux = new Date(fechaIni);
                                 var fechaFAux = new Date(fechaFin);
-                               
+
                                 var annoRentado = fechaIAux.getFullYear();
                                 if (annoRentado == txtAnno.val()) {
                                     DiasIniciales = DiasIniciales + "," + fechaIAux.getDate();
@@ -61,7 +61,7 @@
                         listDiasFinales = DiasFinales.split(',');
                         //listMesesIniciales = MesesIniciales.split(",");
                         //listMesesFinales = MesesFinales.split(",");
-                        
+
                         var ini = 1;
                         for (let i = 1; i <= numeroDias; i++) {
                             //Comparamos meses iguales

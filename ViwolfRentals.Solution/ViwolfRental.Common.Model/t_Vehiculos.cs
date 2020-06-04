@@ -62,5 +62,7 @@ namespace ViwolfRental.Common.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         //public virtual ICollection<t_Reservaciones> t_Reservaciones { get; set; }
         public virtual t_Reservaciones t_Reservaciones { get; set; }
+
+        public IDictionary<String, Object> ExtendedProporeties { set; get; }
     }
 }

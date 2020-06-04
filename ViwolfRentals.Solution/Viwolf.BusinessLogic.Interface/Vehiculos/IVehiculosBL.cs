@@ -13,5 +13,7 @@ namespace Viwolf.BusinessLogic.Interface
         IEnumerable<ViwolfRental.Common.Model.t_Kilometrajes> ListarKilometrajes(ViwolfRental.Common.Model.t_Kilometrajes entidad);
 
         ViwolfRental.Common.Model.t_Vehiculos GuardarVehiculo(ViwolfRental.Common.Model.t_Vehiculos vehiculo);
+
+        IEnumerable<ViwolfRental.Common.Model.t_Vehiculos> ListarVehiculosReservaciones(ViwolfRental.Common.Model.t_Vehiculos entidad);
     }
 }
