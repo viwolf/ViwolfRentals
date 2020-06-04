@@ -47,6 +47,7 @@
                             { data: 'GPS' },
                             { data: 't_CategoriasVehiculos.NombreCategoriaVehiculo' },
                             { data: 't_Departamentos.NombreDepartamento' },
+                            { data: 'Editar' },
                             { data: 'Ver' }
                         ],
                     });

@@ -67,7 +67,8 @@ namespace FrontEnd.Controllers.Viwolf
                                      ta.t_CategoriasVehiculos,
                                      ta.t_Departamentos,
                                      GPS = ta.GPS == true ? "Sí" : "No",
-                                     Ver = "<button id= '" + ta.IDVehiculo + "' name='btnV_" + ta.IDVehiculo + "'><i class='fa fa-eye'></i></button>"
+                                     Editar = "<button id= 'btnE_" + ta.IDVehiculo + "' name='btnE_" + ta.IDVehiculo + "'><i class='fa fa-edit'></i></button>",
+                                     Ver = "<button id= 'btnV_" + ta.IDVehiculo + "' name='btnV_" + ta.IDVehiculo + "'><i class='fa fa-eye'></i></button>"
                                  }).AsEnumerable();
                 return Json(new
                 {
