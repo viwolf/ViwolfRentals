@@ -76,11 +76,24 @@ namespace FrontEnd.Controllers.Viwolf
                                      ta.IdReservacion,
                                      ta.NombreCliente,
                                      ta.LugarEntrega,
+                                     ta.AplicaComision,
                                      FechaInicio = string.Format("{0:d/M/yyyy}", ta.FechaInicio),
+                                     ta.HoraInicio,
                                      FechaEntrega = string.Format("{0:d/M/yyyy}", ta.FechaEntrega),
+                                     ta.HoraEntrega,
+                                     ta.MontoDia,
+                                     ta.SurfRacks,
+                                     ta.MontoSurfRacks,
+                                     ta.MontoTotal,
+                                     ta.Cajon,
+                                     ta.NumeroDeposito,
+                                     ta.MontoDeposito,
+                                     ta.t_ClientesComisionistas,
+                                     ta.t_Proveedores,
                                      ta.IDVehiculo,
                                      ta.t_Vehiculos,
                                      InfoVehiculo = "<button id= '" + ta.IDVehiculo + "' name='btnV_" + ta.IDVehiculo + "'><i class='fa fa-eye'></i></button>",
+
                                  }).AsEnumerable();
                 return Json(new
                 {

@@ -77,30 +77,55 @@ namespace ViwolfRentals.DataAccess
 
         public IEnumerable<t_Reservaciones> ListarReservaciones(t_Reservaciones reservaciones)
         {
-            using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+            try
             {
-                return connection.Query("usp_Reservaciones_Listar",
-                   new[]
-                   {
-                        typeof(ViwolfRental.Common.Model.t_Reservaciones)
-                   },
-                   (object[] objetos) =>
-                   {
-                       t_Reservaciones a = objetos[0] as t_Reservaciones;
-                       t_Reservaciones resultado = new t_Reservaciones();
-
-                       resultado = a;
-                       return resultado;
-
-
-                   },
-                            splitOn: "",
-                            param: new
-                            {
-                                reservaciones.FechaInicio
-                            },
-                            commandType: CommandType.StoredProcedure);
+                using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+                {
+                    return connection.Query<
+                       t_Reservaciones,
+                       t_ClientesComisionistas,
+                       t_Proveedores,
+                       t_Reservaciones>
+                       ("usp_Reservaciones_Listar",
+                       (a, b, c) =>
+                       {
+                           a.t_ClientesComisionistas = (t_ClientesComisionistas)b;
+                           a.t_Proveedores = (t_Proveedores)c;
+                           return a;
+                       },
+                       splitOn: "IdClienteComisionista , IdProveedor",
+                       param: new
+                       {
+                           reservaciones.IdReservacion,
+                           reservaciones.NombreCliente,
+                           reservaciones.LugarEntrega,
+                           reservaciones.AplicaComision,
+                       //reservaciones.FechaInicio,
+                       //reservaciones.HoraInicio,
+                       //reservaciones.FechaEntrega,
+                       //reservaciones.HoraEntrega,
+                       reservaciones.SurfRacks,
+                           reservaciones.MontoSurfRacks,
+                           reservaciones.Cajon,
+                           reservaciones.MontoDia,
+                           reservaciones.MontoTotal,
+                           reservaciones.NumeroDeposito,
+                           reservaciones.MontoDeposito,
+                           reservaciones.ModoPago,
+                           reservaciones.IdClienteComisionista,
+                           reservaciones.IdProveedor,
+                           reservaciones.IDUsuario,
+                           reservaciones.IDVehiculo,
+                           reservaciones.Activo
+                       },
+                      commandType: CommandType.StoredProcedure);
+                }
             }
+            catch(Exception ex)
+            {
+                throw;
+            }
+            
         }
 
         private t_Reservaciones DoGuardar(IDbConnection connection, IDbTransaction transaction, t_Reservaciones entity)
