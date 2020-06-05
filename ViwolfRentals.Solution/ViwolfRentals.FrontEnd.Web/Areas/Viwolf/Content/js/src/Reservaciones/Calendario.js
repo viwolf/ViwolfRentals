@@ -7,6 +7,7 @@
  
     var DiasIniciales = "";
     var MesesIniciales = "";
+    var listMesesIniciales = "";
     var DiasFinales = "";
     var MesesFinales = "";
     var listDiasIniciales = "";
@@ -25,7 +26,7 @@
             var oUrl = 'ListarCalendarioReservaciones';
             var oProcessMessage = 'Buscando Reservaciones';
             var success = function (result) {
-                debugger;
+              
                 if (result.Data.length > 0) {
                     //Lista los encabezados de la tabla
                     
@@ -43,6 +44,8 @@
                         listDiasIniciales = "";
                         listreservacionesIDs = "";
                         listDiasFinales = "";
+                        listMesesIniciales = "";
+                       
                       
 
                         myTable += "<tr><td style='background-color: " + result.Data[x].CodigoColor + ";font-weight:bold; width:300px;color:#21313B;font-size: medium;text-align:center;border:1px solid black;'>" + result.Data[x].IDVehiculo + "</td > ";
@@ -58,7 +61,8 @@
                                 if (annoRentado == txtAnno.val()) {
                                     DiasIniciales = DiasIniciales + "," + fechaIAux.getDate();
                                     DiasFinales = DiasFinales + "," + fechaFAux.getDate();
-                                    MesesIniciales = (fechaIAux.getMonth() + 1);
+                                    debugger;
+                                    MesesIniciales = MesesIniciales + "," + (fechaIAux.getMonth() + 1);
                                     MesesFinales = (fechaFAux.getMonth() + 1);
                                 }// Cierre el IF del año
                             }// Cierre el FOR de reservas
@@ -67,12 +71,13 @@
                         listDiasIniciales = DiasIniciales.split(',');
                         listDiasFinales = DiasFinales.split(',');
                         listreservacionesIDs = reservacionesIDs.split(',');
+                        listMesesIniciales = MesesIniciales.split(',');
 
-
+                        debugger;
                         var ini = 1;
                         for (let i = 1; i <= numeroDias; i++) {
                             //Comparamos meses iguales
-                            if ((MesesIniciales == txtMes.val()) && (MesesFinales == txtMes.val())) {
+                            if ((listMesesIniciales[ini] == txtMes.val()) && (MesesFinales == txtMes.val())) {
                                 if (((listDiasIniciales[ini] <= i) && (listDiasFinales[ini] >= i))) {
                                     myTable += "<td id='td_" + listreservacionesIDs[ini] + "' style = 'width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0000 ';></td > ";
                                     ini++;
@@ -85,7 +90,7 @@
                             }
                             else
                                 //Comparamos que el mes Inicial sea igual, pero el mes final no
-                                if ((MesesIniciales == txtMes.val()) && (MesesFinales != txtMes.val())) {
+                                if ((listMesesIniciales[ini] == txtMes.val()) && (MesesFinales != txtMes.val())) {
                                     if (listDiasIniciales[ini] <= i) {
                                         myTable += "<td id='td_" + listreservacionesIDs[ini] + "' style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0000 ';></td>";
                                         ini++;
@@ -97,8 +102,8 @@
                                     }
                                 }
                                 else
-                                    //Comparamos que el mes Inicial sea diferente, pero el mes final sea iguañ
-                                    if ((MesesIniciales != txtMes.val()) && (MesesFinales == txtMes.val())) {
+                                    //Comparamos que el mes Inicial sea diferente, pero el mes final sea igual
+                                    if ((listMesesIniciales[ini] != txtMes.val()) && (MesesFinales == txtMes.val())) {
                                         if (listDiasFinales[ini] >= i) {
                                             myTable += "<td id='td_" + listreservacionesIDs[ini] + "' style='width: 100px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FF0000 ';></td>";
                                             ini++;
