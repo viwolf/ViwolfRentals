@@ -12,15 +12,28 @@
         }, 100);
     };
 
+    function fnOnClickBtn_EditarVehiculo() {
+        var t = setTimeout(function () {
+          
+            editarVehiculo.AbrirModal(objSeleccionado.IDVehiculo);
+
+        }, 100);
+    };
+
 
     function OnPageEvent(table) {
         
         let $btnInfo = $(table.fnGetNodes()).find("button[name^='btnV_']");
+        let $btnEdit = $(table.fnGetNodes()).find("button[name^='btnE_']");
 
 
 
         $btnInfo.click(function () {
             fnOnClickBtn_InfoVehiculo();
+        });
+
+        $btnEdit.click(function () {
+            fnOnClickBtn_EditarVehiculo();
         });
     }
 
@@ -53,6 +66,7 @@
                     });
                     $table.on("click", "tr", function () {
                         var iPos = $table.fnGetPosition(this);
+                        debugger;
                         
                         objSeleccionado = $table.fnGetData(iPos);
                     });

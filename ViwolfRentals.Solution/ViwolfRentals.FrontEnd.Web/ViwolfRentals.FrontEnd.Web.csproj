@@ -203,6 +203,7 @@
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\js\timegrid\main.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\js\timegrid\main.min.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\InfoReservacion.js" />
+    <Content Include="Areas\Viwolf\Content\js\src\Vehiculos\EditarVehiculo.js" />
     <Content Include="Content\js\src\ConfigViwolf.js" />
     <Content Include="Content\js\src\Error\styleError.css" />
     <Content Include="Content\Plugins\datatables\css\jquery.dataTables.min.css" />
@@ -559,6 +560,7 @@
     <Content Include="Areas\Seguridad\Views\Login\Autorizacion.cshtml" />
     <Content Include="Areas\Viwolf\Views\Reservaciones\Calendario.cshtml" />
     <Content Include="Areas\Viwolf\Views\Reservaciones\InfoReservacion.cshtml" />
+    <Content Include="Areas\Viwolf\Views\Vehiculos\EditarVehiculo.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
