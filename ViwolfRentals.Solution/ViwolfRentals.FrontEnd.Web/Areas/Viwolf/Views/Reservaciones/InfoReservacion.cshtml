@@ -1,0 +1,191 @@
+﻿ <!-- Main CSS-->
+<link href="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/css/main.css" rel="stylesheet" media="all">
+
+<!-- Form Modal -->
+<div id="popupInfoReservacion" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="lbl_title_create_carts"></h4>
+            </div>
+            <div class="modal-body modal-bodyEdit modal-scroll">
+                <section id="content" class="animated fadeInUp">
+                    <div class="row">
+                        <article class="col col-12 col-md-12 col-sm-12 sortable-grid ui-sortable">
+                            @*Lista de Resultados*@
+                            <div class="jarviswidget jarviswidget-sortable" id="secCliente" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false" role="widget">
+                                <header role="heading">
+                                    <h2></h2>
+                                </header>
+
+                                <form id="formResultadoVehiculo" name="formResultado" class="">
+                                    <div class="form-row m-b-55">
+                                        <div class="row row-refine">
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input disabled id="txtIdReservacion" class="input--style-5" type="text" name="IdReservacion">
+                                                    <label class="label--desc">Numero Reservacion</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input disabled id="txtNombreCliente" class="input--style-5" type="text" name="NombreCliente">
+                                                    <label class="label--desc">Nombre Cliente</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input disabled id="txtHospedaje" class="input--style-5" type="text" name="Hospedaje">
+                                                    <label class="label--desc">Hospedaje</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input disabled id="txtAplicaComision" class="input--style-5" type="text" name="AplicaComision">
+                                                    <label class="label--desc">Aplica Comisión</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row m-b-55">
+
+                                        <div class="row row-refine">
+
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input id="txtFechaInicio" disabled class="input--style-5" type="text" name="txtFechaInicio">
+                                                    <label class="label--desc">Fecha Inicio</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input disabled id="txtHoraInicio" class="input--style-5" type="text" name="txtHoraInicio">
+                                                    <label class="label--desc">Hora Inicio</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input disabled id="txtFechaFinal" class="input--style-5" type="text" name="txtFechaFinal">
+                                                    <label class="label--desc">Fecha Entrega</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input disabled id="txtHoraEntrega" class="input--style-5" type="text" name="txtHoraEntrega">
+                                                    <label class="label--desc">Hora Entrega</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-row m-b-55">
+                                        <div class="row row-refine">
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input disabled id="txtMontoDia" class="input--style-5" type="text" name="MontoDia">
+                                                    <label class="label--desc">Monto Día</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input disabled id="txtSurfRacks" class="input--style-5" type="text" name="SurfRacks">
+                                                    <label class="label--desc">Surf Racks</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input id="txtMontoSurfRacks" disabled class="input--style-5" type="text" name="MontoSurfRacks">
+                                                    <label class="label--desc">Monto SurfRacks</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input id="txtMontoTotal" disabled class="input--style-5" type="text" name="MontoTotal">
+                                                    <label class="label--desc">Monto Total</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row m-b-55">
+
+                                        <div class="row row-refine">
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input disabled id="txtCajon" class="input--style-5" type="text" name="Cajon">
+                                                    <label class="label--desc">Cajon</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input id="txtNumeroDeposito" disabled class="input--style-5" type="text" name="NumeroDeposito">
+                                                    <label class="label--desc">Número Depósito</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input id="txtMontoDeposito" disabled class="input--style-5" type="text" name="MontoDepósito">
+                                                    <label class="label--desc">Monto Depósito</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input id="txtSaldoActual" disabled class="input--style-5" type="text" name="SaldoActual">
+                                                    <label class="label--desc">Saldo Actual</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row m-b-55">
+
+                                        <div class="row row-refine">
+
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input id="txtModoPago" disabled class="input--style-5" type="text" name="ModoPago">
+                                                    <label class="label--desc">Modo de Pago</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input id="txtComisionistas" disabled class="input--style-5" type="text" name="Comisionistas">
+                                                    <label class="label--desc">Comisionista</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input id="txtProveedor" disabled class="input--style-5" type="text" name="Proveedor">
+                                                    <label class="label--desc">Proveedor</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="input-group-desc">
+                                                    <input id="txtPlaca" disabled class="input--style-5" type="text" name="Placa">
+                                                    <label class="label--desc">Número de Placa</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Mensajes-->
+<script src="~/Content/js/src/Dialog.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+

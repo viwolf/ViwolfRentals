@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "Calendario";
+    Layout = "~/Areas/Viwolf/Views/Shared/_LayoutReservacion.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>@ViewBag.Title - Calendario de Reservaciones</title>
+
+    @Styles.Render("~/bundles/Estilo/ViwolfRentalsReservaciones")
+
+
+
+    <script type="text/javascript">
+
+        var usuarioLogueado = '@ViewBag.Usuario';
+        var idUsuarioLogueado = '@ViewBag.IdUsuario'
+    </script>
+
+</head>
+<body>
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Calendario de Reservaciones</h2>
+                </div>
+                <div class="card-body">
+                    <form id="formCreacionVehiculo" name="formCreacionVehiculo" class="smart-form">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col col-12 col-md-12">
+                                    <div class="form-row m-b-55">
+                                        <div class="col-4">
+                                            <div class="input-group-desc">
+                                                <select id="txtAnno" class="select--style-5" name="AplicaGps">
+                                                </select>
+                                                <label class="label--desc">Año</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="input-group-desc">
+                                                <select id="txtMes" class="select--style-5" name="AplicaGps">
+                                                    <option value="1">Enero</option>
+                                                    <option value="2">Febrero</option>
+                                                    <option value="3">Marzo</option>
+                                                    <option value="4">Abril</option>
+                                                    <option value="5">Mayo</option>
+                                                    <option value="6">Junio</option>
+                                                    <option value="7">Julio</option>
+                                                    <option value="8">Agosto</option>
+                                                    <option value="9">Septiembre</option>
+                                                    <option value="10">Octubre</option>
+                                                    <option value="11">Noviembre</option>
+                                                    <option value="12">Diciembre</option>
+                                                </select>
+                                                <label class="label--desc">Mes</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <button type="button" id="btnMostrarCalendario" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Crear reservacion">
+                                                <i class="fa fa-check-circle display-block fa-2x"></i> Mostrar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col col-12 col-md-12">
+                                    <div id="tblData" class="col-md-12" style="overflow-x: auto">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/ViwolfRentals")
+    <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/datepicker/moment.min.js"></script>
+    <script src="~/Content/Plugins/ajaxloader/ajaxloader.js"></script>
+    <script src="~/Areas/Seguridad/Content/js/src/app.js"></script>
+    <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Calendario.js"></script>
+    <script src="~/Content/js/src/utils.js"></script>
+    <script src="~/Content/js/src/ConfigViwolf.js"></script>
+
+    @Html.Partial("~/Areas/Viwolf/Views/Reservaciones/InfoReservacion.cshtml")
+    <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/InfoReservacion.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->

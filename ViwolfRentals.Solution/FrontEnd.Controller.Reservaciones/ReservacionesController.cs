@@ -17,15 +17,16 @@ namespace FrontEnd.Controllers.Viwolf
     {
         IReservacionesBL BlReservacion = new ReservacionesBL();
         ILoginBL BlLogin = new LoginBL();
+        IVehiculosBL BlVehiculo = new VehiculosBL();
 
-        [AuthorizeUser(IdOperacion:1)]
+        [AuthorizeUser(IdPantalla:1)]
         public ActionResult Index(string usuario, string idUsuario)
         {
             ViewBag.Usuario = usuario;
             ViewBag.IdUsuario = idUsuario;
             return View();
         }
-        [AuthorizeUser(IdOperacion: 2)]
+        [AuthorizeUser(IdPantalla: 2)]
         public ActionResult Mantenimiento(string usuario, string idUsuario)
         {
             ViewBag.Usuario = usuario;
@@ -75,11 +76,26 @@ namespace FrontEnd.Controllers.Viwolf
                                      ta.IdReservacion,
                                      ta.NombreCliente,
                                      ta.LugarEntrega,
+                                     ta.AplicaComision,
                                      FechaInicio = string.Format("{0:d/M/yyyy}", ta.FechaInicio),
+                                     ta.HoraInicio,
                                      FechaEntrega = string.Format("{0:d/M/yyyy}", ta.FechaEntrega),
+                                     ta.HoraEntrega,
+                                     ta.MontoDia,
+                                     ta.SurfRacks,
+                                     ta.MontoSurfRacks,
+                                     ta.MontoTotal,
+                                     ta.Cajon,
+                                     ta.NumeroDeposito,
+                                     ta.MontoDeposito,
+                                     ta.SaldoActual,
+                                     ta.ModoPago,
+                                     ta.t_ClientesComisionistas,
+                                     ta.t_Proveedores,
                                      ta.IDVehiculo,
                                      ta.t_Vehiculos,
                                      InfoVehiculo = "<button id= '" + ta.IDVehiculo + "' name='btnV_" + ta.IDVehiculo + "'><i class='fa fa-eye'></i></button>",
+
                                  }).AsEnumerable();
                 return Json(new
                 {
@@ -140,6 +156,90 @@ namespace FrontEnd.Controllers.Viwolf
 
         }
 
+        [AuthorizeUser(IdPantalla: 5)]
+        public ActionResult Calendario(string usuario, string idUsuario)
+        {
+            ViewBag.Usuario = usuario;
+            ViewBag.IdUsuario = idUsuario;
+            return View();
+        }
 
+        [HttpPost]
+        public JsonResult ListarCalendarioReservaciones(ViwolfRental.Common.Model.t_Vehiculos vehiculo)
+        {
+            try
+            {
+                //DateTime fehaDefault = default(DateTime);
+
+                var resultVehiculos = BlVehiculo.ListarVehiculos(vehiculo);
+                t_Reservaciones reservacion = new t_Reservaciones();
+                reservacion.FechaInicio = vehiculo.FechaCompra;
+                var resultReservaciones = BlReservacion.ListarCalendarioReservaciones(reservacion);
+
+                var jsonObjet = (from taVehiculo in resultVehiculos
+                                 select new
+                                 {
+                                     taVehiculo.IDVehiculo,
+                                     taVehiculo.CodigoColor,
+                                     Reservas = (
+                                        from ve in resultVehiculos
+                                        join re in resultReservaciones on ve.IDVehiculo equals re.IDVehiculo
+                                        where ve.IDVehiculo == taVehiculo.IDVehiculo
+                                        select new
+                                        {
+                                            ve.IDVehiculo,
+                                            re.IdReservacion,
+                                            re.NombreCliente,
+                                            re.LugarEntrega,
+                                            re.AplicaComision,
+                                            re.Cajon,
+                                            FechaInicio = string.Format("{0:d/M/yyyy}", re.FechaInicio),
+                                            re.HoraInicio,
+                                            FechaFinal = string.Format("{0:d/M/yyyy}", re.FechaEntrega),
+                                            re.HoraEntrega,
+                                            re.MontoDia,
+                                            re.SurfRacks,
+                                            re.MontoSurfRacks,
+                                            re.MontoTotal,
+                                            re.NumeroDeposito,
+                                            re.MontoDeposito,
+                                            re.ModoPago,
+                                            re.t_ClientesComisionistas,
+                                            re.t_Proveedores
+                                        }
+                                     )
+                                     
+                                 }).AsEnumerable();
+
+
+                //var jsonObjet = (from ta in result
+                //                 select new
+                //                 {
+                //                     ta.IDVehiculo,
+                //                     FechaInicio = ta.t_Reservaciones != null ? string.Format("{0:d/M/yyyy}", ta.t_Reservaciones.FechaInicio) : string.Format("{0:d/M/yyyy}", fehaDefault),
+                //                     FechaFinal = ta.t_Reservaciones != null ? string.Format("{0:d/M/yyyy}", ta.t_Reservaciones.FechaEntrega) : string.Format("{0:d/M/yyyy}", fehaDefault),
+                //                 }).AsEnumerable();
+                return Json(new
+                {
+                    Data = jsonObjet,
+                    MessageType = "Success",
+                    InfoMessage = jsonObjet.Count() > 0 ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen reservaciones que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = ex.Message
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+        }
     }
 }

@@ -16,11 +16,11 @@ namespace ViwolfRental.Common.Filters
     {
         private t_Usuarios usuario;
         private ViwolfRentalsDBEntities db = new ViwolfRentalsDBEntities();
-        private int idOperacion;
+        private int idPantalla;
 
-        public AuthorizeUser(int IdOperacion)
+        public AuthorizeUser(int IdPantalla)
         {
-            this.idOperacion = IdOperacion;
+            this.idPantalla = IdPantalla;
         }
 
         public override void OnAuthorization(AuthorizationContext filterContext)
@@ -34,7 +34,7 @@ namespace ViwolfRental.Common.Filters
                 ILoginBL blLogin = new LoginBL();
                 t_RolesSistemaModuloPantalla rolesSistemaModuloPantalla = new t_RolesSistemaModuloPantalla();
                 rolesSistemaModuloPantalla.IDRol = usuario.t_Roles.IdRol;
-                rolesSistemaModuloPantalla.IDPantalla = idOperacion;
+                rolesSistemaModuloPantalla.IDPantalla = idPantalla;
                 var result = blLogin.ListarPantallaRoles(rolesSistemaModuloPantalla);
 
                 var jsonObjet = (from ta in result

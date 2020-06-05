@@ -3,10 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using ViwolfRental.Common.Model;
 using ViwolfRentals.DataAccess.Interface;
+
 
 namespace ViwolfRentals.DataAccess
 {
@@ -45,11 +47,11 @@ namespace ViwolfRentals.DataAccess
             }
         }
 
-        public IEnumerable<t_Reservaciones> ListarReservaciones(t_Reservaciones reservaciones)
+        public IEnumerable<t_Reservaciones> ListarCalendarioReservaciones(t_Reservaciones reservaciones)
         {
             using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
             {
-                return connection.Query("usp_Reservaciones_Listar",
+                return connection.Query("usp_CalendarioReservaciones_Listar",
                    new[]
                    {
                         typeof(ViwolfRental.Common.Model.t_Reservaciones)
@@ -65,8 +67,65 @@ namespace ViwolfRentals.DataAccess
 
                    },
                             splitOn: "",
+                            param: new
+                            {
+                                reservaciones.FechaInicio
+                            },
                             commandType: CommandType.StoredProcedure);
             }
+        }
+
+        public IEnumerable<t_Reservaciones> ListarReservaciones(t_Reservaciones reservaciones)
+        {
+            try
+            {
+                using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+                {
+                    return connection.Query<
+                       t_Reservaciones,
+                       t_ClientesComisionistas,
+                       t_Proveedores,
+                       t_Reservaciones>
+                       ("usp_Reservaciones_Listar",
+                       (a, b, c) =>
+                       {
+                           a.t_ClientesComisionistas = (t_ClientesComisionistas)b;
+                           a.t_Proveedores = (t_Proveedores)c;
+                           return a;
+                       },
+                       splitOn: "IdClienteComisionista , IdProveedor",
+                       param: new
+                       {
+                           reservaciones.IdReservacion,
+                           reservaciones.NombreCliente,
+                           reservaciones.LugarEntrega,
+                           reservaciones.AplicaComision,
+                       //reservaciones.FechaInicio,
+                       //reservaciones.HoraInicio,
+                       //reservaciones.FechaEntrega,
+                       //reservaciones.HoraEntrega,
+                       reservaciones.SurfRacks,
+                           reservaciones.MontoSurfRacks,
+                           reservaciones.Cajon,
+                           reservaciones.MontoDia,
+                           reservaciones.MontoTotal,
+                           reservaciones.NumeroDeposito,
+                           reservaciones.MontoDeposito,
+                           reservaciones.ModoPago,
+                           reservaciones.IdClienteComisionista,
+                           reservaciones.IdProveedor,
+                           reservaciones.IDUsuario,
+                           reservaciones.IDVehiculo,
+                           reservaciones.Activo
+                       },
+                      commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
+            
         }
 
         private t_Reservaciones DoGuardar(IDbConnection connection, IDbTransaction transaction, t_Reservaciones entity)
@@ -96,6 +155,7 @@ namespace ViwolfRentals.DataAccess
                                                  entity.MontoTotal,
                                                  entity.NumeroDeposito,
                                                  entity.MontoDeposito,
+                                                 entity.SaldoActual,
                                                  entity.ModoPago,
                                                  entity.IdClienteComisionista,
                                                  entity.IdProveedor,

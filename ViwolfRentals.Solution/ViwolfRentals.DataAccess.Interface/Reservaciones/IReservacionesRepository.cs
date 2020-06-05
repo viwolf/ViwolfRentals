@@ -11,6 +11,7 @@ namespace ViwolfRentals.DataAccess.Interface
     {
         t_Reservaciones Guardar(t_Reservaciones model);
         IEnumerable<ViwolfRental.Common.Model.t_Reservaciones> ListarReservaciones(ViwolfRental.Common.Model.t_Reservaciones reservaciones);
+        IEnumerable<ViwolfRental.Common.Model.t_Reservaciones> ListarCalendarioReservaciones(ViwolfRental.Common.Model.t_Reservaciones reservaciones);
 
     }
 }

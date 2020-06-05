@@ -27,5 +27,10 @@ namespace Viwolf.BusinessLogic
         
             return repository.ListarVehiculos(vehiculo);
         }
+
+        public IEnumerable<t_Vehiculos> ListarVehiculosReservaciones(t_Vehiculos entidad)
+        {
+            return repository.ListarVehiculosReservaciones(entidad);
+        }
     }
 }
