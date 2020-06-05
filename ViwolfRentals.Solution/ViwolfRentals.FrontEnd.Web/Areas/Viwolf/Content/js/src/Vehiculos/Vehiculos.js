@@ -66,7 +66,7 @@
                     });
                     $table.on("click", "tr", function () {
                         var iPos = $table.fnGetPosition(this);
-                        debugger;
+                        
                         
                         objSeleccionado = $table.fnGetData(iPos);
                     });

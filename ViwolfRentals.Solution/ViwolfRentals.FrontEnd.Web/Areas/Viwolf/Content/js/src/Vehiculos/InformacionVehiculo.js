@@ -41,7 +41,7 @@ var informacionVehiculo = function () {
                 if (result.Data.length > 0) {
                     if (result.Data[0].t_Departamentos.NombreDepartamento == "Disponible") {
                         var objVehiculo = result.Data[0];
-                        debugger;
+                        
                         fnCargarVehiculo(objVehiculo);
                     }
                 }

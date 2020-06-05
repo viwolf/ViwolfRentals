@@ -42,6 +42,7 @@
                 Id: "IDCategoriaVehiculo",
                 Text: "NombreCategoriaVehiculo",
                 InitSelection: function (callback, configuracion) {
+                    
                     $.ajax(configuracion.Url, {
                         url: configuracion.Url,
                         data: configuracion.data,

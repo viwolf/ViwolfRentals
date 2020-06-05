@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="CategoriasVehiculo\ICategoriasVehiculosRepository.cs" />
     <Compile Include="Comisionistas\IComisionistasRepository.cs" />
+    <Compile Include="DepartamentosVehiculos\IDepartamentosVehiculosRepository.cs" />
     <Compile Include="IConnectionManager.cs" />
     <Compile Include="Proveedores\IProveedoresRepository.cs" />
     <Compile Include="Reservaciones\IReservacionesRepository.cs" />
