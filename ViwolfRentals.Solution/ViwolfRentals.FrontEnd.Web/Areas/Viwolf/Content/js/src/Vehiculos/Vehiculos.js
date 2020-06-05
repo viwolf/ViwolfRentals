@@ -12,10 +12,20 @@
         }, 100);
     };
 
+    var Reload = function (result) {
+        debugger;
+        if (result != null) {
+            Dialog.alert('Creacion Vehiculos', result.InfoMessage, function () {
+                fnBuscarVehiculo();
+            })
+        }
+            
+    }
+
     function fnOnClickBtn_EditarVehiculo() {
         var t = setTimeout(function () {
-          
-            editarVehiculo.AbrirModal(objSeleccionado.IDVehiculo);
+
+            editarVehiculo.AbrirModal(objSeleccionado.IDVehiculo, Reload);
 
         }, 100);
     };

@@ -1,4 +1,5 @@
 ﻿
+
 var editarVehiculo = function () {
     var modalVehiculo = $('#popupEditVehiculo');
     var idVehiculo = $('#txtPlacaVehiculoEdicion');
@@ -37,6 +38,7 @@ var editarVehiculo = function () {
     var dateCompra = "";
     var IdCategoriaVehiculo = 0;
     var IdDepartamento = 0;
+    var fnCallBack = null;
 
     var InitSelect = function () {
         cargarSelect2(Categoria,
@@ -96,7 +98,8 @@ var editarVehiculo = function () {
 
     }
 
-    var fnInit = function (idvehiculo) {
+    var fnInit = function (idvehiculo, callback) {
+        fnCallBack = callback
         fnCargarFecha();
         anno.bind('keypress', valideKey);
         rtvVencimientoAnno.bind('keypress', valideKey);
@@ -172,6 +175,7 @@ var editarVehiculo = function () {
         tituloPropiedad.val(result.TituloPropiedad ==  "Sí" ? 1 : 0);
         multas.val(result.Multas == null ? utils.formatterColon.format(0) : utils.formatterColon.format(result.Multas));
         Categoria.val(result.t_CategoriasVehiculos == null ? "" : result.t_CategoriasVehiculos.IDCategoriaVehiculo);
+        debugger;
         Departamento.val(result.t_Departamentos == null ? "" : result.t_Departamentos.IDDepartamento);
         IdCategoriaVehiculo = result.t_CategoriasVehiculos.IDCategoriaVehiculo;
         IdDepartamento = result.t_Departamentos.IDDepartamento;
@@ -426,9 +430,8 @@ var editarVehiculo = function () {
 
                 var success = function (result) {
                     if (result.MessageType == "Success") {
-                        Dialog.alert('Creacion Vehiculos', result.InfoMessage, function () {
-                            modalVehiculo.modal('hide');
-                        })
+                        modalVehiculo.modal('hide');
+                        fnCallBack(result);
                     }
                     else {
                         Dialog.alert('Creacion Vehiculos', result.ErrorMessage, function () {
@@ -444,8 +447,8 @@ var editarVehiculo = function () {
         }
     };
 
-    var fnAbrirModal = function (idVehiculo) {
-        fnInit(idVehiculo);
+    var fnAbrirModal = function (idVehiculo, callback) {
+        fnInit(idVehiculo, callback);
         InitSelect();
     };
 
