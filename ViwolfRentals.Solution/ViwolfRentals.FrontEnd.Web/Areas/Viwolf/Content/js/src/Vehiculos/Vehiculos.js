@@ -16,7 +16,8 @@
         debugger;
         if (result != null) {
             Dialog.alert('Creacion Vehiculos', result.InfoMessage, function () {
-                fnBuscarVehiculo();
+                //fnBuscarVehiculo();
+                window.location.reload();
             })
         }
             

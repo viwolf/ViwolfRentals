@@ -372,6 +372,8 @@ var editarVehiculo = function () {
             debugger;
             if (respuesta == true)
                 fnGuardarVehiculo();
+            else
+                modalVehiculo.modal('hide');
         })
     };
 
