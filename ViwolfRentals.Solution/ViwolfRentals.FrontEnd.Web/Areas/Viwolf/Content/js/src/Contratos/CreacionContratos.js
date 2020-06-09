@@ -11,10 +11,11 @@
     };
 
     var fnLlenarReservacion = function () {
-        debugger
         txtIdReservacionContrato.val(objReservacion.IdReservacion);
         txtNombreClienteContrato.val(objReservacion.NombreCliente);
     };
+
+
 
     return {
         AbrirModal: abrirModal
