@@ -14,6 +14,12 @@ namespace ViwolfRental.Common.Model
     
     public partial class t_Reservaciones
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public t_Reservaciones()
+        {
+            this.t_Contratos = new HashSet<t_Contratos>();
+        }
+    
         public int IdReservacion { get; set; }
         public System.DateTime FechaCreacion { get; set; }
         public string UsuarioCreacion { get; set; }
@@ -42,6 +48,8 @@ namespace ViwolfRental.Common.Model
         public Nullable<bool> Activo { get; set; }
     
         public virtual t_ClientesComisionistas t_ClientesComisionistas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<t_Contratos> t_Contratos { get; set; }
         public virtual t_Proveedores t_Proveedores { get; set; }
         public virtual t_Usuarios t_Usuarios { get; set; }
         public virtual t_Vehiculos t_Vehiculos { get; set; }

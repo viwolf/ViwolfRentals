@@ -73,7 +73,13 @@
     <Compile Include="t_ClientesComisionistas.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
+    <Compile Include="t_Contratos.cs">
+      <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
+    </Compile>
     <Compile Include="t_Departamentos.cs">
+      <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_EstadosContratos.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
     <Compile Include="t_Kilometrajes.cs">

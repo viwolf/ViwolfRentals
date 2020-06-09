@@ -20,12 +20,47 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="t_Contratos">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Contratos">
+        <MappingFragment StoreEntitySet="t_Contratos">
+          <ScalarProperty Name="IDReservacion" ColumnName="IDReservacion" />
+          <ScalarProperty Name="IDEstadoContrato" ColumnName="IDEstadoContrato" />
+          <ScalarProperty Name="SextaVehiculos" ColumnName="SextaVehiculos" />
+          <ScalarProperty Name="QuintaVehiculos" ColumnName="QuintaVehiculos" />
+          <ScalarProperty Name="CuartaVehiculos" ColumnName="CuartaVehiculos" />
+          <ScalarProperty Name="TerceraVehiculos" ColumnName="TerceraVehiculos" />
+          <ScalarProperty Name="SegundaVehiculos" ColumnName="SegundaVehiculos" />
+          <ScalarProperty Name="PrimeraVehiculos" ColumnName="PrimeraVehiculos" />
+          <ScalarProperty Name="Licencia" ColumnName="Licencia" />
+          <ScalarProperty Name="Pasaporte" ColumnName="Pasaporte" />
+          <ScalarProperty Name="VoucherPago" ColumnName="VoucherPago" />
+          <ScalarProperty Name="VoucherDeposito" ColumnName="VoucherDeposito" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="IDContrato" ColumnName="IDContrato" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="t_Departamentos">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Departamentos">
         <MappingFragment StoreEntitySet="t_Departamentos">
           <ScalarProperty Name="Activo" ColumnName="Activo" />
           <ScalarProperty Name="NombreDepartamento" ColumnName="NombreDepartamento" />
           <ScalarProperty Name="IDDepartamento" ColumnName="IDDepartamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_EstadosContratos">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_EstadosContratos">
+        <MappingFragment StoreEntitySet="t_EstadosContratos">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="IDEstadoContrato" ColumnName="IDEstadoContrato" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -17,6 +17,28 @@
     <Property Name="NombreClienteComisionista" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="t_Contratos">
+    <Key>
+      <PropertyRef Name="IDContrato" />
+    </Key>
+    <Property Name="IDContrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="VoucherDeposito" Type="image" />
+    <Property Name="VoucherPago" Type="image" />
+    <Property Name="Pasaporte" Type="image" />
+    <Property Name="Licencia" Type="image" />
+    <Property Name="PrimeraVehiculos" Type="image" />
+    <Property Name="SegundaVehiculos" Type="image" />
+    <Property Name="TerceraVehiculos" Type="image" />
+    <Property Name="CuartaVehiculos" Type="image" />
+    <Property Name="QuintaVehiculos" Type="image" />
+    <Property Name="SextaVehiculos" Type="image" />
+    <Property Name="IDEstadoContrato" Type="int" Nullable="false" />
+    <Property Name="IDReservacion" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="t_Departamentos">
     <Key>
       <PropertyRef Name="IDDepartamento" />
@@ -24,6 +46,17 @@
     <Property Name="IDDepartamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NombreDepartamento" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_EstadosContratos">
+    <Key>
+      <PropertyRef Name="IDEstadoContrato" />
+    </Key>
+    <Property Name="IDEstadoContrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="t_Kilometrajes">
     <Key>
@@ -194,6 +227,30 @@
     <Property Name="IDDepartamento" Type="int" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
+  <Association Name="FK_t_Contratos_t_EstadosContratos">
+    <End Role="t_EstadosContratos" Type="Self.t_EstadosContratos" Multiplicity="1" />
+    <End Role="t_Contratos" Type="Self.t_Contratos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_EstadosContratos">
+        <PropertyRef Name="IDEstadoContrato" />
+      </Principal>
+      <Dependent Role="t_Contratos">
+        <PropertyRef Name="IDEstadoContrato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Contratos_t_Reservaciones">
+    <End Role="t_Reservaciones" Type="Self.t_Reservaciones" Multiplicity="1" />
+    <End Role="t_Contratos" Type="Self.t_Contratos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Reservaciones">
+        <PropertyRef Name="IdReservacion" />
+      </Principal>
+      <Dependent Role="t_Contratos">
+        <PropertyRef Name="IDReservacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_t_Kilometrajes_t_Vehiculos">
     <End Role="t_Vehiculos" Type="Self.t_Vehiculos" Multiplicity="1" />
     <End Role="t_Kilometrajes" Type="Self.t_Kilometrajes" Multiplicity="*" />
@@ -357,7 +414,9 @@
   <EntityContainer Name="ViwolfRentalsDBModelStoreContainer">
     <EntitySet Name="t_CategoriasVehiculos" EntityType="Self.t_CategoriasVehiculos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_ClientesComisionistas" EntityType="Self.t_ClientesComisionistas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_Contratos" EntityType="Self.t_Contratos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Departamentos" EntityType="Self.t_Departamentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_EstadosContratos" EntityType="Self.t_EstadosContratos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Kilometrajes" EntityType="Self.t_Kilometrajes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Modulos" EntityType="Self.t_Modulos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Pantallas" EntityType="Self.t_Pantallas" Schema="dbo" store:Type="Tables" />
@@ -368,6 +427,14 @@
     <EntitySet Name="t_Sistemas" EntityType="Self.t_Sistemas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Usuarios" EntityType="Self.t_Usuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Vehiculos" EntityType="Self.t_Vehiculos" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_t_Contratos_t_EstadosContratos" Association="Self.FK_t_Contratos_t_EstadosContratos">
+      <End Role="t_EstadosContratos" EntitySet="t_EstadosContratos" />
+      <End Role="t_Contratos" EntitySet="t_Contratos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Contratos_t_Reservaciones" Association="Self.FK_t_Contratos_t_Reservaciones">
+      <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
+      <End Role="t_Contratos" EntitySet="t_Contratos" />
+    </AssociationSet>
     <AssociationSet Name="FK_t_Kilometrajes_t_Vehiculos" Association="Self.FK_t_Kilometrajes_t_Vehiculos">
       <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
       <End Role="t_Kilometrajes" EntitySet="t_Kilometrajes" />
