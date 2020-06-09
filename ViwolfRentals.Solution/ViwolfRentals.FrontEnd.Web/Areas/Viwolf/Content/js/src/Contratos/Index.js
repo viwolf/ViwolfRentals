@@ -6,8 +6,10 @@
     var txtFechaFinal = $('#txtFechaFinal');
     var btnBuscarReservacion = $('#btnBuscarReservacion');
     var tblDataReservacion = $('#tblDataReservacion');
+    var btnCrearContrato = $('#btnCrearContrato');
     var dateIni = null;
     var dateFin = null;
+    var objSeleccionado = null;
 
     function fnCargaFechas() {
 
@@ -49,6 +51,13 @@
     var fnInit = function () {
         fnCargaFechas();
         btnBuscarReservacion.click(fnBuscarReservaciones);
+        btnCrearContrato.click(function () {
+            if (objSeleccionado != null)
+                crearContrato.AbrirModal(objSeleccionado);
+            else
+                Dialog.alert('Contratos', "Debe seleccionar una reservacion.", function () {
+                })
+        });
     };
 
     var fnBuscarReservaciones = function () {
@@ -85,19 +94,15 @@
                             // { data: 't_Vehiculos.t_CategoriasVehiculos.NombreCategoriaVehiculo' },
                         ],
                     });
-                    //tblDataReservacion.on("click", "tr", function () {
-
-                    //    var iPos = tableListReservaciones.fnGetPosition(this);
-                    //    objSeleccionado = tableListReservaciones.fnGetData(iPos);
-
-
-                    //});
-
-                    //OnPageEvent(tableListReservaciones);
+                    tblDataReservacion.on("click", "tr", function () {
+                        var iPos = tblDataReservacion.fnGetPosition(this);
+                        objSeleccionado = tblDataReservacion.fnGetData(iPos);
+                    });
                 }
                 else {
-                    Dialog.alert('Reservaciones', result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage, function () {
+                    Dialog.alert('Contratos', result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage, function () {
                     })
+                    tblDataReservacion.dataTable().fnClearTable();
                 };
             };
             app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
@@ -105,8 +110,6 @@
 
             retorno = false;
         }
-
-
     }
 
     $(function () {

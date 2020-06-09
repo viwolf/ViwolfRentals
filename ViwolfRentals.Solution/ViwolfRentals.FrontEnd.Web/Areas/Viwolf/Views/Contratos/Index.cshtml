@@ -20,7 +20,7 @@
 
     <!-- Estilo datepicker-->
     <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
-    
+
     <!-- Estilo datatable-->
     <link href="https://cdn.datatables.net/responsive/2.1.0/css/responsive.dataTables.min.css" rel="stylesheet" media="screen">
     <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" media="screen">
@@ -49,7 +49,7 @@
                                             <input id="txtIDReservacion" class="input--style-5" type="text" name="IDReservacion">
                                             <label class="label--desc">Número Reservacion</label>
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col-4">
                                             <input id="txtNombreCliente" class="input--style-5" type="text" name="NombreCliente">
                                             <label class="label--desc">Nombre Cliente</label>
                                         </div>
@@ -64,11 +64,6 @@
                                         <div class="col-2">
                                             <input id="txtFechaFinal" class="input--style-5" type="text" name="FechaFinal">
                                             <label class="label--desc">Fecha Final</label>
-                                        </div>
-                                        <div class="col-2">
-                                            <button type="button" id="btnBuscarReservacion" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Buscar Reservacion">
-                                                <i class="fa fa-search"></i> Buscar
-                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -96,9 +91,11 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class=" actions pull-right">
-                                        <button type="button" id="btnGenerar" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="GenerarContrato">
-                                            <i class="fa fa-file-pdf display-block fa-2x"></i> Generar
-                                            
+                                        <button type="button" id="btnBuscarReservacion" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Buscar Reservacion">
+                                            <i class="fa fa-search"></i> Buscar
+                                        </button>
+                                        <button type="button" id="btnCrearContrato" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="GenerarContrato">
+                                            Crear contrato
                                         </button>
                                     </div>
                                 </div>
@@ -120,3 +117,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <script src="~/Areas/Viwolf/Content/js/src/Contratos/Index.js"></script>
+
+@Html.Partial("~/Areas/Viwolf/Views/Contratos/CreacionContrato.cshtml")
+<script src="~/Areas/Viwolf/Content/js/src/Contratos/CreacionContratos.js"></script>
