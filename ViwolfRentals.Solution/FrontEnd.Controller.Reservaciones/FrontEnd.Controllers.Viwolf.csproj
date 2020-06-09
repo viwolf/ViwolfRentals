@@ -104,6 +104,7 @@
   <ItemGroup>
     <Compile Include="CategoriasVehiculosController.cs" />
     <Compile Include="ComisionistasController.cs" />
+    <Compile Include="ContratosController.cs" />
     <Compile Include="DepartamentosController.cs" />
     <Compile Include="ProveedoresController.cs" />
     <Compile Include="ReservacionesController.cs" />

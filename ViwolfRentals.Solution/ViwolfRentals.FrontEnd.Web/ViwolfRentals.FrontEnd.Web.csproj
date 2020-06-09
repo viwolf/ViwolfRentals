@@ -181,6 +181,7 @@
     <Content Include="Areas\Seguridad\Content\Plugin\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Areas\Seguridad\Content\Plugin\bootstrap\js\bootstrap.js" />
     <Content Include="Areas\Seguridad\Content\Plugin\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Areas\Viwolf\Content\js\src\Contratos\Index.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Calendario.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\css\core\main.css" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\css\core\main.min.css" />
@@ -205,7 +206,12 @@
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\InfoReservacion.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Vehiculos\EditarVehiculo.js" />
     <Content Include="Content\js\src\ConfigViwolf.js" />
+    <Content Include="Content\js\src\datepicker\daterangepicker.css" />
+    <Content Include="Content\js\src\datepicker\daterangepicker.js" />
+    <Content Include="Content\js\src\datepicker\moment.min.js" />
     <Content Include="Content\js\src\Error\styleError.css" />
+    <Content Include="Content\js\src\jquery-1.12.4.js" />
+    <Content Include="Content\js\src\jquery-ui.js" />
     <Content Include="Content\Plugins\datatables\css\jquery.dataTables.min.css" />
     <Content Include="Content\Plugins\datatables\css\responsive.dataTables.min.css" />
     <Content Include="Content\Plugins\ModalMessage\bootstrap.min.js" />
@@ -561,6 +567,7 @@
     <Content Include="Areas\Viwolf\Views\Reservaciones\Calendario.cshtml" />
     <Content Include="Areas\Viwolf\Views\Reservaciones\InfoReservacion.cshtml" />
     <Content Include="Areas\Viwolf\Views\Vehiculos\EditarVehiculo.cshtml" />
+    <Content Include="Areas\Viwolf\Views\Contratos\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

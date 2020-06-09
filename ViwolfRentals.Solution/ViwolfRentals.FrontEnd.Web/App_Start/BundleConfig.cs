@@ -12,10 +12,16 @@ namespace ViwolfRentals.FrontEnd.Web
             bundles.UseCdn = true;
             bundles.Add(
                 new ScriptBundle("~/bundles/Content")
+                    .Include("~/Content/js/src/jquery-1.12.4.js")
+                    .Include("~/Content/js/src/jquery-ui.js")
+                    .Include("~/Content/js/src/datepicker/moment.min.js")
+                    .Include("~/Content/js/src/datepicker/daterangepicker.js")
                     .Include("~/Content/js/src/ConfigViwolf.js")
-                    .Include("~/Content/Plugins/ajaxloader/ajaxloader.js"));
+                    .Include("~/Content/Plugins/ajaxloader/ajaxloader.js")
+                    .Include("~/Areas/Seguridad/Content/js/src/app.js")
+                    );
 
-            bundles.Add(
+               bundles.Add(
             new ScriptBundle("~/bundles/Seguridad")
                     .Include("~/Areas/Seguridad/Content/Vendor/jquery/jquery-3.2.1.min.js")
                     .Include("~/Areas/Seguridad/Content/Vendor/bootstrap/js/popper.js")
@@ -69,6 +75,7 @@ namespace ViwolfRentals.FrontEnd.Web
 
             bundles.Add(new StyleBundle("~/bundles/Estilo/ViwolfRentals")
               .Include("~/Areas/Viwolf/Content/dist/css/styles.css")
+     
               );
 
             bundles.Add(new StyleBundle("~/bundles/Estilo/ViwolfRentalsReservaciones")
