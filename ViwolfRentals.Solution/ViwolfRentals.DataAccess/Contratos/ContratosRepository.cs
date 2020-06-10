@@ -51,7 +51,7 @@ namespace ViwolfRentals.DataAccess
             {
                 tracerBuilder.AppendLine($"Se procede a guardar la reservacion. {Environment.NewLine}");
                 var IdContrato = (int)connection.ExecuteScalar(
-                                              sql: "usp_Reservaciones_Guardar",
+                                              sql: "usp_Contratos_Guardar",
                                               param: new
                                               {
                                                   entity.IDContrato,

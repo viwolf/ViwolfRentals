@@ -10,6 +10,13 @@
         Inactivo: 0
     }
 
+    const _EstadosContratos = {
+        Pendiente: 1,
+        Facturado: 2,
+        Extendido: 3,
+        Anulado: 4
+    }
+
     const _ModosPagos = {
         Efectivo: 1,
         CxC: 2
@@ -18,6 +25,8 @@
     return {
         Roles: _Roles,
         EstadosVehiculos: _EstadosVehiculos,
+        EstadosContratos: _EstadosContratos,
         ModosPagos: _ModosPagos
+
     }
 }();
