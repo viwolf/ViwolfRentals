@@ -115,7 +115,30 @@ namespace FrontEnd.Controllers.Viwolf
 
         }
 
+        public JsonResult VerReporte(t_Contratos model)
+        {
+            //URL Visor del Servidor de Reporting Services
+            string sServidor = "http://localhost:80/reportserver";
+            //Carpeta donde tenemos los reportes
 
+            string sCarpeta = "ViwolfRentals";
+            //Nombre del Reporte
+            string sReporte = "Report1";
+            //Los parámetros con sus respectivos valores
+            string sParametroValor = "&IDReservacion=" + model.IDReservacion;
+            //Comandos a pasar al Visor de Reporting Services
+
+            
+            string sComandosRS = "&rs:Command=Render&rs:Format=HTML4.0&rc:Parameters=false";
+            //StringBuilder para crear un iFrame
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<iframe id='ifReporte' width='100%' style='height: 480px' frameborder='0'");
+            sb.AppendFormat("src='{0}?/{1}/{2}{3}{4}'", sServidor, sCarpeta, sReporte, sParametroValor, sComandosRS);
+            sb.Append("></iframe>");
+            //Retorna el stringBuilder en JSON y se permite todas las peticiones GET
+
+            return this.Json(sb.ToString(), JsonRequestBehavior.AllowGet);
+        }
 
 
 

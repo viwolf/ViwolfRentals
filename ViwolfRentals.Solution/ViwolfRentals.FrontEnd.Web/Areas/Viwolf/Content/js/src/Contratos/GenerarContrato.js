@@ -59,13 +59,13 @@
 
 
         try {
-            var oUrl = 'Reportes/VerGeneracionContrato';
+            var oUrl = 'Reportes/VerReporte';
             var oData =
             {
 
                 "IdReservacion": idReservacion,
-                "reportName": "Report1",
-                "TipoImpresion": TipoImpresion
+                //"reportName": "Report1",
+                //"TipoImpresion": TipoImpresion
             };
 
             var oProcessMessage = 'Generando reporte, espere por favor...';
@@ -80,7 +80,7 @@
                 }
                 debugger;
                 $popupReports.modal('show');
-                $repote.html(result.Data);
+                $repote.html(result);
                 //app.fnShowSuccessMessage(result.InfoMessage);
             };
 
