@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +21,9 @@ namespace FrontEnd.Controllers.Viwolf
             ViewBag.IdUsuario = idUsuario;
             return View();
         }
+
+
+
 
         [HttpPost]
         public JsonResult GuardarContrato(ViwolfRental.Common.Model.t_Contratos contrato)

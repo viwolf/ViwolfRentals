@@ -227,30 +227,6 @@
     <Property Name="IDDepartamento" Type="int" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
-  <Association Name="FK_t_Contratos_t_EstadosContratos">
-    <End Role="t_EstadosContratos" Type="Self.t_EstadosContratos" Multiplicity="1" />
-    <End Role="t_Contratos" Type="Self.t_Contratos" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="t_EstadosContratos">
-        <PropertyRef Name="IDEstadoContrato" />
-      </Principal>
-      <Dependent Role="t_Contratos">
-        <PropertyRef Name="IDEstadoContrato" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_t_Contratos_t_Reservaciones">
-    <End Role="t_Reservaciones" Type="Self.t_Reservaciones" Multiplicity="1" />
-    <End Role="t_Contratos" Type="Self.t_Contratos" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="t_Reservaciones">
-        <PropertyRef Name="IdReservacion" />
-      </Principal>
-      <Dependent Role="t_Contratos">
-        <PropertyRef Name="IDReservacion" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_t_Kilometrajes_t_Vehiculos">
     <End Role="t_Vehiculos" Type="Self.t_Vehiculos" Multiplicity="1" />
     <End Role="t_Kilometrajes" Type="Self.t_Kilometrajes" Multiplicity="*" />
@@ -427,14 +403,6 @@
     <EntitySet Name="t_Sistemas" EntityType="Self.t_Sistemas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Usuarios" EntityType="Self.t_Usuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Vehiculos" EntityType="Self.t_Vehiculos" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_t_Contratos_t_EstadosContratos" Association="Self.FK_t_Contratos_t_EstadosContratos">
-      <End Role="t_EstadosContratos" EntitySet="t_EstadosContratos" />
-      <End Role="t_Contratos" EntitySet="t_Contratos" />
-    </AssociationSet>
-    <AssociationSet Name="FK_t_Contratos_t_Reservaciones" Association="Self.FK_t_Contratos_t_Reservaciones">
-      <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
-      <End Role="t_Contratos" EntitySet="t_Contratos" />
-    </AssociationSet>
     <AssociationSet Name="FK_t_Kilometrajes_t_Vehiculos" Association="Self.FK_t_Kilometrajes_t_Vehiculos">
       <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
       <End Role="t_Kilometrajes" EntitySet="t_Kilometrajes" />

@@ -13,31 +13,98 @@
     var txtQuintaVehiculo = $('#txtQuintaVehiculo');
     var txtSextaVehiculo = $('#txtSextaVehiculo');
     var btnGuardarContrato = $('#btnGuardarContrato');
-    var img = null;
+    var imgPago = null;
+    var imgDeposito = null;
+    var imgLicencia = null;
+    var imgContrato = null;
+    var imgVehiculo1 = null;
+    var imgVehiculo2 = null;
+    var imgVehiculo3 = null;
+    var imgVehiculo4 = null;
+    var imgVehiculo5 = null;
+    var imgVehiculo6 = null;
    
 
     var objReservacion = null;
 
+    var fnReader = function (e, control) {
+        debugger;
+        switch (control) {
+            case 'imgVoucherPago':
+                imgPago = e.target.result;
+                var preview = document.getElementById(control);
+                preview.src = imgPago;
+                break;
+            case 'imgVoucherDeposito':
+                imgDeposito = e.target.result;
+                var preview = document.getElementById(control);
+                preview.src = imgDeposito;
+                break;
+            case 'imgLicencia':
+                imgLicencia = e.target.result;
+                var preview = document.getElementById(control);
+                preview.src = imgLicencia;
+                break;
+            case 'imgContrato':
+                imgContrato = e.target.result;
+                var preview = document.getElementById(control);
+                preview.src = imgContrato;
+                break;
+            case 'imgPrimeraVehiculo':
+                imgVehiculo1 = e.target.result;
+                var preview = document.getElementById(control);
+                preview.src = imgVehiculo1;
+                break;
+            case 'imgSegundaVehiculo':
+                imgVehiculo2 = e.target.result;
+                var preview = document.getElementById(control);
+                preview.src = imgVehiculo2;
+                break;
+            case 'imgTerceraVehiculo':
+                imgVehiculo3 = e.target.result;
+                var preview = document.getElementById(control);
+                preview.src = imgVehiculo3;
+                break;
+            case 'imgCuartaVehiculo':
+                imgVehiculo4 = e.target.result;
+                var preview = document.getElementById(control);
+                preview.src = imgVehiculo4;
+                break;
+            case 'imgQuintaVehiculo':
+                imgVehiculo5 = e.target.result;
+                var preview = document.getElementById(control);
+                preview.src = imgVehiculo5;
+                break;
+            case 'imgSextaVehiculo':
+                imgVehiculo6 = e.target.result;
+                var preview = document.getElementById(control);
+                preview.src = imgVehiculo6;
+                break;
+            default:
+                break;
+        }
+        //var img = e.target.result;
+        //var preview = document.getElementById(control);
+        //preview.src = img;
+    }
+
     function readURL(input, control) {
-       if (input.files && input.files[0]) {
-           var reader = new FileReader();
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                debugger;
+                fnReader(e, control);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 
-           reader.onload = function (e) {
-               debugger;
-               img = e.target.result;
-               var preview = document.getElementById(control);
-               preview.src = img;
-           }
-
-          
-           reader.readAsDataURL(input.files[0]);
-       }
-}
     var abrirModal = function (reservacion) {
         objReservacion = reservacion;
         fnLlenarReservacion();
         btnGuardarContrato.bind().click(fnConfirmarGuardar);
         $("#txtVoucherPago").change(function () {
+            debugger;
             readURL(this, 'imgVoucherPago');
         });
         $("#txtVoucherDeposito").change(function () {
@@ -83,53 +150,86 @@
         })
     };
 
-    function b64toBlob(b64Data, contentType, sliceSize) {
+    function base64toBlob(base64Data, contentType) {
         contentType = contentType || '';
-        sliceSize = sliceSize || 512;
+        var sliceSize = 1024;
+        var byteCharacters = atob(base64Data);
+        var bytesLength = byteCharacters.length;
+        var slicesCount = Math.ceil(bytesLength / sliceSize);
+        var byteArrays = new Array(slicesCount);
 
-        var byteCharacters = atob(b64Data);
-        var byteArrays = [];
+        for (var sliceIndex = 0; sliceIndex < slicesCount; ++sliceIndex) {
+            var begin = sliceIndex * sliceSize;
+            var end = Math.min(begin + sliceSize, bytesLength);
 
-        for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-            var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-            var byteNumbers = new Array(slice.length);
-            for (var i = 0; i < slice.length; i++) {
-                byteNumbers[i] = slice.charCodeAt(i);
+            var bytes = new Array(end - begin);
+            for (var offset = begin, i = 0; offset < end; ++i, ++offset) {
+                bytes[i] = byteCharacters[offset].charCodeAt(0);
             }
-
-            var byteArray = new Uint8Array(byteNumbers);
-
-            byteArrays.push(byteArray);
+            byteArrays[sliceIndex] = new Uint8Array(bytes);
         }
+        return new Blob(byteArrays, { type: contentType });
+    }
 
-        var blob = new Blob(byteArrays, { type: contentType });
-        return blob;
+    //function b64toBlob(b64Data, contentType, sliceSize) {
+    //    contentType = contentType || '';
+    //    sliceSize = sliceSize || 512;
+
+    //    var byteCharacters = atob(b64Data);
+    //    var byteArrays = [];
+
+    //    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+    //        var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+    //        var byteNumbers = new Array(slice.length);
+    //        for (var i = 0; i < slice.length; i++) {
+    //            byteNumbers[i] = slice.charCodeAt(i);
+    //        }
+
+    //        var byteArray = new Uint8Array(byteNumbers);
+
+    //        byteArrays.push(byteArray);
+    //    }
+
+    //    var blob = new Blob(byteArrays, { type: contentType });
+    //    return blob;
+    //}
+
+    var fnBlock = function (img) {
+        var block = img.split(";");
+        //var contentType = block[0].split(":")[1];// In this case "image/gif"
+        var realData = block[1].split(",")[1];// In this case "R0lGODlhPQBEAPeoAJosM...."
+        //var blob = b64toBlob(realData, contentType);
+        return realData;
     }
 
     var fnGuardarContrato = function () {
         debugger;
-        //var block = img.split(";");
-        //// Get the content type of the image
-        //var contentType = block[0].split(":")[1];// In this case "image/gif"
-        //// get the real base64 content of the file
-        //var realData = block[1].split(",")[1];// In this case "R0lGODlhPQBEAPeoAJosM...."
-
-        //// Convert it to a blob to upload
-        //var blob = b64toBlob(realData, contentType);
        
+
+
+
+        var realDataPago = imgPago == null ? null : fnBlock(imgPago);
+        var realDataDeposito = imgDeposito == null ? null : fnBlock(imgDeposito);
+        var realDataLicencia = imgLicencia == null ? null : fnBlock(imgLicencia);
+        var realDataVehiculo1 = imgVehiculo1 == null ? null : fnBlock(imgVehiculo1);
+        var realDataVehiculo2 = imgVehiculo2 == null ? null : fnBlock(imgVehiculo2);
+        var realDataVehiculo3 = imgVehiculo3 == null ? null : fnBlock(imgVehiculo3);
+        var realDataVehiculo4 = imgVehiculo4 == null ? null : fnBlock(imgVehiculo4);
+        var realDataVehiculo5 = imgVehiculo5 == null ? null : fnBlock(imgVehiculo5);
+        var realDataVehiculo6 = imgVehiculo6 == null ? null : fnBlock(imgVehiculo6);
 
             var oData = {
                 "UsuarioCreacion": usuarioLogueado,
-                "VoucherDeposito": realData,
-                "VoucherPago": txtVoucherPago.val(),
-                "Licencia": txtLicencia.val(),
-                "PrimeraVehiculos": txtPrimeraVehiculo.val(),
-                "SegundaVehiculos": txtSegundaVehiculo.val(),
-                "TerceraVehiculos": txtTerceraVehiculo.val(),
-                "CuartaVehiculos": txtCuartaVehiculo.val(),
-                "QuintaVehiculos": txtQuintaVehiculo.val(),
-                "SextaVehiculos": txtSextaVehiculo.val(),
+                "VoucherDeposito": realDataDeposito,
+                "VoucherPago": realDataPago,
+                "Licencia": realDataLicencia,
+                "PrimeraVehiculos": realDataVehiculo1,
+                "SegundaVehiculos": realDataVehiculo2,
+                "TerceraVehiculos": realDataVehiculo3,
+                "CuartaVehiculos": realDataVehiculo4,
+                "QuintaVehiculos": realDataVehiculo5,
+                "SextaVehiculos": realDataVehiculo6,
                 "IDEstadoContrato": configViwolf.EstadosContratos.Pendiente,
                 "IDReservacion": txtIdReservacionContrato.val()
             }
@@ -141,7 +241,7 @@
                     if (result.MessageType == "Success") {
                         Dialog.alert('Contrato', result.InfoMessage, function () {
                         })
-                        fnLimpiarDatos();
+                        popupCrearContrato.modal('hide');
                     }
                     else {
                         Dialog.alert('Contrato', result.ErrorMessage, function () {
