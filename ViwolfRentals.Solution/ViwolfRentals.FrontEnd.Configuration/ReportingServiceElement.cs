@@ -23,6 +23,8 @@ namespace ViwolfRentals.FrontEnd.Configuration
             set { base["RSUrl"] = value; }
         }
 
+       
+
         [ConfigurationProperty("RSPath", IsRequired = true)]
         public string RSPath
         {

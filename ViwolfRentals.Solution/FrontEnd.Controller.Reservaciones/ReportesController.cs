@@ -91,13 +91,13 @@ namespace FrontEnd.Controllers.Viwolf
             return File(bytes, Response.ContentType);
         }
 
-        public JsonResult VerGeneracionContrato(t_Contratos model, int tipoImpresion)
+        public JsonResult VerGeneracionContrato(t_Contratos model)
         {
-            return DoVerGeneracionContrato(model, tipoImpresion);
+            return DoVerGeneracionContrato(model);
         }
 
 
-        private JsonResult DoVerGeneracionContrato(t_Contratos model, int tipoImpresion)
+        private JsonResult DoVerGeneracionContrato(t_Contratos model)
         {
             int IdDeposito = model.IDReservacion;
             string reportName = "Report1";
@@ -172,20 +172,17 @@ namespace FrontEnd.Controllers.Viwolf
                     param += ";";
                 }
             }
-
+            string sComandosRS = "&rs:Command=Render&rs:Format=HTML4.0&rc:Parameters=false";
             var parametros = string.Format("?rpt={0}&param={1}", listParamVal.First(), param);
-            //"?rpt=" + sReporte +
-            //"&param=" +
-            //    "IdOrdenPedido-" + model.IdConsecutivo +
-            //    ";IdPersona-" + model.IdPersona +
-            //    ";IdTienda-" + idTiendaActual;
+           
 
             //StringBuilder para crear un iFrame
             var sb = new StringBuilder();
             sb.Append("<iframe id='ifReporte' width='100%' style='height: 480px' frameborder='0'");
-            sb.AppendFormat("src='{0}{1}'",
-                ObtenerPathViewerReportingService(),
-                parametros);
+            //sb.AppendFormat("src='{0}{1}'",
+            //    ObtenerPathViewerReportingService(),
+            //    parametros);
+            sb.AppendFormat("src='{0}?/{1}/{2}{3}{4}'", ObtenerPathViewerReportingService(), ObtenerCarpetaViewerReportingService(), listNameParam[0], parametros, sComandosRS);
             sb.Append("></iframe>");
             return sb;
         }
@@ -193,6 +190,12 @@ namespace FrontEnd.Controllers.Viwolf
         private static string ObtenerPathViewerReportingService()
         {
             string url = ReportingServiceSection.CurrentConfiguration.Reportings.OfType<ReportingServiceElement>().Where(m => m.Name == "CRI").Select(m => m.RSUrl.ToString()).FirstOrDefault();
+            return url;
+        }
+
+        private static string ObtenerCarpetaViewerReportingService()
+        {
+            string url = ReportingServiceSection.CurrentConfiguration.Reportings.OfType<ReportingServiceElement>().Where(m => m.Name == "CRI").Select(m => m.RSPath.ToString()).FirstOrDefault();
             return url;
         }
 

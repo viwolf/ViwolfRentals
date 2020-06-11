@@ -59,7 +59,7 @@
 
 
         try {
-            var oUrl = 'Reportes/VerReporte';
+            var oUrl = 'Reportes/VerGeneracionContrato';
             var oData =
             {
 
