@@ -28,7 +28,7 @@
     var objReservacion = null;
 
     var fnReader = function (e, control) {
-        debugger;
+        
         switch (control) {
             case 'imgVoucherPago':
                 imgPago = e.target.result;
@@ -92,7 +92,7 @@
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
-                debugger;
+                
                 fnReader(e, control);
             }
             reader.readAsDataURL(input.files[0]);
@@ -104,7 +104,7 @@
         fnLlenarReservacion();
         btnGuardarContrato.bind().click(fnConfirmarGuardar);
         $("#txtVoucherPago").change(function () {
-            debugger;
+            
             readURL(this, 'imgVoucherPago');
         });
         $("#txtVoucherDeposito").change(function () {
@@ -142,11 +142,11 @@
         txtNombreClienteContrato.val(objReservacion.NombreCliente);
     };
 
-    var fnConfirmarGuardar = function () {
+    var fnConfirmarGuardar = function (e) {
         Dialog.confirm('Contratos', "Desea guardar el Contrato?", function (respuesta) {
            
             if (respuesta == true)
-                fnGuardarContrato();
+                fnGuardarContrato(e);
         })
     };
 
@@ -203,8 +203,8 @@
         return realData;
     }
 
-    var fnGuardarContrato = function () {
-        debugger;
+    var fnGuardarContrato = function (e) {
+        
        
 
 
@@ -241,6 +241,8 @@
                     if (result.MessageType == "Success") {
                         Dialog.alert('Contrato', result.InfoMessage, function () {
                         })
+                        debugger;
+                        generarContrato.fnReporteTicket(e, result.Data.IDReservacion, 1);
                         popupCrearContrato.modal('hide');
                     }
                     else {

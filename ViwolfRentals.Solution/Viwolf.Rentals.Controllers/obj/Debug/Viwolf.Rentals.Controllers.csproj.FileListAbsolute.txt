@@ -50,3 +50,8 @@ C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\Viw
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\obj\Debug\Viwolf.Rentals.Controllers.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\obj\Debug\Viwolf.Rentals.Controllers.pdb
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\obj\Debug\Viwolf.Rentals.Controllers.csprojAssemblyReference.cache
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\Microsoft.ReportViewer.Common.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\Microsoft.ReportViewer.WebForms.DLL
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\ViwolfRentals.FrontEnd.Configuration.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.Rentals.Controllers\bin\Debug\ViwolfRentals.FrontEnd.Configuration.pdb

@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viwolf.BusinessLogic", "Viw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViwolfRental.Common.Filters", "ViwolfRental.Common.Filters\ViwolfRental.Common.Filters.csproj", "{5F2051C7-2555-4A18-9E5C-938052812094}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViwolfRentals.FrontEnd.Configuration", "ViwolfRentals.FrontEnd.Configuration\ViwolfRentals.FrontEnd.Configuration.csproj", "{3DE7CA82-A858-48D0-A112-AC593AC699CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{5F2051C7-2555-4A18-9E5C-938052812094}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F2051C7-2555-4A18-9E5C-938052812094}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F2051C7-2555-4A18-9E5C-938052812094}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DE7CA82-A858-48D0-A112-AC593AC699CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DE7CA82-A858-48D0-A112-AC593AC699CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DE7CA82-A858-48D0-A112-AC593AC699CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DE7CA82-A858-48D0-A112-AC593AC699CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -133,6 +139,7 @@ Global
 		{9AB5D31D-813A-4953-BBB3-2A2974E14BEC} = {66AA01A1-B274-4CBC-81CC-3C5091A37AB7}
 		{D2E2E2B3-8A24-49A5-9853-A14754A65A42} = {E69F8AAB-C132-4D1E-8DAC-167E3BB3C193}
 		{5F2051C7-2555-4A18-9E5C-938052812094} = {B82E300D-CFA8-440F-B60F-098835027045}
+		{3DE7CA82-A858-48D0-A112-AC593AC699CA} = {601216BB-7266-43DA-BE0B-9FECE23D243D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C77D6963-4C13-4631-BDD7-0F1F5D508EB6}
