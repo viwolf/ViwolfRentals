@@ -18,7 +18,7 @@ namespace ViwolfRental.Common.Model
         public t_Vehiculos()
         {
             this.t_Kilometrajes = new HashSet<t_Kilometrajes>();
-            //this.t_Reservaciones = new HashSet<t_Reservaciones>();
+         
         }
     
         public string IDVehiculo { get; set; }

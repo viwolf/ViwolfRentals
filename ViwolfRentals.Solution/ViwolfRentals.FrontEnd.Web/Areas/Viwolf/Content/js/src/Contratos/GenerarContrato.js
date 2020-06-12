@@ -19,7 +19,6 @@
         $btnGenerarExcel.click(fnReporteExportar);
         $btnGenerarPDF.click(fnReporteExportar);
         $btnGenerarWord.click(fnReporteExportar);
-        $tituloReporte.text('Depositos');
         mediosExportar(false, false, false);
     }
 

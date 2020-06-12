@@ -22,6 +22,13 @@
           <Property Name="NombreClienteComisionista" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="t_CodigosContratos">
+          <Key>
+            <PropertyRef Name="IDCodigoContrato" />
+          </Key>
+          <Property Name="IDCodigoContrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescripcionCodigoContrato" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
         <EntityType Name="t_Contratos">
           <Key>
             <PropertyRef Name="IDContrato" />
@@ -43,6 +50,7 @@
           <Property Name="SextaVehiculos" Type="image" />
           <Property Name="IDEstadoContrato" Type="int" Nullable="false" />
           <Property Name="IDReservacion" Type="int" Nullable="false" />
+          <Property Name="IDCodigoContrato" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="t_Departamentos">
           <Key>
@@ -232,6 +240,42 @@
           <Property Name="IDDepartamento" Type="int" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK_t_Contratos_t_CodigosContratos">
+          <End Role="t_CodigosContratos" Type="Self.t_CodigosContratos" Multiplicity="1" />
+          <End Role="t_Contratos" Type="Self.t_Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_CodigosContratos">
+              <PropertyRef Name="IDCodigoContrato" />
+            </Principal>
+            <Dependent Role="t_Contratos">
+              <PropertyRef Name="IDEstadoContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Contratos_t_EstadosContratos">
+          <End Role="t_EstadosContratos" Type="Self.t_EstadosContratos" Multiplicity="1" />
+          <End Role="t_Contratos" Type="Self.t_Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_EstadosContratos">
+              <PropertyRef Name="IDEstadoContrato" />
+            </Principal>
+            <Dependent Role="t_Contratos">
+              <PropertyRef Name="IDEstadoContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Contratos_t_Reservaciones">
+          <End Role="t_Reservaciones" Type="Self.t_Reservaciones" Multiplicity="1" />
+          <End Role="t_Contratos" Type="Self.t_Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Reservaciones">
+              <PropertyRef Name="IdReservacion" />
+            </Principal>
+            <Dependent Role="t_Contratos">
+              <PropertyRef Name="IDReservacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_t_Kilometrajes_t_Vehiculos">
           <End Role="t_Vehiculos" Type="Self.t_Vehiculos" Multiplicity="1" />
           <End Role="t_Kilometrajes" Type="Self.t_Kilometrajes" Multiplicity="*" />
@@ -395,6 +439,7 @@
         <EntityContainer Name="ViwolfRentalsDBModelStoreContainer">
           <EntitySet Name="t_CategoriasVehiculos" EntityType="Self.t_CategoriasVehiculos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ClientesComisionistas" EntityType="Self.t_ClientesComisionistas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_CodigosContratos" EntityType="Self.t_CodigosContratos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Contratos" EntityType="Self.t_Contratos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Departamentos" EntityType="Self.t_Departamentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_EstadosContratos" EntityType="Self.t_EstadosContratos" Schema="dbo" store:Type="Tables" />
@@ -408,6 +453,18 @@
           <EntitySet Name="t_Sistemas" EntityType="Self.t_Sistemas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Usuarios" EntityType="Self.t_Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Vehiculos" EntityType="Self.t_Vehiculos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_t_Contratos_t_CodigosContratos" Association="Self.FK_t_Contratos_t_CodigosContratos">
+            <End Role="t_CodigosContratos" EntitySet="t_CodigosContratos" />
+            <End Role="t_Contratos" EntitySet="t_Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Contratos_t_EstadosContratos" Association="Self.FK_t_Contratos_t_EstadosContratos">
+            <End Role="t_EstadosContratos" EntitySet="t_EstadosContratos" />
+            <End Role="t_Contratos" EntitySet="t_Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Contratos_t_Reservaciones" Association="Self.FK_t_Contratos_t_Reservaciones">
+            <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
+            <End Role="t_Contratos" EntitySet="t_Contratos" />
+          </AssociationSet>
           <AssociationSet Name="FK_t_Kilometrajes_t_Vehiculos" Association="Self.FK_t_Kilometrajes_t_Vehiculos">
             <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
             <End Role="t_Kilometrajes" EntitySet="t_Kilometrajes" />
@@ -468,6 +525,7 @@
         <EntityContainer Name="ViwolfRentalsDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="t_CategoriasVehiculos" EntityType="ViwolfRentalsDBModel.t_CategoriasVehiculos" />
           <EntitySet Name="t_ClientesComisionistas" EntityType="ViwolfRentalsDBModel.t_ClientesComisionistas" />
+          <EntitySet Name="t_CodigosContratos" EntityType="ViwolfRentalsDBModel.t_CodigosContratos" />
           <EntitySet Name="t_Contratos" EntityType="ViwolfRentalsDBModel.t_Contratos" />
           <EntitySet Name="t_Departamentos" EntityType="ViwolfRentalsDBModel.t_Departamentos" />
           <EntitySet Name="t_EstadosContratos" EntityType="ViwolfRentalsDBModel.t_EstadosContratos" />
@@ -488,6 +546,18 @@
           <AssociationSet Name="FK_t_Reservaciones_t_ClientesComisionistas" Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_ClientesComisionistas">
             <End Role="t_ClientesComisionistas" EntitySet="t_ClientesComisionistas" />
             <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Contratos_t_CodigosContratos" Association="ViwolfRentalsDBModel.FK_t_Contratos_t_CodigosContratos">
+            <End Role="t_CodigosContratos" EntitySet="t_CodigosContratos" />
+            <End Role="t_Contratos" EntitySet="t_Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Contratos_t_EstadosContratos" Association="ViwolfRentalsDBModel.FK_t_Contratos_t_EstadosContratos">
+            <End Role="t_EstadosContratos" EntitySet="t_EstadosContratos" />
+            <End Role="t_Contratos" EntitySet="t_Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Contratos_t_Reservaciones" Association="ViwolfRentalsDBModel.FK_t_Contratos_t_Reservaciones">
+            <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
+            <End Role="t_Contratos" EntitySet="t_Contratos" />
           </AssociationSet>
           <AssociationSet Name="FK_t_Vehiculos_t_Departamentos" Association="ViwolfRentalsDBModel.FK_t_Vehiculos_t_Departamentos">
             <End Role="t_Departamentos" EntitySet="t_Departamentos" />
@@ -553,6 +623,14 @@
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_ClientesComisionistas" FromRole="t_ClientesComisionistas" ToRole="t_Reservaciones" />
         </EntityType>
+        <EntityType Name="t_CodigosContratos">
+          <Key>
+            <PropertyRef Name="IDCodigoContrato" />
+          </Key>
+          <Property Name="IDCodigoContrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescripcionCodigoContrato" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="t_Contratos" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_CodigosContratos" FromRole="t_CodigosContratos" ToRole="t_Contratos" />
+        </EntityType>
         <EntityType Name="t_Contratos">
           <Key>
             <PropertyRef Name="IDContrato" />
@@ -574,6 +652,10 @@
           <Property Name="SextaVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="IDEstadoContrato" Type="Int32" Nullable="false" />
           <Property Name="IDReservacion" Type="Int32" Nullable="false" />
+          <Property Name="IDCodigoContrato" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="t_CodigosContratos" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_CodigosContratos" FromRole="t_Contratos" ToRole="t_CodigosContratos" />
+          <NavigationProperty Name="t_EstadosContratos" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_EstadosContratos" FromRole="t_Contratos" ToRole="t_EstadosContratos" />
+          <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_Reservaciones" FromRole="t_Contratos" ToRole="t_Reservaciones" />
         </EntityType>
         <EntityType Name="t_Departamentos">
           <Key>
@@ -594,6 +676,7 @@
           <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="t_Contratos" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_EstadosContratos" FromRole="t_EstadosContratos" ToRole="t_Contratos" />
         </EntityType>
         <EntityType Name="t_Kilometrajes">
           <Key>
@@ -680,6 +763,7 @@
           <Property Name="IDVehiculo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Activo" Type="Boolean" />
           <NavigationProperty Name="t_ClientesComisionistas" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_ClientesComisionistas" FromRole="t_Reservaciones" ToRole="t_ClientesComisionistas" />
+          <NavigationProperty Name="t_Contratos" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_Reservaciones" FromRole="t_Reservaciones" ToRole="t_Contratos" />
           <NavigationProperty Name="t_Proveedores" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Proveedores" FromRole="t_Reservaciones" ToRole="t_Proveedores" />
           <NavigationProperty Name="t_Usuarios" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Usuarios" FromRole="t_Reservaciones" ToRole="t_Usuarios" />
           <NavigationProperty Name="t_Vehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Vehiculos" FromRole="t_Reservaciones" ToRole="t_Vehiculos" />
@@ -808,6 +892,42 @@
             </Principal>
             <Dependent Role="t_Reservaciones">
               <PropertyRef Name="IdClienteComisionista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Contratos_t_CodigosContratos">
+          <End Type="ViwolfRentalsDBModel.t_CodigosContratos" Role="t_CodigosContratos" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_Contratos" Role="t_Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_CodigosContratos">
+              <PropertyRef Name="IDCodigoContrato" />
+            </Principal>
+            <Dependent Role="t_Contratos">
+              <PropertyRef Name="IDEstadoContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Contratos_t_EstadosContratos">
+          <End Type="ViwolfRentalsDBModel.t_EstadosContratos" Role="t_EstadosContratos" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_Contratos" Role="t_Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_EstadosContratos">
+              <PropertyRef Name="IDEstadoContrato" />
+            </Principal>
+            <Dependent Role="t_Contratos">
+              <PropertyRef Name="IDEstadoContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Contratos_t_Reservaciones">
+          <End Type="ViwolfRentalsDBModel.t_Reservaciones" Role="t_Reservaciones" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_Contratos" Role="t_Contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Reservaciones">
+              <PropertyRef Name="IdReservacion" />
+            </Principal>
+            <Dependent Role="t_Contratos">
+              <PropertyRef Name="IDReservacion" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -972,9 +1092,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="t_CodigosContratos">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_CodigosContratos">
+              <MappingFragment StoreEntitySet="t_CodigosContratos">
+                <ScalarProperty Name="DescripcionCodigoContrato" ColumnName="DescripcionCodigoContrato" />
+                <ScalarProperty Name="IDCodigoContrato" ColumnName="IDCodigoContrato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="t_Contratos">
             <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Contratos">
               <MappingFragment StoreEntitySet="t_Contratos">
+                <ScalarProperty Name="IDCodigoContrato" ColumnName="IDCodigoContrato" />
                 <ScalarProperty Name="IDReservacion" ColumnName="IDReservacion" />
                 <ScalarProperty Name="IDEstadoContrato" ColumnName="IDEstadoContrato" />
                 <ScalarProperty Name="SextaVehiculos" ColumnName="SextaVehiculos" />

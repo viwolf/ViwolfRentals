@@ -67,7 +67,8 @@ namespace ViwolfRentals.DataAccess
                                                   entity.QuintaVehiculos,
                                                   entity.SextaVehiculos,
                                                   entity.IDEstadoContrato,
-                                                  entity.IDReservacion
+                                                  entity.IDReservacion,
+                                                  entity.IDCodigoContrato
                                               },
                                               transaction: transaction,
                                               commandType: CommandType.StoredProcedure);

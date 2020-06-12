@@ -20,9 +20,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="t_CodigosContratos">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_CodigosContratos">
+        <MappingFragment StoreEntitySet="t_CodigosContratos">
+          <ScalarProperty Name="DescripcionCodigoContrato" ColumnName="DescripcionCodigoContrato" />
+          <ScalarProperty Name="IDCodigoContrato" ColumnName="IDCodigoContrato" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="t_Contratos">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Contratos">
         <MappingFragment StoreEntitySet="t_Contratos">
+          <ScalarProperty Name="IDCodigoContrato" ColumnName="IDCodigoContrato" />
           <ScalarProperty Name="IDReservacion" ColumnName="IDReservacion" />
           <ScalarProperty Name="IDEstadoContrato" ColumnName="IDEstadoContrato" />
           <ScalarProperty Name="SextaVehiculos" ColumnName="SextaVehiculos" />

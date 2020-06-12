@@ -7,6 +7,7 @@
     var btnBuscarReservacion = $('#btnBuscarReservacion');
     var tblDataReservacion = $('#tblDataReservacion');
     var btnCrearContrato = $('#btnCrearContrato');
+    var btnGenerarContrato = $('#btnGenerarContrato');
     var dateIni = null;
     var dateFin = null;
     var objSeleccionado = null;
@@ -60,6 +61,57 @@
                 })
             }
         });
+
+        btnGenerarContrato.click(function (e) {
+            debugger;
+            if (objSeleccionado != null) {
+                debugger;
+                fnConfirmarGenerar(e);
+            }
+            else {
+                Dialog.alert('Contratos', "Debe seleccionar una reservacion.", function () {
+                })
+            }
+        });
+    };
+
+    var fnConfirmarGenerar = function (e) {
+        debugger;
+        Dialog.confirm('Contratos', "Desea generar el Contrato?", function (respuesta) {
+            if (respuesta == true)
+                fnGuardarContrato(e);
+        })
+    };
+
+    var fnGuardarContrato = function (e) {
+
+        var oData = {
+            "UsuarioCreacion": usuarioLogueado,
+            "IDEstadoContrato": configViwolf.EstadosContratos.Pendiente,
+            "IDReservacion": objSeleccionado.IdReservacion,
+            "IDCodigoContrato": configViwolf.CodigosContratos.Sistema
+        }
+        try {
+            var oUrl = 'Contratos/GuardarContrato';
+            var oProcessMessage = 'Guardando Contrato';
+
+            var success = function (result) {
+                if (result.MessageType == "Success") {
+                    Dialog.alert('Contrato', result.InfoMessage, function () {
+                    })
+                    debugger;
+                    generarContrato.fnReporteTicket(e, result.Data.IDContrato, 1)
+                }
+                else {
+                    Dialog.alert('Contrato', result.ErrorMessage, function () {
+                    })
+                }
+            };
+            app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
+        } catch (ex) {
+
+            retorno = false;
+        }
     };
 
     var fnBuscarReservaciones = function () {

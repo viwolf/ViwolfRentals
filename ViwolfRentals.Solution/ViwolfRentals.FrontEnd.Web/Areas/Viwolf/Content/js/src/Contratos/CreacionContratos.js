@@ -204,11 +204,7 @@
     }
 
     var fnGuardarContrato = function (e) {
-        
        
-
-
-
         var realDataPago = imgPago == null ? null : fnBlock(imgPago);
         var realDataDeposito = imgDeposito == null ? null : fnBlock(imgDeposito);
         var realDataLicencia = imgLicencia == null ? null : fnBlock(imgLicencia);
@@ -231,7 +227,8 @@
                 "QuintaVehiculos": realDataVehiculo5,
                 "SextaVehiculos": realDataVehiculo6,
                 "IDEstadoContrato": configViwolf.EstadosContratos.Pendiente,
-                "IDReservacion": txtIdReservacionContrato.val()
+                "IDReservacion": txtIdReservacionContrato.val(),
+                "IDCodigoContrato": configViwolf.CodigosContratos.Fisico
             }
             try {
                 var oUrl = 'Contratos/GuardarContrato';

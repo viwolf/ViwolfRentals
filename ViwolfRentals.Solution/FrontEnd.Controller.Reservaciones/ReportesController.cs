@@ -99,7 +99,6 @@ namespace FrontEnd.Controllers.Viwolf
 
         private JsonResult DoVerGeneracionContrato(t_Contratos model)
         {
-            int IdDeposito = model.IDReservacion;
             string reportName = "rptContrato";
             string sParametroValor = "&IDContrato=" + model.IDContrato;
             //string paramVal = string.Format("{0}-{1}", reportName, IdDeposito);

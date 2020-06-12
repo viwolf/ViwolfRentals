@@ -31,5 +31,10 @@ namespace ViwolfRental.Common.Model
         public byte[] SextaVehiculos { get; set; }
         public int IDEstadoContrato { get; set; }
         public int IDReservacion { get; set; }
+        public int IDCodigoContrato { get; set; }
+    
+        public virtual t_CodigosContratos t_CodigosContratos { get; set; }
+        public virtual t_EstadosContratos t_EstadosContratos { get; set; }
+        public virtual t_Reservaciones t_Reservaciones { get; set; }
     }
 }

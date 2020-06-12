@@ -22,11 +22,17 @@
         CxC: 2
     }
 
+    const _CodigosContratos = {
+        Fisico: 1,
+        Sistema: 2
+    }
+
     return {
         Roles: _Roles,
         EstadosVehiculos: _EstadosVehiculos,
         EstadosContratos: _EstadosContratos,
-        ModosPagos: _ModosPagos
+        ModosPagos: _ModosPagos,
+        CodigosContratos: _CodigosContratos
 
     }
 }();

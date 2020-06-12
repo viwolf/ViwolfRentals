@@ -12,20 +12,16 @@ namespace ViwolfRental.Common.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class t_EstadosContratos
+    public partial class t_CodigosContratos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public t_EstadosContratos()
+        public t_CodigosContratos()
         {
             this.t_Contratos = new HashSet<t_Contratos>();
         }
     
-        public int IDEstadoContrato { get; set; }
-        public string UsuarioCreacion { get; set; }
-        public System.DateTime FechaCreacion { get; set; }
-        public string UsuarioModificacion { get; set; }
-        public Nullable<System.DateTime> FechaModificacion { get; set; }
-        public string Descripcion { get; set; }
+        public int IDCodigoContrato { get; set; }
+        public string DescripcionCodigoContrato { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_Contratos> t_Contratos { get; set; }
