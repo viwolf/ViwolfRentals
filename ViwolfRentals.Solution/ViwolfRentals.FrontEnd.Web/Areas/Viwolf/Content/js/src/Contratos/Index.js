@@ -52,11 +52,13 @@
         fnCargaFechas();
         btnBuscarReservacion.click(fnBuscarReservaciones);
         btnCrearContrato.click(function () {
-            if (objSeleccionado != null)
+            if (objSeleccionado != null) {
                 crearContrato.AbrirModal(objSeleccionado);
-            else
+            }
+            else {
                 Dialog.alert('Contratos', "Debe seleccionar una reservacion.", function () {
                 })
+            }
         });
     };
 

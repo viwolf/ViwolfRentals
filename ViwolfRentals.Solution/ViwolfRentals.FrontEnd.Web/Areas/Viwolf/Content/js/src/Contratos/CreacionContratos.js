@@ -242,7 +242,7 @@
                         Dialog.alert('Contrato', result.InfoMessage, function () {
                         })
                         debugger;
-                        generarContrato.fnReporteTicket(e, result.Data.IDReservacion, 1);
+                        generarContrato.fnReporteTicket(e, result.Data.IDContrato, 1);
                         popupCrearContrato.modal('hide');
                     }
                     else {

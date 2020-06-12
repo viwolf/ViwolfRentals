@@ -52,7 +52,7 @@
         window.location = url;
     }
 
-    function fnReporte(e, idReservacion, TipoImpresion) {
+    function fnReporte(e, idContrato) {
         debugger;
 
         e.preventDefault();
@@ -63,7 +63,7 @@
             var oData =
             {
 
-                "IdReservacion": idReservacion,
+                "IDContrato": idContrato,
                 //"reportName": "Report1",
                 //"TipoImpresion": TipoImpresion
             };
@@ -73,7 +73,6 @@
             var success = function (result) {
 
                 if (result.MessageType == '1') {
-
                     app.fnShowErrorMessage(result.ErrorMessage);
 
                     return;
@@ -82,6 +81,7 @@
                 $popupReports.modal('show');
                 $repote.html(result);
                 //app.fnShowSuccessMessage(result.InfoMessage);
+               
             };
 
             app.fnExecuteWithResult(e, oUrl, oData, oProcessMessage, success);
