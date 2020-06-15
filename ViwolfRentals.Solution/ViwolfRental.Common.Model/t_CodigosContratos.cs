@@ -14,16 +14,7 @@ namespace ViwolfRental.Common.Model
     
     public partial class t_CodigosContratos
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public t_CodigosContratos()
-        {
-            this.t_Contratos = new HashSet<t_Contratos>();
-        }
-    
         public int IDCodigoContrato { get; set; }
         public string DescripcionCodigoContrato { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<t_Contratos> t_Contratos { get; set; }
     }
 }

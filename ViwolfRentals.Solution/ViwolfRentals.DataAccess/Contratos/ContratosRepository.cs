@@ -58,6 +58,7 @@ namespace ViwolfRentals.DataAccess
                                                   entity.UsuarioCreacion,
                                                   entity.UsuarioModificacion,
                                                   entity.VoucherDeposito,
+                                                  //VoucherPago = entity.ExtendedProporeties["Encode"], //VoucherPago,
                                                   entity.VoucherPago,
                                                   entity.Licencia,
                                                   entity.PrimeraVehiculos,

@@ -2,16 +2,16 @@
     var popupCrearContrato = $('#popupCrearContrato');
     var txtIdReservacionContrato = $('#txtIdReservacionContrato');
     var txtNombreClienteContrato = $('#txtNombreClienteContrato');
-    var txtVoucherPago = $('#txtVoucherPago');
-    var txtVoucherDeposito = $('#txtVoucherDeposito');
-    var txtLicencia = $('#txtLicencia');
-    var txtContrato = $('#txtContrato');
-    var txtPrimeraVehiculo = $('#txtPrimeraVehiculo');
-    var txtSegundaVehiculo = $('#txtSegundaVehiculo');
-    var txtTerceraVehiculo = $('#txtTerceraVehiculo');
-    var txtCuartaVehiculo = $('#txtCuartaVehiculo');
-    var txtQuintaVehiculo = $('#txtQuintaVehiculo');
-    var txtSextaVehiculo = $('#txtSextaVehiculo');
+    //var txtVoucherPago = $('#txtVoucherPago');
+    //var txtVoucherDeposito = $('#txtVoucherDeposito');
+    //var txtLicencia = $('#txtLicencia');
+    //var txtContrato = $('#txtContrato');
+    //var txtPrimeraVehiculo = $('#txtPrimeraVehiculo');
+    //var txtSegundaVehiculo = $('#txtSegundaVehiculo');
+    //var txtTerceraVehiculo = $('#txtTerceraVehiculo');
+    //var txtCuartaVehiculo = $('#txtCuartaVehiculo');
+    //var txtQuintaVehiculo = $('#txtQuintaVehiculo');
+    //var txtSextaVehiculo = $('#txtSextaVehiculo');
     var btnGuardarContrato = $('#btnGuardarContrato');
     var imgPago = null;
     var imgDeposito = null;
@@ -28,7 +28,7 @@
     var objReservacion = null;
 
     var fnReader = function (e, control) {
-        
+        debugger;
         switch (control) {
             case 'imgVoucherPago':
                 imgPago = e.target.result;
@@ -89,7 +89,9 @@
     }
 
     function readURL(input, control) {
+        debugger;
         if (input.files && input.files[0]) {
+
             var reader = new FileReader();
             reader.onload = function (e) {
                 
@@ -204,6 +206,8 @@
     }
 
     var fnGuardarContrato = function (e) {
+
+        debugger;
        
         var realDataPago = imgPago == null ? null : fnBlock(imgPago);
         var realDataDeposito = imgDeposito == null ? null : fnBlock(imgDeposito);
@@ -218,7 +222,7 @@
             var oData = {
                 "UsuarioCreacion": usuarioLogueado,
                 "VoucherDeposito": realDataDeposito,
-                "VoucherPago": realDataPago,
+                "VoucherPago":  realDataPago,
                 "Licencia": realDataLicencia,
                 "PrimeraVehiculos": realDataVehiculo1,
                 "SegundaVehiculos": realDataVehiculo2,
@@ -228,7 +232,10 @@
                 "SextaVehiculos": realDataVehiculo6,
                 "IDEstadoContrato": configViwolf.EstadosContratos.Pendiente,
                 "IDReservacion": txtIdReservacionContrato.val(),
-                "IDCodigoContrato": configViwolf.CodigosContratos.Fisico
+                "IDCodigoContrato": configViwolf.CodigosContratos.Fisico,
+                //"ExtendedProporeties": [
+                //    { "Key": "Path", "Value": imgPago }
+                //]
             }
             try {
                 var oUrl = 'Contratos/GuardarContrato';
@@ -236,10 +243,10 @@
 
                 var success = function (result) {
                     if (result.MessageType == "Success") {
-                        Dialog.alert('Contrato', result.InfoMessage, function () {
+                        Dialog.alert('Contrato', result.InfoMessage, function (e) {
+                            window.location.reload();
                         })
-                        debugger;
-                        generarContrato.fnReporteTicket(e, result.Data.IDContrato, 1);
+                      
                         popupCrearContrato.modal('hide');
                     }
                     else {
@@ -253,7 +260,6 @@
                 retorno = false;
             }
     };
-
 
     return {
         AbrirModal: abrirModal
