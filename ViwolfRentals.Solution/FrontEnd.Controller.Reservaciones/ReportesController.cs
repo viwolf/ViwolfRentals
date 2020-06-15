@@ -100,7 +100,7 @@ namespace FrontEnd.Controllers.Viwolf
         private JsonResult DoVerGeneracionContrato(t_Contratos model)
         {
             string reportName = "rptContrato";
-            string sParametroValor = "&IDContrato=" + model.IDContrato;
+            string sParametroValor = "IDContrato-" + model.IDContrato;
             //string paramVal = string.Format("{0}-{1}", reportName, IdDeposito);
             var sb = GetStringBuilderReport(reportName,sParametroValor);
 
@@ -155,26 +155,15 @@ namespace FrontEnd.Controllers.Viwolf
 
         private static StringBuilder GetStringBuilderReport(string name, string parametrosValor)
         {
-            //string param = string.Empty;
-            //int i = 1;
-            //List<string> listParamVal = paramVal.Split('-').ToList();
-            //List<string> listNameParam = RSParametersSection.CurrentConfiguration.
-            //                             Keys.OfType<RSParametersElement>().
-            //                             Where(m => m.Name == listParamVal.First()).
-            //                             Select(m => m.Value).FirstOrDefault().Split('|').ToList();
 
-            //foreach (string name in listNameParam)
-            //{
-            //    param += string.Format("{0}-{1}", name, listParamVal[i]);
-            //    i++;
-            //    if (i <= listNameParam.Count())
-            //    {
-            //        param += ";";
-            //    }
-            //}
-            string sComandosRS = "&rs:Command=Render&rs:Format=HTML4.0&rc:Parameters=false";
-           // var parametros = string.Format("?rpt={0}&param={1}", listParamVal.First(), param);
-           
+            // string sComandosRS = "&rs:Command=Render&rs:Format=HTML4.0&rc:Parameters=false";
+            // var parametros = string.Format("?rpt={0}&param={1}", listParamVal.First(), param);
+
+            string Parametros =
+               "?rpt=" + name +
+               "&param=" +
+                  parametrosValor;
+
 
             //StringBuilder para crear un iFrame
             var sb = new StringBuilder();
@@ -182,14 +171,16 @@ namespace FrontEnd.Controllers.Viwolf
             //sb.AppendFormat("src='{0}{1}'",
             //    ObtenerPathViewerReportingService(),
             //    parametros);
-            sb.AppendFormat("src='{0}?/{1}/{2}{3}{4}'", ObtenerPathViewerReportingService(), ObtenerCarpetaViewerReportingService(), name, parametrosValor, sComandosRS);
+            //sb.AppendFormat("src='{0}/{1}?/{2}{3}{4}{5}'", ObtenerPathViewerReportingService(), ObtenerPathViewerPdfReportingService(), ObtenerCarpetaViewerReportingService(), name, parametrosValor, sComandosRS);
+            sb.AppendFormat("src='{0}{1}'", ObtenerPathViewerReportingService(), Parametros);
             sb.Append("></iframe>");
             return sb;
         }
 
         private static string ObtenerPathViewerReportingService()
         {
-            string url = ReportingServiceSection.CurrentConfiguration.Reportings.OfType<ReportingServiceElement>().Where(m => m.Name == "CRI").Select(m => m.RSUrl.ToString()).FirstOrDefault();
+            //string url = ReportingServiceSection.CurrentConfiguration.Reportings.OfType<ReportingServiceElement>().Where(m => m.Name == "CRI").Select(m => m.RSUrl.ToString()).FirstOrDefault();
+            string url = ReportingServiceSection.CurrentConfiguration.Reportings.OfType<ReportingServiceElement>().Where(m => m.Name == "CRI").Select(m => m.PathViewer.ToString()).FirstOrDefault();
             return url;
         }
 
@@ -197,6 +188,12 @@ namespace FrontEnd.Controllers.Viwolf
         {
             string url = ReportingServiceSection.CurrentConfiguration.Reportings.OfType<ReportingServiceElement>().Where(m => m.Name == "CRI").Select(m => m.RSPath.ToString()).FirstOrDefault();
             return url;
+        }
+
+        private static string ObtenerPathViewerPdfReportingService()
+        {
+            string path = ReportingServiceSection.CurrentConfiguration.Reportings.OfType<ReportingServiceElement>().Where(m => m.Name == "CRI").Select(m => m.PathViewerPdf).FirstOrDefault();
+            return path;
         }
 
     }
