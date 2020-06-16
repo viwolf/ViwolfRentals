@@ -14,34 +14,46 @@ namespace ViwolfRental.Common.Model
     
     public partial class t_Reservaciones
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public t_Reservaciones()
+        {
+            this.t_Contratos = new HashSet<t_Contratos>();
+        }
+    
         public int IdReservacion { get; set; }
         public System.DateTime FechaCreacion { get; set; }
         public string UsuarioCreacion { get; set; }
         public Nullable<System.DateTime> FechaModificacion { get; set; }
         public string UsuarioModificacion { get; set; }
+        public string IdentificacionCliente { get; set; }
         public string NombreCliente { get; set; }
+        public string NacionalidadCliente { get; set; }
+        public string ProfesionCliente { get; set; }
         public string LugarEntrega { get; set; }
-        public Nullable<bool> AplicaComision { get; set; }
+        public bool AplicaComision { get; set; }
         public Nullable<System.DateTime> FechaInicio { get; set; }
         public string HoraInicio { get; set; }
         public Nullable<System.DateTime> FechaEntrega { get; set; }
         public string HoraEntrega { get; set; }
-        public Nullable<bool> SurfRacks { get; set; }
-        public Nullable<decimal> MontoSurfRacks { get; set; }
-        public Nullable<bool> Cajon { get; set; }
-        public Nullable<decimal> MontoDia { get; set; }
-        public Nullable<decimal> MontoTotal { get; set; }
+        public bool SurfRacks { get; set; }
+        public decimal MontoSurfRacks { get; set; }
+        public bool Cajon { get; set; }
+        public decimal MontoDia { get; set; }
+        public decimal MontoTotal { get; set; }
         public string NumeroDeposito { get; set; }
-        public Nullable<decimal> MontoDeposito { get; set; }
-        public Nullable<decimal> SaldoActual { get; set; }
-        public Nullable<int> ModoPago { get; set; }
+        public decimal MontoDeposito { get; set; }
+        public decimal SaldoActual { get; set; }
+        public int ModoPago { get; set; }
         public Nullable<int> IdClienteComisionista { get; set; }
         public Nullable<int> IdProveedor { get; set; }
-        public Nullable<int> IDUsuario { get; set; }
+        public int IDUsuario { get; set; }
         public string IDVehiculo { get; set; }
-        public Nullable<bool> Activo { get; set; }
+        public bool GeneraContrato { get; set; }
+        public bool Activo { get; set; }
     
         public virtual t_ClientesComisionistas t_ClientesComisionistas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<t_Contratos> t_Contratos { get; set; }
         public virtual t_Proveedores t_Proveedores { get; set; }
         public virtual t_Usuarios t_Usuarios { get; set; }
         public virtual t_Vehiculos t_Vehiculos { get; set; }

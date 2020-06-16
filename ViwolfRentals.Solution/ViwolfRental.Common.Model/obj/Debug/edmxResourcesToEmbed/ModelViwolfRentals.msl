@@ -32,7 +32,6 @@
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Contratos">
         <MappingFragment StoreEntitySet="t_Contratos">
           <ScalarProperty Name="IDCodigoContrato" ColumnName="IDCodigoContrato" />
-          <ScalarProperty Name="IDReservacion" ColumnName="IDReservacion" />
           <ScalarProperty Name="IDEstadoContrato" ColumnName="IDEstadoContrato" />
           <ScalarProperty Name="SextaVehiculos" ColumnName="SextaVehiculos" />
           <ScalarProperty Name="QuintaVehiculos" ColumnName="QuintaVehiculos" />
@@ -48,6 +47,8 @@
           <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
           <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
           <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="NumeroContrato" ColumnName="NumeroContrato" />
+          <ScalarProperty Name="IDReservacion" ColumnName="IDReservacion" />
           <ScalarProperty Name="IDContrato" ColumnName="IDContrato" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -127,6 +128,7 @@
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Reservaciones">
         <MappingFragment StoreEntitySet="t_Reservaciones">
           <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="GeneraContrato" ColumnName="GeneraContrato" />
           <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
           <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
           <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
@@ -146,7 +148,10 @@
           <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
           <ScalarProperty Name="AplicaComision" ColumnName="AplicaComision" />
           <ScalarProperty Name="LugarEntrega" ColumnName="LugarEntrega" />
+          <ScalarProperty Name="ProfesionCliente" ColumnName="ProfesionCliente" />
+          <ScalarProperty Name="NacionalidadCliente" ColumnName="NacionalidadCliente" />
           <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+          <ScalarProperty Name="IdentificacionCliente" ColumnName="IdentificacionCliente" />
           <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
           <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
           <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />

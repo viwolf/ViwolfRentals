@@ -16,5 +16,7 @@ namespace ViwolfRental.Common.Model
     {
         public int IDCodigoContrato { get; set; }
         public string DescripcionCodigoContrato { get; set; }
+    
+        public virtual t_Contratos t_Contratos { get; set; }
     }
 }

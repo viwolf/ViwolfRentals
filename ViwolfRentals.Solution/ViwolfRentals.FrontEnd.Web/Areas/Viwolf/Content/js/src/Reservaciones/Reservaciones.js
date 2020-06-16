@@ -1,5 +1,8 @@
 ﻿var reservaciones = function () {
     var txtNombreCliente = $("#txtNombreCliente");
+    var txtIdentificacionCliente = $('#txtIdentificacionCliente');
+    var txtNacionalidadCliente = $('#txtNacionalidadCliente');
+    var txtProfesionCliente = $('#txtProfesionCliente');
     var txtHospedaje = $("#txtHospedaje");
     var txtAplicaComision = $("#txtAplicaComision");
     var txtSurfRacks = $("#txtSurfRacks");
@@ -297,7 +300,7 @@
 
         txtHoraInicio.timepicker({
             timeFormat: 'h:mm p',
-            interval: 60,
+            interval: 30,
             minTime: '5',
             maxTime: '11:00pm',
             startTime: '5:00',
@@ -416,8 +419,12 @@
     var ValidateFields = function () {
         var check = true;
 
-     
-
+        if (txtIdentificacionCliente.val() == "") {
+            Dialog.alert('Reservaciones', "El campo identificacion del cliente, no puede estar vacío.", function () {
+            })
+            check = false;
+        }
+        else
         if (txtNombreCliente.val() == "") {
             Dialog.alert('Reservaciones', "El campo nombre del cliente, no puede estar vacío.", function () {
             })
@@ -568,7 +575,10 @@
                 "IdClienteComisionista": IdComisionista == "" ? null : IdComisionista,
                 "IdProveedor": IdProveedor == "" ? null : IdProveedor,
                 "IDUsuario": idUsuarioLogueado,
-                "IDVehiculo": txtPlaca.val()
+                "IDVehiculo": txtPlaca.val(),
+                "IdentificacionCliente": txtIdentificacionCliente.val(),
+                "NacionalidadCliente": txtNacionalidadCliente.val(),
+                "ProfesionCliente": txtProfesionCliente.val()
             }
 
             try {
@@ -594,7 +604,10 @@
     };
 
     var fnLimpiarDatos = function () {
+        txtIdentificacionCliente.val("");
         txtNombreCliente.val("");
+        txtNacionalidadCliente.val("");
+        txtProfesionCliente.val("");
         txtHospedaje.val("");
         txtAplicaComision.val("");
         txtSurfRacks.val("");

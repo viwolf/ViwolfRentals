@@ -15,6 +15,8 @@ namespace ViwolfRental.Common.Model
     public partial class t_Contratos
     {
         public int IDContrato { get; set; }
+        public int IDReservacion { get; set; }
+        public string NumeroContrato { get; set; }
         public string UsuarioCreacion { get; set; }
         public System.DateTime FechaCreacion { get; set; }
         public string UsuarioModificacion { get; set; }
@@ -30,9 +32,10 @@ namespace ViwolfRental.Common.Model
         public byte[] QuintaVehiculos { get; set; }
         public byte[] SextaVehiculos { get; set; }
         public int IDEstadoContrato { get; set; }
-        public int IDReservacion { get; set; }
         public int IDCodigoContrato { get; set; }
-
-        public IDictionary<string, Object> ExtendedProporeties { set; get; }
+    
+        public virtual t_CodigosContratos t_CodigosContratos { get; set; }
+        public virtual t_EstadosContratos t_EstadosContratos { get; set; }
+        public virtual t_Reservaciones t_Reservaciones { get; set; }
     }
 }

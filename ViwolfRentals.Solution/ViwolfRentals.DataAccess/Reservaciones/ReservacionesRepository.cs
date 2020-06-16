@@ -116,7 +116,8 @@ namespace ViwolfRentals.DataAccess
                            reservaciones.IdProveedor,
                            reservaciones.IDUsuario,
                            reservaciones.IDVehiculo,
-                           reservaciones.Activo
+                           reservaciones.Activo,
+                           reservaciones.GeneraContrato
                        },
                       commandType: CommandType.StoredProcedure);
                 }
@@ -160,7 +161,10 @@ namespace ViwolfRentals.DataAccess
                                                  entity.IdClienteComisionista,
                                                  entity.IdProveedor,
                                                  entity.IDUsuario,
-                                                 entity.IDVehiculo
+                                                 entity.IDVehiculo,
+                                                 entity.IdentificacionCliente,
+                                                 entity.NacionalidadCliente,
+                                                 entity.ProfesionCliente
                                                 
                                               },
                                               transaction: transaction,

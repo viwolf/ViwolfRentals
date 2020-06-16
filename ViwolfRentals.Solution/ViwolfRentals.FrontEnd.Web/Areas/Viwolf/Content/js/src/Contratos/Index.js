@@ -121,7 +121,8 @@
             "NombreCliente": txtNombreCliente.val(),
             "LugarEntrega": txtHospedaje.val(),
             "FechaInicio": dateIni,
-            "FechaEntrega": dateFin
+            "FechaEntrega": dateFin,
+            "GeneraContrato": false
         };
         try {
             var oUrl = 'Reservaciones/ListarReservacion';
