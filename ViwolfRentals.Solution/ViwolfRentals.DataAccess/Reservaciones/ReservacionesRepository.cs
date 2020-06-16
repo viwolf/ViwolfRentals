@@ -175,10 +175,6 @@ namespace ViwolfRentals.DataAccess
                 //tracerBuilder.AppendLine($"Falló guardar reservacion. Error: {ex.ToString()}\nEntity={entity.SerializeToJson()}");
                 throw;
             }
-            
-
-
-
         }
     }
 }
