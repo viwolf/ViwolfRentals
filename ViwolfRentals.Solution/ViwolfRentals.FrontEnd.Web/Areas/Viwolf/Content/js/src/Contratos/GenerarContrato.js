@@ -7,7 +7,8 @@
     var $popupReports = $('#popupReport');
     var $repote = $('#reportes');
     var $tituloReporte = $('#tituloReporte');
-    //var idApartado = "";
+    var IdContrato = 0;
+    var flagResponsabilidad = false;
 
     $(function () {
 
@@ -52,7 +53,9 @@
     }
 
     function fnReporte(e, idContrato) {
-        debugger;
+        
+        IdContrato = idContrato;
+        flagResponsabilidad = false;
 
         e.preventDefault();
 
@@ -62,9 +65,7 @@
             var oData =
             {
 
-                "IDContrato": idContrato,
-                //"reportName": "Report1",
-                //"TipoImpresion": TipoImpresion
+                "IDContrato": idContrato
             };
 
             var oProcessMessage = 'Generando reporte, espere por favor...';
@@ -76,9 +77,10 @@
 
                     return;
                 }
-                debugger;
-                $popupReports.modal('show');
+                
+                $popupReports.modal('show', fnCerrarModalContrato);
                 $repote.html(result);
+                $popupReports.on('hide.bs.modal', fnCerrarModalContrato);
                 //app.fnShowSuccessMessage(result.InfoMessage);
                
             };
@@ -90,6 +92,49 @@
         }
 
     }
+
+    var fnCerrarModalContrato = function (e) {
+        //$popupReports.on('hide.bs.modal', fnCerrarModalTicket);
+        if (flagResponsabilidad == false)
+            fnTicketResponsabilidad();
+    };
+
+    function fnTicketResponsabilidad() {
+        
+        try {
+            var oUrl = 'Reportes/VerTicketResponsabilidad';
+
+            var oData =
+            {
+                "IDContrato": IdContrato
+            };
+
+            var oProcessMessage = 'Generando reporte, espere por favor...';
+
+            var success = function (result) {
+                debugger;
+                flagResponsabilidad = true;
+                if (result.MessageType == '1') {
+                    app.fnShowErrorMessage(result.ErrorMessage);
+                    return;
+                }
+                $('#reportes').html(result);
+                $popupReports.modal('show');
+                //$repote.html(result);
+               // $popupReports.on('hide.bs.modal', fnCerrarModalTicket);
+            };
+
+            app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
+        }
+        catch (e) {
+            app.fnShowErrorMessage(e.message);
+        }
+    }
+
+    var fnCerrarModalTicket = function (e) {
+        $popupReport.modal('hide');
+    };
+
 
     return {
         fnReporteTicket: fnReporte

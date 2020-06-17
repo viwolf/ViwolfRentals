@@ -11,4 +11,3 @@ C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\Viw
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRental.Common.Model\obj\Debug\ViwolfRental.Common.Model.pdb
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRental.Common.Model\bin\Debug\es\EntityFramework.resources.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRental.Common.Model\bin\Debug\es\EntityFramework.SqlServer.resources.dll
-C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRental.Common.Model\obj\Debug\ViwolfRental.Common.Model.csprojAssemblyReference.cache
