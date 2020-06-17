@@ -10,7 +10,7 @@ namespace Viwolf.BusinessLogic
 {
     public class ReservacionesBL : IReservacionesBL
     {
-        ViwolfRentals.DataAccess.Interface.IReservacionesRepository repository = new ViwolfRentals.DataAccess.ReservacionesRepository();
+        ViwolfRentals.DataAccess.Interface.IReservacionesRepository repository = new ViwolfRentals.DataAccess.ReservacionesRepository(null);
 
         public t_Reservaciones GuardarReservacion(t_Reservaciones reservacion)
         {

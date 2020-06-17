@@ -16,7 +16,7 @@
         <MappingFragment StoreEntitySet="t_ClientesComisionistas">
           <ScalarProperty Name="Activo" ColumnName="Activo" />
           <ScalarProperty Name="NombreClienteComisionista" ColumnName="NombreClienteComisionista" />
-          <ScalarProperty Name="IdClienteComisionista" ColumnName="IdClienteComisionista" />
+          <ScalarProperty Name="IDClienteComisionista" ColumnName="IDClienteComisionista" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -47,6 +47,7 @@
           <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
           <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
           <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="TotalContrato" ColumnName="TotalContrato" />
           <ScalarProperty Name="NumeroContrato" ColumnName="NumeroContrato" />
           <ScalarProperty Name="IDReservacion" ColumnName="IDReservacion" />
           <ScalarProperty Name="IDContrato" ColumnName="IDContrato" />
@@ -101,6 +102,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="t_PagosComisiones">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_PagosComisiones">
+        <MappingFragment StoreEntitySet="t_PagosComisiones">
+          <ScalarProperty Name="ComisionPaga" ColumnName="ComisionPaga" />
+          <ScalarProperty Name="TotalPagar" ColumnName="TotalPagar" />
+          <ScalarProperty Name="PorcentajeComision" ColumnName="PorcentajeComision" />
+          <ScalarProperty Name="PrecioTotal" ColumnName="PrecioTotal" />
+          <ScalarProperty Name="IDContrato" ColumnName="IDContrato" />
+          <ScalarProperty Name="IDClienteComisionista" ColumnName="IDClienteComisionista" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IDPagoComision" ColumnName="IDPagoComision" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="t_Pantallas">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Pantallas">
         <MappingFragment StoreEntitySet="t_Pantallas">
@@ -132,7 +150,7 @@
           <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
           <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
           <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
-          <ScalarProperty Name="IdClienteComisionista" ColumnName="IdClienteComisionista" />
+          <ScalarProperty Name="IDClienteComisionista" ColumnName="IDClienteComisionista" />
           <ScalarProperty Name="ModoPago" ColumnName="ModoPago" />
           <ScalarProperty Name="SaldoActual" ColumnName="SaldoActual" />
           <ScalarProperty Name="MontoDeposito" ColumnName="MontoDeposito" />

@@ -19,6 +19,7 @@ namespace ViwolfRentals.FrontEnd.Web
                     .Include("~/Content/js/src/ConfigViwolf.js")
                     .Include("~/Content/Plugins/ajaxloader/ajaxloader.js")
                     .Include("~/Areas/Seguridad/Content/js/src/app.js")
+                    .Include("~/Content/js/src/utils.js")
                     );
 
                bundles.Add(

@@ -1,0 +1,105 @@
+﻿using Dapper;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ViwolfRental.Common.Model;
+using ViwolfRentals.DataAccess.Interface;
+
+namespace ViwolfRentals.DataAccess
+{
+    public class PagosComisionesRepository : IPagosComisionesRepository
+    {
+
+        
+        public PagosComisionesRepository(IConnectionManager connectionManagerInstance)
+        {
+            ConnectionManagerInstance = connectionManagerInstance;
+
+        }
+
+        public t_PagosComisiones Guardar(t_PagosComisiones model)
+        {
+            if (Conexion != null)
+            {
+                var resultado = DoGuardarPagoComision(Conexion, model);
+                return resultado;
+            }
+            else
+            {
+                //Si no se maneja transaccionabilidad se hace la conexion normal
+                using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+                {
+                    //se abre la conexion ya que se va a trabajar con transaccionabilidad
+                    connection.Open();
+
+                    //se crea el objeto transaccion
+                    using (IDbTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            Transaccion = transaction;
+
+                            //Se manda a guardar el encabezado
+                            var resultado = DoGuardarPagoComision(connection,  model);
+
+                            transaction.Commit();
+
+                            return resultado;
+                        }
+                        catch (Exception x)
+                        {
+                            transaction.Rollback();
+                            throw;
+                        }
+                    }
+                }
+            }
+           
+        }
+
+        private t_PagosComisiones DoGuardarPagoComision(IDbConnection connection, t_PagosComisiones entity)
+        {
+            StringBuilder tracerBuilder = new StringBuilder();
+
+            try
+            {
+                tracerBuilder.AppendLine($"Se procede a guardar la reservacion. {Environment.NewLine}");
+                var IdContrato = (int)connection.ExecuteScalar(
+                                              sql: "usp_PagosComision_Guardar",
+                                              param: new
+                                              {
+                                                  entity.IDPagoComision,
+                                                  entity.UsuarioCreacion,
+                                                  entity.UsuarioModificacion,
+                                                  entity.IDClienteComisionista,
+                                                  entity.IDContrato,
+                                                  entity.PrecioTotal,
+                                                  entity.PorcentajeComision,
+                                                  entity.TotalPagar,
+                                                  entity.ComisionPaga
+                                              },
+                                              transaction: Transaccion,
+                                              commandTimeout: 500,
+                                              commandType: CommandType.StoredProcedure);
+
+
+                entity.IDContrato = IdContrato;
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                //tracerBuilder.AppendLine($"Falló guardar reservacion. Error: {ex.ToString()}\nEntity={entity.SerializeToJson()}");
+                throw;
+            }
+
+
+        }
+
+        public IConnectionManager ConnectionManagerInstance { get; private set; }
+        public System.Data.IDbConnection Conexion { get; set; }
+        public System.Data.IDbTransaction Transaccion { get; set; }
+    }
+}

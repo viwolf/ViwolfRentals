@@ -23,7 +23,7 @@ namespace FrontEnd.Controllers.Viwolf
                 var jsonObjet = (from ta in result
                                  select new
                                  {
-                                     ta.IdClienteComisionista,
+                                     ta.IDClienteComisionista,
                                      ta.NombreClienteComisionista
                                  }).AsEnumerable();
                 return Json(new

@@ -7,11 +7,9 @@ using ViwolfRental.Common.Model;
 
 namespace ViwolfRentals.DataAccess.Interface
 {
-    public interface IReservacionesRepository
+    public interface IPagosComisionesRepository
     {
-        t_Reservaciones Guardar(t_Reservaciones model);
-        IEnumerable<ViwolfRental.Common.Model.t_Reservaciones> ListarReservaciones(ViwolfRental.Common.Model.t_Reservaciones reservaciones);
-        IEnumerable<ViwolfRental.Common.Model.t_Reservaciones> ListarCalendarioReservaciones(ViwolfRental.Common.Model.t_Reservaciones reservaciones);
+        t_PagosComisiones Guardar(t_PagosComisiones model);
 
         //PROPIEDADES PARA EL MANEJO DE LA TRANSACCIONABILIDAD
         System.Data.IDbConnection Conexion { get; set; }

@@ -15,5 +15,9 @@ namespace ViwolfRentals.DataAccess.Interface
 
         IEnumerable<ViwolfRental.Common.Model.t_Vehiculos> ListarVehiculosReservaciones(ViwolfRental.Common.Model.t_Vehiculos vehiculos);
         t_Vehiculos Guardar(t_Vehiculos model);
+
+        //PROPIEDADES PARA EL MANEJO DE LA TRANSACCIONABILIDAD
+        System.Data.IDbConnection Conexion { get; set; }
+        System.Data.IDbTransaction Transaccion { get; set; }
     }
 }

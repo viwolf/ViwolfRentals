@@ -17,13 +17,16 @@ namespace ViwolfRental.Common.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public t_ClientesComisionistas()
         {
+            this.t_PagosComisiones = new HashSet<t_PagosComisiones>();
             this.t_Reservaciones = new HashSet<t_Reservaciones>();
         }
     
-        public int IdClienteComisionista { get; set; }
+        public int IDClienteComisionista { get; set; }
         public string NombreClienteComisionista { get; set; }
         public bool Activo { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<t_PagosComisiones> t_PagosComisiones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_Reservaciones> t_Reservaciones { get; set; }
     }

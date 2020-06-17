@@ -33,6 +33,7 @@ namespace ViwolfRental.Common.Model
         public virtual DbSet<t_EstadosContratos> t_EstadosContratos { get; set; }
         public virtual DbSet<t_Kilometrajes> t_Kilometrajes { get; set; }
         public virtual DbSet<t_Modulos> t_Modulos { get; set; }
+        public virtual DbSet<t_PagosComisiones> t_PagosComisiones { get; set; }
         public virtual DbSet<t_Pantallas> t_Pantallas { get; set; }
         public virtual DbSet<t_Proveedores> t_Proveedores { get; set; }
         public virtual DbSet<t_Reservaciones> t_Reservaciones { get; set; }

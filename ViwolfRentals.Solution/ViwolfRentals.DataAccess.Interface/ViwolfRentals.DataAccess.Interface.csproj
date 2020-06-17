@@ -46,6 +46,7 @@
     <Compile Include="Contratos\IContratosRepository.cs" />
     <Compile Include="DepartamentosVehiculos\IDepartamentosVehiculosRepository.cs" />
     <Compile Include="IConnectionManager.cs" />
+    <Compile Include="PagosComisiones\IPagosComisionesRepository.cs" />
     <Compile Include="Proveedores\IProveedoresRepository.cs" />
     <Compile Include="Reservaciones\IReservacionesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

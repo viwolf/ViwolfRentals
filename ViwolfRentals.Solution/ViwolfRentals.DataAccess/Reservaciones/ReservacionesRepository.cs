@@ -15,14 +15,31 @@ namespace ViwolfRentals.DataAccess
     public class ReservacionesRepository : IReservacionesRepository
     {
 
-        IConnectionManager ConnectionManagerInstance = new ConnectionManager();
+     
+
+        public ReservacionesRepository(IConnectionManager connectionManagerInstance)
+        {
+            ConnectionManagerInstance = connectionManagerInstance == null ? new ConnectionManager() : connectionManagerInstance;
+
+        }
+
 
         public t_Reservaciones Guardar(t_Reservaciones model)
         {
-
-            //Si no se maneja transaccionabilidad se hace la conexion normal
-            using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+            //Se valida si la propiedad Conexion es utilizada o no (Se utiliza solo cuando se maneja transaccionalidad)
+            if (Conexion != null)
             {
+                //Se manda a guardar el encabezado
+                var resultado = DoGuardar(Conexion, model);
+                return resultado;
+            }
+            else
+            {
+                //Si no se maneja transaccionabilidad se hace la conexion normal
+                using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+                {
+
+
                     //se abre la conexion ya que se va a trabajar con transaccionabilidad
                     connection.Open();
 
@@ -31,8 +48,9 @@ namespace ViwolfRentals.DataAccess
                     {
                         try
                         {
+                            Transaccion = transaction;
                             //Se manda a guardar el encabezado
-                            var resultado = DoGuardar(connection, transaction, model);
+                            var resultado = DoGuardar(connection, model);
 
                             transaction.Commit();
 
@@ -44,6 +62,7 @@ namespace ViwolfRentals.DataAccess
                             throw;
                         }
                     }
+                }
             }
         }
 
@@ -79,47 +98,39 @@ namespace ViwolfRentals.DataAccess
         {
             try
             {
-                using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+
+                if (Conexion != null)
                 {
-                    return connection.Query<
-                       t_Reservaciones,
-                       t_ClientesComisionistas,
-                       t_Proveedores,
-                       t_Reservaciones>
-                       ("usp_Reservaciones_Listar",
-                       (a, b, c) =>
-                       {
-                           a.t_ClientesComisionistas = (t_ClientesComisionistas)b;
-                           a.t_Proveedores = (t_Proveedores)c;
-                           return a;
-                       },
-                       splitOn: "IdClienteComisionista , IdProveedor",
-                       param: new
-                       {
-                           reservaciones.IdReservacion,
-                           reservaciones.NombreCliente,
-                           reservaciones.LugarEntrega,
-                           reservaciones.AplicaComision,
-                            reservaciones.FechaInicio,
-                       //reservaciones.HoraInicio,
-                       reservaciones.FechaEntrega,
-                       //reservaciones.HoraEntrega,
-                       reservaciones.SurfRacks,
-                           reservaciones.MontoSurfRacks,
-                           reservaciones.Cajon,
-                           reservaciones.MontoDia,
-                           reservaciones.MontoTotal,
-                           reservaciones.NumeroDeposito,
-                           reservaciones.MontoDeposito,
-                           reservaciones.ModoPago,
-                           reservaciones.IdClienteComisionista,
-                           reservaciones.IdProveedor,
-                           reservaciones.IDUsuario,
-                           reservaciones.IDVehiculo,
-                           reservaciones.Activo,
-                           reservaciones.GeneraContrato
-                       },
-                      commandType: CommandType.StoredProcedure);
+                    //Se manda a guardar el encabezado
+                   return DoListarReservacion(Conexion, reservaciones);
+                }
+                else
+                {
+                    using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+                    {
+                        //se abre la conexion ya que se va a trabajar con transaccionabilidad
+                        connection.Open();
+
+                        //se crea el objeto transaccion
+                        using (IDbTransaction transaction = connection.BeginTransaction())
+                        {
+                            try
+                            {
+                                Transaccion = transaction;
+                                //Se manda a guardar el encabezado
+                                var resultado = DoListarReservacion(connection, reservaciones);
+
+                                transaction.Commit();
+
+                                return resultado;
+                            }
+                            catch (Exception x)
+                            {
+                                transaction.Rollback();
+                                throw;
+                            }
+                        }
+                    }
                 }
             }
             catch(Exception ex)
@@ -129,7 +140,9 @@ namespace ViwolfRentals.DataAccess
             
         }
 
-        private t_Reservaciones DoGuardar(IDbConnection connection, IDbTransaction transaction, t_Reservaciones entity)
+        
+
+        private t_Reservaciones DoGuardar(IDbConnection connection, t_Reservaciones entity)
         {
             StringBuilder tracerBuilder = new StringBuilder();
 
@@ -158,7 +171,7 @@ namespace ViwolfRentals.DataAccess
                                                  entity.MontoDeposito,
                                                  entity.SaldoActual,
                                                  entity.ModoPago,
-                                                 entity.IdClienteComisionista,
+                                                 entity.IDClienteComisionista,
                                                  entity.IdProveedor,
                                                  entity.IDUsuario,
                                                  entity.IDVehiculo,
@@ -167,7 +180,7 @@ namespace ViwolfRentals.DataAccess
                                                  entity.ProfesionCliente
                                                 
                                               },
-                                              transaction: transaction,
+                                              transaction: Transaccion,
                                               commandType: CommandType.StoredProcedure);
 
 
@@ -180,5 +193,53 @@ namespace ViwolfRentals.DataAccess
                 throw;
             }
         }
+        private IEnumerable<t_Reservaciones> DoListarReservacion(IDbConnection connection, t_Reservaciones reservaciones)
+        {
+
+            return connection.Query<
+               t_Reservaciones,
+               t_ClientesComisionistas,
+               t_Proveedores,
+               t_Reservaciones>
+               ("usp_Reservaciones_Listar",
+               (a, b, c) =>
+               {
+                   a.t_ClientesComisionistas = (t_ClientesComisionistas)b;
+                   a.t_Proveedores = (t_Proveedores)c;
+                   return a;
+               },
+               splitOn: "IdClienteComisionista , IdProveedor",
+               param: new
+               {
+                   reservaciones.IdReservacion,
+                   reservaciones.NombreCliente,
+                   reservaciones.LugarEntrega,
+                   reservaciones.AplicaComision,
+                   reservaciones.FechaInicio,
+                       //reservaciones.HoraInicio,
+                       reservaciones.FechaEntrega,
+                       //reservaciones.HoraEntrega,
+                       reservaciones.SurfRacks,
+                   reservaciones.MontoSurfRacks,
+                   reservaciones.Cajon,
+                   reservaciones.MontoDia,
+                   reservaciones.MontoTotal,
+                   reservaciones.NumeroDeposito,
+                   reservaciones.MontoDeposito,
+                   reservaciones.ModoPago,
+                   reservaciones.IDClienteComisionista,
+                   reservaciones.IdProveedor,
+                   reservaciones.IDUsuario,
+                   reservaciones.IDVehiculo,
+                   reservaciones.Activo,
+                   reservaciones.GeneraContrato
+               }, transaction:Transaccion, commandTimeout: 500, commandType: CommandType.StoredProcedure);
+
+
+        }
+
+        public IConnectionManager ConnectionManagerInstance { get; private set; }
+        public System.Data.IDbConnection Conexion { get; set; }
+        public System.Data.IDbTransaction Transaccion { get; set; }
     }
 }

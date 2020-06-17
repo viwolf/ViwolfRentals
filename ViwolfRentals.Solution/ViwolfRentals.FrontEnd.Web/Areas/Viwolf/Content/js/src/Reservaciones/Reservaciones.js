@@ -88,7 +88,7 @@
                 Url: "Comisionistas/ListarComisionistas",
                 DataType: 'json',
                 Type: "POST",
-                Id: "IdClienteComisionista",
+                Id: "IDClienteComisionista",
                 Text: "NombreClienteComisionista",
                 InitSelection: function (callback, configuracion) {
                     $.ajax(configuracion.Url, {
@@ -558,7 +558,7 @@
                 "UsuarioCreacion": usuarioLogueado,
                 "NombreCliente": txtNombreCliente.val(),
                 "LugarEntrega": txtHospedaje.val(),
-                "AplicaComision": txtAplicaComision.val() == 'Si' ? true : false,
+                "AplicaComision": txtAplicaComision.val() == 1 ? true : false,
                 "FechaInicio": dateIni,
                 "HoraInicio": txtHoraInicio.val(),
                 "FechaEntrega": dateFin,
@@ -572,7 +572,7 @@
                 "MontoDeposito": parseFloat(txtMontoDeposito.val().replace("$", "")),
                 "SaldoActual": parseFloat(txtSaldoActual.val().replace("$", "")),
                 "ModoPago": txtModoPago.val(),
-                "IdClienteComisionista": IdComisionista == "" ? null : IdComisionista,
+                "IDClienteComisionista": IdComisionista == "" ? null : IdComisionista,
                 "IdProveedor": IdProveedor == "" ? null : IdProveedor,
                 "IDUsuario": idUsuarioLogueado,
                 "IDVehiculo": txtPlaca.val(),

@@ -84,12 +84,13 @@
     };
 
     var fnGuardarContrato = function (e) {
-
+        debugger;
         var oData = {
             "UsuarioCreacion": usuarioLogueado,
             "IDEstadoContrato": configViwolf.EstadosContratos.Pendiente,
             "IDReservacion": objSeleccionado.IdReservacion,
-            "IDCodigoContrato": configViwolf.CodigosContratos.Sistema
+            "IDCodigoContrato": configViwolf.CodigosContratos.Sistema,
+            "TotalContrato": objSeleccionado.MontoTotal
         }
         try {
             var oUrl = 'Contratos/GuardarContrato';
@@ -130,7 +131,7 @@
             var success = function (result) {
                 debugger;
                 if (result.Data.length > 0) {
-
+                    //utils.formatterDolar.format(result.Data(0).MontoTotal);
 
                     tblDataReservacion.dataTable({
                         destroy: true,
@@ -144,7 +145,8 @@
                             { data: 'LugarEntrega' },
                             { data: 'FechaInicio' },
                             { data: 'FechaEntrega' },
-                            { data: 'IDVehiculo' }
+                            { data: 'IDVehiculo' },
+                            { data: 'MontoTotal'}
                             //,
                             // { data: 't_Vehiculos.t_CategoriasVehiculos.NombreCategoriaVehiculo' },
                         ],

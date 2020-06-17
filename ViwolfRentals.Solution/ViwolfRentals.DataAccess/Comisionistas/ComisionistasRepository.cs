@@ -35,7 +35,7 @@ namespace ViwolfRentals.DataAccess
                    },
                            param: new
                            {
-                               entity.IdClienteComisionista,
+                               entity.IDClienteComisionista,
                                entity.NombreClienteComisionista,
                                entity.Activo
 

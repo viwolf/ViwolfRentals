@@ -10,7 +10,13 @@ namespace ViwolfRentals.DataAccess
 {
     public class VehiculosRepository : IVehiculosRepository
     {
-        IConnectionManager ConnectionManagerInstance = new ConnectionManager();
+
+        public VehiculosRepository(IConnectionManager connectionManagerInstance)
+        {
+            ConnectionManagerInstance = connectionManagerInstance == null ? new ConnectionManager() : connectionManagerInstance;
+
+        }
+
 
         public t_Vehiculos Guardar(t_Vehiculos model)
         {
@@ -43,6 +49,10 @@ namespace ViwolfRentals.DataAccess
 
         public IEnumerable<t_Kilometrajes> ListarKilometraje(t_Kilometrajes kilometrajes)
         {
+
+
+
+
             using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
             {
                 return connection.Query("usp_Kilometraje_Listar",
@@ -72,44 +82,35 @@ namespace ViwolfRentals.DataAccess
 
         public IEnumerable<t_Vehiculos> ListarVehiculos(t_Vehiculos vehiculos)
         {
-            using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+            if (Conexion != null)
             {
-                return connection.Query<
-                   t_Vehiculos,
-                   t_CategoriasVehiculos,
-                   t_Departamentos,
-                   t_Vehiculos>
-                   ("usp_Vehiculos_Listar",
-                   (a, b, c) =>
-                   {
-                       a.t_CategoriasVehiculos = (t_CategoriasVehiculos)b;
-                       a.t_Departamentos = (t_Departamentos)c;
-                       return a;
-                   },
-                   splitOn: "IDCategoriaVehiculo , IDDepartamento",
-                   param: new
-                   {
-                       vehiculos.IDVehiculo,
-                       vehiculos.Marca,
-                       vehiculos.Modelo,
-                       vehiculos.Anno,
-                       vehiculos.FechaCompra,
-                       vehiculos.NumeroChasis,
-                       vehiculos.NumeroMotor,
-                       vehiculos.RtvVencimientoAnno,
-                       vehiculos.RtvVencimientoMes,
-                       vehiculos.MarchamoProximo,
-                       vehiculos.RtvSticker,
-                       vehiculos.RtvPapel,
-                       vehiculos.MarchamoPapel,
-                       vehiculos.StickerPlaca,
-                       vehiculos.TituloPropiedad,
-                       vehiculos.Multas,
-                       vehiculos.IDCategoriaVehiculo,
-                       vehiculos.IDDepartamento
+                return DoListarVehiculos(Conexion, vehiculos);
+            }
+            else
+            {
+                using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+                {
+                    connection.Open();
+                    //se crea el objeto transaccion
+                    using (IDbTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            Transaccion = transaction;
+                            //Se manda a guardar el encabezado
+                            var resultado = DoListarVehiculos(connection, vehiculos);
 
-                   },
-                  commandType: CommandType.StoredProcedure);
+                            transaction.Commit();
+
+                            return resultado;
+                        }
+                        catch (Exception x)
+                        {
+                            transaction.Rollback();
+                            throw;
+                        }
+                    }
+                }
             }
         }
 
@@ -202,5 +203,50 @@ namespace ViwolfRentals.DataAccess
 
 
         }
+
+        private IEnumerable<t_Vehiculos> DoListarVehiculos(IDbConnection connection, t_Vehiculos vehiculos)
+        {
+            return connection.Query<
+                  t_Vehiculos,
+                  t_CategoriasVehiculos,
+                  t_Departamentos,
+                  t_Vehiculos>
+                  ("usp_Vehiculos_Listar",
+                  (a, b, c) =>
+                  {
+                      a.t_CategoriasVehiculos = (t_CategoriasVehiculos)b;
+                      a.t_Departamentos = (t_Departamentos)c;
+                      return a;
+                  },
+                  splitOn: "IDCategoriaVehiculo , IDDepartamento",
+                  param: new
+                  {
+                      vehiculos.IDVehiculo,
+                      vehiculos.Marca,
+                      vehiculos.Modelo,
+                      vehiculos.Anno,
+                      vehiculos.FechaCompra,
+                      vehiculos.NumeroChasis,
+                      vehiculos.NumeroMotor,
+                      vehiculos.RtvVencimientoAnno,
+                      vehiculos.RtvVencimientoMes,
+                      vehiculos.MarchamoProximo,
+                      vehiculos.RtvSticker,
+                      vehiculos.RtvPapel,
+                      vehiculos.MarchamoPapel,
+                      vehiculos.StickerPlaca,
+                      vehiculos.TituloPropiedad,
+                      vehiculos.Multas,
+                      vehiculos.IDCategoriaVehiculo,
+                      vehiculos.IDDepartamento
+
+                  }, transaction: Transaccion, commandTimeout: 500,
+                 commandType: CommandType.StoredProcedure);
+        }
+
+      
+        public IConnectionManager ConnectionManagerInstance { get; private set; }
+        public System.Data.IDbConnection Conexion { get; set; }
+        public System.Data.IDbTransaction Transaccion { get; set; }
     }
 }

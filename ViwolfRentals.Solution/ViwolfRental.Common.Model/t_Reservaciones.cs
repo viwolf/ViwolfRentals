@@ -44,7 +44,7 @@ namespace ViwolfRental.Common.Model
         public decimal MontoDeposito { get; set; }
         public decimal SaldoActual { get; set; }
         public int ModoPago { get; set; }
-        public Nullable<int> IdClienteComisionista { get; set; }
+        public Nullable<int> IDClienteComisionista { get; set; }
         public Nullable<int> IdProveedor { get; set; }
         public int IDUsuario { get; set; }
         public string IDVehiculo { get; set; }

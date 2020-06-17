@@ -10,7 +10,7 @@ namespace Viwolf.BusinessLogic
 {
     public class VehiculosBL : IVehiculosBL
     {
-        ViwolfRentals.DataAccess.Interface.IVehiculosRepository repository = new ViwolfRentals.DataAccess.VehiculosRepository();
+        ViwolfRentals.DataAccess.Interface.IVehiculosRepository repository = new ViwolfRentals.DataAccess.VehiculosRepository(null);
 
         public t_Vehiculos GuardarVehiculo(t_Vehiculos vehiculo)
         {

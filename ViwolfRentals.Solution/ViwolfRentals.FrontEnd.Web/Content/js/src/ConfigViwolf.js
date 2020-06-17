@@ -14,7 +14,8 @@
         Pendiente: 1,
         Facturado: 2,
         Extendido: 3,
-        Anulado: 4
+        Anulado: 4,
+        Terminado: 5
     }
 
     const _ModosPagos = {

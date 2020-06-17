@@ -91,6 +91,9 @@
     <Compile Include="t_Modulos.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
+    <Compile Include="t_PagosComisiones.cs">
+      <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
+    </Compile>
     <Compile Include="t_Pantallas.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
