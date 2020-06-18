@@ -16,7 +16,7 @@ var BuscarVehiculo = function () {
     var fnBuscarVehiculo = function () {
         var oData = {
             "Activo": configViwolf.EstadosVehiculos.Activo,
-            "ExtendedProporeties": [
+            "ExtendedProperties": [
                 { "Key": "FechaInicio", "Value": fechaInicio },
                 { "Key": "FechaEntrega", "Value": FechaEntrega }
             ]

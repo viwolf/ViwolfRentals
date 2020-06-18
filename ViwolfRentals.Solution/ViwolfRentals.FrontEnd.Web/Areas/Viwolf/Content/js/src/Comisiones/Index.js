@@ -8,6 +8,7 @@
     var objSeleccionado = null;
     var iPos = 0;
     var objComisiones = null;
+    var arrayModificacion = [];
 
 
     var fnInit = function () {
@@ -38,7 +39,8 @@
     var fnPagarComisiones = function (e) {
         debugger;
         var oData = {
-            "pagosComisiones": objComisiones
+            "EnumPagosComisiones": objComisiones,
+            "ExtendedProperties": arrayModificacion
         }
         try {
             var oUrl = 'Comisiones/GuardarPagosComision';
@@ -119,13 +121,14 @@
                     tblDataComisiones.on("change", "input", function () {
                         debugger;
                         var valor = this.value;
+                        var idComision = document.getElementById("tblDataComisiones").rows[iPos + 1].cells[0].innerText
                         objSeleccionado.TotalPagar = ((valor / 100) * objSeleccionado.PrecioTotal);
                         document.getElementById("tblDataComisiones").rows[iPos + 1].cells[4].innerText = objSeleccionado.TotalPagar;
                         document.getElementById("tblDataComisiones").rows[iPos + 1].cells[4].innerHTML = objSeleccionado.TotalPagar;
-                        //document.getElementById("tblDataComisiones").rows[iPos + 1].cells[3].innerText = valor;
-                        //document.getElementById("tblDataComisiones").rows[iPos + 1].cells[3].innerHTML = valor;
-                        //objComisiones(iPos).TotalPagar = objSeleccionado.TotalPagar;
-                        //objComisiones(iPos).PorcentajeComision = valor;
+                        arrayModificacion.push({
+                            "Key": idComision,
+                            "Value": valor
+                        })
                     });
                 }
                 else {

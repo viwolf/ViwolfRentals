@@ -67,7 +67,7 @@ namespace FrontEnd.Controllers.Viwolf
         }
 
         [HttpPost]
-        public JsonResult GuardarPagosComision(IEnumerable<ViwolfRental.Common.Model.t_PagosComisiones> pagosComisiones)
+        public JsonResult GuardarPagosComision(IEnumerable<ViwolfRental.Common.Model.t_PagosComisiones> EnumPagosComisiones, ViwolfRental.Common.Model.t_PagosComisiones pagosComisiones)
         {
            
             try

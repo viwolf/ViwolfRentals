@@ -133,8 +133,8 @@ namespace ViwolfRentals.DataAccess
                    splitOn: "IDCategoriaVehiculo , IDDepartamento",
                    param: new
                    {
-                       FechaInicio = vehiculos.ExtendedProporeties["FechaInicio"],
-                       FechaEntrega = vehiculos.ExtendedProporeties["FechaEntrega"],
+                       FechaInicio = vehiculos.ExtendedProperties["FechaInicio"],
+                       FechaEntrega = vehiculos.ExtendedProperties["FechaEntrega"],
                    },
                   commandType: CommandType.StoredProcedure) ;
             }

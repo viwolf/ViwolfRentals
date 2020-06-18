@@ -233,7 +233,7 @@
                 "IDEstadoContrato": configViwolf.EstadosContratos.Pendiente,
                 "IDReservacion": txtIdReservacionContrato.val(),
                 "IDCodigoContrato": configViwolf.CodigosContratos.Fisico,
-                //"ExtendedProporeties": [
+                //"ExtendedProperties": [
                 //    { "Key": "Path", "Value": imgPago }
                 //]
             }
