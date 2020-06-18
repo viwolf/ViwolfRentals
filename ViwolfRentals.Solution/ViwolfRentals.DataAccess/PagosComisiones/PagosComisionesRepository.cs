@@ -16,7 +16,7 @@ namespace ViwolfRentals.DataAccess
         
         public PagosComisionesRepository(IConnectionManager connectionManagerInstance)
         {
-            ConnectionManagerInstance = connectionManagerInstance;
+            ConnectionManagerInstance = connectionManagerInstance == null ? new ConnectionManager() : connectionManagerInstance;
 
         }
 

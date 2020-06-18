@@ -30,11 +30,12 @@ namespace FrontEnd.Controllers.Viwolf
                 var jsonObjet = (from ta in result
                                  select new
                                  {
+                                     ta.IDPagoComision,
                                      ta.IDContrato,
                                      ta.t_Contratos.NumeroContrato,
                                      ta.t_Contratos.t_Reservaciones.NombreCliente,
                                      ta.PrecioTotal,
-                                     ta.PorcentajeComision,
+                                     PorcentajeComision = "<input id= 'txt_" + ta.IDPagoComision + "' name= 'txt_" + ta.IDPagoComision + "' value= '" + ta.PorcentajeComision + "'>",
                                      ta.TotalPagar,
                                      ta.ComisionPaga
                                  }).AsEnumerable();
@@ -58,7 +59,20 @@ namespace FrontEnd.Controllers.Viwolf
                     ErrorMessage = ex.Message
                 }, JsonRequestBehavior.AllowGet);
             }
+        }
 
+        [HttpPost]
+        public JsonResult GuardarPagosComision(IEnumerable<ViwolfRental.Common.Model.t_PagosComisiones> pagosComisiones)
+        {
+           
+            try
+            {
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }
