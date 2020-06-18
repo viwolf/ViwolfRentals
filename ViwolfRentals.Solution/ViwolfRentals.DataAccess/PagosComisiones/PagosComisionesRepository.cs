@@ -98,6 +98,80 @@ namespace ViwolfRentals.DataAccess
 
         }
 
+        public IEnumerable<t_PagosComisiones> ListarComisiones(t_PagosComisiones entity)
+        {
+            try
+            {
+
+                if (Conexion != null)
+                {
+                    //Se manda a guardar el encabezado
+                    return DoListarComisiones(Conexion, entity);
+                }
+                else
+                {
+                    using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+                    {
+                        //se abre la conexion ya que se va a trabajar con transaccionabilidad
+                        connection.Open();
+
+                        //se crea el objeto transaccion
+                        using (IDbTransaction transaction = connection.BeginTransaction())
+                        {
+                            try
+                            {
+                                Transaccion = transaction;
+                                //Se manda a guardar el encabezado
+                                var resultado = DoListarComisiones(connection, entity);
+
+                                transaction.Commit();
+
+                                return resultado;
+                            }
+                            catch (Exception x)
+                            {
+                                transaction.Rollback();
+                                throw;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        private IEnumerable<t_PagosComisiones> DoListarComisiones(IDbConnection connection, t_PagosComisiones entity)
+        {
+
+            return connection.Query<
+               t_PagosComisiones,
+               t_ClientesComisionistas,
+               t_Contratos,
+               t_Reservaciones,
+               t_PagosComisiones>
+               ("usp_PagoComisiones_Listar",
+               (a, b, c, d) =>
+               {
+                   a.t_ClientesComisionistas = (t_ClientesComisionistas)b;
+                   a.t_Contratos = (t_Contratos)c;
+                   a.t_Contratos.t_Reservaciones = (t_Reservaciones)d;
+                   return a;
+               },
+               splitOn: "IDClienteComisionista , IDContrato, IdReservacion",
+               param: new
+               {
+                   entity.IDClienteComisionista,
+                   NombreClienteComisionista = entity.t_ClientesComisionistas.NombreClienteComisionista,
+                   entity.ComisionPaga
+               }, transaction: Transaccion, commandTimeout: 500, commandType: CommandType.StoredProcedure);
+
+
+        }
+
+
         public IConnectionManager ConnectionManagerInstance { get; private set; }
         public System.Data.IDbConnection Conexion { get; set; }
         public System.Data.IDbTransaction Transaccion { get; set; }

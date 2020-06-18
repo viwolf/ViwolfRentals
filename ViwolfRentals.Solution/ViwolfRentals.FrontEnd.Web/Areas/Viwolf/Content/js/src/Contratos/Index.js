@@ -1,4 +1,5 @@
-﻿var indexContratos = function () {
+﻿
+var indexContratos = function () {
     var txtIDReservacion = $('#txtIDReservacion');
     var txtNombreCliente = $('#txtNombreCliente');
     var txtHospedaje = $('#txtHospedaje');
@@ -131,8 +132,7 @@
             var success = function (result) {
                 debugger;
                 if (result.Data.length > 0) {
-                    //utils.formatterDolar.format(result.Data(0).MontoTotal);
-
+                 
                     tblDataReservacion.dataTable({
                         destroy: true,
                         processing: true,
@@ -147,9 +147,14 @@
                             { data: 'FechaEntrega' },
                             { data: 'IDVehiculo' },
                             { data: 'MontoTotal'}
-                            //,
-                            // { data: 't_Vehiculos.t_CategoriasVehiculos.NombreCategoriaVehiculo' },
                         ],
+                        columnDefs: [
+                            {
+                                "targets": [6],
+                                "visible": false,
+                                "searchable": false
+                            }
+                        ]
                     });
                     tblDataReservacion.on("click", "tr", function () {
                         var iPos = tblDataReservacion.fnGetPosition(this);

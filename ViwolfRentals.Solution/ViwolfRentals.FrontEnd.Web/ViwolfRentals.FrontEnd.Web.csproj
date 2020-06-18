@@ -214,6 +214,7 @@
     <Content Include="Areas\Viwolf\Content\js\src\Contratos\CreacionContratos.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Contratos\GenerarContrato.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Contratos\Index.js" />
+    <Content Include="Areas\Viwolf\Content\js\src\Comisiones\Index.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Calendario.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\css\core\main.css" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\css\core\main.min.css" />
@@ -605,6 +606,7 @@
     <Content Include="Areas\Viwolf\Views\Contratos\Index.cshtml" />
     <Content Include="Areas\Viwolf\Views\Contratos\CreacionContrato.cshtml" />
     <Content Include="Areas\Viwolf\Views\Contratos\VerContrato.cshtml" />
+    <Content Include="Areas\Viwolf\Views\Comisiones\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

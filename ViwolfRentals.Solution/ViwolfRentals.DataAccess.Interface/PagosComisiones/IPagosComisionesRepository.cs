@@ -10,7 +10,7 @@ namespace ViwolfRentals.DataAccess.Interface
     public interface IPagosComisionesRepository
     {
         t_PagosComisiones Guardar(t_PagosComisiones model);
-
+        IEnumerable<ViwolfRental.Common.Model.t_PagosComisiones> ListarComisiones(ViwolfRental.Common.Model.t_PagosComisiones entity);
         //PROPIEDADES PARA EL MANEJO DE LA TRANSACCIONABILIDAD
         System.Data.IDbConnection Conexion { get; set; }
         System.Data.IDbTransaction Transaccion { get; set; }

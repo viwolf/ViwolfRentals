@@ -45,6 +45,7 @@
     <Compile Include="Comisionistas\ComisionistasBL.cs" />
     <Compile Include="Contratos\ContratosBL.cs" />
     <Compile Include="DepartamentosVehiculos\DepartamentosVehiculosBL.cs" />
+    <Compile Include="PagosComisiones\PagosComisionesBL.cs" />
     <Compile Include="Proveedores\ProveedoresBL.cs" />
     <Compile Include="Reservaciones\ReservacionesBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
