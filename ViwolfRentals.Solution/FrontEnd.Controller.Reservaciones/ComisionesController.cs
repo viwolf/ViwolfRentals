@@ -12,11 +12,16 @@ namespace FrontEnd.Controllers.Viwolf
     public class ComisionesController : Controller
     {
         IPagosComisionesBL BlComision = new PagosComisionesBL();
+        private static string rolUsuario;
 
-        public ActionResult Index(string usuario, string idUsuario)
+
+
+
+        public ActionResult Index(string usuario, string idUsuario, string RolUsuario)
         {
             ViewBag.Usuario = usuario;
             ViewBag.IdUsuario = idUsuario;
+            rolUsuario = RolUsuario;
             return View();
         }
 
@@ -35,7 +40,7 @@ namespace FrontEnd.Controllers.Viwolf
                                      ta.t_Contratos.NumeroContrato,
                                      ta.t_Contratos.t_Reservaciones.NombreCliente,
                                      ta.PrecioTotal,
-                                     PorcentajeComision = "<input id= 'txt_" + ta.IDPagoComision + "' name= 'txt_" + ta.IDPagoComision + "' value= '" + ta.PorcentajeComision + "'>",
+                                     PorcentajeComision = rolUsuario == "Administrador" ? "<input id= 'txt_" + ta.IDPagoComision + "' name= 'txt_" + ta.IDPagoComision + "' value= '" + ta.PorcentajeComision + "'>" : "<input id= 'txt_" + ta.IDPagoComision + "' disabled name= 'txt_" + ta.IDPagoComision + "' value= '" + ta.PorcentajeComision + "'>",
                                      ta.TotalPagar,
                                      ta.ComisionPaga
                                  }).AsEnumerable();

@@ -15,7 +15,8 @@ namespace FrontEnd.Controllers.Viwolf
         public ActionResult Index()
         {   
             ViewBag.Usuario = TempData["Usuario"];
-            ViewBag.IdUsuario = TempData["IdUsiario"];
+            ViewBag.IdUsuario = TempData["IdUsuario"];
+            ViewBag.RolUsuario = TempData["RolUsuario"];
             return View();
         }
     }

@@ -34,7 +34,8 @@ namespace FrontEnd.Controllers.Seguridad
                         Session["User"] = result.FirstOrDefault();
 
                         TempData.Add("Usuario", result.First().CodigoUsuario);
-                        TempData.Add("IdUsiario", result.First().IdUsuario);
+                        TempData.Add("IdUsuario", result.First().IdUsuario);
+                        TempData.Add("RolUsuario", result.First().t_Roles.NombreRol);
                     }
                 }
 
