@@ -15,13 +15,13 @@
        
         btnBuscarComisiones.click(fnBuscarComisiones);
         btnPagarComision.click(function (e) {
-            debugger;
-            if (objSeleccionado != null) {
-                debugger;
+            
+            if (objComisiones != null) {
+                
                 fnConfirmarPagar(e);
             }
             else {
-                Dialog.alert('Contratos', "Debe seleccionar una reservacion.", function () {
+                Dialog.alert('Comisiones', "Debe realizar la busqueda de las comisiones.", function () {
                 })
             }
         });
@@ -29,7 +29,7 @@
     };
 
     var fnConfirmarPagar = function (e) {
-        debugger;
+        
         Dialog.confirm('Comisiones', "Desea cancelar las comisiones generadas?", function (respuesta) {
             if (respuesta == true)
                 fnPagarComisiones(e);
@@ -37,7 +37,7 @@
     };
 
     var fnPagarComisiones = function (e) {
-        debugger;
+        
         var oData = {
             "EnumPagosComisiones": objComisiones,
             "ExtendedProperties": arrayModificacion
@@ -47,11 +47,20 @@
             var oProcessMessage = 'Guardando Contrato';
 
             var success = function (result) {
+                debugger;
                 if (result.MessageType == "Success") {
                     Dialog.alert('Contrato', result.InfoMessage, function () {
                     })
-                    debugger;
-                    generarContrato.fnReporteTicket(e, result.Data.IDContrato, 1)
+                    var ids = "";
+                    for (var i = 0; i < result.Data.length; i++) {
+                        debugger;
+                        if (ids == "")
+                            ids = result.Data[i].IDPagoComision;
+                        else
+                            ids = ids + ',' + result.Data[i].IDPagoComision;
+                    }
+
+                    generarPagoComision.fnReporteTicket(e, ids)
                 }
                 else {
                     Dialog.alert('Contrato', result.ErrorMessage, function () {
@@ -66,7 +75,7 @@
     };
 
     var fnBuscarComisiones = function () {
-        debugger;
+        
         var oData = {
             "IDClienteComisionista": txtIDClienteComisionista.val(),
             "t_ClientesComisionistas.NombreClienteComisionista": txtNombreClienteComisionista.val(),
@@ -76,8 +85,10 @@
             var oUrl = 'Comisiones/ListarPagosComision';
             var oProcessMessage = 'Buscando Comisiones por pagar';
             var success = function (result) {
-                debugger;
+                
                 if (result.Data.length > 0) {
+                    debugger;
+
                     objComisiones = result.Data;
                     tblDataComisiones.dataTable({
                         destroy: true,
@@ -119,7 +130,7 @@
                         objSeleccionado = tblDataComisiones.fnGetData(iPos);
                     });
                     tblDataComisiones.on("change", "input", function () {
-                        debugger;
+                        
                         var valor = this.value;
                         var idComision = document.getElementById("tblDataComisiones").rows[iPos + 1].cells[0].innerText
                         objSeleccionado.TotalPagar = ((valor / 100) * objSeleccionado.PrecioTotal);

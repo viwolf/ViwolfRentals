@@ -124,7 +124,21 @@ namespace FrontEnd.Controllers.Viwolf
 
         }
 
+        public JsonResult VerPagoComisiones(string IDPagoComision)
+        {
+            return DoVerPagoComisiones(IDPagoComision);
+        }
 
+        private JsonResult DoVerPagoComisiones(string IDPagoComision)
+        {
+            string reportName = "rptPagoComisiones";
+            string sParametroValor = "IDPagoComision-" + IDPagoComision;
+            //string paramVal = string.Format("{0}-{1}", reportName, IdDeposito);
+            var sb = GetStringBuilderReport(reportName, sParametroValor);
+
+            return this.Json(sb.ToString(), JsonRequestBehavior.AllowGet);
+
+        }
 
 
         private string ObtenerUrlReportingService()

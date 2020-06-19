@@ -211,6 +211,7 @@
     <Content Include="Areas\Seguridad\Content\Plugin\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Areas\Seguridad\Content\Plugin\bootstrap\js\bootstrap.js" />
     <Content Include="Areas\Seguridad\Content\Plugin\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Areas\Viwolf\Content\js\src\Comisiones\GenerarPagoComision.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Contratos\CreacionContratos.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Contratos\GenerarContrato.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Contratos\Index.js" />
@@ -607,6 +608,7 @@
     <Content Include="Areas\Viwolf\Views\Contratos\CreacionContrato.cshtml" />
     <Content Include="Areas\Viwolf\Views\Contratos\VerContrato.cshtml" />
     <Content Include="Areas\Viwolf\Views\Comisiones\Index.cshtml" />
+    <Content Include="Areas\Viwolf\Views\Comisiones\GenerarPago.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

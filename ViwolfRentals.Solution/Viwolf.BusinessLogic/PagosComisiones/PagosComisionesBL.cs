@@ -17,7 +17,7 @@ namespace Viwolf.BusinessLogic
             return repository.ListarComisiones(entidad);
         }
 
-        public t_PagosComisiones PagarComisiones(IEnumerable<t_PagosComisiones> EnumPagosComisiones, t_PagosComisiones pagosComisiones)
+        public IEnumerable<t_PagosComisiones> PagarComisiones(IEnumerable<t_PagosComisiones> EnumPagosComisiones, t_PagosComisiones pagosComisiones)
         {
             return repository.PagarComisiones(EnumPagosComisiones, pagosComisiones);
         }
