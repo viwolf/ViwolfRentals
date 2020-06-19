@@ -171,6 +171,110 @@ namespace ViwolfRentals.DataAccess
 
         }
 
+        public t_PagosComisiones PagarComisiones(IEnumerable<t_PagosComisiones> EnumPagosComisiones, t_PagosComisiones pagosComisiones)
+        {
+            if (Conexion != null)
+            {
+                var resultado = DoPagarComision(Conexion, EnumPagosComisiones, pagosComisiones);
+                return resultado;
+            }
+            else
+            {
+                //Si no se maneja transaccionabilidad se hace la conexion normal
+                using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+                {
+                    //se abre la conexion ya que se va a trabajar con transaccionabilidad
+                    connection.Open();
+
+                    //se crea el objeto transaccion
+                    using (IDbTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            Transaccion = transaction;
+
+                            //Se manda a guardar el encabezado
+                            var resultado = DoPagarComision(connection, EnumPagosComisiones, pagosComisiones);
+
+                            transaction.Commit();
+
+                            return resultado;
+                        }
+                        catch (Exception x)
+                        {
+                            transaction.Rollback();
+                            throw;
+                        }
+                    }
+                }
+            }
+        }
+
+        private t_PagosComisiones DoPagarComision(IDbConnection connection, IEnumerable<t_PagosComisiones> EnumPagosComisiones, t_PagosComisiones pagosComisiones)
+        {
+
+            System.Data.DataTable TblComisiones = new System.Data.DataTable();
+            TblComisiones.Columns.Add(new System.Data.DataColumn("IDPagoComision", typeof(int)));
+            TblComisiones.Columns.Add(new System.Data.DataColumn("PrecioTotal", typeof(decimal)));
+            TblComisiones.Columns.Add(new System.Data.DataColumn("TotalPagar", typeof(decimal)));
+
+            System.Data.DataTable TblComisionesModificar = new System.Data.DataTable();
+            TblComisionesModificar.Columns.Add(new System.Data.DataColumn("id", typeof(string)));
+            TblComisionesModificar.Columns.Add(new System.Data.DataColumn("porcentaje", typeof(int)));
+
+            //string strIds = "";
+            //for (int i = 0; i < EnumPagosComisiones.Count(); i++)
+            //{
+            //    if(strIds == "")
+            //        strIds = EnumPagosComisiones.ElementAt(i).IDPagoComision.ToString();
+            //    else
+            //        strIds = strIds + "," + EnumPagosComisiones.ElementAt(i).IDPagoComision;
+            //}
+
+            foreach (var item in EnumPagosComisiones)
+            {
+                TblComisiones.Rows.Add(item.IDPagoComision, item.PrecioTotal, item.TotalPagar);
+            }
+
+            if (pagosComisiones.ExtendedProperties != null)
+            {
+
+                foreach (var item in pagosComisiones.ExtendedProperties)
+                {
+                    TblComisionesModificar.Rows.Add(item.Key, item.Value);
+                }
+            }
+
+
+            StringBuilder tracerBuilder = new StringBuilder();
+
+            try
+            {
+                tracerBuilder.AppendLine($"Se procede a guardar la reservacion. {Environment.NewLine}");
+                var IdContrato = (int)connection.ExecuteScalar(
+                                              sql: "usp_PagosComision_Pagar",
+                                              param: new
+                                              {
+                                                  Comisiones = TblComisiones,
+                                                  tblComisionesPagar = TblComisionesModificar
+                                              },
+                                              transaction: Transaccion,
+                                              commandTimeout: 500,
+                                              commandType: CommandType.StoredProcedure);
+
+
+               pagosComisiones.IDContrato = IdContrato;
+                return pagosComisiones;
+            }
+            catch (Exception ex)
+            {
+                //tracerBuilder.AppendLine($"Falló guardar reservacion. Error: {ex.ToString()}\nEntity={entity.SerializeToJson()}");
+                throw;
+            }
+
+
+        }
+
 
         public IConnectionManager ConnectionManagerInstance { get; private set; }
         public System.Data.IDbConnection Conexion { get; set; }

@@ -14,9 +14,6 @@ namespace FrontEnd.Controllers.Viwolf
         IPagosComisionesBL BlComision = new PagosComisionesBL();
         private static string rolUsuario;
 
-
-
-
         public ActionResult Index(string usuario, string idUsuario, string RolUsuario)
         {
             ViewBag.Usuario = usuario;
@@ -69,14 +66,29 @@ namespace FrontEnd.Controllers.Viwolf
         [HttpPost]
         public JsonResult GuardarPagosComision(IEnumerable<ViwolfRental.Common.Model.t_PagosComisiones> EnumPagosComisiones, ViwolfRental.Common.Model.t_PagosComisiones pagosComisiones)
         {
-           
             try
             {
-                return null;
+                var result = BlComision.PagarComisiones(EnumPagosComisiones,pagosComisiones);
+                return Json(new
+                {
+                    Data = result,
+                    MessageType = "Success",
+                    InfoMessage = result != null ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen comisiones por pagar que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
             }
+
             catch (Exception ex)
             {
-                return null;
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = ex.Message
+                }, JsonRequestBehavior.AllowGet);
             }
         }
     }
