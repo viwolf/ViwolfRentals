@@ -39,8 +39,8 @@ namespace FrontEnd.Controllers.Viwolf
                                      ta.PrecioTotal,
                                      PorcentajeComision = rolUsuario == "Administrador" ? "<input id= 'txt_" + ta.IDPagoComision + "' name= 'txt_" + ta.IDPagoComision + "' value= '" + ta.PorcentajeComision + "'>" : "<input id= 'txt_" + ta.IDPagoComision + "' disabled name= 'txt_" + ta.IDPagoComision + "' value= '" + ta.PorcentajeComision + "'>",
                                      ta.TotalPagar,
-                                     ta.ComisionPaga
-                                     //ta.ExtendedProperties.Add("Contratos", ta.t_Contratos.NumeroContrato)
+                                     ta.ComisionPaga,
+                                     chkPago = "<input id='chk_" + ta.IDPagoComision + "' type='checkbox'>"
                                  }).AsEnumerable();
                 return Json(new
                 {
