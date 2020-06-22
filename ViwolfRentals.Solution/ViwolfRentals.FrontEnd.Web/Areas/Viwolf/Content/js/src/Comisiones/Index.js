@@ -75,83 +75,90 @@
     };
 
     var fnBuscarComisiones = function () {
-        
-        var oData = {
-            "IDClienteComisionista": txtIDClienteComisionista.val(),
-            "t_ClientesComisionistas.NombreClienteComisionista": txtNombreClienteComisionista.val(),
-            "ComisionPaga": txtEstadoComision.val()
-        };
-        try {
-            var oUrl = 'Comisiones/ListarPagosComision';
-            var oProcessMessage = 'Buscando Comisiones por pagar';
-            var success = function (result) {
-                
-                if (result.Data.length > 0) {
-                    debugger;
 
-                    objComisiones = result.Data;
-                    tblDataComisiones.dataTable({
-                        destroy: true,
-                        processing: true,
-                        responsive: true,
-                        data: result.Data,
-                        select: true,
-                        columns: [
-                            { data: 'IDPagoComision' },
-                            { data: 'IDContrato' },
-                            { data: 'NumeroContrato' },
-                            { data: 'NombreCliente' },
-                            { data: 'PrecioTotal' },
-                            { data: 'PorcentajeComision' },
-                            { data: 'TotalPagar' },
-                            { data: 'ComisionPaga' }
-                        ],
-                        columnDefs: [
-                            {
-                                "targets": [0],
-                                "visible": false,
-                                "searchable": false
-                            },
-                            {
-                                "targets": [1],
-                                "visible": false,
-                                "searchable": false
-                            },
-                            {
-                                "targets": [7],
-                                "visible": false,
-                                "searchable": false
-                            }
-                        ]
-                    });
-                   
-                    tblDataComisiones.on("click", "tr", function () {
-                        iPos = tblDataComisiones.fnGetPosition(this);
-                        objSeleccionado = tblDataComisiones.fnGetData(iPos);
-                    });
-                    tblDataComisiones.on("change", "input", function () {
-                        
-                        var valor = this.value;
-                        var idComision = document.getElementById("tblDataComisiones").rows[iPos + 1].cells[0].innerText
-                        objSeleccionado.TotalPagar = ((valor / 100) * objSeleccionado.PrecioTotal);
-                        document.getElementById("tblDataComisiones").rows[iPos + 1].cells[4].innerText = objSeleccionado.TotalPagar;
-                        document.getElementById("tblDataComisiones").rows[iPos + 1].cells[4].innerHTML = objSeleccionado.TotalPagar;
-                        arrayModificacion.push({
-                            "Key": idComision,
-                            "Value": valor
-                        })
-                    });
-                }
-                else {
-                    Dialog.alert('Comisiones', result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage, function () {
-                    })
-                    tblDataComisiones.dataTable().fnClearTable();
-                };
+        if ((txtIDClienteComisionista.val() == '') && (txtNombreClienteComisionista.val() == '')) {
+            Dialog.alert('Comisiones', "Se debe de especificar algún criterio de búsqueda.", function () {
+            })
+        }
+        else {
+
+            var oData = {
+                "IDClienteComisionista": txtIDClienteComisionista.val(),
+                "t_ClientesComisionistas.NombreClienteComisionista": txtNombreClienteComisionista.val(),
+                "ComisionPaga": txtEstadoComision.val()
             };
-            app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
-        } catch (ex) {
+            try {
+                var oUrl = 'Comisiones/ListarPagosComision';
+                var oProcessMessage = 'Buscando Comisiones por pagar';
+                var success = function (result) {
 
-            retorno = false;
+                    if (result.Data.length > 0) {
+                        debugger;
+
+                        objComisiones = result.Data;
+                        tblDataComisiones.dataTable({
+                            destroy: true,
+                            processing: true,
+                            responsive: true,
+                            data: result.Data,
+                            select: true,
+                            columns: [
+                                { data: 'IDPagoComision' },
+                                { data: 'IDContrato' },
+                                { data: 'NumeroContrato' },
+                                { data: 'NombreCliente' },
+                                { data: 'PrecioTotal' },
+                                { data: 'PorcentajeComision' },
+                                { data: 'TotalPagar' },
+                                { data: 'ComisionPaga' }
+                            ],
+                            columnDefs: [
+                                {
+                                    "targets": [0],
+                                    "visible": false,
+                                    "searchable": false
+                                },
+                                {
+                                    "targets": [1],
+                                    "visible": false,
+                                    "searchable": false
+                                },
+                                {
+                                    "targets": [7],
+                                    "visible": false,
+                                    "searchable": false
+                                }
+                            ]
+                        });
+
+                        tblDataComisiones.on("click", "tr", function () {
+                            iPos = tblDataComisiones.fnGetPosition(this);
+                            objSeleccionado = tblDataComisiones.fnGetData(iPos);
+                        });
+                        tblDataComisiones.on("change", "input", function () {
+
+                            var valor = this.value;
+                            var idComision = document.getElementById("tblDataComisiones").rows[iPos + 1].cells[0].innerText
+                            objSeleccionado.TotalPagar = ((valor / 100) * objSeleccionado.PrecioTotal);
+                            document.getElementById("tblDataComisiones").rows[iPos + 1].cells[4].innerText = objSeleccionado.TotalPagar;
+                            document.getElementById("tblDataComisiones").rows[iPos + 1].cells[4].innerHTML = objSeleccionado.TotalPagar;
+                            arrayModificacion.push({
+                                "Key": idComision,
+                                "Value": valor
+                            })
+                        });
+                    }
+                    else {
+                        Dialog.alert('Comisiones', result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage, function () {
+                        })
+                        tblDataComisiones.dataTable().fnClearTable();
+                    };
+                };
+                app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
+            } catch (ex) {
+
+                retorno = false;
+            }
         }
     };
 
