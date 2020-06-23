@@ -119,6 +119,7 @@
     <Compile Include="ContratosController.cs" />
     <Compile Include="DepartamentosController.cs" />
     <Compile Include="ComisionesController.cs" />
+    <Compile Include="FacturacionController.cs" />
     <Compile Include="ProveedoresController.cs" />
     <Compile Include="ReportesController.cs" />
     <Compile Include="ReservacionesController.cs" />
