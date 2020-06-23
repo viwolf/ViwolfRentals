@@ -26,11 +26,15 @@ namespace ViwolfRental.Common.Model
         }
     
         public virtual DbSet<t_CategoriasVehiculos> t_CategoriasVehiculos { get; set; }
+        public virtual DbSet<t_Clientes> t_Clientes { get; set; }
         public virtual DbSet<t_ClientesComisionistas> t_ClientesComisionistas { get; set; }
         public virtual DbSet<t_CodigosContratos> t_CodigosContratos { get; set; }
         public virtual DbSet<t_Contratos> t_Contratos { get; set; }
         public virtual DbSet<t_Departamentos> t_Departamentos { get; set; }
         public virtual DbSet<t_EstadosContratos> t_EstadosContratos { get; set; }
+        public virtual DbSet<t_EstadosFacturas> t_EstadosFacturas { get; set; }
+        public virtual DbSet<t_Facturas> t_Facturas { get; set; }
+        public virtual DbSet<t_FacturasDetalles> t_FacturasDetalles { get; set; }
         public virtual DbSet<t_Kilometrajes> t_Kilometrajes { get; set; }
         public virtual DbSet<t_Modulos> t_Modulos { get; set; }
         public virtual DbSet<t_PagosComisiones> t_PagosComisiones { get; set; }
@@ -40,6 +44,8 @@ namespace ViwolfRental.Common.Model
         public virtual DbSet<t_Roles> t_Roles { get; set; }
         public virtual DbSet<t_RolesSistemaModuloPantalla> t_RolesSistemaModuloPantalla { get; set; }
         public virtual DbSet<t_Sistemas> t_Sistemas { get; set; }
+        public virtual DbSet<t_TiposFacturas> t_TiposFacturas { get; set; }
+        public virtual DbSet<t_TiposPago> t_TiposPago { get; set; }
         public virtual DbSet<t_Usuarios> t_Usuarios { get; set; }
         public virtual DbSet<t_Vehiculos> t_Vehiculos { get; set; }
     }

@@ -22,32 +22,6 @@ namespace FrontEnd.Controllers.Viwolf
             return View();
         }
 
-
-        private byte[] ReadFile(string sPath)
-        {
-            //Initialize byte array with a null value initially.
-            byte[] data = null;
-
-            //Use FileInfo object to get file size.
-            FileInfo fInfo = new FileInfo(sPath);
-            long numBytes = fInfo.Length;
-
-            //Open FileStream to read file
-            FileStream fStream = new FileStream(sPath, FileMode.Open, FileAccess.Read);
-
-            //Use BinaryReader to read file stream into byte array.
-            BinaryReader br = new BinaryReader(fStream);
-
-            //When you use BinaryReader, you need to supply number of bytes 
-            //to read from file.
-            //In this case we want to read entire file. 
-            //So supplying total number of bytes.
-            data = br.ReadBytes((int)numBytes);
-
-            return data;
-        }
-
-
         [HttpPost]
         public JsonResult GuardarContrato(ViwolfRental.Common.Model.t_Contratos contrato)
         {
@@ -75,6 +49,84 @@ namespace FrontEnd.Controllers.Viwolf
                 }, JsonRequestBehavior.AllowGet);
             }
 
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = ex.Message
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult ListarEstadosContratos(ViwolfRental.Common.Model.t_EstadosContratos estados)
+        {
+            try
+            {
+                var result = BlContrato.ListarEstados(estados);
+                var jsonObjet = (from ta in result
+                                 select new
+                                 {
+                                     ta.IDEstadoContrato,
+                                     ta.Descripcion
+                                 }).AsEnumerable();
+                return Json(new
+                {
+                    Data = jsonObjet,
+                    MessageType = "Success",
+                    InfoMessage = jsonObjet.Count() > 0 ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen Estados que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = ex.Message
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+
+        }
+
+        [HttpPost]
+        public JsonResult ListarContratos(ViwolfRental.Common.Model.t_Contratos contratos)
+        {
+            try
+            {
+                var result = BlContrato.ListarContratos(contratos);
+
+                var jsonObjet = (from ta in result
+                                 select new
+                                 {
+                                     ta.IDContrato,
+                                     ta.IDReservacion,
+                                     ta.t_EstadosContratos.IDEstadoContrato,
+                                     ta.NumeroContrato,
+                                     ta.t_Reservaciones.NombreCliente,
+                                     ta.t_Reservaciones.LugarEntrega,
+                                     ta.t_EstadosContratos.Descripcion,
+                                     ta.TotalContrato,
+                                     chkPago = "<input id='chk_" + ta.IDContrato + "' type='checkbox'>"
+                                 }).AsEnumerable();
+                return Json(new
+                {
+                    Data = jsonObjet,
+                    MessageType = "Success",
+                    InfoMessage = jsonObjet.Count() > 0 ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen comisiones por pagar que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+            }
             catch (Exception ex)
             {
                 return Json(new

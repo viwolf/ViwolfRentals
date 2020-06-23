@@ -95,6 +95,66 @@ namespace ViwolfRentals.DataAccess
             }
         }
 
+        public IEnumerable<t_Contratos> ListarContratos(t_Contratos entidad)
+        {
+            using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+            {
+                return connection.Query<
+             t_Contratos,
+             t_Reservaciones,
+             t_EstadosContratos,
+             t_Contratos>
+             ("usp_Contratos_Listar",
+             (a, b, c) =>
+             {
+                 a.t_Reservaciones = (t_Reservaciones)b;
+                 a.t_EstadosContratos = (t_EstadosContratos)c;
+                 return a;
+             },
+             splitOn: "IdReservacion, IDEstadoContrato",
+             param: new
+             {
+                 entidad.NumeroContrato,
+                 NombreCliente = entidad.t_Reservaciones == null ? null : entidad.t_Reservaciones.NombreCliente,
+                 LugarEntrega = entidad.t_Reservaciones == null ? null : entidad.t_Reservaciones.LugarEntrega,
+                 entidad.IDEstadoContrato
+             }, commandTimeout: 500, commandType: CommandType.StoredProcedure);
+            }
+
+
+          
+
+        }
+
+        public IEnumerable<t_EstadosContratos> ListarEstados(t_EstadosContratos entidad)
+        {
+            using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+            {
+                return connection.Query("usp_EstadosContratos_Listar",
+                   new[]
+                   {
+                        typeof(ViwolfRental.Common.Model.t_EstadosContratos)
+                   },
+                   (object[] objetos) =>
+                   {
+                       t_EstadosContratos a = objetos[0] as t_EstadosContratos;
+                       t_EstadosContratos resultado = new t_EstadosContratos();
+
+                       resultado = a;
+                       return resultado;
+
+
+                   },
+                           param: new
+                           {
+                             
+
+                           },
+                            splitOn: "",
+                            commandType: CommandType.StoredProcedure);
+            }
+        }
+
         private t_Contratos DoGuardar(IDbConnection connection, IDbTransaction transaction, t_Contratos entity)
         {
             StringBuilder tracerBuilder = new StringBuilder();

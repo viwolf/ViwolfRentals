@@ -16,5 +16,15 @@ namespace Viwolf.BusinessLogic
         {
             return repository.Guardar(contrato);
         }
+
+        public IEnumerable<t_Contratos> ListarContratos(t_Contratos entidad)
+        {
+            return repository.ListarContratos(entidad);
+        }
+
+        public IEnumerable<t_EstadosContratos> ListarEstados(t_EstadosContratos entidad)
+        {
+            return repository.ListarEstados(entidad);
+        }
     }
 }

@@ -12,22 +12,16 @@ namespace ViwolfRental.Common.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class t_PagosComisiones
+    public partial class t_Clientes
     {
-        public int IDPagoComision { get; set; }
+        public int IDCliente { get; set; }
         public System.DateTime FechaCreacion { get; set; }
         public string UsuarioCreacion { get; set; }
-        public Nullable<System.DateTime> FechaModificacion { get; set; }
+        public System.DateTime FechaModificacion { get; set; }
         public string UsuarioModificacion { get; set; }
-        public int IDClienteComisionista { get; set; }
-        public int IDContrato { get; set; }
-        public decimal PrecioTotal { get; set; }
-        public int PorcentajeComision { get; set; }
-        public decimal TotalPagar { get; set; }
-        public bool ComisionPaga { get; set; }
-    
-        public virtual t_ClientesComisionistas t_ClientesComisionistas { get; set; }
-        public virtual t_Contratos t_Contratos { get; set; }
-        public IDictionary<string, Object> ExtendedProperties { set; get; }
+        public string IdentificacionCliente { get; set; }
+        public string NombreCliente { get; set; }
+        public string NacionalidadCliente { get; set; }
+        public string ProfesionCliente { get; set; }
     }
 }

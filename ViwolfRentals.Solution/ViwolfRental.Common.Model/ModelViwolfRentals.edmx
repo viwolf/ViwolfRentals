@@ -14,6 +14,20 @@
           <Property Name="Comision" Type="int" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="t_Clientes">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+          </Key>
+          <Property Name="IDCliente" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdentificacionCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NombreCliente" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="NacionalidadCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProfesionCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="t_ClientesComisionistas">
           <Key>
             <PropertyRef Name="IDClienteComisionista" />
@@ -72,6 +86,47 @@
           <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
           <Property Name="FechaModificacion" Type="datetime" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_EstadosFacturas">
+          <Key>
+            <PropertyRef Name="IDEstadoFactura" />
+          </Key>
+          <Property Name="IDEstadoFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="NombreEstadoFactura" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_Facturas">
+          <Key>
+            <PropertyRef Name="IDFctura" />
+          </Key>
+          <Property Name="IDFctura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="NombreCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDReservacion" Type="int" Nullable="false" />
+          <Property Name="IDTipoPago" Type="int" Nullable="false" />
+          <Property Name="IDTipoFactura" Type="int" Nullable="false" />
+          <Property Name="IDEstadoFactura" Type="int" Nullable="false" />
+          <Property Name="TotalFacturado" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_FacturasDetalles">
+          <Key>
+            <PropertyRef Name="IDFacturaDetalle" />
+            <PropertyRef Name="IDFactura" />
+          </Key>
+          <Property Name="IDFacturaDetalle" Type="int" Nullable="false" />
+          <Property Name="IDFactura" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDContrato" Type="int" Nullable="false" />
+          <Property Name="SubTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="t_Kilometrajes">
           <Key>
@@ -203,6 +258,28 @@
           <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FechaModificacion" Type="datetime" />
           <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="t_TiposFacturas">
+          <Key>
+            <PropertyRef Name="IDTipoFactura" />
+          </Key>
+          <Property Name="IDTipoFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="NombreTiooPago" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="t_TiposPago">
+          <Key>
+            <PropertyRef Name="IDTipoPago" />
+          </Key>
+          <Property Name="IDTipoPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="NombreTipoPago" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="t_Usuarios">
           <Key>
@@ -484,11 +561,15 @@
         </Association>
         <EntityContainer Name="ViwolfRentalsDBModelStoreContainer">
           <EntitySet Name="t_CategoriasVehiculos" EntityType="Self.t_CategoriasVehiculos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Clientes" EntityType="Self.t_Clientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ClientesComisionistas" EntityType="Self.t_ClientesComisionistas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_CodigosContratos" EntityType="Self.t_CodigosContratos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Contratos" EntityType="Self.t_Contratos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Departamentos" EntityType="Self.t_Departamentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_EstadosContratos" EntityType="Self.t_EstadosContratos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_EstadosFacturas" EntityType="Self.t_EstadosFacturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Facturas" EntityType="Self.t_Facturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_FacturasDetalles" EntityType="Self.t_FacturasDetalles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Kilometrajes" EntityType="Self.t_Kilometrajes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Modulos" EntityType="Self.t_Modulos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_PagosComisiones" EntityType="Self.t_PagosComisiones" Schema="dbo" store:Type="Tables" />
@@ -498,6 +579,8 @@
           <EntitySet Name="t_Roles" EntityType="Self.t_Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_RolesSistemaModuloPantalla" EntityType="Self.t_RolesSistemaModuloPantalla" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Sistemas" EntityType="Self.t_Sistemas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_TiposFacturas" EntityType="Self.t_TiposFacturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_TiposPago" EntityType="Self.t_TiposPago" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Usuarios" EntityType="Self.t_Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Vehiculos" EntityType="Self.t_Vehiculos" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_t_Contratos_t_CodigosContratos" Association="Self.FK_t_Contratos_t_CodigosContratos">
@@ -579,11 +662,15 @@
       <Schema Namespace="ViwolfRentalsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ViwolfRentalsDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="t_CategoriasVehiculos" EntityType="ViwolfRentalsDBModel.t_CategoriasVehiculos" />
+          <EntitySet Name="t_Clientes" EntityType="ViwolfRentalsDBModel.t_Clientes" />
           <EntitySet Name="t_ClientesComisionistas" EntityType="ViwolfRentalsDBModel.t_ClientesComisionistas" />
           <EntitySet Name="t_CodigosContratos" EntityType="ViwolfRentalsDBModel.t_CodigosContratos" />
           <EntitySet Name="t_Contratos" EntityType="ViwolfRentalsDBModel.t_Contratos" />
           <EntitySet Name="t_Departamentos" EntityType="ViwolfRentalsDBModel.t_Departamentos" />
           <EntitySet Name="t_EstadosContratos" EntityType="ViwolfRentalsDBModel.t_EstadosContratos" />
+          <EntitySet Name="t_EstadosFacturas" EntityType="ViwolfRentalsDBModel.t_EstadosFacturas" />
+          <EntitySet Name="t_Facturas" EntityType="ViwolfRentalsDBModel.t_Facturas" />
+          <EntitySet Name="t_FacturasDetalles" EntityType="ViwolfRentalsDBModel.t_FacturasDetalles" />
           <EntitySet Name="t_Kilometrajes" EntityType="ViwolfRentalsDBModel.t_Kilometrajes" />
           <EntitySet Name="t_Modulos" EntityType="ViwolfRentalsDBModel.t_Modulos" />
           <EntitySet Name="t_PagosComisiones" EntityType="ViwolfRentalsDBModel.t_PagosComisiones" />
@@ -593,6 +680,8 @@
           <EntitySet Name="t_Roles" EntityType="ViwolfRentalsDBModel.t_Roles" />
           <EntitySet Name="t_RolesSistemaModuloPantalla" EntityType="ViwolfRentalsDBModel.t_RolesSistemaModuloPantalla" />
           <EntitySet Name="t_Sistemas" EntityType="ViwolfRentalsDBModel.t_Sistemas" />
+          <EntitySet Name="t_TiposFacturas" EntityType="ViwolfRentalsDBModel.t_TiposFacturas" />
+          <EntitySet Name="t_TiposPago" EntityType="ViwolfRentalsDBModel.t_TiposPago" />
           <EntitySet Name="t_Usuarios" EntityType="ViwolfRentalsDBModel.t_Usuarios" />
           <EntitySet Name="t_Vehiculos" EntityType="ViwolfRentalsDBModel.t_Vehiculos" />
           <AssociationSet Name="FK_t_Vehiculos_t_CategoriasVehiculos" Association="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos">
@@ -678,6 +767,20 @@
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="t_Vehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos" FromRole="t_CategoriasVehiculos" ToRole="t_Vehiculos" />
         </EntityType>
+        <EntityType Name="t_Clientes">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+          </Key>
+          <Property Name="IDCliente" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdentificacionCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NombreCliente" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NacionalidadCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProfesionCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="t_ClientesComisionistas">
           <Key>
             <PropertyRef Name="IDClienteComisionista" />
@@ -745,6 +848,47 @@
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="t_Contratos" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_EstadosContratos" FromRole="t_EstadosContratos" ToRole="t_Contratos" />
+        </EntityType>
+        <EntityType Name="t_EstadosFacturas">
+          <Key>
+            <PropertyRef Name="IDEstadoFactura" />
+          </Key>
+          <Property Name="IDEstadoFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NombreEstadoFactura" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="t_Facturas">
+          <Key>
+            <PropertyRef Name="IDFctura" />
+          </Key>
+          <Property Name="IDFctura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NombreCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDReservacion" Type="Int32" Nullable="false" />
+          <Property Name="IDTipoPago" Type="Int32" Nullable="false" />
+          <Property Name="IDTipoFactura" Type="Int32" Nullable="false" />
+          <Property Name="IDEstadoFactura" Type="Int32" Nullable="false" />
+          <Property Name="TotalFacturado" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="t_FacturasDetalles">
+          <Key>
+            <PropertyRef Name="IDFacturaDetalle" />
+            <PropertyRef Name="IDFactura" />
+          </Key>
+          <Property Name="IDFacturaDetalle" Type="Int32" Nullable="false" />
+          <Property Name="IDFactura" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDContrato" Type="Int32" Nullable="false" />
+          <Property Name="SubTotal" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="t_Kilometrajes">
           <Key>
@@ -895,6 +1039,28 @@
           <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="t_Pantallas" Relationship="ViwolfRentalsDBModel.FK_t_Pantallas_t_Sistemas" FromRole="t_Sistemas" ToRole="t_Pantallas" />
           <NavigationProperty Name="t_Usuarios" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Sistemas" FromRole="t_Sistemas" ToRole="t_Usuarios" />
+        </EntityType>
+        <EntityType Name="t_TiposFacturas">
+          <Key>
+            <PropertyRef Name="IDTipoFactura" />
+          </Key>
+          <Property Name="IDTipoFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NombreTiooPago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="t_TiposPago">
+          <Key>
+            <PropertyRef Name="IDTipoPago" />
+          </Key>
+          <Property Name="IDTipoPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NombreTipoPago" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="t_Usuarios">
           <Key>
@@ -1197,6 +1363,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="t_Clientes">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Clientes">
+              <MappingFragment StoreEntitySet="t_Clientes">
+                <ScalarProperty Name="ProfesionCliente" ColumnName="ProfesionCliente" />
+                <ScalarProperty Name="NacionalidadCliente" ColumnName="NacionalidadCliente" />
+                <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+                <ScalarProperty Name="IdentificacionCliente" ColumnName="IdentificacionCliente" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="t_ClientesComisionistas">
             <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_ClientesComisionistas">
               <MappingFragment StoreEntitySet="t_ClientesComisionistas">
@@ -1258,6 +1439,49 @@
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
                 <ScalarProperty Name="IDEstadoContrato" ColumnName="IDEstadoContrato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_EstadosFacturas">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_EstadosFacturas">
+              <MappingFragment StoreEntitySet="t_EstadosFacturas">
+                <ScalarProperty Name="NombreEstadoFactura" ColumnName="NombreEstadoFactura" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IDEstadoFactura" ColumnName="IDEstadoFactura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Facturas">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Facturas">
+              <MappingFragment StoreEntitySet="t_Facturas">
+                <ScalarProperty Name="TotalFacturado" ColumnName="TotalFacturado" />
+                <ScalarProperty Name="IDEstadoFactura" ColumnName="IDEstadoFactura" />
+                <ScalarProperty Name="IDTipoFactura" ColumnName="IDTipoFactura" />
+                <ScalarProperty Name="IDTipoPago" ColumnName="IDTipoPago" />
+                <ScalarProperty Name="IDReservacion" ColumnName="IDReservacion" />
+                <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IDFctura" ColumnName="IDFctura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_FacturasDetalles">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_FacturasDetalles">
+              <MappingFragment StoreEntitySet="t_FacturasDetalles">
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="IDContrato" ColumnName="IDContrato" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
+                <ScalarProperty Name="IDFacturaDetalle" ColumnName="IDFacturaDetalle" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1396,6 +1620,30 @@
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="NombreSistema" ColumnName="NombreSistema" />
                 <ScalarProperty Name="IdSistema" ColumnName="IdSistema" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_TiposFacturas">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_TiposFacturas">
+              <MappingFragment StoreEntitySet="t_TiposFacturas">
+                <ScalarProperty Name="NombreTiooPago" ColumnName="NombreTiooPago" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IDTipoFactura" ColumnName="IDTipoFactura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_TiposPago">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_TiposPago">
+              <MappingFragment StoreEntitySet="t_TiposPago">
+                <ScalarProperty Name="NombreTipoPago" ColumnName="NombreTipoPago" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IDTipoPago" ColumnName="IDTipoPago" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -11,12 +11,13 @@
     var objComisiones = null;
     var arrayModificacion = [];
     var rows_selected = [];
+    var idEstado = 0;
 
     var InitSelect = function () {
         cargarSelect2(txtEstadoContrato,
             {
                 PlaceHolder: "",
-                Url: "Contratos/ListarEstadoContratos",
+                Url: "Contratos/ListarEstadosContratos",
                 DataType: 'json',
                 Type: "POST",
                 Id: "IDEstadoContrato",
@@ -69,7 +70,7 @@
     };
 
     var fnInit = function () {
-
+       
         btnBuscarContratos.click(fnBuscarContratos);
         //btnFacturar.click(function (e) {
         //    if (rows_selected.length > 0) {
@@ -81,6 +82,8 @@
         //    }
         //});
 
+        txtEstadoContrato.change(cambiarEstadoContrato)
+
     };
 
     //var fnConfirmarPagar = function (e) {
@@ -91,7 +94,17 @@
     //    })
     //};
 
-    updateDataTableSelectAllCtrl(table) {
+    function cambiarEstadoContrato() {
+        var estado = document.getElementById("txtEstadoContrato");
+        idEstado = estado.options[estado.selectedIndex].value;
+
+        if (idEstado == configViwolf.EstadosContratos.Pendiente)
+            document.getElementById("btnFacturar").disabled = false;
+        else
+            document.getElementById("btnFacturar").disabled = true;
+    }
+
+   function updateDataTableSelectAllCtrl(table) {
 
         var $chkbox_all = $('tbody input[type="checkbox"]', table);
         var $chkbox_checked = $('tbody input[type="checkbox"]:checked', table);
@@ -125,19 +138,21 @@
 
     var fnBuscarContratos = function () {
 
+        debugger;
 
-       
+        var estado = document.getElementById("txtEstadoContrato");
+        var EstadoID = estado.options[estado.selectedIndex].value;
        
 
             var oData = {
-                "NumeroContrato": txtIDClienteComisionista.val(),
+                "NumeroContrato": txtNumroContrato.val(),
                 "t_Reservaciones.NombreCliente": txtNombreCliente.val(),
                 "t_Reservaciones.LugarEntrega": txtLugarEntrega.val(),
-                "IDEstadoContrato": txtEstadoComision.val()
+                "IDEstadoContrato": EstadoID
             };
             try {
-                var oUrl = 'Comisiones/ListarPagosComision';
-                var oProcessMessage = 'Buscando Comisiones por pagar';
+                var oUrl = 'Contratos/ListarContratos';
+                var oProcessMessage = 'Buscando Contratos.';
                 var success = function (result) {
 
                     if (result.Data.length > 0) {
@@ -152,14 +167,14 @@
                             data: result.Data,
                             select: true,
                             columns: [
-                                { data: 'IDPagoComision' },
                                 { data: 'IDContrato' },
+                                { data: 'IDReservacion' },
+                                { data: 'IDEstadoContrato' },
                                 { data: 'NumeroContrato' },
                                 { data: 'NombreCliente' },
-                                { data: 'PrecioTotal' },
-                                { data: 'PorcentajeComision' },
-                                { data: 'TotalPagar' },
-                                { data: 'ComisionPaga' },
+                                { data: 'LugarEntrega' },
+                                { data: 'Descripcion' },
+                                { data: 'TotalContrato' },
                                 { data: 'chkPago' }
                             ],
                             columnDefs: [
@@ -174,7 +189,7 @@
                                     "searchable": false
                                 },
                                 {
-                                    "targets": [7],
+                                    "targets": [2],
                                     "visible": false,
                                     "searchable": false
                                 }
