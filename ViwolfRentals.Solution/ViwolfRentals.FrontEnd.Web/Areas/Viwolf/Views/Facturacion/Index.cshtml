@@ -37,10 +37,10 @@
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">Pago de Comisiones</h2>
+                    <h2 class="title">Facturacion de Contratos</h2>
                 </div>
                 <div class="card-body">
-                    <form id="formPagoComision" name="formPagoComision" class="smart-form">
+                    <form id="formFacturacion" name="formFacturacion" class="smart-form">
                         <fieldset>
                             <div class="row">
                                 <div class="col col-12 col-md-12">
@@ -67,8 +67,8 @@
                             </div>
                             <div class="row">
                                 <div class="col col-12 col-md-12">
-                                    <div id="divDataComisiones" class="col-md-12" style="overflow-x: auto">
-                                        <table id="tblDataComisiones" class="table table-striped table-hover dt-responsive" cellspacing="0" width="100%">
+                                    <div id="divDataContratos" class="col-md-12" style="overflow-x: auto">
+                                        <table id="tblDataContratos" class="table table-striped table-hover dt-responsive" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
                                                     <th style="visibility:hidden">IDContrato</th>
@@ -118,12 +118,7 @@
 
 <script src="~/Areas/Viwolf/Content/js/src/Comisiones/Index.js"></script>
 
-@*<script src="~/Areas/Viwolf/Content/js/src/Contratos/Index.js"></script>
-    <script src="~/Areas/Viwolf/Content/js/src/Contratos/GenerarContrato.js"></script>
 
-    @Html.Partial("~/Areas/Viwolf/Views/Contratos/CreacionContrato.cshtml")
-    @Html.Partial("~/Areas/Viwolf/Views/Contratos/VerContrato.cshtml")
-    <script src="~/Areas/Viwolf/Content/js/src/Contratos/CreacionContratos.js"></script>*@
 
 @Html.Partial("~/Areas/Viwolf/Views/Contratos/VerContrato.cshtml")
 <script src="~/Areas/Viwolf/Content/js/src/Comisiones/GenerarPagoComision.js"></script>

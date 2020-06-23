@@ -611,6 +611,7 @@
     <Content Include="Areas\Viwolf\Views\Comisiones\Index.cshtml" />
     <Content Include="Areas\Viwolf\Views\Comisiones\GenerarPago.cshtml" />
     <Content Include="Areas\Viwolf\Views\Facturacion\Index.cshtml" />
+    <Content Include="Areas\Viwolf\Views\Facturacion\DetallePago.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
