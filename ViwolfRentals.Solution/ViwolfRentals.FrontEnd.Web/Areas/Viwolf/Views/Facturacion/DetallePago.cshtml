@@ -1,5 +1,5 @@
 ﻿<!-- Form Modal -->
-<div id="popupCrearContrato" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+<div id="popupPagarContrato" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -15,159 +15,22 @@
                                     <div class="form-row m-b-55">
                                         <div class="col-4">
                                             <div class="input-group-desc">
-                                                <input id="txtMontoTotal" disabled class="input--style-5" type="text" name="Reservacion">
-                                                <label class="label--desc">Número Reservacion</label>
+                                                <label>Total a Pagar</label>
                                             </div>
                                         </div>
-                                        <div class="col-8">
+                                        <div class="col-4">
                                             <div class="input-group-desc">
-                                                <input id="txtNombreClienteContrato" disabled class="input--style-5" type="text" name="NombreCliente">
-                                                <label class="label--desc">Nombre Cliente</label>
+                                                <input id="txtTotalPagar" disabled class="input--style-5" type="text" name="txtTotalPagar">
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="input-group-desc">
+                                                <input id="txtMoneda" disabled class="input--style-5" type="text" name="txtTotalPagar">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="form-row m-b-55">
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <input id="txtVoucherPago" type="file" name="VoucherPago">
-                                                <label class="label--desc">Voucher Pago</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <img id="imgVoucherPago" src="" width="150" height="150" alt="Vista Previa Pago...">
-
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <input id="txtVoucherDeposito" type="file" name="VoucherDeposito">
-                                                <label class="label--desc">Voucher Deposito</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <img id="imgVoucherDeposito" src="" width="150" height="150" alt="Vista Previa Deposito...">
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row m-b-55">
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <input id="txtLicencia" type="file" name="Pasaporte">
-                                                <label class="label--desc">Pasaporte/Licencia</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <img id="imgLicencia" src="" width="150" height="150" alt="Vista Previa Licencia/Pasaporte...">
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <input id="txtContrato" type="file" name="Contrato">
-                                                <label class="label--desc">Contrato</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <img id="imgContrato" src="" width="150" height="150" alt="Vista Previa Contrato...">
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row m-b-55">
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <input id="txtPrimeraVehiculo" type="file" name="Vehiculo1">
-                                                <label class="label--desc">Vehiculo 1</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <img id="imgPrimeraVehiculo" src="" width="150" height="150" alt="Vista Previa Vehiculo...">
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <input id="txtSegundaVehiculo" type="file" name="Vehiculo2">
-                                                <label class="label--desc">Vehiculo 2</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <img id="imgSegundaVehiculo" src="" width="150" height="150" alt="Vista Previa Vehiculo...">
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row m-b-55">
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <input id="txtTerceraVehiculo" type="file" name="Vehiculo3">
-                                                <label class="label--desc">Vehiculo 3</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <img id="imgTerceraVehiculo" src="" width="150" height="150" alt="Vista Previa Vehiculo...">
-
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <input id="txtCuartaVehiculo" type="file" name="Vehiculo4">
-                                                <label class="label--desc">Vehiculo 4</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <img id="imgCuartaVehiculo" src="" width="150" height="150" alt="Vista Previa Vehiculo...">
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row m-b-55">
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <input id="txtQuintaVehiculo" type="file" name="Vehiculo5">
-                                                <label class="label--desc">Vehiculo 5</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <img id="imgQuintaVehiculo" src="" width="150" height="150" alt="Vista Previa Vehiculo...">
-
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <input id="txtSextaVehiculo" type="file" name="Vehiculo6">
-                                                <label class="label--desc">Vehiculo 6</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="input-group-desc">
-                                                <img id="imgSextaVehiculo" src="" width="150" height="150" alt="Vista Previa Vehiculo...">
-
-                                            </div>
-                                        </div>
-                                    </div>
+                              
 
                                     <div class="col-md-12">
                                         <div class=" actions pull-right">

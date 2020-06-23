@@ -72,27 +72,33 @@
     var fnInit = function () {
        
         btnBuscarContratos.click(fnBuscarContratos);
-        //btnFacturar.click(function (e) {
-        //    if (rows_selected.length > 0) {
-        //        fnConfirmarPagar(e);
-        //    }
-        //    else {
-        //        Dialog.alert('Contratos', "Debe seleccionar un contrato.", function () {
-        //        })
-        //    }
-        //});
+        btnFacturar.click(function (e) {
+            if (rows_selected.length > 0) {
+                fnConfirmarPagar(e);
+            }
+            else {
+                Dialog.alert('Contratos', "Debe seleccionar un contrato.", function () {
+                })
+            }
+        });
 
         txtEstadoContrato.change(cambiarEstadoContrato)
 
     };
 
-    //var fnConfirmarPagar = function (e) {
+    var fnConfirmarPagar = function (e) {
 
-    //    Dialog.confirm('Facturar', "Desea facturar los contratos seleccionados?", function (respuesta) {
-    //        if (respuesta == true)
-    //            DetallePago.fnMostrar(fnDetallePago);
-    //    })
-    //};
+        Dialog.confirm('Facturar', "Desea facturar los contratos seleccionados?", function (respuesta) {
+            if (respuesta == true) {
+                var Total = 0;
+                rows_selected.forEach(function (item) {
+                    debugger;
+                    Total = Total + item.TotalContrato;
+                })
+                detallePago.AbrirModal(Total);
+            }
+        })
+    };
 
     function cambiarEstadoContrato() {
         var estado = document.getElementById("txtEstadoContrato");
@@ -137,8 +143,6 @@
 
 
     var fnBuscarContratos = function () {
-
-        debugger;
 
         var estado = document.getElementById("txtEstadoContrato");
         var EstadoID = estado.options[estado.selectedIndex].value;

@@ -216,6 +216,7 @@
     <Content Include="Areas\Viwolf\Content\js\src\Contratos\GenerarContrato.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Contratos\Index.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Comisiones\Index.js" />
+    <Content Include="Areas\Viwolf\Content\js\src\Facturacion\DetallePago.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Facturacion\Index.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Calendario.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\css\core\main.css" />
