@@ -13,6 +13,7 @@
     var rows_selected = [];
     var rows_DetallePago = [];
     var idEstado = 0;
+    var TotalFacturado = 0
 
     var InitSelect = function () {
         cargarSelect2(txtEstadoContrato,
@@ -98,12 +99,11 @@
 
         Dialog.confirm('Facturar', "Desea facturar los contratos seleccionados?", function (respuesta) {
             if (respuesta == true) {
-                var Total = 0;
+                TotalFacturado = 0;
                 rows_selected.forEach(function (item) {
-                    debugger;
-                    Total = Total + item.TotalContrato;
+                    TotalFacturado = TotalFacturado + item.TotalContrato;
                 })
-                detallePago.AbrirModal(Total, callBackFactura);
+                detallePago.AbrirModal(TotalFacturado, callBackFactura);
             }
         })
     };
@@ -148,12 +148,12 @@
     }
 
     var fnBuscarContratos = function () {
-
+        debugger;
         var estado = document.getElementById("txtEstadoContrato");
         var EstadoID = estado.options[estado.selectedIndex].value;
        
 
-            var oData = {
+        var oData = {
                 "NumeroContrato": txtNumroContrato.val(),
                 "t_Reservaciones.NombreCliente": txtNombreCliente.val(),
                 "t_Reservaciones.LugarEntrega": txtLugarEntrega.val(),
@@ -309,14 +309,12 @@
     };
 
     var fnCrearFactura = function (e) {
-        debugger;
-
-      
-        
-
-
         var oData = {
+            "UsuarioCreacion": usuarioLogueado,
             "NombreCliente": rows_selected[0].NombreCliente,
+            "IDTipoFactura": configViwolf.TiposFactura.Contado,
+            "IDEstadoFactura": configViwolf.EstadosFactura.Activa,
+            "TotalFacturado": TotalFacturado,
             "t_FacturasDetalles": rows_selected,
             "t_FacturaDetallePago": rows_DetallePago
         }

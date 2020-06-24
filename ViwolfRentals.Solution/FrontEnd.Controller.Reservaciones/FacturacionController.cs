@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Viwolf.BusinessLogic;
+using Viwolf.BusinessLogic.Interface;
 
 namespace FrontEnd.Controllers.Viwolf
 {
     public class FacturacionController:Controller
     {
+        IFacturacionBL BlFacturacion = new FacturacionBL();
+
         public ActionResult Index(string usuario, string idUsuario)
         {
             ViewBag.Usuario = usuario;
@@ -22,17 +26,18 @@ namespace FrontEnd.Controllers.Viwolf
         {
             try
             {
-                //var result = BlComision.PagarComisiones(EnumPagosComisiones, pagosComisiones);
-                //return Json(new
-                //{
-                //    Data = result,
-                //    MessageType = "Success",
-                //    InfoMessage = result != null ?
-                //            "Proceso efectuado satisfactoriamente." :
-                //            "No existen comisiones por pagar que coincidan con los criterios de búsqueda.",
-                //    ErrorMessage = string.Empty
-                //}, JsonRequestBehavior.AllowGet);
-                return null;
+
+                var result = BlFacturacion.GuardarFactura(Factura);
+                return Json(new
+                {
+                    Data = result,
+                    MessageType = "Success",
+                    InfoMessage = result != null ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen facturas que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+
             }
 
             catch (Exception ex)
