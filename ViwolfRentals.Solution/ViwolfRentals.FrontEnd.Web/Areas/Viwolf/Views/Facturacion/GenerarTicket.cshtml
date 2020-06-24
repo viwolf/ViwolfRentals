@@ -1,0 +1,52 @@
+﻿@{
+
+    Layout = null;
+}
+<!-- Form Modal -->
+<div class="modal fade" id="popupReport" role="dialog" aria-labelledby="lockedModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel"><span id="tituloReporte"></span></h4>
+                </br>
+                <div id="mediosExportar">
+                    <div role="content">
+                        <div class="row small-padding">
+                            <div class="col-sm-12">
+                                <div class="actions pull-left">
+                                    <button type="button" id="btnGenerarExcel" class="btn btn-success btn-sm" data-role="tooltip" title="Generar"><span class="widget-icon">Exportar a Excel</span></button>
+                                    <button type="button" id="btnGenerarWord" class="btn btn-success btn-sm" data-role="tooltip" title="Generar"><span class="widget-icon">Exportar a Word</span></button>
+                                    <button type="button" id="btnGenerarPDF" class="btn btn-success btn-sm" data-role="tooltip" title="Generar"><span class="widget-icon">Exportar a PDF</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body modal-scroll">
+                <div class="panel-body">
+                    <div id="wid-id-2">
+                        <!-- widget div-->
+                        <div role="content">
+                            <div class="widget-body no-padding">
+                                <fieldset>
+                                    <span id="reportes"></span>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- End Form Modal -->
+
+<script src="~/Areas/Viwolf/Content/js/src/Facturacion/GenerarTicket.js"></script>
+

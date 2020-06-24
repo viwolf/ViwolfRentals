@@ -129,6 +129,22 @@ namespace FrontEnd.Controllers.Viwolf
             return DoVerPagoComisiones(IDPagoComision);
         }
 
+        public JsonResult TicketFactura(string IDFactura)
+        {
+            return DoTicketFactura(IDFactura);
+        }
+
+        private JsonResult DoTicketFactura(string IDFactura)
+        {
+            string reportName = "rptTicketContado";
+            string sParametroValor = "IDFactura-" + IDFactura;
+            //string paramVal = string.Format("{0}-{1}", reportName, IdDeposito);
+            var sb = GetStringBuilderReport(reportName, sParametroValor);
+
+            return this.Json(sb.ToString(), JsonRequestBehavior.AllowGet);
+
+        }
+
         private JsonResult DoVerPagoComisiones(string IDPagoComision)
         {
             string reportName = "rptPagoComisiones";

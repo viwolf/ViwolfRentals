@@ -323,20 +323,11 @@
             var oProcessMessage = 'Guardando Factura';
 
             var success = function (result) {
-
+                debugger;
                 if (result.MessageType == "Success") {
                     Dialog.alert('Contrato', result.InfoMessage, function () {
                     })
-                    var ids = "";
-                    for (var i = 0; i < result.Data.length; i++) {
-
-                        if (ids == "")
-                            ids = result.Data[i].IDPagoComision;
-                        else
-                            ids = ids + ',' + result.Data[i].IDPagoComision;
-                    }
-
-                    generarPagoComision.fnReporteTicket(e, ids)
+                    generarTicket.fnReporteTicket(e, result.Data.IDFactura);
                 }
                 else {
                     Dialog.alert('Contrato', result.ErrorMessage, function () {
