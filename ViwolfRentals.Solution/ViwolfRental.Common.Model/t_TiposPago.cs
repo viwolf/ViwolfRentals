@@ -14,11 +14,20 @@ namespace ViwolfRental.Common.Model
     
     public partial class t_TiposPago
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public t_TiposPago()
+        {
+            this.t_FacturaDetallePago = new HashSet<t_FacturaDetallePago>();
+        }
+    
         public int IDTipoPago { get; set; }
         public System.DateTime FechaCreacion { get; set; }
         public string UsuarioCreacion { get; set; }
         public Nullable<System.DateTime> FechaModificacion { get; set; }
         public string UsuarioModificacion { get; set; }
         public string NombreTipoPago { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<t_FacturaDetallePago> t_FacturaDetallePago { get; set; }
     }
 }

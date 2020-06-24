@@ -11,21 +11,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="t_Clientes">
-      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Clientes">
-        <MappingFragment StoreEntitySet="t_Clientes">
-          <ScalarProperty Name="ProfesionCliente" ColumnName="ProfesionCliente" />
-          <ScalarProperty Name="NacionalidadCliente" ColumnName="NacionalidadCliente" />
-          <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
-          <ScalarProperty Name="IdentificacionCliente" ColumnName="IdentificacionCliente" />
-          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
-          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
-          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
-          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-          <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="t_ClientesComisionistas">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_ClientesComisionistas">
         <MappingFragment StoreEntitySet="t_ClientesComisionistas">
@@ -102,27 +87,40 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="t_FacturaDetallePago">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_FacturaDetallePago">
+        <MappingFragment StoreEntitySet="t_FacturaDetallePago">
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="IDTipoPago" ColumnName="IDTipoPago" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
+          <ScalarProperty Name="IDFacturaDetallePago" ColumnName="IDFacturaDetallePago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="t_Facturas">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Facturas">
         <MappingFragment StoreEntitySet="t_Facturas">
           <ScalarProperty Name="TotalFacturado" ColumnName="TotalFacturado" />
           <ScalarProperty Name="IDEstadoFactura" ColumnName="IDEstadoFactura" />
           <ScalarProperty Name="IDTipoFactura" ColumnName="IDTipoFactura" />
-          <ScalarProperty Name="IDTipoPago" ColumnName="IDTipoPago" />
-          <ScalarProperty Name="IDReservacion" ColumnName="IDReservacion" />
           <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
           <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
           <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
           <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
           <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-          <ScalarProperty Name="IDFctura" ColumnName="IDFctura" />
+          <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="t_FacturasDetalles">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_FacturasDetalles">
         <MappingFragment StoreEntitySet="t_FacturasDetalles">
-          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="TotalContrato" ColumnName="TotalContrato" />
           <ScalarProperty Name="IDContrato" ColumnName="IDContrato" />
           <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
           <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />

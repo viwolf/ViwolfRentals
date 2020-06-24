@@ -24,7 +24,7 @@
             TxtReferencia.val("");
         });
         btnAgregar.bind().click(fnAgregarPago);
-        debugger;
+        
         btnFacturar.bind().click(fnSave);
     };
 
@@ -39,16 +39,19 @@
                 })
             }
             else {
+                
                 var tipo = document.getElementById("txtTipoPago");
                 var idTipo = tipo.options[tipo.selectedIndex].value;
                 var nombre = tipo.options[tipo.selectedIndex].text;
-                table.row.add([
-                    idTipo,
-                    nombre,
-                    TxtReferencia.val(),
-                    txtMonto.val()
+
+               table.row.add([
+                   idTipo,
+                   nombre,
+                   TxtReferencia.val(),
+                   txtMonto.val()
                     //'<button id="btnEliminar"><i class="fa fa-trash-alt"></i></button>'
                 ]).draw(false);
+
                 montoTotal = montoTotal - txtMonto.val();
                 txtTotalPagar.val(montoTotal);
 
@@ -70,12 +73,27 @@
     };
 
     var fnSave = function () {
-        debugger;
+        
         var obj = table
             .rows()
             .data();
+
+
         if (obj.length > 0) {
-            fnCallback(obj);
+            var text = "[";
+            for (var i = 0; i < obj.length; i++) {
+                if ((obj.length - i) == 1) {
+                    text = text + '{"IDTipoPago":"' + obj[i][0] + '", "NombreTipoPago":"' + obj[i][1] + '", "Referencia":"' + obj[i][2] + '", "Monto":"' + obj[i][3] + '"}';
+                }
+                else {
+                    text = text + '{"IDTipoPago":"' + obj[i][0] + '", "NombreTipoPago":"' + obj[i][1] + '", "Referencia":"' + obj[i][2] + '", "Monto":"' + obj[i][3] + '"},';
+                }
+                
+            }
+            text = text + "]";
+            var data = JSON.parse(text);
+
+            fnCallback(data);
             modalDetallePago.modal('hide');
         }
     };

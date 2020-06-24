@@ -14,16 +14,28 @@ namespace ViwolfRental.Common.Model
     
     public partial class t_Facturas
     {
-        public int IDFctura { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public t_Facturas()
+        {
+            this.t_FacturaDetallePago = new HashSet<t_FacturaDetallePago>();
+            this.t_FacturasDetalles = new HashSet<t_FacturasDetalles>();
+        }
+    
+        public int IDFactura { get; set; }
         public System.DateTime FechaCreacion { get; set; }
         public string UsuarioCreacion { get; set; }
         public Nullable<System.DateTime> FechaModificacion { get; set; }
         public string UsuarioModificacion { get; set; }
         public string NombreCliente { get; set; }
-        public int IDReservacion { get; set; }
-        public int IDTipoPago { get; set; }
         public int IDTipoFactura { get; set; }
         public int IDEstadoFactura { get; set; }
         public decimal TotalFacturado { get; set; }
+    
+        public virtual t_EstadosFacturas t_EstadosFacturas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<t_FacturaDetallePago> t_FacturaDetallePago { get; set; }
+        public virtual t_TiposFacturas t_TiposFacturas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<t_FacturasDetalles> t_FacturasDetalles { get; set; }
     }
 }

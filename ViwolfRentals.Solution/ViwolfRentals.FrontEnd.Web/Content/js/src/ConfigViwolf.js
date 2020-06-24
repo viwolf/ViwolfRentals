@@ -28,12 +28,25 @@
         Sistema: 2
     }
 
+    const _TiposFactura = {
+        Contado: 1,
+        CuentaXCobrar: 2,
+        CuentaXPagar: 3
+    }
+
+  
+    const _EstadosFactura = {
+        Activa: 1,
+        Anulada: 2
+    }
+
     return {
         Roles: _Roles,
         EstadosVehiculos: _EstadosVehiculos,
         EstadosContratos: _EstadosContratos,
         ModosPagos: _ModosPagos,
-        CodigosContratos: _CodigosContratos
-
+        CodigosContratos: _CodigosContratos,
+        TiposFactura: _TiposFactura,
+        EstadosFactura: _EstadosFactura
     }
 }();

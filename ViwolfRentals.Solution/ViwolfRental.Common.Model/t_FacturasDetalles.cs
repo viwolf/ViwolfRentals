@@ -21,6 +21,9 @@ namespace ViwolfRental.Common.Model
         public Nullable<System.DateTime> FechaModificacion { get; set; }
         public string UsuarioModificacion { get; set; }
         public int IDContrato { get; set; }
-        public decimal SubTotal { get; set; }
+        public decimal TotalContrato { get; set; }
+    
+        public virtual t_Contratos t_Contratos { get; set; }
+        public virtual t_Facturas t_Facturas { get; set; }
     }
 }

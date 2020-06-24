@@ -9,20 +9,6 @@
     <Property Name="Comision" Type="int" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
-  <EntityType Name="t_Clientes">
-    <Key>
-      <PropertyRef Name="IDCliente" />
-    </Key>
-    <Property Name="IDCliente" Type="int" Nullable="false" />
-    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
-    <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
-    <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="IdentificacionCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="NombreCliente" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="NacionalidadCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="ProfesionCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
   <EntityType Name="t_ClientesComisionistas">
     <Key>
       <PropertyRef Name="IDClienteComisionista" />
@@ -93,18 +79,31 @@
     <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
     <Property Name="NombreEstadoFactura" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="t_FacturaDetallePago">
+    <Key>
+      <PropertyRef Name="IDFacturaDetallePago" />
+      <PropertyRef Name="IDFactura" />
+    </Key>
+    <Property Name="IDFacturaDetallePago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDFactura" Type="int" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
+    <Property Name="IDTipoPago" Type="int" Nullable="false" />
+    <Property Name="Referencia" Type="nvarchar" MaxLength="10" />
+    <Property Name="Monto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
   <EntityType Name="t_Facturas">
     <Key>
-      <PropertyRef Name="IDFctura" />
+      <PropertyRef Name="IDFactura" />
     </Key>
-    <Property Name="IDFctura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
     <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="FechaModificacion" Type="datetime" />
     <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
     <Property Name="NombreCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="IDReservacion" Type="int" Nullable="false" />
-    <Property Name="IDTipoPago" Type="int" Nullable="false" />
     <Property Name="IDTipoFactura" Type="int" Nullable="false" />
     <Property Name="IDEstadoFactura" Type="int" Nullable="false" />
     <Property Name="TotalFacturado" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -121,7 +120,7 @@
     <Property Name="FechaModificacion" Type="datetime" />
     <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
     <Property Name="IDContrato" Type="int" Nullable="false" />
-    <Property Name="SubTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TotalContrato" Type="decimal" Precision="18" Scale="2" Nullable="false" />
   </EntityType>
   <EntityType Name="t_Kilometrajes">
     <Key>
@@ -370,6 +369,78 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_t_FacturaDetallePago_t_Facturas">
+    <End Role="t_Facturas" Type="Self.t_Facturas" Multiplicity="1" />
+    <End Role="t_FacturaDetallePago" Type="Self.t_FacturaDetallePago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Facturas">
+        <PropertyRef Name="IDFactura" />
+      </Principal>
+      <Dependent Role="t_FacturaDetallePago">
+        <PropertyRef Name="IDFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_FacturaDetallePago_t_TiposPago">
+    <End Role="t_TiposPago" Type="Self.t_TiposPago" Multiplicity="1" />
+    <End Role="t_FacturaDetallePago" Type="Self.t_FacturaDetallePago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_TiposPago">
+        <PropertyRef Name="IDTipoPago" />
+      </Principal>
+      <Dependent Role="t_FacturaDetallePago">
+        <PropertyRef Name="IDTipoPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Facturas_t_EstadosFacturas">
+    <End Role="t_EstadosFacturas" Type="Self.t_EstadosFacturas" Multiplicity="1" />
+    <End Role="t_Facturas" Type="Self.t_Facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_EstadosFacturas">
+        <PropertyRef Name="IDEstadoFactura" />
+      </Principal>
+      <Dependent Role="t_Facturas">
+        <PropertyRef Name="IDEstadoFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Facturas_t_TiposFacturas">
+    <End Role="t_TiposFacturas" Type="Self.t_TiposFacturas" Multiplicity="1" />
+    <End Role="t_Facturas" Type="Self.t_Facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_TiposFacturas">
+        <PropertyRef Name="IDTipoFactura" />
+      </Principal>
+      <Dependent Role="t_Facturas">
+        <PropertyRef Name="IDTipoFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_FacturasDetalles_t_Contratos">
+    <End Role="t_Contratos" Type="Self.t_Contratos" Multiplicity="1" />
+    <End Role="t_FacturasDetalles" Type="Self.t_FacturasDetalles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Contratos">
+        <PropertyRef Name="IDContrato" />
+      </Principal>
+      <Dependent Role="t_FacturasDetalles">
+        <PropertyRef Name="IDContrato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_FacturasDetalles_t_Facturas">
+    <End Role="t_Facturas" Type="Self.t_Facturas" Multiplicity="1" />
+    <End Role="t_FacturasDetalles" Type="Self.t_FacturasDetalles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Facturas">
+        <PropertyRef Name="IDFactura" />
+      </Principal>
+      <Dependent Role="t_FacturasDetalles">
+        <PropertyRef Name="IDFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_t_Kilometrajes_t_Vehiculos">
     <End Role="t_Vehiculos" Type="Self.t_Vehiculos" Multiplicity="1" />
     <End Role="t_Kilometrajes" Type="Self.t_Kilometrajes" Multiplicity="*" />
@@ -556,13 +627,13 @@
   </Association>
   <EntityContainer Name="ViwolfRentalsDBModelStoreContainer">
     <EntitySet Name="t_CategoriasVehiculos" EntityType="Self.t_CategoriasVehiculos" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="t_Clientes" EntityType="Self.t_Clientes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_ClientesComisionistas" EntityType="Self.t_ClientesComisionistas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_CodigosContratos" EntityType="Self.t_CodigosContratos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Contratos" EntityType="Self.t_Contratos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Departamentos" EntityType="Self.t_Departamentos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_EstadosContratos" EntityType="Self.t_EstadosContratos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_EstadosFacturas" EntityType="Self.t_EstadosFacturas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_FacturaDetallePago" EntityType="Self.t_FacturaDetallePago" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Facturas" EntityType="Self.t_Facturas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_FacturasDetalles" EntityType="Self.t_FacturasDetalles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Kilometrajes" EntityType="Self.t_Kilometrajes" Schema="dbo" store:Type="Tables" />
@@ -589,6 +660,30 @@
     <AssociationSet Name="FK_t_Contratos_t_Reservaciones" Association="Self.FK_t_Contratos_t_Reservaciones">
       <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
       <End Role="t_Contratos" EntitySet="t_Contratos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_FacturaDetallePago_t_Facturas" Association="Self.FK_t_FacturaDetallePago_t_Facturas">
+      <End Role="t_Facturas" EntitySet="t_Facturas" />
+      <End Role="t_FacturaDetallePago" EntitySet="t_FacturaDetallePago" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_FacturaDetallePago_t_TiposPago" Association="Self.FK_t_FacturaDetallePago_t_TiposPago">
+      <End Role="t_TiposPago" EntitySet="t_TiposPago" />
+      <End Role="t_FacturaDetallePago" EntitySet="t_FacturaDetallePago" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Facturas_t_EstadosFacturas" Association="Self.FK_t_Facturas_t_EstadosFacturas">
+      <End Role="t_EstadosFacturas" EntitySet="t_EstadosFacturas" />
+      <End Role="t_Facturas" EntitySet="t_Facturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Facturas_t_TiposFacturas" Association="Self.FK_t_Facturas_t_TiposFacturas">
+      <End Role="t_TiposFacturas" EntitySet="t_TiposFacturas" />
+      <End Role="t_Facturas" EntitySet="t_Facturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_FacturasDetalles_t_Contratos" Association="Self.FK_t_FacturasDetalles_t_Contratos">
+      <End Role="t_Contratos" EntitySet="t_Contratos" />
+      <End Role="t_FacturasDetalles" EntitySet="t_FacturasDetalles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_FacturasDetalles_t_Facturas" Association="Self.FK_t_FacturasDetalles_t_Facturas">
+      <End Role="t_Facturas" EntitySet="t_Facturas" />
+      <End Role="t_FacturasDetalles" EntitySet="t_FacturasDetalles" />
     </AssociationSet>
     <AssociationSet Name="FK_t_Kilometrajes_t_Vehiculos" Association="Self.FK_t_Kilometrajes_t_Vehiculos">
       <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />

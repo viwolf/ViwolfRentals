@@ -91,7 +91,7 @@
         for (var i = 0; i < objPago.length; i++) {
             rows_DetallePago.push(objPago[i]);
         }
-        debugger;
+        fnCrearFactura();
     };
 
     var fnConfirmarPagar = function (e) {
@@ -146,9 +146,6 @@
             }
         }
     }
-
-
-
 
     var fnBuscarContratos = function () {
 
@@ -223,12 +220,11 @@
 
                             var $row = $(this).closest('tr');
 
-
                             // Get row ID
                             var rowId = tblDataContratos.fnGetData($row)
 
                             // Determine whether row ID is in the list of selected row IDs
-                            var index = $.inArray(rowId, rows_selected);
+                            var index = $.inArray  (rowId, rows_selected);
 
                             // If checkbox is checked and row ID is not in list of selected row IDs
                             if (this.checked && index === -1) {
@@ -312,6 +308,49 @@
      
     };
 
+    var fnCrearFactura = function (e) {
+        debugger;
+
+      
+        
+
+
+        var oData = {
+            "NombreCliente": rows_selected[0].NombreCliente,
+            "t_FacturasDetalles": rows_selected,
+            "t_FacturaDetallePago": rows_DetallePago
+        }
+        try {
+            var oUrl = 'Facturacion/CrearFactura';
+            var oProcessMessage = 'Guardando Factura';
+
+            var success = function (result) {
+
+                if (result.MessageType == "Success") {
+                    Dialog.alert('Contrato', result.InfoMessage, function () {
+                    })
+                    var ids = "";
+                    for (var i = 0; i < result.Data.length; i++) {
+
+                        if (ids == "")
+                            ids = result.Data[i].IDPagoComision;
+                        else
+                            ids = ids + ',' + result.Data[i].IDPagoComision;
+                    }
+
+                    generarPagoComision.fnReporteTicket(e, ids)
+                }
+                else {
+                    Dialog.alert('Contrato', result.ErrorMessage, function () {
+                    })
+                }
+            };
+            app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
+        } catch (ex) {
+
+            retorno = false;
+        }
+    };
 
 
     $(function () {

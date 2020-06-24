@@ -14,20 +14,6 @@
           <Property Name="Comision" Type="int" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="t_Clientes">
-          <Key>
-            <PropertyRef Name="IDCliente" />
-          </Key>
-          <Property Name="IDCliente" Type="int" Nullable="false" />
-          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
-          <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
-          <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IdentificacionCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="NombreCliente" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="NacionalidadCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ProfesionCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="t_ClientesComisionistas">
           <Key>
             <PropertyRef Name="IDClienteComisionista" />
@@ -98,18 +84,31 @@
           <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
           <Property Name="NombreEstadoFactura" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="t_FacturaDetallePago">
+          <Key>
+            <PropertyRef Name="IDFacturaDetallePago" />
+            <PropertyRef Name="IDFactura" />
+          </Key>
+          <Property Name="IDFacturaDetallePago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDFactura" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDTipoPago" Type="int" Nullable="false" />
+          <Property Name="Referencia" Type="nvarchar" MaxLength="10" />
+          <Property Name="Monto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
         <EntityType Name="t_Facturas">
           <Key>
-            <PropertyRef Name="IDFctura" />
+            <PropertyRef Name="IDFactura" />
           </Key>
-          <Property Name="IDFctura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
           <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FechaModificacion" Type="datetime" />
           <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
           <Property Name="NombreCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IDReservacion" Type="int" Nullable="false" />
-          <Property Name="IDTipoPago" Type="int" Nullable="false" />
           <Property Name="IDTipoFactura" Type="int" Nullable="false" />
           <Property Name="IDEstadoFactura" Type="int" Nullable="false" />
           <Property Name="TotalFacturado" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -126,7 +125,7 @@
           <Property Name="FechaModificacion" Type="datetime" />
           <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
           <Property Name="IDContrato" Type="int" Nullable="false" />
-          <Property Name="SubTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalContrato" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="t_Kilometrajes">
           <Key>
@@ -375,6 +374,78 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_t_FacturaDetallePago_t_Facturas">
+          <End Role="t_Facturas" Type="Self.t_Facturas" Multiplicity="1" />
+          <End Role="t_FacturaDetallePago" Type="Self.t_FacturaDetallePago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Facturas">
+              <PropertyRef Name="IDFactura" />
+            </Principal>
+            <Dependent Role="t_FacturaDetallePago">
+              <PropertyRef Name="IDFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_FacturaDetallePago_t_TiposPago">
+          <End Role="t_TiposPago" Type="Self.t_TiposPago" Multiplicity="1" />
+          <End Role="t_FacturaDetallePago" Type="Self.t_FacturaDetallePago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_TiposPago">
+              <PropertyRef Name="IDTipoPago" />
+            </Principal>
+            <Dependent Role="t_FacturaDetallePago">
+              <PropertyRef Name="IDTipoPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Facturas_t_EstadosFacturas">
+          <End Role="t_EstadosFacturas" Type="Self.t_EstadosFacturas" Multiplicity="1" />
+          <End Role="t_Facturas" Type="Self.t_Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_EstadosFacturas">
+              <PropertyRef Name="IDEstadoFactura" />
+            </Principal>
+            <Dependent Role="t_Facturas">
+              <PropertyRef Name="IDEstadoFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Facturas_t_TiposFacturas">
+          <End Role="t_TiposFacturas" Type="Self.t_TiposFacturas" Multiplicity="1" />
+          <End Role="t_Facturas" Type="Self.t_Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_TiposFacturas">
+              <PropertyRef Name="IDTipoFactura" />
+            </Principal>
+            <Dependent Role="t_Facturas">
+              <PropertyRef Name="IDTipoFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_FacturasDetalles_t_Contratos">
+          <End Role="t_Contratos" Type="Self.t_Contratos" Multiplicity="1" />
+          <End Role="t_FacturasDetalles" Type="Self.t_FacturasDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Contratos">
+              <PropertyRef Name="IDContrato" />
+            </Principal>
+            <Dependent Role="t_FacturasDetalles">
+              <PropertyRef Name="IDContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_FacturasDetalles_t_Facturas">
+          <End Role="t_Facturas" Type="Self.t_Facturas" Multiplicity="1" />
+          <End Role="t_FacturasDetalles" Type="Self.t_FacturasDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Facturas">
+              <PropertyRef Name="IDFactura" />
+            </Principal>
+            <Dependent Role="t_FacturasDetalles">
+              <PropertyRef Name="IDFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_t_Kilometrajes_t_Vehiculos">
           <End Role="t_Vehiculos" Type="Self.t_Vehiculos" Multiplicity="1" />
           <End Role="t_Kilometrajes" Type="Self.t_Kilometrajes" Multiplicity="*" />
@@ -561,13 +632,13 @@
         </Association>
         <EntityContainer Name="ViwolfRentalsDBModelStoreContainer">
           <EntitySet Name="t_CategoriasVehiculos" EntityType="Self.t_CategoriasVehiculos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="t_Clientes" EntityType="Self.t_Clientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ClientesComisionistas" EntityType="Self.t_ClientesComisionistas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_CodigosContratos" EntityType="Self.t_CodigosContratos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Contratos" EntityType="Self.t_Contratos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Departamentos" EntityType="Self.t_Departamentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_EstadosContratos" EntityType="Self.t_EstadosContratos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_EstadosFacturas" EntityType="Self.t_EstadosFacturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_FacturaDetallePago" EntityType="Self.t_FacturaDetallePago" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Facturas" EntityType="Self.t_Facturas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_FacturasDetalles" EntityType="Self.t_FacturasDetalles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Kilometrajes" EntityType="Self.t_Kilometrajes" Schema="dbo" store:Type="Tables" />
@@ -594,6 +665,30 @@
           <AssociationSet Name="FK_t_Contratos_t_Reservaciones" Association="Self.FK_t_Contratos_t_Reservaciones">
             <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
             <End Role="t_Contratos" EntitySet="t_Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_FacturaDetallePago_t_Facturas" Association="Self.FK_t_FacturaDetallePago_t_Facturas">
+            <End Role="t_Facturas" EntitySet="t_Facturas" />
+            <End Role="t_FacturaDetallePago" EntitySet="t_FacturaDetallePago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_FacturaDetallePago_t_TiposPago" Association="Self.FK_t_FacturaDetallePago_t_TiposPago">
+            <End Role="t_TiposPago" EntitySet="t_TiposPago" />
+            <End Role="t_FacturaDetallePago" EntitySet="t_FacturaDetallePago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Facturas_t_EstadosFacturas" Association="Self.FK_t_Facturas_t_EstadosFacturas">
+            <End Role="t_EstadosFacturas" EntitySet="t_EstadosFacturas" />
+            <End Role="t_Facturas" EntitySet="t_Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Facturas_t_TiposFacturas" Association="Self.FK_t_Facturas_t_TiposFacturas">
+            <End Role="t_TiposFacturas" EntitySet="t_TiposFacturas" />
+            <End Role="t_Facturas" EntitySet="t_Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_FacturasDetalles_t_Contratos" Association="Self.FK_t_FacturasDetalles_t_Contratos">
+            <End Role="t_Contratos" EntitySet="t_Contratos" />
+            <End Role="t_FacturasDetalles" EntitySet="t_FacturasDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_FacturasDetalles_t_Facturas" Association="Self.FK_t_FacturasDetalles_t_Facturas">
+            <End Role="t_Facturas" EntitySet="t_Facturas" />
+            <End Role="t_FacturasDetalles" EntitySet="t_FacturasDetalles" />
           </AssociationSet>
           <AssociationSet Name="FK_t_Kilometrajes_t_Vehiculos" Association="Self.FK_t_Kilometrajes_t_Vehiculos">
             <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
@@ -662,13 +757,13 @@
       <Schema Namespace="ViwolfRentalsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ViwolfRentalsDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="t_CategoriasVehiculos" EntityType="ViwolfRentalsDBModel.t_CategoriasVehiculos" />
-          <EntitySet Name="t_Clientes" EntityType="ViwolfRentalsDBModel.t_Clientes" />
           <EntitySet Name="t_ClientesComisionistas" EntityType="ViwolfRentalsDBModel.t_ClientesComisionistas" />
           <EntitySet Name="t_CodigosContratos" EntityType="ViwolfRentalsDBModel.t_CodigosContratos" />
           <EntitySet Name="t_Contratos" EntityType="ViwolfRentalsDBModel.t_Contratos" />
           <EntitySet Name="t_Departamentos" EntityType="ViwolfRentalsDBModel.t_Departamentos" />
           <EntitySet Name="t_EstadosContratos" EntityType="ViwolfRentalsDBModel.t_EstadosContratos" />
           <EntitySet Name="t_EstadosFacturas" EntityType="ViwolfRentalsDBModel.t_EstadosFacturas" />
+          <EntitySet Name="t_FacturaDetallePago" EntityType="ViwolfRentalsDBModel.t_FacturaDetallePago" />
           <EntitySet Name="t_Facturas" EntityType="ViwolfRentalsDBModel.t_Facturas" />
           <EntitySet Name="t_FacturasDetalles" EntityType="ViwolfRentalsDBModel.t_FacturasDetalles" />
           <EntitySet Name="t_Kilometrajes" EntityType="ViwolfRentalsDBModel.t_Kilometrajes" />
@@ -708,6 +803,10 @@
             <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
             <End Role="t_Contratos" EntitySet="t_Contratos" />
           </AssociationSet>
+          <AssociationSet Name="FK_t_FacturasDetalles_t_Contratos" Association="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Contratos">
+            <End Role="t_Contratos" EntitySet="t_Contratos" />
+            <End Role="t_FacturasDetalles" EntitySet="t_FacturasDetalles" />
+          </AssociationSet>
           <AssociationSet Name="FK_t_PagosComisiones_t_Contratos" Association="ViwolfRentalsDBModel.FK_t_PagosComisiones_t_Contratos">
             <End Role="t_Contratos" EntitySet="t_Contratos" />
             <End Role="t_PagosComisiones" EntitySet="t_PagosComisiones" />
@@ -715,6 +814,26 @@
           <AssociationSet Name="FK_t_Vehiculos_t_Departamentos" Association="ViwolfRentalsDBModel.FK_t_Vehiculos_t_Departamentos">
             <End Role="t_Departamentos" EntitySet="t_Departamentos" />
             <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Facturas_t_EstadosFacturas" Association="ViwolfRentalsDBModel.FK_t_Facturas_t_EstadosFacturas">
+            <End Role="t_EstadosFacturas" EntitySet="t_EstadosFacturas" />
+            <End Role="t_Facturas" EntitySet="t_Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_FacturaDetallePago_t_Facturas" Association="ViwolfRentalsDBModel.FK_t_FacturaDetallePago_t_Facturas">
+            <End Role="t_Facturas" EntitySet="t_Facturas" />
+            <End Role="t_FacturaDetallePago" EntitySet="t_FacturaDetallePago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_FacturaDetallePago_t_TiposPago" Association="ViwolfRentalsDBModel.FK_t_FacturaDetallePago_t_TiposPago">
+            <End Role="t_TiposPago" EntitySet="t_TiposPago" />
+            <End Role="t_FacturaDetallePago" EntitySet="t_FacturaDetallePago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Facturas_t_TiposFacturas" Association="ViwolfRentalsDBModel.FK_t_Facturas_t_TiposFacturas">
+            <End Role="t_TiposFacturas" EntitySet="t_TiposFacturas" />
+            <End Role="t_Facturas" EntitySet="t_Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_FacturasDetalles_t_Facturas" Association="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Facturas">
+            <End Role="t_Facturas" EntitySet="t_Facturas" />
+            <End Role="t_FacturasDetalles" EntitySet="t_FacturasDetalles" />
           </AssociationSet>
           <AssociationSet Name="FK_t_Kilometrajes_t_Vehiculos" Association="ViwolfRentalsDBModel.FK_t_Kilometrajes_t_Vehiculos">
             <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
@@ -767,20 +886,6 @@
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="t_Vehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos" FromRole="t_CategoriasVehiculos" ToRole="t_Vehiculos" />
         </EntityType>
-        <EntityType Name="t_Clientes">
-          <Key>
-            <PropertyRef Name="IDCliente" />
-          </Key>
-          <Property Name="IDCliente" Type="Int32" Nullable="false" />
-          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UsuarioModificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IdentificacionCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NombreCliente" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="NacionalidadCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ProfesionCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="t_ClientesComisionistas">
           <Key>
             <PropertyRef Name="IDClienteComisionista" />
@@ -826,6 +931,7 @@
           <NavigationProperty Name="t_CodigosContratos" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_CodigosContratos" FromRole="t_Contratos" ToRole="t_CodigosContratos" />
           <NavigationProperty Name="t_EstadosContratos" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_EstadosContratos" FromRole="t_Contratos" ToRole="t_EstadosContratos" />
           <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_Reservaciones" FromRole="t_Contratos" ToRole="t_Reservaciones" />
+          <NavigationProperty Name="t_FacturasDetalles" Relationship="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Contratos" FromRole="t_Contratos" ToRole="t_FacturasDetalles" />
           <NavigationProperty Name="t_PagosComisiones" Relationship="ViwolfRentalsDBModel.FK_t_PagosComisiones_t_Contratos" FromRole="t_Contratos" ToRole="t_PagosComisiones" />
         </EntityType>
         <EntityType Name="t_Departamentos">
@@ -859,22 +965,42 @@
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
           <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NombreEstadoFactura" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="t_Facturas" Relationship="ViwolfRentalsDBModel.FK_t_Facturas_t_EstadosFacturas" FromRole="t_EstadosFacturas" ToRole="t_Facturas" />
+        </EntityType>
+        <EntityType Name="t_FacturaDetallePago">
+          <Key>
+            <PropertyRef Name="IDFacturaDetallePago" />
+            <PropertyRef Name="IDFactura" />
+          </Key>
+          <Property Name="IDFacturaDetallePago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDFactura" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDTipoPago" Type="Int32" Nullable="false" />
+          <Property Name="Referencia" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Monto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="t_Facturas" Relationship="ViwolfRentalsDBModel.FK_t_FacturaDetallePago_t_Facturas" FromRole="t_FacturaDetallePago" ToRole="t_Facturas" />
+          <NavigationProperty Name="t_TiposPago" Relationship="ViwolfRentalsDBModel.FK_t_FacturaDetallePago_t_TiposPago" FromRole="t_FacturaDetallePago" ToRole="t_TiposPago" />
         </EntityType>
         <EntityType Name="t_Facturas">
           <Key>
-            <PropertyRef Name="IDFctura" />
+            <PropertyRef Name="IDFactura" />
           </Key>
-          <Property Name="IDFctura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
           <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NombreCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IDReservacion" Type="Int32" Nullable="false" />
-          <Property Name="IDTipoPago" Type="Int32" Nullable="false" />
           <Property Name="IDTipoFactura" Type="Int32" Nullable="false" />
           <Property Name="IDEstadoFactura" Type="Int32" Nullable="false" />
           <Property Name="TotalFacturado" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="t_EstadosFacturas" Relationship="ViwolfRentalsDBModel.FK_t_Facturas_t_EstadosFacturas" FromRole="t_Facturas" ToRole="t_EstadosFacturas" />
+          <NavigationProperty Name="t_FacturaDetallePago" Relationship="ViwolfRentalsDBModel.FK_t_FacturaDetallePago_t_Facturas" FromRole="t_Facturas" ToRole="t_FacturaDetallePago" />
+          <NavigationProperty Name="t_TiposFacturas" Relationship="ViwolfRentalsDBModel.FK_t_Facturas_t_TiposFacturas" FromRole="t_Facturas" ToRole="t_TiposFacturas" />
+          <NavigationProperty Name="t_FacturasDetalles" Relationship="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Facturas" FromRole="t_Facturas" ToRole="t_FacturasDetalles" />
         </EntityType>
         <EntityType Name="t_FacturasDetalles">
           <Key>
@@ -888,7 +1014,9 @@
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
           <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IDContrato" Type="Int32" Nullable="false" />
-          <Property Name="SubTotal" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TotalContrato" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="t_Contratos" Relationship="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Contratos" FromRole="t_FacturasDetalles" ToRole="t_Contratos" />
+          <NavigationProperty Name="t_Facturas" Relationship="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Facturas" FromRole="t_FacturasDetalles" ToRole="t_Facturas" />
         </EntityType>
         <EntityType Name="t_Kilometrajes">
           <Key>
@@ -1050,6 +1178,7 @@
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
           <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NombreTiooPago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="t_Facturas" Relationship="ViwolfRentalsDBModel.FK_t_Facturas_t_TiposFacturas" FromRole="t_TiposFacturas" ToRole="t_Facturas" />
         </EntityType>
         <EntityType Name="t_TiposPago">
           <Key>
@@ -1061,6 +1190,7 @@
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
           <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NombreTipoPago" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="t_FacturaDetallePago" Relationship="ViwolfRentalsDBModel.FK_t_FacturaDetallePago_t_TiposPago" FromRole="t_TiposPago" ToRole="t_FacturaDetallePago" />
         </EntityType>
         <EntityType Name="t_Usuarios">
           <Key>
@@ -1199,6 +1329,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_t_FacturasDetalles_t_Contratos">
+          <End Type="ViwolfRentalsDBModel.t_Contratos" Role="t_Contratos" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_FacturasDetalles" Role="t_FacturasDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Contratos">
+              <PropertyRef Name="IDContrato" />
+            </Principal>
+            <Dependent Role="t_FacturasDetalles">
+              <PropertyRef Name="IDContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_t_PagosComisiones_t_Contratos">
           <End Type="ViwolfRentalsDBModel.t_Contratos" Role="t_Contratos" Multiplicity="1" />
           <End Type="ViwolfRentalsDBModel.t_PagosComisiones" Role="t_PagosComisiones" Multiplicity="*" />
@@ -1220,6 +1362,66 @@
             </Principal>
             <Dependent Role="t_Vehiculos">
               <PropertyRef Name="IDDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Facturas_t_EstadosFacturas">
+          <End Type="ViwolfRentalsDBModel.t_EstadosFacturas" Role="t_EstadosFacturas" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_Facturas" Role="t_Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_EstadosFacturas">
+              <PropertyRef Name="IDEstadoFactura" />
+            </Principal>
+            <Dependent Role="t_Facturas">
+              <PropertyRef Name="IDEstadoFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_FacturaDetallePago_t_Facturas">
+          <End Type="ViwolfRentalsDBModel.t_Facturas" Role="t_Facturas" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_FacturaDetallePago" Role="t_FacturaDetallePago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Facturas">
+              <PropertyRef Name="IDFactura" />
+            </Principal>
+            <Dependent Role="t_FacturaDetallePago">
+              <PropertyRef Name="IDFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_FacturaDetallePago_t_TiposPago">
+          <End Type="ViwolfRentalsDBModel.t_TiposPago" Role="t_TiposPago" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_FacturaDetallePago" Role="t_FacturaDetallePago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_TiposPago">
+              <PropertyRef Name="IDTipoPago" />
+            </Principal>
+            <Dependent Role="t_FacturaDetallePago">
+              <PropertyRef Name="IDTipoPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Facturas_t_TiposFacturas">
+          <End Type="ViwolfRentalsDBModel.t_TiposFacturas" Role="t_TiposFacturas" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_Facturas" Role="t_Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_TiposFacturas">
+              <PropertyRef Name="IDTipoFactura" />
+            </Principal>
+            <Dependent Role="t_Facturas">
+              <PropertyRef Name="IDTipoFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_FacturasDetalles_t_Facturas">
+          <End Type="ViwolfRentalsDBModel.t_Facturas" Role="t_Facturas" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_FacturasDetalles" Role="t_FacturasDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Facturas">
+              <PropertyRef Name="IDFactura" />
+            </Principal>
+            <Dependent Role="t_FacturasDetalles">
+              <PropertyRef Name="IDFactura" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1363,21 +1565,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="t_Clientes">
-            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Clientes">
-              <MappingFragment StoreEntitySet="t_Clientes">
-                <ScalarProperty Name="ProfesionCliente" ColumnName="ProfesionCliente" />
-                <ScalarProperty Name="NacionalidadCliente" ColumnName="NacionalidadCliente" />
-                <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
-                <ScalarProperty Name="IdentificacionCliente" ColumnName="IdentificacionCliente" />
-                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
-                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
-                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
-                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="t_ClientesComisionistas">
             <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_ClientesComisionistas">
               <MappingFragment StoreEntitySet="t_ClientesComisionistas">
@@ -1454,27 +1641,40 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="t_FacturaDetallePago">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_FacturaDetallePago">
+              <MappingFragment StoreEntitySet="t_FacturaDetallePago">
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="IDTipoPago" ColumnName="IDTipoPago" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
+                <ScalarProperty Name="IDFacturaDetallePago" ColumnName="IDFacturaDetallePago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="t_Facturas">
             <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Facturas">
               <MappingFragment StoreEntitySet="t_Facturas">
                 <ScalarProperty Name="TotalFacturado" ColumnName="TotalFacturado" />
                 <ScalarProperty Name="IDEstadoFactura" ColumnName="IDEstadoFactura" />
                 <ScalarProperty Name="IDTipoFactura" ColumnName="IDTipoFactura" />
-                <ScalarProperty Name="IDTipoPago" ColumnName="IDTipoPago" />
-                <ScalarProperty Name="IDReservacion" ColumnName="IDReservacion" />
                 <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
                 <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
                 <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
                 <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-                <ScalarProperty Name="IDFctura" ColumnName="IDFctura" />
+                <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="t_FacturasDetalles">
             <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_FacturasDetalles">
               <MappingFragment StoreEntitySet="t_FacturasDetalles">
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="TotalContrato" ColumnName="TotalContrato" />
                 <ScalarProperty Name="IDContrato" ColumnName="IDContrato" />
                 <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
                 <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
