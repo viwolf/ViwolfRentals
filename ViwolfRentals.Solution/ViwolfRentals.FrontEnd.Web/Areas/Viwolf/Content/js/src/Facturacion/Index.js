@@ -11,6 +11,7 @@
     var objComisiones = null;
     var arrayModificacion = [];
     var rows_selected = [];
+    var rows_DetallePago = [];
     var idEstado = 0;
 
     var InitSelect = function () {
@@ -86,6 +87,13 @@
 
     };
 
+    var callBackFactura = function (objPago) {
+        for (var i = 0; i < objPago.length; i++) {
+            rows_DetallePago.push(objPago[i]);
+        }
+        debugger;
+    };
+
     var fnConfirmarPagar = function (e) {
 
         Dialog.confirm('Facturar', "Desea facturar los contratos seleccionados?", function (respuesta) {
@@ -95,7 +103,7 @@
                     debugger;
                     Total = Total + item.TotalContrato;
                 })
-                detallePago.AbrirModal(Total);
+                detallePago.AbrirModal(Total, callBackFactura);
             }
         })
     };
