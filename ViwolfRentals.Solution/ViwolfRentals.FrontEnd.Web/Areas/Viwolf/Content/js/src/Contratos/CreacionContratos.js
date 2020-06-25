@@ -104,7 +104,8 @@
     var abrirModal = function (reservacion) {
         objReservacion = reservacion;
         fnLlenarReservacion();
-        btnGuardarContrato.bind().click(fnConfirmarGuardar);
+        btnGuardarContrato.unbind('click');
+        btnGuardarContrato.click(fnConfirmarGuardar);
         $("#txtVoucherPago").change(function () {
             
             readURL(this, 'imgVoucherPago');

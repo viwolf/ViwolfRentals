@@ -74,7 +74,7 @@
     var fnInit = function () {
        
         btnBuscarContratos.click(fnBuscarContratos);
-        btnFacturar.click(function (e) {
+        btnFacturar.bind().click(function (e) {
             if (rows_selected.length > 0) {
                 fnConfirmarPagar(e);
             }
@@ -148,7 +148,8 @@
     }
 
     var fnBuscarContratos = function () {
-        debugger;
+        TotalFacturado = 0;
+        rows_selected = [];
         var estado = document.getElementById("txtEstadoContrato");
         var EstadoID = estado.options[estado.selectedIndex].value;
        

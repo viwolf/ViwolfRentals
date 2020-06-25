@@ -7,12 +7,14 @@
     var btnAgregar = $("#btnAgregar");
     var txtMonto = $('#txtMonto');
     var btnFacturar = $("#btnFacturarContrato");
+    var txtCambio = $("#txtCambio");
     var montoTotal = 0;
     var table = null;
     var fnCallback = null;
 
 
     var fnInit = function () {
+        
         table = $('#tblDataDetallePagos').DataTable();
         txtTotalPagar.val(montoTotal);
         txtMontoPagarTotal.val(montoTotal);
@@ -22,54 +24,80 @@
             else
                 document.getElementById("TxtReferencia").disabled = false;
             TxtReferencia.val("");
+            txtMonto.val("");
         });
-        btnAgregar.bind().click(fnAgregarPago);
+
+        btnAgregar.unbind('click');
+        btnFacturar.unbind('click');
+
+        btnAgregar.click(fnAgregarPago);
         
-        btnFacturar.bind().click(fnSave);
+        btnFacturar.click(fnSave);
     };
 
     var fnAgregarPago = function () {
-        if ((txtTipoPago.val() != 1) && (TxtReferencia.val() == '')) {
-            Dialog.alert('DetallePago', "Debe digitar una referencia.", function () {
-            })
-        }
-        else
-            if (txtMonto.val() == '') {
-                Dialog.alert('DetallePago', "Debe digitar un monto.", function () {
+        if (txtTotalPagar.val() > 0) {
+            if ((txtTipoPago.val() != 1) && (TxtReferencia.val() == '')) {
+                Dialog.alert('DetallePago', "Debe digitar una referencia.", function () {
                 })
             }
-            else {
-                
-                var tipo = document.getElementById("txtTipoPago");
-                var idTipo = tipo.options[tipo.selectedIndex].value;
-                var nombre = tipo.options[tipo.selectedIndex].text;
+            else
+                if (txtMonto.val() == '') {
+                    Dialog.alert('DetallePago', "Debe digitar un monto.", function () {
+                    })
+                }
+                else {
+                    debugger;
+                    var cambio = 0;
+                    var montoPago = 0;
+                    montoTotal = montoTotal - txtMonto.val();
+                    if (montoTotal < 0) {
+                        montoPago = txtMonto.val() - txtTotalPagar.val();
+                        txtTotalPagar.val("0");
+                    }
+                    else {
+                        montoPago = txtMonto.val();
+                        txtTotalPagar.val(montoTotal);
+                    }
+                    cambio = txtMonto.val() - txtMontoPagarTotal.val();
+                    txtCambio.val(cambio);
 
-               table.row.add([
-                   idTipo,
-                   nombre,
-                   TxtReferencia.val(),
-                   txtMonto.val()
-                    //'<button id="btnEliminar"><i class="fa fa-trash-alt"></i></button>'
-                ]).draw(false);
 
-                montoTotal = montoTotal - txtMonto.val();
-                txtTotalPagar.val(montoTotal);
+                    var tipo = document.getElementById("txtTipoPago");
+                    var idTipo = tipo.options[tipo.selectedIndex].value;
+                    var nombre = tipo.options[tipo.selectedIndex].text;
 
-                //$('#tblDataDetallePagos tbody').bind().on('click', 'tr', function () {
-                //    if ($(this).hasClass('selected')) {
-                //        $(this).removeClass('selected');
-                //    }
-                //    else {
-                //        table.$('tr.selected').bind().removeClass('selected');
-                //        $(this).addClass('selected');
-                //    }
-                //});
+                    table.row.add([
+                        idTipo,
+                        nombre,
+                        TxtReferencia.val(),
+                        montoPago,
+                        // '<button id="btnEliminar"><i class="fa fa-trash-alt"></i></button>'
+                    ]).draw(false);
 
-                //$('#btnEliminar').bind().click(function (e) {
-                //    
-                //    table.row('.selected').remove().draw(false);
-                //});
-            }
+                    //$('#tblDataDetallePagos tbody').bind().on('click', 'tr', function () {
+                    //    if ($(this).hasClass('selected')) {
+                    //        $(this).removeClass('selected');
+                    //    }
+                    //    else {
+                    //        table.$('tr.selected').bind().removeClass('selected');
+                    //        $(this).addClass('selected');
+                    //    }
+                    //});
+
+                    //$('#btnEliminar').bind().click(function (e) {
+
+                    //    table.row('.selected').remove().draw(false);
+                    //});
+
+                    TxtReferencia.val("");
+                    txtMonto.val("");
+                }
+        }
+        else {
+            Dialog.alert('DetallePago', "Ya no existe ningún monto a pagar.", function () {
+            })
+        };
     };
 
     var fnSave = function () {
@@ -98,11 +126,23 @@
         }
     };
 
+    var fnLimpiarDatos = function () {
+        txtTotalPagar.val("");
+        txtCambio.val("");
+        txtMontoPagarTotal.val("");
+        TxtReferencia.val("");
+        txtMonto.val("");
+        var table = $('#tblDataDetallePagos').DataTable();
+        table
+            .clear()
+            .draw();
+    };
+
     var fnAbrirModal = function (total, callback) {
-        
         montoTotal = total;
         fnCallback = callback;
         modalDetallePago.modal('show');
+        fnLimpiarDatos();
         fnInit();
     };
 
