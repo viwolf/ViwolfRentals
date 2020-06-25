@@ -241,6 +241,8 @@
     <Property Name="NombreCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="IDTipoFactura" Type="Int32" Nullable="false" />
     <Property Name="IDEstadoFactura" Type="Int32" Nullable="false" />
+    <Property Name="Descuento" Type="Int32" Nullable="false" />
+    <Property Name="TotalDescuento" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
     <Property Name="TotalFacturado" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
     <NavigationProperty Name="t_EstadosFacturas" Relationship="ViwolfRentalsDBModel.FK_t_Facturas_t_EstadosFacturas" FromRole="t_Facturas" ToRole="t_EstadosFacturas" />
     <NavigationProperty Name="t_FacturaDetallePago" Relationship="ViwolfRentalsDBModel.FK_t_FacturaDetallePago_t_Facturas" FromRole="t_Facturas" ToRole="t_FacturaDetallePago" />
@@ -252,7 +254,7 @@
       <PropertyRef Name="IDFacturaDetalle" />
       <PropertyRef Name="IDFactura" />
     </Key>
-    <Property Name="IDFacturaDetalle" Type="Int32" Nullable="false" />
+    <Property Name="IDFacturaDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDFactura" Type="Int32" Nullable="false" />
     <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -422,7 +424,7 @@
     <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
     <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="NombreTiooPago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NombreTipoFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="t_Facturas" Relationship="ViwolfRentalsDBModel.FK_t_Facturas_t_TiposFacturas" FromRole="t_TiposFacturas" ToRole="t_Facturas" />
   </EntityType>
   <EntityType Name="t_TiposPago">

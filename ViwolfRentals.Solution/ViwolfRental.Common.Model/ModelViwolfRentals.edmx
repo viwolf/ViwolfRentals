@@ -111,6 +111,8 @@
           <Property Name="NombreCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IDTipoFactura" Type="int" Nullable="false" />
           <Property Name="IDEstadoFactura" Type="int" Nullable="false" />
+          <Property Name="Descuento" Type="int" Nullable="false" />
+          <Property Name="TotalDescuento" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="TotalFacturado" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="t_FacturasDetalles">
@@ -118,7 +120,7 @@
             <PropertyRef Name="IDFacturaDetalle" />
             <PropertyRef Name="IDFactura" />
           </Key>
-          <Property Name="IDFacturaDetalle" Type="int" Nullable="false" />
+          <Property Name="IDFacturaDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDFactura" Type="int" Nullable="false" />
           <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
           <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -267,7 +269,7 @@
           <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FechaModificacion" Type="datetime" />
           <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
-          <Property Name="NombreTiooPago" Type="nvarchar" MaxLength="50" />
+          <Property Name="NombreTipoFactura" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="t_TiposPago">
           <Key>
@@ -996,6 +998,8 @@
           <Property Name="NombreCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IDTipoFactura" Type="Int32" Nullable="false" />
           <Property Name="IDEstadoFactura" Type="Int32" Nullable="false" />
+          <Property Name="Descuento" Type="Int32" Nullable="false" />
+          <Property Name="TotalDescuento" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="TotalFacturado" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <NavigationProperty Name="t_EstadosFacturas" Relationship="ViwolfRentalsDBModel.FK_t_Facturas_t_EstadosFacturas" FromRole="t_Facturas" ToRole="t_EstadosFacturas" />
           <NavigationProperty Name="t_FacturaDetallePago" Relationship="ViwolfRentalsDBModel.FK_t_FacturaDetallePago_t_Facturas" FromRole="t_Facturas" ToRole="t_FacturaDetallePago" />
@@ -1007,7 +1011,7 @@
             <PropertyRef Name="IDFacturaDetalle" />
             <PropertyRef Name="IDFactura" />
           </Key>
-          <Property Name="IDFacturaDetalle" Type="Int32" Nullable="false" />
+          <Property Name="IDFacturaDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDFactura" Type="Int32" Nullable="false" />
           <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1177,7 +1181,7 @@
           <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
           <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NombreTiooPago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NombreTipoFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="t_Facturas" Relationship="ViwolfRentalsDBModel.FK_t_Facturas_t_TiposFacturas" FromRole="t_TiposFacturas" ToRole="t_Facturas" />
         </EntityType>
         <EntityType Name="t_TiposPago">
@@ -1660,6 +1664,8 @@
             <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Facturas">
               <MappingFragment StoreEntitySet="t_Facturas">
                 <ScalarProperty Name="TotalFacturado" ColumnName="TotalFacturado" />
+                <ScalarProperty Name="TotalDescuento" ColumnName="TotalDescuento" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
                 <ScalarProperty Name="IDEstadoFactura" ColumnName="IDEstadoFactura" />
                 <ScalarProperty Name="IDTipoFactura" ColumnName="IDTipoFactura" />
                 <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
@@ -1826,7 +1832,7 @@
           <EntitySetMapping Name="t_TiposFacturas">
             <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_TiposFacturas">
               <MappingFragment StoreEntitySet="t_TiposFacturas">
-                <ScalarProperty Name="NombreTiooPago" ColumnName="NombreTiooPago" />
+                <ScalarProperty Name="NombreTipoFactura" ColumnName="NombreTipoFactura" />
                 <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
                 <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
                 <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />

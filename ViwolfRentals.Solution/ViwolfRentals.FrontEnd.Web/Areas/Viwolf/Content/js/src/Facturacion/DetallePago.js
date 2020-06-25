@@ -8,13 +8,66 @@
     var txtMonto = $('#txtMonto');
     var btnFacturar = $("#btnFacturarContrato");
     var txtCambio = $("#txtCambio");
+    var txtDescuento = $("#txtDescuento");
     var montoTotal = 0;
     var table = null;
     var fnCallback = null;
+    var checkValidaAdm = false;
+    var TotalDescuento = 0;
+    var cambio = 0;
+    var montoPago = 0;
 
+    var fnCallBackAutorizar = function (result) {
+        debugger;
+        checkValidaAdm = false;
+        if (result != null) {
+            if (result.Data.length > 0) {
+                if (result.Data[0].IdRol != configViwolf.Roles.Administrador) {
+                    Dialog.alert("DetallePago", "El usuario no es un administrador.");
+                    txtDescuento.val(0);
+                }
+                else {
+                    checkValidaAdm = true;
+                    calcularDescuento();
+                    
+                }
+            }
+            else {
+                Dialog.alert("DetallePago", "El Usuario no existe.");
+                txtDescuento.val("");
+            }
+        }
+        else {
+            txtDescuento.val("");
+        }
+
+    };
+
+    var calcularDescuento = function () {
+        var montototal = txtMontoPagarTotal.val();
+        var descuento = txtDescuento.val();
+        var montoDescuento = ((descuento / 100) * montototal);
+        txtMontoPagarTotal.val(montototal - montoDescuento)
+        txtTotalPagar.val(montototal - montoDescuento);
+    };
+
+    //Solo permite introducir numeros.
+    function valideKey(evt) {
+        var code = evt.which ? evt.which : evt.keyCode;
+        if (code == 8) {
+            //backspace
+            return true;
+        } else if (code >= 48 && code <= 57) {
+            //is a number
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 
     var fnInit = function () {
-        
+        debugger;
         table = $('#tblDataDetallePagos').DataTable();
         txtTotalPagar.val(montoTotal);
         txtMontoPagarTotal.val(montoTotal);
@@ -31,8 +84,37 @@
         btnFacturar.unbind('click');
 
         btnAgregar.click(fnAgregarPago);
-        
         btnFacturar.click(fnSave);
+
+        txtDescuento.bind('keypress', valideKey);
+
+        txtMonto.bind('keypress', valideKey);
+
+        txtDescuento.blur(function () {
+            debugger;
+            if ((txtDescuento.val() != "") && (txtDescuento.val() > 0)) {
+                if (sessionStorage.getItem('IdRol') != configViwolf.Roles.Administrador) {
+                    checkValidaAdm = false;
+                    Dialog.confirm('DetallePago', "Desea autorizar el descuento?", function (respuesta) {
+                        if (respuesta == true) {
+                            autorizacionLogin.AbrirModal(fnCallBackAutorizar);
+                        }
+                        else {
+                            txtDescuento.val("");
+                        }
+                    })
+                }
+                else {
+                    checkValidaAdm = true;
+                    calcularDescuento();
+                }
+            }
+
+            else {
+                checkValidaAdm = true;
+                calcularDescuento();
+            }
+        })
     };
 
     var fnAgregarPago = function () {
@@ -48,19 +130,23 @@
                 }
                 else {
                     debugger;
-                    var cambio = 0;
-                    var montoPago = 0;
+                  
                     montoTotal = montoTotal - txtMonto.val();
-                    if (montoTotal < 0) {
-                        montoPago = txtMonto.val() - txtTotalPagar.val();
+                    if (montoTotal <= 0) {
+                        montoPago = parseInt(txtTotalPagar.val());
                         txtTotalPagar.val("0");
                     }
                     else {
-                        montoPago = txtMonto.val();
+                        montoPago = montoPago + parseInt(txtMonto.val());
                         txtTotalPagar.val(montoTotal);
                     }
+                    debugger;
+                    
                     cambio = txtMonto.val() - txtMontoPagarTotal.val();
-                    txtCambio.val(cambio);
+                    if (cambio >= 0)
+                        txtCambio.val(cambio);
+                    else
+                        txtCambio.val(0);
 
 
                     var tipo = document.getElementById("txtTipoPago");
@@ -101,7 +187,7 @@
     };
 
     var fnSave = function () {
-        
+        debugger
         var obj = table
             .rows()
             .data();
@@ -121,8 +207,13 @@
             text = text + "]";
             var data = JSON.parse(text);
 
-            fnCallback(data);
-            modalDetallePago.modal('hide');
+            if (txtTotalPagar.val() > 0) {
+                Dialog.alert("DetallePago", "Debe completar el monto total.");
+            }
+            else {
+                fnCallback(data);
+                modalDetallePago.modal('hide');
+            }
         }
     };
 
@@ -132,6 +223,7 @@
         txtMontoPagarTotal.val("");
         TxtReferencia.val("");
         txtMonto.val("");
+        txtDescuento.val("");
         var table = $('#tblDataDetallePagos').DataTable();
         table
             .clear()

@@ -25,7 +25,7 @@ namespace ViwolfRental.Common.Model
         public string UsuarioCreacion { get; set; }
         public Nullable<System.DateTime> FechaModificacion { get; set; }
         public string UsuarioModificacion { get; set; }
-        public string NombreTiooPago { get; set; }
+        public string NombreTipoFactura { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_Facturas> t_Facturas { get; set; }

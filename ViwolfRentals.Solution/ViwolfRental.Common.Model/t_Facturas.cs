@@ -29,6 +29,8 @@ namespace ViwolfRental.Common.Model
         public string NombreCliente { get; set; }
         public int IDTipoFactura { get; set; }
         public int IDEstadoFactura { get; set; }
+        public int Descuento { get; set; }
+        public decimal TotalDescuento { get; set; }
         public decimal TotalFacturado { get; set; }
     
         public virtual t_EstadosFacturas t_EstadosFacturas { get; set; }

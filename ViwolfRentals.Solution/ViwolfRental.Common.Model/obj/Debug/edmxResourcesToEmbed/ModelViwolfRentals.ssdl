@@ -106,6 +106,8 @@
     <Property Name="NombreCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="IDTipoFactura" Type="int" Nullable="false" />
     <Property Name="IDEstadoFactura" Type="int" Nullable="false" />
+    <Property Name="Descuento" Type="int" Nullable="false" />
+    <Property Name="TotalDescuento" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="TotalFacturado" Type="decimal" Precision="18" Scale="2" Nullable="false" />
   </EntityType>
   <EntityType Name="t_FacturasDetalles">
@@ -113,7 +115,7 @@
       <PropertyRef Name="IDFacturaDetalle" />
       <PropertyRef Name="IDFactura" />
     </Key>
-    <Property Name="IDFacturaDetalle" Type="int" Nullable="false" />
+    <Property Name="IDFacturaDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IDFactura" Type="int" Nullable="false" />
     <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
     <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -262,7 +264,7 @@
     <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="FechaModificacion" Type="datetime" />
     <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
-    <Property Name="NombreTiooPago" Type="nvarchar" MaxLength="50" />
+    <Property Name="NombreTipoFactura" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="t_TiposPago">
     <Key>

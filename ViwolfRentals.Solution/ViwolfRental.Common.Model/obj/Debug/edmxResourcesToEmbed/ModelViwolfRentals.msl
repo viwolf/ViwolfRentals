@@ -106,6 +106,8 @@
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Facturas">
         <MappingFragment StoreEntitySet="t_Facturas">
           <ScalarProperty Name="TotalFacturado" ColumnName="TotalFacturado" />
+          <ScalarProperty Name="TotalDescuento" ColumnName="TotalDescuento" />
+          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
           <ScalarProperty Name="IDEstadoFactura" ColumnName="IDEstadoFactura" />
           <ScalarProperty Name="IDTipoFactura" ColumnName="IDTipoFactura" />
           <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
@@ -272,7 +274,7 @@
     <EntitySetMapping Name="t_TiposFacturas">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_TiposFacturas">
         <MappingFragment StoreEntitySet="t_TiposFacturas">
-          <ScalarProperty Name="NombreTiooPago" ColumnName="NombreTiooPago" />
+          <ScalarProperty Name="NombreTipoFactura" ColumnName="NombreTipoFactura" />
           <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
           <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
           <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />

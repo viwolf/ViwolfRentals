@@ -315,6 +315,8 @@
             "NombreCliente": rows_selected[0].NombreCliente,
             "IDTipoFactura": configViwolf.TiposFactura.Contado,
             "IDEstadoFactura": configViwolf.EstadosFactura.Activa,
+            "Descuento": 0,
+            "TotalDescuento": 0,
             "TotalFacturado": TotalFacturado,
             "t_FacturasDetalles": rows_selected,
             "t_FacturaDetallePago": rows_DetallePago
