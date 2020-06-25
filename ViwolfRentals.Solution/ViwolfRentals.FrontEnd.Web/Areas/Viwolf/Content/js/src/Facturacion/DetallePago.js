@@ -8,7 +8,8 @@
     var txtMonto = $('#txtMonto');
     var btnFacturar = $("#btnFacturarContrato");
     var txtCambio = $("#txtCambio");
-    var txtDescuento = $("#txtDescuento");
+    var txttipocambio = $("#txttipocambio");
+    var txtMoneda = $("#txtMoneda");
     var montoTotal = 0;
     var table = null;
     var fnCallback = null;
@@ -17,38 +18,38 @@
     var cambio = 0;
     var montoPago = 0;
 
-    var fnCallBackAutorizar = function (result) {
+  
+
+    function selectElement(id, valueToSelect) {
+        let element = document.getElementById(id);
+        element.value = valueToSelect;
+    }
+
+    var calcularTipoCambio = function () {
         debugger;
-        checkValidaAdm = false;
-        if (result != null) {
-            if (result.Data.length > 0) {
-                if (result.Data[0].IdRol != configViwolf.Roles.Administrador) {
-                    Dialog.alert("DetallePago", "El usuario no es un administrador.");
-                    txtDescuento.val(0);
-                }
-                else {
-                    checkValidaAdm = true;
-                    calcularDescuento();
-                    
-                }
-            }
-            else {
-                Dialog.alert("DetallePago", "El Usuario no existe.");
-                txtDescuento.val("");
-            }
+        if (txttipocambio.val() == "") {
+            Dialog.alert('DetallePago', "Debe actualizar el tipo de cambio.", function () {
+            })
+            selectElement('txtMoneda', '1')
         }
         else {
-            txtDescuento.val("");
+            if (txtMoneda.val() == 2) {
+                var Mtotal = parseFloat(txtMontoPagarTotal.val().replace("$", ""));
+                var TCambio = parseFloat(txttipocambio.val());
+                var MConvertido = Mtotal * TCambio;
+                txtMontoPagarTotal.val(utils.formatterColon.format(MConvertido));
+                txtTotalPagar.val(MConvertido);
+            }
+            else {
+                var Mtotal = parseInt(txtMontoPagarTotal.val().replace("CRC", "").replace(",",""));
+                var TCambio = parseFloat(txttipocambio.val());
+                var MConvertido = Mtotal / TCambio;
+                txtMontoPagarTotal.val(utils.formatterDolar.format(MConvertido));
+                txtTotalPagar.val(MConvertido);
+            }
         }
 
-    };
-
-    var calcularDescuento = function () {
-        var montototal = txtMontoPagarTotal.val();
-        var descuento = txtDescuento.val();
-        var montoDescuento = ((descuento / 100) * montototal);
-        txtMontoPagarTotal.val(montototal - montoDescuento)
-        txtTotalPagar.val(montototal - montoDescuento);
+        
     };
 
     //Solo permite introducir numeros.
@@ -70,7 +71,7 @@
         debugger;
         table = $('#tblDataDetallePagos').DataTable();
         txtTotalPagar.val(montoTotal);
-        txtMontoPagarTotal.val(montoTotal);
+        txtMontoPagarTotal.val(utils.formatterDolar.format(montoTotal));
         txtTipoPago.change(function () {
             if (txtTipoPago.val() == 1)
                 document.getElementById("TxtReferencia").disabled = true;
@@ -86,35 +87,13 @@
         btnAgregar.click(fnAgregarPago);
         btnFacturar.click(fnSave);
 
-        txtDescuento.bind('keypress', valideKey);
+       
 
         txtMonto.bind('keypress', valideKey);
 
-        txtDescuento.blur(function () {
-            debugger;
-            if ((txtDescuento.val() != "") && (txtDescuento.val() > 0)) {
-                if (sessionStorage.getItem('IdRol') != configViwolf.Roles.Administrador) {
-                    checkValidaAdm = false;
-                    Dialog.confirm('DetallePago', "Desea autorizar el descuento?", function (respuesta) {
-                        if (respuesta == true) {
-                            autorizacionLogin.AbrirModal(fnCallBackAutorizar);
-                        }
-                        else {
-                            txtDescuento.val("");
-                        }
-                    })
-                }
-                else {
-                    checkValidaAdm = true;
-                    calcularDescuento();
-                }
-            }
+        txtMoneda.change(calcularTipoCambio);
 
-            else {
-                checkValidaAdm = true;
-                calcularDescuento();
-            }
-        })
+        
     };
 
     var fnAgregarPago = function () {
@@ -223,7 +202,7 @@
         txtMontoPagarTotal.val("");
         TxtReferencia.val("");
         txtMonto.val("");
-        txtDescuento.val("");
+        txttipocambio.val("");
         var table = $('#tblDataDetallePagos').DataTable();
         table
             .clear()
