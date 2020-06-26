@@ -83,9 +83,9 @@ var controlContratos = function () {
         //});
 
         //btnGenerarContrato.click(function (e) {
-        //    debugger;
+        //   
         //    if (objSeleccionado != null) {
-        //        debugger;
+        //       
         //        fnConfirmarGenerar(e);
         //    }
         //    else {
@@ -96,7 +96,7 @@ var controlContratos = function () {
     };
 
     var fnConfirmarGenerar = function (e) {
-        debugger;
+       
         Dialog.confirm('Contratos', "Desea generar el Contrato?", function (respuesta) {
             if (respuesta == true)
                 fnGuardarContrato(e);
@@ -105,13 +105,13 @@ var controlContratos = function () {
 
     function fnOnClickBtn_Extender() {
         var t = setTimeout(function () {
-            debugger;
+           
             extenderContrato.AbrirModal(objSeleccionado);
         }, 100);
     };
 
     function OnPageEvent(table) {
-        debugger;
+       
         let $btnTerminar = $(table.fnGetNodes()).find("button[name^='btnT_']");
         let $btnExtender = $(table.fnGetNodes()).find("button[name^='btnE_']");
 
@@ -121,13 +121,13 @@ var controlContratos = function () {
         });
 
         $btnExtender.click(function () {
-            debugger;
+           
             fnOnClickBtn_Extender();
         });
     }
 
     var fnGuardarContrato = function (e) {
-        debugger;
+       
         var oData = {
             "UsuarioCreacion": usuarioLogueado,
             "IDEstadoContrato": configViwolf.EstadosContratos.Pendiente,
@@ -143,7 +143,7 @@ var controlContratos = function () {
                 if (result.MessageType == "Success") {
                     Dialog.alert('Contrato', result.InfoMessage, function () {
                     })
-                    debugger;
+                   
                     generarContrato.fnReporteTicket(e, result.Data.IDContrato, 1)
                 }
                 else {
@@ -159,7 +159,7 @@ var controlContratos = function () {
     };
 
     var fnBuscarContrato = function () {
-        debugger;
+       
         var oData = {
             "NumeroContrato": txtNumeroContrato.val(),
             "NombreCliente": txtNombreCliente.val(),
@@ -169,7 +169,7 @@ var controlContratos = function () {
             var oUrl = 'ListarContratos';
             var oProcessMessage = 'Buscando Reservaciones';
             var success = function (result) {
-                debugger;
+               
                 if (result.Data.length > 0) {
 
                     tblDataContratos.dataTable({
@@ -203,7 +203,7 @@ var controlContratos = function () {
                     });
                     tblDataContratos.on("click", "tr", function () {
                         var iPos = tblDataContratos.fnGetPosition(this);
-                        debugger;
+                       
                         objSeleccionado = tblDataContratos.fnGetData(iPos);
                     });
                     OnPageEvent(tblDataContratos);

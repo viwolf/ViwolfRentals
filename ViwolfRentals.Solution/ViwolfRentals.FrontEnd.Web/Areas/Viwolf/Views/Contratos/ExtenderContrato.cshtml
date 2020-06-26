@@ -1,4 +1,8 @@
 ﻿<!-- Form Modal -->
+<!-- TimePicker CSS-->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+
 <div id="popupExtenderContrato" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -38,10 +42,29 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group-desc">
-                                            <input id="TxtFechaEntrega" disabled class="input--style-5" type="text" name="FechaEntrega">
+                                            <input id="txtHoraInicio" disabled class="input--style-5" type="text" name="MontoDia">
+                                            <label class="label--desc">Hora Inicio</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <input id="TxtFechaEntrega" class="input--style-5" type="text" name="FechaEntrega">
                                             <label class="label--desc">Fecha Entrega</label>
                                         </div>
                                     </div>
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <input id="txtHoraEntrega" class="input--style-5" type="text" name="MontoTotal">
+                                            <label class="label--desc">Hora Entrega</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col col-12 col-md-12">
+                                <div class="form-row m-b-55">
                                     <div class="col-3">
                                         <div class="input-group-desc">
                                             <input id="txtMontoDia" disabled class="input--style-5" type="text" name="MontoDia">
@@ -54,6 +77,17 @@
                                             <label class="label--desc">Monto Total</label>
                                         </div>
                                     </div>
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <input id="txtIdVehiculo" disabled class="input--style-5" type="text" name="Placa">
+                                            <label class="label--desc">Placa</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <button type="button" id="btnCargarVehiculo" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Extender Contrato">
+                                            Cambiar Vehiculo
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +99,7 @@
                                 </button>
                             </div>
                         </div>
-                    </fieldset>                 
+                    </fieldset>
                 </section>
             </div>
         </div>
@@ -77,6 +111,13 @@
 <script src="~/Content/js/src/Dialog.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+@*Time Picker*@
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+<!--Informacion del Vehiculo-->
+@Html.Partial("~/Areas/Viwolf/Views/Vehiculos/VehiculoBuscar.cshtml")
+<script src="~/Areas/Viwolf/Content/js/src/Vehiculos/BuscarVehiculo.js"></script>
 
 
 
