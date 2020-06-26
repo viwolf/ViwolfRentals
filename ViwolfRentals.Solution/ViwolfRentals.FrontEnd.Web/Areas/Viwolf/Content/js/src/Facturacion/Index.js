@@ -108,7 +108,7 @@
         })
     };
 
-    function cambiarEstadoContrato() {
+   function cambiarEstadoContrato() {
         var estado = document.getElementById("txtEstadoContrato");
         idEstado = estado.options[estado.selectedIndex].value;
 

@@ -69,8 +69,9 @@
                                 </a>
                                 <div class="collapse" id="pagesCollapseContratos" aria-labelledby="headingOne" data-parent="#layoutWiwolfRentals">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="#">Mantenimiento</a>
-                                        <a class="nav-link" href="@Url.Action("Index","Contratos", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Creacion Contratos</a>
+                                        <a class="nav-link" href="@Url.Action("Control","Contratos", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Control Contratos</a>
+                                        <a class="nav-link" href="@Url.Action("Index","Contratos", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Crear Contratos</a>
+                                        
                                     </nav>
                                 </div>
                                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">

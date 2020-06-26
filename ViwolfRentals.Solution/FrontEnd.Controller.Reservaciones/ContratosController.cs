@@ -22,6 +22,13 @@ namespace FrontEnd.Controllers.Viwolf
             return View();
         }
 
+        public ActionResult Control(string usuario, string idUsuario)
+        {
+            ViewBag.Usuario = usuario;
+            ViewBag.IdUsuario = idUsuario;
+            return View();
+        }
+
         [HttpPost]
         public JsonResult GuardarContrato(ViwolfRental.Common.Model.t_Contratos contrato)
         {
@@ -113,9 +120,14 @@ namespace FrontEnd.Controllers.Viwolf
                                      ta.NumeroContrato,
                                      ta.t_Reservaciones.NombreCliente,
                                      ta.t_Reservaciones.LugarEntrega,
+                                     FechaInicio = string.Format("{0:d/M/yyyy}", ta.t_Reservaciones.FechaInicio),
+                                     FechaEntrega = string.Format("{0:d/M/yyyy}", ta.t_Reservaciones.FechaEntrega),
                                      ta.t_EstadosContratos.Descripcion,
                                      ta.TotalContrato,
-                                     chkPago = "<input id='chk_" + ta.IDContrato + "' type='checkbox'>"
+                                     chkPago = "<input id='chk_" + ta.IDContrato + "' type='checkbox'>",
+                                     Extender = "<button id= 'btnE_" + ta.IDContrato + "' name='btnE_" + ta.IDContrato + "'><i class='fa fa-external-link-alt'></i></button>",
+                                     Terminar = "<button id= 'btnT_" + ta.IDContrato + "' name='btnT_" + ta.IDContrato + "'><i class='fa fa-check-double'></i></button>"
+                                  
                                  }).AsEnumerable();
                 return Json(new
                 {

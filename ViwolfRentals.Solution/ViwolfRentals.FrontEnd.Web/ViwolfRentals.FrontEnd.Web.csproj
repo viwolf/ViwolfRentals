@@ -212,6 +212,7 @@
     <Content Include="Areas\Seguridad\Content\Plugin\bootstrap\js\bootstrap.js" />
     <Content Include="Areas\Seguridad\Content\Plugin\bootstrap\js\bootstrap.min.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Comisiones\GenerarPagoComision.js" />
+    <Content Include="Areas\Viwolf\Content\js\src\Contratos\ControlContratos.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Contratos\CreacionContratos.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Contratos\GenerarContrato.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Contratos\Index.js" />
@@ -615,6 +616,8 @@
     <Content Include="Areas\Viwolf\Views\Facturacion\Index.cshtml" />
     <Content Include="Areas\Viwolf\Views\Facturacion\DetallePago.cshtml" />
     <Content Include="Areas\Viwolf\Views\Facturacion\GenerarTicket.cshtml" />
+    <Content Include="Areas\Viwolf\Views\Contratos\Control.cshtml" />
+    <Content Include="Areas\Viwolf\Views\Contratos\ExtenderContrato.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
