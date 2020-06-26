@@ -115,6 +115,7 @@ namespace FrontEnd.Controllers.Viwolf
                                  select new
                                  {
                                      ta.IDContrato,
+                                     ta.IDReservacion,
                                      objReservacion = ta.t_Reservaciones,
                                      ta.t_EstadosContratos.IDEstadoContrato,
                                      ta.NumeroContrato,

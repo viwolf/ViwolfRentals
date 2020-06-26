@@ -72,8 +72,10 @@
     };
 
     var fnInit = function () {
+        debugger;
+        fnBuscarContratos();
        
-        btnBuscarContratos.click(fnBuscarContratos);
+        //btnBuscarContratos.click(fnBuscarContratos);
         btnFacturar.bind().click(function (e) {
             if (rows_selected.length > 0) {
                 fnConfirmarPagar(e);
@@ -84,7 +86,7 @@
             }
         });
 
-        txtEstadoContrato.change(cambiarEstadoContrato)
+        //txtEstadoContrato.change(cambiarEstadoContrato)
 
     };
 
@@ -150,16 +152,16 @@
     var fnBuscarContratos = function () {
         TotalFacturado = 0;
         rows_selected = [];
-        var estado = document.getElementById("txtEstadoContrato");
-        var EstadoID = estado.options[estado.selectedIndex].value;
+        //var estado = document.getElementById("txtEstadoContrato");
+        //var EstadoID = estado.options[estado.selectedIndex].value;
        
 
         var oData = {
-                "NumeroContrato": txtNumroContrato.val(),
-                "t_Reservaciones.NombreCliente": txtNombreCliente.val(),
-                "t_Reservaciones.LugarEntrega": txtLugarEntrega.val(),
-                "IDEstadoContrato": EstadoID
-            };
+            "NumeroContrato": txtNumroContrato.val(),
+            "t_Reservaciones.NombreCliente": txtNombreCliente.val(),
+            "t_Reservaciones.LugarEntrega": txtLugarEntrega.val(),
+            "IDEstadoContrato": configViwolf.EstadosContratos.Pendiente
+        };
             try {
                 var oUrl = 'Contratos/ListarContratos';
                 var oProcessMessage = 'Buscando Contratos.';
