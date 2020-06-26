@@ -159,11 +159,11 @@ var controlContratos = function () {
     };
 
     var fnBuscarContrato = function () {
-       
+        debugger;
         var oData = {
             "NumeroContrato": txtNumeroContrato.val(),
-            "NombreCliente": txtNombreCliente.val(),
-            "IDEstadoContrato": txtEstadoContrato.val()
+            "t_Reservaciones.NombreCliente": txtNombreCliente.val(),
+            //"IDEstadoContrato": txtEstadoContrato.val()
         };
         try {
             var oUrl = 'ListarContratos';
@@ -181,10 +181,12 @@ var controlContratos = function () {
                         columns: [
                             { data: 'IDContrato' },
                             { data: 'objReservacion' },
+                            { data: 'IDEstadoContrato' } ,
                             { data: 'NumeroContrato' },
                             { data: 'NombreCliente' },
                             { data: 'FechaInicio' },
                             { data: 'FechaEntrega' },
+                            { data: 'Descripcion' },
                             { data: 'Extender' },
                             { data: 'Terminar' }
                         ],
@@ -196,6 +198,11 @@ var controlContratos = function () {
                             },
                             {
                                 "targets": [1],
+                                "visible": false,
+                                "searchable": false
+                            },
+                            {
+                                "targets": [2],
                                 "visible": false,
                                 "searchable": false
                             }
@@ -211,7 +218,7 @@ var controlContratos = function () {
                 else {
                     Dialog.alert('Contratos', result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage, function () {
                     })
-                    tblDataReservacion.dataTable().fnClearTable();
+                    tblDataContratos.dataTable().fnClearTable();
                 };
             };
             app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);

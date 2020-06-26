@@ -17,8 +17,30 @@
     var dateIni = new Date();
     var dateFin = new Date();
 
+
+    var cargarHoraFinal = function (hora) {
+
+        var horaSeleccionada = hora.getHours().toString();
+        var tiempo = horaSeleccionada + ':00';
+
+        txtHoraEntrega.timepicker({
+            timeFormat: 'h:mm p',
+            interval: 480,
+            //minTime: '5',
+            //maxTime: '11:00pm',
+            startTime: tiempo, // '5:00',
+            //defaultTime: '11',
+            scrollbar: true,
+            change: function (e) {
+                timeOut = e.getTime(); // txtHoraInicio.val();
+                calcularTarifaTotal();
+            }
+        });
+    }
+
+
     function fnCargaFechas() {
-        
+        debugger;
 
         dateIni = new Date(objContrato.objReservacion.FechaInicio);
         dateFin = new Date(objContrato.objReservacion.FechaEntrega);
@@ -47,14 +69,17 @@
                 var fechaInicial = moment(TxtFechaInicio.val(), 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                 var fechaSeleccionada = moment(selected, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                 dateFin = new Date(fechaSeleccionada);
-               // TxtFechaInicio.datepicker("option", "maxDate", selected);
+                TxtFechaInicio.datepicker("option", "maxDate", selected);
                 cantidadDias = ((moment(fechaSeleccionada).diff(fechaInicial, 'days')));
                 calcularTarifaTotal();
             },
             maxDate: '+500D'
         });
 
-        txtHoraEntrega.timepicker({
+        TxtFechaInicio.datepicker('setDate', new Date());
+        TxtFechaEntrega.datepicker('setDate', new Date());
+
+        txtHoraInicio.timepicker({
             timeFormat: 'h:mm p',
             interval: 30,
             minTime: '5',
@@ -65,16 +90,12 @@
             change: function (e) {
                 timeIn = e.getTime();
                 txtHoraEntrega.timepicker('setTime', new Date(e));
-            //    calcularTarifaTotal();
-             //   cargarHoraFinal(e);
+                calcularTarifaTotal();
+                cargarHoraFinal(e);
 
             }
+
         });
-
-        TxtFechaInicio.datepicker('setDate', objContrato.objReservacion.FechaInicio);
-        TxtFechaEntrega.datepicker('setDate', objContrato.objReservacion.FechaEntrega);
-
-        TxtFechaEntrega.datepicker("option", "minDate", objContrato.FechaInicio);
 
     };
 
@@ -100,31 +121,28 @@
         txtIdVehiculo.val(data.IDVehiculo);
     };
 
+    var Init = function () {
+
+        fnCargaFechas();
+        llenarObjeto();
+        btnCargarVehiculo.click(function () {
+            BuscarVehiculo.AbrirModal(fnCallBack, dateIni, dateFin);
+        });
+    };
+
 
     var llenarObjeto = function () {
         TxtContrato.val(objContrato.NumeroContrato);
         txtNombreClienteContrato.val(objContrato.NombreCliente);
-        TxtFechaInicio.val(objContrato.FechaInicio)
-        TxtFechaEntrega.val(objContrato.FechaEntrega);
-        txtMontoDia.val(utils.formatterDolar.format(objContrato.objReservacion.MontoDia));
-        txtMontoTotal.val(utils.formatterDolar.format(objContrato.objReservacion.MontoTotal));
-        txtHoraInicio.val(objContrato.objReservacion.HoraInicio);
-        txtHoraEntrega.val(objContrato.objReservacion.HoraEntrega);
-        txtIdVehiculo.val(objContrato.objReservacion.IDVehiculo)
-        
     };
 
     var abrirModal = function (objetoContrato) {
-       
         objContrato = objetoContrato;
-        fnCargaFechas();
-        llenarObjeto();
-        btnCargarVehiculo.click(function () {
-            debugger;
-            BuscarVehiculo.AbrirModal(fnCallBack, dateIni, dateFin);
-        });
+        Init();
 
         popupExtenderContrato.modal('show');
+
+      
 
     };
     return {
