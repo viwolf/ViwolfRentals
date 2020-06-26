@@ -105,7 +105,8 @@ var controlContratos = function () {
 
     function fnOnClickBtn_Extender() {
         var t = setTimeout(function () {
-            editarVehiculo.AbrirModal(objSeleccionado.IDVehiculo);
+            debugger;
+            extenderContrato.AbrirModal(objSeleccionado);
         }, 100);
     };
 
@@ -179,6 +180,7 @@ var controlContratos = function () {
                         select: true,
                         columns: [
                             { data: 'IDContrato' },
+                            { data: 'objReservacion' },
                             { data: 'NumeroContrato' },
                             { data: 'NombreCliente' },
                             { data: 'FechaInicio' },
@@ -191,11 +193,17 @@ var controlContratos = function () {
                                 "targets": [0],
                                 "visible": false,
                                 "searchable": false
+                            },
+                            {
+                                "targets": [1],
+                                "visible": false,
+                                "searchable": false
                             }
                         ]
                     });
                     tblDataContratos.on("click", "tr", function () {
                         var iPos = tblDataContratos.fnGetPosition(this);
+                        debugger;
                         objSeleccionado = tblDataContratos.fnGetData(iPos);
                     });
                     OnPageEvent(tblDataContratos);

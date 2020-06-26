@@ -1,1 +1,82 @@
-﻿
+﻿<!-- Form Modal -->
+<div id="popupExtenderContrato" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="lbl_title_create_carts"></h4>
+            </div>
+            <div class="modal-body modal-bodyEdit modal-scroll">
+                <section id="content" class="animated fadeInUp">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col col-12 col-md-12">
+                                <div class="form-row m-b-55">
+                                    <div class="col-4">
+                                        <div class="input-group-desc">
+                                            <input id="TxtContrato" disabled class="input--style-5" type="text" name="NumeroContrato">
+                                            <label class="label--desc">Número Contrato</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="input-group-desc">
+                                            <input id="txtNombreClienteContrato" disabled class="input--style-5" type="text" name="NombreCliente">
+                                            <label class="label--desc">Nombre Cliente</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-12 col-md-12">
+                                <div class="form-row m-b-55">
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <input id="TxtFechaInicio" disabled class="input--style-5" type="text" name="FechaInicio">
+                                            <label class="label--desc">Fecha Inicio</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <input id="TxtFechaEntrega" disabled class="input--style-5" type="text" name="FechaEntrega">
+                                            <label class="label--desc">Fecha Entrega</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <input id="txtMontoDia" disabled class="input--style-5" type="text" name="MontoDia">
+                                            <label class="label--desc">Monto Día</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <input id="txtMontoTotal" disabled class="input--style-5" type="text" name="MontoTotal">
+                                            <label class="label--desc">Monto Total</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class=" actions pull-right">
+                                <button type="button" id="btnExtenderContrato" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Extender Contrato">
+                                    <i class="fa fa-check-circle display-block fa-2x"></i> Extender contrato
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>                 
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Mensajes-->
+<script src="~/Content/js/src/Dialog.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
