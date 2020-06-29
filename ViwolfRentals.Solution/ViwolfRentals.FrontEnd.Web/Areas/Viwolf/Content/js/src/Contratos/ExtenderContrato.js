@@ -2,8 +2,8 @@
     var popupExtenderContrato = $('#popupExtenderContrato');
     var TxtContrato = $("#TxtContrato");
     var txtNombreClienteContrato = $("#txtNombreClienteContrato");
-    var TxtFechaInicio = $("#TxtFechaInicio");
-    var TxtFechaEntrega = $("#TxtFechaEntrega");
+    var txtFechaInicio = $("#txtFechaInicio");
+    var txtFechaFinal = $("#txtFechaFinal");
     var txtHoraInicio = $("#txtHoraInicio");
     var txtHoraEntrega = $("#txtHoraEntrega");
     var txtMontoDia = $("#txtMontoDia");
@@ -38,46 +38,45 @@
         });
     }
 
-
     function fnCargaFechas() {
         debugger;
 
         dateIni = new Date(objContrato.objReservacion.FechaInicio);
         dateFin = new Date(objContrato.objReservacion.FechaEntrega);
 
-        TxtFechaInicio.datepicker("destroy");
-        TxtFechaEntrega.datepicker("destroy");
+        txtFechaInicio.datepicker("destroy");
+        txtFechaFinal.datepicker("destroy");
 
-        TxtFechaInicio.datepicker({
+        txtFechaInicio.datepicker({
             autoclose: true,
             dateFormat: "dd/mm/yy",
             onSelect: function (selected) {
-                var fechaFinal = moment(TxtFechaEntrega.val(), 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
+                var fechaFinal = moment(txtFechaFinal.val(), 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                 var fechaSeleccionada = moment(selected, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                 dateIni = new Date(fechaSeleccionada);
-                TxtFechaEntrega.datepicker("option", "minDate", selected);
+                txtFechaFinal.datepicker("option", "minDate", selected);
                 cantidadDias = ((moment(fechaFinal).diff(fechaSeleccionada, 'days')));
             }, minDate: '-0D'
             , maxDate: '+500D'
         });
 
-        TxtFechaEntrega.datepicker({
+        txtFechaFinal.datepicker({
             autoclose: true,
             dateFormat: "dd/mm/yy",
             onSelect: function (selected) {
                 debugger;
-                var fechaInicial = moment(TxtFechaInicio.val(), 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
+                var fechaInicial = moment(txtFechaInicio.val(), 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                 var fechaSeleccionada = moment(selected, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                 dateFin = new Date(fechaSeleccionada);
-                TxtFechaInicio.datepicker("option", "maxDate", selected);
+                txtFechaInicio.datepicker("option", "maxDate", selected);
                 cantidadDias = ((moment(fechaSeleccionada).diff(fechaInicial, 'days')));
                 calcularTarifaTotal();
             },
             maxDate: '+500D'
         });
 
-        TxtFechaInicio.datepicker('setDate', new Date());
-        TxtFechaEntrega.datepicker('setDate', new Date());
+        txtFechaInicio.datepicker('setDate', new Date());
+        txtFechaFinal.datepicker('setDate', new Date());
 
         txtHoraInicio.timepicker({
             timeFormat: 'h:mm p',
@@ -121,6 +120,21 @@
         txtIdVehiculo.val(data.IDVehiculo);
     };
 
+    //Solo permite introducir numeros.
+    function valideKey(evt) {
+        var code = evt.which ? evt.which : evt.keyCode;
+        if (code == 8) {
+            //backspace
+            return true;
+        } else if (code >= 48 && code <= 57) {
+            //is a number
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     var Init = function () {
 
         fnCargaFechas();
@@ -128,8 +142,12 @@
         btnCargarVehiculo.click(function () {
             BuscarVehiculo.AbrirModal(fnCallBack, dateIni, dateFin);
         });
-    };
+        txtMontoDia.bind('keypress', valideKey);
 
+        txtMontoDia.blur(function () {
+            calcularTarifaTotal();
+        });
+    };
 
     var llenarObjeto = function () {
         TxtContrato.val(objContrato.NumeroContrato);
@@ -141,10 +159,8 @@
         Init();
 
         popupExtenderContrato.modal('show');
-
-      
-
     };
+
     return {
         AbrirModal: abrirModal
     }
