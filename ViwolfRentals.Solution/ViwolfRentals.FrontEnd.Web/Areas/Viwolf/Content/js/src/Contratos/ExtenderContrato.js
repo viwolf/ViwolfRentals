@@ -140,7 +140,8 @@
         fnCargaFechas();
         llenarObjeto();
         btnCargarVehiculo.click(function () {
-            BuscarVehiculo.AbrirModal(fnCallBack, dateIni, dateFin);
+            debugger;
+            BuscarVehiculo.AbrirModal(fnCallBack, txtHoraInicio.val(), txtHoraEntrega.val(), "ExtensionContrato");
         });
         txtMontoDia.bind('keypress', valideKey);
 

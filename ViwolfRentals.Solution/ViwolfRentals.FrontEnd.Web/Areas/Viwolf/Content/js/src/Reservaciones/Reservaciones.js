@@ -186,7 +186,7 @@
 
         btnCargarVehiculo.click(function () {
             debugger;
-            BuscarVehiculo.AbrirModal(fnCallBack, dateIni, dateFin);
+            BuscarVehiculo.AbrirModal(fnCallBack, dateIni, dateFin,"Reservacion");
         });
     }
 

@@ -8,6 +8,7 @@ var BuscarVehiculo = function () {
     var fnCallbak = null;
     var fechaInicio = "";
     var FechaEntrega = "";
+    var Modulo = "";
 
     var fnInit = function () {
        btnEnlazar.unbind().click(fnEnlazarVehiculo);
@@ -22,7 +23,8 @@ var BuscarVehiculo = function () {
             ]
         };
         try {
-            var oUrl = 'Vehiculos/ListarVehiculosReservaciones';
+            debugger;
+            var oUrl = Modulo == 'ExtensionContrato' ? 'ListarVehiculosReservaciones' : 'Vehiculos/ListarVehiculosReservaciones';
 
 
             var oProcessMessage = 'Buscando Vehiculos';
@@ -74,8 +76,9 @@ var BuscarVehiculo = function () {
 
        
 
-    var fnAbrirModal = function (callback, _fechaInicio, _fechaEntrega) {
+    var fnAbrirModal = function (callback, _fechaInicio, _fechaEntrega, modulo) {
         fnCallbak = callback;
+        Modulo = modulo;
         fechaInicio = _fechaInicio;
         FechaEntrega = _fechaEntrega;
         fnInit();

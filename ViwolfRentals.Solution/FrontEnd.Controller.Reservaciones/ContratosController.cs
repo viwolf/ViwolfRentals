@@ -14,6 +14,7 @@ namespace FrontEnd.Controllers.Viwolf
     public class ContratosController :  Controller
     {
         IContratosBL BlContrato = new ContratosBL();
+        IVehiculosBL BlVehiculo = new VehiculosBL();
 
         public ActionResult Index(string usuario, string idUsuario)
         {
@@ -150,6 +151,68 @@ namespace FrontEnd.Controllers.Viwolf
                     ErrorMessage = ex.Message
                 }, JsonRequestBehavior.AllowGet);
             }
+        }
+
+        [HttpPost]
+        public JsonResult ListarVehiculosReservaciones(ViwolfRental.Common.Model.t_Vehiculos vehiculos)
+        {
+
+            try
+            {
+                var result = BlVehiculo.ListarVehiculosReservaciones(vehiculos);
+
+                var jsonObjet = (from ta in result
+                                 select new
+                                 {
+                                     ta.IDVehiculo,
+                                     ta.Marca,
+                                     ta.Modelo,
+                                     ta.Anno,
+                                     ta.FechaCompra,
+                                     ta.NumeroChasis,
+                                     ta.NumeroMotor,
+                                     ta.RtvVencimientoAnno,
+                                     ta.RtvVencimientoMes,
+                                     ta.MarchamoProximo,
+                                     ta.Color,
+                                     ta.Transmision,
+                                     ta.NumeroCilindros,
+                                     ta.PesoKg,
+                                     ta.Carroceria,
+                                     ta.Traccion,
+                                     ta.Capacidad,
+                                     RtvSticker = ta.RtvSticker == true ? "Sí" : "No",
+                                     RtvPapel = ta.RtvPapel == true ? "Sí" : "No",
+                                     MarchamoPapel = ta.MarchamoPapel == true ? "Sí" : "No",
+                                     StickerPlaca = ta.StickerPlaca == true ? "Sí" : "No",
+                                     TituloPropiedad = ta.TituloPropiedad == true ? "Sí" : "No",
+                                     ta.Multas,
+                                     ta.t_CategoriasVehiculos,
+                                     ta.t_Departamentos,
+                                     GPS = ta.GPS == true ? "Sí" : "No",
+                                     Ver = "<button id= '" + ta.IDVehiculo + "' name='btnV_" + ta.IDVehiculo + "'><i class='fa fa-eye'></i></button>"
+                                 }).AsEnumerable();
+                return Json(new
+                {
+                    Data = jsonObjet,
+                    MessageType = "Success",
+                    InfoMessage = jsonObjet.Count() > 0 ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen vehiculos que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = ex.Message
+                }, JsonRequestBehavior.AllowGet);
+            }
+
         }
     }
 }
