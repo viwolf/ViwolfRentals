@@ -175,6 +175,7 @@
     <Property Name="Referencia" Type="Int32" />
     <Property Name="IDEstadoContrato" Type="Int32" Nullable="false" />
     <Property Name="IDCodigoContrato" Type="Int32" Nullable="false" />
+    <Property Name="IDUsuario" Type="Int32" />
     <NavigationProperty Name="t_CodigosContratos" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_CodigosContratos" FromRole="t_Contratos" ToRole="t_CodigosContratos" />
     <NavigationProperty Name="t_EstadosContratos" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_EstadosContratos" FromRole="t_Contratos" ToRole="t_EstadosContratos" />
     <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_Reservaciones" FromRole="t_Contratos" ToRole="t_Reservaciones" />

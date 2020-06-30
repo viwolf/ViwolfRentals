@@ -64,9 +64,9 @@ var indexContratos = function () {
         });
 
         btnGenerarContrato.click(function (e) {
-            debugger;
+            
             if (objSeleccionado != null) {
-                debugger;
+                
                 fnConfirmarGenerar(e);
             }
             else {
@@ -77,7 +77,7 @@ var indexContratos = function () {
     };
 
     var fnConfirmarGenerar = function (e) {
-        debugger;
+        
         Dialog.confirm('Contratos', "Desea generar el Contrato?", function (respuesta) {
             if (respuesta == true)
                 fnGuardarContrato(e);
@@ -85,13 +85,14 @@ var indexContratos = function () {
     };
 
     var fnGuardarContrato = function (e) {
-        debugger;
+        
         var oData = {
             "UsuarioCreacion": usuarioLogueado,
             "IDEstadoContrato": configViwolf.EstadosContratos.Pendiente,
             "IDReservacion": objSeleccionado.IdReservacion,
             "IDCodigoContrato": configViwolf.CodigosContratos.Sistema,
             "TotalContrato": objSeleccionado.MontoTotal,
+            "IDUsuario": idUsuarioLogueado,
             "Extendido": false,
             "Referencia": null
         }
@@ -103,7 +104,7 @@ var indexContratos = function () {
                 if (result.MessageType == "Success") {
                     Dialog.alert('Contrato', result.InfoMessage, function () {
                     })
-                    debugger;
+                    
                     generarContrato.fnReporteTicket(e, result.Data.IDContrato, 1)
                 }
                 else {
@@ -119,7 +120,7 @@ var indexContratos = function () {
     };
 
     var fnBuscarReservaciones = function () {
-        debugger;
+        
         var oData = {
             "IDReservacion": txtIDReservacion.val(),
             "NombreCliente": txtNombreCliente.val(),
@@ -132,7 +133,7 @@ var indexContratos = function () {
             var oUrl = 'Reservaciones/ListarReservacion';
             var oProcessMessage = 'Buscando Reservaciones';
             var success = function (result) {
-                debugger;
+                
                 if (result.Data.length > 0) {
                  
                     tblDataReservacion.dataTable({

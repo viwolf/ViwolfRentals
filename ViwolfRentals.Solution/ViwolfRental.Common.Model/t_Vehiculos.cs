@@ -63,6 +63,7 @@ namespace ViwolfRental.Common.Model
         public virtual ICollection<t_Kilometrajes> t_Kilometrajes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual t_Reservaciones t_Reservaciones { get; set; }
+
         public IDictionary<string, Object> ExtendedProperties { set; get; }
     }
 }

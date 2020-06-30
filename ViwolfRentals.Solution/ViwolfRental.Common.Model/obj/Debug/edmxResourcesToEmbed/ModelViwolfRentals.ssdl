@@ -50,6 +50,7 @@
     <Property Name="Referencia" Type="int" />
     <Property Name="IDEstadoContrato" Type="int" Nullable="false" />
     <Property Name="IDCodigoContrato" Type="int" Nullable="false" />
+    <Property Name="IDUsuario" Type="int" />
   </EntityType>
   <EntityType Name="t_Departamentos">
     <Key>

@@ -49,7 +49,7 @@ namespace ViwolfRentals.DataAccess
                             objReservaciones.Referencia = model.t_Reservaciones.IdReservacion;
                             objReservaciones.IdReservacion = 0;
                             objReservaciones.UsuarioCreacion = model.UsuarioCreacion;
-                            objReservaciones.IDUsuario = 1;
+                           // objReservaciones.IDUsuario = 1;
 
                             var resReservacion = repositoryReservaciones.Guardar(objReservaciones);
 
@@ -208,7 +208,8 @@ namespace ViwolfRentals.DataAccess
                                                   entity.IDCodigoContrato,
                                                   entity.TotalContrato,
                                                   entity.Extendido,
-                                                  entity.Referencia
+                                                  entity.Referencia,
+                                                  entity.IDUsuario
                                               },
                                               transaction: transaction,
                                               commandType: CommandType.StoredProcedure);

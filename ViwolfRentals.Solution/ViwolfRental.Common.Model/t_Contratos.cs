@@ -43,6 +43,7 @@ namespace ViwolfRental.Common.Model
         public Nullable<int> Referencia { get; set; }
         public int IDEstadoContrato { get; set; }
         public int IDCodigoContrato { get; set; }
+        public Nullable<int> IDUsuario { get; set; }
     
         public virtual t_CodigosContratos t_CodigosContratos { get; set; }
         public virtual t_EstadosContratos t_EstadosContratos { get; set; }
@@ -51,5 +52,7 @@ namespace ViwolfRental.Common.Model
         public virtual ICollection<t_FacturasDetalles> t_FacturasDetalles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_PagosComisiones> t_PagosComisiones { get; set; }
+
+        public IDictionary<string, Object> ExtendedProperties { set; get; }
     }
 }

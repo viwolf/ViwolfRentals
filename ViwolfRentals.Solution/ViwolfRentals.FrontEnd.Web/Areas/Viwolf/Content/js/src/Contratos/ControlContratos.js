@@ -96,7 +96,7 @@ var controlContratos = function () {
     };
 
     var fnCallbackGuardar = function (objetoGuardar) {
-        debugger;
+        
             var oData = {
                 "UsuarioCreacion": usuarioLogueado,
                 "Extendido": true,
@@ -105,6 +105,7 @@ var controlContratos = function () {
                 "IDCodigoContrato": configViwolf.CodigosContratos.Sistema,
                 "IDReservacion": objetoGuardar.objReservacion.IdReservacion,
                 "TotalContrato": objetoGuardar.TotalContrato,
+                "IDUsuario": objetoGuardar.objReservacion.IDUsuario,
                 "t_Reservaciones": objetoGuardar.objReservacion
             }
 
@@ -152,40 +153,40 @@ var controlContratos = function () {
         });
     }
 
-    var fnGuardarContrato = function (e) {
+    //var fnGuardarContrato = function (e) {
        
-        var oData = {
-            "UsuarioCreacion": usuarioLogueado,
-            "IDEstadoContrato": configViwolf.EstadosContratos.Pendiente,
-            "IDReservacion": objSeleccionado.IdReservacion,
-            "IDCodigoContrato": configViwolf.CodigosContratos.Sistema,
-            "TotalContrato": objSeleccionado.MontoTotal
-        }
-        try {
-            var oUrl = 'Contratos/GuardarContrato';
-            var oProcessMessage = 'Guardando Contrato';
+    //    var oData = {
+    //        "UsuarioCreacion": usuarioLogueado,
+    //        "IDEstadoContrato": configViwolf.EstadosContratos.Pendiente,
+    //        "IDReservacion": objSeleccionado.IdReservacion,
+    //        "IDCodigoContrato": configViwolf.CodigosContratos.Sistema,
+    //        "TotalContrato": objSeleccionado.MontoTotal
+    //    }
+    //    try {
+    //        var oUrl = 'Contratos/GuardarContrato';
+    //        var oProcessMessage = 'Guardando Contrato';
 
-            var success = function (result) {
-                if (result.MessageType == "Success") {
-                    Dialog.alert('Contrato', result.InfoMessage, function () {
-                    })
+    //        var success = function (result) {
+    //            if (result.MessageType == "Success") {
+    //                Dialog.alert('Contrato', result.InfoMessage, function () {
+    //                })
                    
-                    generarContrato.fnReporteTicket(e, result.Data.IDContrato, 1)
-                }
-                else {
-                    Dialog.alert('Contrato', result.ErrorMessage, function () {
-                    })
-                }
-            };
-            app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
-        } catch (ex) {
+    //                generarContrato.fnReporteTicket(e, result.Data.IDContrato, 1)
+    //            }
+    //            else {
+    //                Dialog.alert('Contrato', result.ErrorMessage, function () {
+    //                })
+    //            }
+    //        };
+    //        app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
+    //    } catch (ex) {
 
-            retorno = false;
-        }
-    };
+    //        retorno = false;
+    //    }
+    //};
 
     var fnBuscarContrato = function () {
-        debugger;
+        
         var oData = {
             "NumeroContrato": txtNumeroContrato.val(),
             "t_Reservaciones.NombreCliente": txtNombreCliente.val(),
@@ -197,7 +198,7 @@ var controlContratos = function () {
             var success = function (result) {
                
                 if (result.Data.length > 0) {
-
+                    
                     tblDataContratos.dataTable({
                         destroy: true,
                         processing: true,

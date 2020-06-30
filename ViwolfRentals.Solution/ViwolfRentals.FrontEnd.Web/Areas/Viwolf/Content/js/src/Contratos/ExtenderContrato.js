@@ -41,7 +41,7 @@
     }
 
     function fnCargaFechas() {
-        debugger;
+       
 
         dateIni = new Date(objContrato.objReservacion.FechaInicio);
         dateFin = new Date(objContrato.objReservacion.FechaEntrega);
@@ -66,7 +66,7 @@
             autoclose: true,
             dateFormat: "dd/mm/yy",
             onSelect: function (selected) {
-                debugger;
+               
                 var fechaInicial = moment(txtFechaInicio.val(), 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                 var fechaSeleccionada = moment(selected, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                 dateFin = new Date(fechaSeleccionada);
@@ -154,15 +154,15 @@
     var fnConfirmarGuardar = function () {
         Dialog.confirm('Contratos', "Desea extender el contrato?", function (respuesta) {
             if (respuesta == true) {
-                debugger;
+               
                 objContrato.objReservacion.FechaInicio = dateIni;
                 objContrato.objReservacion.FechaEntrega = dateFin;
                 objContrato.objReservacion.HoraInicio = txtHoraInicio.val();
                 objContrato.objReservacion.HoraEntrega = txtHoraEntrega.val();
                 objContrato.objReservacion.IDVehiculo = txtIdVehiculo.val();
                 objContrato.objReservacion.MontoDia = parseFloat(txtMontoDia.val().replace("$", "")),
-                    objContrato.objReservacion.MontoTotal = parseFloat(txtMontoTotal.val().replace("$", "")),
-                    objContrato.TotalContrato = parseFloat(txtMontoTotal.val().replace("$", "")),
+                objContrato.objReservacion.MontoTotal = parseFloat(txtMontoTotal.val().replace("$", "")),
+                objContrato.TotalContrato = parseFloat(txtMontoTotal.val().replace("$", "")),
 
                     fnCallbackGuardar(objContrato);
             }
