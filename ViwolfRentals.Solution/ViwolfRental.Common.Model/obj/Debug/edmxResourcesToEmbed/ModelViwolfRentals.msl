@@ -33,6 +33,8 @@
         <MappingFragment StoreEntitySet="t_Contratos">
           <ScalarProperty Name="IDCodigoContrato" ColumnName="IDCodigoContrato" />
           <ScalarProperty Name="IDEstadoContrato" ColumnName="IDEstadoContrato" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="Extendido" ColumnName="Extendido" />
           <ScalarProperty Name="SextaVehiculos" ColumnName="SextaVehiculos" />
           <ScalarProperty Name="QuintaVehiculos" ColumnName="QuintaVehiculos" />
           <ScalarProperty Name="CuartaVehiculos" ColumnName="CuartaVehiculos" />
@@ -209,6 +211,8 @@
           <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
           <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
           <ScalarProperty Name="IDClienteComisionista" ColumnName="IDClienteComisionista" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="Extendido" ColumnName="Extendido" />
           <ScalarProperty Name="ModoPago" ColumnName="ModoPago" />
           <ScalarProperty Name="SaldoActual" ColumnName="SaldoActual" />
           <ScalarProperty Name="MontoDeposito" ColumnName="MontoDeposito" />

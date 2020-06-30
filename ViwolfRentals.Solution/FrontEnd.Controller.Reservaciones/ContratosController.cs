@@ -15,6 +15,7 @@ namespace FrontEnd.Controllers.Viwolf
     {
         IContratosBL BlContrato = new ContratosBL();
         IVehiculosBL BlVehiculo = new VehiculosBL();
+       
 
         public ActionResult Index(string usuario, string idUsuario)
         {
@@ -213,6 +214,35 @@ namespace FrontEnd.Controllers.Viwolf
                 }, JsonRequestBehavior.AllowGet);
             }
 
+        }
+
+        [HttpPost]
+        public JsonResult ExtenderContrato(ViwolfRental.Common.Model.t_Contratos contrato)
+        {
+            try
+            {
+                var result = BlContrato.GuardarContrato(contrato);
+                return Json(new
+                {
+                    Data = result,
+                    MessageType = "Success",
+                    InfoMessage = result != null ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen reservaciones que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = ex.Message
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

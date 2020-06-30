@@ -51,6 +51,8 @@
           <Property Name="CuartaVehiculos" Type="image" />
           <Property Name="QuintaVehiculos" Type="image" />
           <Property Name="SextaVehiculos" Type="image" />
+          <Property Name="Extendido" Type="bit" Nullable="false" />
+          <Property Name="Referencia" Type="int" />
           <Property Name="IDEstadoContrato" Type="int" Nullable="false" />
           <Property Name="IDCodigoContrato" Type="int" Nullable="false" />
         </EntityType>
@@ -221,6 +223,8 @@
           <Property Name="MontoDeposito" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="SaldoActual" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="ModoPago" Type="int" Nullable="false" />
+          <Property Name="Extendido" Type="bit" Nullable="false" />
+          <Property Name="Referencia" Type="int" />
           <Property Name="IDClienteComisionista" Type="int" />
           <Property Name="IdProveedor" Type="int" />
           <Property Name="IDUsuario" Type="int" Nullable="false" />
@@ -928,6 +932,8 @@
           <Property Name="CuartaVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="QuintaVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="SextaVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Extendido" Type="Boolean" Nullable="false" />
+          <Property Name="Referencia" Type="Int32" />
           <Property Name="IDEstadoContrato" Type="Int32" Nullable="false" />
           <Property Name="IDCodigoContrato" Type="Int32" Nullable="false" />
           <NavigationProperty Name="t_CodigosContratos" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_CodigosContratos" FromRole="t_Contratos" ToRole="t_CodigosContratos" />
@@ -1122,6 +1128,8 @@
           <Property Name="MontoDeposito" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="SaldoActual" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="ModoPago" Type="Int32" Nullable="false" />
+          <Property Name="Extendido" Type="Boolean" Nullable="false" />
+          <Property Name="Referencia" Type="Int32" />
           <Property Name="IDClienteComisionista" Type="Int32" />
           <Property Name="IdProveedor" Type="Int32" />
           <Property Name="IDUsuario" Type="Int32" Nullable="false" />
@@ -1591,6 +1599,8 @@
               <MappingFragment StoreEntitySet="t_Contratos">
                 <ScalarProperty Name="IDCodigoContrato" ColumnName="IDCodigoContrato" />
                 <ScalarProperty Name="IDEstadoContrato" ColumnName="IDEstadoContrato" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Extendido" ColumnName="Extendido" />
                 <ScalarProperty Name="SextaVehiculos" ColumnName="SextaVehiculos" />
                 <ScalarProperty Name="QuintaVehiculos" ColumnName="QuintaVehiculos" />
                 <ScalarProperty Name="CuartaVehiculos" ColumnName="CuartaVehiculos" />
@@ -1767,6 +1777,8 @@
                 <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
                 <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
                 <ScalarProperty Name="IDClienteComisionista" ColumnName="IDClienteComisionista" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Extendido" ColumnName="Extendido" />
                 <ScalarProperty Name="ModoPago" ColumnName="ModoPago" />
                 <ScalarProperty Name="SaldoActual" ColumnName="SaldoActual" />
                 <ScalarProperty Name="MontoDeposito" ColumnName="MontoDeposito" />

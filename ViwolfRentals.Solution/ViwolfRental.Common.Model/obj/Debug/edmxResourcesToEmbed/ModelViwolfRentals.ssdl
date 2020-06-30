@@ -46,6 +46,8 @@
     <Property Name="CuartaVehiculos" Type="image" />
     <Property Name="QuintaVehiculos" Type="image" />
     <Property Name="SextaVehiculos" Type="image" />
+    <Property Name="Extendido" Type="bit" Nullable="false" />
+    <Property Name="Referencia" Type="int" />
     <Property Name="IDEstadoContrato" Type="int" Nullable="false" />
     <Property Name="IDCodigoContrato" Type="int" Nullable="false" />
   </EntityType>
@@ -216,6 +218,8 @@
     <Property Name="MontoDeposito" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="SaldoActual" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="ModoPago" Type="int" Nullable="false" />
+    <Property Name="Extendido" Type="bit" Nullable="false" />
+    <Property Name="Referencia" Type="int" />
     <Property Name="IDClienteComisionista" Type="int" />
     <Property Name="IdProveedor" Type="int" />
     <Property Name="IDUsuario" Type="int" Nullable="false" />

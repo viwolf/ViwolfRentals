@@ -10,12 +10,14 @@
     var txtMontoTotal = $("#txtMontoTotal");
     var txtIdVehiculo = $("#txtIdVehiculo");
     var btnCargarVehiculo = $("#btnCargarVehiculo");
+    var btnExtenderContrato = $("#btnExtenderContrato");
     var objContrato = null;
     var cantidadDias = 0;
     var timeIn = 0;
     var timeOut = 0;
     var dateIni = new Date();
     var dateFin = new Date();
+    var fnCallbackGuardar = null;
 
 
     var cargarHoraFinal = function (hora) {
@@ -140,14 +142,31 @@
         fnCargaFechas();
         llenarObjeto();
         btnCargarVehiculo.click(function () {
-            debugger;
             BuscarVehiculo.AbrirModal(fnCallBack, txtHoraInicio.val(), txtHoraEntrega.val(), "ExtensionContrato");
         });
         txtMontoDia.bind('keypress', valideKey);
-
         txtMontoDia.blur(function () {
             calcularTarifaTotal();
         });
+        btnExtenderContrato.bind().click(fnConfirmarGuardar);
+    };
+
+    var fnConfirmarGuardar = function () {
+        Dialog.confirm('Contratos', "Desea extender el contrato?", function (respuesta) {
+            if (respuesta == true) {
+                debugger;
+                objContrato.objReservacion.FechaInicio = dateIni;
+                objContrato.objReservacion.FechaEntrega = dateFin;
+                objContrato.objReservacion.HoraInicio = txtHoraInicio.val();
+                objContrato.objReservacion.HoraEntrega = txtHoraEntrega.val();
+                objContrato.objReservacion.IDVehiculo = txtIdVehiculo.val();
+                objContrato.objReservacion.MontoDia = parseFloat(txtMontoDia.val().replace("$", "")),
+                    objContrato.objReservacion.MontoTotal = parseFloat(txtMontoTotal.val().replace("$", "")),
+                    objContrato.TotalContrato = parseFloat(txtMontoTotal.val().replace("$", "")),
+
+                    fnCallbackGuardar(objContrato);
+            }
+        })
     };
 
     var llenarObjeto = function () {
@@ -155,8 +174,9 @@
         txtNombreClienteContrato.val(objContrato.NombreCliente);
     };
 
-    var abrirModal = function (objetoContrato) {
+    var abrirModal = function (objetoContrato, callback) {
         objContrato = objetoContrato;
+        fnCallbackGuardar = callback;
         Init();
 
         popupExtenderContrato.modal('show');

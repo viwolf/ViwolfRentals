@@ -95,18 +95,44 @@ var controlContratos = function () {
         //});
     };
 
-    var fnConfirmarGenerar = function (e) {
-       
-        Dialog.confirm('Contratos', "Desea generar el Contrato?", function (respuesta) {
-            if (respuesta == true)
-                fnGuardarContrato(e);
-        })
+    var fnCallbackGuardar = function (objetoGuardar) {
+        debugger;
+            var oData = {
+                "UsuarioCreacion": usuarioLogueado,
+                "Extendido": true,
+                "Referencia": objetoGuardar.IDContrato,
+                "IDEstadoContrato": configViwolf.EstadosContratos.Pendiente,
+                "IDCodigoContrato": configViwolf.CodigosContratos.Sistema,
+                "IDReservacion": objetoGuardar.objReservacion.IdReservacion,
+                "TotalContrato": objetoGuardar.TotalContrato,
+                "t_Reservaciones": objetoGuardar.objReservacion
+            }
+
+        try {
+            var oUrl = 'ExtenderContrato';
+            var oProcessMessage = 'Guardando Reservacion';
+
+            var success = function (result) {
+                if (result.MessageType == "Success") {
+                    Dialog.alert('Contratos', result.InfoMessage, function () {
+                    })
+                    //fnLimpiarDatos();
+                }
+                else {
+                    Dialog.alert('Contratos', result.ErrorMessage, function () {
+                    })
+                }
+            };
+            app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
+        } catch (ex) {
+            retorno = false;
+        }
     };
 
     function fnOnClickBtn_Extender() {
         var t = setTimeout(function () {
-           
-            extenderContrato.AbrirModal(objSeleccionado);
+
+            extenderContrato.AbrirModal(objSeleccionado, fnCallbackGuardar);
         }, 100);
     };
 

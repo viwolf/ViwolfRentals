@@ -27,8 +27,13 @@
     var idReservacion = 0;
 
     var fnBuscarReservacion = function () {
+        debugger;
         var oData = {
-            "IdReservacion": idReservacion
+            "IdReservacion": idReservacion,
+             //"ExtendedProperties": [
+             //    { "Key": "Path", "Value": imgPago }
+             //   //]
+            "GeneraContrato": null
         };
         try {
             var oUrl = 'ListarReservacion';

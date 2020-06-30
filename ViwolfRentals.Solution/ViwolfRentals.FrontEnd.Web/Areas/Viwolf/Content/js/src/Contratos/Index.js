@@ -91,7 +91,9 @@ var indexContratos = function () {
             "IDEstadoContrato": configViwolf.EstadosContratos.Pendiente,
             "IDReservacion": objSeleccionado.IdReservacion,
             "IDCodigoContrato": configViwolf.CodigosContratos.Sistema,
-            "TotalContrato": objSeleccionado.MontoTotal
+            "TotalContrato": objSeleccionado.MontoTotal,
+            "Extendido": false,
+            "Referencia": null
         }
         try {
             var oUrl = 'Contratos/GuardarContrato';

@@ -177,7 +177,9 @@ namespace ViwolfRentals.DataAccess
                                                  entity.IDVehiculo,
                                                  entity.IdentificacionCliente,
                                                  entity.NacionalidadCliente,
-                                                 entity.ProfesionCliente
+                                                 entity.ProfesionCliente,
+                                                 entity.Extendido,
+                                                 entity.Referencia
                                                 
                                               },
                                               transaction: Transaccion,

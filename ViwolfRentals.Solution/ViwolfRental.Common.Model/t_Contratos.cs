@@ -39,6 +39,8 @@ namespace ViwolfRental.Common.Model
         public byte[] CuartaVehiculos { get; set; }
         public byte[] QuintaVehiculos { get; set; }
         public byte[] SextaVehiculos { get; set; }
+        public bool Extendido { get; set; }
+        public Nullable<int> Referencia { get; set; }
         public int IDEstadoContrato { get; set; }
         public int IDCodigoContrato { get; set; }
     

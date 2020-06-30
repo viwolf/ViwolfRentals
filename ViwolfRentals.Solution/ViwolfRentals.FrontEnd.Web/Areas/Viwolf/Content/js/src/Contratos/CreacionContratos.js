@@ -237,6 +237,8 @@
                 //"ExtendedProperties": [
                 //    { "Key": "Path", "Value": imgPago }
                 //]
+                "Extendido": false,
+                "Referencia": null
             }
             try {
                 var oUrl = 'Contratos/GuardarContrato';

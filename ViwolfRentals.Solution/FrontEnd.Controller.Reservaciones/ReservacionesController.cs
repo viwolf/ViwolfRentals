@@ -68,7 +68,11 @@ namespace FrontEnd.Controllers.Viwolf
         {
             try
             {
-                var result = BlReservacion.ListarReservaciones(reservacion);
+                //if (reservacion.ExtendedProperties != null) {
+                //    reservacion.GeneraContrato = null;
+                //}
+
+                    var result = BlReservacion.ListarReservaciones(reservacion);
 
                 var jsonObjet = (from ta in result
                                  select new

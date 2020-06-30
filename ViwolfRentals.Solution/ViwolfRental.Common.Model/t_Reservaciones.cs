@@ -44,11 +44,13 @@ namespace ViwolfRental.Common.Model
         public decimal MontoDeposito { get; set; }
         public decimal SaldoActual { get; set; }
         public int ModoPago { get; set; }
+        public bool Extendido { get; set; }
+        public Nullable<int> Referencia { get; set; }
         public Nullable<int> IDClienteComisionista { get; set; }
         public Nullable<int> IdProveedor { get; set; }
         public int IDUsuario { get; set; }
         public string IDVehiculo { get; set; }
-        public bool GeneraContrato { get; set; }
+        public Nullable<bool>  GeneraContrato { get; set; }
         public bool Activo { get; set; }
     
         public virtual t_ClientesComisionistas t_ClientesComisionistas { get; set; }
@@ -57,5 +59,6 @@ namespace ViwolfRental.Common.Model
         public virtual t_Proveedores t_Proveedores { get; set; }
         public virtual t_Usuarios t_Usuarios { get; set; }
         public virtual t_Vehiculos t_Vehiculos { get; set; }
+        public IDictionary<string, Object> ExtendedProperties { set; get; }
     }
 }

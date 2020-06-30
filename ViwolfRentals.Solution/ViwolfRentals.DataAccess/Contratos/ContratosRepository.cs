@@ -31,29 +31,53 @@ namespace ViwolfRentals.DataAccess
                     {
                         //Se manda a guardar el contrato
                         var resultado = DoGuardar(connection, transaction, model);
+
+                        
                         
                         /***************************** RESERVACIONES *******************************/
                         //Se crea un objeto de reservaciones para ser llenado
-                        t_Reservaciones objReservaciones = new t_Reservaciones();
-                        
-                        //Se le asignan valores al objeto Reservaciones
-                        objReservaciones.IdReservacion = model.IDReservacion;
-                        objReservaciones.GeneraContrato = true;
+                        t_Reservaciones objReservaciones = model.t_Reservaciones == null ? new t_Reservaciones() : model.t_Reservaciones;
 
                         //Se crea una instancia del DataAccess de Reservaciones
                         IReservacionesRepository repositoryReservaciones = new ReservacionesRepository(ConnectionManagerInstance);
                         repositoryReservaciones.Conexion = connection;
                         repositoryReservaciones.Transaccion = transaction;
+
+                        if (model.Extendido == true)
+                        {
+                            objReservaciones.Extendido = true;
+                            objReservaciones.Referencia = model.t_Reservaciones.IdReservacion;
+                            objReservaciones.IdReservacion = 0;
+                            objReservaciones.UsuarioCreacion = model.UsuarioCreacion;
+                            objReservaciones.IDUsuario = 1;
+
+                            var resReservacion = repositoryReservaciones.Guardar(objReservaciones);
+
+                        }
+
+                        //Se le asignan valores al objeto Reservaciones
+                        objReservaciones.IdReservacion = model.IDReservacion; // == 0 ? model.IDReservacion : model.t_Reservaciones.IdReservacion;
+                        objReservaciones.GeneraContrato = true;
+                        objReservaciones.FechaEntrega = null;
+                        objReservaciones.FechaInicio = null;
+
+                        ////Se crea una instancia del DataAccess de Reservaciones
+                        //IReservacionesRepository repositoryReservaciones = new ReservacionesRepository(ConnectionManagerInstance);
+                        //repositoryReservaciones.Conexion = connection;
+                        //repositoryReservaciones.Transaccion = transaction;
                       
                         //Se llena el objeto reservaciones de la BD, con el numero de contrato creado
                         var modelReservaciones = repositoryReservaciones.ListarReservaciones(objReservaciones);
+
+                       
+                            
 
                         //Valida que la reservacion aplique comision, para ser guardado en pagos de comision
                         if (modelReservaciones.FirstOrDefault().AplicaComision == true)
                         {
                             /***************************** VEHICULOS *******************************/
                             t_Vehiculos objVehiculos = new t_Vehiculos();
-                            objVehiculos.IDVehiculo = modelReservaciones.FirstOrDefault().IDVehiculo;
+                            objVehiculos.IDVehiculo = model.t_Reservaciones == null ? modelReservaciones.FirstOrDefault().IDVehiculo : model.t_Reservaciones.IDVehiculo;
 
 
                             IVehiculosRepository repositoryVehiculo = new VehiculosRepository(ConnectionManagerInstance);
@@ -182,7 +206,9 @@ namespace ViwolfRentals.DataAccess
                                                   entity.IDEstadoContrato,
                                                   entity.IDReservacion,
                                                   entity.IDCodigoContrato,
-                                                  entity.TotalContrato
+                                                  entity.TotalContrato,
+                                                  entity.Extendido,
+                                                  entity.Referencia
                                               },
                                               transaction: transaction,
                                               commandType: CommandType.StoredProcedure);

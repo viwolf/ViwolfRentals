@@ -578,7 +578,9 @@
                 "IDVehiculo": txtPlaca.val(),
                 "IdentificacionCliente": txtIdentificacionCliente.val(),
                 "NacionalidadCliente": txtNacionalidadCliente.val(),
-                "ProfesionCliente": txtProfesionCliente.val()
+                "ProfesionCliente": txtProfesionCliente.val(),
+                "Extendido": false,
+                "Referencia": null
             }
 
             try {
