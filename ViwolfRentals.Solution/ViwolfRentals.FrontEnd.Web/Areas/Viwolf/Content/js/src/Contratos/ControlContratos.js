@@ -198,7 +198,6 @@ var controlContratos = function () {
             var success = function (result) {
                
                 if (result.Data.length > 0) {
-                    
                     tblDataContratos.dataTable({
                         destroy: true,
                         processing: true,

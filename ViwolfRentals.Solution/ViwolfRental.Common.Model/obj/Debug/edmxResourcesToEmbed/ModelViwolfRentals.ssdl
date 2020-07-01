@@ -225,7 +225,7 @@
     <Property Name="IdProveedor" Type="int" />
     <Property Name="IDUsuario" Type="int" Nullable="false" />
     <Property Name="IDVehiculo" Type="nvarchar" MaxLength="10" Nullable="false" />
-    <Property Name="GeneraContrato" Type="bit" Nullable="false" />
+    <Property Name="GeneraContrato" Type="bit" />
     <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="t_Roles">
@@ -299,6 +299,7 @@
     <Property Name="IdSistema" Type="int" Nullable="false" />
     <Property Name="IdRol" Type="int" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="IDDepartamento" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="t_Vehiculos">
     <Key>
@@ -584,6 +585,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_t_Usuarios_t_Departamentos">
+    <End Role="t_Departamentos" Type="Self.t_Departamentos" Multiplicity="1" />
+    <End Role="t_Usuarios" Type="Self.t_Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Departamentos">
+        <PropertyRef Name="IDDepartamento" />
+      </Principal>
+      <Dependent Role="t_Usuarios">
+        <PropertyRef Name="IDDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_t_Usuarios_t_Roles">
     <End Role="t_Roles" Type="Self.t_Roles" Multiplicity="1" />
     <End Role="t_Usuarios" Type="Self.t_Usuarios" Multiplicity="*" />
@@ -735,6 +748,10 @@
     <AssociationSet Name="FK_t_RolesSistemaModuloPantalla_t_Roles" Association="Self.FK_t_RolesSistemaModuloPantalla_t_Roles">
       <End Role="t_Roles" EntitySet="t_Roles" />
       <End Role="t_RolesSistemaModuloPantalla" EntitySet="t_RolesSistemaModuloPantalla" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Usuarios_t_Departamentos" Association="Self.FK_t_Usuarios_t_Departamentos">
+      <End Role="t_Departamentos" EntitySet="t_Departamentos" />
+      <End Role="t_Usuarios" EntitySet="t_Usuarios" />
     </AssociationSet>
     <AssociationSet Name="FK_t_Usuarios_t_Roles" Association="Self.FK_t_Usuarios_t_Roles">
       <End Role="t_Roles" EntitySet="t_Roles" />

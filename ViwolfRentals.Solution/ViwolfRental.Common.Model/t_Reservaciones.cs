@@ -59,7 +59,5 @@ namespace ViwolfRental.Common.Model
         public virtual t_Proveedores t_Proveedores { get; set; }
         public virtual t_Usuarios t_Usuarios { get; set; }
         public virtual t_Vehiculos t_Vehiculos { get; set; }
-
-        public IDictionary<string, Object> ExtendedProperties { set; get; }
     }
 }

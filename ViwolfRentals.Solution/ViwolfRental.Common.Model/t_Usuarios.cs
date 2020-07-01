@@ -33,7 +33,9 @@ namespace ViwolfRental.Common.Model
         public int IdSistema { get; set; }
         public int IdRol { get; set; }
         public bool Activo { get; set; }
+        public int IDDepartamento { get; set; }
     
+        public virtual t_Departamentos t_Departamentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_Reservaciones> t_Reservaciones { get; set; }
         public virtual t_Roles t_Roles { get; set; }

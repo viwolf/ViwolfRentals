@@ -111,6 +111,9 @@ namespace FrontEnd.Controllers.Viwolf
         {
             try
             {
+
+              
+
                 var result = BlContrato.ListarContratos(contratos);
 
                 var jsonObjet = (from ta in result

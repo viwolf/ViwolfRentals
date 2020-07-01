@@ -52,7 +52,5 @@ namespace ViwolfRental.Common.Model
         public virtual ICollection<t_FacturasDetalles> t_FacturasDetalles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_PagosComisiones> t_PagosComisiones { get; set; }
-
-        public IDictionary<string, Object> ExtendedProperties { set; get; }
     }
 }

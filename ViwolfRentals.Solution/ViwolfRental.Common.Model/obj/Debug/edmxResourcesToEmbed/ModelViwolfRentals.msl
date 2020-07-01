@@ -303,6 +303,7 @@
     <EntitySetMapping Name="t_Usuarios">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Usuarios">
         <MappingFragment StoreEntitySet="t_Usuarios">
+          <ScalarProperty Name="IDDepartamento" ColumnName="IDDepartamento" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
           <ScalarProperty Name="IdRol" ColumnName="IdRol" />
           <ScalarProperty Name="IdSistema" ColumnName="IdSistema" />

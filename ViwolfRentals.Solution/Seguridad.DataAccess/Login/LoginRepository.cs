@@ -34,14 +34,16 @@ namespace Seguridad.DataAccess
                 return connection.Query<
                   t_Usuarios,
                   t_Roles,
+                  t_Departamentos,
                   t_Usuarios>
                   ("usp_Usuario_Listar",
-                  (a, b) =>
+                  (a, b, c) =>
                   {
                       a.t_Roles= (t_Roles)b;
+                      a.t_Departamentos = (t_Departamentos)c;
                       return a;
                   },
-                  splitOn: "IDRol",
+                  splitOn: "IDRol, IDDepartamento",
                   param: new
                   {
                       UserName = entity.CodigoUsuario,

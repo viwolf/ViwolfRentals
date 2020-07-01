@@ -230,7 +230,7 @@
           <Property Name="IdProveedor" Type="int" />
           <Property Name="IDUsuario" Type="int" Nullable="false" />
           <Property Name="IDVehiculo" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="GeneraContrato" Type="bit" Nullable="false" />
+          <Property Name="GeneraContrato" Type="bit" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="t_Roles">
@@ -304,6 +304,7 @@
           <Property Name="IdSistema" Type="int" Nullable="false" />
           <Property Name="IdRol" Type="int" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="IDDepartamento" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="t_Vehiculos">
           <Key>
@@ -589,6 +590,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_t_Usuarios_t_Departamentos">
+          <End Role="t_Departamentos" Type="Self.t_Departamentos" Multiplicity="1" />
+          <End Role="t_Usuarios" Type="Self.t_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Departamentos">
+              <PropertyRef Name="IDDepartamento" />
+            </Principal>
+            <Dependent Role="t_Usuarios">
+              <PropertyRef Name="IDDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_t_Usuarios_t_Roles">
           <End Role="t_Roles" Type="Self.t_Roles" Multiplicity="1" />
           <End Role="t_Usuarios" Type="Self.t_Usuarios" Multiplicity="*" />
@@ -741,6 +754,10 @@
             <End Role="t_Roles" EntitySet="t_Roles" />
             <End Role="t_RolesSistemaModuloPantalla" EntitySet="t_RolesSistemaModuloPantalla" />
           </AssociationSet>
+          <AssociationSet Name="FK_t_Usuarios_t_Departamentos" Association="Self.FK_t_Usuarios_t_Departamentos">
+            <End Role="t_Departamentos" EntitySet="t_Departamentos" />
+            <End Role="t_Usuarios" EntitySet="t_Usuarios" />
+          </AssociationSet>
           <AssociationSet Name="FK_t_Usuarios_t_Roles" Association="Self.FK_t_Usuarios_t_Roles">
             <End Role="t_Roles" EntitySet="t_Roles" />
             <End Role="t_Usuarios" EntitySet="t_Usuarios" />
@@ -817,6 +834,10 @@
           <AssociationSet Name="FK_t_PagosComisiones_t_Contratos" Association="ViwolfRentalsDBModel.FK_t_PagosComisiones_t_Contratos">
             <End Role="t_Contratos" EntitySet="t_Contratos" />
             <End Role="t_PagosComisiones" EntitySet="t_PagosComisiones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Usuarios_t_Departamentos" Association="ViwolfRentalsDBModel.FK_t_Usuarios_t_Departamentos">
+            <End Role="t_Departamentos" EntitySet="t_Departamentos" />
+            <End Role="t_Usuarios" EntitySet="t_Usuarios" />
           </AssociationSet>
           <AssociationSet Name="FK_t_Vehiculos_t_Departamentos" Association="ViwolfRentalsDBModel.FK_t_Vehiculos_t_Departamentos">
             <End Role="t_Departamentos" EntitySet="t_Departamentos" />
@@ -951,6 +972,7 @@
           <Property Name="IDDepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NombreDepartamento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="t_Usuarios" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Departamentos" FromRole="t_Departamentos" ToRole="t_Usuarios" />
           <NavigationProperty Name="t_Vehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Vehiculos_t_Departamentos" FromRole="t_Departamentos" ToRole="t_Vehiculos" />
         </EntityType>
         <EntityType Name="t_EstadosContratos">
@@ -1136,7 +1158,7 @@
           <Property Name="IdProveedor" Type="Int32" />
           <Property Name="IDUsuario" Type="Int32" Nullable="false" />
           <Property Name="IDVehiculo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="GeneraContrato" Type="Boolean" Nullable="false" />
+          <Property Name="GeneraContrato" Type="Boolean" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="t_ClientesComisionistas" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_ClientesComisionistas" FromRole="t_Reservaciones" ToRole="t_ClientesComisionistas" />
           <NavigationProperty Name="t_Contratos" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_Reservaciones" FromRole="t_Reservaciones" ToRole="t_Contratos" />
@@ -1223,6 +1245,8 @@
           <Property Name="IdSistema" Type="Int32" Nullable="false" />
           <Property Name="IdRol" Type="Int32" Nullable="false" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="IDDepartamento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="t_Departamentos" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Departamentos" FromRole="t_Usuarios" ToRole="t_Departamentos" />
           <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Usuarios" FromRole="t_Usuarios" ToRole="t_Reservaciones" />
           <NavigationProperty Name="t_Roles" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Roles" FromRole="t_Usuarios" ToRole="t_Roles" />
           <NavigationProperty Name="t_Sistemas" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Sistemas" FromRole="t_Usuarios" ToRole="t_Sistemas" />
@@ -1364,6 +1388,18 @@
             </Principal>
             <Dependent Role="t_PagosComisiones">
               <PropertyRef Name="IDContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Usuarios_t_Departamentos">
+          <End Type="ViwolfRentalsDBModel.t_Departamentos" Role="t_Departamentos" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_Usuarios" Role="t_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Departamentos">
+              <PropertyRef Name="IDDepartamento" />
+            </Principal>
+            <Dependent Role="t_Usuarios">
+              <PropertyRef Name="IDDepartamento" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1871,6 +1907,7 @@
           <EntitySetMapping Name="t_Usuarios">
             <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Usuarios">
               <MappingFragment StoreEntitySet="t_Usuarios">
+                <ScalarProperty Name="IDDepartamento" ColumnName="IDDepartamento" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
                 <ScalarProperty Name="IdRol" ColumnName="IdRol" />
                 <ScalarProperty Name="IdSistema" ColumnName="IdSistema" />
