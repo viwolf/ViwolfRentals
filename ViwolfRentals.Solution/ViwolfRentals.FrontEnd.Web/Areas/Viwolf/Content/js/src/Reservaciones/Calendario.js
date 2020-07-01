@@ -61,7 +61,7 @@
                                 if (annoRentado == txtAnno.val()) {
                                     DiasIniciales = DiasIniciales + "," + fechaIAux.getDate();
                                     DiasFinales = DiasFinales + "," + fechaFAux.getDate();
-                                    debugger;
+                                   
                                     MesesIniciales = MesesIniciales + "," + (fechaIAux.getMonth() + 1);
                                     MesesFinales = (fechaFAux.getMonth() + 1);
                                 }// Cierre el IF del año
@@ -73,7 +73,7 @@
                         listreservacionesIDs = reservacionesIDs.split(',');
                         listMesesIniciales = MesesIniciales.split(',');
 
-                        debugger;
+                       
                         var ini = 1;
                         for (let i = 1; i <= numeroDias; i++) {
                             //Comparamos meses iguales
@@ -134,7 +134,7 @@
               
                 $('#tblCalendario tr td').click(function () {
                     var idReserva = $(this).attr('id');
-                    debugger;
+                   
                     if (idReserva != undefined) {
                         var listR = idReserva.split("_");
                         informacionReservacion.AbrirModal(listR[1]);

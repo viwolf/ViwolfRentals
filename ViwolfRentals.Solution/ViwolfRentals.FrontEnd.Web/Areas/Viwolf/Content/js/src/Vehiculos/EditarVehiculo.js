@@ -101,19 +101,19 @@ var editarVehiculo = function () {
     var fnInit = function (idvehiculo, callback) {
         fnCallBack = callback
         fnCargarFecha();
-        anno.bind('keypress', valideKey);
-        rtvVencimientoAnno.bind('keypress', valideKey);
-        marchamoProximo.bind('keypress', valideKey);
-        Peso.bind('keypress', valideKey);
-        Kilometraje.bind('keypress', valideKey);
-        multas.bind('keypress', valideKey);
-        Capacidad.bind('keypress', valideKey);
-        Cilindraje.bind('keypress', valideKey);
+        anno.unbind('keypress', valideKey);
+        rtvVencimientoAnno.unbind('keypress', valideKey);
+        marchamoProximo.unbind('keypress', valideKey);
+        Peso.unbind('keypress', valideKey);
+        Kilometraje.unbind('keypress', valideKey);
+        multas.unbind('keypress', valideKey);
+        Capacidad.unbind('keypress', valideKey);
+        Cilindraje.unbind('keypress', valideKey);
         multas.blur(function () {
             txtMultas.val(utils.formatterDolar.format(txtMultas.val()));
             txtMultas.val(txtMultas.val().replace("$", "¢"));
         });
-        btnGuardarVehiculo.click(fnConfirmarGuardar);
+        btnGuardarVehiculo.unbind().click(fnConfirmarGuardar);
 
         modalVehiculo.modal('show');
         fnBuscarVehiculo(idvehiculo)

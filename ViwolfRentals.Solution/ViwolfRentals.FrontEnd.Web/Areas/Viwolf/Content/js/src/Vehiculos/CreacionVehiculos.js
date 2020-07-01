@@ -245,7 +245,7 @@
     };
     var fnConfirmarGuardar = function () {
         Dialog.confirm('Creacion Vehiculos', "Desea guardar el Vehiculo?", function (respuesta) {
-            debugger;
+            
             if (respuesta == true)
                 fnGuardarVehiculo();
         })
@@ -253,14 +253,14 @@
 
     var fnInit = function () {
         fnCargarFecha();
-        txtAnnoVehiculo.bind('keypress', valideKey);
-        txtRtvVencimientoAnno.bind('keypress', valideKey);
-        txtMarchamoProximo.bind('keypress', valideKey);
-        txtPeso.bind('keypress', valideKey);
-        txtKilometraje.bind('keypress', valideKey);
-        txtMultas.bind('keypress', valideKey);
-        txtCapacidad.bind('keypress', valideKey);
-        txtCilindraje.bind('keypress', valideKey);
+        txtAnnoVehiculo.unbind('keypress', valideKey);
+        txtRtvVencimientoAnno.unbind('keypress', valideKey);
+        txtMarchamoProximo.unbind('keypress', valideKey);
+        txtPeso.unbind('keypress', valideKey);
+        txtKilometraje.unbind('keypress', valideKey);
+        txtMultas.unbind('keypress', valideKey);
+        txtCapacidad.unbind('keypress', valideKey);
+        txtCilindraje.unbind('keypress', valideKey);
         txtMultas.blur(function () {
             
             txtMultas.val(utils.formatterDolar.format(txtMultas.val()));
@@ -277,7 +277,7 @@
 
         var nombreColor = $("#txtCodigoColor option:selected").text();
       
-        debugger;
+        
         if (ValidateFields() == true) {
 
             var oData = {

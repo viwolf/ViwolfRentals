@@ -71,13 +71,18 @@
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <a class="nav-link" href="@Url.Action("Control","Contratos", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Control Contratos</a>
                                         <a class="nav-link" href="@Url.Action("Index","Contratos", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Crear Contratos</a>
-                                        
+
                                     </nav>
                                 </div>
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseTaller" aria-expanded="false" aria-controls="pagesCollapseTaller">
                                     Talleres
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                 </a>
+                                <div class="collapse" id="pagesCollapseTaller" aria-labelledby="headingOne" data-parent="#layoutWiwolfRentals">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="@Url.Action("Index","Vehiculos", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Recibir Unidad</a>
+                                    </nav>
+                                </div>
                                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseInventario" aria-expanded="false" aria-controls="pagesCollapseInventario">
                                     Inventarios
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
