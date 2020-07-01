@@ -50,7 +50,7 @@ namespace ViwolfRental.Common.Model
         public Nullable<int> IdProveedor { get; set; }
         public int IDUsuario { get; set; }
         public string IDVehiculo { get; set; }
-        public bool GeneraContrato { get; set; }
+        public Nullable<bool> GeneraContrato { get; set; }
         public bool Activo { get; set; }
     
         public virtual t_ClientesComisionistas t_ClientesComisionistas { get; set; }

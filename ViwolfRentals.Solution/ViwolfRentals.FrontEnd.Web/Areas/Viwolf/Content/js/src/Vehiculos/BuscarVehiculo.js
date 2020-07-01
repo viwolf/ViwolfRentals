@@ -67,14 +67,10 @@ var BuscarVehiculo = function () {
 
     }
 
-  
-
     var fnEnlazarVehiculo = function (e) {
         modalVehiculo.modal('hide');
         fnCallbak(objSeleccionado);
     }
-
-       
 
     var fnAbrirModal = function (callback, _fechaInicio, _fechaEntrega, modulo) {
         fnCallbak = callback;
