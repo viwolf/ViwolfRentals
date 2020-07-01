@@ -102,7 +102,6 @@ namespace ViwolfRentals.DataAccess
         {
             try
             {
-
                 if (Conexion != null)
                 {
                     //Se manda a guardar el encabezado
@@ -165,7 +164,8 @@ namespace ViwolfRentals.DataAccess
                {
                    entity.IDClienteComisionista,
                    NombreClienteComisionista = entity.t_ClientesComisionistas.NombreClienteComisionista,
-                   entity.ComisionPaga
+                   entity.ComisionPaga,
+                   IDEstadoContrato = entity.t_Contratos.IDEstadoContrato
                }, transaction: Transaccion, commandTimeout: 500, commandType: CommandType.StoredProcedure);
 
 

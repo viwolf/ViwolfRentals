@@ -108,7 +108,7 @@
 
     var fnBuscarComisiones = function () {
 
-      
+        debugger;
         if ((txtIDClienteComisionista.val() == '') && (txtNombreClienteComisionista.val() == '')) {
             Dialog.alert('Comisiones', "Se debe de especificar algún criterio de búsqueda.", function () {
             })
@@ -118,7 +118,8 @@
             var oData = {
                 "IDClienteComisionista": txtIDClienteComisionista.val(),
                 "t_ClientesComisionistas.NombreClienteComisionista": txtNombreClienteComisionista.val(),
-                "ComisionPaga": txtEstadoComision.val()
+                "ComisionPaga": txtEstadoComision.val(),
+                "t_Contratos.IDEstadoContrato": configViwolf.EstadosContratos.Facturado
             };
             try {
                 var oUrl = 'Comisiones/ListarPagosComision';

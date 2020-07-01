@@ -33,7 +33,12 @@
                     let myTable = "<table id='tblCalendario'><tr><td style='width:100px;color:#0B0B61;background-color:#f7af39;text-align:center;font-weight:bold;font-size: larger;border:1px solid black;border-collapse:collapse;'>Placa</td>";
                     myTable += "<td style='width: 5px;text-align: center; border:1px solid black;border-collapse:collapse; background-color:#FFFFFF ';></td>";
                     for (var i = 1; i <= numeroDias; i++) {
-                        myTable += "<td style='width: 100px;color:#0B0B61;background-color:#f7af39;font-weight:bold;font-size:larger;text-align: center; border:1px solid black;border-collapse:collapse;'>" + i + "</td>";
+                        if (i < 10) {
+                            myTable += "<td style='width: 100px;color:#0B0B61;background-color:#f7af39;font-weight:bold;font-size:larger;text-align: center; border:1px solid black;border-collapse:collapse;'>0" + i + "</td>";
+                        }
+                        else {
+                            myTable += "<td style='width: 100px;color:#0B0B61;background-color:#f7af39;font-weight:bold;font-size:larger;text-align: center; border:1px solid black;border-collapse:collapse;'>" + i + "</td>";
+                        }                        
                     }
                     for (var x = 0; x < result.Data.length; x++) {
                         DiasIniciales = "";
