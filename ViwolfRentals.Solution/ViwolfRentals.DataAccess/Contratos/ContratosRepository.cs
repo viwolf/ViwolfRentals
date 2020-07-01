@@ -29,12 +29,8 @@ namespace ViwolfRentals.DataAccess
                 {
                     try
                     {
-                        //Se manda a guardar el contrato
-                        var resultado = DoGuardar(connection, transaction, model);
-
-                        
-                        
                         /***************************** RESERVACIONES *******************************/
+
                         //Se crea un objeto de reservaciones para ser llenado
                         t_Reservaciones objReservaciones = model.t_Reservaciones == null ? new t_Reservaciones() : model.t_Reservaciones;
 
@@ -49,14 +45,23 @@ namespace ViwolfRentals.DataAccess
                             objReservaciones.Referencia = model.t_Reservaciones.IdReservacion;
                             objReservaciones.IdReservacion = 0;
                             objReservaciones.UsuarioCreacion = model.UsuarioCreacion;
-                           // objReservaciones.IDUsuario = 1;
+                            // objReservaciones.IDUsuario = 1;
 
                             var resReservacion = repositoryReservaciones.Guardar(objReservaciones);
+                            objReservaciones.IdReservacion = resReservacion.IdReservacion;
+                            model.IDReservacion = resReservacion.IdReservacion;
 
                         }
 
-                        //Se le asignan valores al objeto Reservaciones
-                        objReservaciones.IdReservacion = model.IDReservacion; // == 0 ? model.IDReservacion : model.t_Reservaciones.IdReservacion;
+                        else
+                        {
+                            //Se le asignan valores al objeto Reservaciones
+                            objReservaciones.IdReservacion = model.IDReservacion;
+                        }
+
+                        //Se manda a guardar el contrato
+                        var resultado = DoGuardar(connection, transaction, model);
+
                         objReservaciones.GeneraContrato = true;
                         objReservaciones.FechaEntrega = null;
                         objReservaciones.FechaInicio = null;
