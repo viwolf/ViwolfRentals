@@ -4,7 +4,7 @@
     var txtLugarEntrega = $('#txtLugarEntrega');
     var txtEstadoContrato = $('#txtEstadoContrato');
     var tblDataContratos = $('#tblDataContratos');
-    var btnBuscarContratos = $('#btnBuscarContratos');
+   // var btnBuscarContratos = $('#btnBuscarContratos');
     var btnFacturar = $('#btnFacturar');
     var objSeleccionado = null;
     var iPos = 0;
@@ -72,11 +72,11 @@
     };
 
     var fnInit = function () {
-        debugger;
-        fnBuscarContratos();
+      
+        //fnBuscarContratos();
        
         //btnBuscarContratos.click(fnBuscarContratos);
-        btnFacturar.bind().click(function (e) {
+        btnFacturar.unbind().click(function (e) {
             if (rows_selected.length > 0) {
                 fnConfirmarPagar(e);
             }
@@ -150,6 +150,7 @@
     }
 
     var fnBuscarContratos = function () {
+      
         TotalFacturado = 0;
         rows_selected = [];
         //var estado = document.getElementById("txtEstadoContrato");
@@ -298,6 +299,7 @@
                         });
                     }
                     else {
+
                         Dialog.alert('Comisiones', result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage, function () {
                         })
                         tblDataContratos.dataTable().fnClearTable();
@@ -328,7 +330,7 @@
             var oProcessMessage = 'Guardando Factura';
 
             var success = function (result) {
-                debugger;
+              
                 if (result.MessageType == "Success") {
                     Dialog.alert('Contrato', result.InfoMessage, function () {
                     })
@@ -350,6 +352,7 @@
     $(function () {
         fnInit();
         InitSelect();
+        fnBuscarContratos();
     });
 
 
