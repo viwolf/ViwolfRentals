@@ -243,6 +243,7 @@
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\js\timegrid\main.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\js\timegrid\main.min.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\InfoReservacion.js" />
+    <Content Include="Areas\Viwolf\Content\js\src\Taller\RecepcionUnidades.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Vehiculos\EditarVehiculo.js" />
     <Content Include="Content\js\src\ConfigViwolf.js" />
     <Content Include="Content\js\src\datepicker\daterangepicker.css" />
@@ -619,6 +620,7 @@
     <Content Include="Areas\Viwolf\Views\Facturacion\GenerarTicket.cshtml" />
     <Content Include="Areas\Viwolf\Views\Contratos\Control.cshtml" />
     <Content Include="Areas\Viwolf\Views\Contratos\ExtenderContrato.cshtml" />
+    <Content Include="Areas\Viwolf\Views\Taller\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

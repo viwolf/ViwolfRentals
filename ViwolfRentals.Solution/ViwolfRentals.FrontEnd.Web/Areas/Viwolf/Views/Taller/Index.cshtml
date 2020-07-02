@@ -1,0 +1,303 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Viwolf/Views/Shared/_LayoutReservacion.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>@ViewBag.Title - Creacion de Contratos</title>
+    @Styles.Render("~/bundles/Estilo/ViwolfRentalsReservaciones")
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    
+
+    <script type="text/javascript">
+        var usuarioLogueado = '@ViewBag.Usuario';
+        var idUsuarioLogueado = '@ViewBag.IdUsuario'
+    </script>
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Recepcion de Unidades</h2>
+                </div>
+                <div class="card-body">
+
+                    <fieldset>
+                        <div class="row">
+                            <div class="col col-12 col-md-12">
+                                <div class="form-row m-b-55">
+                                    <div class="col-4">
+                                        <input id="txtIDVehiculo" class="input--style-5" type="text" name="IDReservacion">
+                                        <label class="label--desc">Número Placa</label>
+                                    </div>
+                                    <div class="col-4">
+                                        <input id="txtNumeroContrato" class="input--style-5" type="text" name="NombreCliente">
+                                        <label class="label--desc">Numero Contrato</label>
+                                    </div>
+                                    <div class="col-4">
+                                        <button type="button" id="btnGenerarContrato" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Crear Contrato">
+                                            Buscar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col col-12 col-md-12">
+                                <div id="tabs">
+                                    <ul>
+                                        <li><a href="#tabs-1">Datos Vehiculo</a></li>
+                                        <li><a href="#tabs-2">Kilometrajes</a></li>
+                                        <li><a href="#tabs-3">Datos del contrato</a></li>
+                                    </ul>
+                                    <div id="tabs-1" width="100%">
+
+                                        <div class="row">
+                                            <div class="col col-12 col-md-12">
+                                                <div class="form-row m-b-55">
+                                                    <div class="col-3">
+                                                        <input id="txtMarca" disabled class="input--style-5" type="text" name="Marca">
+                                                        <label class="label--desc">Marca</label>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <input id="txtModelo" disabled class="input--style-5" type="text" name="Modelo">
+                                                        <label class="label--desc">Modelo</label>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <input id="txtAnno" disabled class="input--style-5" type="text" name="Anno">
+                                                        <label class="label--desc">Año</label>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <input id="txtCategoria" disabled class="input--style-5" type="text" name="Categoria">
+                                                        <label class="label--desc">Categoria</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col col-12 col-md-12">
+                                                <div class="form-row m-b-55">
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <select id="txtCajon" class="select--style-5" name="Cajon">
+                                                                <option>Si</option>
+                                                                <option>No</option>
+                                                            </select>
+                                                            <label class="label--desc">Cajon</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+
+                                                            <select id="txtSurfRacks" class="select--style-5" name="SurfRacks">
+                                                                <option>Si</option>
+                                                                <option>No</option>
+                                                            </select>
+                                                            <label class="label--desc">Surf Racks</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <select id="txtRtvSticker" class="select--style-5" name="RtvSticker">
+                                                                <option>Si</option>
+                                                                <option>No</option>
+                                                            </select>
+                                                            <label class="label--desc">Sticker RTV</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <select id="txtRtvPapel" class="select--style-5" name="RtvPapel">
+                                                                <option>Si</option>
+                                                                <option>No</option>
+                                                            </select>
+                                                            <label class="label--desc">Papel RTV</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col col-12 col-md-12">
+                                                <div class="form-row m-b-55">
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <select id="txtMarchamoSticker" class="select--style-5" name="MarchamoSticker">
+                                                                <option>Si</option>
+                                                                <option>No</option>
+                                                            </select>
+                                                            <label class="label--desc">Sticker Marchamo</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <select id="txtMarchamoPapel" class="select--style-5" name="MarchamoPapel">
+                                                                <option>Si</option>
+                                                                <option>No</option>
+                                                            </select>
+                                                            <label class="label--desc">Papel Marchamo</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <select id="txtPlacaSticker" class="select--style-5" name="PlacaSticker">
+                                                                <option>Si</option>
+                                                                <option>No</option>
+                                                            </select>
+                                                            <label class="label--desc">Sticker Placa</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <select id="txtTituloPropiedad" class="select--style-5" name="TituloPropiedad">
+                                                                <option>Si</option>
+                                                                <option>No</option>
+                                                            </select>
+                                                            <label class="label--desc">Título de Propiedad</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div id="tabs-2" width="100%">
+
+                                        <div class="row">
+                                            <div class="col col-12 col-md-12">
+                                                <div class="form-row m-b-55">
+                                                    <div class="col-4">
+                                                        <input id="txtKilometrajeInicial" disabled class="input--style-5" type="text" name="KilometrajeInicial">
+                                                        <label class="label--desc">Kilometraje Inicial</label>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <input id="txtKilometrajeFinal" class="input--style-5" type="text" name="txtKilometrajeFinal">
+                                                        <label class="label--desc">Kilometraje Final</label>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <input id="txtRecorrido" disabled class="input--style-5" type="text" name="txtRecorrido">
+                                                        <label class="label--desc">Total Recorrido</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div id="tabs-3" width="100%">
+
+                                        <div class="row">
+                                            <div class="col col-12 col-md-12">
+                                                <div class="form-row m-b-55">
+                                                    <div class="col-8">
+                                                        <input id="txtNombreCliente" disabled class="input--style-5" type="text" name="NombreCliente">
+                                                        <label class="label--desc">Nombre Cliente</label>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <input id="txtTipoContrato" disabled class="input--style-5" type="text" name="TipoContrato">
+                                                        <label class="label--desc">Tipo de Contrato</label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col col-12 col-md-12">
+                                                <div class="form-row m-b-55">
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <img id="imgFrontalVehiculo" src="" width="150" height="150" alt="Vista Previa Frontal...">
+                                                            <label class="label--desc">Parte Frontal</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <input id="chkFrontalVehiculo" type="checkbox" name="FrontalVehiculo">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <img id="imgTraseraVehiculo" src="" width="150" height="150" alt="Vista Previa Trasera...">
+                                                            <label class="label--desc">Parte trasera</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <input id="chkTraseraVehiculo" type="checkbox" name="TraseraVehiculo">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col col-12 col-md-12">
+                                                <div class="form-row m-b-55">
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <img id="imgCostadoIzquierdaVehiculo" src="" width="150" height="150" alt="Vista Costado Izquierdo...">
+                                                            <label class="label--desc">Costado Izquierdo</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <input id="chkCostadoIzquierdoVehiculo" type="checkbox" name="chkCostadoIzquierdoVehiculo">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <img id="imgCostadoDerechoVehiculo" src="" width="150" height="150" alt="Vista Costado Derecho...">
+                                                            <label class="label--desc">Costado Derecho</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <input id="chkCostadoDerechoVehiculo" type="checkbox" name="CostadoDerechoVehiculo">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/Content")
+    @Scripts.Render("~/bundles/DataTables")
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script src="~/Areas/Viwolf/Content/js/src/Taller/RecepcionUnidades.js"></script>
+
+</body>

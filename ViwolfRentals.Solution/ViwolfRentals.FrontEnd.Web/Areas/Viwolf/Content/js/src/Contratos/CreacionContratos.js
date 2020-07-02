@@ -235,6 +235,7 @@
                 "IDReservacion": txtIdReservacionContrato.val(),
                 "IDCodigoContrato": configViwolf.CodigosContratos.Fisico,
                 "IDUsuario": idUsuarioLogueado,
+                "TotalContrato": objReservacion.MontoTotal,
                 //"ExtendedProperties": [
                 //    { "Key": "Path", "Value": imgPago }
                 //]

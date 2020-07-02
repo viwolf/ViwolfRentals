@@ -123,6 +123,7 @@
     <Compile Include="ProveedoresController.cs" />
     <Compile Include="ReportesController.cs" />
     <Compile Include="ReservacionesController.cs" />
+    <Compile Include="TallerController.cs" />
     <Compile Include="VehiculosController.cs" />
     <Compile Include="ViwolfRentalController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
