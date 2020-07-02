@@ -214,7 +214,7 @@ var controlContratos = function () {
                             { data: 'FechaEntrega' },
                             { data: 'Descripcion' },
                             { data: 'Extender' },
-                            { data: 'Terminar' }
+                           
                         ],
                         columnDefs: [
                             {
