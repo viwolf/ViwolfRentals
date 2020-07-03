@@ -60,11 +60,12 @@
     <EntitySetMapping Name="t_ContratosTerminados">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_ContratosTerminados">
         <MappingFragment StoreEntitySet="t_ContratosTerminados">
+          <ScalarProperty Name="IDKilometraje" ColumnName="IDKilometraje" />
+          <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
           <ScalarProperty Name="DerechaVehiculos" ColumnName="DerechaVehiculos" />
           <ScalarProperty Name="IzquierdaVehiculos" ColumnName="IzquierdaVehiculos" />
           <ScalarProperty Name="TraseraVehiculos" ColumnName="TraseraVehiculos" />
           <ScalarProperty Name="FrontalVehiculos" ColumnName="FrontalVehiculos" />
-          <ScalarProperty Name="Kilometraje" ColumnName="Kilometraje" />
           <ScalarProperty Name="TituloPropiedad" ColumnName="TituloPropiedad" />
           <ScalarProperty Name="StickerPlaca" ColumnName="StickerPlaca" />
           <ScalarProperty Name="MarchamoPapel" ColumnName="MarchamoPapel" />
@@ -73,7 +74,6 @@
           <ScalarProperty Name="RtvSticker" ColumnName="RtvSticker" />
           <ScalarProperty Name="Cajon" ColumnName="Cajon" />
           <ScalarProperty Name="SurfRacks" ColumnName="SurfRacks" />
-          <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
           <ScalarProperty Name="NumeroContrato" ColumnName="NumeroContrato" />
           <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
           <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
@@ -165,13 +165,15 @@
     <EntitySetMapping Name="t_Kilometrajes">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Kilometrajes">
         <MappingFragment StoreEntitySet="t_Kilometrajes">
-          <ScalarProperty Name="IDReservacion" ColumnName="IDReservacion" />
+          <ScalarProperty Name="IDContrato" ColumnName="IDContrato" />
           <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
           <ScalarProperty Name="KilometrajeReccorrido" ColumnName="KilometrajeReccorrido" />
           <ScalarProperty Name="KilometrajeFinal" ColumnName="KilometrajeFinal" />
-          <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
           <ScalarProperty Name="KilometrajeInicial" ColumnName="KilometrajeInicial" />
-          <ScalarProperty Name="FechaInicial" ColumnName="FechaInicial" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
           <ScalarProperty Name="IDKilometraje" ColumnName="IDKilometraje" />
         </MappingFragment>
       </EntityTypeMapping>

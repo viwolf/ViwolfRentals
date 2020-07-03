@@ -67,7 +67,6 @@
           <Property Name="FechaModificacion" Type="datetime" />
           <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="150" />
           <Property Name="NumeroContrato" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IDVehiculo" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="SurfRacks" Type="bit" Nullable="false" />
           <Property Name="Cajon" Type="bit" Nullable="false" />
           <Property Name="RtvSticker" Type="bit" Nullable="false" />
@@ -76,11 +75,12 @@
           <Property Name="MarchamoPapel" Type="bit" Nullable="false" />
           <Property Name="StickerPlaca" Type="bit" Nullable="false" />
           <Property Name="TituloPropiedad" Type="bit" Nullable="false" />
-          <Property Name="Kilometraje" Type="int" Nullable="false" />
           <Property Name="FrontalVehiculos" Type="image" />
           <Property Name="TraseraVehiculos" Type="image" />
           <Property Name="IzquierdaVehiculos" Type="image" />
           <Property Name="DerechaVehiculos" Type="image" />
+          <Property Name="IDVehiculo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="IDKilometraje" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="t_Departamentos">
           <Key>
@@ -162,13 +162,15 @@
             <PropertyRef Name="IDKilometraje" />
           </Key>
           <Property Name="IDKilometraje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FechaInicial" Type="date" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="150" />
           <Property Name="KilometrajeInicial" Type="int" />
-          <Property Name="FechaFinal" Type="date" />
           <Property Name="KilometrajeFinal" Type="int" />
           <Property Name="KilometrajeReccorrido" Type="int" />
           <Property Name="IDVehiculo" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="IDReservacion" Type="int" Nullable="false" />
+          <Property Name="IDContrato" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="t_Modulos">
           <Key>
@@ -419,6 +421,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_t_ContratosTerminados_t_Kilometrajes">
+          <End Role="t_Kilometrajes" Type="Self.t_Kilometrajes" Multiplicity="1" />
+          <End Role="t_ContratosTerminados" Type="Self.t_ContratosTerminados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Kilometrajes">
+              <PropertyRef Name="IDKilometraje" />
+            </Principal>
+            <Dependent Role="t_ContratosTerminados">
+              <PropertyRef Name="IDKilometraje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_t_FacturaDetallePago_t_Facturas">
           <End Role="t_Facturas" Type="Self.t_Facturas" Multiplicity="1" />
           <End Role="t_FacturaDetallePago" Type="Self.t_FacturaDetallePago" Multiplicity="*" />
@@ -488,18 +502,6 @@
             </Principal>
             <Dependent Role="t_FacturasDetalles">
               <PropertyRef Name="IDFactura" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_t_Kilometrajes_t_Vehiculos">
-          <End Role="t_Vehiculos" Type="Self.t_Vehiculos" Multiplicity="1" />
-          <End Role="t_Kilometrajes" Type="Self.t_Kilometrajes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="t_Vehiculos">
-              <PropertyRef Name="IDVehiculo" />
-            </Principal>
-            <Dependent Role="t_Kilometrajes">
-              <PropertyRef Name="IDVehiculo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -728,6 +730,10 @@
             <End Role="t_Contratos" EntitySet="t_Contratos" />
             <End Role="t_ContratosTerminados" EntitySet="t_ContratosTerminados" />
           </AssociationSet>
+          <AssociationSet Name="FK_t_ContratosTerminados_t_Kilometrajes" Association="Self.FK_t_ContratosTerminados_t_Kilometrajes">
+            <End Role="t_Kilometrajes" EntitySet="t_Kilometrajes" />
+            <End Role="t_ContratosTerminados" EntitySet="t_ContratosTerminados" />
+          </AssociationSet>
           <AssociationSet Name="FK_t_FacturaDetallePago_t_Facturas" Association="Self.FK_t_FacturaDetallePago_t_Facturas">
             <End Role="t_Facturas" EntitySet="t_Facturas" />
             <End Role="t_FacturaDetallePago" EntitySet="t_FacturaDetallePago" />
@@ -751,10 +757,6 @@
           <AssociationSet Name="FK_t_FacturasDetalles_t_Facturas" Association="Self.FK_t_FacturasDetalles_t_Facturas">
             <End Role="t_Facturas" EntitySet="t_Facturas" />
             <End Role="t_FacturasDetalles" EntitySet="t_FacturasDetalles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_t_Kilometrajes_t_Vehiculos" Association="Self.FK_t_Kilometrajes_t_Vehiculos">
-            <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
-            <End Role="t_Kilometrajes" EntitySet="t_Kilometrajes" />
           </AssociationSet>
           <AssociationSet Name="FK_t_PagosComisiones_t_ClientesComisionistas" Association="Self.FK_t_PagosComisiones_t_ClientesComisionistas">
             <End Role="t_ClientesComisionistas" EntitySet="t_ClientesComisionistas" />
@@ -882,6 +884,10 @@
             <End Role="t_Contratos" EntitySet="t_Contratos" />
             <End Role="t_PagosComisiones" EntitySet="t_PagosComisiones" />
           </AssociationSet>
+          <AssociationSet Name="FK_t_ContratosTerminados_t_Kilometrajes" Association="ViwolfRentalsDBModel.FK_t_ContratosTerminados_t_Kilometrajes">
+            <End Role="t_Kilometrajes" EntitySet="t_Kilometrajes" />
+            <End Role="t_ContratosTerminados" EntitySet="t_ContratosTerminados" />
+          </AssociationSet>
           <AssociationSet Name="FK_t_Usuarios_t_Departamentos" Association="ViwolfRentalsDBModel.FK_t_Usuarios_t_Departamentos">
             <End Role="t_Departamentos" EntitySet="t_Departamentos" />
             <End Role="t_Usuarios" EntitySet="t_Usuarios" />
@@ -909,10 +915,6 @@
           <AssociationSet Name="FK_t_FacturasDetalles_t_Facturas" Association="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Facturas">
             <End Role="t_Facturas" EntitySet="t_Facturas" />
             <End Role="t_FacturasDetalles" EntitySet="t_FacturasDetalles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_t_Kilometrajes_t_Vehiculos" Association="ViwolfRentalsDBModel.FK_t_Kilometrajes_t_Vehiculos">
-            <End Role="t_Vehiculos" EntitySet="t_Vehiculos" />
-            <End Role="t_Kilometrajes" EntitySet="t_Kilometrajes" />
           </AssociationSet>
           <AssociationSet Name="FK_t_Pantallas_t_Modulos" Association="ViwolfRentalsDBModel.FK_t_Pantallas_t_Modulos">
             <End Role="t_Modulos" EntitySet="t_Modulos" />
@@ -1023,7 +1025,6 @@
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
           <Property Name="UsuarioModificacion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="NumeroContrato" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IDVehiculo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="SurfRacks" Type="Boolean" Nullable="false" />
           <Property Name="Cajon" Type="Boolean" Nullable="false" />
           <Property Name="RtvSticker" Type="Boolean" Nullable="false" />
@@ -1032,12 +1033,14 @@
           <Property Name="MarchamoPapel" Type="Boolean" Nullable="false" />
           <Property Name="StickerPlaca" Type="Boolean" Nullable="false" />
           <Property Name="TituloPropiedad" Type="Boolean" Nullable="false" />
-          <Property Name="Kilometraje" Type="Int32" Nullable="false" />
           <Property Name="FrontalVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="TraseraVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="IzquierdaVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="DerechaVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IDVehiculo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IDKilometraje" Type="Int32" Nullable="false" />
           <NavigationProperty Name="t_Contratos" Relationship="ViwolfRentalsDBModel.FK_t_ContratosTerminados_t_Contratos" FromRole="t_ContratosTerminados" ToRole="t_Contratos" />
+          <NavigationProperty Name="t_Kilometrajes" Relationship="ViwolfRentalsDBModel.FK_t_ContratosTerminados_t_Kilometrajes" FromRole="t_ContratosTerminados" ToRole="t_Kilometrajes" />
         </EntityType>
         <EntityType Name="t_Departamentos">
           <Key>
@@ -1131,14 +1134,16 @@
             <PropertyRef Name="IDKilometraje" />
           </Key>
           <Property Name="IDKilometraje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FechaInicial" Type="DateTime" Precision="0" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="KilometrajeInicial" Type="Int32" />
-          <Property Name="FechaFinal" Type="DateTime" Precision="0" />
           <Property Name="KilometrajeFinal" Type="Int32" />
           <Property Name="KilometrajeReccorrido" Type="Int32" />
           <Property Name="IDVehiculo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="IDReservacion" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="t_Vehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Kilometrajes_t_Vehiculos" FromRole="t_Kilometrajes" ToRole="t_Vehiculos" />
+          <Property Name="IDContrato" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="t_ContratosTerminados" Relationship="ViwolfRentalsDBModel.FK_t_ContratosTerminados_t_Kilometrajes" FromRole="t_Kilometrajes" ToRole="t_ContratosTerminados" />
         </EntityType>
         <EntityType Name="t_Modulos">
           <Key>
@@ -1366,7 +1371,6 @@
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="t_CategoriasVehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos" FromRole="t_Vehiculos" ToRole="t_CategoriasVehiculos" />
           <NavigationProperty Name="t_Departamentos" Relationship="ViwolfRentalsDBModel.FK_t_Vehiculos_t_Departamentos" FromRole="t_Vehiculos" ToRole="t_Departamentos" />
-          <NavigationProperty Name="t_Kilometrajes" Relationship="ViwolfRentalsDBModel.FK_t_Kilometrajes_t_Vehiculos" FromRole="t_Vehiculos" ToRole="t_Kilometrajes" />
           <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Vehiculos" FromRole="t_Vehiculos" ToRole="t_Reservaciones" />
         </EntityType>
         <Association Name="FK_t_Vehiculos_t_CategoriasVehiculos">
@@ -1477,6 +1481,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_t_ContratosTerminados_t_Kilometrajes">
+          <End Type="ViwolfRentalsDBModel.t_Kilometrajes" Role="t_Kilometrajes" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_ContratosTerminados" Role="t_ContratosTerminados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Kilometrajes">
+              <PropertyRef Name="IDKilometraje" />
+            </Principal>
+            <Dependent Role="t_ContratosTerminados">
+              <PropertyRef Name="IDKilometraje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_t_Usuarios_t_Departamentos">
           <End Type="ViwolfRentalsDBModel.t_Departamentos" Role="t_Departamentos" Multiplicity="1" />
           <End Type="ViwolfRentalsDBModel.t_Usuarios" Role="t_Usuarios" Multiplicity="*" />
@@ -1558,18 +1574,6 @@
             </Principal>
             <Dependent Role="t_FacturasDetalles">
               <PropertyRef Name="IDFactura" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_t_Kilometrajes_t_Vehiculos">
-          <End Type="ViwolfRentalsDBModel.t_Vehiculos" Role="t_Vehiculos" Multiplicity="1" />
-          <End Type="ViwolfRentalsDBModel.t_Kilometrajes" Role="t_Kilometrajes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="t_Vehiculos">
-              <PropertyRef Name="IDVehiculo" />
-            </Principal>
-            <Dependent Role="t_Kilometrajes">
-              <PropertyRef Name="IDVehiculo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1750,11 +1754,12 @@
           <EntitySetMapping Name="t_ContratosTerminados">
             <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_ContratosTerminados">
               <MappingFragment StoreEntitySet="t_ContratosTerminados">
+                <ScalarProperty Name="IDKilometraje" ColumnName="IDKilometraje" />
+                <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
                 <ScalarProperty Name="DerechaVehiculos" ColumnName="DerechaVehiculos" />
                 <ScalarProperty Name="IzquierdaVehiculos" ColumnName="IzquierdaVehiculos" />
                 <ScalarProperty Name="TraseraVehiculos" ColumnName="TraseraVehiculos" />
                 <ScalarProperty Name="FrontalVehiculos" ColumnName="FrontalVehiculos" />
-                <ScalarProperty Name="Kilometraje" ColumnName="Kilometraje" />
                 <ScalarProperty Name="TituloPropiedad" ColumnName="TituloPropiedad" />
                 <ScalarProperty Name="StickerPlaca" ColumnName="StickerPlaca" />
                 <ScalarProperty Name="MarchamoPapel" ColumnName="MarchamoPapel" />
@@ -1763,7 +1768,6 @@
                 <ScalarProperty Name="RtvSticker" ColumnName="RtvSticker" />
                 <ScalarProperty Name="Cajon" ColumnName="Cajon" />
                 <ScalarProperty Name="SurfRacks" ColumnName="SurfRacks" />
-                <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
                 <ScalarProperty Name="NumeroContrato" ColumnName="NumeroContrato" />
                 <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
                 <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
@@ -1855,13 +1859,15 @@
           <EntitySetMapping Name="t_Kilometrajes">
             <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Kilometrajes">
               <MappingFragment StoreEntitySet="t_Kilometrajes">
-                <ScalarProperty Name="IDReservacion" ColumnName="IDReservacion" />
+                <ScalarProperty Name="IDContrato" ColumnName="IDContrato" />
                 <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
                 <ScalarProperty Name="KilometrajeReccorrido" ColumnName="KilometrajeReccorrido" />
                 <ScalarProperty Name="KilometrajeFinal" ColumnName="KilometrajeFinal" />
-                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
                 <ScalarProperty Name="KilometrajeInicial" ColumnName="KilometrajeInicial" />
-                <ScalarProperty Name="FechaInicial" ColumnName="FechaInicial" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="IDKilometraje" ColumnName="IDKilometraje" />
               </MappingFragment>
             </EntityTypeMapping>

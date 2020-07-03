@@ -225,6 +225,42 @@ namespace ViwolfRentals.DataAccess
                 {
                     try
                     {
+
+                        /*********DATOS DEL KILOMETRAJE**********/
+                        if(model.ExtendedProperties.Count > 0)
+                        {
+                            t_Kilometrajes modelKm = new t_Kilometrajes();
+                            modelKm.IDContrato = model.IDContrato;
+                            modelKm.IDVehiculo = model.IDVehiculo;
+                            modelKm.UsuarioCreacion = model.UsuarioCreacion;
+
+                            foreach (var item in model.ExtendedProperties)
+                            {
+                                if (item.Key == "KilometrajeInicial")
+                                {
+                                    modelKm.KilometrajeInicial = Convert.ToInt32(item.Value);
+                                }
+                                else
+                                    if (item.Key == "KilometrajeFinal")
+                                    {
+                                        modelKm.KilometrajeFinal = Convert.ToInt32(item.Value);
+                                    }
+                                    else
+                                        if (item.Key == "KilometrajeReccorrido")
+                                        {
+                                            modelKm.KilometrajeReccorrido= Convert.ToInt32(item.Value);
+                                        }
+                            }
+
+
+
+                           
+
+                            var resultadoKm = DoGuardarKilometraje(connection, transaction, modelKm);
+
+                            model.IDKilometraje = resultadoKm.IDKilometraje;
+
+                        }
                        
                         //Se manda a guardar el contrato
                         var resultado = DoTerminarContrato(connection, transaction, model);
@@ -316,13 +352,48 @@ namespace ViwolfRentals.DataAccess
                                                   entity.FrontalVehiculos,
                                                   entity.TraseraVehiculos,
                                                   entity.IzquierdaVehiculos,
-                                                  entity.DerechaVehiculos
+                                                  entity.DerechaVehiculos,
+                                                  entity.IDKilometraje
                                               },
                                               transaction: transaction,
                                               commandType: CommandType.StoredProcedure);
 
 
                 entity.IDContrato = IdContrato;
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                //tracerBuilder.AppendLine($"Falló guardar reservacion. Error: {ex.ToString()}\nEntity={entity.SerializeToJson()}");
+                throw;
+            }
+
+
+        }
+
+        private t_Kilometrajes DoGuardarKilometraje(IDbConnection connection, IDbTransaction transaction, t_Kilometrajes entity)
+        {
+            StringBuilder tracerBuilder = new StringBuilder();
+
+            try
+            {
+                tracerBuilder.AppendLine($"Se procede a guardar la reservacion. {Environment.NewLine}");
+                var IdKilometraje = (int)connection.ExecuteScalar(
+                                              sql: "usp_Kilometraje_Guardar",
+                                              param: new
+                                              {
+                                                  entity.UsuarioCreacion,
+                                                  entity.KilometrajeInicial,
+                                                  entity.KilometrajeFinal,
+                                                  entity.KilometrajeReccorrido,
+                                                  entity.IDVehiculo,
+                                                  entity.IDContrato
+                                              },
+                                              transaction: transaction,
+                                              commandType: CommandType.StoredProcedure);
+
+
+                entity.IDKilometraje = IdKilometraje;
                 return entity;
             }
             catch (Exception ex)

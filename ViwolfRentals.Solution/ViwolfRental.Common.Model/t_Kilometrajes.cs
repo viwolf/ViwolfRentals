@@ -14,15 +14,24 @@ namespace ViwolfRental.Common.Model
     
     public partial class t_Kilometrajes
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public t_Kilometrajes()
+        {
+            this.t_ContratosTerminados = new HashSet<t_ContratosTerminados>();
+        }
+    
         public int IDKilometraje { get; set; }
-        public Nullable<System.DateTime> FechaInicial { get; set; }
+        public System.DateTime FechaCreacion { get; set; }
+        public string UsuarioCreacion { get; set; }
+        public Nullable<System.DateTime> FechaModificacion { get; set; }
+        public string UsuarioModificacion { get; set; }
         public Nullable<int> KilometrajeInicial { get; set; }
-        public Nullable<System.DateTime> FechaFinal { get; set; }
         public Nullable<int> KilometrajeFinal { get; set; }
         public Nullable<int> KilometrajeReccorrido { get; set; }
         public string IDVehiculo { get; set; }
-        public int IDReservacion { get; set; }
+        public int IDContrato { get; set; }
     
-        public virtual t_Vehiculos t_Vehiculos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<t_ContratosTerminados> t_ContratosTerminados { get; set; }
     }
 }

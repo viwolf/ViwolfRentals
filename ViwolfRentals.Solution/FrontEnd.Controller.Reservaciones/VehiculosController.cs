@@ -106,11 +106,9 @@ namespace FrontEnd.Controllers.Viwolf
                 var jsonObjet = (from ta in result
                                  select new
                                  {
-                                     ta.IDReservacion,
+                                     ta.IDContrato,
                                      ta.IDVehiculo,
-                                     FechaInicial = string.Format("{0:d/M/yyyy}", ta.FechaInicial),
                                      ta.KilometrajeInicial,
-                                     FechaFinal = string.Format("{0:d/M/yyyy}", ta.FechaFinal),
                                      ta.KilometrajeFinal,
                                      ta.KilometrajeReccorrido
                                  }).AsEnumerable();

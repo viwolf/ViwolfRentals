@@ -20,7 +20,6 @@ namespace ViwolfRental.Common.Model
         public Nullable<System.DateTime> FechaModificacion { get; set; }
         public string UsuarioModificacion { get; set; }
         public string NumeroContrato { get; set; }
-        public string IDVehiculo { get; set; }
         public bool SurfRacks { get; set; }
         public bool Cajon { get; set; }
         public bool RtvSticker { get; set; }
@@ -29,12 +28,16 @@ namespace ViwolfRental.Common.Model
         public bool MarchamoPapel { get; set; }
         public bool StickerPlaca { get; set; }
         public bool TituloPropiedad { get; set; }
-        public int Kilometraje { get; set; }
         public byte[] FrontalVehiculos { get; set; }
         public byte[] TraseraVehiculos { get; set; }
         public byte[] IzquierdaVehiculos { get; set; }
         public byte[] DerechaVehiculos { get; set; }
+        public string IDVehiculo { get; set; }
+        public int IDKilometraje { get; set; }
     
         public virtual t_Contratos t_Contratos { get; set; }
+        public virtual t_Kilometrajes t_Kilometrajes { get; set; }
+
+        public IDictionary<string, Object> ExtendedProperties { set; get; }
     }
 }

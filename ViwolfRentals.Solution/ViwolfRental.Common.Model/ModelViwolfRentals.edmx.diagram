@@ -5,30 +5,30 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9bef6df944644d69ad69f07fc6e69b17" Name="Diagram1">
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_CategoriasVehiculos" Width="1.5" PointX="3.75" PointY="16.75" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_ClientesComisionistas" Width="1.5" PointX="6" PointY="2.75" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_CodigosContratos" Width="1.5" PointX="8.25" PointY="2.375" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Contratos" Width="1.5" PointX="10.5" PointY="6.375" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_ContratosTerminados" Width="1.5" PointX="12.75" PointY="15.125" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Departamentos" Width="1.5" PointX="0.75" PointY="12.75" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_EstadosContratos" Width="1.5" PointX="8.25" PointY="14.75" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_EstadosFacturas" Width="1.5" PointX="8.25" PointY="18" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_FacturaDetallePago" Width="1.5" PointX="12.75" PointY="21.125" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Facturas" Width="1.5" PointX="10.5" PointY="18.75" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_FacturasDetalles" Width="1.5" PointX="12.75" PointY="8.25" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Kilometrajes" Width="1.5" PointX="8.25" PointY="24.375" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Modulos" Width="1.5" PointX="1.5" PointY="0.75" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_PagosComisiones" Width="1.5" PointX="15.75" PointY="8" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Pantallas" Width="1.5" PointX="3.75" PointY="2.125" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Proveedores" Width="1.5" PointX="6" PointY="22.75" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Reservaciones" Width="1.5" PointX="8.25" PointY="5.625" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Roles" Width="1.5" PointX="0.75" PointY="8.375" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_RolesSistemaModuloPantalla" Width="1.5" PointX="6" PointY="8.5" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Sistemas" Width="1.5" PointX="1.5" PointY="4.125" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_TiposFacturas" Width="1.5" PointX="8.25" PointY="21.125" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_TiposPago" Width="1.5" PointX="10.5" PointY="23.5" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Usuarios" Width="1.5" PointX="3" PointY="7.5" />
-        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Vehiculos" Width="1.5" PointX="6" PointY="13.5" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_CategoriasVehiculos" Width="1.5" PointX="6.75" PointY="16.875" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_ClientesComisionistas" Width="1.5" PointX="9" PointY="6" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_CodigosContratos" Width="1.5" PointX="11.25" PointY="16" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Contratos" Width="1.5" PointX="13.5" PointY="6.875" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_ContratosTerminados" Width="1.5" PointX="18.75" PointY="7.625" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Departamentos" Width="1.5" PointX="3.75" PointY="5.25" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_EstadosContratos" Width="1.5" PointX="11.25" PointY="2.875" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_EstadosFacturas" Width="1.5" PointX="11.25" PointY="19.5" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_FacturaDetallePago" Width="1.5" PointX="15.75" PointY="20.625" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Facturas" Width="1.5" PointX="13.5" PointY="20.25" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_FacturasDetalles" Width="1.5" PointX="15.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Kilometrajes" Width="1.5" PointX="16.5" PointY="12.625" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Modulos" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_PagosComisiones" Width="1.5" PointX="15.75" PointY="4.5" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Pantallas" Width="1.5" PointX="3" PointY="8.625" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Proveedores" Width="1.5" PointX="9" PointY="3.375" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Reservaciones" Width="1.5" PointX="11.25" PointY="6.125" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Roles" Width="1.5" PointX="6" PointY="4" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_RolesSistemaModuloPantalla" Width="1.5" PointX="8.25" PointY="9" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Sistemas" Width="1.5" PointX="0.75" PointY="9" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_TiposFacturas" Width="1.5" PointX="11.25" PointY="22.625" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_TiposPago" Width="1.5" PointX="13.5" PointY="17" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Usuarios" Width="1.5" PointX="6" PointY="8" />
+        <EntityTypeShape EntityType="ViwolfRentalsDBModel.t_Vehiculos" Width="1.5" PointX="9" PointY="13.75" />
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos" />
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_PagosComisiones_t_ClientesComisionistas" />
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Reservaciones_t_ClientesComisionistas" />
@@ -38,6 +38,7 @@
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_ContratosTerminados_t_Contratos" />
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Contratos" />
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_PagosComisiones_t_Contratos" />
+        <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_ContratosTerminados_t_Kilometrajes" />
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Usuarios_t_Departamentos" />
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Vehiculos_t_Departamentos" />
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Facturas_t_EstadosFacturas" />
@@ -45,7 +46,6 @@
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_FacturaDetallePago_t_TiposPago" />
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Facturas_t_TiposFacturas" />
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Facturas" />
-        <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Kilometrajes_t_Vehiculos" />
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Pantallas_t_Modulos" />
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_Pantallas_t_Sistemas" />
         <AssociationConnector Association="ViwolfRentalsDBModel.FK_t_RolesSistemaModuloPantalla_t_Pantallas" />
