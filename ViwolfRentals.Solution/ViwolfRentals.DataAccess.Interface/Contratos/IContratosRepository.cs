@@ -12,5 +12,6 @@ namespace ViwolfRentals.DataAccess.Interface
         t_Contratos Guardar(t_Contratos model);
         IEnumerable<ViwolfRental.Common.Model.t_EstadosContratos> ListarEstados(ViwolfRental.Common.Model.t_EstadosContratos entidad);
         IEnumerable<ViwolfRental.Common.Model.t_Contratos> ListarContratos(ViwolfRental.Common.Model.t_Contratos entidad);
+        IEnumerable<ViwolfRental.Common.Model.t_Contratos> ListarContratosxTerminar(ViwolfRental.Common.Model.t_Contratos entidad);
     }
 }

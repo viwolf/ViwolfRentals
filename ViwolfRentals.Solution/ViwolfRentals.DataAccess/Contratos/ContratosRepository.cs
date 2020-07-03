@@ -149,9 +149,37 @@ namespace ViwolfRentals.DataAccess
                  entidad.IDEstadoContrato
              }, commandTimeout: 500, commandType: CommandType.StoredProcedure);
             }
+        }
 
+        public IEnumerable<t_Contratos> ListarContratosxTerminar(t_Contratos entidad)
+        {
+            using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+            {
+                return connection.Query<
+             t_Contratos,
+             t_CodigosContratos,
+             t_Reservaciones,
+             t_Vehiculos,
+             t_CategoriasVehiculos,
+             t_Contratos>
+             ("usp_ContratosxTerminar_Listar",
+             (a, b, c, d, e) =>
+             {
+                 a.t_CodigosContratos = (t_CodigosContratos)b;
+                 a.t_Reservaciones= (t_Reservaciones)c;
+                 a.t_Reservaciones.t_Vehiculos = (t_Vehiculos)d;
+                 a.t_Reservaciones.t_Vehiculos.t_CategoriasVehiculos = (t_CategoriasVehiculos)e;
+                 return a;
+             },
+             splitOn: "IDCodigoContrato,IdReservacion, IDVehiculo, NombreCategoriaVehiculo",
+             param: new
+             {
+                 entidad.NumeroContrato,
+                 entidad.t_Reservaciones.IDVehiculo
+                 
+             }, commandTimeout: 500, commandType: CommandType.StoredProcedure);
+            }
 
-          
 
         }
 

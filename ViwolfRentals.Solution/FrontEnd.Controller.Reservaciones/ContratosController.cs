@@ -246,5 +246,51 @@ namespace FrontEnd.Controllers.Viwolf
                 }, JsonRequestBehavior.AllowGet);
             }
         }
+
+        [HttpPost]
+        public JsonResult ListarContratosxTerminar(ViwolfRental.Common.Model.t_Contratos contratos)
+        {
+            try
+            {
+
+              
+
+
+                var result = BlContrato.ListarContratosxTerminar(contratos);
+
+                var jsonObjet = (from ta in result
+                                 select new
+                                 {
+                                     ta.IDContrato,
+                                     ta.NumeroContrato,
+                                     ta.PrimeraVehiculos,
+                                     ta.SegundaVehiculos,
+                                     ta.TerceraVehiculos,
+                                     ta.CuartaVehiculos,
+                                     objReservacion = ta.t_Reservaciones,
+                                     objCodigo = ta.t_CodigosContratos
+
+                                 }).AsEnumerable();
+                return Json(new
+                {
+                    Data = jsonObjet,
+                    MessageType = "Success",
+                    InfoMessage = jsonObjet.Count() > 0 ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen comisiones por pagar que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = ex.Message
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }
