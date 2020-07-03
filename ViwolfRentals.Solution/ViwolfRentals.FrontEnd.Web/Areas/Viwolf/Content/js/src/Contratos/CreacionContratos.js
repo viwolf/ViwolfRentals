@@ -17,10 +17,10 @@
     var imgDeposito = null;
     var imgLicencia = null;
     var imgContrato = null;
-    var imgVehiculo1 = null;
-    var imgVehiculo2 = null;
-    var imgVehiculo3 = null;
-    var imgVehiculo4 = null;
+    var imgVehiculoFrontal = null;
+    var imgVehiculoTrasera = null;
+    var imgVehiculoIzquierda = null;
+    var imgVehiculoDerecha = null;
     var imgVehiculo5 = null;
     var imgVehiculo6 = null;
    
@@ -28,7 +28,7 @@
     var objReservacion = null;
 
     var fnReader = function (e, control) {
-        debugger;
+        
         switch (control) {
             case 'imgVoucherPago':
                 imgPago = e.target.result;
@@ -50,25 +50,25 @@
                 var preview = document.getElementById(control);
                 preview.src = imgContrato;
                 break;
-            case 'imgPrimeraVehiculo':
-                imgVehiculo1 = e.target.result;
+            case 'imgFrontalVehiculo':
+                imgVehiculoFrontal = e.target.result;
                 var preview = document.getElementById(control);
-                preview.src = imgVehiculo1;
+                preview.src = imgVehiculoFrontal;
                 break;
-            case 'imgSegundaVehiculo':
-                imgVehiculo2 = e.target.result;
+            case 'imgTraseraVehiculo':
+                imgVehiculoTrasera = e.target.result;
                 var preview = document.getElementById(control);
-                preview.src = imgVehiculo2;
+                preview.src = imgVehiculoTrasera;
                 break;
-            case 'imgTerceraVehiculo':
-                imgVehiculo3 = e.target.result;
+            case 'imgIzquierdaVehiculo':
+                imgVehiculoIzquierda = e.target.result;
                 var preview = document.getElementById(control);
-                preview.src = imgVehiculo3;
+                preview.src = imgVehiculoIzquierda;
                 break;
-            case 'imgCuartaVehiculo':
-                imgVehiculo4 = e.target.result;
+            case 'imgDerechaVehiculo':
+                imgVehiculoDerecha = e.target.result;
                 var preview = document.getElementById(control);
-                preview.src = imgVehiculo4;
+                preview.src = imgVehiculoDerecha;
                 break;
             case 'imgQuintaVehiculo':
                 imgVehiculo5 = e.target.result;
@@ -89,7 +89,7 @@
     }
 
     function readURL(input, control) {
-        debugger;
+        
         if (input.files && input.files[0]) {
 
             var reader = new FileReader();
@@ -119,17 +119,17 @@
         $("#txtContrato").change(function () {
             readURL(this, 'imgContrato');
         });
-        $("#txtPrimeraVehiculo").change(function () {
-            readURL(this, 'imgPrimeraVehiculo');
+        $("#txtFrontalVehiculo").change(function () {
+            readURL(this, 'imgFrontalVehiculo');
         });
-        $("#txtSegundaVehiculo").change(function () {
-            readURL(this, 'imgSegundaVehiculo');
+        $("#txtTraseraVehiculo").change(function () {
+            readURL(this, 'imgTraseraVehiculo');
         });
-        $("#txtTerceraVehiculo").change(function () {
-            readURL(this, 'imgTerceraVehiculo');
+        $("#txtIzquierdaVehiculo").change(function () {
+            readURL(this, 'imgIzquierdaVehiculo');
         });
-        $("#txtCuartaVehiculo").change(function () {
-            readURL(this, 'imgCuartaVehiculo');
+        $("#txtDerechaVehiculo").change(function () {
+            readURL(this, 'imgDerechaVehiculo');
         });
         $("#txtQuintaVehiculo").change(function () {
             readURL(this, 'imgQuintaVehiculo');
@@ -208,15 +208,15 @@
 
     var fnGuardarContrato = function (e) {
 
-        debugger;
+        
        
         var realDataPago = imgPago == null ? null : fnBlock(imgPago);
         var realDataDeposito = imgDeposito == null ? null : fnBlock(imgDeposito);
         var realDataLicencia = imgLicencia == null ? null : fnBlock(imgLicencia);
-        var realDataVehiculo1 = imgVehiculo1 == null ? null : fnBlock(imgVehiculo1);
-        var realDataVehiculo2 = imgVehiculo2 == null ? null : fnBlock(imgVehiculo2);
-        var realDataVehiculo3 = imgVehiculo3 == null ? null : fnBlock(imgVehiculo3);
-        var realDataVehiculo4 = imgVehiculo4 == null ? null : fnBlock(imgVehiculo4);
+        var realDataVehiculoF = imgVehiculoFrontal == null ? null : fnBlock(imgVehiculoFrontal);
+        var realDataVehiculoT = imgVehiculoTrasera == null ? null : fnBlock(imgVehiculoTrasera);
+        var realDataVehiculoI = imgVehiculoIzquierda == null ? null : fnBlock(imgVehiculoIzquierda);
+        var realDataVehiculoD = imgVehiculoDerecha == null ? null : fnBlock(imgVehiculoDerecha);
         var realDataVehiculo5 = imgVehiculo5 == null ? null : fnBlock(imgVehiculo5);
         var realDataVehiculo6 = imgVehiculo6 == null ? null : fnBlock(imgVehiculo6);
 
@@ -225,10 +225,10 @@
                 "VoucherDeposito": realDataDeposito,
                 "VoucherPago":  realDataPago,
                 "Licencia": realDataLicencia,
-                "PrimeraVehiculos": realDataVehiculo1,
-                "SegundaVehiculos": realDataVehiculo2,
-                "TerceraVehiculos": realDataVehiculo3,
-                "CuartaVehiculos": realDataVehiculo4,
+                "FrontalVehiculos": realDataVehiculoF,
+                "TraseraVehiculos": realDataVehiculoT,
+                "IzquierdaVehiculos": realDataVehiculoI,
+                "DerechaVehiculos": realDataVehiculoD,
                 "QuintaVehiculos": realDataVehiculo5,
                 "SextaVehiculos": realDataVehiculo6,
                 "IDEstadoContrato": configViwolf.EstadosContratos.Pendiente,

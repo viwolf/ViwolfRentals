@@ -52,7 +52,7 @@
 
     function fnReporte(e, idFactura) {
         //e.preventDefault();
-        debugger;
+       
 
         try {
             var oUrl = 'Reportes/TicketFactura';

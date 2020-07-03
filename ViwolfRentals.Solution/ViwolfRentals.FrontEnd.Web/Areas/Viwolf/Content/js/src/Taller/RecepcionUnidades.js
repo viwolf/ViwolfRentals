@@ -31,7 +31,7 @@
 
 
     var fnInit = function () {
-        debugger;
+        
         $("#tabs").tabs();
         btnBuscarContrato.click(fnBuscarContrato);
     };
@@ -67,25 +67,25 @@
                     txtNumeroContrato.val(result.Data[0].NumeroContrato);
                     txtIDVehiculo.val(result.Data[0].objReservacion.t_Vehiculos.IDVehiculo);
 
-                    debugger;
+                    
                     var previewFrontal = document.getElementById('imgFrontalVehiculo');
                     var previewTrasera = document.getElementById('imgTraseraVehiculo');
                     var previewIzquierda = document.getElementById('imgCostadoIzquierdaVehiculo');
                     var previewDerecha = document.getElementById('imgCostadoDerechoVehiculo');
 
-                    objectURL = bin2string(result.Data[0].PrimeraVehiculos);
+                    objectURL = bin2string(result.Data[0].FrontalVehiculos);
                     image_64 = btoa(objectURL);
                     previewFrontal.src = "data:image/jpg;base64," + image_64; 
 
-                    objectURL = bin2string(result.Data[0].SegundaVehiculos);
+                    objectURL = bin2string(result.Data[0].TraseraVehiculos);
                     image_64 = btoa(objectURL);
                     previewTrasera.src = "data:image/jpg;base64," + image_64; 
 
-                    objectURL = bin2string(result.Data[0].TerceraVehiculos);
+                    objectURL = bin2string(result.Data[0].IzquierdaVehiculos);
                     image_64 = btoa(objectURL);
                     previewIzquierda.src = "data:image/jpg;base64," + image_64; 
 
-                    objectURL = bin2string(result.Data[0].CuartaVehiculos);
+                    objectURL = bin2string(result.Data[0].DerechaVehiculos);
                     image_64 = btoa(objectURL);
                     previewDerecha.src = "data:image/jpg;base64," + image_64; 
 

@@ -38,10 +38,10 @@
           <ScalarProperty Name="Extendido" ColumnName="Extendido" />
           <ScalarProperty Name="SextaVehiculos" ColumnName="SextaVehiculos" />
           <ScalarProperty Name="QuintaVehiculos" ColumnName="QuintaVehiculos" />
-          <ScalarProperty Name="CuartaVehiculos" ColumnName="CuartaVehiculos" />
-          <ScalarProperty Name="TerceraVehiculos" ColumnName="TerceraVehiculos" />
-          <ScalarProperty Name="SegundaVehiculos" ColumnName="SegundaVehiculos" />
-          <ScalarProperty Name="PrimeraVehiculos" ColumnName="PrimeraVehiculos" />
+          <ScalarProperty Name="DerechaVehiculos" ColumnName="DerechaVehiculos" />
+          <ScalarProperty Name="IzquierdaVehiculos" ColumnName="IzquierdaVehiculos" />
+          <ScalarProperty Name="TraseraVehiculos" ColumnName="TraseraVehiculos" />
+          <ScalarProperty Name="FrontalVehiculos" ColumnName="FrontalVehiculos" />
           <ScalarProperty Name="Licencia" ColumnName="Licencia" />
           <ScalarProperty Name="Pasaporte" ColumnName="Pasaporte" />
           <ScalarProperty Name="VoucherPago" ColumnName="VoucherPago" />

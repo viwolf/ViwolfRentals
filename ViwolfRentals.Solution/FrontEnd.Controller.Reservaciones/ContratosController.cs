@@ -263,10 +263,10 @@ namespace FrontEnd.Controllers.Viwolf
                                  {
                                      ta.IDContrato,
                                      ta.NumeroContrato,
-                                     ta.PrimeraVehiculos,
-                                     ta.SegundaVehiculos,
-                                     ta.TerceraVehiculos,
-                                     ta.CuartaVehiculos,
+                                     ta.FrontalVehiculos,
+                                     ta.TraseraVehiculos,
+                                     ta.IzquierdaVehiculos,
+                                     ta.DerechaVehiculos,
                                      objReservacion = ta.t_Reservaciones,
                                      objCodigo = ta.t_CodigosContratos
 

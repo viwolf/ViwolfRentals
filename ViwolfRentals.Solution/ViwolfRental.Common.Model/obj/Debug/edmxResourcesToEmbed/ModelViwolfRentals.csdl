@@ -169,10 +169,10 @@
     <Property Name="VoucherPago" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="Pasaporte" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="Licencia" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="PrimeraVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="SegundaVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="TerceraVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="CuartaVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="FrontalVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="TraseraVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="IzquierdaVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="DerechaVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="QuintaVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="SextaVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="Extendido" Type="Boolean" Nullable="false" />

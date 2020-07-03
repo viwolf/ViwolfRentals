@@ -26,7 +26,7 @@
     }
 
     var calcularTipoCambio = function () {
-        debugger;
+       
         if (txttipocambio.val() == "") {
             Dialog.alert('DetallePago', "Debe actualizar el tipo de cambio.", function () {
             })
@@ -68,7 +68,7 @@
     }
 
     var fnInit = function () {
-        debugger;
+       
         table = $('#tblDataDetallePagos').DataTable();
         txtTotalPagar.val(montoTotal);
         txtMontoPagarTotal.val(utils.formatterDolar.format(montoTotal));
@@ -108,7 +108,7 @@
                     })
                 }
                 else {
-                    debugger;
+                   
                   
                     montoTotal = montoTotal - txtMonto.val();
                     if (montoTotal <= 0) {
@@ -119,7 +119,7 @@
                         montoPago = montoPago + parseInt(txtMonto.val());
                         txtTotalPagar.val(montoTotal);
                     }
-                    debugger;
+                   
                     
                     cambio = txtMonto.val() - txtMontoPagarTotal.val();
                     if (cambio >= 0)

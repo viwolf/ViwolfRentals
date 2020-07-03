@@ -40,10 +40,10 @@
     <Property Name="VoucherPago" Type="image" />
     <Property Name="Pasaporte" Type="image" />
     <Property Name="Licencia" Type="image" />
-    <Property Name="PrimeraVehiculos" Type="image" />
-    <Property Name="SegundaVehiculos" Type="image" />
-    <Property Name="TerceraVehiculos" Type="image" />
-    <Property Name="CuartaVehiculos" Type="image" />
+    <Property Name="FrontalVehiculos" Type="image" />
+    <Property Name="TraseraVehiculos" Type="image" />
+    <Property Name="IzquierdaVehiculos" Type="image" />
+    <Property Name="DerechaVehiculos" Type="image" />
     <Property Name="QuintaVehiculos" Type="image" />
     <Property Name="SextaVehiculos" Type="image" />
     <Property Name="Extendido" Type="bit" Nullable="false" />
