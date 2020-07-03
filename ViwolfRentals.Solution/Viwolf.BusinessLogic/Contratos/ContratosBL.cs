@@ -31,5 +31,10 @@ namespace Viwolf.BusinessLogic
         {
             return repository.ListarEstados(entidad);
         }
+
+        public t_ContratosTerminados TerminarContrato(t_ContratosTerminados contrato)
+        {
+            return repository.TerminarContrato(contrato);
+        }
     }
 }

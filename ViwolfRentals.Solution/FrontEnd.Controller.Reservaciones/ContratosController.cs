@@ -292,5 +292,35 @@ namespace FrontEnd.Controllers.Viwolf
                 }, JsonRequestBehavior.AllowGet);
             }
         }
+
+        [HttpPost]
+        public JsonResult TerminarContrato(ViwolfRental.Common.Model.t_ContratosTerminados contrato)
+        {
+            try
+            {
+
+                var result = BlContrato.TerminarContrato(contrato);
+                return Json(new
+                {
+                    Data = result,
+                    MessageType = "Success",
+                    InfoMessage = result != null ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen contratos que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = ex.Message
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }

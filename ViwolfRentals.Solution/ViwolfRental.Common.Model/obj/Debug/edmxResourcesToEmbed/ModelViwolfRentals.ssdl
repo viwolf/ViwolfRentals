@@ -52,6 +52,31 @@
     <Property Name="IDCodigoContrato" Type="int" Nullable="false" />
     <Property Name="IDUsuario" Type="int" />
   </EntityType>
+  <EntityType Name="t_ContratosTerminados">
+    <Key>
+      <PropertyRef Name="IDContrato" />
+    </Key>
+    <Property Name="IDContrato" Type="int" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="150" />
+    <Property Name="NumeroContrato" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IDVehiculo" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="SurfRacks" Type="bit" Nullable="false" />
+    <Property Name="Cajon" Type="bit" Nullable="false" />
+    <Property Name="RtvSticker" Type="bit" Nullable="false" />
+    <Property Name="RtvPapel" Type="bit" Nullable="false" />
+    <Property Name="MarchamoSticker" Type="bit" Nullable="false" />
+    <Property Name="MarchamoPapel" Type="bit" Nullable="false" />
+    <Property Name="StickerPlaca" Type="bit" Nullable="false" />
+    <Property Name="TituloPropiedad" Type="bit" Nullable="false" />
+    <Property Name="Kilometraje" Type="int" Nullable="false" />
+    <Property Name="FrontalVehiculos" Type="image" />
+    <Property Name="TraseraVehiculos" Type="image" />
+    <Property Name="IzquierdaVehiculos" Type="image" />
+    <Property Name="DerechaVehiculos" Type="image" />
+  </EntityType>
   <EntityType Name="t_Departamentos">
     <Key>
       <PropertyRef Name="IDDepartamento" />
@@ -377,6 +402,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_t_ContratosTerminados_t_Contratos">
+    <End Role="t_Contratos" Type="Self.t_Contratos" Multiplicity="1" />
+    <End Role="t_ContratosTerminados" Type="Self.t_ContratosTerminados" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="t_Contratos">
+        <PropertyRef Name="IDContrato" />
+      </Principal>
+      <Dependent Role="t_ContratosTerminados">
+        <PropertyRef Name="IDContrato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_t_FacturaDetallePago_t_Facturas">
     <End Role="t_Facturas" Type="Self.t_Facturas" Multiplicity="1" />
     <End Role="t_FacturaDetallePago" Type="Self.t_FacturaDetallePago" Multiplicity="*" />
@@ -650,6 +687,7 @@
     <EntitySet Name="t_ClientesComisionistas" EntityType="Self.t_ClientesComisionistas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_CodigosContratos" EntityType="Self.t_CodigosContratos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Contratos" EntityType="Self.t_Contratos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_ContratosTerminados" EntityType="Self.t_ContratosTerminados" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Departamentos" EntityType="Self.t_Departamentos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_EstadosContratos" EntityType="Self.t_EstadosContratos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_EstadosFacturas" EntityType="Self.t_EstadosFacturas" Schema="dbo" store:Type="Tables" />
@@ -680,6 +718,10 @@
     <AssociationSet Name="FK_t_Contratos_t_Reservaciones" Association="Self.FK_t_Contratos_t_Reservaciones">
       <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
       <End Role="t_Contratos" EntitySet="t_Contratos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_ContratosTerminados_t_Contratos" Association="Self.FK_t_ContratosTerminados_t_Contratos">
+      <End Role="t_Contratos" EntitySet="t_Contratos" />
+      <End Role="t_ContratosTerminados" EntitySet="t_ContratosTerminados" />
     </AssociationSet>
     <AssociationSet Name="FK_t_FacturaDetallePago_t_Facturas" Association="Self.FK_t_FacturaDetallePago_t_Facturas">
       <End Role="t_Facturas" EntitySet="t_Facturas" />

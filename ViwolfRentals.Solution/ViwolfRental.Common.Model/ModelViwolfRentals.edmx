@@ -57,6 +57,31 @@
           <Property Name="IDCodigoContrato" Type="int" Nullable="false" />
           <Property Name="IDUsuario" Type="int" />
         </EntityType>
+        <EntityType Name="t_ContratosTerminados">
+          <Key>
+            <PropertyRef Name="IDContrato" />
+          </Key>
+          <Property Name="IDContrato" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="150" />
+          <Property Name="NumeroContrato" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDVehiculo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SurfRacks" Type="bit" Nullable="false" />
+          <Property Name="Cajon" Type="bit" Nullable="false" />
+          <Property Name="RtvSticker" Type="bit" Nullable="false" />
+          <Property Name="RtvPapel" Type="bit" Nullable="false" />
+          <Property Name="MarchamoSticker" Type="bit" Nullable="false" />
+          <Property Name="MarchamoPapel" Type="bit" Nullable="false" />
+          <Property Name="StickerPlaca" Type="bit" Nullable="false" />
+          <Property Name="TituloPropiedad" Type="bit" Nullable="false" />
+          <Property Name="Kilometraje" Type="int" Nullable="false" />
+          <Property Name="FrontalVehiculos" Type="image" />
+          <Property Name="TraseraVehiculos" Type="image" />
+          <Property Name="IzquierdaVehiculos" Type="image" />
+          <Property Name="DerechaVehiculos" Type="image" />
+        </EntityType>
         <EntityType Name="t_Departamentos">
           <Key>
             <PropertyRef Name="IDDepartamento" />
@@ -382,6 +407,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_t_ContratosTerminados_t_Contratos">
+          <End Role="t_Contratos" Type="Self.t_Contratos" Multiplicity="1" />
+          <End Role="t_ContratosTerminados" Type="Self.t_ContratosTerminados" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="t_Contratos">
+              <PropertyRef Name="IDContrato" />
+            </Principal>
+            <Dependent Role="t_ContratosTerminados">
+              <PropertyRef Name="IDContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_t_FacturaDetallePago_t_Facturas">
           <End Role="t_Facturas" Type="Self.t_Facturas" Multiplicity="1" />
           <End Role="t_FacturaDetallePago" Type="Self.t_FacturaDetallePago" Multiplicity="*" />
@@ -655,6 +692,7 @@
           <EntitySet Name="t_ClientesComisionistas" EntityType="Self.t_ClientesComisionistas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_CodigosContratos" EntityType="Self.t_CodigosContratos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Contratos" EntityType="Self.t_Contratos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_ContratosTerminados" EntityType="Self.t_ContratosTerminados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Departamentos" EntityType="Self.t_Departamentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_EstadosContratos" EntityType="Self.t_EstadosContratos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_EstadosFacturas" EntityType="Self.t_EstadosFacturas" Schema="dbo" store:Type="Tables" />
@@ -685,6 +723,10 @@
           <AssociationSet Name="FK_t_Contratos_t_Reservaciones" Association="Self.FK_t_Contratos_t_Reservaciones">
             <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
             <End Role="t_Contratos" EntitySet="t_Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_ContratosTerminados_t_Contratos" Association="Self.FK_t_ContratosTerminados_t_Contratos">
+            <End Role="t_Contratos" EntitySet="t_Contratos" />
+            <End Role="t_ContratosTerminados" EntitySet="t_ContratosTerminados" />
           </AssociationSet>
           <AssociationSet Name="FK_t_FacturaDetallePago_t_Facturas" Association="Self.FK_t_FacturaDetallePago_t_Facturas">
             <End Role="t_Facturas" EntitySet="t_Facturas" />
@@ -784,6 +826,7 @@
           <EntitySet Name="t_ClientesComisionistas" EntityType="ViwolfRentalsDBModel.t_ClientesComisionistas" />
           <EntitySet Name="t_CodigosContratos" EntityType="ViwolfRentalsDBModel.t_CodigosContratos" />
           <EntitySet Name="t_Contratos" EntityType="ViwolfRentalsDBModel.t_Contratos" />
+          <EntitySet Name="t_ContratosTerminados" EntityType="ViwolfRentalsDBModel.t_ContratosTerminados" />
           <EntitySet Name="t_Departamentos" EntityType="ViwolfRentalsDBModel.t_Departamentos" />
           <EntitySet Name="t_EstadosContratos" EntityType="ViwolfRentalsDBModel.t_EstadosContratos" />
           <EntitySet Name="t_EstadosFacturas" EntityType="ViwolfRentalsDBModel.t_EstadosFacturas" />
@@ -826,6 +869,10 @@
           <AssociationSet Name="FK_t_Contratos_t_Reservaciones" Association="ViwolfRentalsDBModel.FK_t_Contratos_t_Reservaciones">
             <End Role="t_Reservaciones" EntitySet="t_Reservaciones" />
             <End Role="t_Contratos" EntitySet="t_Contratos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_ContratosTerminados_t_Contratos" Association="ViwolfRentalsDBModel.FK_t_ContratosTerminados_t_Contratos">
+            <End Role="t_Contratos" EntitySet="t_Contratos" />
+            <End Role="t_ContratosTerminados" EntitySet="t_ContratosTerminados" />
           </AssociationSet>
           <AssociationSet Name="FK_t_FacturasDetalles_t_Contratos" Association="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Contratos">
             <End Role="t_Contratos" EntitySet="t_Contratos" />
@@ -962,8 +1009,35 @@
           <NavigationProperty Name="t_CodigosContratos" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_CodigosContratos" FromRole="t_Contratos" ToRole="t_CodigosContratos" />
           <NavigationProperty Name="t_EstadosContratos" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_EstadosContratos" FromRole="t_Contratos" ToRole="t_EstadosContratos" />
           <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Contratos_t_Reservaciones" FromRole="t_Contratos" ToRole="t_Reservaciones" />
+          <NavigationProperty Name="t_ContratosTerminados" Relationship="ViwolfRentalsDBModel.FK_t_ContratosTerminados_t_Contratos" FromRole="t_Contratos" ToRole="t_ContratosTerminados" />
           <NavigationProperty Name="t_FacturasDetalles" Relationship="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Contratos" FromRole="t_Contratos" ToRole="t_FacturasDetalles" />
           <NavigationProperty Name="t_PagosComisiones" Relationship="ViwolfRentalsDBModel.FK_t_PagosComisiones_t_Contratos" FromRole="t_Contratos" ToRole="t_PagosComisiones" />
+        </EntityType>
+        <EntityType Name="t_ContratosTerminados">
+          <Key>
+            <PropertyRef Name="IDContrato" />
+          </Key>
+          <Property Name="IDContrato" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NumeroContrato" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDVehiculo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SurfRacks" Type="Boolean" Nullable="false" />
+          <Property Name="Cajon" Type="Boolean" Nullable="false" />
+          <Property Name="RtvSticker" Type="Boolean" Nullable="false" />
+          <Property Name="RtvPapel" Type="Boolean" Nullable="false" />
+          <Property Name="MarchamoSticker" Type="Boolean" Nullable="false" />
+          <Property Name="MarchamoPapel" Type="Boolean" Nullable="false" />
+          <Property Name="StickerPlaca" Type="Boolean" Nullable="false" />
+          <Property Name="TituloPropiedad" Type="Boolean" Nullable="false" />
+          <Property Name="Kilometraje" Type="Int32" Nullable="false" />
+          <Property Name="FrontalVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="TraseraVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IzquierdaVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DerechaVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="t_Contratos" Relationship="ViwolfRentalsDBModel.FK_t_ContratosTerminados_t_Contratos" FromRole="t_ContratosTerminados" ToRole="t_Contratos" />
         </EntityType>
         <EntityType Name="t_Departamentos">
           <Key>
@@ -1367,6 +1441,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_t_ContratosTerminados_t_Contratos">
+          <End Type="ViwolfRentalsDBModel.t_Contratos" Role="t_Contratos" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_ContratosTerminados" Role="t_ContratosTerminados" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="t_Contratos">
+              <PropertyRef Name="IDContrato" />
+            </Principal>
+            <Dependent Role="t_ContratosTerminados">
+              <PropertyRef Name="IDContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_t_FacturasDetalles_t_Contratos">
           <End Type="ViwolfRentalsDBModel.t_Contratos" Role="t_Contratos" Multiplicity="1" />
           <End Type="ViwolfRentalsDBModel.t_FacturasDetalles" Role="t_FacturasDetalles" Multiplicity="*" />
@@ -1657,6 +1743,32 @@
                 <ScalarProperty Name="TotalContrato" ColumnName="TotalContrato" />
                 <ScalarProperty Name="NumeroContrato" ColumnName="NumeroContrato" />
                 <ScalarProperty Name="IDReservacion" ColumnName="IDReservacion" />
+                <ScalarProperty Name="IDContrato" ColumnName="IDContrato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_ContratosTerminados">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_ContratosTerminados">
+              <MappingFragment StoreEntitySet="t_ContratosTerminados">
+                <ScalarProperty Name="DerechaVehiculos" ColumnName="DerechaVehiculos" />
+                <ScalarProperty Name="IzquierdaVehiculos" ColumnName="IzquierdaVehiculos" />
+                <ScalarProperty Name="TraseraVehiculos" ColumnName="TraseraVehiculos" />
+                <ScalarProperty Name="FrontalVehiculos" ColumnName="FrontalVehiculos" />
+                <ScalarProperty Name="Kilometraje" ColumnName="Kilometraje" />
+                <ScalarProperty Name="TituloPropiedad" ColumnName="TituloPropiedad" />
+                <ScalarProperty Name="StickerPlaca" ColumnName="StickerPlaca" />
+                <ScalarProperty Name="MarchamoPapel" ColumnName="MarchamoPapel" />
+                <ScalarProperty Name="MarchamoSticker" ColumnName="MarchamoSticker" />
+                <ScalarProperty Name="RtvPapel" ColumnName="RtvPapel" />
+                <ScalarProperty Name="RtvSticker" ColumnName="RtvSticker" />
+                <ScalarProperty Name="Cajon" ColumnName="Cajon" />
+                <ScalarProperty Name="SurfRacks" ColumnName="SurfRacks" />
+                <ScalarProperty Name="IDVehiculo" ColumnName="IDVehiculo" />
+                <ScalarProperty Name="NumeroContrato" ColumnName="NumeroContrato" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="IDContrato" ColumnName="IDContrato" />
               </MappingFragment>
             </EntityTypeMapping>

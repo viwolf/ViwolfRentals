@@ -212,6 +212,36 @@ namespace ViwolfRentals.DataAccess
             }
         }
 
+        public t_ContratosTerminados TerminarContrato(t_ContratosTerminados model)
+        {
+            //Si no se maneja transaccionabilidad se hace la conexion normal
+            using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+            {
+                //se abre la conexion ya que se va a trabajar con transaccionabilidad
+                connection.Open();
+
+                //se crea el objeto transaccion
+                using (IDbTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                       
+                        //Se manda a guardar el contrato
+                        var resultado = DoTerminarContrato(connection, transaction, model);
+
+                        transaction.Commit();
+
+                        return resultado;
+                    }
+                    catch (Exception x)
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
         private t_Contratos DoGuardar(IDbConnection connection, IDbTransaction transaction, t_Contratos entity)
         {
             StringBuilder tracerBuilder = new StringBuilder();
@@ -259,5 +289,50 @@ namespace ViwolfRentals.DataAccess
 
 
         }
+
+        private t_ContratosTerminados DoTerminarContrato(IDbConnection connection, IDbTransaction transaction, t_ContratosTerminados entity)
+        {
+            StringBuilder tracerBuilder = new StringBuilder();
+
+            try
+            {
+                tracerBuilder.AppendLine($"Se procede a guardar la reservacion. {Environment.NewLine}");
+                var IdContrato = (int)connection.ExecuteScalar(
+                                              sql: "usp_ContratosTerminados_Guardar",
+                                              param: new
+                                              {
+                                                  entity.IDContrato,
+                                                  entity.UsuarioCreacion,
+                                                  entity.NumeroContrato,
+                                                  entity.IDVehiculo,
+                                                  entity.SurfRacks,
+                                                  entity.Cajon,
+                                                  entity.RtvSticker,
+                                                  entity.RtvPapel,
+                                                  entity.MarchamoSticker,
+                                                  entity.MarchamoPapel,
+                                                  entity.StickerPlaca,
+                                                  entity.TituloPropiedad,
+                                                  entity.FrontalVehiculos,
+                                                  entity.TraseraVehiculos,
+                                                  entity.IzquierdaVehiculos,
+                                                  entity.DerechaVehiculos
+                                              },
+                                              transaction: transaction,
+                                              commandType: CommandType.StoredProcedure);
+
+
+                entity.IDContrato = IdContrato;
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                //tracerBuilder.AppendLine($"Falló guardar reservacion. Error: {ex.ToString()}\nEntity={entity.SerializeToJson()}");
+                throw;
+            }
+
+
+        }
+
     }
 }

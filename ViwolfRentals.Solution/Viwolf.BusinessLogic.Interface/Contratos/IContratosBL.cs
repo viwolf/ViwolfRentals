@@ -15,6 +15,9 @@ namespace Viwolf.BusinessLogic.Interface
         IEnumerable<ViwolfRental.Common.Model.t_Contratos> ListarContratos(ViwolfRental.Common.Model.t_Contratos entidad);
 
         IEnumerable<ViwolfRental.Common.Model.t_Contratos> ListarContratosxTerminar(ViwolfRental.Common.Model.t_Contratos entidad);
+
+        ViwolfRental.Common.Model.t_ContratosTerminados TerminarContrato(ViwolfRental.Common.Model.t_ContratosTerminados contrato);
         
+
     }
 }

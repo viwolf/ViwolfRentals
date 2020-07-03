@@ -29,6 +29,7 @@ namespace ViwolfRental.Common.Model
         public virtual DbSet<t_ClientesComisionistas> t_ClientesComisionistas { get; set; }
         public virtual DbSet<t_CodigosContratos> t_CodigosContratos { get; set; }
         public virtual DbSet<t_Contratos> t_Contratos { get; set; }
+        public virtual DbSet<t_ContratosTerminados> t_ContratosTerminados { get; set; }
         public virtual DbSet<t_Departamentos> t_Departamentos { get; set; }
         public virtual DbSet<t_EstadosContratos> t_EstadosContratos { get; set; }
         public virtual DbSet<t_EstadosFacturas> t_EstadosFacturas { get; set; }
