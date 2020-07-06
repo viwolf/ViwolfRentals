@@ -36,7 +36,7 @@ namespace FrontEnd.Controllers.Seguridad
                         TempData.Add("Usuario", result.First().CodigoUsuario);
                         TempData.Add("IdUsuario", result.First().IdUsuario);
                         TempData.Add("RolUsuario", result.First().t_Roles.NombreRol);
-                        TempData.Add("Departamento", result.FirstOrDefault().t_Departamentos.IDDepartamento);
+                      
                     }
                 }
 

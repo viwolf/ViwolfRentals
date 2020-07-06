@@ -61,6 +61,7 @@
                                         <a class="nav-link" href="@Url.Action("Mantenimiento","Reservaciones", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Mantenimiento</a>
                                         <a class="nav-link" href="@Url.Action("Index","Reservaciones", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Creación</a>
                                         <a class="nav-link" href="@Url.Action("Calendario","Reservaciones", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Calendario</a>
+                                        <a class="nav-link" href="@Url.Action("Index","Reservaciones", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Reporte Reservaciones</a>
                                     </nav>
                                 </div>
                                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseContratos" aria-expanded="false" aria-controls="pagesCollapseContratos">
@@ -71,7 +72,7 @@
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <a class="nav-link" href="@Url.Action("Control","Contratos", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Control Contratos</a>
                                         <a class="nav-link" href="@Url.Action("Index","Contratos", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Crear Contratos</a>
-
+                                        <a class="nav-link" href="@Url.Action("Index","Contratos", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Reporte Contratos</a>
                                     </nav>
                                 </div>
                                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseTaller" aria-expanded="false" aria-controls="pagesCollapseTaller">
@@ -93,14 +94,26 @@
                                         <a class="nav-link" href="@Url.Action("CreacionVehiculos","Vehiculos", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Creación de unidades</a>
                                     </nav>
                                 </div>
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseComisiones" aria-expanded="false" aria-controls="pagesCollapseComisiones">
+                                    Comisiones
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="pagesCollapseComisiones" aria-labelledby="headingOne" data-parent="#layoutWiwolfRentals">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="@Url.Action("Index","Comisiones", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario, RolUsuario = ViewBag.RolUsuario } )">Pagar Comisiones</a>
+                                        <a class="nav-link" href="@Url.Action("Index","Facturacion", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Cuentas x Cobrar</a>
+                                        <a class="nav-link" href="@Url.Action("Index","Facturacion", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Reporte Comisiones</a>
+                                        <a class="nav-link" href="@Url.Action("Index","Facturacion", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Reporte CxC</a>
+                                    </nav>
+                                </div>
                                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseFacturacion" aria-expanded="false" aria-controls="pagesCollapseFacturacion">
                                     Facturaciones
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                 </a>
                                 <div class="collapse" id="pagesCollapseFacturacion" aria-labelledby="headingOne" data-parent="#layoutWiwolfRentals">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="@Url.Action("Index","Comisiones", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario, RolUsuario = ViewBag.RolUsuario } )">Pagar Comisiones</a>
                                         <a class="nav-link" href="@Url.Action("Index","Facturacion", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Crear Factura</a>
+                                        <a class="nav-link" href="@Url.Action("Index","Facturacion", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Reporte Facturacion</a>
                                     </nav>
                                 </div>
                             </nav>

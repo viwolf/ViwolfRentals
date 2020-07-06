@@ -255,10 +255,6 @@ namespace FrontEnd.Controllers.Viwolf
         {
             try
             {
-
-              
-
-
                 var result = BlContrato.ListarContratosxTerminar(contratos);
 
                 var jsonObjet = (from ta in result
