@@ -21,10 +21,8 @@
                         select: true,
                         "scrollX": true,
                         columns: [
-                            { data: 'IDReservacion' },
-                            { data: 'FechaInicial' },
+                            { data: 'IDContrato' },
                             { data: 'KilometrajeInicial' },
-                            { data: 'FechaFinal' },
                             { data: 'KilometrajeFinal' },
                             { data: 'KilometrajeReccorrido' }
                         ],

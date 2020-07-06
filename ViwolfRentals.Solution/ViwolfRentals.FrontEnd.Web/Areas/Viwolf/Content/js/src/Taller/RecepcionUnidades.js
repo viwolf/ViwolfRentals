@@ -125,106 +125,113 @@
     };
 
     var fnBuscarContrato = function () {
-        var oData = {
-            "NumeroContrato": txtNumeroContrato.val(),
-            "t_Reservaciones.IDVehiculo": txtIDVehiculo.val(),
-        };
-        try {
 
-            var oUrl = 'Contratos/ListarContratosxTerminar';
-
-
-            var oProcessMessage = 'Buscando Contratos';
-            var success = function (result) {
-                
-                if (result.Data.length > 0) {
-
-                    document.getElementById('btnTerminarContrato').disabled = false;
-                    document.getElementById('txtIDVehiculo').disabled = true;
-                    document.getElementById('txtNumeroContrato').disabled = true;
-
-                    IDContrato = result.Data[0].IDContrato;
-                    var objImage = "";
-                    var image_64 = "";
-                    
-
-                    txtMarca.val(result.Data[0].objReservacion.t_Vehiculos.Marca);
-                    txtModelo.val(result.Data[0].objReservacion.t_Vehiculos.Modelo);
-                    txtAnno.val(result.Data[0].objReservacion.t_Vehiculos.Anno);
-                    txtCategoria.val(result.Data[0].objReservacion.t_Vehiculos.t_CategoriasVehiculos.NombreCategoriaVehiculo);
-                    txtNumeroContrato.val(result.Data[0].NumeroContrato);
-                    txtIDVehiculo.val(result.Data[0].objReservacion.t_Vehiculos.IDVehiculo);
-                    txtKilometrajeInicial.val(result.Data[0].objReservacion.t_Vehiculos.Kilometraje);
-                    txtKilometrajeFinal.val(0);
-                    
-                    var previewFrontal = document.getElementById('imgFrontalVehiculo');
-                    var previewTrasera = document.getElementById('imgTraseraVehiculo');
-                    var previewIzquierda = document.getElementById('imgCostadoIzquierdaVehiculo');
-                    var previewDerecha = document.getElementById('imgCostadoDerechoVehiculo');
-
-
-                    imgFrontalVehiculo = result.Data[0].FrontalVehiculos;
-                    if (imgFrontalVehiculo != null) {
-                        objImage = bin2string(imgFrontalVehiculo);
-                        image_64 = btoa(objImage);
-                        previewFrontal.src = "data:image/jpg;base64," + image_64;
-                        imgFrontalVehiculo = previewFrontal.src;
-                        document.getElementById("chkFrontalVehiculo").disabled = false;
-                    }
-                    else {
-                        document.getElementById("chkFrontalVehiculo").disabled = true;
-                    }
-
-                    imgTraseraVehiculo = result.Data[0].TraseraVehiculos;
-                    if (imgTraseraVehiculo != null) {
-                        objImage = bin2string(imgTraseraVehiculo);
-                        image_64 = btoa(objImage);
-                        previewTrasera.src = "data:image/jpg;base64," + image_64; 
-                        imgTraseraVehiculo = previewTrasera.src;
-                        document.getElementById("chkTraseraVehiculo").disabled = false;
-                    }
-                    else {
-                        document.getElementById("chkTraseraVehiculo").disabled = true;
-                    }
-
-
-                    imgCostadoIzquierdaVehiculo = result.Data[0].IzquierdaVehiculos;
-                    if (imgCostadoIzquierdaVehiculo != null) {
-                        objImage = bin2string(imgCostadoIzquierdaVehiculo);
-                        image_64 = btoa(objImage);
-                        previewIzquierda.src = "data:image/jpg;base64," + image_64; 
-                        imgCostadoIzquierdaVehiculo = previewIzquierda.src;
-                        document.getElementById("chkCostadoIzquierdoVehiculo").disabled = false;
-                    }
-                    else {
-                        document.getElementById("chkCostadoIzquierdoVehiculo").disabled = true;
-                    }
-                  
-                    imgCostadoDerechoVehiculo = result.Data[0].DerechaVehiculos;
-                    if (imgCostadoDerechoVehiculo != null) {
-                        objImage = bin2string(imgCostadoDerechoVehiculo);
-                        image_64 = btoa(objImage);
-                        previewDerecha.src = "data:image/jpg;base64," + image_64; 
-                        imgCostadoDerechoVehiculo = previewDerecha.src;
-                        document.getElementById("chkCostadoDerechoVehiculo").disabled = false;
-                    }
-                    else {
-                        document.getElementById("chkCostadoDerechoVehiculo").disabled = true;
-                    }
-                }
-                else {
-                    Dialog.alert('Contratos', result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage, function () {
-                       
-                    })
-                };
-            };
-            app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
-        } catch (ex) {
-
-            retorno = false;
+        if ((txtNumeroContrato.val() == "") && (txtIDVehiculo.val() == "")) {
+            Dialog.alert('Contratos', "Debe de digitar el número de contrato o la placa del vehiculo.", function () {
+            })
         }
 
+        else {
+            var oData = {
+                "NumeroContrato": txtNumeroContrato.val(),
+                "t_Reservaciones.IDVehiculo": txtIDVehiculo.val(),
+            };
+            try {
 
+                var oUrl = 'Contratos/ListarContratosxTerminar';
+
+
+                var oProcessMessage = 'Buscando Contratos';
+                var success = function (result) {
+
+                    if (result.Data.length > 0) {
+
+                        document.getElementById('btnTerminarContrato').disabled = false;
+                        document.getElementById('txtIDVehiculo').disabled = true;
+                        document.getElementById('txtNumeroContrato').disabled = true;
+
+                        IDContrato = result.Data[0].IDContrato;
+                        var objImage = "";
+                        var image_64 = "";
+
+
+                        txtMarca.val(result.Data[0].objReservacion.t_Vehiculos.Marca);
+                        txtModelo.val(result.Data[0].objReservacion.t_Vehiculos.Modelo);
+                        txtAnno.val(result.Data[0].objReservacion.t_Vehiculos.Anno);
+                        txtCategoria.val(result.Data[0].objReservacion.t_Vehiculos.t_CategoriasVehiculos.NombreCategoriaVehiculo);
+                        txtNumeroContrato.val(result.Data[0].NumeroContrato);
+                        txtIDVehiculo.val(result.Data[0].objReservacion.t_Vehiculos.IDVehiculo);
+                        txtKilometrajeInicial.val(result.Data[0].objReservacion.t_Vehiculos.Kilometraje);
+                        txtKilometrajeFinal.val(0);
+
+                        var previewFrontal = document.getElementById('imgFrontalVehiculo');
+                        var previewTrasera = document.getElementById('imgTraseraVehiculo');
+                        var previewIzquierda = document.getElementById('imgCostadoIzquierdaVehiculo');
+                        var previewDerecha = document.getElementById('imgCostadoDerechoVehiculo');
+
+
+                        imgFrontalVehiculo = result.Data[0].FrontalVehiculos;
+                        if (imgFrontalVehiculo != null) {
+                            objImage = bin2string(imgFrontalVehiculo);
+                            image_64 = btoa(objImage);
+                            previewFrontal.src = "data:image/jpg;base64," + image_64;
+                            imgFrontalVehiculo = previewFrontal.src;
+                            document.getElementById("chkFrontalVehiculo").disabled = false;
+                        }
+                        else {
+                            document.getElementById("chkFrontalVehiculo").disabled = true;
+                        }
+
+                        imgTraseraVehiculo = result.Data[0].TraseraVehiculos;
+                        if (imgTraseraVehiculo != null) {
+                            objImage = bin2string(imgTraseraVehiculo);
+                            image_64 = btoa(objImage);
+                            previewTrasera.src = "data:image/jpg;base64," + image_64;
+                            imgTraseraVehiculo = previewTrasera.src;
+                            document.getElementById("chkTraseraVehiculo").disabled = false;
+                        }
+                        else {
+                            document.getElementById("chkTraseraVehiculo").disabled = true;
+                        }
+
+
+                        imgCostadoIzquierdaVehiculo = result.Data[0].IzquierdaVehiculos;
+                        if (imgCostadoIzquierdaVehiculo != null) {
+                            objImage = bin2string(imgCostadoIzquierdaVehiculo);
+                            image_64 = btoa(objImage);
+                            previewIzquierda.src = "data:image/jpg;base64," + image_64;
+                            imgCostadoIzquierdaVehiculo = previewIzquierda.src;
+                            document.getElementById("chkCostadoIzquierdoVehiculo").disabled = false;
+                        }
+                        else {
+                            document.getElementById("chkCostadoIzquierdoVehiculo").disabled = true;
+                        }
+
+                        imgCostadoDerechoVehiculo = result.Data[0].DerechaVehiculos;
+                        if (imgCostadoDerechoVehiculo != null) {
+                            objImage = bin2string(imgCostadoDerechoVehiculo);
+                            image_64 = btoa(objImage);
+                            previewDerecha.src = "data:image/jpg;base64," + image_64;
+                            imgCostadoDerechoVehiculo = previewDerecha.src;
+                            document.getElementById("chkCostadoDerechoVehiculo").disabled = false;
+                        }
+                        else {
+                            document.getElementById("chkCostadoDerechoVehiculo").disabled = true;
+                        }
+                    }
+                    else {
+                        Dialog.alert('Contratos', result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage, function () {
+
+                        })
+                    };
+                };
+                app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
+            } catch (ex) {
+
+                retorno = false;
+            }
+
+        }
     }
 
     var fnTerminarContrato = function (e) {

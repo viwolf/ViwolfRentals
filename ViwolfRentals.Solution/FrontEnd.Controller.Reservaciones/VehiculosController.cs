@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Viwolf.BusinessLogic;
 using Viwolf.BusinessLogic.Interface;
+using ViwolfRental.Common.Filters;
 using ViwolfRental.Common.Model;
 
 namespace FrontEnd.Controllers.Viwolf
@@ -22,7 +23,7 @@ namespace FrontEnd.Controllers.Viwolf
             ViewBag.IdUsuario = idUsuario;
             return View();
         }
-
+        [AuthorizeUser(IdPantalla: 3)]
         public ActionResult CreacionVehiculos(string usuario, string idUsuario)
         {
             ViewBag.Usuario = usuario;
@@ -30,6 +31,7 @@ namespace FrontEnd.Controllers.Viwolf
             return View();
         }
 
+        [AuthorizeUser(IdPantalla: 4)]
         [HttpPost]
         public JsonResult ListarVehiculos(t_Vehiculos vehiculos)
         {

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Viwolf.BusinessLogic;
 using Viwolf.BusinessLogic.Interface;
+using ViwolfRental.Common.Filters;
 
 namespace FrontEnd.Controllers.Viwolf
 {
@@ -14,6 +15,7 @@ namespace FrontEnd.Controllers.Viwolf
         IPagosComisionesBL BlComision = new PagosComisionesBL();
         private static string rolUsuario;
 
+        [AuthorizeUser(IdPantalla: 9)]
         public ActionResult Index(string usuario, string idUsuario, string RolUsuario)
         {
             ViewBag.Usuario = usuario;

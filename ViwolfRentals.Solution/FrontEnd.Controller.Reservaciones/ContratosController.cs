@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Viwolf.BusinessLogic;
 using Viwolf.BusinessLogic.Interface;
+using ViwolfRental.Common.Filters;
 
 namespace FrontEnd.Controllers.Viwolf
 {
@@ -24,6 +25,7 @@ namespace FrontEnd.Controllers.Viwolf
             return View();
         }
 
+        [AuthorizeUser(IdPantalla: 6)]
         public ActionResult Control(string usuario, string idUsuario)
         {
             ViewBag.Usuario = usuario;
@@ -219,6 +221,7 @@ namespace FrontEnd.Controllers.Viwolf
         }
 
         [HttpPost]
+        [AuthorizeUser(IdPantalla: 11)]
         public JsonResult ExtenderContrato(ViwolfRental.Common.Model.t_Contratos contrato)
         {
             try
@@ -277,7 +280,7 @@ namespace FrontEnd.Controllers.Viwolf
                     MessageType = "Success",
                     InfoMessage = jsonObjet.Count() > 0 ?
                             "Proceso efectuado satisfactoriamente." :
-                            "No existen comisiones por pagar que coincidan con los criterios de búsqueda.",
+                            "No existen contratos que coincidan con los criterios de búsqueda.",
                     ErrorMessage = string.Empty
                 }, JsonRequestBehavior.AllowGet);
             }
