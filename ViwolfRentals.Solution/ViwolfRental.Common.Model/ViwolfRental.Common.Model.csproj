@@ -82,6 +82,9 @@
     <Compile Include="t_ContratosTerminados.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
+    <Compile Include="t_CuentasxCobrar.cs">
+      <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
+    </Compile>
     <Compile Include="t_Departamentos.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>

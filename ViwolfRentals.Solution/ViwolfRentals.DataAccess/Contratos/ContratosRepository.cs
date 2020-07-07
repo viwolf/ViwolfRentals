@@ -80,35 +80,63 @@ namespace ViwolfRentals.DataAccess
                         //Valida que la reservacion aplique comision, para ser guardado en pagos de comision
                         if (modelReservaciones.FirstOrDefault().AplicaComision == true)
                         {
-                            /***************************** VEHICULOS *******************************/
-                            t_Vehiculos objVehiculos = new t_Vehiculos();
-                            objVehiculos.IDVehiculo = model.t_Reservaciones == null ? modelReservaciones.FirstOrDefault().IDVehiculo : model.t_Reservaciones.IDVehiculo;
+                            /***************************** PAGOS COMISION *******************************/
+                            if (modelReservaciones.FirstOrDefault().t_ClientesComisionistas != null)
+                            {
+                                /***************************** VEHICULOS *******************************/
+                                t_Vehiculos objVehiculos = new t_Vehiculos();
+                                objVehiculos.IDVehiculo = model.t_Reservaciones == null ? modelReservaciones.FirstOrDefault().IDVehiculo : model.t_Reservaciones.IDVehiculo;
 
 
-                            IVehiculosRepository repositoryVehiculo = new VehiculosRepository(ConnectionManagerInstance);
-                            repositoryVehiculo.Conexion = connection;
-                            repositoryVehiculo.Transaccion = transaction;
+                                IVehiculosRepository repositoryVehiculo = new VehiculosRepository(ConnectionManagerInstance);
+                                repositoryVehiculo.Conexion = connection;
+                                repositoryVehiculo.Transaccion = transaction;
 
-                            var modelVehiculo = repositoryVehiculo.ListarVehiculos(objVehiculos);
-
-                            /***************************** PAGO COMISION *******************************/
-                            t_PagosComisiones objPagos = new t_PagosComisiones();
-                            IPagosComisionesRepository pagos = new PagosComisionesRepository(ConnectionManagerInstance);
+                                var modelVehiculo = repositoryVehiculo.ListarVehiculos(objVehiculos);
 
 
-                            objPagos.UsuarioCreacion = resultado.UsuarioCreacion;
-                            objPagos.IDClienteComisionista = modelReservaciones.FirstOrDefault().t_ClientesComisionistas.IDClienteComisionista;
-                            objPagos.IDContrato = resultado.IDContrato;
-                            objPagos.PrecioTotal = resultado.TotalContrato;
-                            objPagos.PorcentajeComision = modelVehiculo.FirstOrDefault().t_CategoriasVehiculos.Comision;
+                                /***************************** PAGO COMISION *******************************/
+                                t_PagosComisiones objPagos = new t_PagosComisiones();
+                                IPagosComisionesRepository pagos = new PagosComisionesRepository(ConnectionManagerInstance);
 
-                            objPagos.TotalPagar = (((decimal)objPagos.PorcentajeComision / (decimal)100) * (decimal)objPagos.PrecioTotal);
-                            objPagos.ComisionPaga = false;
 
-                            pagos.Conexion = connection;
-                            pagos.Transaccion = transaction;
+                                objPagos.UsuarioCreacion = resultado.UsuarioCreacion;
+                                objPagos.IDClienteComisionista = modelReservaciones.FirstOrDefault().t_ClientesComisionistas.IDClienteComisionista;
+                                objPagos.IDContrato = resultado.IDContrato;
+                                objPagos.PrecioTotal = resultado.TotalContrato;
+                                objPagos.PorcentajeComision = modelVehiculo.FirstOrDefault().t_CategoriasVehiculos.Comision;
 
-                            var resultadoPagoComision = pagos.Guardar(objPagos);
+                                objPagos.TotalPagar = (((decimal)objPagos.PorcentajeComision / (decimal)100) * (decimal)objPagos.PrecioTotal);
+                                objPagos.ComisionPaga = false;
+
+                                pagos.Conexion = connection;
+                                pagos.Transaccion = transaction;
+
+                                var resultadoPagoComision = pagos.Guardar(objPagos);
+                            }
+                            else
+                            {
+                                /***************************** CUENTAS X COBRAR *******************************/
+                                if (modelReservaciones.FirstOrDefault().t_Proveedores != null)
+                                {
+                                    t_CuentasxCobrar objCxC = new t_CuentasxCobrar();
+                                    IPagosComisionesRepository pagos = new PagosComisionesRepository(ConnectionManagerInstance);
+
+                                    objCxC.UsuarioCreacion = resultado.UsuarioCreacion;
+                                    objCxC.IdProveedor = modelReservaciones.FirstOrDefault().t_Proveedores.IdProveedor;
+                                    objCxC.IDContrato = resultado.IDContrato;
+                                    objCxC.Total = resultado.TotalContrato;
+
+                                    objCxC.CuentaCobrada = false;
+
+                                    pagos.Conexion = connection;
+                                    pagos.Transaccion = transaction;
+
+                                    var resultadoPagoComision = pagos.GuardarCuentasCobrar(objCxC);
+                                }
+
+                            }
+
                         }
 
                         transaction.Commit();

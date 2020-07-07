@@ -12,9 +12,19 @@ namespace Viwolf.BusinessLogic
     {
         ViwolfRentals.DataAccess.Interface.IPagosComisionesRepository repository = new ViwolfRentals.DataAccess.PagosComisionesRepository(null);
 
+        public IEnumerable<t_CuentasxCobrar> AplicarCxC(IEnumerable<t_CuentasxCobrar> EnumPagosComisiones, t_CuentasxCobrar pagosComisiones)
+        {
+            return repository.AplicarCuentasCobrar(EnumPagosComisiones, pagosComisiones);
+        }
+
         public IEnumerable<t_PagosComisiones> ListarComisiones(t_PagosComisiones entidad)
         {
             return repository.ListarComisiones(entidad);
+        }
+
+        public IEnumerable<t_CuentasxCobrar> ListarCuentasPorCobrar(t_CuentasxCobrar entidad)
+        {
+            return repository.ListarCuentasCobrar(entidad);
         }
 
         public IEnumerable<t_PagosComisiones> PagarComisiones(IEnumerable<t_PagosComisiones> EnumPagosComisiones, t_PagosComisiones pagosComisiones)

@@ -12,8 +12,8 @@ namespace ViwolfRentals.DataAccess
 {
     public class PagosComisionesRepository : IPagosComisionesRepository
     {
+        #region Pago de Comisiones
 
-        
         public PagosComisionesRepository(IConnectionManager connectionManagerInstance)
         {
             ConnectionManagerInstance = connectionManagerInstance == null ? new ConnectionManager() : connectionManagerInstance;
@@ -268,6 +268,254 @@ namespace ViwolfRentals.DataAccess
 
 
         }
+
+        #endregion
+
+        #region Cuentas x Cobrar
+        public IEnumerable<t_CuentasxCobrar> ListarCuentasCobrar(t_CuentasxCobrar entity)
+        {
+            try
+            {
+                if (Conexion != null)
+                {
+                    //Se manda a guardar el encabezado
+                    return DoListarCuentasxCobrar(Conexion, entity);
+                }
+                else
+                {
+                    using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+                    {
+                        //se abre la conexion ya que se va a trabajar con transaccionabilidad
+                        connection.Open();
+
+                        //se crea el objeto transaccion
+                        using (IDbTransaction transaction = connection.BeginTransaction())
+                        {
+                            try
+                            {
+                                Transaccion = transaction;
+                                //Se manda a guardar el encabezado
+                                var resultado = DoListarCuentasxCobrar(connection, entity);
+
+                                transaction.Commit();
+
+                                return resultado;
+                            }
+                            catch (Exception x)
+                            {
+                                transaction.Rollback();
+                                throw;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public t_CuentasxCobrar GuardarCuentasCobrar(t_CuentasxCobrar model)
+        {
+            if (Conexion != null)
+            {
+                var resultado = DoGuardarCuentaxCobrar(Conexion, model);
+                return resultado;
+            }
+            else
+            {
+                //Si no se maneja transaccionabilidad se hace la conexion normal
+                using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+                {
+                    //se abre la conexion ya que se va a trabajar con transaccionabilidad
+                    connection.Open();
+
+                    //se crea el objeto transaccion
+                    using (IDbTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            Transaccion = transaction;
+
+                            //Se manda a guardar el encabezado
+                            var resultado = DoGuardarCuentaxCobrar(connection, model);
+
+                            transaction.Commit();
+
+                            return resultado;
+                        }
+                        catch (Exception x)
+                        {
+                            transaction.Rollback();
+                            throw;
+                        }
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<t_CuentasxCobrar> AplicarCuentasCobrar(IEnumerable<t_CuentasxCobrar> EnumPagosComisiones, t_CuentasxCobrar pagosComisiones)
+        {
+            if (Conexion != null)
+            {
+                var resultado = DoAplicarCuentasCobrar(Conexion, EnumPagosComisiones, pagosComisiones);
+                return resultado;
+            }
+            else
+            {
+                //Si no se maneja transaccionabilidad se hace la conexion normal
+                using (IDbConnection connection = ConnectionManagerInstance.GetConnection(ConnectionManager.ViwolfRentalsdatabase))
+                {
+                    //se abre la conexion ya que se va a trabajar con transaccionabilidad
+                    connection.Open();
+
+                    //se crea el objeto transaccion
+                    using (IDbTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            Transaccion = transaction;
+
+                            //Se manda a guardar el encabezado
+                            var resultado = DoAplicarCuentasCobrar(connection, EnumPagosComisiones, pagosComisiones);
+
+                            transaction.Commit();
+
+                            return resultado;
+                        }
+                        catch (Exception x)
+                        {
+                            transaction.Rollback();
+                            throw;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        private IEnumerable<t_CuentasxCobrar> DoListarCuentasxCobrar(IDbConnection connection, t_CuentasxCobrar entity)
+        {
+
+            return connection.Query<
+               t_CuentasxCobrar,
+               t_Proveedores,
+               t_Contratos,
+               t_Reservaciones,
+               t_CuentasxCobrar>
+               ("usp_CuentasCobrar_Listar",
+               (a, b, c, d) =>
+               {
+                   a.t_Proveedores = (t_Proveedores)b;
+                   a.t_Contratos = (t_Contratos)c;
+                   a.t_Contratos.t_Reservaciones = (t_Reservaciones)d;
+                   return a;
+               },
+               splitOn: "IdProveedor , IDContrato, IdReservacion",
+               param: new
+               {
+                   entity.IdProveedor,
+                   NombreProveedor = entity.t_Proveedores.NombreProveedor,
+                   entity.CuentaCobrada,
+                   IDEstadoContrato = entity.t_Contratos.IDEstadoContrato
+               }, transaction: Transaccion, commandTimeout: 500, commandType: CommandType.StoredProcedure);
+        }
+
+        private t_CuentasxCobrar DoGuardarCuentaxCobrar(IDbConnection connection, t_CuentasxCobrar entity)
+        {
+            StringBuilder tracerBuilder = new StringBuilder();
+
+            try
+            {
+                tracerBuilder.AppendLine($"Se procede a guardar la cuenta x cobrar. {Environment.NewLine}");
+                var IdContrato = (int)connection.ExecuteScalar(
+                                              sql: "usp_CuentasxCobrar_Guardar",
+                                              param: new
+                                              {
+                                                  entity.IDCuentaxCobrar,
+                                                  entity.UsuarioCreacion,
+                                                  entity.UsuarioModificacion,
+                                                  entity.IdProveedor,
+                                                  entity.IDContrato,
+                                                  entity.Total,
+                                                  entity.CuentaCobrada
+                                              },
+                                              transaction: Transaccion,
+                                              commandTimeout: 500,
+                                              commandType: CommandType.StoredProcedure);
+
+
+                entity.IDContrato = IdContrato;
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                //tracerBuilder.AppendLine($"Falló guardar reservacion. Error: {ex.ToString()}\nEntity={entity.SerializeToJson()}");
+                throw;
+            }
+
+
+        }
+
+        private IEnumerable<t_CuentasxCobrar> DoAplicarCuentasCobrar(IDbConnection connection, IEnumerable<t_CuentasxCobrar> EnumPagosComisiones, t_CuentasxCobrar pagosComisiones)
+        {
+
+            System.Data.DataTable TblComisiones = new System.Data.DataTable();
+            TblComisiones.Columns.Add(new System.Data.DataColumn("IDPagoComision", typeof(int)));
+            TblComisiones.Columns.Add(new System.Data.DataColumn("PrecioTotal", typeof(decimal)));
+            TblComisiones.Columns.Add(new System.Data.DataColumn("TotalPagar", typeof(decimal)));
+
+            //System.Data.DataTable TblComisionesModificar = new System.Data.DataTable();
+            //TblComisionesModificar.Columns.Add(new System.Data.DataColumn("id", typeof(string)));
+            //TblComisionesModificar.Columns.Add(new System.Data.DataColumn("porcentaje", typeof(int)));
+
+
+
+            foreach (var item in EnumPagosComisiones)
+            {
+                TblComisiones.Rows.Add(item.IDCuentaxCobrar, 0, 0);
+            }
+
+            //if (pagosComisiones.ExtendedProperties != null)
+            //{
+
+            //    foreach (var item in pagosComisiones.ExtendedProperties)
+            //    {
+            //        TblComisionesModificar.Rows.Add(item.Key, item.Value);
+            //    }
+            //}
+
+
+            StringBuilder tracerBuilder = new StringBuilder();
+
+            try
+            {
+                tracerBuilder.AppendLine($"Se procede a aplicar la cuenta x pagar. {Environment.NewLine}");
+                var Ejecucion = (int)connection.ExecuteScalar(
+                                              sql: "usp_CuentasxCobrar_Aplicar",
+                                              param: new
+                                              {
+                                                  Comisiones = TblComisiones
+                                              },
+                                              transaction: Transaccion,
+                                              commandTimeout: 500,
+                                              commandType: CommandType.StoredProcedure);
+
+                if (Ejecucion == 1)
+                    return EnumPagosComisiones;
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                //tracerBuilder.AppendLine($"Falló guardar reservacion. Error: {ex.ToString()}\nEntity={entity.SerializeToJson()}");
+                throw;
+            }
+
+
+        }
+        #endregion
 
 
         public IConnectionManager ConnectionManagerInstance { get; private set; }

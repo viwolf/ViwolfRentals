@@ -15,6 +15,9 @@ namespace FrontEnd.Controllers.Viwolf
         IPagosComisionesBL BlComision = new PagosComisionesBL();
         private static string rolUsuario;
 
+
+        #region Pago de Comisiones
+
         [AuthorizeUser(IdPantalla: 9)]
         public ActionResult Index(string usuario, string idUsuario, string RolUsuario)
         {
@@ -23,6 +26,7 @@ namespace FrontEnd.Controllers.Viwolf
             rolUsuario = RolUsuario;
             return View();
         }
+
 
         [HttpPost]
         public JsonResult ListarPagosComision(ViwolfRental.Common.Model.t_PagosComisiones pagosComisiones)
@@ -71,7 +75,7 @@ namespace FrontEnd.Controllers.Viwolf
         {
             try
             {
-                var result = BlComision.PagarComisiones(EnumPagosComisiones,pagosComisiones);
+                var result = BlComision.PagarComisiones(EnumPagosComisiones, pagosComisiones);
                 return Json(new
                 {
                     Data = result,
@@ -94,5 +98,97 @@ namespace FrontEnd.Controllers.Viwolf
                 }, JsonRequestBehavior.AllowGet);
             }
         }
+
+
+        #endregion
+
+        #region Cuentas x Cobrar
+
+        [AuthorizeUser(IdPantalla: 12)]
+        public ActionResult CuentasCobrar(string usuario, string idUsuario, string RolUsuario)
+        {
+            ViewBag.Usuario = usuario;
+            ViewBag.IdUsuario = idUsuario;
+            rolUsuario = RolUsuario;
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult ListarCuentasxCobrar(ViwolfRental.Common.Model.t_CuentasxCobrar cuentasxCobrar)
+        {
+            try
+            {
+                var result = BlComision.ListarCuentasPorCobrar(cuentasxCobrar);
+
+                var jsonObjet = (from ta in result
+                                 select new
+                                 {
+                                     ta.IDCuentaxCobrar,
+                                     ta.IDContrato,
+                                     ta.t_Contratos.NumeroContrato,
+                                     ta.t_Contratos.t_Reservaciones.NombreCliente,
+                                     ta.Total,
+                                     ta.CuentaCobrada,
+                                     chkPago = "<input id='chk_" + ta.IDCuentaxCobrar + "' type='checkbox'>"
+                                 }).AsEnumerable();
+                return Json(new
+                {
+                    Data = jsonObjet,
+                    MessageType = "Success",
+                    InfoMessage = jsonObjet.Count() > 0 ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen comisiones por pagar que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = ex.Message
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult AplicarCuentaxCobrar(IEnumerable<ViwolfRental.Common.Model.t_CuentasxCobrar> EnumPagosComisiones, ViwolfRental.Common.Model.t_CuentasxCobrar pagosComisiones)
+        {
+            try
+            {
+                var result = BlComision.AplicarCxC(EnumPagosComisiones, pagosComisiones);
+                return Json(new
+                {
+                    Data = result,
+                    MessageType = "Success",
+                    InfoMessage = result != null ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen comisiones por pagar que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = ex.Message
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        #endregion
+
+
+
+
+
+
+
     }
 }

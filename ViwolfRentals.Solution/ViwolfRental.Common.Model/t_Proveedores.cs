@@ -17,6 +17,7 @@ namespace ViwolfRental.Common.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public t_Proveedores()
         {
+            this.t_CuentasxCobrar = new HashSet<t_CuentasxCobrar>();
             this.t_Reservaciones = new HashSet<t_Reservaciones>();
         }
     
@@ -24,6 +25,8 @@ namespace ViwolfRental.Common.Model
         public string NombreProveedor { get; set; }
         public bool Activo { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<t_CuentasxCobrar> t_CuentasxCobrar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_Reservaciones> t_Reservaciones { get; set; }
     }

@@ -83,6 +83,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="t_CuentasxCobrar">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_CuentasxCobrar">
+        <MappingFragment StoreEntitySet="t_CuentasxCobrar">
+          <ScalarProperty Name="CuentaCobrada" ColumnName="CuentaCobrada" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="IDContrato" ColumnName="IDContrato" />
+          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IDCuentaxCobrar" ColumnName="IDCuentaxCobrar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="t_Departamentos">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Departamentos">
         <MappingFragment StoreEntitySet="t_Departamentos">

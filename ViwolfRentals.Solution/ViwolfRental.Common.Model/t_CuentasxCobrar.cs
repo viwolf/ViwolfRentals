@@ -12,31 +12,20 @@ namespace ViwolfRental.Common.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class t_ContratosTerminados
+    public partial class t_CuentasxCobrar
     {
-        public int IDContrato { get; set; }
+        public int IDCuentaxCobrar { get; set; }
         public System.DateTime FechaCreacion { get; set; }
         public string UsuarioCreacion { get; set; }
         public Nullable<System.DateTime> FechaModificacion { get; set; }
         public string UsuarioModificacion { get; set; }
-        public string NumeroContrato { get; set; }
-        public bool SurfRacks { get; set; }
-        public bool Cajon { get; set; }
-        public bool RtvSticker { get; set; }
-        public bool RtvPapel { get; set; }
-        public bool MarchamoSticker { get; set; }
-        public bool MarchamoPapel { get; set; }
-        public bool StickerPlaca { get; set; }
-        public bool TituloPropiedad { get; set; }
-        public byte[] FrontalVehiculos { get; set; }
-        public byte[] TraseraVehiculos { get; set; }
-        public byte[] IzquierdaVehiculos { get; set; }
-        public byte[] DerechaVehiculos { get; set; }
-        public string IDVehiculo { get; set; }
-        public int IDKilometraje { get; set; }
+        public int IdProveedor { get; set; }
+        public int IDContrato { get; set; }
+        public decimal Total { get; set; }
+        public bool CuentaCobrada { get; set; }
     
         public virtual t_Contratos t_Contratos { get; set; }
-        public virtual t_Kilometrajes t_Kilometrajes { get; set; }
+        public virtual t_Proveedores t_Proveedores { get; set; }
         public IDictionary<string, Object> ExtendedProperties { set; get; }
     }
 }
