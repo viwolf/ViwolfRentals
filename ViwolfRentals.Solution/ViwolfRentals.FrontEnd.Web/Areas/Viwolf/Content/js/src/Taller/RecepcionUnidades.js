@@ -4,6 +4,8 @@
     var txtMarca = $("#txtMarca");
     var txtModelo = $("#txtModelo");
     var txtAnno = $("#txtAnno");
+    var txtNombreCliente = $("#txtNombreCliente");
+    var txtTipoContrato = $("#txtTipoContrato");
     var txtCategoria = $("#txtCategoria");
     var txtCajon = $("#txtCajon");
     var txtSurfRacks = $("#txtSurfRacks");
@@ -16,8 +18,8 @@
     var txtKilometrajeInicial = $("#txtKilometrajeInicial");
     var txtKilometrajeFinal = $("#txtKilometrajeFinal");
     var txtRecorrido = $("#txtRecorrido");
-    var txtMarchamoSticker = $("#txtNombreCliente");
-    var txtMarchamoPapel = $("#txtTipoContrato");
+   // var txtMarchamoSticker = $("#txtNombreCliente");
+    //var txtMarchamoPapel = $("#txtTipoContrato");
     var imgFrontalVehiculo = $("#imgFrontalVehiculo");
     var chkFrontalVehiculo = $("#chkFrontalVehiculo");
     var imgTraseraVehiculo = $("#imgTraseraVehiculo");
@@ -38,9 +40,10 @@
     var previewTrasera = "";
     var previewIzquierda = "";
     var previewDerecha = "";
+   
 
     var fnInit = function () {
-        
+       
         $("#tabs").tabs();
         txtKilometrajeFinal.bind('keypress', valideKey);
         txtKilometrajeFinal.blur(function () {
@@ -128,6 +131,14 @@
         document.getElementById("chkTraseraVehiculo").disabled = true;
         document.getElementById("chkCostadoIzquierdoVehiculo").disabled = true;
         document.getElementById("chkCostadoDerechoVehiculo").disabled = true;
+        txtCajon.val("2");
+        txtSurfRacks.val("2");
+        txtRtvSticker.val("2");
+        txtRtvPapel.val("2");
+        txtMarchamoSticker.val("2");
+        txtMarchamoPapel.val("2");
+        txtPlacaSticker.val("2");
+        txtTituloPropiedad.val("2");
     };
 
     var fnBuscarContrato = function () {
@@ -169,6 +180,9 @@
                         txtIDVehiculo.val(result.Data[0].objReservacion.t_Vehiculos.IDVehiculo);
                         txtKilometrajeInicial.val(result.Data[0].objReservacion.t_Vehiculos.Kilometraje);
                         txtKilometrajeFinal.val(0);
+
+                        txtNombreCliente.val(result.Data[0].objReservacion.NombreCliente);
+                        txtTipoContrato.val(result.Data[0].objCodigo.DescripcionCodigoContrato);
 
                         previewFrontal = document.getElementById('imgFrontalVehiculo');
                         previewTrasera = document.getElementById('imgTraseraVehiculo');
@@ -240,14 +254,98 @@
         }
     }
 
-    var fnTerminarContrato = function (e) {
-       
-        if (txtKilometrajeFinal.val() == "0") {
-            Dialog.alert('Contrato', "Debe de digitar los valores de los Kilometrajes.", function () {
-            })
-        }
-        else {
+    var fnValidarCampos = function () {
+        
+        var validate = false;
 
+        if (txtCajon.val() == "2") {
+            Dialog.alert('Contrato', "Debe verificar los datos del vehiculo para continuar.", function () {
+            });
+            validate = false;
+        }
+        else
+            if (txtSurfRacks.val() == "2") {
+                Dialog.alert('Contrato', "Debe verificar los datos del vehiculo para continuar.", function () {
+                });
+                validate = false;
+            }
+            else
+                if (txtRtvSticker.val() == "2") {
+                    Dialog.alert('Contrato', "Debe verificar los datos del vehiculo para continuar.", function () {
+                    });
+                    validate = false;
+                }
+                else
+                    if (txtRtvPapel.val() == "2") {
+                        Dialog.alert('Contrato', "Debe verificar los datos del vehiculo para continuar.", function () {
+                        });
+                        validate = false;
+                    }
+                    else
+                        if (txtMarchamoSticker.val() == "2") {
+                            Dialog.alert('Contrato', "Debe verificar los datos del vehiculo para continuar.", function () {
+                            });
+                            validate = false;
+                        }
+                        else
+                            if (txtMarchamoPapel.val() == "2") {
+                                Dialog.alert('Contrato', "Debe verificar los datos del vehiculo para continuar.", function () {
+                                });
+                                validate = false;
+                            }
+                            else
+                                if (txtPlacaSticker.val() == "2") {
+                                    Dialog.alert('Contrato', "Debe verificar los datos del vehiculo para continuar.", function () {
+                                    });
+                                    validate = false;
+                                }
+                                else
+                                    if (txtTituloPropiedad.val() == "2") {
+                                        Dialog.alert('Contrato', "Debe verificar los datos del vehiculo para continuar.", function () {
+                                        });
+                                        validate = false;
+                                    }
+                                    else
+                                        if (txtKilometrajeFinal.val() == "0") {
+                                            Dialog.alert('Contrato', "Debe de digitar los valores de los Kilometrajes para continuar.", function () {
+                                            })
+                                            validate = false;
+                                        }
+                                        else
+                                            if ((document.getElementById("chkFrontalVehiculo").disabled == false) && (document.getElementById("chkFrontalVehiculo").checked == false)) {
+                                                Dialog.alert('Contrato', "Debe verificar las fotos del vehiculo para continuar.", function () {
+                                                })
+                                                validate = false;
+                                            }
+                                            else
+                                                if ((document.getElementById("chkTraseraVehiculo").disabled == false) && (document.getElementById("chkTraseraVehiculo").checked == false)) {
+                                                    Dialog.alert('Contrato', "Debe verificar las fotos del vehiculo para continuar.", function () {
+                                                    })
+                                                    validate = false;
+                                                }
+                                                else
+                                                    if ((document.getElementById("chkCostadoDerechoVehiculo").disabled == false) && (document.getElementById("chkCostadoDerechoVehiculo").checked == false)) {
+                                                        Dialog.alert('Contrato', "Debe verificar las fotos del vehiculo para continuar.", function () {
+                                                        })
+                                                        validate = false;
+                                                    }
+                                                    else
+                                                        if ((document.getElementById("chkCostadoIzquierdoVehiculo").disabled == false) && (document.getElementById("chkCostadoIzquierdoVehiculo").checked == false)) {
+                                                            Dialog.alert('Contrato', "Debe verificar las fotos del vehiculo para continuar.", function () {
+                                                            })
+                                                            validate = false;
+                                                        }
+                                                        else {
+                                                            validate = true;
+                                                        }
+        return validate;
+
+    }
+
+
+    var fnTerminarContrato = function (e) {
+
+        if (fnValidarCampos() == true) {
             var realDataVehiculoF = document.getElementById("chkFrontalVehiculo").checked == true ? fnBlock(imgFrontalVehiculo) : null;
             var realDataVehiculoT = document.getElementById("chkTraseraVehiculo").checked == true ? fnBlock(imgTraseraVehiculo) : null;
             var realDataVehiculoI = document.getElementById("chkCostadoIzquierdoVehiculo").checked == true ? fnBlock(imgCostadoIzquierdaVehiculo) : null;
