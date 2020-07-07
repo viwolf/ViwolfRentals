@@ -34,14 +34,16 @@
     var imgVehiculoIzquierda = null;
     var imgVehiculoDerecha = null;
     var IDContrato = 0;
-
+    var previewFrontal = "";
+    var previewTrasera = "";
+    var previewIzquierda = "";
+    var previewDerecha = "";
 
     var fnInit = function () {
         
         $("#tabs").tabs();
         txtKilometrajeFinal.bind('keypress', valideKey);
         txtKilometrajeFinal.blur(function () {
-           
             if (txtKilometrajeFinal == "") {
                 txtKilometrajeFinal.val(0);
             }
@@ -60,6 +62,10 @@
         btnBuscarContrato.click(fnBuscarContrato);
         btnLimpiar.click(fnLimpiarDatos);
         btnTerminarContrato.click(fnTerminarContrato);
+        imgFrontalVehiculo.click(function () { mifoto(previewFrontal.src); });
+        imgTraseraVehiculo.click(function () { mifoto(previewTrasera.src); });
+        imgCostadoDerechoVehiculo.click(function () { mifoto(previewDerecha.src); });
+        imgCostadoIzquierdaVehiculo.click(function () { mifoto(previewIzquierda.src); });
     };
 
     function bin2string(array) {
@@ -164,10 +170,10 @@
                         txtKilometrajeInicial.val(result.Data[0].objReservacion.t_Vehiculos.Kilometraje);
                         txtKilometrajeFinal.val(0);
 
-                        var previewFrontal = document.getElementById('imgFrontalVehiculo');
-                        var previewTrasera = document.getElementById('imgTraseraVehiculo');
-                        var previewIzquierda = document.getElementById('imgCostadoIzquierdaVehiculo');
-                        var previewDerecha = document.getElementById('imgCostadoDerechoVehiculo');
+                        previewFrontal = document.getElementById('imgFrontalVehiculo');
+                        previewTrasera = document.getElementById('imgTraseraVehiculo');
+                        previewIzquierda = document.getElementById('imgCostadoIzquierdaVehiculo');
+                        previewDerecha = document.getElementById('imgCostadoDerechoVehiculo');
 
 
                         imgFrontalVehiculo = result.Data[0].FrontalVehiculos;
@@ -294,6 +300,11 @@
             }
         };
     };
+
+    function mifoto(num) { //cambiar la imagen
+        f = num ; //ruta de la nueva imagen
+        document.images["fotoVisor"].src = f; //cambiar imagen
+    }
 
     $(function () {
         fnInit();
