@@ -183,7 +183,7 @@ namespace FrontEnd.Controllers.Viwolf
         }
 
         [HttpPost]
-        public ActionResult VerPagoCxC(int IDCuentaxCobrar)
+        public ActionResult VerPagoCxC(string IDCuentaxCobrar)
         {
             return RedirectToAction("VerPagoCxC", "Reportes", new { @IDCuentaxCobrar = IDCuentaxCobrar });
         }

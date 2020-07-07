@@ -129,7 +129,7 @@ namespace FrontEnd.Controllers.Viwolf
             return DoVerPagoComisiones(IDPagoComision);
         }
 
-        public JsonResult VerPagoCxC(int IDCuentaxCobrar)
+        public JsonResult VerPagoCxC(string IDCuentaxCobrar)
         {
             return DoVerPagoCxC(IDCuentaxCobrar);
         }
@@ -161,7 +161,7 @@ namespace FrontEnd.Controllers.Viwolf
 
         }
 
-        private JsonResult DoVerPagoCxC(int IDCuentaxCobrar)
+        private JsonResult DoVerPagoCxC(string IDCuentaxCobrar)
         {
             string reportName = "rptCuentasxCobrar";
             string sParametroValor = "IDCuentaxCobrar-" + IDCuentaxCobrar;

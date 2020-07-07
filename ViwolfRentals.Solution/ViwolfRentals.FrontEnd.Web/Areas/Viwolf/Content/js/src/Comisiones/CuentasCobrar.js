@@ -108,7 +108,7 @@
 
     var fnBuscarProveedores = function () {
 
-        debugger;
+        
         if ((txtIDClienteProveedor.val() == '') && (txtNombreClienteProveedor.val() == '')) {
             Dialog.alert('Comisiones', "Se debe de especificar algún criterio de búsqueda.", function () {
             })
