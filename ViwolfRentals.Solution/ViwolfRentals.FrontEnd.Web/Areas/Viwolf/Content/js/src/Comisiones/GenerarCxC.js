@@ -55,11 +55,11 @@
         debugger;
 
         try {
-            var oUrl = 'Reportes/VerPagoCxC';
+            var oUrl = 'VerPagoCxC';
             var oData =
             {
 
-                "IDCuentaxCobrar": idsPagos
+                "IDCuentaxCobrar":  idsPagos
             };
 
             var oProcessMessage = 'Generando reporte, espere por favor...';

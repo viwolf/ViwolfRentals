@@ -182,6 +182,11 @@ namespace FrontEnd.Controllers.Viwolf
             }
         }
 
+        [HttpPost]
+        public ActionResult VerPagoCxC(int IDCuentaxCobrar)
+        {
+            return RedirectToAction("VerPagoCxC", "Reportes", new { @IDCuentaxCobrar = IDCuentaxCobrar });
+        }
         #endregion
 
 

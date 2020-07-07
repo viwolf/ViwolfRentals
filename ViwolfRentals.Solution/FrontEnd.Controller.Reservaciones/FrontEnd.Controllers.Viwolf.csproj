@@ -7,8 +7,8 @@
     <ProjectGuid>{216E1D79-C1D4-4059-AB70-233ED2B589DE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FrontEnd.Controller.Reservaciones</RootNamespace>
-    <AssemblyName>FrontEnd.Controller.Reservaciones</AssemblyName>
+    <RootNamespace>FrontEnd.Controllers.Viwolf</RootNamespace>
+    <AssemblyName>FrontEnd.Controllers.Viwolf</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

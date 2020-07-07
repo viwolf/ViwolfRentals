@@ -43,7 +43,7 @@
             "ExtendedProperties": arrayModificacion
         }
         try {
-            var oUrl = 'Comisiones/AplicarCuentaxCobrar';
+            var oUrl = 'AplicarCuentaxCobrar';
             var oProcessMessage = 'Aplicando Cuentas';
 
             var success = function (result) {
@@ -122,7 +122,7 @@
                 "t_Contratos.IDEstadoContrato": configViwolf.EstadosContratos.Facturado
             };
             try {
-                var oUrl = 'Comisiones/ListarCuentasxCobrar';
+                var oUrl = 'ListarCuentasxCobrar';
                 var oProcessMessage = 'Buscando Cuentas por Cobrar';
                 var success = function (result) {
 

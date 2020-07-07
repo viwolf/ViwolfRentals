@@ -29,7 +29,6 @@ C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\Viw
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\roslyn\VBCSCompiler.exe
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\Antlr3.Runtime.dll
-C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\FrontEnd.Controller.Reservaciones.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\FrontEnd.Controllers.Seguridad.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\Microsoft.AspNet.Identity.Core.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\Microsoft.AspNet.Identity.Owin.dll
@@ -60,8 +59,6 @@ C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\Viw
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\Seguridad.DataAccess.Interface.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\Seguridad.DataAccess.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\Dapper.dll
-C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\FrontEnd.Controller.Reservaciones.pdb
-C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\FrontEnd.Controller.Reservaciones.dll.config
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\FrontEnd.Controllers.Seguridad.pdb
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\Viwolf.Rentals.Controllers.pdb
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\Viwolf.Rentals.Controllers.dll.config
@@ -119,3 +116,6 @@ C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\Viw
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\Microsoft.ReportViewer.Common.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\ViwolfRentals.FrontEnd.Configuration.pdb
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\FrontEnd.Controllers.Viwolf.dll
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\FrontEnd.Controllers.Viwolf.pdb
+C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\ViwolfRentals.FrontEnd.Web\bin\FrontEnd.Controllers.Viwolf.dll.config
