@@ -17,7 +17,7 @@ namespace ViwolfRental.Common.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public t_Vehiculos()
         {
-           
+           // this.t_Reservaciones = new HashSet<t_Reservaciones>();
         }
     
         public string IDVehiculo { get; set; }
@@ -60,7 +60,6 @@ namespace ViwolfRental.Common.Model
         public virtual t_Departamentos t_Departamentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual t_Reservaciones t_Reservaciones { get; set; }
-
         public IDictionary<string, Object> ExtendedProperties { set; get; }
     }
 }

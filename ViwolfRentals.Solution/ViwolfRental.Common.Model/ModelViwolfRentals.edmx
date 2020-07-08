@@ -94,7 +94,8 @@
           <Property Name="IdProveedor" Type="int" Nullable="false" />
           <Property Name="IDContrato" Type="int" Nullable="false" />
           <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="CuentaCobrada" Type="bit" Nullable="false" />
+          <Property Name="FechaAplicacion" Type="datetime" />
+          <Property Name="CuentaCobrada" Type="bit" />
         </EntityType>
         <EntityType Name="t_Departamentos">
           <Key>
@@ -212,7 +213,8 @@
           <Property Name="PrecioTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="PorcentajeComision" Type="int" Nullable="false" />
           <Property Name="TotalPagar" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="ComisionPaga" Type="bit" Nullable="false" />
+          <Property Name="FechaPago" Type="datetime" />
+          <Property Name="ComisionPaga" Type="bit" />
         </EntityType>
         <EntityType Name="t_Pantallas">
           <Key>
@@ -1111,7 +1113,8 @@
           <Property Name="IdProveedor" Type="Int32" Nullable="false" />
           <Property Name="IDContrato" Type="Int32" Nullable="false" />
           <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="CuentaCobrada" Type="Boolean" Nullable="false" />
+          <Property Name="FechaAplicacion" Type="DateTime" Precision="3" />
+          <Property Name="CuentaCobrada" Type="Boolean" />
           <NavigationProperty Name="t_Contratos" Relationship="ViwolfRentalsDBModel.FK_t_CuentasxCobrar_t_Contratos" FromRole="t_CuentasxCobrar" ToRole="t_Contratos" />
           <NavigationProperty Name="t_Proveedores" Relationship="ViwolfRentalsDBModel.FK_t_CuentasxCobrar_t_Proveedores" FromRole="t_CuentasxCobrar" ToRole="t_Proveedores" />
         </EntityType>
@@ -1245,7 +1248,8 @@
           <Property Name="PrecioTotal" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="PorcentajeComision" Type="Int32" Nullable="false" />
           <Property Name="TotalPagar" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="ComisionPaga" Type="Boolean" Nullable="false" />
+          <Property Name="FechaPago" Type="DateTime" Precision="3" />
+          <Property Name="ComisionPaga" Type="Boolean" />
           <NavigationProperty Name="t_ClientesComisionistas" Relationship="ViwolfRentalsDBModel.FK_t_PagosComisiones_t_ClientesComisionistas" FromRole="t_PagosComisiones" ToRole="t_ClientesComisionistas" />
           <NavigationProperty Name="t_Contratos" Relationship="ViwolfRentalsDBModel.FK_t_PagosComisiones_t_Contratos" FromRole="t_PagosComisiones" ToRole="t_Contratos" />
         </EntityType>
@@ -1879,6 +1883,7 @@
             <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_CuentasxCobrar">
               <MappingFragment StoreEntitySet="t_CuentasxCobrar">
                 <ScalarProperty Name="CuentaCobrada" ColumnName="CuentaCobrada" />
+                <ScalarProperty Name="FechaAplicacion" ColumnName="FechaAplicacion" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="IDContrato" ColumnName="IDContrato" />
                 <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
@@ -2002,6 +2007,7 @@
             <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_PagosComisiones">
               <MappingFragment StoreEntitySet="t_PagosComisiones">
                 <ScalarProperty Name="ComisionPaga" ColumnName="ComisionPaga" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
                 <ScalarProperty Name="TotalPagar" ColumnName="TotalPagar" />
                 <ScalarProperty Name="PorcentajeComision" ColumnName="PorcentajeComision" />
                 <ScalarProperty Name="PrecioTotal" ColumnName="PrecioTotal" />

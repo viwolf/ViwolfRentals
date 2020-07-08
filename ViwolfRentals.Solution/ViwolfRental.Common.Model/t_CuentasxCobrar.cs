@@ -22,10 +22,10 @@ namespace ViwolfRental.Common.Model
         public int IdProveedor { get; set; }
         public int IDContrato { get; set; }
         public decimal Total { get; set; }
-        public bool CuentaCobrada { get; set; }
+        public Nullable<System.DateTime> FechaAplicacion { get; set; }
+        public Nullable<bool> CuentaCobrada { get; set; }
     
         public virtual t_Contratos t_Contratos { get; set; }
         public virtual t_Proveedores t_Proveedores { get; set; }
-        public IDictionary<string, Object> ExtendedProperties { set; get; }
     }
 }

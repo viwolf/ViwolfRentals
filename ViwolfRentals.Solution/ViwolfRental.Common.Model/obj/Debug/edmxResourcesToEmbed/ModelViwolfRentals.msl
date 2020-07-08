@@ -87,6 +87,7 @@
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_CuentasxCobrar">
         <MappingFragment StoreEntitySet="t_CuentasxCobrar">
           <ScalarProperty Name="CuentaCobrada" ColumnName="CuentaCobrada" />
+          <ScalarProperty Name="FechaAplicacion" ColumnName="FechaAplicacion" />
           <ScalarProperty Name="Total" ColumnName="Total" />
           <ScalarProperty Name="IDContrato" ColumnName="IDContrato" />
           <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
@@ -210,6 +211,7 @@
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_PagosComisiones">
         <MappingFragment StoreEntitySet="t_PagosComisiones">
           <ScalarProperty Name="ComisionPaga" ColumnName="ComisionPaga" />
+          <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
           <ScalarProperty Name="TotalPagar" ColumnName="TotalPagar" />
           <ScalarProperty Name="PorcentajeComision" ColumnName="PorcentajeComision" />
           <ScalarProperty Name="PrecioTotal" ColumnName="PrecioTotal" />

@@ -89,7 +89,8 @@
     <Property Name="IdProveedor" Type="int" Nullable="false" />
     <Property Name="IDContrato" Type="int" Nullable="false" />
     <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="CuentaCobrada" Type="bit" Nullable="false" />
+    <Property Name="FechaAplicacion" Type="datetime" />
+    <Property Name="CuentaCobrada" Type="bit" />
   </EntityType>
   <EntityType Name="t_Departamentos">
     <Key>
@@ -207,7 +208,8 @@
     <Property Name="PrecioTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="PorcentajeComision" Type="int" Nullable="false" />
     <Property Name="TotalPagar" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="ComisionPaga" Type="bit" Nullable="false" />
+    <Property Name="FechaPago" Type="datetime" />
+    <Property Name="ComisionPaga" Type="bit" />
   </EntityType>
   <EntityType Name="t_Pantallas">
     <Key>

@@ -185,7 +185,7 @@
         btnGuardar.click(fnConfirmarGuardar);
 
         btnCargarVehiculo.click(function () {
-            debugger;
+            
             BuscarVehiculo.AbrirModal(fnCallBack, dateIni, dateFin,"Reservacion");
         });
     }
@@ -545,7 +545,7 @@
 
     var fnGuardarReservacion = function () {
         
-        debugger;
+        
         var proveedor = document.getElementById("txtProveedor");
         IdProveedor = proveedor.options[proveedor.selectedIndex].value;
 

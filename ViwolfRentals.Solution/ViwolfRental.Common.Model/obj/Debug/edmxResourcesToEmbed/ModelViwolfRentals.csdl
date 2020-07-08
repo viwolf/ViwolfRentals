@@ -241,7 +241,8 @@
     <Property Name="IdProveedor" Type="Int32" Nullable="false" />
     <Property Name="IDContrato" Type="Int32" Nullable="false" />
     <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-    <Property Name="CuentaCobrada" Type="Boolean" Nullable="false" />
+    <Property Name="FechaAplicacion" Type="DateTime" Precision="3" />
+    <Property Name="CuentaCobrada" Type="Boolean" />
     <NavigationProperty Name="t_Contratos" Relationship="ViwolfRentalsDBModel.FK_t_CuentasxCobrar_t_Contratos" FromRole="t_CuentasxCobrar" ToRole="t_Contratos" />
     <NavigationProperty Name="t_Proveedores" Relationship="ViwolfRentalsDBModel.FK_t_CuentasxCobrar_t_Proveedores" FromRole="t_CuentasxCobrar" ToRole="t_Proveedores" />
   </EntityType>
@@ -375,7 +376,8 @@
     <Property Name="PrecioTotal" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
     <Property Name="PorcentajeComision" Type="Int32" Nullable="false" />
     <Property Name="TotalPagar" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-    <Property Name="ComisionPaga" Type="Boolean" Nullable="false" />
+    <Property Name="FechaPago" Type="DateTime" Precision="3" />
+    <Property Name="ComisionPaga" Type="Boolean" />
     <NavigationProperty Name="t_ClientesComisionistas" Relationship="ViwolfRentalsDBModel.FK_t_PagosComisiones_t_ClientesComisionistas" FromRole="t_PagosComisiones" ToRole="t_ClientesComisionistas" />
     <NavigationProperty Name="t_Contratos" Relationship="ViwolfRentalsDBModel.FK_t_PagosComisiones_t_Contratos" FromRole="t_PagosComisiones" ToRole="t_Contratos" />
   </EntityType>

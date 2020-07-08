@@ -24,11 +24,11 @@ namespace ViwolfRental.Common.Model
         public decimal PrecioTotal { get; set; }
         public int PorcentajeComision { get; set; }
         public decimal TotalPagar { get; set; }
-        public bool ComisionPaga { get; set; }
+        public Nullable<System.DateTime> FechaPago { get; set; }
+        public Nullable<bool> ComisionPaga { get; set; }
     
         public virtual t_ClientesComisionistas t_ClientesComisionistas { get; set; }
         public virtual t_Contratos t_Contratos { get; set; }
-
         public IDictionary<string, Object> ExtendedProperties { set; get; }
     }
 }

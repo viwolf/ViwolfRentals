@@ -108,7 +108,7 @@
 
     var fnBuscarComisiones = function () {
 
-        debugger;
+       
         if ((txtIDClienteComisionista.val() == '') && (txtNombreClienteComisionista.val() == '')) {
             Dialog.alert('Comisiones', "Se debe de especificar algún criterio de búsqueda.", function () {
             })
