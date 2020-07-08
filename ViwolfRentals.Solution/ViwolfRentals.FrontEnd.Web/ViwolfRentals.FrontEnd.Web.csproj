@@ -624,6 +624,7 @@
     <Content Include="Areas\Viwolf\Views\Contratos\ExtenderContrato.cshtml" />
     <Content Include="Areas\Viwolf\Views\Taller\Index.cshtml" />
     <Content Include="Areas\Viwolf\Views\Comisiones\CuentasCobrar.cshtml" />
+    <Content Include="Areas\Viwolf\Views\Comisiones\ReporteComisiones.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

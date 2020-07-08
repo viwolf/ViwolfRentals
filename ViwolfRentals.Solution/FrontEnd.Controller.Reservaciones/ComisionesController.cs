@@ -99,6 +99,15 @@ namespace FrontEnd.Controllers.Viwolf
             }
         }
 
+        [AuthorizeUser(IdPantalla: 13)]
+        public ActionResult ReporteComisiones(string usuario, string idUsuario, string RolUsuario)
+        {
+            ViewBag.Usuario = usuario;
+            ViewBag.IdUsuario = idUsuario;
+            rolUsuario = RolUsuario;
+            return View();
+        }
+
 
         #endregion
 
