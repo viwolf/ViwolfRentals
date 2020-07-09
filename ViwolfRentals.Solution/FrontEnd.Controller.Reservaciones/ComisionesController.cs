@@ -161,6 +161,15 @@ namespace FrontEnd.Controllers.Viwolf
             return View();
         }
 
+        [AuthorizeUser(IdPantalla: 14)]
+        public ActionResult ReporteCxC(string usuario, string idUsuario, string RolUsuario)
+        {
+            ViewBag.Usuario = usuario;
+            ViewBag.IdUsuario = idUsuario;
+            rolUsuario = RolUsuario;
+            return View();
+        }
+
         [HttpPost]
         public JsonResult ListarCuentasxCobrar(ViwolfRental.Common.Model.t_CuentasxCobrar cuentasxCobrar)
         {
@@ -234,6 +243,48 @@ namespace FrontEnd.Controllers.Viwolf
         public ActionResult VerPagoCxC(string IDCuentaxCobrar)
         {
             return RedirectToAction("VerPagoCxC", "Reportes", new { @IDCuentaxCobrar = IDCuentaxCobrar });
+        }
+
+        [HttpPost]
+        public JsonResult ListarProveedores(ViwolfRental.Common.Model.t_Proveedores proveedores)
+        {
+            IProveedoresBL BlProveedor = new ProveedoresBL();
+
+            try
+            {
+                var result = BlProveedor.ListarProveedores(proveedores);
+                var jsonObjet = (from ta in result
+                                 select new
+                                 {
+                                     ta.IdProveedor,
+                                     ta.NombreProveedor
+                                 }).AsEnumerable();
+                return Json(new
+                {
+                    Data = jsonObjet,
+                    MessageType = "Success",
+                    InfoMessage = jsonObjet.Count() > 0 ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen Proveedores que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = ex.Message
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult VerReporteCxC(DateTime FechaInicial, DateTime FechaFinal, string IDProveedor, string CuentaCobrada)
+        {
+            return RedirectToAction("VerReporteCxC", "Reportes", new { @FechaInicial = FechaInicial, @FechaFinal = FechaFinal, @IDProveedor = IDProveedor, @CuentaCobrada = CuentaCobrada });
         }
         #endregion
 

@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "ReporteComisiones";
+    Layout = "~/Areas/Viwolf/Views/Shared/_LayoutReservacion.cshtml";
+}
+
+<!DOCTYPE html>
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>@ViewBag.Title - Reporte de comisiones</title>
+    @Styles.Render("~/bundles/Estilo/ViwolfRentalsReservaciones")
+
+    <!-- Estilo datepicker-->
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+
+
+
+    <script type="text/javascript">
+        var usuarioLogueado = '@ViewBag.Usuario';
+        var idUsuarioLogueado = '@ViewBag.IdUsuario'
+    </script>
+</head>
+
+
+<body>
+
+    <div class="card card-5">
+        <div class="card-heading">
+            <h2 class="title">Reporte de Cuentas x Cobrar</h2>
+        </div>
+        <div class="card-body">
+            <form id="formPagoCuentas" name="formPagoCuentas" class="smart-form">
+                <fieldset>
+                    <div class="row">
+                        <div class="col col-12 col-md-12">
+                            <div class="form-row m-b-55">
+                                <div class="col-2">
+                                    <div class="input-group-desc">
+                                        <input id="txtFechaInicio" class="input--style-5" type="text" name="txtFechaInicio">
+                                        <label class="label--desc">Fecha Inicio</label>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group-desc">
+                                        <input id="txtFechaFinal" class="input--style-5" type="text" name="txtFechaFinal">
+                                        <label class="label--desc">Fecha Final</label>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="input-group-desc">
+                                        <select id="txtEstadoCuentas" class="select--style-5">
+                                            <option value="2">Todos los Estados</option>
+                                            <option value="1">Cuentas Aplicadas</option>
+                                            <option value="0">Ceuntas Pendientes de aplicar</option>
+                                        </select>
+                                        <label class="label--desc">Estados</label>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="input-group-desc">
+                                        <select id="txtProveedores" class="select--style-5">
+                                            <option value="0">Todos proveedores</option>
+                                        </select>
+                                        <label class="label--desc">Proveedores</label>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class=" actions pull-right">
+                                        <button type="button" id="btnGenerarCuentas" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Buscar Reservacion">
+                                            <i class="fa fa-search"></i> Generar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</body>
+<div id="popupReport">
+
+
+    <div class="modal-body modal-scroll">
+        <div class="panel-body">
+            <div id="wid-id-2">
+                <!-- widget div-->
+                <div role="content">
+                    <div class="widget-body no-padding">
+                        <fieldset>
+                            <span id="reportes"></span>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+
+    </div>
+
+
+
+</div>
+
+@Scripts.Render("~/bundles/Content")
+
+
+
+<!-- Mensajes-->
+<script src="~/Content/js/src/Dialog.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="~/Areas/Viwolf/Content/js/src/Comisiones/ReporteCxX.js"></script>

@@ -139,6 +139,11 @@ namespace FrontEnd.Controllers.Viwolf
             return DoVerPagoCxC(IDCuentaxCobrar);
         }
 
+        public JsonResult VerReporteCxC(DateTime FechaInicial, DateTime FechaFinal, string IDProveedor, int CuentaCobrada)
+        {
+            return DoVerReporteCxC(FechaInicial, FechaFinal, IDProveedor, CuentaCobrada);
+        }
+
         public JsonResult TicketFactura(string IDFactura)
         {
             return DoTicketFactura(IDFactura);
@@ -188,6 +193,23 @@ namespace FrontEnd.Controllers.Viwolf
             string reportName = "rptTicketCuentasxCobrar";
             string sParametroValor = "IDCuentaxCobrar-" + IDCuentaxCobrar;
             //string paramVal = string.Format("{0}-{1}", reportName, IdDeposito);
+            var sb = GetStringBuilderReport(reportName, sParametroValor);
+
+            return this.Json(sb.ToString(), JsonRequestBehavior.AllowGet);
+
+        }
+
+        private JsonResult DoVerReporteCxC(DateTime FechaInicial, DateTime FechaFinal, string IDProveedor, int? CuentaCobrada)
+        {
+            string sParametroValor = "";
+            if (CuentaCobrada != 2)
+                sParametroValor = "FechaInicial-" + FechaInicial + ";FechaFinal-" + FechaFinal + ";IDProveedor-" + IDProveedor + ";CuentaCobrada-" + CuentaCobrada;
+            else
+                sParametroValor = "FechaInicial-" + FechaInicial + ";FechaFinal-" + FechaFinal + ";IDProveedor-" + IDProveedor;
+
+            string reportName = "rptCuentasCobrar";
+            // string sParametroValor = "FechaInicial-" + FechaInicial + "FechaFinal-" + FechaFinal + "IDClienteComisionista-" + IDClienteComisionista + "ComisionPaga-" + ComisionPaga;
+
             var sb = GetStringBuilderReport(reportName, sParametroValor);
 
             return this.Json(sb.ToString(), JsonRequestBehavior.AllowGet);
