@@ -56,29 +56,25 @@
                                 </div>
                                 <div class="col-3">
                                     <div class="input-group-desc">
-                                        <select id="txtEstadoComisiones"  class="select--style-5">
-                                            <option value="">Seleccione Estado</option>
+                                        <select id="txtEstadoComisiones" class="select--style-5">
+                                            <option value="2">Todos los Estados</option>
+                                            <option value="1">Comisiones Pagas</option>
+                                            <option value="0">Comisiones Pendientes de cancelar</option>
                                         </select>
                                         <label class="label--desc">Estados</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="input-group-desc">
-                                        <select id="txtComisionistas"  class="select--style-5">
-                                            <option value="">Seleccione comisionista</option>
+                                        <select id="txtComisionistas" class="select--style-5">
+                                            <option value="0">Todos comisionistas</option>
                                         </select>
                                         <label class="label--desc">Comisionistas</label>
                                     </div>
                                 </div>
-                                <div class="col-1">
-                                    <div class="input-group-desc">
-                                        <input id="chkComisionista" type="checkbox" name="TodoComisionistas">
-                                        <label class="label--desc">Todos Comisionistas</label>
-                                    </div>
-                                </div>
-                                <div class="col-1">
+                                <div class="col-2">
                                     <div class=" actions pull-right">
-                                        <button type="button" id="btnBuscarComisiones" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Buscar Reservacion">
+                                        <button type="button" id="btnGenerarComisiones" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Buscar Reservacion">
                                             <i class="fa fa-search"></i> Generar
                                         </button>
                                     </div>
@@ -93,27 +89,9 @@
         </div>
     </div>
 </body>
-<div class="modal fade" id="popupReport" role="dialog" aria-labelledby="lockedModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel"><span id="tituloReporte"></span></h4>
-                </br>
-                <div id="mediosExportar">
-                    <div role="content">
-                        <div class="row small-padding">
-                            <div class="col-sm-12">
-                                <div class="actions pull-left">
-                                    <button type="button" id="btnGenerarExcel" class="btn btn-success btn-sm" data-role="tooltip" title="Generar"><span class="widget-icon">Exportar a Excel</span></button>
-                                    <button type="button" id="btnGenerarWord" class="btn btn-success btn-sm" data-role="tooltip" title="Generar"><span class="widget-icon">Exportar a Word</span></button>
-                                    <button type="button" id="btnGenerarPDF" class="btn btn-success btn-sm" data-role="tooltip" title="Generar"><span class="widget-icon">Exportar a PDF</span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div id="popupReport">
+    
+        
             <div class="modal-body modal-scroll">
                 <div class="panel-body">
                     <div id="wid-id-2">
@@ -133,8 +111,18 @@
 
             </div>
 
-        </div>
-    </div>
+
+   
 </div>
-<!-- End Form Modal -->
-<!-- End Form Modal -->
+
+@Scripts.Render("~/bundles/Content")
+
+
+
+<!-- Mensajes-->
+<script src="~/Content/js/src/Dialog.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="~/Areas/Viwolf/Content/js/src/Comisiones/ReporteComisiones.js"></script>

@@ -108,7 +108,46 @@ namespace FrontEnd.Controllers.Viwolf
             return View();
         }
 
+        [HttpPost]
+        public JsonResult ListarComisionistas(ViwolfRental.Common.Model.t_ClientesComisionistas clientesComisionistas)
+        {
+            try
+            {
+                IComisionistasBL BlComisionista = new ComisionistasBL();
+                var result = BlComisionista.ListarComisionistas(clientesComisionistas);
+                var jsonObjet = (from ta in result
+                                 select new
+                                 {
+                                     ta.IDClienteComisionista,
+                                     ta.NombreClienteComisionista
+                                 }).AsEnumerable();
+                return Json(new
+                {
+                    Data = jsonObjet,
+                    MessageType = "Success",
+                    InfoMessage = jsonObjet.Count() > 0 ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen comisionistas que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = ex.Message
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
 
+        [HttpPost]
+        public ActionResult VerReporteComisiones(DateTime FechaInicial, DateTime FechaFinal, string IDClienteComisionista, string ComisionPaga)
+        {
+           return RedirectToAction("VerReporteComisiones", "Reportes", new { @FechaInicial = FechaInicial, @FechaFinal = FechaFinal, @IDClienteComisionista = IDClienteComisionista, @ComisionPaga = ComisionPaga });
+        }
         #endregion
 
         #region Cuentas x Cobrar

@@ -214,6 +214,7 @@
     <Content Include="Areas\Viwolf\Content\js\src\Comisiones\CuentasCobrar.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Comisiones\GenerarCxC.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Comisiones\GenerarPagoComision.js" />
+    <Content Include="Areas\Viwolf\Content\js\src\Comisiones\ReporteComisiones.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Contratos\ControlContratos.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Contratos\CreacionContratos.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Contratos\ExtenderContrato.js" />

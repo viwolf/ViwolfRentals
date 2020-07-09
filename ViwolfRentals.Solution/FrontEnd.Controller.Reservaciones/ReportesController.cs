@@ -129,6 +129,11 @@ namespace FrontEnd.Controllers.Viwolf
             return DoVerPagoComisiones(IDPagoComision);
         }
 
+        public JsonResult VerReporteComisiones(DateTime FechaInicial, DateTime FechaFinal, string IDClienteComisionista, int ComisionPaga)
+        {
+            return DoVerReporteComisiones(FechaInicial, FechaFinal, IDClienteComisionista, ComisionPaga);
+        }
+
         public JsonResult VerPagoCxC(string IDCuentaxCobrar)
         {
             return DoVerPagoCxC(IDCuentaxCobrar);
@@ -161,6 +166,23 @@ namespace FrontEnd.Controllers.Viwolf
 
         }
 
+        private JsonResult DoVerReporteComisiones(DateTime FechaInicial, DateTime FechaFinal, string IDClienteComisionista, int? ComisionPaga)
+        {
+            string sParametroValor = "";
+            if (ComisionPaga != 2)
+               sParametroValor = "FechaInicial-" + FechaInicial + ";FechaFinal-" + FechaFinal + ";IDClienteComisionista-" + IDClienteComisionista + ";ComisionPaga-" + ComisionPaga;
+            else
+               sParametroValor = "FechaInicial-" + FechaInicial + ";FechaFinal-" + FechaFinal + ";IDClienteComisionista-" + IDClienteComisionista;
+
+            string reportName = "rptPagoComisiones";
+           // string sParametroValor = "FechaInicial-" + FechaInicial + "FechaFinal-" + FechaFinal + "IDClienteComisionista-" + IDClienteComisionista + "ComisionPaga-" + ComisionPaga;
+            
+            var sb = GetStringBuilderReport(reportName, sParametroValor);
+
+            return this.Json(sb.ToString(), JsonRequestBehavior.AllowGet);
+
+        }
+
         private JsonResult DoVerPagoCxC(string IDCuentaxCobrar)
         {
             string reportName = "rptTicketCuentasxCobrar";
@@ -171,7 +193,6 @@ namespace FrontEnd.Controllers.Viwolf
             return this.Json(sb.ToString(), JsonRequestBehavior.AllowGet);
 
         }
-
 
         private string ObtenerUrlReportingService()
         {
@@ -186,10 +207,6 @@ namespace FrontEnd.Controllers.Viwolf
 
         private static StringBuilder GetStringBuilderReport(string name, string parametrosValor)
         {
-
-            // string sComandosRS = "&rs:Command=Render&rs:Format=HTML4.0&rc:Parameters=false";
-            // var parametros = string.Format("?rpt={0}&param={1}", listParamVal.First(), param);
-
             string Parametros =
                "?rpt=" + name +
                "&param=" +
