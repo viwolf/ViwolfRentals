@@ -23,6 +23,14 @@ namespace FrontEnd.Controllers.Viwolf
             return View();
         }
 
+        [AuthorizeUser(IdPantalla: 15)]
+        public ActionResult ReporteFacturas(string usuario, string idUsuario)
+        {
+            ViewBag.Usuario = usuario;
+            ViewBag.IdUsuario = idUsuario;
+            return View();
+        }
+
         [HttpPost]
         public JsonResult CrearFactura(ViwolfRental.Common.Model.t_Facturas Factura)
         {
@@ -52,6 +60,12 @@ namespace FrontEnd.Controllers.Viwolf
                     ErrorMessage = ex.Message
                 }, JsonRequestBehavior.AllowGet);
             }
+        }
+
+        [HttpPost]
+        public ActionResult VerReporteFacturas(DateTime FechaInicial, DateTime FechaFinal)
+        {
+            return RedirectToAction("VerReporteFacturas", "Reportes", new { @FechaInicial = FechaInicial, @FechaFinal = FechaFinal});
         }
     }
 }

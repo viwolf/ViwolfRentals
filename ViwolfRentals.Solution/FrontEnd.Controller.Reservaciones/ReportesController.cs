@@ -144,6 +144,10 @@ namespace FrontEnd.Controllers.Viwolf
             return DoVerReporteCxC(FechaInicial, FechaFinal, IDProveedor, CuentaCobrada);
         }
 
+        public JsonResult VerReporteFacturas(DateTime FechaInicial, DateTime FechaFinal)
+        {
+            return DoVerReporteFacturas(FechaInicial, FechaFinal);
+        }
         public JsonResult TicketFactura(string IDFactura)
         {
             return DoTicketFactura(IDFactura);
@@ -208,6 +212,19 @@ namespace FrontEnd.Controllers.Viwolf
                 sParametroValor = "FechaInicial-" + FechaInicial + ";FechaFinal-" + FechaFinal + ";IDProveedor-" + IDProveedor;
 
             string reportName = "rptCuentasCobrar";
+            // string sParametroValor = "FechaInicial-" + FechaInicial + "FechaFinal-" + FechaFinal + "IDClienteComisionista-" + IDClienteComisionista + "ComisionPaga-" + ComisionPaga;
+
+            var sb = GetStringBuilderReport(reportName, sParametroValor);
+
+            return this.Json(sb.ToString(), JsonRequestBehavior.AllowGet);
+
+        }
+
+        private JsonResult DoVerReporteFacturas(DateTime FechaInicial, DateTime FechaFinal)
+        {
+            var sParametroValor = "FechaInicial-" + FechaInicial + ";FechaFinal-" + FechaFinal;
+
+            string reportName = "rptFacturas";
             // string sParametroValor = "FechaInicial-" + FechaInicial + "FechaFinal-" + FechaFinal + "IDClienteComisionista-" + IDClienteComisionista + "ComisionPaga-" + ComisionPaga;
 
             var sb = GetStringBuilderReport(reportName, sParametroValor);
