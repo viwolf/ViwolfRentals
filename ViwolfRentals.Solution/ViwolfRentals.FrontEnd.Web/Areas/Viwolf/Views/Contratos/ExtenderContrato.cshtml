@@ -27,102 +27,151 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col col-12 col-md-12">
-                                <div class="form-row m-b-55">
-                                   
-                                        <div class="row row-refine">
-                                            <div class="col-3">
-                                                <div class="input-group-desc">
-                                                    <input id="txtFechaInicio" class="input--style-5" type="text" name="txtFechaInicio">
-                                                    <label class="label--desc">Fecha Inicio</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="input-group-desc">
-                                                    <input id="txtHoraInicio" class="input--style-5" type="time" name="txtHoraInicio">
-                                                    <label class="label--desc">Hora Inicio</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="input-group-desc">
-                                                    <input id="txtFechaFinal" class="input--style-5" type="text" name="txtFechaFinal">
-                                                    <label class="label--desc">Fecha Entrega</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="input-group-desc">
-                                                    <input id="txtHoraEntrega" class="input--style-5" type="time" name="txtHoraEntrega">
-                                                    <label class="label--desc">Hora Entrega</label>
+                                <div id="tabs">
+                                    <ul>
+                                        <li><a href="#tabs-1">Extencion</a></li>
+                                        <li><a href="#tabs-2">Disminucion</a></li>
+                                    </ul>
+                                    <div id="tabs-1" width="100%">
+                                        <br />
+                                        <br />
+                                        <div class="row">
+                                            <div class="col col-12 col-md-12">
+                                                <div class="form-row m-b-55">
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <input id="txtFechaInicio" class="input--style-5" type="text" name="txtFechaInicio">
+                                                            <label class="label--desc">Fecha Inicio</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <input id="txtHoraInicio" class="input--style-5" type="time" name="txtHoraInicio">
+                                                            <label class="label--desc">Hora Inicio</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <input id="txtFechaFinal" class="input--style-5" type="text" name="txtFechaFinal">
+                                                            <label class="label--desc">Fecha Entrega</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <input id="txtHoraEntrega" class="input--style-5" type="time" name="txtHoraEntrega">
+                                                            <label class="label--desc">Hora Entrega</label>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                 
-                                    @*<div class="col-3">
-            <div class="input-group-desc">
-                <input id="TxtFechaInicio" class="input--style-5" type="text" name="FechaInicio">
-                <label class="label--desc">Fecha Inicio</label>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="input-group-desc">
-                <input id="txtHoraInicio" class="input--style-5" type="text" name="HoraInicio">
-                <label class="label--desc">Hora Inicio</label>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="input-group-desc">
-                <input id="TxtFechaEntrega" class="input--style-5" type="text" name="FechaEntrega">
-                <label class="label--desc">Fecha Entrega</label>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="input-group-desc">
-                <input id="txtHoraEntrega" class="input--style-5" type="text" name="HoraEntrega">
-                <label class="label--desc">Hora Entrega</label>
-            </div>
-        </div>*@
+
+                                        <div class="row">
+                                            <div class="col col-12 col-md-12">
+                                                <div class="form-row m-b-55">
+                                                    <div class="col-4">
+                                                        <div class="input-group-desc">
+                                                            <input id="txtMontoDia" class="input--style-5" type="text" name="MontoDia">
+                                                            <label class="label--desc">Monto Día</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="input-group-desc">
+                                                            <input id="txtMontoTotal" class="input--style-5" type="text" name="MontoTotal">
+                                                            <label class="label--desc">Monto Total</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="input-group-desc">
+                                                            <input id="txtIdVehiculo" class="input--style-5" type="text" name="Placa">
+                                                            <label class="label--desc">Placa</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col col-12 col-md-12">
+                                                <div class="col-md-12">
+                                                    <div class=" actions pull-right">
+                                                        <button type="button" id="btnCargarVehiculo" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Cambiar Contrato">
+                                                            Vehiculo
+                                                        </button>
+
+                                                        <button type="button" id="btnExtenderContrato" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Extender Contrato">
+                                                           Extender
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="tabs-2" width="100%">
+                                        <br />
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col col-12 col-md-12">
+                                                <div class="form-row m-b-55">
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <input disabled id="txtFechaInicioDisminucion" class="input--style-5" type="text" name="FechaInicioDisminucion">
+                                                            <label class="label--desc">Fecha Inicio</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <input disabled id="txtFechaFinalDisminucion" class="input--style-5" type="text" name="FechaFinalDisminucion">
+                                                            <label class="label--desc">Fecha Entrega</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <div class="input-group-desc">
+                                                            <input id="txtMontoDiaDisminucion" class="input--style-5" type="text" name="MontoDiaDisminucion">
+                                                            <label class="label--desc">Monto Día</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <div class="input-group-desc">
+                                                            <input id="txtMontoTotalDisminucion" class="input--style-5" type="text" name="MontoTotalDisminucion">
+                                                            <label class="label--desc">Monto Total</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <div class="input-group-desc">
+                                                            <input id="chkPenalidad" class="input--style-5" type="checkbox" name="Penalidad">
+                                                            <label class="label--desc">Penalidad</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col col-12 col-md-12">
+                                                <div class="col-md-12">
+                                                    <div class=" actions pull-right">
+                                                        <button type="button" id="btnExtenderContrato" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Extender Contrato">
+                                                            Disminuir
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col col-12 col-md-12">
-                                <div class="form-row m-b-55">
-                                    <div class="col-3">
-                                        <div class="input-group-desc">
-                                            <input id="txtMontoDia" class="input--style-5" type="text" name="MontoDia">
-                                            <label class="label--desc">Monto Día</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="input-group-desc">
-                                            <input id="txtMontoTotal" class="input--style-5" type="text" name="MontoTotal">
-                                            <label class="label--desc">Monto Total</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="input-group-desc">
-                                            <input id="txtIdVehiculo" class="input--style-5" type="text" name="Placa">
-                                            <label class="label--desc">Placa</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <button type="button" id="btnCargarVehiculo" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Extender Contrato">
-                                            Cambiar Vehiculo
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-md-12">
-                            <div class=" actions pull-right">
-                                <button type="button" id="btnExtenderContrato" class="btn btn-accion btn--radius-2 btn-primary btn-sm" data-role="tooltip" title="Extender Contrato">
-                                    <i class="fa fa-check-circle display-block fa-2x"></i> Extender contrato
-                                </button>
-                            </div>
-                        </div>
+
                     </fieldset>
                 </section>
             </div>

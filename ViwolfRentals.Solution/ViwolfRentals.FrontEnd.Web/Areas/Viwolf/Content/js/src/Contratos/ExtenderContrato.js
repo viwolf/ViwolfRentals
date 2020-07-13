@@ -11,6 +11,12 @@
     var txtIdVehiculo = $("#txtIdVehiculo");
     var btnCargarVehiculo = $("#btnCargarVehiculo");
     var btnExtenderContrato = $("#btnExtenderContrato");
+    var txtFechaInicioDisminucion = $("#txtFechaInicioDisminucion");
+    var txtFechaFinalDisminucion = $("#txtFechaFinalDisminucion");
+    var txtMontoDiaDisminucion = $("#txtMontoDiaDisminucion");
+    var txtMontoTotalDisminucion = $("#txtMontoTotalDisminucion");
+    var chkPenalidad = $("chkPenalidad");
+
     var objContrato = null;
     var cantidadDias = 0;
     var timeIn = 0;
@@ -98,6 +104,23 @@
 
         });
 
+        txtFechaFinalDisminucion.datepicker({
+            autoclose: true,
+            dateFormat: "dd/mm/yy",
+            onSelect: function (selected) {
+
+                var fechaInicial = moment(txtFechaInicioDisminucion.val(), 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
+                var fechaSeleccionada = moment(selected, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
+                dateFin = new Date(fechaSeleccionada);
+                txtFechaInicio.datepicker("option", "maxDate", selected);
+                cantidadDias = ((moment(fechaSeleccionada).diff(fechaInicial, 'days')));
+                calcularTarifaTotal();
+            },
+            maxDate: '+500D'
+        });
+        
+        txtFechaInicioDisminucion.datepicker('setDate', objContrato.FechaInicio);
+        txtFechaFinalDisminucion.datepicker('setDate', new Date());
     };
 
     var calcularTarifaTotal = function () {
@@ -114,6 +137,22 @@
         //}
         txtMontoDia.val(utils.formatterDolar.format(montoDia));
         txtMontoTotal.val(utils.formatterDolar.format(montoTotal));
+    };
+
+    var calcularTarifaTotalDisminucion = function () {
+        debugger;
+        var fechaInicial = moment(txtFechaInicioDisminucion.val(), 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
+        var fechaSeleccionada = moment(txtFechaFinalDisminucion.val(), 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
+        var cantidadDiasDisminucion = ((moment(fechaSeleccionada).diff(fechaInicial, 'days')));
+
+
+        var montoDia = txtMontoDiaDisminucion.val() == '' ? 0 : parseFloat(txtMontoDiaDisminucion.val().replace("$", ""));
+        var montoTotal = 0;
+
+        montoTotal = (montoDia * (cantidadDiasDisminucion + 1));
+
+        txtMontoDiaDisminucion.val(utils.formatterDolar.format(montoDia));
+        txtMontoTotalDisminucion.val(utils.formatterDolar.format(montoTotal));
     };
 
     var fnCallBack = function (data) {
@@ -138,7 +177,7 @@
     }
 
     var Init = function () {
-
+        $("#tabs").tabs();
         fnCargaFechas();
         llenarObjeto();
         btnCargarVehiculo.click(function () {
@@ -147,6 +186,10 @@
         txtMontoDia.bind('keypress', valideKey);
         txtMontoDia.blur(function () {
             calcularTarifaTotal();
+        });
+        txtMontoDiaDisminucion.bind('keypress', valideKey);
+        txtMontoDiaDisminucion.blur(function () {
+            calcularTarifaTotalDisminucion();
         });
         btnExtenderContrato.bind().click(fnConfirmarGuardar);
     };
@@ -170,8 +213,11 @@
     };
 
     var llenarObjeto = function () {
+        
         TxtContrato.val(objContrato.NumeroContrato);
         txtNombreClienteContrato.val(objContrato.NombreCliente);
+        txtFechaInicioDisminucion.val(objContrato.FechaInicio);
+
     };
 
     var abrirModal = function (objetoContrato, callback) {

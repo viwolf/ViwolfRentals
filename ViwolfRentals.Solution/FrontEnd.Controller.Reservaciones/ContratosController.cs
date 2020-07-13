@@ -130,8 +130,10 @@ namespace FrontEnd.Controllers.Viwolf
                                      ta.t_EstadosContratos.Descripcion,
                                      ta.TotalContrato,
                                      chkPago = "<input id='chk_" + ta.IDContrato + "' type='checkbox'>",
-                                     Extender = ta.t_EstadosContratos.IDEstadoContrato == 2 ? "<button id= 'btnE_" + ta.IDContrato + "' name='btnE_" + ta.IDContrato + "'><i class='fa fa-external-link-alt'></i></button>" : "<button disabled id= 'btnE_" + ta.IDContrato + "' name='btnE_" + ta.IDContrato + "'><i class='fa fa-external-link-alt'></i></button>"
-                                  
+                                     Extender = ta.t_EstadosContratos.IDEstadoContrato == 2 ? "<button id= 'btnE_" + ta.IDContrato + "' name='btnE_" + ta.IDContrato + "'><i class='fa fa-edit'></i></button>" : "<button disabled id= 'btnE_" + ta.IDContrato + "' name='btnE_" + ta.IDContrato + "'><i class='fa fa-edit'></i></button>"
+
+
+
                                  }).AsEnumerable();
                 return Json(new
                 {
