@@ -630,6 +630,7 @@
     <Content Include="Areas\Viwolf\Views\Comisiones\ReporteComisiones.cshtml" />
     <Content Include="Areas\Viwolf\Views\Comisiones\ReporteCxC.cshtml" />
     <Content Include="Areas\Viwolf\Views\Facturacion\ReporteFacturas.cshtml" />
+    <Content Include="Areas\Viwolf\Views\Dashboard\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

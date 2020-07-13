@@ -117,6 +117,7 @@
     <Compile Include="CategoriasVehiculosController.cs" />
     <Compile Include="ComisionistasController.cs" />
     <Compile Include="ContratosController.cs" />
+    <Compile Include="DashboardController.cs" />
     <Compile Include="DepartamentosController.cs" />
     <Compile Include="ComisionesController.cs" />
     <Compile Include="FacturacionController.cs" />

@@ -51,7 +51,7 @@
                         </a>
                         <div class="collapse" id="collapseViwolfRentals" aria-labelledby="headingTwo" data-parent="#layoutWiwolfRentals">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionReservaciones">
-                                <a class="nav-link" href="#">Dashboard</a>
+                                <a class="nav-link" href="@Url.Action("Index","Dashboard", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Dashboard</a>
                                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseReservaciones" aria-expanded="false" aria-controls="pagesCollapseReservaciones">
                                     Reservaciones
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
