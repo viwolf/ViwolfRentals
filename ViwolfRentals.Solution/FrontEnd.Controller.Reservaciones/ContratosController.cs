@@ -113,9 +113,6 @@ namespace FrontEnd.Controllers.Viwolf
         {
             try
             {
-
-              
-
                 var result = BlContrato.ListarContratos(contratos);
 
                 var jsonObjet = (from ta in result
@@ -267,7 +264,9 @@ namespace FrontEnd.Controllers.Viwolf
                                      ta.IzquierdaVehiculos,
                                      ta.DerechaVehiculos,
                                      objReservacion = ta.t_Reservaciones,
-                                     objCodigo = ta.t_CodigosContratos
+                                     objCodigo = ta.t_CodigosContratos,
+                                     FechaEntrega = string.Format("{0:d/M/yyyy}", ta.t_Reservaciones.FechaEntrega),
+
 
                                  }).AsEnumerable();
                 return Json(new

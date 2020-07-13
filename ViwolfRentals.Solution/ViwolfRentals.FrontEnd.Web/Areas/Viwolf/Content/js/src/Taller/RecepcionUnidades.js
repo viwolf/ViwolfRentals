@@ -18,7 +18,8 @@
     var txtKilometrajeInicial = $("#txtKilometrajeInicial");
     var txtKilometrajeFinal = $("#txtKilometrajeFinal");
     var txtRecorrido = $("#txtRecorrido");
-   // var txtMarchamoSticker = $("#txtNombreCliente");
+    var txtFechaRetorno = $("#txtFechaRetorno");
+    // var txtMarchamoSticker = $("#txtNombreCliente");
     //var txtMarchamoPapel = $("#txtTipoContrato");
     var imgFrontalVehiculo = $("#imgFrontalVehiculo");
     var chkFrontalVehiculo = $("#chkFrontalVehiculo");
@@ -40,10 +41,10 @@
     var previewTrasera = "";
     var previewIzquierda = "";
     var previewDerecha = "";
-   
+
 
     var fnInit = function () {
-       
+
         $("#tabs").tabs();
         txtKilometrajeFinal.bind('keypress', valideKey);
         txtKilometrajeFinal.blur(function () {
@@ -142,7 +143,14 @@
     };
 
     var fnBuscarContrato = function () {
-
+        var previewFrontal = document.getElementById('imgFrontalVehiculo');
+        var previewTrasera = document.getElementById('imgTraseraVehiculo');
+        var previewIzquierda = document.getElementById('imgCostadoIzquierdaVehiculo');
+        var previewDerecha = document.getElementById('imgCostadoDerechoVehiculo');
+        previewFrontal.src = "";
+        previewTrasera.src = "";
+        previewIzquierda.src = "";
+        previewDerecha.src = "";
         if ((txtNumeroContrato.val() == "") && (txtIDVehiculo.val() == "")) {
             Dialog.alert('Contratos', "Debe de digitar el número de contrato o la placa del vehiculo.", function () {
             })
@@ -163,6 +171,12 @@
 
                     if (result.Data.length > 0) {
 
+                        if (txtNumeroContrato.val() != result.Data[0].NumeroContrato) {
+                            Dialog.alert('Contratos', "El contrato posee extenciones." +
+                                "<br> Se cargará la ultima extención realizada", function () {
+                                })
+                        }
+
                         document.getElementById('btnTerminarContrato').disabled = false;
                         document.getElementById('txtIDVehiculo').disabled = true;
                         document.getElementById('txtNumeroContrato').disabled = true;
@@ -170,7 +184,6 @@
                         IDContrato = result.Data[0].IDContrato;
                         var objImage = "";
                         var image_64 = "";
-
 
                         txtMarca.val(result.Data[0].objReservacion.t_Vehiculos.Marca);
                         txtModelo.val(result.Data[0].objReservacion.t_Vehiculos.Modelo);
@@ -183,6 +196,8 @@
 
                         txtNombreCliente.val(result.Data[0].objReservacion.NombreCliente);
                         txtTipoContrato.val(result.Data[0].objCodigo.DescripcionCodigoContrato);
+                        txtFechaRetorno.val(result.Data[0].FechaEntrega);
+
 
                         previewFrontal = document.getElementById('imgFrontalVehiculo');
                         previewTrasera = document.getElementById('imgTraseraVehiculo');
@@ -238,6 +253,7 @@
                         else {
                             document.getElementById("chkCostadoDerechoVehiculo").disabled = true;
                         }
+
                     }
                     else {
                         Dialog.alert('Contratos', result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage, function () {
@@ -255,7 +271,7 @@
     }
 
     var fnValidarCampos = function () {
-        
+
         var validate = false;
 
         if (txtCajon.val() == "2") {
@@ -342,60 +358,98 @@
 
     }
 
+    var terminar = function () {
+        var realDataVehiculoF = document.getElementById("chkFrontalVehiculo").checked == true ? fnBlock(imgFrontalVehiculo) : null;
+        var realDataVehiculoT = document.getElementById("chkTraseraVehiculo").checked == true ? fnBlock(imgTraseraVehiculo) : null;
+        var realDataVehiculoI = document.getElementById("chkCostadoIzquierdoVehiculo").checked == true ? fnBlock(imgCostadoIzquierdaVehiculo) : null;
+        var realDataVehiculoD = document.getElementById("chkCostadoDerechoVehiculo").checked == true ? fnBlock(imgCostadoDerechoVehiculo) : null;
+
+
+
+        var oData = {
+            "UsuarioCreacion": usuarioLogueado,
+            "IDContrato": IDContrato,
+            "NumeroContrato": txtNumeroContrato.val(),
+            "IDVehiculo": txtIDVehiculo.val(),
+            "SurfRacks": txtSurfRacks.val() == 'Si' ? true : false,
+            "Cajon": txtCajon.val() == 'Si' ? true : false,
+            "RtvSticker": txtRtvSticker.val() == 'Si' ? true : false,
+            "RtvPapel": txtRtvPapel.val() == 'Si' ? true : false,
+            "MarchamoSticker": txtMarchamoSticker.val() == 'Si' ? true : false,
+            "MarchamoPapel": txtMarchamoPapel.val() == 'Si' ? true : false,
+            "StickerPlaca": txtPlacaSticker.val() == 'Si' ? true : false,
+            "TituloPropiedad": txtTituloPropiedad.val() == 'Si' ? true : false,
+            "FrontalVehiculos": realDataVehiculoF,
+            "TraseraVehiculos": realDataVehiculoT,
+            "IzquierdaVehiculos": realDataVehiculoI,
+            "DerechaVehiculos": realDataVehiculoD,
+            "ExtendedProperties": [
+                { "Key": "KilometrajeInicial", "Value": txtKilometrajeInicial.val() },
+                { "Key": "KilometrajeFinal", "Value": txtKilometrajeFinal.val() },
+                { "Key": "KilometrajeReccorrido", "Value": txtRecorrido.val() }
+            ]
+        }
+        try {
+            var oUrl = 'Contratos/TerminarContrato';
+            var oProcessMessage = 'Guardando Contrato';
+
+            var success = function (result) {
+                if (result.MessageType == "Success") {
+                    Dialog.alert('Contrato', result.InfoMessage, function (e) {
+                        fnLimpiarDatos();
+                    })
+                }
+                else {
+                    Dialog.alert('Contrato', result.ErrorMessage, function () {
+                    })
+                }
+            };
+            app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
+        } catch (ex) {
+
+            retorno = false;
+        }
+    };
+
+    var fnCallBackAutorizar = function (result) {
+
+        checkValidaAdm = false;
+        if (result != null) {
+            if (result.Data.length > 0) {
+                if (result.Data[0].IdRol != configViwolf.Roles.Administrador) {
+                    Dialog.alert("Contratos", "El usuario no es un administrador.");
+                }
+                else {
+                    checkValidaAdm = true;
+                    terminar();
+                }
+            }
+            else {
+                Dialog.alert("Contratos", "El Usuario no existe.");
+            }
+        };
+    };
 
     var fnTerminarContrato = function (e) {
-
+        
+        var fechaActual = new Date();
+        var diaActual = fechaActual.getDate();
+        var mesActual = fechaActual.getMonth() + 1;
+        var annoActual = fechaActual.getFullYear();
+        var fechaActualFormato = diaActual + '/' + mesActual + '/' + annoActual;
         if (fnValidarCampos() == true) {
-            var realDataVehiculoF = document.getElementById("chkFrontalVehiculo").checked == true ? fnBlock(imgFrontalVehiculo) : null;
-            var realDataVehiculoT = document.getElementById("chkTraseraVehiculo").checked == true ? fnBlock(imgTraseraVehiculo) : null;
-            var realDataVehiculoI = document.getElementById("chkCostadoIzquierdoVehiculo").checked == true ? fnBlock(imgCostadoIzquierdaVehiculo) : null;
-            var realDataVehiculoD = document.getElementById("chkCostadoDerechoVehiculo").checked == true ? fnBlock(imgCostadoDerechoVehiculo) : null;
-
-
-
-            var oData = {
-                "UsuarioCreacion": usuarioLogueado,
-                "IDContrato": IDContrato,
-                "NumeroContrato": txtNumeroContrato.val(),
-                "IDVehiculo": txtIDVehiculo.val(),
-                "SurfRacks": txtSurfRacks.val() == 'Si' ? true : false,
-                "Cajon": txtCajon.val() == 'Si' ? true : false,
-                "RtvSticker": txtRtvSticker.val() == 'Si' ? true : false,
-                "RtvPapel": txtRtvPapel.val() == 'Si' ? true : false,
-                "MarchamoSticker": txtMarchamoSticker.val() == 'Si' ? true : false,
-                "MarchamoPapel": txtMarchamoPapel.val() == 'Si' ? true : false,
-                "StickerPlaca": txtPlacaSticker.val() == 'Si' ? true : false,
-                "TituloPropiedad": txtTituloPropiedad.val() == 'Si' ? true : false,
-                "FrontalVehiculos": realDataVehiculoF,
-                "TraseraVehiculos": realDataVehiculoT,
-                "IzquierdaVehiculos": realDataVehiculoI,
-                "DerechaVehiculos": realDataVehiculoD,
-                "ExtendedProperties": [
-                    { "Key": "KilometrajeInicial", "Value": txtKilometrajeInicial.val() },
-                    { "Key": "KilometrajeFinal", "Value": txtKilometrajeFinal.val() },
-                    { "Key": "KilometrajeReccorrido", "Value": txtRecorrido.val() }
-                ]
+            if (txtFechaRetorno.val() == fechaActualFormato) {
+                terminar();
             }
-            try {
-                var oUrl = 'Contratos/TerminarContrato';
-                var oProcessMessage = 'Guardando Contrato';
+            else {
 
-                var success = function (result) {
-                    if (result.MessageType == "Success") {
-                        Dialog.alert('Contrato', result.InfoMessage, function (e) {
-                            fnLimpiarDatos();
-                        })
-                    }
-                    else {
-                        Dialog.alert('Contrato', result.ErrorMessage, function () {
-                        })
-                    }
-                };
-                app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
-            } catch (ex) {
+                Dialog.confirm('Contratos', "Las fecha de retorno del contrato no coinciden con la fecha actual del sistema. " +
+                    "<br> Verifique si el contrato posee extenciones facturadas. <br> Desea continuar con el proceso actual?", function (respuesta) {
 
-                retorno = false;
-            }
+                        if (respuesta == true)
+                            autorizacionLogin.AbrirModal(fnCallBackAutorizar);
+                })
+            };
         };
     };
 
