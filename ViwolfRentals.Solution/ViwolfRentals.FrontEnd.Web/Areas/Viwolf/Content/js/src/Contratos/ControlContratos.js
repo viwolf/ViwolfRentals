@@ -137,14 +137,21 @@ var controlContratos = function () {
         }, 100);
     };
 
-    function OnPageEvent(table) {
+    function fnOnClickBtn_Ver(e) {
+        var t = setTimeout(function (e) {
+            
+            generarContrato.fnReporteTicket(e, objSeleccionado.IDContrato, "Reimpresion");
+        }, 100);
+    };
+
+    function OnPageEvent(e,table) {
        
-        let $btnTerminar = $(table.fnGetNodes()).find("button[name^='btnT_']");
+        let $btnVer= $(table.fnGetNodes()).find("button[name^='btnV_']");
         let $btnExtender = $(table.fnGetNodes()).find("button[name^='btnE_']");
 
 
-        $btnTerminar.click(function () {
-            
+        $btnVer.click(function () {
+            fnOnClickBtn_Ver(e);
         });
 
         $btnExtender.click(function () {
@@ -185,7 +192,7 @@ var controlContratos = function () {
     //    }
     //};
 
-    var fnBuscarContrato = function () {
+    var fnBuscarContrato = function (e) {
         
         var oData = {
             "NumeroContrato": txtNumeroContrato.val(),
@@ -214,6 +221,7 @@ var controlContratos = function () {
                             { data: 'FechaEntrega' },
                             { data: 'Descripcion' },
                             { data: 'Extender' },
+                            { data: 'Ver' },
                            
                         ],
                         columnDefs: [
@@ -239,7 +247,7 @@ var controlContratos = function () {
                        
                         objSeleccionado = tblDataContratos.fnGetData(iPos);
                     });
-                    OnPageEvent(tblDataContratos);
+                    OnPageEvent(e,tblDataContratos);
                 }
                 else {
                     Dialog.alert('Contratos', result.InfoMessage == "" ? result.ErrorMessage : result.InfoMessage, function () {

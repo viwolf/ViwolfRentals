@@ -96,6 +96,10 @@ namespace FrontEnd.Controllers.Viwolf
             return DoVerGeneracionContrato(model);
         }
 
+        public JsonResult VerReimpresionContrato(int IDContrato)
+        {
+            return DoVerReimpresionContrato(IDContrato);
+        }
         public JsonResult VerTicketResponsabilidad(t_Contratos entity)
         {
             return DoTicketResponsabilidad(entity);
@@ -110,6 +114,17 @@ namespace FrontEnd.Controllers.Viwolf
 
             return this.Json(sb.ToString(), JsonRequestBehavior.AllowGet);
           
+        }
+
+        private JsonResult DoVerReimpresionContrato(int IDContrato)
+        {
+            string reportName = "rptContrato";
+            string sParametroValor = "IDContrato-" + IDContrato;
+            //string paramVal = string.Format("{0}-{1}", reportName, IdDeposito);
+            var sb = GetStringBuilderReport(reportName, sParametroValor);
+
+            return this.Json(sb.ToString(), JsonRequestBehavior.AllowGet);
+
         }
 
         private JsonResult DoTicketResponsabilidad(t_Contratos model)

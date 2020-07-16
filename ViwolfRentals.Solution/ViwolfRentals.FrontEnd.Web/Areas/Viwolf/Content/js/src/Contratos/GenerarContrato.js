@@ -9,7 +9,7 @@
     var $tituloReporte = $('#tituloReporte');
     var IdContrato = 0;
     var flagResponsabilidad = false;
-
+    var Modulo = "";
     $(function () {
 
         fnInit();
@@ -52,16 +52,19 @@
         window.location = url;
     }
 
-    function fnReporte(e, idContrato) {
+    function fnReporte(e, idContrato, modulo) {
         
+        Modulo = modulo
         IdContrato = idContrato;
         flagResponsabilidad = false;
 
-        e.preventDefault();
+        //if(e )
+        //e.preventDefault();
 
 
         try {
-            var oUrl = 'Reportes/VerGeneracionContrato';
+            var oUrl = Modulo == 'Reimpresion' ? 'VerGeneracionContrato' : 'Reportes/VerGeneracionContrato';
+            
             var oData =
             {
 
@@ -85,7 +88,7 @@
                
             };
 
-            app.fnExecuteWithResult(e, oUrl, oData, oProcessMessage, success);
+            app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
         }
         catch (e) {
             app.fnShowErrorMessage(e.message);
@@ -95,8 +98,10 @@
 
     var fnCerrarModalContrato = function (e) {
         //$popupReports.on('hide.bs.modal', fnCerrarModalTicket);
-        if (flagResponsabilidad == false)
-            fnTicketResponsabilidad();
+        if (Modulo != "Reimpresion") {
+            if (flagResponsabilidad == false)
+                fnTicketResponsabilidad();
+        }
     };
 
     function fnTicketResponsabilidad() {

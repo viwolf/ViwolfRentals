@@ -105,7 +105,7 @@ var indexContratos = function () {
                     Dialog.alert('Contrato', result.InfoMessage, function () {
                     })
                     
-                    generarContrato.fnReporteTicket(e, result.Data.IDContrato, 1)
+                    generarContrato.fnReporteTicket(e, result.Data.IDContrato,  "Nuevo");
                 }
                 else {
                     Dialog.alert('Contrato', result.ErrorMessage, function () {
