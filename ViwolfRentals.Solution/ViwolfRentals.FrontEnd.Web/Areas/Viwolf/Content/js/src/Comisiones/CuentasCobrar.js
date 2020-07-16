@@ -11,6 +11,36 @@
     var arrayModificacion = [];
     var rows_selected = [];
 
+    var InitSelect = function () {
+
+        cargarSelect2(txtNombreClienteProveedor,
+            {
+                PlaceHolder: "",
+                Url: "Proveedores/ListarProveedores",
+                DataType: 'json',
+                Type: "POST",
+                Id: "IdProveedor",
+                Text: "NombreProveedor",
+                InitSelection: function (callback, configuracion) {
+                    $.ajax(configuracion.Url, {
+                        url: configuracion.Url,
+                        data: configuracion.data,
+                        dataType: 'json',
+                        type: 'POST'
+                    }).done(function () {
+
+                    });
+                },
+
+            });
+
+
+
+
+       
+
+
+    };
 
     var fnInit = function () {
 
@@ -103,7 +133,38 @@
         }
     }
 
+    var cargarSelect2 = function (elemento, configuracion) {
 
+        $.ajax({
+            type: "POST",
+            url: configuracion.Url,
+            data: "{}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (msg) {
+
+                $(msg.Data).each(function (serverData) {
+                    if (configuracion.SuccessFunction) {
+                        configuracion.SuccessFunction(serverData);
+                    }
+                    var option = $(document.createElement('option'));
+
+                    option.text(this[configuracion.Text]);
+                    option.val(this[configuracion.Id]);
+
+
+
+                    elemento.append(option);
+                });
+
+            },
+            error: function (msg) {
+                $("#dvAlerta > span").text("Error al llenar el combo");
+            }
+        });
+
+
+    };
 
 
     var fnBuscarProveedores = function () {
@@ -273,6 +334,7 @@
 
     $(function () {
         fnInit();
+        InitSelect();
     });
 
 

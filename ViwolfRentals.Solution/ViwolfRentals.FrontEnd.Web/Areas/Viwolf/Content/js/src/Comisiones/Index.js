@@ -10,7 +10,32 @@
     var objComisiones = null;
     var arrayModificacion = [];
     var rows_selected = [];
+    var IdComisionista = 0;
 
+    var InitSelect = function () {
+
+
+        cargarSelect2(txtNombreClienteComisionista,
+            {
+                PlaceHolder: "",
+                Url: "Comisionistas/ListarComisionistas",
+                DataType: 'json',
+                Type: "POST",
+                Id: "IDClienteComisionista",
+                Text: "NombreClienteComisionista",
+                InitSelection: function (callback, configuracion) {
+                    $.ajax(configuracion.Url, {
+                        url: configuracion.Url,
+                        data: configuracion.data,
+                        dataType: 'json',
+                        type: 'POST'
+                    }).done(function (data) {
+
+                    });
+                },
+
+            });
+    };
 
     var fnInit = function () {
        
@@ -23,6 +48,11 @@
                 Dialog.alert('Comisiones', "Debe seleccionar una comision.", function () {
                 })
             }
+        });
+
+        txtNombreClienteComisionista.change(function () {
+
+            txtIDClienteComisionista.val(txtNombreClienteComisionista.val());
         });
 
     };
@@ -103,11 +133,45 @@
         }
     }
 
+    var cargarSelect2 = function (elemento, configuracion) {
 
+        $.ajax({
+            type: "POST",
+            url: configuracion.Url,
+            data: "{}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (msg) {
+
+                $(msg.Data).each(function (serverData) {
+                    if (configuracion.SuccessFunction) {
+                        configuracion.SuccessFunction(serverData);
+                    }
+                    var option = $(document.createElement('option'));
+
+                    option.text(this[configuracion.Text]);
+                    option.val(this[configuracion.Id]);
+
+
+
+                    elemento.append(option);
+                });
+
+            },
+            error: function (msg) {
+                $("#dvAlerta > span").text("Error al llenar el combo");
+            }
+        });
+
+
+    };
 
 
     var fnBuscarComisiones = function () {
 
+        debugger;
+        var Comisionista = document.getElementById("txtNombreClienteComisionista");
+        IdComisionista = Comisionista.options[Comisionista.selectedIndex].value;
        
         if ((txtIDClienteComisionista.val() == '') && (txtNombreClienteComisionista.val() == '')) {
             Dialog.alert('Comisiones', "Se debe de especificar algún criterio de búsqueda.", function () {
@@ -116,8 +180,8 @@
         else {
 
             var oData = {
-                "IDClienteComisionista": txtIDClienteComisionista.val(),
-                "t_ClientesComisionistas.NombreClienteComisionista": txtNombreClienteComisionista.val(),
+                "IDClienteComisionista": IdComisionista, //txtIDClienteComisionista.val(),
+                "t_ClientesComisionistas.NombreClienteComisionista": $("#txtNombreClienteComisionista option:selected").text(), //txtNombreClienteComisionista.val(),
                 "ComisionPaga": txtEstadoComision.val(),
                 "t_Contratos.IDEstadoContrato": configViwolf.EstadosContratos.Facturado
             };
@@ -275,6 +339,7 @@
 
     $(function () {
         fnInit();
+        InitSelect();
     });
 
 
