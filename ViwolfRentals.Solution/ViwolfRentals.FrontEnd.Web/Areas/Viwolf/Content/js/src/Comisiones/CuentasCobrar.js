@@ -10,13 +10,14 @@
     var objComisiones = null;
     var arrayModificacion = [];
     var rows_selected = [];
+    var IDProveedor = 0
 
     var InitSelect = function () {
 
         cargarSelect2(txtNombreClienteProveedor,
             {
                 PlaceHolder: "",
-                Url: "Proveedores/ListarProveedores",
+                Url: "ListarProveedores",
                 DataType: 'json',
                 Type: "POST",
                 Id: "IdProveedor",
@@ -53,6 +54,11 @@
                 Dialog.alert('Comisiones', "Debe seleccionar una cuenta.", function () {
                 })
             }
+        });
+
+        txtNombreClienteProveedor.change(function () {
+
+            txtIDClienteProveedor.val(txtNombreClienteProveedor.val());
         });
 
     };
@@ -168,6 +174,9 @@
 
 
     var fnBuscarProveedores = function () {
+        debugger;
+        var Proveedor = document.getElementById("txtNombreClienteProveedor");
+        IDProveedor = Proveedor.options[Proveedor.selectedIndex].value;
 
         
         if ((txtIDClienteProveedor.val() == '') && (txtNombreClienteProveedor.val() == '')) {
@@ -177,8 +186,8 @@
         else {
 
             var oData = {
-                "IDClienteProveedor": txtIDClienteProveedor.val(),
-                "t_Proveedores.NombreProveedor": txtNombreClienteProveedor.val(),
+                "IDClienteProveedor": IDProveedor, //txtIDClienteProveedor.val(),
+                "t_Proveedores.NombreProveedor": $("#txtNombreClienteProveedor option:selected").text(),//txtNombreClienteProveedor.val(),
                 "CuentaCobrada ": txtEstadoCxC.val(),
                 "t_Contratos.IDEstadoContrato": configViwolf.EstadosContratos.Facturado
             };

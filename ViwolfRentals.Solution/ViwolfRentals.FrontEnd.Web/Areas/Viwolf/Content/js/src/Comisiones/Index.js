@@ -169,7 +169,7 @@
 
     var fnBuscarComisiones = function () {
 
-        debugger;
+       
         var Comisionista = document.getElementById("txtNombreClienteComisionista");
         IdComisionista = Comisionista.options[Comisionista.selectedIndex].value;
        
