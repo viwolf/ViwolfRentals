@@ -10,4 +10,3 @@ C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\Viw
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.BusinessLogic.Interface\obj\Debug\Viwolf.BusinessLogic.Interface.dll
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.BusinessLogic.Interface\obj\Debug\Viwolf.BusinessLogic.Interface.pdb
 C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.BusinessLogic.Interface\bin\Debug\es\EntityFramework.resources.dll
-C:\Users\Hewlett Packard\Documents\Viwolf System\Proyectos\ViwolfRentals\Git\ViwolfRentals\ViwolfRentals.Solution\Viwolf.BusinessLogic.Interface\obj\Debug\Viwolf.BusinessLogic.Interface.csprojAssemblyReference.cache

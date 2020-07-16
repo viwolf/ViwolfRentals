@@ -170,11 +170,13 @@
                 var success = function (result) {
 
                     if (result.Data.length > 0) {
-
-                        if (txtNumeroContrato.val() != result.Data[0].NumeroContrato) {
-                            Dialog.alert('Contratos', "El contrato posee extenciones." +
-                                "<br> Se cargará la ultima extención realizada", function () {
-                                })
+                        
+                        if (txtNumeroContrato.val() != "") {
+                            if (txtNumeroContrato.val() != result.Data[0].NumeroContrato) {
+                                Dialog.alert('Contratos', "El contrato posee extenciones." +
+                                    "<br> Se cargará la ultima extención realizada", function () {
+                                    })
+                            }
                         }
 
                         document.getElementById('btnTerminarContrato').disabled = false;

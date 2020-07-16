@@ -19,6 +19,7 @@ namespace ViwolfRentals.FrontEnd.Web.Areas.Viwolf
                 url: "Viwolf/{controller}/{action}/{id}",
                 namespaces: new[] { "FrontEnd.Controllers.Viwolf" },
                 defaults: new { controller = "ViwolfRental", action = "Index", id = UrlParameter.Optional }
+                //defaults: new { controller = "Dashboard", action = "Index", id = UrlParameter.Optional }
              );
         }
     }

@@ -49,6 +49,7 @@
     <Compile Include="Comisionistas\ComisionistasRepository.cs" />
     <Compile Include="ConnectionManager.cs" />
     <Compile Include="Contratos\ContratosRepository.cs" />
+    <Compile Include="Dashboard\DashboardRepository.cs" />
     <Compile Include="DepartamentosVehiculos\DepartamentosVehiculosRepository.cs" />
     <Compile Include="Facturacion\FacturacionDetallePagoRepository.cs" />
     <Compile Include="Facturacion\FacturacionDetalleRepository.cs" />
