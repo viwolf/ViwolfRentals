@@ -34,6 +34,7 @@ namespace ViwolfRental.Common.Model
         public byte[] VoucherPago { get; set; }
         public byte[] Pasaporte { get; set; }
         public byte[] Licencia { get; set; }
+        public byte[] Contrato { get; set; }
         public byte[] FrontalVehiculos { get; set; }
         public byte[] TraseraVehiculos { get; set; }
         public byte[] IzquierdaVehiculos { get; set; }

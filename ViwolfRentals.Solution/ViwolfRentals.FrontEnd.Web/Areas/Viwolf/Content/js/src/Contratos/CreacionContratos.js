@@ -23,6 +23,7 @@
     var imgVehiculoDerecha = null;
     var imgVehiculo5 = null;
     var imgVehiculo6 = null;
+    var fnCallBack = null;
    
 
     var objReservacion = null;
@@ -101,7 +102,12 @@
         }
     }
 
-    var abrirModal = function (reservacion) {
+ 
+
+
+    var abrirModal = function (reservacion, callback) {
+       
+        fnCallBack = callback;
         objReservacion = reservacion;
         fnLlenarReservacion();
         btnGuardarContrato.unbind('click');
@@ -153,50 +159,9 @@
         })
     };
 
-    function base64toBlob(base64Data, contentType) {
-        contentType = contentType || '';
-        var sliceSize = 1024;
-        var byteCharacters = atob(base64Data);
-        var bytesLength = byteCharacters.length;
-        var slicesCount = Math.ceil(bytesLength / sliceSize);
-        var byteArrays = new Array(slicesCount);
+   
 
-        for (var sliceIndex = 0; sliceIndex < slicesCount; ++sliceIndex) {
-            var begin = sliceIndex * sliceSize;
-            var end = Math.min(begin + sliceSize, bytesLength);
-
-            var bytes = new Array(end - begin);
-            for (var offset = begin, i = 0; offset < end; ++i, ++offset) {
-                bytes[i] = byteCharacters[offset].charCodeAt(0);
-            }
-            byteArrays[sliceIndex] = new Uint8Array(bytes);
-        }
-        return new Blob(byteArrays, { type: contentType });
-    }
-
-    //function b64toBlob(b64Data, contentType, sliceSize) {
-    //    contentType = contentType || '';
-    //    sliceSize = sliceSize || 512;
-
-    //    var byteCharacters = atob(b64Data);
-    //    var byteArrays = [];
-
-    //    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-    //        var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-    //        var byteNumbers = new Array(slice.length);
-    //        for (var i = 0; i < slice.length; i++) {
-    //            byteNumbers[i] = slice.charCodeAt(i);
-    //        }
-
-    //        var byteArray = new Uint8Array(byteNumbers);
-
-    //        byteArrays.push(byteArray);
-    //    }
-
-    //    var blob = new Blob(byteArrays, { type: contentType });
-    //    return blob;
-    //}
+   
 
     var fnBlock = function (img) {
         var block = img.split(";");
@@ -213,6 +178,7 @@
         var realDataPago = imgPago == null ? null : fnBlock(imgPago);
         var realDataDeposito = imgDeposito == null ? null : fnBlock(imgDeposito);
         var realDataLicencia = imgLicencia == null ? null : fnBlock(imgLicencia);
+        var realDataContrato = imgContrato == null ? null : fnBlock(imgContrato);
         var realDataVehiculoF = imgVehiculoFrontal == null ? null : fnBlock(imgVehiculoFrontal);
         var realDataVehiculoT = imgVehiculoTrasera == null ? null : fnBlock(imgVehiculoTrasera);
         var realDataVehiculoI = imgVehiculoIzquierda == null ? null : fnBlock(imgVehiculoIzquierda);
@@ -225,6 +191,7 @@
                 "VoucherDeposito": realDataDeposito,
                 "VoucherPago":  realDataPago,
                 "Licencia": realDataLicencia,
+                "Contrato": realDataContrato,
                 "FrontalVehiculos": realDataVehiculoF,
                 "TraseraVehiculos": realDataVehiculoT,
                 "IzquierdaVehiculos": realDataVehiculoI,
@@ -241,29 +208,10 @@
                 //]
                 "Extendido": false,
                 "Referencia": null
-            }
-            try {
-                var oUrl = 'Contratos/GuardarContrato';
-                var oProcessMessage = 'Guardando Contrato';
-
-                var success = function (result) {
-                    if (result.MessageType == "Success") {
-                        Dialog.alert('Contrato', result.InfoMessage, function (e) {
-                            window.location.reload();
-                        })
-                      
-                        popupCrearContrato.modal('hide');
-                    }
-                    else {
-                        Dialog.alert('Contrato', result.ErrorMessage, function () {
-                        })
-                    }
-                };
-                app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
-            } catch (ex) {
-
-                retorno = false;
-            }
+        }
+        popupCrearContrato.modal('hide');
+        fnCallBack(oData);
+           
     };
 
     return {

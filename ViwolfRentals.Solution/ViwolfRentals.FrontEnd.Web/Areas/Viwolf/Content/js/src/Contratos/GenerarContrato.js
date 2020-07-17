@@ -117,7 +117,7 @@
             var oProcessMessage = 'Generando reporte, espere por favor...';
 
             var success = function (result) {
-                debugger;
+                
                 flagResponsabilidad = true;
                 if (result.MessageType == '1') {
                     app.fnShowErrorMessage(result.ErrorMessage);
@@ -125,6 +125,7 @@
                 }
                 $('#reportes').html(result);
                 $popupReports.modal('show');
+                window.location.reload();
                 //$repote.html(result);
                // $popupReports.on('hide.bs.modal', fnCerrarModalTicket);
             };

@@ -50,12 +50,17 @@ var indexContratos = function () {
         //txtFechaFinal.datepicker('setDate', new Date());
     }
 
+    var fnCalbackGuardar = function (oData) {
+        
+        fnGuardarContrato(null, oData);
+    };
+
     var fnInit = function () {
         fnCargaFechas();
         btnBuscarReservacion.click(fnBuscarReservaciones);
         btnCrearContrato.click(function () {
             if (objSeleccionado != null) {
-                crearContrato.AbrirModal(objSeleccionado);
+                crearContrato.AbrirModal(objSeleccionado, fnCalbackGuardar);
             }
             else {
                 Dialog.alert('Contratos', "Debe seleccionar una reservacion.", function () {
@@ -63,30 +68,22 @@ var indexContratos = function () {
             }
         });
 
-        btnGenerarContrato.click(function (e) {
-            
-            if (objSeleccionado != null) {
-                
-                fnConfirmarGenerar(e);
-            }
-            else {
-                Dialog.alert('Contratos', "Debe seleccionar una reservacion.", function () {
-                })
-            }
-        });
+       
     };
 
-    var fnConfirmarGenerar = function (e) {
+    var fnConfirmarGenerar = function (e, idContrato) {
         
         Dialog.confirm('Contratos', "Desea generar el Contrato?", function (respuesta) {
             if (respuesta == true)
-                fnGuardarContrato(e);
+                generarContrato.fnReporteTicket(e, idContrato, "Nuevo");
         })
     };
 
-    var fnGuardarContrato = function (e) {
-        
-        var oData = {
+    var fnGuardarContrato = function (e, Data) {
+
+
+
+        var oData = Data == null ? {
             "UsuarioCreacion": usuarioLogueado,
             "IDEstadoContrato": configViwolf.EstadosContratos.Pendiente,
             "IDReservacion": objSeleccionado.IdReservacion,
@@ -95,17 +92,22 @@ var indexContratos = function () {
             "IDUsuario": idUsuarioLogueado,
             "Extendido": false,
             "Referencia": null
-        }
+        } : Data
         try {
             var oUrl = 'Contratos/GuardarContrato';
             var oProcessMessage = 'Guardando Contrato';
 
             var success = function (result) {
                 if (result.MessageType == "Success") {
-                    Dialog.alert('Contrato', result.InfoMessage, function () {
-                    })
                     
-                    generarContrato.fnReporteTicket(e, result.Data.IDContrato,  "Nuevo");
+                    if (Data.Contrato == null) {
+                        fnConfirmarGenerar(e, result.Data.IDContrato);
+                    }
+                    else {
+                        Dialog.alert('Contrato', result.InfoMessage, function () {
+                            window.location.reload();
+                        })
+                    }
                 }
                 else {
                     Dialog.alert('Contrato', result.ErrorMessage, function () {

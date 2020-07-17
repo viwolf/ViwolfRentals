@@ -183,6 +183,7 @@
     <Property Name="VoucherPago" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="Pasaporte" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="Licencia" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Contrato" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="FrontalVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="TraseraVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="IzquierdaVehiculos" Type="Binary" MaxLength="Max" FixedLength="false" />

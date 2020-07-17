@@ -40,6 +40,7 @@
     <Property Name="VoucherPago" Type="image" />
     <Property Name="Pasaporte" Type="image" />
     <Property Name="Licencia" Type="image" />
+    <Property Name="Contrato" Type="image" />
     <Property Name="FrontalVehiculos" Type="image" />
     <Property Name="TraseraVehiculos" Type="image" />
     <Property Name="IzquierdaVehiculos" Type="image" />

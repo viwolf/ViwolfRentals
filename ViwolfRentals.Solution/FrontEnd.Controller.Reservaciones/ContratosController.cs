@@ -34,7 +34,7 @@ namespace FrontEnd.Controllers.Viwolf
         }
 
         [HttpPost]
-        public JsonResult GuardarContrato(ViwolfRental.Common.Model.t_Contratos contrato)
+        public JsonResult GuardarContrato(ViwolfRental.Common.Model.t_Contratos model)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace FrontEnd.Controllers.Viwolf
 
 
 
-                var result = BlContrato.GuardarContrato(contrato);
+                var result = BlContrato.GuardarContrato(model);
                 return Json(new
                 {
                     Data = result,
@@ -132,6 +132,7 @@ namespace FrontEnd.Controllers.Viwolf
                                      chkPago = "<input id='chk_" + ta.IDContrato + "' type='checkbox'>",
                                      Extender = ta.t_EstadosContratos.IDEstadoContrato != 6 ? "<button id= 'btnE_" + ta.IDContrato + "' name='btnE_" + ta.IDContrato + "'><i class='fa fa-edit'></i></button>" : "<button disabled id= 'btnE_" + ta.IDContrato + "' name='btnE_" + ta.IDContrato + "'><i class='fa fa-edit'></i></button>",
                                      Ver = "<button id= 'btnV_" + ta.IDContrato + "' name='btnV_" + ta.IDContrato + "'><i class='fa fa-file-pdf'></i></button>"
+                                     
 
 
 

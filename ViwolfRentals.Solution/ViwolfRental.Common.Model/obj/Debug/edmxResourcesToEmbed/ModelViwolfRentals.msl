@@ -42,6 +42,7 @@
           <ScalarProperty Name="IzquierdaVehiculos" ColumnName="IzquierdaVehiculos" />
           <ScalarProperty Name="TraseraVehiculos" ColumnName="TraseraVehiculos" />
           <ScalarProperty Name="FrontalVehiculos" ColumnName="FrontalVehiculos" />
+          <ScalarProperty Name="Contrato" ColumnName="Contrato" />
           <ScalarProperty Name="Licencia" ColumnName="Licencia" />
           <ScalarProperty Name="Pasaporte" ColumnName="Pasaporte" />
           <ScalarProperty Name="VoucherPago" ColumnName="VoucherPago" />
