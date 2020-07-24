@@ -106,12 +106,14 @@
                                         <a class="nav-link" href="@Url.Action("ReporteCxC","Comisiones", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Reporte CxC</a>
                                     </nav>
                                 </div>
+
                                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseFacturacion" aria-expanded="false" aria-controls="pagesCollapseFacturacion">
                                     Facturaciones
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                 </a>
                                 <div class="collapse" id="pagesCollapseFacturacion" aria-labelledby="headingOne" data-parent="#layoutWiwolfRentals">
                                     <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="@Url.Action("Gastos","Facturacion", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Control de Gastos</a>
                                         <a class="nav-link" href="@Url.Action("Index","Facturacion", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Crear Factura</a>
                                         <a class="nav-link" href="@Url.Action("ReporteFacturas","Facturacion", new { usuario = ViewBag.Usuario, idUsuario = ViewBag.IdUsuario } )">Reporte Facturacion</a>
                                     </nav>

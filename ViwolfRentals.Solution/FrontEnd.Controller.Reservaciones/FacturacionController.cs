@@ -23,6 +23,14 @@ namespace FrontEnd.Controllers.Viwolf
             return View();
         }
 
+        public ActionResult Gastos(string usuario, string idUsuario)
+        {
+            ViewBag.Usuario = usuario;
+            ViewBag.IdUsuario = idUsuario;
+
+            return View();
+        }
+
         [AuthorizeUser(IdPantalla: 15)]
         public ActionResult ReporteFacturas(string usuario, string idUsuario)
         {

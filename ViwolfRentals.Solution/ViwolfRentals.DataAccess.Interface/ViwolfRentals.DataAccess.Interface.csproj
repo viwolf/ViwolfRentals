@@ -49,6 +49,7 @@
     <Compile Include="Facturacion\IFacturacionDetallePagoRepository.cs" />
     <Compile Include="Facturacion\IFacturacionDetalleRepository.cs" />
     <Compile Include="Facturacion\IFacturacionRepository.cs" />
+    <Compile Include="Facturacion\IGastoRepository.cs" />
     <Compile Include="IConnectionManager.cs" />
     <Compile Include="PagosComisiones\IPagosComisionesRepository.cs" />
     <Compile Include="Proveedores\IProveedoresRepository.cs" />
