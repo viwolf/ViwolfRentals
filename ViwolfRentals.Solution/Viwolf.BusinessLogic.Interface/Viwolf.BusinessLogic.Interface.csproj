@@ -47,6 +47,7 @@
     <Compile Include="Dashboard\IDashboardBL.cs" />
     <Compile Include="DepartamentosVehiculos\IDepartamentosVehiculosBL.cs" />
     <Compile Include="Facturacion\IFacturacionBL.cs" />
+    <Compile Include="Facturacion\IGastosBL.cs" />
     <Compile Include="PagosComisiones\IPagosComisionesBL.cs" />
     <Compile Include="Proveedores\IProveedoresBL.cs" />
     <Compile Include="Reservaciones\IReservacionesBL.cs" />

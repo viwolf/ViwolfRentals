@@ -173,6 +173,35 @@
           <Property Name="IDContrato" Type="int" Nullable="false" />
           <Property Name="TotalContrato" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
+        <EntityType Name="t_Gastos">
+          <Key>
+            <PropertyRef Name="IDGasto" />
+          </Key>
+          <Property Name="IDGasto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalGastos" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IDUsuario" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_GastosDetalle">
+          <Key>
+            <PropertyRef Name="IDGastoDetalle" />
+          </Key>
+          <Property Name="IDGastoDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="DescripcionGasto" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MontoGasto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="NumeroFacturaGasto" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Factura" Type="image" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="IDGasto" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="t_Kilometrajes">
           <Key>
             <PropertyRef Name="IDKilometraje" />
@@ -546,6 +575,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_t_Gastos_t_Usuarios">
+          <End Role="t_Usuarios" Type="Self.t_Usuarios" Multiplicity="1" />
+          <End Role="t_Gastos" Type="Self.t_Gastos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="t_Gastos">
+              <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_GastosDetalle_t_Gastos">
+          <End Role="t_Gastos" Type="Self.t_Gastos" Multiplicity="1" />
+          <End Role="t_GastosDetalle" Type="Self.t_GastosDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Gastos">
+              <PropertyRef Name="IDGasto" />
+            </Principal>
+            <Dependent Role="t_GastosDetalle">
+              <PropertyRef Name="IDGasto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_t_PagosComisiones_t_ClientesComisionistas">
           <End Role="t_ClientesComisionistas" Type="Self.t_ClientesComisionistas" Multiplicity="1" />
           <End Role="t_PagosComisiones" Type="Self.t_PagosComisiones" Multiplicity="*" />
@@ -743,6 +796,8 @@
           <EntitySet Name="t_FacturaDetallePago" EntityType="Self.t_FacturaDetallePago" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Facturas" EntityType="Self.t_Facturas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_FacturasDetalles" EntityType="Self.t_FacturasDetalles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Gastos" EntityType="Self.t_Gastos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_GastosDetalle" EntityType="Self.t_GastosDetalle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Kilometrajes" EntityType="Self.t_Kilometrajes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Modulos" EntityType="Self.t_Modulos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_PagosComisiones" EntityType="Self.t_PagosComisiones" Schema="dbo" store:Type="Tables" />
@@ -807,6 +862,14 @@
           <AssociationSet Name="FK_t_FacturasDetalles_t_Facturas" Association="Self.FK_t_FacturasDetalles_t_Facturas">
             <End Role="t_Facturas" EntitySet="t_Facturas" />
             <End Role="t_FacturasDetalles" EntitySet="t_FacturasDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Gastos_t_Usuarios" Association="Self.FK_t_Gastos_t_Usuarios">
+            <End Role="t_Usuarios" EntitySet="t_Usuarios" />
+            <End Role="t_Gastos" EntitySet="t_Gastos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_GastosDetalle_t_Gastos" Association="Self.FK_t_GastosDetalle_t_Gastos">
+            <End Role="t_Gastos" EntitySet="t_Gastos" />
+            <End Role="t_GastosDetalle" EntitySet="t_GastosDetalle" />
           </AssociationSet>
           <AssociationSet Name="FK_t_PagosComisiones_t_ClientesComisionistas" Association="Self.FK_t_PagosComisiones_t_ClientesComisionistas">
             <End Role="t_ClientesComisionistas" EntitySet="t_ClientesComisionistas" />
@@ -886,6 +949,8 @@
           <EntitySet Name="t_FacturaDetallePago" EntityType="ViwolfRentalsDBModel.t_FacturaDetallePago" />
           <EntitySet Name="t_Facturas" EntityType="ViwolfRentalsDBModel.t_Facturas" />
           <EntitySet Name="t_FacturasDetalles" EntityType="ViwolfRentalsDBModel.t_FacturasDetalles" />
+          <EntitySet Name="t_Gastos" EntityType="ViwolfRentalsDBModel.t_Gastos" />
+          <EntitySet Name="t_GastosDetalle" EntityType="ViwolfRentalsDBModel.t_GastosDetalle" />
           <EntitySet Name="t_Kilometrajes" EntityType="ViwolfRentalsDBModel.t_Kilometrajes" />
           <EntitySet Name="t_Modulos" EntityType="ViwolfRentalsDBModel.t_Modulos" />
           <EntitySet Name="t_PagosComisiones" EntityType="ViwolfRentalsDBModel.t_PagosComisiones" />
@@ -974,6 +1039,14 @@
           <AssociationSet Name="FK_t_FacturasDetalles_t_Facturas" Association="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Facturas">
             <End Role="t_Facturas" EntitySet="t_Facturas" />
             <End Role="t_FacturasDetalles" EntitySet="t_FacturasDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_Gastos_t_Usuarios" Association="ViwolfRentalsDBModel.FK_t_Gastos_t_Usuarios">
+            <End Role="t_Usuarios" EntitySet="t_Usuarios" />
+            <End Role="t_Gastos" EntitySet="t_Gastos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_GastosDetalle_t_Gastos" Association="ViwolfRentalsDBModel.FK_t_GastosDetalle_t_Gastos">
+            <End Role="t_Gastos" EntitySet="t_Gastos" />
+            <End Role="t_GastosDetalle" EntitySet="t_GastosDetalle" />
           </AssociationSet>
           <AssociationSet Name="FK_t_Pantallas_t_Modulos" Association="ViwolfRentalsDBModel.FK_t_Pantallas_t_Modulos">
             <End Role="t_Modulos" EntitySet="t_Modulos" />
@@ -1207,6 +1280,38 @@
           <NavigationProperty Name="t_Contratos" Relationship="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Contratos" FromRole="t_FacturasDetalles" ToRole="t_Contratos" />
           <NavigationProperty Name="t_Facturas" Relationship="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Facturas" FromRole="t_FacturasDetalles" ToRole="t_Facturas" />
         </EntityType>
+        <EntityType Name="t_Gastos">
+          <Key>
+            <PropertyRef Name="IDGasto" />
+          </Key>
+          <Property Name="IDGasto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalGastos" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="IDUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="t_Usuarios" Relationship="ViwolfRentalsDBModel.FK_t_Gastos_t_Usuarios" FromRole="t_Gastos" ToRole="t_Usuarios" />
+          <NavigationProperty Name="t_GastosDetalle" Relationship="ViwolfRentalsDBModel.FK_t_GastosDetalle_t_Gastos" FromRole="t_Gastos" ToRole="t_GastosDetalle" />
+        </EntityType>
+        <EntityType Name="t_GastosDetalle">
+          <Key>
+            <PropertyRef Name="IDGastoDetalle" />
+          </Key>
+          <Property Name="IDGastoDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DescripcionGasto" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MontoGasto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="NumeroFacturaGasto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Factura" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="IDGasto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="t_Gastos" Relationship="ViwolfRentalsDBModel.FK_t_GastosDetalle_t_Gastos" FromRole="t_GastosDetalle" ToRole="t_Gastos" />
+        </EntityType>
         <EntityType Name="t_Kilometrajes">
           <Key>
             <PropertyRef Name="IDKilometraje" />
@@ -1406,6 +1511,7 @@
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <Property Name="IDDepartamento" Type="Int32" Nullable="false" />
           <NavigationProperty Name="t_Departamentos" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Departamentos" FromRole="t_Usuarios" ToRole="t_Departamentos" />
+          <NavigationProperty Name="t_Gastos" Relationship="ViwolfRentalsDBModel.FK_t_Gastos_t_Usuarios" FromRole="t_Usuarios" ToRole="t_Gastos" />
           <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Usuarios" FromRole="t_Usuarios" ToRole="t_Reservaciones" />
           <NavigationProperty Name="t_Roles" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Roles" FromRole="t_Usuarios" ToRole="t_Roles" />
           <NavigationProperty Name="t_Sistemas" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Sistemas" FromRole="t_Usuarios" ToRole="t_Sistemas" />
@@ -1678,6 +1784,30 @@
             </Principal>
             <Dependent Role="t_FacturasDetalles">
               <PropertyRef Name="IDFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_Gastos_t_Usuarios">
+          <End Type="ViwolfRentalsDBModel.t_Usuarios" Role="t_Usuarios" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_Gastos" Role="t_Gastos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="t_Gastos">
+              <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_GastosDetalle_t_Gastos">
+          <End Type="ViwolfRentalsDBModel.t_Gastos" Role="t_Gastos" Multiplicity="1" />
+          <End Type="ViwolfRentalsDBModel.t_GastosDetalle" Role="t_GastosDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_Gastos">
+              <PropertyRef Name="IDGasto" />
+            </Principal>
+            <Dependent Role="t_GastosDetalle">
+              <PropertyRef Name="IDGasto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1974,6 +2104,37 @@
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
                 <ScalarProperty Name="IDFacturaDetalle" ColumnName="IDFacturaDetalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Gastos">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Gastos">
+              <MappingFragment StoreEntitySet="t_Gastos">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+                <ScalarProperty Name="TotalGastos" ColumnName="TotalGastos" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IDGasto" ColumnName="IDGasto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_GastosDetalle">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_GastosDetalle">
+              <MappingFragment StoreEntitySet="t_GastosDetalle">
+                <ScalarProperty Name="IDGasto" ColumnName="IDGasto" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Factura" ColumnName="Factura" />
+                <ScalarProperty Name="NumeroFacturaGasto" ColumnName="NumeroFacturaGasto" />
+                <ScalarProperty Name="MontoGasto" ColumnName="MontoGasto" />
+                <ScalarProperty Name="DescripcionGasto" ColumnName="DescripcionGasto" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IDGastoDetalle" ColumnName="IDGastoDetalle" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

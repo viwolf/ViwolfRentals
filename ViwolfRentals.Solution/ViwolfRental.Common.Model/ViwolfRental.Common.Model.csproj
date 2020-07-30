@@ -103,6 +103,12 @@
     <Compile Include="t_FacturasDetalles.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
+    <Compile Include="t_Gastos.cs">
+      <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_GastosDetalle.cs">
+      <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
+    </Compile>
     <Compile Include="t_Kilometrajes.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>

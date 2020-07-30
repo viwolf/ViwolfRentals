@@ -179,6 +179,37 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="t_Gastos">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Gastos">
+        <MappingFragment StoreEntitySet="t_Gastos">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+          <ScalarProperty Name="TotalGastos" ColumnName="TotalGastos" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IDGasto" ColumnName="IDGasto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_GastosDetalle">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_GastosDetalle">
+        <MappingFragment StoreEntitySet="t_GastosDetalle">
+          <ScalarProperty Name="IDGasto" ColumnName="IDGasto" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Factura" ColumnName="Factura" />
+          <ScalarProperty Name="NumeroFacturaGasto" ColumnName="NumeroFacturaGasto" />
+          <ScalarProperty Name="MontoGasto" ColumnName="MontoGasto" />
+          <ScalarProperty Name="DescripcionGasto" ColumnName="DescripcionGasto" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IDGastoDetalle" ColumnName="IDGastoDetalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="t_Kilometrajes">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Kilometrajes">
         <MappingFragment StoreEntitySet="t_Kilometrajes">

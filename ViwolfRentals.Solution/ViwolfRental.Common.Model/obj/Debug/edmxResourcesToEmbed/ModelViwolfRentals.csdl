@@ -13,6 +13,8 @@
     <EntitySet Name="t_FacturaDetallePago" EntityType="ViwolfRentalsDBModel.t_FacturaDetallePago" />
     <EntitySet Name="t_Facturas" EntityType="ViwolfRentalsDBModel.t_Facturas" />
     <EntitySet Name="t_FacturasDetalles" EntityType="ViwolfRentalsDBModel.t_FacturasDetalles" />
+    <EntitySet Name="t_Gastos" EntityType="ViwolfRentalsDBModel.t_Gastos" />
+    <EntitySet Name="t_GastosDetalle" EntityType="ViwolfRentalsDBModel.t_GastosDetalle" />
     <EntitySet Name="t_Kilometrajes" EntityType="ViwolfRentalsDBModel.t_Kilometrajes" />
     <EntitySet Name="t_Modulos" EntityType="ViwolfRentalsDBModel.t_Modulos" />
     <EntitySet Name="t_PagosComisiones" EntityType="ViwolfRentalsDBModel.t_PagosComisiones" />
@@ -101,6 +103,14 @@
     <AssociationSet Name="FK_t_FacturasDetalles_t_Facturas" Association="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Facturas">
       <End Role="t_Facturas" EntitySet="t_Facturas" />
       <End Role="t_FacturasDetalles" EntitySet="t_FacturasDetalles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_Gastos_t_Usuarios" Association="ViwolfRentalsDBModel.FK_t_Gastos_t_Usuarios">
+      <End Role="t_Usuarios" EntitySet="t_Usuarios" />
+      <End Role="t_Gastos" EntitySet="t_Gastos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_GastosDetalle_t_Gastos" Association="ViwolfRentalsDBModel.FK_t_GastosDetalle_t_Gastos">
+      <End Role="t_Gastos" EntitySet="t_Gastos" />
+      <End Role="t_GastosDetalle" EntitySet="t_GastosDetalle" />
     </AssociationSet>
     <AssociationSet Name="FK_t_Pantallas_t_Modulos" Association="ViwolfRentalsDBModel.FK_t_Pantallas_t_Modulos">
       <End Role="t_Modulos" EntitySet="t_Modulos" />
@@ -334,6 +344,38 @@
     <NavigationProperty Name="t_Contratos" Relationship="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Contratos" FromRole="t_FacturasDetalles" ToRole="t_Contratos" />
     <NavigationProperty Name="t_Facturas" Relationship="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Facturas" FromRole="t_FacturasDetalles" ToRole="t_Facturas" />
   </EntityType>
+  <EntityType Name="t_Gastos">
+    <Key>
+      <PropertyRef Name="IDGasto" />
+    </Key>
+    <Property Name="IDGasto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TotalGastos" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="IDUsuario" Type="Int32" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="t_Usuarios" Relationship="ViwolfRentalsDBModel.FK_t_Gastos_t_Usuarios" FromRole="t_Gastos" ToRole="t_Usuarios" />
+    <NavigationProperty Name="t_GastosDetalle" Relationship="ViwolfRentalsDBModel.FK_t_GastosDetalle_t_Gastos" FromRole="t_Gastos" ToRole="t_GastosDetalle" />
+  </EntityType>
+  <EntityType Name="t_GastosDetalle">
+    <Key>
+      <PropertyRef Name="IDGastoDetalle" />
+    </Key>
+    <Property Name="IDGastoDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DescripcionGasto" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MontoGasto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="NumeroFacturaGasto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Factura" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Activo" Type="Boolean" />
+    <Property Name="IDGasto" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="t_Gastos" Relationship="ViwolfRentalsDBModel.FK_t_GastosDetalle_t_Gastos" FromRole="t_GastosDetalle" ToRole="t_Gastos" />
+  </EntityType>
   <EntityType Name="t_Kilometrajes">
     <Key>
       <PropertyRef Name="IDKilometraje" />
@@ -533,6 +575,7 @@
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <Property Name="IDDepartamento" Type="Int32" Nullable="false" />
     <NavigationProperty Name="t_Departamentos" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Departamentos" FromRole="t_Usuarios" ToRole="t_Departamentos" />
+    <NavigationProperty Name="t_Gastos" Relationship="ViwolfRentalsDBModel.FK_t_Gastos_t_Usuarios" FromRole="t_Usuarios" ToRole="t_Gastos" />
     <NavigationProperty Name="t_Reservaciones" Relationship="ViwolfRentalsDBModel.FK_t_Reservaciones_t_Usuarios" FromRole="t_Usuarios" ToRole="t_Reservaciones" />
     <NavigationProperty Name="t_Roles" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Roles" FromRole="t_Usuarios" ToRole="t_Roles" />
     <NavigationProperty Name="t_Sistemas" Relationship="ViwolfRentalsDBModel.FK_t_Usuarios_t_Sistemas" FromRole="t_Usuarios" ToRole="t_Sistemas" />
@@ -805,6 +848,30 @@
       </Principal>
       <Dependent Role="t_FacturasDetalles">
         <PropertyRef Name="IDFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_Gastos_t_Usuarios">
+    <End Type="ViwolfRentalsDBModel.t_Usuarios" Role="t_Usuarios" Multiplicity="1" />
+    <End Type="ViwolfRentalsDBModel.t_Gastos" Role="t_Gastos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Usuarios">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="t_Gastos">
+        <PropertyRef Name="IDUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_GastosDetalle_t_Gastos">
+    <End Type="ViwolfRentalsDBModel.t_Gastos" Role="t_Gastos" Multiplicity="1" />
+    <End Type="ViwolfRentalsDBModel.t_GastosDetalle" Role="t_GastosDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_Gastos">
+        <PropertyRef Name="IDGasto" />
+      </Principal>
+      <Dependent Role="t_GastosDetalle">
+        <PropertyRef Name="IDGasto" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

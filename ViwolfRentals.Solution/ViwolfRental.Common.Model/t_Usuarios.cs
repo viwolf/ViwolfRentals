@@ -17,6 +17,7 @@ namespace ViwolfRental.Common.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public t_Usuarios()
         {
+            this.t_Gastos = new HashSet<t_Gastos>();
             this.t_Reservaciones = new HashSet<t_Reservaciones>();
         }
     
@@ -37,8 +38,12 @@ namespace ViwolfRental.Common.Model
     
         public virtual t_Departamentos t_Departamentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<t_Gastos> t_Gastos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_Reservaciones> t_Reservaciones { get; set; }
         public virtual t_Roles t_Roles { get; set; }
         public virtual t_Sistemas t_Sistemas { get; set; }
+
+        public IDictionary<string, Object> ExtendedProperties { set; get; }
     }
 }

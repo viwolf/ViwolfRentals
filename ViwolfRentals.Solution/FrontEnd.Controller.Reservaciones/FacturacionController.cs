@@ -13,6 +13,7 @@ namespace FrontEnd.Controllers.Viwolf
     public class FacturacionController:Controller
     {
         IFacturacionBL BlFacturacion = new FacturacionBL();
+        IGastosBL BlGastos = new GastosBL();
 
         [AuthorizeUser(IdPantalla: 10)]
         public ActionResult Index(string usuario, string idUsuario)
@@ -75,5 +76,38 @@ namespace FrontEnd.Controllers.Viwolf
         {
             return RedirectToAction("VerReporteFacturas", "Reportes", new { @FechaInicial = FechaInicial, @FechaFinal = FechaFinal});
         }
+
+
+        [HttpPost]
+        public JsonResult CrearGasto(ViwolfRental.Common.Model.t_Gastos gastos)
+        {
+            try
+            {
+
+                var result = BlGastos.GuardarGastos(gastos);
+                return Json(new
+                {
+                    Data = result,
+                    MessageType = "Success",
+                    InfoMessage = result != null ?
+                            "Proceso efectuado satisfactoriamente." :
+                            "No existen facturas que coincidan con los criterios de búsqueda.",
+                    ErrorMessage = string.Empty
+                }, JsonRequestBehavior.AllowGet);
+
+            }
+
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Data = "",
+                    MessageType = "Error",
+                    InfoMessage = string.Empty,
+                    ErrorMessage = ex.Message
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
     }
 }

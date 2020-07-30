@@ -54,6 +54,7 @@
     <Compile Include="Facturacion\FacturacionDetallePagoRepository.cs" />
     <Compile Include="Facturacion\FacturacionDetalleRepository.cs" />
     <Compile Include="Facturacion\FacturacionRepository.cs" />
+    <Compile Include="Facturacion\GastosRepository.cs" />
     <Compile Include="PagosComisiones\PagosComisionesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedores\ProveedoresRepository.cs" />
