@@ -227,6 +227,7 @@
     <Content Include="Areas\Viwolf\Content\js\src\Facturacion\DetallePago.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Facturacion\GenerarTicket.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Facturacion\Index.js" />
+    <Content Include="Areas\Viwolf\Content\js\src\Facturacion\ReporteCaja.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Facturacion\ReporteFacturas.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Calendario.js" />
     <Content Include="Areas\Viwolf\Content\js\src\Reservaciones\Content\css\core\main.css" />
@@ -634,6 +635,7 @@
     <Content Include="Areas\Viwolf\Views\Facturacion\ReporteFacturas.cshtml" />
     <Content Include="Areas\Viwolf\Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Viwolf\Views\Facturacion\Gastos.cshtml" />
+    <Content Include="Areas\Viwolf\Views\Facturacion\ReporteCajas.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

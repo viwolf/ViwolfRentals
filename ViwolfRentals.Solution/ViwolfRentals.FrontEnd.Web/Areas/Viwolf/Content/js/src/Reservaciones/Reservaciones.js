@@ -107,14 +107,16 @@
     };
 
     var fnConfirmarGuardar = function () {
+        debugger;
         Dialog.confirm('Reservaciones', "Desea guardar la reservacion?", function (respuesta) {
-            
+            debugger;
             if (respuesta == true)
                 fnGuardarReservacion();
         })
     };
 
     var Init = function () {
+        debugger;
         txtAplicaComision.change(cambiarEstadoAplicaComision);
 
         
@@ -545,7 +547,7 @@
 
     var fnGuardarReservacion = function () {
         
-        
+        debugger;
         var proveedor = document.getElementById("txtProveedor");
         IdProveedor = proveedor.options[proveedor.selectedIndex].value;
 
