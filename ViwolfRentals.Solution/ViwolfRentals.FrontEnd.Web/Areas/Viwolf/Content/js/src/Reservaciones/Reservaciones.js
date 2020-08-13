@@ -37,23 +37,26 @@
 
        
     var calcularTarifaTotal = function () {
-        
+        debugger;
 
-        if (checkValidaAdm == false)
-            txtMontoDia.val("");
+        if ((txtFechaInicio.val() != "") && (txtHoraInicio.val()) && (txtFechaFinal.val()) && (txtHoraEntrega.val())) {
 
-        var montoDia = txtMontoDia.val() == '' ? 0 : parseFloat(txtMontoDia.val().replace("$", "")); 
-        var montoSurfRacks = txtMontoSurfRacks.val() == '' ? 0 : parseFloat(txtMontoSurfRacks.val().replace("$", ""));
-        var montoTotal = 0;
+            if (checkValidaAdm == false)
+                txtMontoDia.val("");
 
-        if (timeIn == timeOut) {
-            cantidadDias == 0 ? 0 : cantidadDias - 1;
-            montoTotal = ((montoDia * (cantidadDias)) + montoSurfRacks);
-        } else {
-            montoTotal = ((montoDia * (cantidadDias + 1)) + montoSurfRacks);
-        }        
-        txtMontoDia.val(utils.formatterDolar.format(montoDia));
-        txtMontoTotal.val(utils.formatterDolar.format(montoTotal));
+            var montoDia = txtMontoDia.val() == '' ? 0 : parseFloat(txtMontoDia.val().replace("$", ""));
+            var montoSurfRacks = txtMontoSurfRacks.val() == '' ? 0 : parseFloat(txtMontoSurfRacks.val().replace("$", ""));
+            var montoTotal = 0;
+
+            if (timeIn == timeOut) {
+                cantidadDias == 0 ? 0 : cantidadDias - 1;
+                montoTotal = ((montoDia * (cantidadDias)) + montoSurfRacks);
+            } else {
+                montoTotal = ((montoDia * (cantidadDias + 1)) + montoSurfRacks);
+            }
+            txtMontoDia.val(utils.formatterDolar.format(montoDia));
+            txtMontoTotal.val(utils.formatterDolar.format(montoTotal));
+        }
     };
     
     var InitSelect = function () {
@@ -107,20 +110,24 @@
     };
 
     var fnConfirmarGuardar = function () {
-        debugger;
+       
         Dialog.confirm('Reservaciones', "Desea guardar la reservacion?", function (respuesta) {
-            debugger;
+           
             if (respuesta == true)
                 fnGuardarReservacion();
         })
     };
 
     var Init = function () {
-        debugger;
+
+        fnCargaFechas();
+
+        fnLimpiarDatos();
+
         txtAplicaComision.change(cambiarEstadoAplicaComision);
 
         
-        fnCargaFechas();
+       
 
         txtMontoSurfRacks.bind('keypress', valideKey);
 
@@ -245,7 +252,7 @@
     var cargarHoraFinal = function (hora) {
      
         var horaSeleccionada = hora.getHours().toString();
-        var tiempo = horaSeleccionada + ':00'; 
+        var tiempo = horaSeleccionada + ':30'; 
 
         txtHoraEntrega.timepicker({
             timeFormat: 'h:mm p',
@@ -317,10 +324,26 @@
             }
            
         });
+
+        //txtHoraEntrega.timepicker({
+        //    timeFormat: 'h:mm p',
+        //    interval: 30,
+        //    minTime: '5',
+        //    maxTime: '11:00pm',
+        //    startTime: '5:00',
+        //    //defaultTime: '11',
+        //    scrollbar: true,
+        //    change: function (e) {
+        //        timeIn = e.getTime();
+        //        txtHoraEntrega.timepicker('setTime', new Date(e));
+        //        calcularTarifaTotal();
+        //        cargarHoraFinal(e);
+
+        //    }
+
+        //});
     }
 
-
-  
     var cargarSelect2 = function (elemento, configuracion) {
        
         $.ajax({
@@ -547,7 +570,7 @@
 
     var fnGuardarReservacion = function () {
         
-        debugger;
+       
         var proveedor = document.getElementById("txtProveedor");
         IdProveedor = proveedor.options[proveedor.selectedIndex].value;
 
