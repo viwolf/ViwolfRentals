@@ -4,12 +4,38 @@
     var objSeleccionado = null;
 
     var Init = function () {
-        btnEliminarReservacion.click(fnGuardarReservacion);
+        btnEliminarReservacion.click(fnConfirmarEliminar);
     }
+
+
+    var fnConfirmarEliminar = function (e) {
+        debugger;
+        if (objSeleccionado != null) {
+
+            if (objSeleccionado.GeneraContrato == true) {
+                Dialog.alert('Reservaciones', "Existe un contrato relacionado a esta reservación.", function () {
+                })
+            }
+            else {
+                Dialog.confirm('Reservaciones', "Desea desactivar la reservervación seleccionada?", function (respuesta) {
+                    if (respuesta == true) {
+                        fnGuardarReservacion();
+                    }
+                })
+            }
+        }
+        else {
+            Dialog.alert('Reservaciones', "Debe seleccionar una reservacion.", function () {
+            })
+        }
+    };
+
 
     var fnBuscarReservaciones = function () {
        
-        var oData = null;
+        var oData = {
+            "Activo": true
+        }
         try {
             var oUrl = 'ListarReservacion';
             var oProcessMessage = 'Buscando Reservaciones';
@@ -24,6 +50,7 @@
                         data: result.Data,
                         select: true,
                         columns: [
+                            { data: 'GeneraContrato' },
                             { data: 'IdReservacion' },
                             { data: 'NombreCliente' },
                             { data: 'LugarEntrega' },
@@ -31,16 +58,28 @@
                             { data: 'FechaEntrega' },
                             { data: 'IDVehiculo' },
                             { data: 'InfoVehiculo' }
-                            //,
-                          // { data: 't_Vehiculos.t_CategoriasVehiculos.NombreCategoriaVehiculo' },
+                          
                         ],
+                        columnDefs: [
+                            {
+                                "targets": [0],
+                                "visible": false,
+                                "searchable": false
+                            },
+                        ]
                     });
-                    tableListReservaciones.on("click", "tr", function () {
-                       
-                        var iPos = tableListReservaciones.fnGetPosition(this);
-                        objSeleccionado = tableListReservaciones.fnGetData(iPos);
 
+                    $('#tableListReservaciones tbody').on('click', 'tr', function () {
+                      
 
+                        if ($(this).hasClass('selected')) {
+                            objSeleccionado = null;
+                        }
+                        else {
+                            tableListReservaciones.$('tr.selected').removeClass('selected');
+                            var iPos = tableListReservaciones.fnGetPosition(this);
+                            objSeleccionado = tableListReservaciones.fnGetData(iPos);
+                        }
                     });
 
                     OnPageEvent(tableListReservaciones);
@@ -86,7 +125,7 @@
     }
 
     var fnGuardarReservacion = function () {
-
+        debugger;
 
         if (objSeleccionado != null) {
 
@@ -103,7 +142,8 @@
 
                 var success = function (result) {
                     if (result.MessageType == "Success") {
-                        alert("Reservacion eliminada con exito");
+                        Dialog.alert('Reservaciones', result.InfoMessage, function () {
+                        })
                         fnBuscarReservaciones();
                     }
                     else {

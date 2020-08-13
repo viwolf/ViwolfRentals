@@ -99,6 +99,7 @@ namespace FrontEnd.Controllers.Viwolf
                                      ta.IDVehiculo,
                                      ta.t_Vehiculos,
                                      InfoVehiculo = "<button id= '" + ta.IDVehiculo + "' name='btnV_" + ta.IDVehiculo + "'><i class='fa fa-eye'></i></button>",
+                                     ta.GeneraContrato
 
                                  }).AsEnumerable();
                 return Json(new

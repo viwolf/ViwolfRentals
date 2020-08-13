@@ -92,6 +92,7 @@
                                                 <table id="tableListReservaciones" class="table table-striped table-hover dt-responsive" cellspacing="0" width="100%">
                                                     <thead>
                                                         <tr>
+                                                            <th style="visibility:hidden">GeneraContrato</th>
                                                             <th>Id Reservacion</th>
                                                             <th>Nombre del cliente</th>
                                                             <th>Hospedaje</th>
@@ -99,7 +100,7 @@
                                                             <th>Fecha Entrega</th>
                                                             <th>Placa</th>
                                                             <th>Info Vehiculo</th>
-                                                        
+
                                                         </tr>
                                                 </table>
                                             </div>
@@ -122,14 +123,11 @@
                 </div>
             </div>
         </div>
+        @Scripts.Render("~/bundles/Content")
 
         <!-- Jquery JS-->
-        @*<script src="~/Areas/Seguridad/Content/vendor/jquery/jquery-1.11.3.js"></script>
-        <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/jquery/jquery.min.js"></script>*@
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/js/jquery-ui.js"></script>
 
         <!-- Vendor JS-->
         <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/select2/select2.min.js"></script>
@@ -137,29 +135,26 @@
         <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/vendor/datepicker/daterangepicker.js"></script>
 
 
+
+
         <!-- Main JS-->
 
         <script src="~/Content/Plugins/ajaxloader/ajaxloader.js"></script>
         <script src="~/Areas/Seguridad/Content/js/src/app.js"></script>
 
-        <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Content/js/global.js"></script>
+        <!-- Mensajes-->
+        <script src="~/Content/js/src/Dialog.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
         <script src="~/Areas/Viwolf/Content/js/src/Reservaciones/Mantenimiento.js"></script>
 
         @*Time Picker*@
         <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
-        <!--messageModal-->
-
-        <script src="~/Content/Plugins/bootstrap/js/bootstrap.js"></script>
-        @*<script src="~/Content/Plugins/bootstrap-dialog/js/bootstrap-dialog.js"></script>*@
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.9/js/bootstrap-dialog.js"></script>
-        @*<link rel="stylesheet" href="~/Content/Plugins/ReModal/remodal.css">*@
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.9/css/bootstrap-dialog.css" rel="stylesheet" type="text/css" />
-        @*<script src="~/Content/Plugins/ReModal/messageModal.js"></script>*@
-        <script src="~/Areas/Viwolf/Content/js/src/msjApp.js"></script>
         <script src="~/Content/js/src/utils.js"></script>
 
-        
+
         <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js"></script>
 
@@ -167,7 +162,7 @@
 
         @*<script src="~/Areas/Viwolf/Content/js/src/Vehiculos/BuscarVehiculo.js"></script>*@
 
-    <script src="~/Areas/Viwolf/Content/js/src/Vehiculos/InformacionVehiculo.js"></script>
+        <script src="~/Areas/Viwolf/Content/js/src/Vehiculos/InformacionVehiculo.js"></script>
 
 
     </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
