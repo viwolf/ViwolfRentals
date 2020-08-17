@@ -25,8 +25,7 @@
 
     function fnOnClickBtn_EditarVehiculo() {
         var t = setTimeout(function () {
-
-            editarVehiculo.AbrirModal(objSeleccionado.IDVehiculo, Reload);
+            editarVehiculo.AbrirModal(objSeleccionado,objSeleccionado.IDVehiculo, Reload);
 
         }, 100);
     };

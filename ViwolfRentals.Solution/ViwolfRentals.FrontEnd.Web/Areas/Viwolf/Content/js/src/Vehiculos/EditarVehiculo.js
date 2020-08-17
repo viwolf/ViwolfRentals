@@ -1,5 +1,6 @@
 ﻿
 
+
 var editarVehiculo = function () {
     var modalVehiculo = $('#popupEditVehiculo');
     var idVehiculo = $('#txtPlacaVehiculoEdicion');
@@ -17,7 +18,7 @@ var editarVehiculo = function () {
     var Carroceria = $("#txtCarroceriaEdicion");
     var Traccion = $("#txtTraccionEdicion");
     var Capacidad = $("#txtCapacidadEdicion");
-    var Categoria = $("#txtCategoriaEdicion");
+    var txtCategoriaEdicion = $("#txtCategoriaEdicion");
 
     var rtvVencimientoAnno = $('#txtRtvVencimientoAnnoEdicion');
     var rtvVencimientoMes = $('#txtRtvVencimientoMesEdicion');
@@ -39,9 +40,100 @@ var editarVehiculo = function () {
     var IdCategoriaVehiculo = 0;
     var IdDepartamento = 0;
     var fnCallBack = null;
+    var objetoVehiculo = null;
 
-    var InitSelect = function () {
-        cargarSelect2(Categoria,
+    //var InitSelect = function () {
+    //    debugger;
+        
+
+
+    //    cargarSelect2(txtCategoriaEdicion,
+    //        {
+    //            PlaceHolder: "Seleccione una categoria",
+    //            Url: "Vehiculos/ListarCategoriasVehiculos",
+    //            DataType: 'json',
+    //            Type: "POST",
+    //            Id: "IDCategoriaVehiculo",
+    //            Text: "NombreCategoriaVehiculo",
+    //            InitSelection: function (callback, configuracion) {
+    //                $.ajax(configuracion.Url, {
+    //                    url: configuracion.Url,
+    //                    data: configuracion.data,
+    //                    dataType: 'json',
+    //                    type: 'POST'
+    //                }).done(function () {
+
+    //                });
+    //            },
+
+    //        });
+
+    //    cargarSelect2(Departamento,
+    //        {
+    //            PlaceHolder: "Seleccione un departamento",
+    //            Url: "Departamentos/ListarDepartamentosVehiculos",
+    //            DataType: 'json',
+    //            Type: "POST",
+    //            Id: "IDDepartamento",
+    //            Text: "NombreDepartamento",
+    //            InitSelection: function (callback, configuracion) {
+    //                $.ajax(configuracion.Url, {
+    //                    url: configuracion.Url,
+    //                    data: configuracion.data,
+    //                    dataType: 'json',
+    //                    type: 'POST'
+    //                }).done(function () {
+
+    //                });
+    //            },
+
+    //        });
+    //};
+
+    function valideKey(evt) {
+        var code = evt.which ? evt.which : evt.keyCode;
+        if (code == 8) {
+            //backspace
+            return true;
+        } else if (code >= 48 && code <= 57) {
+            //is a number
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    var fnInit = function (objV, idvehiculo, callback) {
+        objetoVehiculo = objV;
+        $('#closemodal').click(function () {
+            var select = document.getElementById("txtCategoriaEdicion");
+            var length = select.options.length;
+            for (i = length - 1; i >= 0; i--) {
+                select.options[i] = null;
+            }
+            modalVehiculo.modal('hide');
+        });
+        fnCallBack = callback
+        fnCargarFecha();
+        anno.unbind('keypress', valideKey);
+        rtvVencimientoAnno.unbind('keypress', valideKey);
+        marchamoProximo.unbind('keypress', valideKey);
+        Peso.unbind('keypress', valideKey);
+        Kilometraje.unbind('keypress', valideKey);
+        multas.unbind('keypress', valideKey);
+        Capacidad.unbind('keypress', valideKey);
+        Cilindraje.unbind('keypress', valideKey);
+        multas.blur(function () {
+            txtMultas.val(utils.formatterDolar.format(txtMultas.val()));
+            txtMultas.val(txtMultas.val().replace("$", "¢"));
+        });
+        btnGuardarVehiculo.unbind().click(fnConfirmarGuardar);     
+        fnCargarVehiculo(objV);
+        modalVehiculo.modal('show');
+
+
+        cargarSelect2(txtCategoriaEdicion,
             {
                 PlaceHolder: "Seleccione una categoria",
                 Url: "Vehiculos/ListarCategoriasVehiculos",
@@ -82,70 +174,43 @@ var editarVehiculo = function () {
                 },
 
             });
+
+     
+      
     };
 
-    function valideKey(evt) {
-        var code = evt.which ? evt.which : evt.keyCode;
-        if (code == 8) {
-            //backspace
-            return true;
-        } else if (code >= 48 && code <= 57) {
-            //is a number
-            return true;
-        } else {
-            return false;
-        }
+    //var fnBuscarVehiculo = function (id) {
+    //    var oData = {
+    //        "IDVehiculo": id
+    //    }
 
+    //    try {
+    //        var oUrl = 'Vehiculos/ListarVehiculos';
+    //        var oProcessMessage = 'Buscando vehiculo';
+
+    //        var success = function (result) {
+
+    //            if (result.Data.length > 0) {
+                    
+    //               var objVehiculo = result.Data[0];
+                   
+    //               fnCargarVehiculo(objVehiculo); 
+    //            }
+    //        };
+    //        app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
+    //    } catch (ex) {
+
+    //        retorno = false;
+    //    }
+    //};
+
+    function selectElementDefault(id, valueToSelect) {
+        let element = document.getElementById(id);
+        element.value = valueToSelect;
     }
 
-    var fnInit = function (idvehiculo, callback) {
-        fnCallBack = callback
-        fnCargarFecha();
-        anno.unbind('keypress', valideKey);
-        rtvVencimientoAnno.unbind('keypress', valideKey);
-        marchamoProximo.unbind('keypress', valideKey);
-        Peso.unbind('keypress', valideKey);
-        Kilometraje.unbind('keypress', valideKey);
-        multas.unbind('keypress', valideKey);
-        Capacidad.unbind('keypress', valideKey);
-        Cilindraje.unbind('keypress', valideKey);
-        multas.blur(function () {
-            txtMultas.val(utils.formatterDolar.format(txtMultas.val()));
-            txtMultas.val(txtMultas.val().replace("$", "¢"));
-        });
-        btnGuardarVehiculo.unbind().click(fnConfirmarGuardar);
-
-        modalVehiculo.modal('show');
-        fnBuscarVehiculo(idvehiculo)
-    };
-
-    var fnBuscarVehiculo = function (id) {
-        var oData = {
-            "IDVehiculo": id
-        }
-
-        try {
-            var oUrl = 'Vehiculos/ListarVehiculos';
-            var oProcessMessage = 'Enlazando vehiculo';
-
-            var success = function (result) {
-
-                if (result.Data.length > 0) {
-                    
-                   var objVehiculo = result.Data[0];
-                   
-                   fnCargarVehiculo(objVehiculo); 
-                }
-            };
-            app.fnExecuteWithResult(null, oUrl, oData, oProcessMessage, success);
-        } catch (ex) {
-
-            retorno = false;
-        }
-    };
-
     var fnCargarVehiculo = function (result) {
-       
+        debugger;
         idVehiculo.val(result.IDVehiculo == null ? "" : result.IDVehiculo);
         marca.val(result.Marca == null ? "" : result.Marca);
         modelo.val(result.Modelo == null ? "" : result.Modelo);
@@ -174,15 +239,12 @@ var editarVehiculo = function () {
         stickerPlaca.val(result.StickerPlaca == "Sí" ? 1 : 0);
         tituloPropiedad.val(result.TituloPropiedad ==  "Sí" ? 1 : 0);
         multas.val(result.Multas == null ? utils.formatterColon.format(0) : utils.formatterColon.format(result.Multas));
-        Categoria.val(result.t_CategoriasVehiculos == null ? "" : result.t_CategoriasVehiculos.IDCategoriaVehiculo);
-        debugger;
-        Departamento.val(result.t_Departamentos == null ? "" : result.t_Departamentos.IDDepartamento);
-        IdCategoriaVehiculo = result.t_CategoriasVehiculos.IDCategoriaVehiculo;
-        IdDepartamento = result.t_Departamentos.IDDepartamento;
+     
         multas.val().replace("$", "¢");
         Kilometraje.val(result.Kilometraje == null ? "" : result.Kilometraje);
         CodigoColor.val(result.CodigoColor == null ? "" : result.CodigoColor);
         Estado.val(result.Activo == null ? "" : result.Activo);
+       
     };
 
     var cargarSelect2 = function (elemento, configuracion) {
@@ -205,9 +267,11 @@ var editarVehiculo = function () {
                     option.val(this[configuracion.Id]);
 
 
-
                     elemento.append(option);
                 });
+
+                selectElementDefault('txtCategoriaEdicion', objetoVehiculo.t_CategoriasVehiculos.IDCategoriaVehiculo);
+                selectElementDefault('txtDepartamentoEdicion', objetoVehiculo.t_Departamentos.IDDepartamento); //result.t_CategoriasVehiculos.IDCategoriaVehiculo); 
 
             },
             error: function (msg) {
@@ -369,7 +433,6 @@ var editarVehiculo = function () {
 
     var fnConfirmarGuardar = function () {
         Dialog.confirm('Edicion Vehiculos', "Desea actualizar el Vehiculo?", function (respuesta) {
-            debugger;
             if (respuesta == true)
                 fnGuardarVehiculo();
             else
@@ -378,16 +441,15 @@ var editarVehiculo = function () {
     };
 
     var fnGuardarVehiculo = function () {
-
-        debugger;
         var categoria = document.getElementById("txtCategoriaEdicion");
         IdCategoriaVehiculo = categoria == null ? IdCategoriaVehiculo : categoria.options[categoria.selectedIndex].value;
 
         var departamento = document.getElementById("txtDepartamentoEdicion");
-        IdDepartamento = departamento == null ? IdDepartamento : departamento.options[categoria.selectedIndex].value;
+        IdDepartamento = departamento == null ? IdDepartamento : departamento.options[departamento.selectedIndex].value;
 
         var nombreColor = $("#txtCodigoColorEdicion option:selected").text();
 
+        debugger;
       
         if (ValidateFields() == true) {
 
@@ -398,7 +460,7 @@ var editarVehiculo = function () {
                 "Marca": marca.val(),
                 "Modelo": modelo.val(),
                 "Anno": anno.val(),
-                "GPS": Gps.val() == 'Sí' ? true : false,
+                "GPS": Gps.val() == 1 ? true : false,
                 "FechaCompra": fechaCompra.val() == "" ? null : dateCompra,
                 "NumeroChasis": chasis.val(),
                 "NumeroMotor": motor.val(),
@@ -449,9 +511,9 @@ var editarVehiculo = function () {
         }
     };
 
-    var fnAbrirModal = function (idVehiculo, callback) {
-        fnInit(idVehiculo, callback);
-        InitSelect();
+    var fnAbrirModal = function (objV, idVehiculo, callback) {
+        //InitSelect();
+        fnInit(objV, idVehiculo, callback);
     };
 
     return {
