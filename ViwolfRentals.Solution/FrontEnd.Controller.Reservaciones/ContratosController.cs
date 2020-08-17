@@ -143,7 +143,7 @@ namespace FrontEnd.Controllers.Viwolf
                     MessageType = "Success",
                     InfoMessage = jsonObjet.Count() > 0 ?
                             "Proceso efectuado satisfactoriamente." :
-                            "No existen comisiones por pagar que coincidan con los criterios de búsqueda.",
+                            "No existen contratos que coincidan con los criterios de búsqueda.",
                     ErrorMessage = string.Empty
                 }, JsonRequestBehavior.AllowGet);
             }

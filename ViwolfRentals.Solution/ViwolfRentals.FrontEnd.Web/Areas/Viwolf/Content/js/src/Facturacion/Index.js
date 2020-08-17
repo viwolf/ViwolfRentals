@@ -72,6 +72,8 @@
     };
 
     var fnInit = function () {
+       
+
       
         //fnBuscarContratos();
        

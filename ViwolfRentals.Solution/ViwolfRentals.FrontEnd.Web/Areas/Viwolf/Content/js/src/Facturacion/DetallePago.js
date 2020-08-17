@@ -10,6 +10,7 @@
     var txtCambio = $("#txtCambio");
     var txttipocambio = $("#txttipocambio");
     var txtMoneda = $("#txtMoneda");
+    var btnLimpiar = $("#btnLimpiar");
     var montoTotal = 0;
     var table = null;
     var fnCallback = null;
@@ -87,16 +88,31 @@
         btnAgregar.click(fnAgregarPago);
         btnFacturar.click(fnSave);
 
-       
+        
 
         txtMonto.bind('keypress', valideKey);
 
         txtMoneda.change(calcularTipoCambio);
 
+        btnLimpiar.unbind('click');
+        btnLimpiar.click(fnLimpiarTabla);
+
         
     };
 
+    var fnLimpiarTabla = function () {
+        var table = $('#tblDataDetallePagos').DataTable();
+        table
+            .clear()
+            .draw();
+        txtCambio.val("");
+        txtTotalPagar.val(parseInt(txtMontoPagarTotal.val().replace("$","")));
+        TxtReferencia.val("");
+
+    };
+
     var fnAgregarPago = function () {
+      
         if (txtTotalPagar.val() > 0) {
             if ((txtTipoPago.val() != 1) && (TxtReferencia.val() == '')) {
                 Dialog.alert('DetallePago', "Debe digitar una referencia.", function () {
@@ -111,6 +127,7 @@
                    
                   
                     montoTotal = montoTotal - txtMonto.val();
+                    //montoTotal = txtMonto.val() - txtTotalPagar.val();
                     if (montoTotal <= 0) {
                         montoPago = parseInt(txtTotalPagar.val());
                         txtTotalPagar.val("0");
@@ -120,8 +137,8 @@
                         txtTotalPagar.val(montoTotal);
                     }
                    
-                    
-                    cambio = txtMonto.val() - txtMontoPagarTotal.val();
+
+                    cambio = txtMonto.val() - parseInt(txtMontoPagarTotal.val().replace("$",""));
                     if (cambio >= 0)
                         txtCambio.val(cambio);
                     else
@@ -197,6 +214,7 @@
     };
 
     var fnLimpiarDatos = function () {
+      
         txtTotalPagar.val("");
         txtCambio.val("");
         txtMontoPagarTotal.val("");
@@ -210,6 +228,14 @@
     };
 
     var fnAbrirModal = function (total, callback) {
+       
+        $("#tblDataDetallePagos").DataTable({
+            filter: false,
+            "bLengthChange": false,
+            "bPaginate": false,
+            "bInfo": false,
+        });
+
         montoTotal = total;
         fnCallback = callback;
         modalDetallePago.modal('show');
