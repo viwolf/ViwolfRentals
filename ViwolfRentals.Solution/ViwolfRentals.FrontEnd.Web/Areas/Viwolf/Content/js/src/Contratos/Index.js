@@ -129,7 +129,8 @@ var indexContratos = function () {
             "LugarEntrega": txtHospedaje.val(),
             "FechaInicio": dateIni,
             "FechaEntrega": dateFin,
-            "GeneraContrato": false
+            "GeneraContrato": false,
+            "Activo": true
         };
         try {
             var oUrl = 'Reservaciones/ListarReservacion';

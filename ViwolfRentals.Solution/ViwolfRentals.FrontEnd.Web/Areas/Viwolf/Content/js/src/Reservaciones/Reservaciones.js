@@ -251,7 +251,7 @@
 
     //No se permite escribir dentro del input text
     var delimitarTextos = function (e) {
-            e.preventDefault();
+        e.preventDefault();
     }
 
     //Solo permite introducir numeros.

@@ -38,14 +38,7 @@ namespace FrontEnd.Controllers.Viwolf
         {
             try
             {
-                //var plainText = System.Convert.ToString(contrato.ExtendedProporeties["Path"]);
-
-
-                //    var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
-                //    var ENCODE =  System.Convert.ToBase64String(plainTextBytes);
-
-                //contrato.ExtendedProporeties.Add("Encode", ENCODE);
-
+              
 
 
                 var result = BlContrato.GuardarContrato(model);

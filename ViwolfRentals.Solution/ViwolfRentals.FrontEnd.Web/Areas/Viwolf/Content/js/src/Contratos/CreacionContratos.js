@@ -2,25 +2,40 @@
     var popupCrearContrato = $('#popupCrearContrato');
     var txtIdReservacionContrato = $('#txtIdReservacionContrato');
     var txtNombreClienteContrato = $('#txtNombreClienteContrato');
-    //var txtVoucherPago = $('#txtVoucherPago');
-    //var txtVoucherDeposito = $('#txtVoucherDeposito');
-    //var txtLicencia = $('#txtLicencia');
-    //var txtContrato = $('#txtContrato');
-    //var txtPrimeraVehiculo = $('#txtPrimeraVehiculo');
-    //var txtSegundaVehiculo = $('#txtSegundaVehiculo');
-    //var txtTerceraVehiculo = $('#txtTerceraVehiculo');
-    //var txtCuartaVehiculo = $('#txtCuartaVehiculo');
-    //var txtQuintaVehiculo = $('#txtQuintaVehiculo');
-    //var txtSextaVehiculo = $('#txtSextaVehiculo');
+    var imgVoucherPago = $('#imgVoucherPago');
+    var imgVoucherDeposito = $('#imgVoucherDeposito');
+    var imgLicencia = $('#imgLicencia');
+    var imgContrato = $('#imgContrato');
+    var imgFrontalVehiculo = $('#imgFrontalVehiculo');
+    var imgTraseraVehiculo = $('#imgTraseraVehiculo');
+    var imgIzquierdaVehiculo = $('#imgIzquierdaVehiculo');
+    var imgDerechaVehiculo = $('#imgDerechaVehiculo');
+    var imgQuintaVehiculo = $('#imgQuintaVehiculo');
+    var imgSextaVehiculo = $('#imgSextaVehiculo');
     var btnGuardarContrato = $('#btnGuardarContrato');
+
+    var txtVoucherPago = $("#txtVoucherPago");
+    var txtVoucherDeposito = $("#txtVoucherDeposito");
+    var txtLicencia = $("#txtLicencia");
+    var txtContrato = $("#txtContrato");
+    var txtFrontalVehiculo = $("#txtFrontalVehiculo");
+    var txtTraseraVehiculo = $("#txtTraseraVehiculo");
+    var txtIzquierdaVehiculo = $("#txtIzquierdaVehiculo");
+    var txtDerechaVehiculo = $("#txtDerechaVehiculo");
+    var txtQuintaVehiculo = $("#txtQuintaVehiculo");
+    var txtSextaVehiculo = $("#txtSextaVehiculo");
+
+
+
+
     var imgPago = null;
     var imgDeposito = null;
-    var imgLicencia = null;
-    var imgContrato = null;
-    var imgVehiculoFrontal = null;
-    var imgVehiculoTrasera = null;
-    var imgVehiculoIzquierda = null;
-    var imgVehiculoDerecha = null;
+    var imgLic = null;
+    var imgCont = null;
+    var imgFrontal = null;
+    var imgTrasera = null;
+    var imgIzquierda = null;
+    var imgDerecha = null;
     var imgVehiculo5 = null;
     var imgVehiculo6 = null;
     var fnCallBack = null;
@@ -42,34 +57,34 @@
                 preview.src = imgDeposito;
                 break;
             case 'imgLicencia':
-                imgLicencia = e.target.result;
+                imgLic = e.target.result;
                 var preview = document.getElementById(control);
-                preview.src = imgLicencia;
+                preview.src = imgLic;
                 break;
             case 'imgContrato':
-                imgContrato = e.target.result;
+                imgCont = e.target.result;
                 var preview = document.getElementById(control);
-                preview.src = imgContrato;
+                preview.src = imgCont;
                 break;
             case 'imgFrontalVehiculo':
-                imgVehiculoFrontal = e.target.result;
+                imgFrontal = e.target.result;
                 var preview = document.getElementById(control);
-                preview.src = imgVehiculoFrontal;
+                preview.src = imgFrontal;
                 break;
             case 'imgTraseraVehiculo':
-                imgVehiculoTrasera = e.target.result;
+                imgTrasera = e.target.result;
                 var preview = document.getElementById(control);
-                preview.src = imgVehiculoTrasera;
+                preview.src = imgTrasera;
                 break;
             case 'imgIzquierdaVehiculo':
-                imgVehiculoIzquierda = e.target.result;
+                imgIzquierda = e.target.result;
                 var preview = document.getElementById(control);
-                preview.src = imgVehiculoIzquierda;
+                preview.src = imgIzquierda;
                 break;
             case 'imgDerechaVehiculo':
-                imgVehiculoDerecha = e.target.result;
+                imgDerecha = e.target.result;
                 var preview = document.getElementById(control);
-                preview.src = imgVehiculoDerecha;
+                preview.src = imgDerecha;
                 break;
             case 'imgQuintaVehiculo':
                 imgVehiculo5 = e.target.result;
@@ -113,35 +128,84 @@
         btnGuardarContrato.unbind('click');
         btnGuardarContrato.click(fnConfirmarGuardar);
         $("#txtVoucherPago").change(function () {
-            
             readURL(this, 'imgVoucherPago');
+        });
+        imgVoucherPago.unbind().click(function () {
+            var visor = document.getElementById('imgVoucherPago');
+            if (txtVoucherPago.val() != "")
+                visorImagenes.AbrirModal(visor.src);
         });
         $("#txtVoucherDeposito").change(function () {
             readURL(this, 'imgVoucherDeposito');
         });
+        imgVoucherDeposito.unbind().click(function () {
+            var visor = document.getElementById('imgVoucherDeposito');
+            if (txtVoucherDeposito.val() != "")
+                visorImagenes.AbrirModal(visor.src);
+        });
         $("#txtLicencia").change(function () {
             readURL(this, 'imgLicencia');
+        });
+        imgLicencia.unbind().click(function () {
+            var visor = document.getElementById('imgLicencia');
+            if (txtLicencia.val() != "")
+                visorImagenes.AbrirModal(visor.src);
         });
         $("#txtContrato").change(function () {
             readURL(this, 'imgContrato');
         });
+        imgContrato.unbind().click(function () {
+            var visor = document.getElementById('imgContrato');
+            if (txtContrato.val() != "")
+                visorImagenes.AbrirModal(visor.src);
+        });
         $("#txtFrontalVehiculo").change(function () {
             readURL(this, 'imgFrontalVehiculo');
+        });
+        imgFrontalVehiculo.unbind().click(function () {
+            var visor = document.getElementById('imgFrontalVehiculo');
+            if (txtFrontalVehiculo.val() != "")
+                visorImagenes.AbrirModal(visor.src);
         });
         $("#txtTraseraVehiculo").change(function () {
             readURL(this, 'imgTraseraVehiculo');
         });
+        imgTraseraVehiculo.unbind().click(function () {
+            var visor = document.getElementById('imgTraseraVehiculo');
+            if (txtTraseraVehiculo.val() != "")
+                visorImagenes.AbrirModal(visor.src);
+        });
         $("#txtIzquierdaVehiculo").change(function () {
             readURL(this, 'imgIzquierdaVehiculo');
+        });
+        imgIzquierdaVehiculo.unbind().click(function () {
+            var visor = document.getElementById('imgIzquierdaVehiculo');
+            if (txtIzquierdaVehiculo.val() != "")
+                visorImagenes.AbrirModal(visor.src);
         });
         $("#txtDerechaVehiculo").change(function () {
             readURL(this, 'imgDerechaVehiculo');
         });
+        imgDerechaVehiculo.unbind().click(function () {
+            var visor = document.getElementById('imgDerechaVehiculo');
+            if (txtDerechaVehiculo.val() != "")
+                visorImagenes.AbrirModal(visor.src);
+        });
         $("#txtQuintaVehiculo").change(function () {
             readURL(this, 'imgQuintaVehiculo');
         });
+        imgQuintaVehiculo.unbind().click(function () {
+            var visor = document.getElementById('imgQuintaVehiculo');
+            if (txtQuintaVehiculo.val() != "")
+                visorImagenes.AbrirModal(visor.src);
+        });
         $("#txtSextaVehiculo").change(function () {
             readURL(this, 'imgSextaVehiculo');
+        });
+        imgSextaVehiculo.unbind().click(function () {
+            var visor = document.getElementById('imgSextaVehiculo');
+            if (txtSextaVehiculo.val() != "")
+                visorImagenes.AbrirModal(visor.src);
         });
         popupCrearContrato.modal('show');
     };
@@ -177,12 +241,12 @@
        
         var realDataPago = imgPago == null ? null : fnBlock(imgPago);
         var realDataDeposito = imgDeposito == null ? null : fnBlock(imgDeposito);
-        var realDataLicencia = imgLicencia == null ? null : fnBlock(imgLicencia);
-        var realDataContrato = imgContrato == null ? null : fnBlock(imgContrato);
-        var realDataVehiculoF = imgVehiculoFrontal == null ? null : fnBlock(imgVehiculoFrontal);
-        var realDataVehiculoT = imgVehiculoTrasera == null ? null : fnBlock(imgVehiculoTrasera);
-        var realDataVehiculoI = imgVehiculoIzquierda == null ? null : fnBlock(imgVehiculoIzquierda);
-        var realDataVehiculoD = imgVehiculoDerecha == null ? null : fnBlock(imgVehiculoDerecha);
+        var realDataLicencia = imgLic == null ? null : fnBlock(imgLic);
+        var realDataContrato = imgCont == null ? null : fnBlock(imgCont);
+        var realDataVehiculoF = imgFrontal == null ? null : fnBlock(imgFrontal);
+        var realDataVehiculoT = imgTrasera == null ? null : fnBlock(imgTrasera);
+        var realDataVehiculoI = imgIzquierda == null ? null : fnBlock(imgIzquierda);
+        var realDataVehiculoD = imgDerecha == null ? null : fnBlock(imgDerecha);
         var realDataVehiculo5 = imgVehiculo5 == null ? null : fnBlock(imgVehiculo5);
         var realDataVehiculo6 = imgVehiculo6 == null ? null : fnBlock(imgVehiculo6);
 

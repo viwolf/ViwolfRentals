@@ -65,6 +65,7 @@ namespace ViwolfRentals.DataAccess
                         objReservaciones.GeneraContrato = true;
                         objReservaciones.FechaEntrega = null;
                         objReservaciones.FechaInicio = null;
+                        objReservaciones.Activo = true;
 
                         ////Se crea una instancia del DataAccess de Reservaciones
                         //IReservacionesRepository repositoryReservaciones = new ReservacionesRepository(ConnectionManagerInstance);
