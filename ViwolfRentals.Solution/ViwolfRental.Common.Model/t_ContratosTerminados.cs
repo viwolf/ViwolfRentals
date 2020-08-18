@@ -37,7 +37,6 @@ namespace ViwolfRental.Common.Model
     
         public virtual t_Contratos t_Contratos { get; set; }
         public virtual t_Kilometrajes t_Kilometrajes { get; set; }
-
         public IDictionary<string, Object> ExtendedProperties { set; get; }
     }
 }

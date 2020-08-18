@@ -43,7 +43,5 @@ namespace ViwolfRental.Common.Model
         public virtual ICollection<t_Reservaciones> t_Reservaciones { get; set; }
         public virtual t_Roles t_Roles { get; set; }
         public virtual t_Sistemas t_Sistemas { get; set; }
-
-        public IDictionary<string, Object> ExtendedProperties { set; get; }
     }
 }

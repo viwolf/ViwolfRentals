@@ -11,6 +11,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="t_Clientes">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Clientes">
+        <MappingFragment StoreEntitySet="t_Clientes">
+          <ScalarProperty Name="ProfesionCliente" ColumnName="ProfesionCliente" />
+          <ScalarProperty Name="NacionalidadCliente" ColumnName="NacionalidadCliente" />
+          <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+          <ScalarProperty Name="IdentificacionCliente" ColumnName="IdentificacionCliente" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="t_ClientesComisionistas">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_ClientesComisionistas">
         <MappingFragment StoreEntitySet="t_ClientesComisionistas">
@@ -184,7 +199,8 @@
         <MappingFragment StoreEntitySet="t_Gastos">
           <ScalarProperty Name="Activo" ColumnName="Activo" />
           <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
-          <ScalarProperty Name="TotalGastos" ColumnName="TotalGastos" />
+          <ScalarProperty Name="TotalGastosColones" ColumnName="TotalGastosColones" />
+          <ScalarProperty Name="TotalGastosDolares" ColumnName="TotalGastosDolares" />
           <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
           <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
           <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
@@ -200,7 +216,8 @@
           <ScalarProperty Name="Activo" ColumnName="Activo" />
           <ScalarProperty Name="Factura" ColumnName="Factura" />
           <ScalarProperty Name="NumeroFacturaGasto" ColumnName="NumeroFacturaGasto" />
-          <ScalarProperty Name="MontoGasto" ColumnName="MontoGasto" />
+          <ScalarProperty Name="MontoGastoColones" ColumnName="MontoGastoColones" />
+          <ScalarProperty Name="MontoGastoDolares" ColumnName="MontoGastoDolares" />
           <ScalarProperty Name="DescripcionGasto" ColumnName="DescripcionGasto" />
           <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
           <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />

@@ -22,7 +22,7 @@
     }
 
     var fnCalcular = function () {
-        debugger;
+        
         if (idMoneda == 1) {
             var montoGasto = txtMontoGasto.val() == '' ? 0 : parseFloat(txtMontoGasto.val().replace("$", ""));
             var total = txtTotalGastos.val() == '' ? 0 : parseFloat(txtTotalGastos.val().replace("$", ""));
@@ -75,7 +75,7 @@
         });
         txtMontoGasto.bind('keypress', valideKey);
         txtMontoGasto.blur(function () {
-            debugger;
+           
             if (idMoneda == 1) {
                 txtMontoGasto.val(utils.formatterDolar.format(parseFloat(txtMontoGasto.val().replace("$", ""))));
             }
@@ -102,22 +102,42 @@
     };
 
     var fnLlenarTable = function () {
-      
-        tblDataGastos.row.add([
-            txtDescripcionGasto.val(),
-            idMoneda == 1 ? txtMontoGasto.val() : "",
-            idMoneda == 2 ? txtMontoGasto.val() : "",
-            txtNumeroFacturaGasto.val(),
-            "<img src=" + imgFactura + " width = '150'  height = '150' alt = '' >"
-        ]).draw(false);
-        fnCalcular();
+        if (txtDescripcionGasto.val() == "") {
+            Dialog.alert('Gastos', "El campo descripcion, no puede estar vacio.", function () {
+            })
+        }
+        else
+            if (txtNumeroFacturaGasto.val() == "") {
+                Dialog.alert('Gastos', "El campo número factura, no puede estar vacio.", function () {
+                })
+            }
+            else
+                if (txtMoneda.val() == "") {
+                    Dialog.alert('Gastos', "Debe seleccionar una moneda.", function () {
+                    })
+                }
+                else
+                    if (txtMontoGasto.val() == "") {
+                        Dialog.alert('Gastos', "El campo monto, no puede estar vacio.", function () {
+                        })
+                    }
+                    else {
 
-        txtDescripcionGasto.val("");
-        txtMontoGasto.val("");
-        txtNumeroFacturaGasto.val("");
-        var preview = document.getElementById("imgFacturaGasto");
-        preview.src = "";
+                        tblDataGastos.row.add([
+                            txtDescripcionGasto.val(),
+                            idMoneda == 1 ? txtMontoGasto.val() : "",
+                            idMoneda == 2 ? txtMontoGasto.val() : "",
+                            txtNumeroFacturaGasto.val(),
+                            "<img src=" + imgFactura + " width = '150'  height = '150' alt = '' >"
+                        ]).draw(false);
+                        fnCalcular();
 
+                        txtDescripcionGasto.val("");
+                        txtMontoGasto.val("");
+                        txtNumeroFacturaGasto.val("");
+                        var preview = document.getElementById("imgFacturaGasto");
+                        preview.src = "";
+                    }
     }
 
     //Solo permite introducir numeros.
@@ -138,19 +158,32 @@
     var fnGuardarGastos = function () {
        
         tblDataGastos.rows().every(function (ed) {
-          
+
+            var montoT = this.data()[2].replace("₡", "");
+            montoT = montoT.replace(",", "");
+            montoT = montoT.replace(",", "");
+            montoT = montoT.replace(",", "");
+            montoT = montoT.replace(",", "");
+
             rowsData.push({
                 "DescripcionGasto": this.data()[0],
-                "MontoGasto": parseFloat(this.data()[1].replace("$", "")),
-                "NumeroFacturaGasto": this.data()[2]//,
+                "MontoGastoDolares": parseFloat(this.data()[1].replace("$", "")),
+                "MontoGastoColones": parseFloat(montoT),
+                "NumeroFacturaGasto": this.data()[3]//,
                 //"Factura": this.data()[3]
             });
         });
-       
+
+        var montoC = txtTotalGastosColones.val().replace("₡", "");
+        montoC = montoC.replace(",", "");
+        montoC = montoC.replace(",", "");
+        montoC = montoC.replace(",", "");
+        montoC = montoC.replace(",", "");
 
             var oData = {
                 "UsuarioCreacion": usuarioLogueado,
-                "TotalGastos": parseFloat(txtTotalGastos.val().replace("$", "")),
+                "TotalGastosDolares": parseFloat(txtTotalGastos.val().replace("$", "")),
+                "TotalGastosColones": parseFloat(montoC),
                 "IDUsuario": idUsuarioLogueado,
                 "t_GastosDetalle": rowsData,
                 "Activo": true
@@ -166,6 +199,7 @@
                         })
                         tblDataGastos.clear().draw();
                         txtTotalGastos.val("");
+                        txtTotalGastosColones.val("");
                     }
                     else {
                         Dialog.alert('Gastos', result.ErrorMessage, function () {

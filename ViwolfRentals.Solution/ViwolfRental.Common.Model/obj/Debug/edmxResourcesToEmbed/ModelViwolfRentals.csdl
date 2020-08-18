@@ -2,6 +2,7 @@
 <Schema Namespace="ViwolfRentalsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="ViwolfRentalsDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="t_CategoriasVehiculos" EntityType="ViwolfRentalsDBModel.t_CategoriasVehiculos" />
+    <EntitySet Name="t_Clientes" EntityType="ViwolfRentalsDBModel.t_Clientes" />
     <EntitySet Name="t_ClientesComisionistas" EntityType="ViwolfRentalsDBModel.t_ClientesComisionistas" />
     <EntitySet Name="t_CodigosContratos" EntityType="ViwolfRentalsDBModel.t_CodigosContratos" />
     <EntitySet Name="t_Contratos" EntityType="ViwolfRentalsDBModel.t_Contratos" />
@@ -158,6 +159,20 @@
     <Property Name="Comision" Type="Int32" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="t_Vehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos" FromRole="t_CategoriasVehiculos" ToRole="t_Vehiculos" />
+  </EntityType>
+  <EntityType Name="t_Clientes">
+    <Key>
+      <PropertyRef Name="IDCliente" />
+    </Key>
+    <Property Name="IDCliente" Type="Int32" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UsuarioModificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdentificacionCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NombreCliente" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="NacionalidadCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProfesionCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="t_ClientesComisionistas">
     <Key>
@@ -353,7 +368,8 @@
     <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
     <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="TotalGastos" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="TotalGastosDolares" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="TotalGastosColones" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
     <Property Name="IDUsuario" Type="Int32" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="t_Usuarios" Relationship="ViwolfRentalsDBModel.FK_t_Gastos_t_Usuarios" FromRole="t_Gastos" ToRole="t_Usuarios" />
@@ -369,7 +385,8 @@
     <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
     <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DescripcionGasto" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="MontoGasto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="MontoGastoDolares" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="MontoGastoColones" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
     <Property Name="NumeroFacturaGasto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Factura" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="Activo" Type="Boolean" />

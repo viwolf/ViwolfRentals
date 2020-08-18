@@ -25,7 +25,8 @@ namespace ViwolfRental.Common.Model
         public string UsuarioCreacion { get; set; }
         public Nullable<System.DateTime> FechaModificacion { get; set; }
         public string UsuarioModificacion { get; set; }
-        public decimal TotalGastos { get; set; }
+        public decimal TotalGastosDolares { get; set; }
+        public decimal TotalGastosColones { get; set; }
         public int IDUsuario { get; set; }
         public bool Activo { get; set; }
     

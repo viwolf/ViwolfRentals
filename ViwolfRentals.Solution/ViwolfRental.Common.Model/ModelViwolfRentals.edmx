@@ -14,6 +14,20 @@
           <Property Name="Comision" Type="int" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="t_Clientes">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+          </Key>
+          <Property Name="IDCliente" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdentificacionCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NombreCliente" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="NacionalidadCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProfesionCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="t_ClientesComisionistas">
           <Key>
             <PropertyRef Name="IDClienteComisionista" />
@@ -182,7 +196,8 @@
           <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FechaModificacion" Type="datetime" />
           <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
-          <Property Name="TotalGastos" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalGastosDolares" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TotalGastosColones" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="IDUsuario" Type="int" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
@@ -196,7 +211,8 @@
           <Property Name="FechaModificacion" Type="datetime" />
           <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
           <Property Name="DescripcionGasto" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="MontoGasto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="MontoGastoDolares" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="MontoGastoColones" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="NumeroFacturaGasto" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Factura" Type="image" />
           <Property Name="Activo" Type="bit" />
@@ -785,6 +801,7 @@
         </Association>
         <EntityContainer Name="ViwolfRentalsDBModelStoreContainer">
           <EntitySet Name="t_CategoriasVehiculos" EntityType="Self.t_CategoriasVehiculos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Clientes" EntityType="Self.t_Clientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ClientesComisionistas" EntityType="Self.t_ClientesComisionistas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_CodigosContratos" EntityType="Self.t_CodigosContratos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_Contratos" EntityType="Self.t_Contratos" Schema="dbo" store:Type="Tables" />
@@ -938,6 +955,7 @@
       <Schema Namespace="ViwolfRentalsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ViwolfRentalsDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="t_CategoriasVehiculos" EntityType="ViwolfRentalsDBModel.t_CategoriasVehiculos" />
+          <EntitySet Name="t_Clientes" EntityType="ViwolfRentalsDBModel.t_Clientes" />
           <EntitySet Name="t_ClientesComisionistas" EntityType="ViwolfRentalsDBModel.t_ClientesComisionistas" />
           <EntitySet Name="t_CodigosContratos" EntityType="ViwolfRentalsDBModel.t_CodigosContratos" />
           <EntitySet Name="t_Contratos" EntityType="ViwolfRentalsDBModel.t_Contratos" />
@@ -1094,6 +1112,20 @@
           <Property Name="Comision" Type="Int32" Nullable="false" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="t_Vehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos" FromRole="t_CategoriasVehiculos" ToRole="t_Vehiculos" />
+        </EntityType>
+        <EntityType Name="t_Clientes">
+          <Key>
+            <PropertyRef Name="IDCliente" />
+          </Key>
+          <Property Name="IDCliente" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdentificacionCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NombreCliente" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NacionalidadCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProfesionCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="t_ClientesComisionistas">
           <Key>
@@ -1289,7 +1321,8 @@
           <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
           <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TotalGastos" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TotalGastosDolares" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TotalGastosColones" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="IDUsuario" Type="Int32" Nullable="false" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="t_Usuarios" Relationship="ViwolfRentalsDBModel.FK_t_Gastos_t_Usuarios" FromRole="t_Gastos" ToRole="t_Usuarios" />
@@ -1305,7 +1338,8 @@
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
           <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DescripcionGasto" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="MontoGasto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="MontoGastoDolares" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="MontoGastoColones" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="NumeroFacturaGasto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Factura" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Activo" Type="Boolean" />
@@ -1939,6 +1973,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="t_Clientes">
+            <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Clientes">
+              <MappingFragment StoreEntitySet="t_Clientes">
+                <ScalarProperty Name="ProfesionCliente" ColumnName="ProfesionCliente" />
+                <ScalarProperty Name="NacionalidadCliente" ColumnName="NacionalidadCliente" />
+                <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+                <ScalarProperty Name="IdentificacionCliente" ColumnName="IdentificacionCliente" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="t_ClientesComisionistas">
             <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_ClientesComisionistas">
               <MappingFragment StoreEntitySet="t_ClientesComisionistas">
@@ -2112,7 +2161,8 @@
               <MappingFragment StoreEntitySet="t_Gastos">
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
                 <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
-                <ScalarProperty Name="TotalGastos" ColumnName="TotalGastos" />
+                <ScalarProperty Name="TotalGastosColones" ColumnName="TotalGastosColones" />
+                <ScalarProperty Name="TotalGastosDolares" ColumnName="TotalGastosDolares" />
                 <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
                 <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
                 <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
@@ -2128,7 +2178,8 @@
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
                 <ScalarProperty Name="Factura" ColumnName="Factura" />
                 <ScalarProperty Name="NumeroFacturaGasto" ColumnName="NumeroFacturaGasto" />
-                <ScalarProperty Name="MontoGasto" ColumnName="MontoGasto" />
+                <ScalarProperty Name="MontoGastoColones" ColumnName="MontoGastoColones" />
+                <ScalarProperty Name="MontoGastoDolares" ColumnName="MontoGastoDolares" />
                 <ScalarProperty Name="DescripcionGasto" ColumnName="DescripcionGasto" />
                 <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
                 <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />

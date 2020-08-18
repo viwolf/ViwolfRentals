@@ -80,7 +80,8 @@ namespace ViwolfRentals.DataAccess
                                               {
                                                   gasto.IDGasto,
                                                   gasto.UsuarioCreacion,
-                                                  gasto.TotalGastos,
+                                                  gasto.TotalGastosDolares,
+                                                  gasto.TotalGastosColones,
                                                   gasto.IDUsuario,
                                                   gasto.Activo
                                               },
@@ -108,13 +109,14 @@ namespace ViwolfRentals.DataAccess
             System.Data.DataTable TblGastosDetalle = new System.Data.DataTable();
             TblGastosDetalle.Columns.Add(new System.Data.DataColumn("IDGasto", typeof(int)));
             TblGastosDetalle.Columns.Add(new System.Data.DataColumn("Descripcion", typeof(string)));
-            TblGastosDetalle.Columns.Add(new System.Data.DataColumn("Monto", typeof(decimal)));
+            TblGastosDetalle.Columns.Add(new System.Data.DataColumn("MontoDolares", typeof(decimal)));
+            TblGastosDetalle.Columns.Add(new System.Data.DataColumn("MontoColones", typeof(decimal)));
             TblGastosDetalle.Columns.Add(new System.Data.DataColumn("NumeroFactura", typeof(string)));
             //TblGastosDetalle.Columns.Add(new System.Data.DataColumn("Factura", typeof(byte)));
 
             foreach (var item in gasto.t_GastosDetalle)
             {
-                TblGastosDetalle.Rows.Add(item.IDGasto, item.DescripcionGasto, item.MontoGasto, item.NumeroFacturaGasto);
+                TblGastosDetalle.Rows.Add(item.IDGasto, item.DescripcionGasto, item.MontoGastoDolares, item.MontoGastoColones, item.NumeroFacturaGasto);
             }
 
 
