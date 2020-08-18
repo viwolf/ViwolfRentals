@@ -9,9 +9,11 @@
     var tblDataGastos = $("#tblDataGastos");
     var txtTotalGastos = $("#txtTotalGastos");
     var btnGuardarGastos = $("#btnGuardarGastos");
+    var txtTotalGastosColones = $("#txtTotalGastosColones");
+    var txtMoneda = $("#txtMoneda");
     var imgFactura = null;
     var rowsData = [];
-
+    var idMoneda = 0;
 
     var fnReader = function (e) {
         imgFactura = e.target.result;
@@ -20,40 +22,82 @@
     }
 
     var fnCalcular = function () {
-       
-        var montoGasto = txtMontoGasto.val() == '' ? 0 : parseFloat(txtMontoGasto.val().replace("$", ""));
-        var total = txtTotalGastos.val() == '' ? 0 : parseFloat(txtTotalGastos.val().replace("$", ""));
-        var montoTotal = total + montoGasto;
-        txtTotalGastos.val(utils.formatterDolar.format(montoTotal))
+        debugger;
+        if (idMoneda == 1) {
+            var montoGasto = txtMontoGasto.val() == '' ? 0 : parseFloat(txtMontoGasto.val().replace("$", ""));
+            var total = txtTotalGastos.val() == '' ? 0 : parseFloat(txtTotalGastos.val().replace("$", ""));
+            var montoTotal = total + montoGasto;
+            txtTotalGastos.val(utils.formatterDolar.format(montoTotal))
+        } else {
+            var monto = txtMontoGasto.val().replace("₡", "");
+            monto = monto.replace(",", "");
+            monto = monto.replace(",", "");
+            monto = monto.replace(",", "");
+            monto = monto.replace(",", "");
+            var montoGasto = txtMontoGasto.val() == '' ? 0 : parseFloat(monto);
+            var montoT = txtTotalGastosColones.val().replace("₡", "");
+            montoT = montoT.replace(",", "");
+            montoT = montoT.replace(",", "");
+            montoT = montoT.replace(",", "");
+            montoT = montoT.replace(",", "");
+            var total = txtTotalGastosColones.val() == '' ? 0 : parseFloat(montoT);
+            var montoTotal = total + montoGasto;
+            txtTotalGastosColones.val(utils.formatterDolar.format(montoTotal))
+            txtTotalGastosColones.val(txtTotalGastosColones.val().replace("$", "₡"));
+        }
     };
 
-    function readURL(input) {
+    function readURL(input, control) {
+
         if (input.files && input.files[0]) {
 
             var reader = new FileReader();
             reader.onload = function (e) {
 
-                fnReader(e);
+                fnReader(e, control);
             }
             reader.readAsDataURL(input.files[0]);
         }
+        else {
+            var preview = document.getElementById(control);
+            preview.src = "";
+        }
     }
 
-    $("#txtFacturaGasto").change(function () {
-      
-        readURL(this);
-    });
+    
 
     var fnInit = function () {
-        tblDataGastos = $("#tblDataGastos").DataTable({});
+        tblDataGastos = $("#tblDataGastos").DataTable({
+            filter: false,
+            "bLengthChange": false,
+            "bPaginate": false,
+            "bInfo": false,
+        });
         txtMontoGasto.bind('keypress', valideKey);
         txtMontoGasto.blur(function () {
-            txtMontoGasto.val(utils.formatterDolar.format(parseFloat(txtMontoGasto.val().replace("$", ""))));
+            debugger;
+            if (idMoneda == 1) {
+                txtMontoGasto.val(utils.formatterDolar.format(parseFloat(txtMontoGasto.val().replace("$", ""))));
+            }
+            else {
+                txtMontoGasto.val(utils.formatterDolar.format(parseFloat(txtMontoGasto.val().replace("$", ""))));
+                txtMontoGasto.val(txtMontoGasto.val().replace("$", "₡"));
+
+            }
         });
         btnAgregarGasto.unbind().click(fnLlenarTable);
 
         btnGuardarGastos.unbind().click(fnGuardarGastos);
 
+        $("#txtFacturaGasto").change(function () {
+
+            readURL(this, "imgFacturaGasto");
+        });
+
+        txtMoneda.change(function () {
+            idMoneda = txtMoneda.val();
+            txtMontoGasto.val("");
+        });
         
     };
 
@@ -61,7 +105,8 @@
       
         tblDataGastos.row.add([
             txtDescripcionGasto.val(),
-            txtMontoGasto.val(),
+            idMoneda == 1 ? txtMontoGasto.val() : "",
+            idMoneda == 2 ? txtMontoGasto.val() : "",
             txtNumeroFacturaGasto.val(),
             "<img src=" + imgFactura + " width = '150'  height = '150' alt = '' >"
         ]).draw(false);

@@ -105,15 +105,19 @@
     }
 
     function readURL(input, control) {
-        
+
         if (input.files && input.files[0]) {
 
             var reader = new FileReader();
             reader.onload = function (e) {
-                
+
                 fnReader(e, control);
             }
             reader.readAsDataURL(input.files[0]);
+        }
+        else {
+            var preview = document.getElementById(control);
+            preview.src = "";
         }
     }
 
