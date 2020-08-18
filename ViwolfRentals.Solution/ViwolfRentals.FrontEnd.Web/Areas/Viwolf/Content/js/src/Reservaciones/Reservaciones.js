@@ -37,9 +37,15 @@
 
        
     var calcularTarifaTotal = function () {
-        debugger;
+      
 
         if ((txtFechaInicio.val() != "") && (txtHoraInicio.val()) && (txtFechaFinal.val()) && (txtHoraEntrega.val())) {
+          
+            //var now = moment(timeIn); //todays date
+            //var end = moment(timeOut); // another date
+            //var duration = moment.duration(end.diff(now));
+            //var horasTranscurridas = duration.asHours();
+
 
             if (checkValidaAdm == false)
                 txtMontoDia.val("");
@@ -48,12 +54,17 @@
             var montoSurfRacks = txtMontoSurfRacks.val() == '' ? 0 : parseFloat(txtMontoSurfRacks.val().replace("$", ""));
             var montoTotal = 0;
 
-            if (timeIn == timeOut) {
-                cantidadDias == 0 ? 0 : cantidadDias - 1;
+          
+
+            if (timeIn >= timeOut) {
+                cantidadDias == 0 ? 1 : cantidadDias - 1;
                 montoTotal = ((montoDia * (cantidadDias)) + montoSurfRacks);
             } else {
                 montoTotal = ((montoDia * (cantidadDias + 1)) + montoSurfRacks);
             }
+
+
+
             txtMontoDia.val(utils.formatterDolar.format(montoDia));
             txtMontoTotal.val(utils.formatterDolar.format(montoTotal));
         }
@@ -197,6 +208,10 @@
             
             BuscarVehiculo.AbrirModal(fnCallBack, dateIni, dateFin,"Reservacion");
         });
+
+        txtHoraInicio.bind('keypress', delimitarTextos);
+        txtHoraEntrega.bind('keypress', delimitarTextos);
+
     }
 
     var fnCallBackAutorizar = function (result) {
@@ -234,6 +249,11 @@
         txtPlaca.val(data.IDVehiculo);
     };
 
+    //No se permite escribir dentro del input text
+    var delimitarTextos = function (e) {
+            e.preventDefault();
+    }
+
     //Solo permite introducir numeros.
     function valideKey(evt) {
         var code = evt.which ? evt.which : evt.keyCode;
@@ -250,13 +270,13 @@
     }
 
     var cargarHoraFinal = function (hora) {
-     
+       
         var horaSeleccionada = hora.getHours().toString();
-        var tiempo = horaSeleccionada + ':30'; 
+        var tiempo = horaSeleccionada + ':60'; 
 
         txtHoraEntrega.timepicker({
             timeFormat: 'h:mm p',
-            interval: 480,
+            interval: 30,
             //minTime: '5',
             //maxTime: '11:00pm',
             startTime: tiempo, // '5:00',
@@ -278,7 +298,9 @@
             autoclose: true,
             dateFormat: "dd/mm/yy",
             onSelect: function (selected) {
-                
+                txtHoraInicio.val("");
+                txtFechaFinal.val("");
+                txtHoraEntrega.val("");
                 var fechaFinal = moment(txtFechaFinal.val(), 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                 var fechaSeleccionada = moment(selected, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                 dateIni = new Date(fechaSeleccionada);
@@ -293,7 +315,8 @@
             autoclose: true,
             dateFormat: "dd/mm/yy",
             onSelect: function (selected) {
-                
+
+                txtHoraEntrega.val("");
                 var fechaInicial = moment(txtFechaInicio.val(), 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                 var fechaSeleccionada = moment(selected, 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
                 dateFin = new Date(fechaSeleccionada);
@@ -310,38 +333,45 @@
         txtHoraInicio.timepicker({
             timeFormat: 'h:mm p',
             interval: 30,
-            minTime: '5',
-            maxTime: '11:00pm',
-            startTime: '5:00',
+            //minTime: '5',
+            //maxTime: '11:00pm',
+            startTime: '00:00',
             //defaultTime: '11',
             scrollbar: true,
             change: function (e) {
                 timeIn = e.getTime();
-                txtHoraEntrega.timepicker('setTime', new Date(e));
-                calcularTarifaTotal();
-                cargarHoraFinal(e);
+                //txtHoraEntrega.timepicker('setTime', new Date(e));
+                //calcularTarifaTotal();
+                if (txtHoraInicio.val() != "") {
+                    txtFechaFinal.val("");
+                    txtHoraEntrega.val("");
+                    cargarHoraFinal(e);
+                }
 
             }
            
         });
 
-        //txtHoraEntrega.timepicker({
-        //    timeFormat: 'h:mm p',
-        //    interval: 30,
-        //    minTime: '5',
-        //    maxTime: '11:00pm',
-        //    startTime: '5:00',
-        //    //defaultTime: '11',
-        //    scrollbar: true,
-        //    change: function (e) {
-        //        timeIn = e.getTime();
-        //        txtHoraEntrega.timepicker('setTime', new Date(e));
-        //        calcularTarifaTotal();
-        //        cargarHoraFinal(e);
+        txtHoraEntrega.timepicker({
+            timeFormat: 'h:mm p',
+            interval: 30,
+            //minTime: '5',
+            //maxTime: '11:00pm',
+            startTime: '00:00',
+            //defaultTime: '11',
+            scrollbar: true,
+            change: function (e) {
+                timeOut = e.getTime(); // txtHoraInicio.val();
+                //timeIn = e.getTime();
+                //txtHoraEntrega.timepicker('setTime', new Date(e));
+                if (txtHoraEntrega.val() != "") {
+                    calcularTarifaTotal();
+                    cargarHoraFinal(e);
+                }
 
-        //    }
+            }
 
-        //});
+        });
     }
 
     var cargarSelect2 = function (elemento, configuracion) {
