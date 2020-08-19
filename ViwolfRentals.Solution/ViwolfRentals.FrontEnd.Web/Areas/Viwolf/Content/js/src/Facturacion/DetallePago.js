@@ -18,6 +18,7 @@
     var TotalDescuento = 0;
     var cambio = 0;
     var montoPago = 0;
+    
 
   
 
@@ -40,6 +41,8 @@
                 var MConvertido = Mtotal * TCambio;
                 txtMontoPagarTotal.val(utils.formatterColon.format(MConvertido));
                 txtTotalPagar.val(MConvertido);
+                montoTotal = MConvertido;
+                
             }
             else {
                 var Mtotal = parseInt(txtMontoPagarTotal.val().replace("CRC", "").replace(",",""));
@@ -47,6 +50,7 @@
                 var MConvertido = Mtotal / TCambio;
                 txtMontoPagarTotal.val(utils.formatterDolar.format(MConvertido));
                 txtTotalPagar.val(MConvertido);
+                montoTotal = MConvertido;
             }
         }
 
@@ -106,7 +110,20 @@
             .clear()
             .draw();
         txtCambio.val("");
-        txtTotalPagar.val(parseInt(txtMontoPagarTotal.val().replace("$","")));
+        if (txtMontoPagarTotal.val().includes("$")) {
+            txtTotalPagar.val(parseInt(txtMontoPagarTotal.val().replace("$", "")));
+        }
+        else {
+           
+            var monto = txtMontoPagarTotal.val().replace("CRC", "");
+            monto = monto.replace(",", "");
+            monto = monto.replace(",", "");
+            monto = monto.replace(",", "");
+            monto = monto.replace(",", "");
+
+            txtTotalPagar.val(parseInt(monto));
+        }
+            
         TxtReferencia.val("");
 
     };
@@ -207,7 +224,8 @@
                 Dialog.alert("DetallePago", "Debe completar el monto total.");
             }
             else {
-                fnCallback(data);
+               
+                fnCallback(data, txtMoneda.val(), txttipocambio.val());
                 modalDetallePago.modal('hide');
             }
         }

@@ -26,7 +26,6 @@ namespace ViwolfRental.Common.Model
         }
     
         public virtual DbSet<t_CategoriasVehiculos> t_CategoriasVehiculos { get; set; }
-        public virtual DbSet<t_Clientes> t_Clientes { get; set; }
         public virtual DbSet<t_ClientesComisionistas> t_ClientesComisionistas { get; set; }
         public virtual DbSet<t_CodigosContratos> t_CodigosContratos { get; set; }
         public virtual DbSet<t_Contratos> t_Contratos { get; set; }
@@ -50,6 +49,7 @@ namespace ViwolfRental.Common.Model
         public virtual DbSet<t_RolesSistemaModuloPantalla> t_RolesSistemaModuloPantalla { get; set; }
         public virtual DbSet<t_Sistemas> t_Sistemas { get; set; }
         public virtual DbSet<t_TiposFacturas> t_TiposFacturas { get; set; }
+        public virtual DbSet<t_TiposMonedas> t_TiposMonedas { get; set; }
         public virtual DbSet<t_TiposPago> t_TiposPago { get; set; }
         public virtual DbSet<t_Usuarios> t_Usuarios { get; set; }
         public virtual DbSet<t_Vehiculos> t_Vehiculos { get; set; }

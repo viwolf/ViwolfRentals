@@ -66,11 +66,14 @@ namespace ViwolfRentals.DataAccess
             TblDetalles.Columns.Add(new System.Data.DataColumn("TotalContrato", typeof(decimal)));
             TblDetalles.Columns.Add(new System.Data.DataColumn("IDFactura", typeof(int)));
             TblDetalles.Columns.Add(new System.Data.DataColumn("UsuarioCreacion", typeof(String)));
+            TblDetalles.Columns.Add(new System.Data.DataColumn("TipoCambio", typeof(int)));
+            TblDetalles.Columns.Add(new System.Data.DataColumn("IDTipoMoneda", typeof(int)));
+            
 
 
             foreach (var item in detalles)
             {
-                TblDetalles.Rows.Add(item.IDContrato, item.TotalContrato, item.IDFactura, item.UsuarioCreacion);
+                TblDetalles.Rows.Add(item.IDContrato, item.TotalContrato, item.IDFactura, item.UsuarioCreacion, item.TipoCambio, item.IDTipoMoneda);
             }
 
 

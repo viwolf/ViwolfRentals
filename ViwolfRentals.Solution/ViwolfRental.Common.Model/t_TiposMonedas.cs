@@ -12,34 +12,24 @@ namespace ViwolfRental.Common.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class t_Facturas
+    public partial class t_TiposMonedas
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public t_Facturas()
+        public t_TiposMonedas()
         {
-            this.t_FacturaDetallePago = new HashSet<t_FacturaDetallePago>();
+            this.t_Facturas = new HashSet<t_Facturas>();
             this.t_FacturasDetalles = new HashSet<t_FacturasDetalles>();
         }
     
-        public int IDFactura { get; set; }
+        public int IDTipoMoneda { get; set; }
         public System.DateTime FechaCreacion { get; set; }
         public string UsuarioCreacion { get; set; }
         public Nullable<System.DateTime> FechaModificacion { get; set; }
         public string UsuarioModificacion { get; set; }
-        public string NombreCliente { get; set; }
-        public int IDTipoFactura { get; set; }
-        public int IDEstadoFactura { get; set; }
-        public int Descuento { get; set; }
-        public decimal TotalDescuento { get; set; }
-        public decimal TotalFacturado { get; set; }
-        public Nullable<decimal> TipoCambio { get; set; }
-        public int IDTipoMoneda { get; set; }
+        public string DescripcionMoneda { get; set; }
     
-        public virtual t_EstadosFacturas t_EstadosFacturas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<t_FacturaDetallePago> t_FacturaDetallePago { get; set; }
-        public virtual t_TiposFacturas t_TiposFacturas { get; set; }
-        public virtual t_TiposMonedas t_TiposMonedas { get; set; }
+        public virtual ICollection<t_Facturas> t_Facturas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_FacturasDetalles> t_FacturasDetalles { get; set; }
     }

@@ -44,6 +44,8 @@ namespace ViwolfRentals.DataAccess
                         {
                             item.IDFactura = resultado.IDFactura;
                             item.UsuarioCreacion = Factura.UsuarioCreacion;
+                            item.IDTipoMoneda = Factura.IDTipoMoneda;
+                            item.TipoCambio = Factura.TipoCambio;
                         }
                         detalleRepository.Conexion = connection;
                         detalleRepository.Transaccion = transaction;
@@ -94,7 +96,9 @@ namespace ViwolfRentals.DataAccess
                                                   facturas.NombreCliente,
                                                   facturas.IDTipoFactura,
                                                   facturas.IDEstadoFactura,
-                                                  facturas.TotalFacturado
+                                                  facturas.TotalFacturado,
+                                                  facturas.IDTipoMoneda,
+                                                  facturas.TipoCambio
                                               },
                                               transaction: Transaccion,
                                               commandTimeout: 500,

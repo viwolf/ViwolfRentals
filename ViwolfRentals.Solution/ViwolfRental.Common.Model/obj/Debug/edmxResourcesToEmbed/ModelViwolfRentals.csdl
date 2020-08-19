@@ -2,7 +2,6 @@
 <Schema Namespace="ViwolfRentalsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="ViwolfRentalsDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="t_CategoriasVehiculos" EntityType="ViwolfRentalsDBModel.t_CategoriasVehiculos" />
-    <EntitySet Name="t_Clientes" EntityType="ViwolfRentalsDBModel.t_Clientes" />
     <EntitySet Name="t_ClientesComisionistas" EntityType="ViwolfRentalsDBModel.t_ClientesComisionistas" />
     <EntitySet Name="t_CodigosContratos" EntityType="ViwolfRentalsDBModel.t_CodigosContratos" />
     <EntitySet Name="t_Contratos" EntityType="ViwolfRentalsDBModel.t_Contratos" />
@@ -26,6 +25,7 @@
     <EntitySet Name="t_RolesSistemaModuloPantalla" EntityType="ViwolfRentalsDBModel.t_RolesSistemaModuloPantalla" />
     <EntitySet Name="t_Sistemas" EntityType="ViwolfRentalsDBModel.t_Sistemas" />
     <EntitySet Name="t_TiposFacturas" EntityType="ViwolfRentalsDBModel.t_TiposFacturas" />
+    <EntitySet Name="t_TiposMonedas" EntityType="ViwolfRentalsDBModel.t_TiposMonedas" />
     <EntitySet Name="t_TiposPago" EntityType="ViwolfRentalsDBModel.t_TiposPago" />
     <EntitySet Name="t_Usuarios" EntityType="ViwolfRentalsDBModel.t_Usuarios" />
     <EntitySet Name="t_Vehiculos" EntityType="ViwolfRentalsDBModel.t_Vehiculos" />
@@ -101,8 +101,16 @@
       <End Role="t_TiposFacturas" EntitySet="t_TiposFacturas" />
       <End Role="t_Facturas" EntitySet="t_Facturas" />
     </AssociationSet>
+    <AssociationSet Name="FK_t_Facturas_t_TiposMonedas" Association="ViwolfRentalsDBModel.FK_t_Facturas_t_TiposMonedas">
+      <End Role="t_TiposMonedas" EntitySet="t_TiposMonedas" />
+      <End Role="t_Facturas" EntitySet="t_Facturas" />
+    </AssociationSet>
     <AssociationSet Name="FK_t_FacturasDetalles_t_Facturas" Association="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Facturas">
       <End Role="t_Facturas" EntitySet="t_Facturas" />
+      <End Role="t_FacturasDetalles" EntitySet="t_FacturasDetalles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_FacturasDetalles_t_TiposMonedas" Association="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_TiposMonedas">
+      <End Role="t_TiposMonedas" EntitySet="t_TiposMonedas" />
       <End Role="t_FacturasDetalles" EntitySet="t_FacturasDetalles" />
     </AssociationSet>
     <AssociationSet Name="FK_t_Gastos_t_Usuarios" Association="ViwolfRentalsDBModel.FK_t_Gastos_t_Usuarios">
@@ -159,20 +167,6 @@
     <Property Name="Comision" Type="Int32" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="t_Vehiculos" Relationship="ViwolfRentalsDBModel.FK_t_Vehiculos_t_CategoriasVehiculos" FromRole="t_CategoriasVehiculos" ToRole="t_Vehiculos" />
-  </EntityType>
-  <EntityType Name="t_Clientes">
-    <Key>
-      <PropertyRef Name="IDCliente" />
-    </Key>
-    <Property Name="IDCliente" Type="Int32" Nullable="false" />
-    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="UsuarioModificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IdentificacionCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="NombreCliente" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="NacionalidadCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ProfesionCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="t_ClientesComisionistas">
     <Key>
@@ -338,9 +332,12 @@
     <Property Name="Descuento" Type="Int32" Nullable="false" />
     <Property Name="TotalDescuento" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
     <Property Name="TotalFacturado" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="TipoCambio" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IDTipoMoneda" Type="Int32" Nullable="false" />
     <NavigationProperty Name="t_EstadosFacturas" Relationship="ViwolfRentalsDBModel.FK_t_Facturas_t_EstadosFacturas" FromRole="t_Facturas" ToRole="t_EstadosFacturas" />
     <NavigationProperty Name="t_FacturaDetallePago" Relationship="ViwolfRentalsDBModel.FK_t_FacturaDetallePago_t_Facturas" FromRole="t_Facturas" ToRole="t_FacturaDetallePago" />
     <NavigationProperty Name="t_TiposFacturas" Relationship="ViwolfRentalsDBModel.FK_t_Facturas_t_TiposFacturas" FromRole="t_Facturas" ToRole="t_TiposFacturas" />
+    <NavigationProperty Name="t_TiposMonedas" Relationship="ViwolfRentalsDBModel.FK_t_Facturas_t_TiposMonedas" FromRole="t_Facturas" ToRole="t_TiposMonedas" />
     <NavigationProperty Name="t_FacturasDetalles" Relationship="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Facturas" FromRole="t_Facturas" ToRole="t_FacturasDetalles" />
   </EntityType>
   <EntityType Name="t_FacturasDetalles">
@@ -356,8 +353,11 @@
     <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="IDContrato" Type="Int32" Nullable="false" />
     <Property Name="TotalContrato" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="TipoCambio" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IDTipoMoneda" Type="Int32" Nullable="false" />
     <NavigationProperty Name="t_Contratos" Relationship="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Contratos" FromRole="t_FacturasDetalles" ToRole="t_Contratos" />
     <NavigationProperty Name="t_Facturas" Relationship="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_Facturas" FromRole="t_FacturasDetalles" ToRole="t_Facturas" />
+    <NavigationProperty Name="t_TiposMonedas" Relationship="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_TiposMonedas" FromRole="t_FacturasDetalles" ToRole="t_TiposMonedas" />
   </EntityType>
   <EntityType Name="t_Gastos">
     <Key>
@@ -560,6 +560,19 @@
     <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="NombreTipoFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="t_Facturas" Relationship="ViwolfRentalsDBModel.FK_t_Facturas_t_TiposFacturas" FromRole="t_TiposFacturas" ToRole="t_Facturas" />
+  </EntityType>
+  <EntityType Name="t_TiposMonedas">
+    <Key>
+      <PropertyRef Name="IDTipoMoneda" />
+    </Key>
+    <Property Name="IDTipoMoneda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DescripcionMoneda" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="t_Facturas" Relationship="ViwolfRentalsDBModel.FK_t_Facturas_t_TiposMonedas" FromRole="t_TiposMonedas" ToRole="t_Facturas" />
+    <NavigationProperty Name="t_FacturasDetalles" Relationship="ViwolfRentalsDBModel.FK_t_FacturasDetalles_t_TiposMonedas" FromRole="t_TiposMonedas" ToRole="t_FacturasDetalles" />
   </EntityType>
   <EntityType Name="t_TiposPago">
     <Key>
@@ -856,6 +869,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_t_Facturas_t_TiposMonedas">
+    <End Type="ViwolfRentalsDBModel.t_TiposMonedas" Role="t_TiposMonedas" Multiplicity="1" />
+    <End Type="ViwolfRentalsDBModel.t_Facturas" Role="t_Facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_TiposMonedas">
+        <PropertyRef Name="IDTipoMoneda" />
+      </Principal>
+      <Dependent Role="t_Facturas">
+        <PropertyRef Name="IDTipoMoneda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_t_FacturasDetalles_t_Facturas">
     <End Type="ViwolfRentalsDBModel.t_Facturas" Role="t_Facturas" Multiplicity="1" />
     <End Type="ViwolfRentalsDBModel.t_FacturasDetalles" Role="t_FacturasDetalles" Multiplicity="*" />
@@ -865,6 +890,18 @@
       </Principal>
       <Dependent Role="t_FacturasDetalles">
         <PropertyRef Name="IDFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_FacturasDetalles_t_TiposMonedas">
+    <End Type="ViwolfRentalsDBModel.t_TiposMonedas" Role="t_TiposMonedas" Multiplicity="1" />
+    <End Type="ViwolfRentalsDBModel.t_FacturasDetalles" Role="t_FacturasDetalles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_TiposMonedas">
+        <PropertyRef Name="IDTipoMoneda" />
+      </Principal>
+      <Dependent Role="t_FacturasDetalles">
+        <PropertyRef Name="IDTipoMoneda" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

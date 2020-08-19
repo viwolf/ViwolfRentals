@@ -13,7 +13,9 @@
     var rows_selected = [];
     var rows_DetallePago = [];
     var idEstado = 0;
-    var TotalFacturado = 0
+    var TotalFacturado = 0;
+    var idMoneda = 0;
+    var tipoCambio = "";
 
     var InitSelect = function () {
         cargarSelect2(txtEstadoContrato,
@@ -92,10 +94,13 @@
 
     };
 
-    var callBackFactura = function (objPago) {
+    var callBackFactura = function (objPago, IDMoneda, tCambio) {
+        
         for (var i = 0; i < objPago.length; i++) {
             rows_DetallePago.push(objPago[i]);
         }
+        idMoneda = IDMoneda;
+        tipoCambio = tCambio;
         fnCrearFactura();
     };
 
@@ -316,6 +321,7 @@
     };
 
     var fnCrearFactura = function (e) {
+        
         var oData = {
             "UsuarioCreacion": usuarioLogueado,
             "NombreCliente": rows_selected[0].NombreCliente,
@@ -325,7 +331,9 @@
             "TotalDescuento": 0,
             "TotalFacturado": TotalFacturado,
             "t_FacturasDetalles": rows_selected,
-            "t_FacturaDetallePago": rows_DetallePago
+            "t_FacturaDetallePago": rows_DetallePago,
+            "IDTipoMoneda": parseInt(idMoneda),
+            "TipoCambio": tipoCambio
         }
         try {
             var oUrl = 'Facturacion/CrearFactura';
@@ -337,6 +345,7 @@
                     Dialog.alert('Contrato', result.InfoMessage, function () {
                     })
                     generarTicket.fnReporteTicket(e, result.Data.IDFactura);
+                    fnBuscarContratos();
                 }
                 else {
                     Dialog.alert('Contrato', result.ErrorMessage, function () {

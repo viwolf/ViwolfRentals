@@ -9,20 +9,6 @@
     <Property Name="Comision" Type="int" Nullable="false" />
     <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
-  <EntityType Name="t_Clientes">
-    <Key>
-      <PropertyRef Name="IDCliente" />
-    </Key>
-    <Property Name="IDCliente" Type="int" Nullable="false" />
-    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
-    <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
-    <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="IdentificacionCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="NombreCliente" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="NacionalidadCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="ProfesionCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
   <EntityType Name="t_ClientesComisionistas">
     <Key>
       <PropertyRef Name="IDClienteComisionista" />
@@ -167,6 +153,8 @@
     <Property Name="Descuento" Type="int" Nullable="false" />
     <Property Name="TotalDescuento" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="TotalFacturado" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TipoCambio" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IDTipoMoneda" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="t_FacturasDetalles">
     <Key>
@@ -181,6 +169,8 @@
     <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
     <Property Name="IDContrato" Type="int" Nullable="false" />
     <Property Name="TotalContrato" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TipoCambio" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IDTipoMoneda" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="t_Gastos">
     <Key>
@@ -359,6 +349,17 @@
     <Property Name="FechaModificacion" Type="datetime" />
     <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
     <Property Name="NombreTipoFactura" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="t_TiposMonedas">
+    <Key>
+      <PropertyRef Name="IDTipoMoneda" />
+    </Key>
+    <Property Name="IDTipoMoneda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="UsuarioCreacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioModificacion" Type="nvarchar" MaxLength="50" />
+    <Property Name="DescripcionMoneda" Type="nvarchar" MaxLength="7" Nullable="false" />
   </EntityType>
   <EntityType Name="t_TiposPago">
     <Key>
@@ -562,6 +563,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_t_Facturas_t_TiposMonedas">
+    <End Role="t_TiposMonedas" Type="Self.t_TiposMonedas" Multiplicity="1" />
+    <End Role="t_Facturas" Type="Self.t_Facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_TiposMonedas">
+        <PropertyRef Name="IDTipoMoneda" />
+      </Principal>
+      <Dependent Role="t_Facturas">
+        <PropertyRef Name="IDTipoMoneda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_t_FacturasDetalles_t_Contratos">
     <End Role="t_Contratos" Type="Self.t_Contratos" Multiplicity="1" />
     <End Role="t_FacturasDetalles" Type="Self.t_FacturasDetalles" Multiplicity="*" />
@@ -583,6 +596,18 @@
       </Principal>
       <Dependent Role="t_FacturasDetalles">
         <PropertyRef Name="IDFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_FacturasDetalles_t_TiposMonedas">
+    <End Role="t_TiposMonedas" Type="Self.t_TiposMonedas" Multiplicity="1" />
+    <End Role="t_FacturasDetalles" Type="Self.t_FacturasDetalles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_TiposMonedas">
+        <PropertyRef Name="IDTipoMoneda" />
+      </Principal>
+      <Dependent Role="t_FacturasDetalles">
+        <PropertyRef Name="IDTipoMoneda" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -796,7 +821,6 @@
   </Association>
   <EntityContainer Name="ViwolfRentalsDBModelStoreContainer">
     <EntitySet Name="t_CategoriasVehiculos" EntityType="Self.t_CategoriasVehiculos" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="t_Clientes" EntityType="Self.t_Clientes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_ClientesComisionistas" EntityType="Self.t_ClientesComisionistas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_CodigosContratos" EntityType="Self.t_CodigosContratos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Contratos" EntityType="Self.t_Contratos" Schema="dbo" store:Type="Tables" />
@@ -820,6 +844,7 @@
     <EntitySet Name="t_RolesSistemaModuloPantalla" EntityType="Self.t_RolesSistemaModuloPantalla" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Sistemas" EntityType="Self.t_Sistemas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_TiposFacturas" EntityType="Self.t_TiposFacturas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_TiposMonedas" EntityType="Self.t_TiposMonedas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_TiposPago" EntityType="Self.t_TiposPago" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Usuarios" EntityType="Self.t_Usuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="t_Vehiculos" EntityType="Self.t_Vehiculos" Schema="dbo" store:Type="Tables" />
@@ -867,12 +892,20 @@
       <End Role="t_TiposFacturas" EntitySet="t_TiposFacturas" />
       <End Role="t_Facturas" EntitySet="t_Facturas" />
     </AssociationSet>
+    <AssociationSet Name="FK_t_Facturas_t_TiposMonedas" Association="Self.FK_t_Facturas_t_TiposMonedas">
+      <End Role="t_TiposMonedas" EntitySet="t_TiposMonedas" />
+      <End Role="t_Facturas" EntitySet="t_Facturas" />
+    </AssociationSet>
     <AssociationSet Name="FK_t_FacturasDetalles_t_Contratos" Association="Self.FK_t_FacturasDetalles_t_Contratos">
       <End Role="t_Contratos" EntitySet="t_Contratos" />
       <End Role="t_FacturasDetalles" EntitySet="t_FacturasDetalles" />
     </AssociationSet>
     <AssociationSet Name="FK_t_FacturasDetalles_t_Facturas" Association="Self.FK_t_FacturasDetalles_t_Facturas">
       <End Role="t_Facturas" EntitySet="t_Facturas" />
+      <End Role="t_FacturasDetalles" EntitySet="t_FacturasDetalles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_FacturasDetalles_t_TiposMonedas" Association="Self.FK_t_FacturasDetalles_t_TiposMonedas">
+      <End Role="t_TiposMonedas" EntitySet="t_TiposMonedas" />
       <End Role="t_FacturasDetalles" EntitySet="t_FacturasDetalles" />
     </AssociationSet>
     <AssociationSet Name="FK_t_Gastos_t_Usuarios" Association="Self.FK_t_Gastos_t_Usuarios">

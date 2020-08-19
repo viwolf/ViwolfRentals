@@ -11,21 +11,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="t_Clientes">
-      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Clientes">
-        <MappingFragment StoreEntitySet="t_Clientes">
-          <ScalarProperty Name="ProfesionCliente" ColumnName="ProfesionCliente" />
-          <ScalarProperty Name="NacionalidadCliente" ColumnName="NacionalidadCliente" />
-          <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
-          <ScalarProperty Name="IdentificacionCliente" ColumnName="IdentificacionCliente" />
-          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
-          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
-          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
-          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-          <ScalarProperty Name="IDCliente" ColumnName="IDCliente" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="t_ClientesComisionistas">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_ClientesComisionistas">
         <MappingFragment StoreEntitySet="t_ClientesComisionistas">
@@ -166,6 +151,8 @@
     <EntitySetMapping Name="t_Facturas">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_Facturas">
         <MappingFragment StoreEntitySet="t_Facturas">
+          <ScalarProperty Name="IDTipoMoneda" ColumnName="IDTipoMoneda" />
+          <ScalarProperty Name="TipoCambio" ColumnName="TipoCambio" />
           <ScalarProperty Name="TotalFacturado" ColumnName="TotalFacturado" />
           <ScalarProperty Name="TotalDescuento" ColumnName="TotalDescuento" />
           <ScalarProperty Name="Descuento" ColumnName="Descuento" />
@@ -183,6 +170,8 @@
     <EntitySetMapping Name="t_FacturasDetalles">
       <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_FacturasDetalles">
         <MappingFragment StoreEntitySet="t_FacturasDetalles">
+          <ScalarProperty Name="IDTipoMoneda" ColumnName="IDTipoMoneda" />
+          <ScalarProperty Name="TipoCambio" ColumnName="TipoCambio" />
           <ScalarProperty Name="TotalContrato" ColumnName="TotalContrato" />
           <ScalarProperty Name="IDContrato" ColumnName="IDContrato" />
           <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
@@ -379,6 +368,18 @@
           <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
           <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
           <ScalarProperty Name="IDTipoFactura" ColumnName="IDTipoFactura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_TiposMonedas">
+      <EntityTypeMapping TypeName="ViwolfRentalsDBModel.t_TiposMonedas">
+        <MappingFragment StoreEntitySet="t_TiposMonedas">
+          <ScalarProperty Name="DescripcionMoneda" ColumnName="DescripcionMoneda" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IDTipoMoneda" ColumnName="IDTipoMoneda" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

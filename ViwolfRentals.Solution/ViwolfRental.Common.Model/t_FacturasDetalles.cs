@@ -22,8 +22,11 @@ namespace ViwolfRental.Common.Model
         public string UsuarioModificacion { get; set; }
         public int IDContrato { get; set; }
         public decimal TotalContrato { get; set; }
+        public Nullable<decimal> TipoCambio { get; set; }
+        public int IDTipoMoneda { get; set; }
     
         public virtual t_Contratos t_Contratos { get; set; }
         public virtual t_Facturas t_Facturas { get; set; }
+        public virtual t_TiposMonedas t_TiposMonedas { get; set; }
     }
 }

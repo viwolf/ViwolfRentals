@@ -70,9 +70,6 @@
     <Compile Include="t_CategoriasVehiculos.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
-    <Compile Include="t_Clientes.cs">
-      <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
-    </Compile>
     <Compile Include="t_ClientesComisionistas.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
@@ -140,6 +137,9 @@
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
     <Compile Include="t_TiposFacturas.cs">
+      <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_TiposMonedas.cs">
       <DependentUpon>ModelViwolfRentals.tt</DependentUpon>
     </Compile>
     <Compile Include="t_TiposPago.cs">
