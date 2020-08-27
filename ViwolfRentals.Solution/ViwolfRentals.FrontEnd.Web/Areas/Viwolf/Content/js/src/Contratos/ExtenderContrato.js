@@ -83,8 +83,8 @@
             maxDate: '+500D'
         });
 
-        txtFechaInicio.datepicker('setDate', new Date());
-        txtFechaFinal.datepicker('setDate', new Date());
+        //txtFechaInicio.datepicker('setDate', new Date());
+        //txtFechaFinal.datepicker('setDate', new Date());
 
         txtHoraInicio.timepicker({
             timeFormat: 'h:mm p',
@@ -95,6 +95,7 @@
             //defaultTime: '11',
             scrollbar: true,
             change: function (e) {
+                
                 timeIn = e.getTime();
                 txtHoraEntrega.timepicker('setTime', new Date(e));
                 calcularTarifaTotal();
@@ -119,28 +120,28 @@
             maxDate: '+500D'
         });
         
-        txtFechaInicioDisminucion.datepicker('setDate', objContrato.FechaInicio);
-        txtFechaFinalDisminucion.datepicker('setDate', new Date());
+        //txtFechaInicioDisminucion.datepicker('setDate', objContrato.FechaInicio);
+        //txtFechaFinalDisminucion.datepicker('setDate', new Date());
     };
 
     var calcularTarifaTotal = function () {
-
+        
         var montoDia = txtMontoDia.val() == '' ? 0 : parseFloat(txtMontoDia.val().replace("$", ""));
         //var montoSurfRacks = txtMontoSurfRacks.val() == '' ? 0 : parseFloat(txtMontoSurfRacks.val().replace("$", ""));
         var montoTotal = 0;
 
-        //if (timeIn == timeOut) {
-        //    cantidadDias == 0 ? 0 : cantidadDias - 1;
-        //    montoTotal = ((montoDia * (cantidadDias)) + montoSurfRacks);
-        //} else {
+        if (timeIn >= timeOut) {
+            cantidadDias == 0 ? 0 : cantidadDias - 1;
+            montoTotal = (montoDia * (cantidadDias));
+        } else {
             montoTotal = (montoDia * (cantidadDias + 1));
-        //}
+        }
         txtMontoDia.val(utils.formatterDolar.format(montoDia));
         txtMontoTotal.val(utils.formatterDolar.format(montoTotal));
     };
 
     var calcularTarifaTotalDisminucion = function () {
-        debugger;
+        
         var fechaInicial = moment(txtFechaInicioDisminucion.val(), 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
         var fechaSeleccionada = moment(txtFechaFinalDisminucion.val(), 'DD/MM/YYYY').format('YYYY-MM-DD[T]HH:mm:ss');
         var cantidadDiasDisminucion = ((moment(fechaSeleccionada).diff(fechaInicial, 'days')));
@@ -176,6 +177,11 @@
 
     }
 
+    //No se permite escribir dentro del input text
+    var delimitarTextos = function (e) {
+        e.preventDefault();
+    }
+
     var Init = function () {
         $("#tabs").tabs();
         fnCargaFechas();
@@ -192,6 +198,18 @@
             calcularTarifaTotalDisminucion();
         });
         btnExtenderContrato.bind().click(fnConfirmarGuardar);
+        txtHoraInicio.bind('keypress', delimitarTextos);
+        txtHoraEntrega.bind('keypress', delimitarTextos);
+        txtHoraInicio.change(function (e) {
+            if (txtHoraInicio.val() != "")
+                timeIn = this.valueAsDate;
+        });
+        txtHoraEntrega.change(function (e) {
+            if (txtHoraEntrega.val() != "") {
+                timeOut = this.valueAsDate;
+                calcularTarifaTotal()
+            }
+        });
     };
 
     var fnConfirmarGuardar = function () {
@@ -216,7 +234,7 @@
         
         TxtContrato.val(objContrato.NumeroContrato);
         txtNombreClienteContrato.val(objContrato.NombreCliente);
-        txtFechaInicioDisminucion.val(objContrato.FechaInicio);
+        //txtFechaInicioDisminucion.val(objContrato.FechaInicio);
 
     };
 
