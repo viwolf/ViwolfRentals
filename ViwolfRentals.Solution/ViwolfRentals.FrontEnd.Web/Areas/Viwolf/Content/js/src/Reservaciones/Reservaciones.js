@@ -121,7 +121,7 @@
     };
 
     var fnConfirmarGuardar = function () {
-       
+        
         Dialog.confirm('Reservaciones', "Desea guardar la reservacion?", function (respuesta) {
            
             if (respuesta == true)
@@ -136,9 +136,6 @@
         fnLimpiarDatos();
 
         txtAplicaComision.change(cambiarEstadoAplicaComision);
-
-        
-       
 
         txtMontoSurfRacks.bind('keypress', valideKey);
 
@@ -470,16 +467,9 @@
             };
     };
 
-
     var ValidateFields = function () {
         var check = true;
 
-        if (txtIdentificacionCliente.val() == "") {
-            Dialog.alert('Reservaciones', "El campo identificacion del cliente, no puede estar vacío.", function () {
-            })
-            check = false;
-        }
-        else
         if (txtNombreCliente.val() == "") {
             Dialog.alert('Reservaciones', "El campo nombre del cliente, no puede estar vacío.", function () {
             })
@@ -599,6 +589,7 @@
 
 
     var fnGuardarReservacion = function () {
+
         
        
         var proveedor = document.getElementById("txtProveedor");

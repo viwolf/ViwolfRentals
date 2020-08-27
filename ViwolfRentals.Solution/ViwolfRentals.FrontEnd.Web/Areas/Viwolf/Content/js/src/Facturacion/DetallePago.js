@@ -11,6 +11,8 @@
     var txttipocambio = $("#txttipocambio");
     var txtMoneda = $("#txtMoneda");
     var btnLimpiar = $("#btnLimpiar");
+    var btnSalir = $("#btnSalir");
+    var btnRegresar = $("#btnRegresar");
     var montoTotal = 0;
     var table = null;
     var fnCallback = null;
@@ -92,8 +94,6 @@
         btnAgregar.click(fnAgregarPago);
         btnFacturar.click(fnSave);
 
-        
-
         txtMonto.bind('keypress', valideKey);
 
         txtMoneda.change(calcularTipoCambio);
@@ -101,7 +101,16 @@
         btnLimpiar.unbind('click');
         btnLimpiar.click(fnLimpiarTabla);
 
+        btnSalir.unbind().click(fnSalir);
+        btnRegresar.unbind().click(fnSalir);
         
+    };
+
+    var fnSalir = function () {
+       
+        fnLimpiarDatos();
+        fnDestruirTabla();
+        modalDetallePago.modal('hide');
     };
 
     var fnLimpiarTabla = function () {
@@ -128,8 +137,22 @@
 
     };
 
+    var desformatearMontos = function (valor) {
+
+        var monto = valor.replace("CRC", "");
+        monto = monto.trim();
+        monto = monto.replace(",", "");
+        monto = monto.replace(",", "");
+        monto = monto.replace(",", "");
+        monto = monto.replace(",", "");
+        monto = monto.replace(",", "");
+        monto = monto.replace(",", "");
+
+        return parseFloat(monto);
+    };
+
     var fnAgregarPago = function () {
-      
+       
         if (txtTotalPagar.val() > 0) {
             if ((txtTipoPago.val() != 1) && (TxtReferencia.val() == '')) {
                 Dialog.alert('DetallePago', "Debe digitar una referencia.", function () {
@@ -153,9 +176,16 @@
                         montoPago = montoPago + parseInt(txtMonto.val());
                         txtTotalPagar.val(montoTotal);
                     }
-                   
 
-                    cambio = txtMonto.val() - parseInt(txtMontoPagarTotal.val().replace("$",""));
+                    if (txtMoneda.val() == 1) {
+                        cambio = txtMonto.val() - parseInt(txtMontoPagarTotal.val().replace("$", ""));
+                    }
+                    else {
+
+                        var montoP = desformatearMontos(txtMontoPagarTotal.val());
+                        cambio = txtMonto.val() - montoP;
+                    }
+
                     if (cambio >= 0)
                         txtCambio.val(cambio);
                     else
@@ -200,7 +230,7 @@
     };
 
     var fnSave = function () {
-        debugger
+        
         var obj = table
             .rows()
             .data();
@@ -229,6 +259,16 @@
                 modalDetallePago.modal('hide');
             }
         }
+
+        fnLimpiarDatos();
+        fnDestruirTabla();
+    };
+
+    var fnDestruirTabla = function () {
+        table
+            .clear()
+            .draw();
+        table.destroy();
     };
 
     var fnLimpiarDatos = function () {

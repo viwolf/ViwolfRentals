@@ -73,7 +73,7 @@ var indexContratos = function () {
 
     var fnConfirmarGenerar = function (e, idContrato) {
         
-        Dialog.confirm('Contratos', "Desea generar el Contrato?", function (respuesta) {
+        Dialog.confirm('Contratos', "Desea generar el Contrato Creado?", function (respuesta) {
             if (respuesta == true)
                 generarContrato.fnReporteTicket(e, idContrato, "Nuevo");
         })
@@ -99,7 +99,7 @@ var indexContratos = function () {
 
             var success = function (result) {
                 if (result.MessageType == "Success") {
-                    
+                    fnBuscarReservaciones();
                     if (Data.Contrato == null) {
                         fnConfirmarGenerar(e, result.Data.IDContrato);
                     }

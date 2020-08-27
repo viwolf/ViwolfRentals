@@ -340,7 +340,7 @@
             var oProcessMessage = 'Guardando Factura';
 
             var success = function (result) {
-              
+                debugger;
                 if (result.MessageType == "Success") {
                     Dialog.alert('Contrato', result.InfoMessage, function () {
                     })
