@@ -186,7 +186,7 @@
         $("#tabs").tabs();
         fnCargaFechas();
         llenarObjeto();
-        btnCargarVehiculo.click(function () {
+        btnCargarVehiculo.unbind().click(function () {
             BuscarVehiculo.AbrirModal(fnCallBack, txtHoraInicio.val(), txtHoraEntrega.val(), "ExtensionContrato");
         });
         txtMontoDia.bind('keypress', valideKey);
@@ -197,7 +197,7 @@
         txtMontoDiaDisminucion.blur(function () {
             calcularTarifaTotalDisminucion();
         });
-        btnExtenderContrato.bind().click(fnConfirmarGuardar);
+        btnExtenderContrato.unbind().click(fnConfirmarGuardar);
         txtHoraInicio.bind('keypress', delimitarTextos);
         txtHoraEntrega.bind('keypress', delimitarTextos);
         txtHoraInicio.change(function (e) {
@@ -221,11 +221,16 @@
                 objContrato.objReservacion.HoraInicio = txtHoraInicio.val();
                 objContrato.objReservacion.HoraEntrega = txtHoraEntrega.val();
                 objContrato.objReservacion.IDVehiculo = txtIdVehiculo.val();
-                objContrato.objReservacion.MontoDia = parseFloat(txtMontoDia.val().replace("$", "")),
-                objContrato.objReservacion.MontoTotal = parseFloat(txtMontoTotal.val().replace("$", "")),
-                objContrato.TotalContrato = parseFloat(txtMontoTotal.val().replace("$", "")),
+                objContrato.objReservacion.MontoDia = parseFloat(txtMontoDia.val().replace("$", ""));
+                objContrato.objReservacion.MontoTotal = parseFloat(txtMontoTotal.val().replace("$", ""));
+                objContrato.TotalContrato = parseFloat(txtMontoTotal.val().replace("$", ""));
 
-                    fnCallbackGuardar(objContrato);
+                fnCallbackGuardar(objContrato);
+                fnLimpiar();
+                popupExtenderContrato.modal('hide');
+
+
+
             }
         })
     };
@@ -244,6 +249,22 @@
         Init();
 
         popupExtenderContrato.modal('show');
+    };
+
+    var fnLimpiar = function () {
+        TxtContrato.val("");
+        txtNombreClienteContrato.val("");
+        txtFechaInicio.val("");
+        txtFechaFinal.val("");
+        txtHoraInicio.val("");
+        txtHoraEntrega.val("");
+        txtMontoDia.val("");
+        txtMontoTotal.val("");
+        txtIdVehiculo.val("");
+        txtFechaInicioDisminucion.val("");
+        txtFechaFinalDisminucion.val("");
+        txtMontoDiaDisminucion.val("");
+        txtMontoTotalDisminucion.val("");
     };
 
     return {

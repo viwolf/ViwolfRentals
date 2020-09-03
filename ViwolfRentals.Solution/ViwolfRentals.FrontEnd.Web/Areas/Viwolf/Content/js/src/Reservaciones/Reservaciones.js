@@ -175,7 +175,6 @@
             
         })
 
-    
         txtNumeroDeposito.bind('keypress', valideKey);
         txtNumeroDeposito.blur(function (){
             txtMontoDeposito.val(utils.formatterDolar.format(0));
@@ -681,13 +680,11 @@
         objVehiculo = null;
         IdProveedor = 0;
         IdComisionista = 0;
+        fnCargaFechas();
     }
 
     $(function () {
-
         Init();
         InitSelect();
-
-
     });
 }();
