@@ -82,8 +82,9 @@ namespace ViwolfRentals.DataAccess
                splitOn: "IDVehiculo",
                param: new
                {
-                   reservaciones.GeneraContrato
-               }, transaction: Transaccion, commandTimeout: 500, commandType: CommandType.StoredProcedure);
+                   reservaciones.GeneraContrato,
+                   Modulo = reservaciones.GeneraContrato == false ? "Reservas" : "Entregas",
+               }, transaction: Transaccion, commandTimeout: 500, commandType: CommandType.StoredProcedure) ;
 
 
         }

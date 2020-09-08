@@ -23,6 +23,9 @@
                         responsive: true,
                         data: result.Data,
                         select: false,
+                        filter: false,
+                        "bInfo": false,
+                        "bLengthChange": false,
                         columns: [
                             { data: 'IDVehiculo' },
                             { data: 'NombreCliente' },
@@ -66,6 +69,9 @@
                         responsive: true,
                         data: result.Data,
                         select: false,
+                        filter: false,
+                        "bInfo": false,
+                        "bLengthChange": false,
                         columns: [
                             { data: 'IDVehiculo' },
                             { data: 'NombreCliente' },
