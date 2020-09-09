@@ -178,11 +178,11 @@
             })
         }
         else {
-
+            debugger;
             var oData = {
                 "IDClienteComisionista": IdComisionista, //txtIDClienteComisionista.val(),
                 "t_ClientesComisionistas.NombreClienteComisionista": $("#txtNombreClienteComisionista option:selected").text(), //txtNombreClienteComisionista.val(),
-                "ComisionPaga": txtEstadoComision.val(),
+                "ComisionPaga": txtEstadoComision.val() == '0' ? false : true,
                 "t_Contratos.IDEstadoContrato": configViwolf.EstadosContratos.Facturado
             };
             try {
